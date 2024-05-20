@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TentacleSimpleHit
+  m_Controller: {fileID: 9100000, guid: 1c1c9f3dc941b8f4b88d879213cd873e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -4630339522487117836, guid: b80c8f13244783d4bb22c81de323cd6c,
+      type: 3}
+    m_OverrideClip: {fileID: -4630339522487117836, guid: b80c8f13244783d4bb22c81de323cd6c,
+      type: 3}
+  - m_OriginalClip: {fileID: -3100369314251171874, guid: b80c8f13244783d4bb22c81de323cd6c,
+      type: 3}
+    m_OverrideClip: {fileID: -3100369314251171874, guid: b80c8f13244783d4bb22c81de323cd6c,
+      type: 3}
+  - m_OriginalClip: {fileID: 5969118831201602723, guid: b80c8f13244783d4bb22c81de323cd6c,
+      type: 3}
+    m_OverrideClip: {fileID: 5969118831201602723, guid: b80c8f13244783d4bb22c81de323cd6c,
+      type: 3}
+  - m_OriginalClip: {fileID: 457796991906702257, guid: b80c8f13244783d4bb22c81de323cd6c,
+      type: 3}
+    m_OverrideClip: {fileID: 457796991906702257, guid: b80c8f13244783d4bb22c81de323cd6c,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: dc4232d577ba3b4498531e0c0b95935b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3fcc9acdca40beb47af10a054c4d150b, type: 2}

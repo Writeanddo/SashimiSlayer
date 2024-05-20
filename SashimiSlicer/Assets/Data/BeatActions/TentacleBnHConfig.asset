@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8242b48814583e4478d5d8708bdc7bcf, type: 3}
+  m_Name: TentacleBnHConfig
+  m_EditorClassIdentifier: 
+  <Prefab>k__BackingField: {fileID: 5351909015360120121, guid: 69293adadd2b93b4ca4b18b6e2f88236,
+    type: 3}
+  <BlockWindowHalfDuration>k__BackingField: 0.07
+  <VulnerableWindowHalfDuration>k__BackingField: 0.07
+  <AttackDamage>k__BackingField: 5
+  <DamageTakenToBoss>k__BackingField: 5
+  <DamageDealtToPlayer>k__BackingField: 20
+  <HitboxRadius>k__BackingField: 0.59
+  <BlockSound>k__BackingField: {fileID: 8300000, guid: 363e7091116d1bc4da05b2c47501545e,
+    type: 3}
+  <ImpactSound>k__BackingField: {fileID: 8300000, guid: e61087ddea380e440bcc70ff239b0f89,
+    type: 3}
+  <KilledSound>k__BackingField: {fileID: 8300000, guid: 5d51cd51a15429345b434b628e8127cf,
+    type: 3}
