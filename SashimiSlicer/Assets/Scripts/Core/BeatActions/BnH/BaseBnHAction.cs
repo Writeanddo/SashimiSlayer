@@ -292,6 +292,7 @@ public class BaseBnHAction : MonoBehaviour
             else
             {
                 _state = State.WaitingToAttack;
+                _blocked = false;
                 _attackIndex++;
             }
         }
