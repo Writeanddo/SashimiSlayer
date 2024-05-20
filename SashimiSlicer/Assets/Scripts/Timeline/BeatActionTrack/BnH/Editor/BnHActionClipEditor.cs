@@ -66,19 +66,22 @@ public class BnHActionClipEditor : ClipEditor
             return;
         }
 
-        double attackTime = actionClip.template.actionData._beatsUntilAttack * 60 /
-                            BeatmapEditorWindow.CurrentEditingBeatmap.BPM;
-
-        float normalizedPos = Mathf.InverseLerp((float)region.startTime, (float)region.endTime, (float)attackTime);
-
-        // draw a line at the attack time
-        if (normalizedPos > 0 && normalizedPos < 1)
+        foreach (BaseBnHAction.AttackInstance attack in actionClip.template.actionData._attacks)
         {
-            Rect linePos = region.position;
-            linePos.x += normalizedPos * linePos.width;
-            linePos.width = 3;
+            double attackTime = attack._beatsUntilAttack * 60 /
+                                BeatmapEditorWindow.CurrentEditingBeatmap.BPM;
 
-            EditorGUI.DrawRect(linePos, Color.yellow);
+            float normalizedPos = Mathf.InverseLerp((float)region.startTime, (float)region.endTime, (float)attackTime);
+
+            // draw a line at the attack time
+            if (normalizedPos > 0 && normalizedPos < 1)
+            {
+                Rect linePos = region.position;
+                linePos.x += normalizedPos * linePos.width;
+                linePos.width = 3;
+
+                EditorGUI.DrawRect(linePos, Color.yellow);
+            }
         }
 
         // Draw lines on every measure
