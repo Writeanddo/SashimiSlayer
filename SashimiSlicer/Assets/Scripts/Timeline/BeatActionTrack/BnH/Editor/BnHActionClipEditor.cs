@@ -32,29 +32,8 @@ public class BnHActionClipEditor : ClipEditor
         double start = clip.start;
         double duration = clip.duration;
 
-        clip.start = QuantizeTime(start, beatmapConfig);
-        clip.duration = QuantizeTime(start + duration, beatmapConfig) - clip.start;
-    }
-
-    private double QuantizeTime(double time, BeatmapConfigSO beatmapConfig)
-    {
-        double startTime = beatmapConfig.StartTime;
-        double bpm = beatmapConfig.BPM;
-
-        int subdivisions = beatmapConfig.Subdivisions;
-        subdivisions = subdivisions == 0 ? 1 : subdivisions;
-
-        double beatDuration = 60 / bpm / subdivisions;
-
-        double beatOffset = beatmapConfig.BeatOffset;
-
-        double beatTime = (time - startTime) / beatDuration;
-
-        double quantizedBeatTime = Math.Round(beatTime) + beatOffset;
-
-        time = startTime + quantizedBeatTime * beatDuration;
-
-        return time;
+        clip.start = beatmapConfig.QuantizeTime(start);
+        clip.duration = beatmapConfig.QuantizeTime(start + duration) - clip.start;
     }
 
     public override void DrawBackground(TimelineClip clip, ClipBackgroundRegion region)
@@ -66,6 +45,17 @@ public class BnHActionClipEditor : ClipEditor
             return;
         }
 
+        // We assume clip.Start time is properly snapped to the interval
+
+        DrawBeatGuides(clip, region);
+
+        DrawAttackPoints(actionClip, region);
+
+        base.DrawBackground(clip, region);
+    }
+
+    private void DrawAttackPoints(BnHActionClip actionClip, ClipBackgroundRegion region)
+    {
         foreach (BaseBnHAction.AttackInstance attack in actionClip.template.actionData._attacks)
         {
             double attackTime = attack._beatsUntilAttack * 60 /
@@ -79,31 +69,59 @@ public class BnHActionClipEditor : ClipEditor
                 Rect linePos = region.position;
                 linePos.x += normalizedPos * linePos.width;
                 linePos.width = 3;
+                linePos.height /= 2;
 
-                EditorGUI.DrawRect(linePos, Color.yellow);
+                EditorGUI.DrawRect(linePos, Color.red);
             }
         }
+    }
+
+    private void DrawBeatGuides(TimelineClip clip, ClipBackgroundRegion region)
+    {
+        // region.startTime is the time of the visible area RELATIVE to the start of the ENTIRE clip
+        double drawnAreaStartTime = clip.start + region.startTime;
+        double drawnAreaEndTime = clip.start + region.endTime;
+
+        BeatmapConfigSO currentBeatmap = BeatmapEditorWindow.CurrentEditingBeatmap;
 
         // Draw lines on every measure
-        var beatDuration = (float)(60 / BeatmapEditorWindow.CurrentEditingBeatmap.BPM);
-        int beatsPerMeasure = BeatmapEditorWindow.CurrentEditingBeatmap.BeatsPerMeasure;
+        var subdivisionInterval = (float)(60 /
+                                          currentBeatmap.BPM /
+                                          currentBeatmap.Subdivisions);
+        int subdivsPerMeasure = currentBeatmap.BeatsPerMeasure *
+                                currentBeatmap.Subdivisions;
 
-        var startBeat = (int)Math.Round(clip.start / beatDuration);
-        startBeat = -startBeat % beatsPerMeasure;
-        var endBeat = (int)Math.Round(clip.end / beatDuration);
+        // Find the first subdivision, and snap it to the nearest measure
+        var startSubdiv = (int)Math.Ceiling(drawnAreaStartTime / subdivisionInterval);
 
-        for (int i = startBeat; i <= endBeat; i += beatsPerMeasure)
+        var endSubdiv = (int)Math.Floor(drawnAreaEndTime / subdivisionInterval);
+
+        for (int i = startSubdiv; i <= endSubdiv; i++)
         {
-            float beatTime = i * beatDuration;
+            var beatTime = (float)(i * subdivisionInterval + currentBeatmap.StartTime - clip.start);
             float normalizedBeatTime = Mathf.InverseLerp((float)region.startTime, (float)region.endTime, beatTime);
 
             Rect linePos = region.position;
             linePos.x += normalizedBeatTime * linePos.width;
+
             linePos.width = 1;
-
-            EditorGUI.DrawRect(linePos, Color.white);
+            if (i % subdivsPerMeasure == 0)
+            {
+                // Start of a measure
+                EditorGUI.DrawRect(linePos, Color.cyan);
+            }
+            else if (i % currentBeatmap.Subdivisions == 0)
+            {
+                // Start of a beat
+                linePos.height /= 2;
+                EditorGUI.DrawRect(linePos, Color.white);
+            }
+            else
+            {
+                // Start of a subdiv
+                linePos.height = 3;
+                EditorGUI.DrawRect(linePos, Color.gray);
+            }
         }
-
-        base.DrawBackground(clip, region);
     }
 }
