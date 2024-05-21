@@ -71,6 +71,8 @@ public class BnHActionClipEditor : ClipEditor
                 linePos.width = 3;
                 linePos.height /= 2;
 
+                linePos.x -= linePos.width / 2 - 1;
+
                 EditorGUI.DrawRect(linePos, Color.red);
             }
         }
@@ -108,7 +110,7 @@ public class BnHActionClipEditor : ClipEditor
             if (i % subdivsPerMeasure == 0)
             {
                 // Start of a measure
-                EditorGUI.DrawRect(linePos, Color.cyan);
+                EditorGUI.DrawRect(linePos, Color.white);
             }
             else if (i % currentBeatmap.Subdivisions == 0)
             {
@@ -119,7 +121,7 @@ public class BnHActionClipEditor : ClipEditor
             else
             {
                 // Start of a subdiv
-                linePos.height = 3;
+                linePos.height = 2;
                 EditorGUI.DrawRect(linePos, Color.gray);
             }
         }
