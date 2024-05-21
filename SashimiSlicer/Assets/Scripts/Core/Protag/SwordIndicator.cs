@@ -1,4 +1,3 @@
-using Input;
 using UnityEngine;
 
 public class SwordIndicator : MonoBehaviour
@@ -16,10 +15,10 @@ public class SwordIndicator : MonoBehaviour
 
     private Vector3 _position;
 
-    public void SetSheatheState(BaseUserInputProvider.SheathState state)
+    public void SetSheatheState(Gameplay.SheathState state)
     {
         _lineRenderer.material =
-            state == BaseUserInputProvider.SheathState.Sheathed ? _idleMaterial : _unsheathedMaterial;
+            state == Gameplay.SheathState.Sheathed ? _idleMaterial : _unsheathedMaterial;
     }
 
     public void SetAngle(float angle)

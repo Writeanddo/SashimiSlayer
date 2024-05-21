@@ -6,14 +6,14 @@ namespace Input
 {
     public class GamepadInputProvider : BaseUserInputProvider, GameplayControls.IGameplayActions
     {
-        public override event Action<PoseState> OnPoseStateChanged;
-        public override event Action<SheathState> OnSheathStateChanged;
+        public override event Action<Gameplay.BlockPoseStates> OnBlockPoseChanged;
+        public override event Action<Gameplay.SheathState> OnSheathStateChanged;
 
         private GameplayControls _gameplayControls;
 
         private Vector2 _mousePos;
-        private PoseState _poseState;
-        private SheathState _sheathState;
+        private Gameplay.BlockPoseStates _BlockPoseStates;
+        private Gameplay.SheathState _sheathState;
         private Vector2 _swordAngle = Vector2.zero;
 
         private void OnEnable()
@@ -21,7 +21,7 @@ namespace Input
             _gameplayControls = new GameplayControls();
             _gameplayControls.Enable();
             _gameplayControls.Gameplay.SetCallbacks(this);
-            _poseState = 0;
+            _BlockPoseStates = 0;
         }
 
         private void OnDisable()
@@ -41,9 +41,9 @@ namespace Input
         {
             bool isPressed = context.ReadValueAsButton();
 
-            SheathState newState = isPressed
-                ? SheathState.Unsheathed
-                : SheathState.Sheathed;
+            Gameplay.SheathState newState = isPressed
+                ? Gameplay.SheathState.Unsheathed
+                : Gameplay.SheathState.Sheathed;
 
             if (_sheathState != newState)
             {
@@ -55,19 +55,19 @@ namespace Input
         public void OnPoseButtonTop(InputAction.CallbackContext context)
         {
             bool isPressed = context.ReadValueAsButton();
-            ChangePoseFlag(PoseState.TopPose, isPressed);
+            ChangePoseFlag(Gameplay.BlockPoseStates.TopPose, isPressed);
         }
 
         public void OnPoseButtonMId(InputAction.CallbackContext context)
         {
             bool isPressed = context.ReadValueAsButton();
-            ChangePoseFlag(PoseState.MidPose, isPressed);
+            ChangePoseFlag(Gameplay.BlockPoseStates.MidPose, isPressed);
         }
 
         public void OnPoseButtonBot(InputAction.CallbackContext context)
         {
             bool isPressed = context.ReadValueAsButton();
-            ChangePoseFlag(PoseState.BotPose, isPressed);
+            ChangePoseFlag(Gameplay.BlockPoseStates.BotPose, isPressed);
         }
 
         public void OnMousePos(InputAction.CallbackContext context)
@@ -83,22 +83,22 @@ namespace Input
             _mousePos = newMousePos;
         }
 
-        private void ChangePoseFlag(PoseState flag, bool flagState)
+        private void ChangePoseFlag(Gameplay.BlockPoseStates flag, bool flagState)
         {
-            PoseState newPoseState = _poseState;
+            Gameplay.BlockPoseStates newBlockPoseStates = _BlockPoseStates;
             if (flagState)
             {
-                newPoseState |= flag;
+                newBlockPoseStates |= flag;
             }
             else
             {
-                newPoseState &= ~flag;
+                newBlockPoseStates &= ~flag;
             }
 
-            if (_poseState != newPoseState)
+            if (_BlockPoseStates != newBlockPoseStates)
             {
-                _poseState = newPoseState;
-                OnPoseStateChanged?.Invoke(_poseState);
+                _BlockPoseStates = newBlockPoseStates;
+                OnBlockPoseChanged?.Invoke(_BlockPoseStates);
             }
         }
 
@@ -107,14 +107,14 @@ namespace Input
             return Mathf.Atan2(_swordAngle.y, _swordAngle.x) * Mathf.Rad2Deg;
         }
 
-        public override SheathState GetSheathState()
+        public override Gameplay.SheathState GetSheathState()
         {
             return _sheathState;
         }
 
-        public override PoseState GetPoseState()
+        public override Gameplay.BlockPoseStates GetBlockPose()
         {
-            return _poseState;
+            return _BlockPoseStates;
         }
     }
 }

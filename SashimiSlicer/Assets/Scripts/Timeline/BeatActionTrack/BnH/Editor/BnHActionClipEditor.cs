@@ -56,6 +56,8 @@ public class BnHActionClipEditor : ClipEditor
 
     private void DrawAttackPoints(BnHActionClip actionClip, ClipBackgroundRegion region)
     {
+        int posePositionCount = Enum.GetValues(typeof(Gameplay.BlockPoseStates)).Length;
+
         foreach (BaseBnHAction.AttackInstance attack in actionClip.template.actionData._attacks)
         {
             double attackTime = attack._beatsUntilAttack * 60 /
@@ -63,17 +65,42 @@ public class BnHActionClipEditor : ClipEditor
 
             float normalizedPos = Mathf.InverseLerp((float)region.startTime, (float)region.endTime, (float)attackTime);
 
-            // draw a line at the attack time
             if (normalizedPos > 0 && normalizedPos < 1)
             {
+                // Draw a vertical line at the time of the attack
                 Rect linePos = region.position;
                 linePos.x += normalizedPos * linePos.width;
-                linePos.width = 3;
-                linePos.height /= 2;
-
-                linePos.x -= linePos.width / 2 - 1;
+                linePos.width = 2;
 
                 EditorGUI.DrawRect(linePos, Color.red);
+
+                // Draw a series of lines to indicate the block poses
+                linePos.height = 5;
+                linePos.width = 5;
+                linePos.x -= 2;
+
+                var pose = (int)attack._blockPose;
+
+                var vertMargin = 5;
+                linePos.y = vertMargin;
+
+                var poseChecker = 1;
+                float heightOffsetPerTick = (region.position.height - vertMargin * 2) / (posePositionCount - 1);
+
+                for (var i = 0; i < posePositionCount; i++)
+                {
+                    if ((pose & poseChecker) != 0)
+                    {
+                        EditorGUI.DrawRect(linePos, Color.cyan);
+                    }
+                    else
+                    {
+                        EditorGUI.DrawRect(linePos, Color.gray);
+                    }
+
+                    linePos.y += heightOffsetPerTick;
+                    poseChecker <<= 1;
+                }
             }
         }
     }

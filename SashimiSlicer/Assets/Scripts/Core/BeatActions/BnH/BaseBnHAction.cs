@@ -41,7 +41,7 @@ public class BaseBnHAction : MonoBehaviour
         public double _beatsUntilAttack;
         public string _attackTag;
         public bool _hold;
-        public BaseUserInputProvider.PoseState _blockPose;
+        public Gameplay.BlockPoseStates _blockPose;
     }
 
     private struct AttackTiming
@@ -179,14 +179,14 @@ public class BaseBnHAction : MonoBehaviour
         }
     }
 
-    private void OnPlayerAttemptBlock(Protaganist.BlockPose blockPose)
+    private void OnPlayerAttemptBlock(Protaganist.BlockInstance blockInstance)
     {
         if (_state != State.AttackBlockWindow)
         {
             return;
         }
 
-        if (blockPose.pose != _data._attacks[_attackIndex]._blockPose)
+        if (blockInstance.BlockPose != _data._attacks[_attackIndex]._blockPose)
         {
             return;
         }
@@ -207,7 +207,7 @@ public class BaseBnHAction : MonoBehaviour
         }
     }
 
-    private void OnPlayerAttemptAttack(Protaganist.AttackPose attackPose)
+    private void OnPlayerAttemptAttack(Protaganist.AttackInstance attackInstance)
     {
         if (_state != State.VulnerableWindow)
         {

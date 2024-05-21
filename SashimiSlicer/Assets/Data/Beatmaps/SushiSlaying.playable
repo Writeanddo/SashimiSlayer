@@ -60,6 +60,34 @@ MonoBehaviour:
       _beatsUntilVulnerable: 0
       _position: {x: 0, y: 0}
       _vulnerableInteraction: 0
+--- !u!114 &-8107787252219151812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    description: Simple Hit Behavior
+    hitConfig: {fileID: 11400000, guid: e7f0458cd61d42b4c969c878e98c2945, type: 2}
+    actionData:
+      _attacks:
+      - _beatsUntilAttack: 4
+        _attackTag: 
+        _hold: 0
+        _blockPose: 4
+      - _beatsUntilAttack: 6
+        _attackTag: 
+        _hold: 0
+        _blockPose: 4
+      _beatsUntilVulnerable: 10
+      _position: {x: 6.303896, y: -5.37992}
+      _vulnerableInteraction: 1
 --- !u!114 &-7974124173024059953
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -175,6 +203,75 @@ MonoBehaviour:
     m_ClipIn: 0
     m_Asset: {fileID: 2719660626461538642}
     m_Duration: 4.999999999999998
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -7634491408669650360}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: SimpleHitClip
+  - m_Version: 1
+    m_Start: 18.636363636363637
+    m_ClipIn: 0
+    m_Asset: {fileID: 3064974947289489903}
+    m_Duration: 5
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7634491408669650360}
     m_EaseInDuration: 0
@@ -455,10 +552,10 @@ MonoBehaviour:
         _attackTag: 
         _hold: 0
         _blockPose: 1
-      - _beatsUntilAttack: 8
+      - _beatsUntilAttack: 10
         _attackTag: 
         _hold: 0
-        _blockPose: 4
+        _blockPose: 1
       _beatsUntilVulnerable: 12
       _position: {x: 0.16020697, y: -5.1809516}
       _vulnerableInteraction: 1
@@ -479,6 +576,22 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: EEE
+--- !u!114 &-2583325836619689852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc55fe93439f27649bcbfa48bd1c33f8, type: 3}
+  m_Name: BeatMapping/Move Target Marker
+  m_EditorClassIdentifier: 
+  m_Time: 18.18181818181818
+  emitOnce: 0
+  emitInEditor: 0
+  position: {x: -2.8262968, y: -1.2643875, z: 0}
 --- !u!114 &-2042112074663296496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -713,6 +826,34 @@ MonoBehaviour:
       _beatsUntilVulnerable: 0
       _position: {x: 0, y: 0}
       _vulnerableInteraction: 0
+--- !u!114 &3064974947289489903
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    description: Simple Hit Behavior
+    hitConfig: {fileID: 11400000, guid: e7f0458cd61d42b4c969c878e98c2945, type: 2}
+    actionData:
+      _attacks:
+      - _beatsUntilAttack: 4
+        _attackTag: 
+        _hold: 0
+        _blockPose: 2
+      - _beatsUntilAttack: 8
+        _attackTag: 
+        _hold: 0
+        _blockPose: 2
+      _beatsUntilVulnerable: 11
+      _position: {x: 3.1874557, y: -4.99145}
+      _vulnerableInteraction: 1
 --- !u!114 &3241029985881354545
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -983,10 +1124,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SimpleHitClip
   - m_Version: 1
-    m_Start: 18.863636363636363
+    m_Start: 18.18181818181818
     m_ClipIn: 0
     m_Asset: {fileID: -3968924432986565771}
-    m_Duration: 5.454545454545453
+    m_Duration: 5.454545454545457
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6435859260828590340}
     m_EaseInDuration: 0
@@ -1247,6 +1388,7 @@ MonoBehaviour:
     - {fileID: 6952043381997856199}
     - {fileID: 5898022459129549792}
     - {fileID: 6507073189199860810}
+    - {fileID: -2583325836619689852}
 --- !u!114 &7855175669344345868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1267,7 +1409,76 @@ MonoBehaviour:
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
-  m_Clips: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 19.09090909090909
+    m_ClipIn: 0
+    m_Asset: {fileID: -8107787252219151812}
+    m_Duration: 4.545454545454547
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7855175669344345868}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: SimpleHitClip
   m_Markers:
     m_Objects: []
 --- !u!114 &8483025368824293763

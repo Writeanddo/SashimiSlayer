@@ -1,4 +1,3 @@
-using Input;
 using UnityEngine;
 
 public class BeatActionIndicator : MonoBehaviour
@@ -21,7 +20,7 @@ public class BeatActionIndicator : MonoBehaviour
     [SerializeField]
     private float _shrinkScale;
 
-    public void TickWaitingForAttack(float normalizedTime, BaseUserInputProvider.PoseState blockPose)
+    public void TickWaitingForAttack(float normalizedTime, Gameplay.BlockPoseStates blockPose)
     {
         _attackShrinkRing.transform.localScale = Vector3.one * Mathf.Lerp(_shrinkScale, 1, normalizedTime);
         SetBlockPoseIndicator(blockPose);
@@ -59,12 +58,12 @@ public class BeatActionIndicator : MonoBehaviour
         _vulnerableShrinkRing.enabled = val;
     }
 
-    private void SetBlockPoseIndicator(BaseUserInputProvider.PoseState blockPose)
+    private void SetBlockPoseIndicator(Gameplay.BlockPoseStates blockBlockPose)
     {
         var check = 1;
         for (var i = 0; i < _blockPoseSprites.Length; i++)
         {
-            _blockPoseSprites[i].enabled = (check & (int)blockPose) != 0;
+            _blockPoseSprites[i].enabled = (check & (int)blockBlockPose) != 0;
             check <<= 1;
         }
     }

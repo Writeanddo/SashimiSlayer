@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class Protaganist : MonoBehaviour
 {
-    public struct BlockPose
+    public struct BlockInstance
     {
-        public BaseUserInputProvider.PoseState pose;
+        public Gameplay.BlockPoseStates BlockPose;
         public Vector3 swordPosition;
         public float swordAngle;
     }
 
-    public struct AttackPose
+    public struct AttackInstance
     {
         public Vector3 swordPosition;
         public float swordAngle;
@@ -31,17 +31,17 @@ public class Protaganist : MonoBehaviour
     private float _maxHealth;
 
     public static Protaganist Instance { get; private set; }
-    public BaseUserInputProvider.SheathState SheathState => _sheathState;
+    public Gameplay.SheathState ProtagSheathState => _protagSheathState;
     public Vector3 SpritePosition { get; set; }
 
-    public event Action<BlockPose> OnBlockAction;
+    public event Action<BlockInstance> OnBlockAction;
     public event Action OnDamageTaken;
-    public event Action<AttackPose> OnSliceAction;
+    public event Action<AttackInstance> OnSliceAction;
     public event Action OnSuccessfulBlock;
 
     private float _health;
 
-    private BaseUserInputProvider.SheathState _sheathState;
+    private Gameplay.SheathState _protagSheathState;
     private float _swordAngle;
 
     private Vector3 _swordPosition;
@@ -61,7 +61,7 @@ public class Protaganist : MonoBehaviour
         _health = _maxHealth;
 
         _inputProvider.OnSheathStateChanged += OnSheathStateChanged;
-        _inputProvider.OnPoseStateChanged += OnPoseStateChanged;
+        _inputProvider.OnBlockPoseChanged += OnPoseStateChanged;
     }
 
     private void Update()
@@ -73,39 +73,39 @@ public class Protaganist : MonoBehaviour
     private void OnDestroy()
     {
         _inputProvider.OnSheathStateChanged -= OnSheathStateChanged;
-        _inputProvider.OnPoseStateChanged -= OnPoseStateChanged;
+        _inputProvider.OnBlockPoseChanged -= OnPoseStateChanged;
     }
 
     private void OnGUI()
     {
         GUILayout.Label($"Sword angle: {_swordAngle}");
         GUILayout.Label($"Sword position: {_swordPosition}");
-        GUILayout.Label($"Sheath state: {_sheathState}");
-        GUILayout.Label($"Pose state: {_inputProvider.GetPoseState()}");
+        GUILayout.Label($"Sheath state: {_protagSheathState}");
+        GUILayout.Label($"Pose state: {_inputProvider.GetBlockPose()}");
     }
 
-    private void OnPoseStateChanged(BaseUserInputProvider.PoseState poseState)
+    private void OnPoseStateChanged(Gameplay.BlockPoseStates blockPoseStates)
     {
-        var pose = new BlockPose
+        var pose = new BlockInstance
         {
-            pose = poseState,
+            BlockPose = blockPoseStates,
             swordPosition = _swordPosition,
             swordAngle = _swordAngle
         };
         OnBlockAction?.Invoke(pose);
     }
 
-    private void OnSheathStateChanged(BaseUserInputProvider.SheathState newState)
+    private void OnSheathStateChanged(Gameplay.SheathState newState)
     {
         Debug.Log($"Sheath state changed to {newState}");
-        BaseUserInputProvider.SheathState oldState = _sheathState;
-        _sheathState = newState;
+        Gameplay.SheathState oldState = _protagSheathState;
+        _protagSheathState = newState;
 
         // Sword is sheathed from unsheathed means a slice
-        if (newState == BaseUserInputProvider.SheathState.Sheathed
-            && oldState == BaseUserInputProvider.SheathState.Unsheathed)
+        if (newState == Gameplay.SheathState.Sheathed
+            && oldState == Gameplay.SheathState.Unsheathed)
         {
-            OnSliceAction?.Invoke(new AttackPose
+            OnSliceAction?.Invoke(new AttackInstance
             {
                 swordPosition = _swordPosition,
                 swordAngle = _swordAngle
