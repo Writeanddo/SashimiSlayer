@@ -15,17 +15,17 @@ public class BnHActionBehavior : PlayableBehaviour
 
     public BnHActionCore.BnHActionInstanceConfig ActionData;
 
-    private BeatActionManager _beatActionManager;
+    private BeatActionService _beatActionService;
 
     private BnHActionCore _blockAndHit;
 
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
-        if (_beatActionManager == null)
+        if (_beatActionService == null)
         {
-            _beatActionManager = playerData as BeatActionManager;
+            _beatActionService = playerData as BeatActionService;
 
-            if (_beatActionManager == null)
+            if (_beatActionService == null)
             {
                 return;
             }
@@ -33,7 +33,7 @@ public class BnHActionBehavior : PlayableBehaviour
 
         if (_blockAndHit == null)
         {
-            _blockAndHit = _beatActionManager.SpawnSimpleHit(HitConfig, ActionData);
+            _blockAndHit = _beatActionService.SpawnSimpleHit(HitConfig, ActionData);
         }
 
         Debug.DrawLine(ActionData.Position, ActionData.Position + Vector2.up * 10, Color.red);
@@ -61,7 +61,7 @@ public class BnHActionBehavior : PlayableBehaviour
             return;
         }
 
-        _beatActionManager.CleanupBnHHit(_blockAndHit);
+        _beatActionService.CleanupBnHHit(_blockAndHit);
         _blockAndHit = null;
     }
 }

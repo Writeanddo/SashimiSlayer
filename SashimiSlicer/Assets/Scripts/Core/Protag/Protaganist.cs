@@ -1,34 +1,49 @@
-using System;
 using Cinemachine;
+using Events;
+using Events.Core;
 using Input;
 using UnityEngine;
 
 public class Protaganist : MonoBehaviour
 {
-    public struct BlockInstance
+    public struct ProtagSwordState
     {
         public Gameplay.BlockPoseStates BlockPose;
+        public Gameplay.SheathState SheathState;
         public Vector3 SwordPosition;
         public float SwordAngle;
     }
 
-    public struct AttackInstance
-    {
-        public Vector3 SwordPosition;
-        public float SwordAngle;
-    }
+    [Header("Emitting Events")]
 
     [SerializeField]
-    private BaseUserInputProvider _inputProvider;
+    private FloatEvent _healthChangeEvent;
 
     [SerializeField]
-    private SwordIndicator _swordIndicator;
+    private FloatEvent _maxHealthChangeEvent;
 
     [SerializeField]
-    private HealthbarScript _healthbar;
+    private VoidEvent _damageTakenEvent;
 
     [SerializeField]
-    private float _maxHealth;
+    private VoidEvent _successfulBlockEvent;
+
+    [SerializeField]
+    private ProtagSwordStateEvent _tryBlockEvent;
+
+    [SerializeField]
+    private ProtagSwordStateEvent _trySliceEvent;
+
+    [SerializeField]
+    private ProtagSwordStateEvent _swordStateChangeEvent;
+
+    [SerializeField]
+    private BoolEvent _playerDeadEvent;
+
+    [Header("Listening Events")]
+
+    [SerializeField]
+    private BeatmapEvent _beatmapLoadedEvent;
 
     [Header("SFX")]
 
@@ -45,12 +60,10 @@ public class Protaganist : MonoBehaviour
     public Gameplay.SheathState ProtagSheathState => _protagSheathState;
     public Vector3 SpritePosition { get; set; }
 
-    public event Action<BlockInstance> OnBlockAction;
-    public event Action OnDamageTaken;
-    public event Action<AttackInstance> OnSliceAction;
-    public event Action OnSuccessfulBlock;
+    private BaseUserInputProvider _inputProvider;
 
     private float _health;
+    private float _maxHealth;
 
     private Gameplay.SheathState _protagSheathState;
     private float _swordAngle;
@@ -68,23 +81,33 @@ public class Protaganist : MonoBehaviour
             Destroy(gameObject);
         }
 
-        _healthbar.InitializeBar(_maxHealth);
+        _inputProvider = InputService.Instance.InputProvider;
+
         _health = _maxHealth;
+        _healthChangeEvent.Raise(_health);
 
         _inputProvider.OnSheathStateChanged += OnSheathStateChanged;
         _inputProvider.OnBlockPoseChanged += OnPoseStateChanged;
+        _beatmapLoadedEvent.AddListener(HandleBeatmapLoaded);
     }
 
     private void Update()
     {
         _swordAngle = _inputProvider.GetSwordAngle();
-        _swordIndicator.SetAngle(_swordAngle);
+        _swordStateChangeEvent.Raise(new ProtagSwordState
+        {
+            SwordPosition = _swordPosition,
+            SwordAngle = _swordAngle,
+            SheathState = _protagSheathState,
+            BlockPose = _inputProvider.GetBlockPose()
+        });
     }
 
     private void OnDestroy()
     {
         _inputProvider.OnSheathStateChanged -= OnSheathStateChanged;
         _inputProvider.OnBlockPoseChanged -= OnPoseStateChanged;
+        _beatmapLoadedEvent.RemoveListener(HandleBeatmapLoaded);
     }
 
     private void OnGUI()
@@ -95,15 +118,24 @@ public class Protaganist : MonoBehaviour
         GUILayout.Label($"Pose state: {_inputProvider.GetBlockPose()}");
     }
 
+    private void HandleBeatmapLoaded(BeatmapConfigSo beatmap)
+    {
+        _maxHealth = beatmap.PlayerMaxHealth;
+        _health = _maxHealth;
+        _maxHealthChangeEvent.Raise(_maxHealth);
+        _healthChangeEvent.Raise(_health);
+    }
+
     private void OnPoseStateChanged(Gameplay.BlockPoseStates blockPoseStates)
     {
-        var pose = new BlockInstance
+        var pose = new ProtagSwordState
         {
             BlockPose = blockPoseStates,
             SwordPosition = _swordPosition,
             SwordAngle = _swordAngle
         };
-        OnBlockAction?.Invoke(pose);
+
+        _tryBlockEvent.Raise(pose);
     }
 
     private void OnSheathStateChanged(Gameplay.SheathState newState)
@@ -115,14 +147,13 @@ public class Protaganist : MonoBehaviour
         if (newState == Gameplay.SheathState.Sheathed
             && oldState == Gameplay.SheathState.Unsheathed)
         {
-            OnSliceAction?.Invoke(new AttackInstance
+            _trySliceEvent.Raise(new ProtagSwordState
             {
+                SheathState = newState,
                 SwordPosition = _swordPosition,
                 SwordAngle = _swordAngle
             });
         }
-
-        _swordIndicator.SetSheatheState(newState);
     }
 
     public void SetSwordPosition(Vector3 position)
@@ -143,15 +174,20 @@ public class Protaganist : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _health -= damage;
-        _healthbar.TakeDamage(_health);
-        OnDamageTaken?.Invoke();
+        _healthChangeEvent.Raise(_health);
+        _damageTakenEvent.Raise();
         AudioSource.PlayClipAtPoint(_hurtSFX, Vector3.zero, 1f);
         ScreenShakeService.Instance.ShakeScreen(0.1f, 1f, CinemachineImpulseDefinition.ImpulseShapes.Rumble);
+
+        if (_health <= 0)
+        {
+            _playerDeadEvent.Raise(true);
+        }
     }
 
     public void SuccessfulBlock()
     {
-        OnSuccessfulBlock?.Invoke();
+        _successfulBlockEvent.Raise();
         AudioSource.PlayClipAtPoint(_blockSFX, Vector3.zero, 1f);
         ScreenShakeService.Instance.ShakeScreen(0.05f, 0.15f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
     }
@@ -164,7 +200,13 @@ public class Protaganist : MonoBehaviour
 
     public void SetSlashPosition(Vector3 position)
     {
-        _swordIndicator.SetPosition(position);
         _swordPosition = position;
+        _swordStateChangeEvent.Raise(new ProtagSwordState
+        {
+            SwordPosition = _swordPosition,
+            SwordAngle = _swordAngle,
+            SheathState = _protagSheathState,
+            BlockPose = _inputProvider.GetBlockPose()
+        });
     }
 }

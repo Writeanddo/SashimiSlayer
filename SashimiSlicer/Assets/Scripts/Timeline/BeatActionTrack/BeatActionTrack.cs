@@ -5,7 +5,7 @@ using UnityEngine.Timeline;
 
 [TrackColor(1, 0, 0)]
 [TrackClipType(typeof(BeatActionClip))]
-[TrackBindingType(typeof(BeatActionManager))]
+[TrackBindingType(typeof(BeatActionService))]
 [DisplayName("Beatmapping/Beat Action Track")]
 public class BeatActionTrack : TrackAsset
 {

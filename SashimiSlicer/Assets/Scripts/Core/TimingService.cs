@@ -1,7 +1,11 @@
+using Events.Core;
 using UnityEngine;
 
 public class TimingService : MonoBehaviour
 {
+    [SerializeField]
+    private BeatmapEvent _beatmapLoadedEvent;
+
     public static TimingService Instance { get; private set; }
 
     public double DeltaTime => _deltaTime;
@@ -38,11 +42,20 @@ public class TimingService : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Application.targetFrameRate = 60;
+
+        _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
     }
 
     private void Update()
     {
         Tick();
+    }
+
+    private void OnDestroy()
+    {
+        _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
     }
 
     private void Tick()
@@ -83,7 +96,7 @@ public class TimingService : MonoBehaviour
         }
     }
 
-    public void StartBeatmap(BeatmapConfigSo beatmap)
+    private void HandleStartBeatmap(BeatmapConfigSo beatmap)
     {
         _currentBeatmap = beatmap;
         _startTime = AudioSettings.dspTime + beatmap.StartTime;
@@ -113,14 +126,9 @@ public class TimingService : MonoBehaviour
     /// <param name="newStartTime"></param>
     public void Resync()
     {
+        Debug.Log("Resyncing to new start time");
         _startTime = AudioSettings.dspTime + _currentBeatmap.StartTime;
+        _lastFrameTime = _currentTime;
         Tick();
-    }
-
-    public int GetClosestBeat()
-    {
-        double timePastBeat = _timePastBeat;
-        double timeToNextBeat = _intervalPerBeat - timePastBeat;
-        return timeToNextBeat < timePastBeat ? _beatNumber + 1 : _beatNumber;
     }
 }

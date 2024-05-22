@@ -1,7 +1,18 @@
+using Events;
 using UnityEngine;
 
 public class ProtagBody : MonoBehaviour
 {
+    [Header("Events")]
+
+    [SerializeField]
+    private VoidEvent _damageTakenEvent;
+
+    [SerializeField]
+    private VoidEvent _successfulBlockEvent;
+
+    [Header("Visuals")]
+
     [SerializeField]
     private ParticleSystem _damagedParticles;
 
@@ -15,15 +26,15 @@ public class ProtagBody : MonoBehaviour
 
     private void Start()
     {
-        Protaganist.Instance.OnDamageTaken += OnDamageTaken;
-        Protaganist.Instance.OnSuccessfulBlock += OnSuccessfulBlock;
+        _damageTakenEvent.AddListener(OnDamageTaken);
+        _successfulBlockEvent.AddListener(OnSuccessfulBlock);
         Protaganist.Instance.SpritePosition = TargetPosition;
     }
 
     private void OnDestroy()
     {
-        Protaganist.Instance.OnDamageTaken -= OnDamageTaken;
-        Protaganist.Instance.OnSuccessfulBlock -= OnSuccessfulBlock;
+        _damageTakenEvent.RemoveListener(OnDamageTaken);
+        _successfulBlockEvent.RemoveListener(OnSuccessfulBlock);
     }
 
     private void OnDamageTaken()

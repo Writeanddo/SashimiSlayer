@@ -16,7 +16,6 @@ MonoBehaviour:
     type: 3}
   <BlockWindowHalfDuration>k__BackingField: 0.07
   <VulnerableWindowHalfDuration>k__BackingField: 0.07
-  <AttackDamage>k__BackingField: 5
   <DamageTakenToBoss>k__BackingField: 5
-  <DamageDealtToPlayer>k__BackingField: 20
+  <DamageDealtToPlayer>k__BackingField: 1
   <HitboxRadius>k__BackingField: 0.59

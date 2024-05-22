@@ -1,9 +1,17 @@
+using Events;
+using Events.Core;
 using UnityEngine;
 
 public class BossService : MonoBehaviour
 {
     [SerializeField]
-    private HealthbarScript _healthbar;
+    private BeatmapEvent _startBeatmapEvent;
+
+    [SerializeField]
+    private FloatEvent _bossHealthEvent;
+
+    [SerializeField]
+    private FloatEvent _bossMaxHealthEvent;
 
     public static BossService Instance { get; private set; }
 
@@ -19,18 +27,25 @@ public class BossService : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _startBeatmapEvent.AddListener(HandleStartBeatmap);
     }
 
-    public void InitializeBoss(BeatmapConfigSo beatmapConfigSo)
+    private void OnDestroy()
     {
-        _healthbar.InitializeBar(beatmapConfigSo.BossHealth);
+        _startBeatmapEvent.RemoveListener(HandleStartBeatmap);
+    }
+
+    private void HandleStartBeatmap(BeatmapConfigSo beatmapConfigSo)
+    {
         _health = beatmapConfigSo.BossHealth;
+        _bossMaxHealthEvent.Raise(beatmapConfigSo.BossHealth);
     }
 
     public void TakeDamage(float damage)
     {
         float newHealth = Mathf.Max(0, _health - damage);
         _health = newHealth;
-        _healthbar.TakeDamage(newHealth);
+        _bossHealthEvent.Raise(newHealth);
     }
 }
