@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Timeline;
 
 [CreateAssetMenu(fileName = "BeatmapConfig", menuName = "BeatmapConfigSO")]
-public class BeatmapConfigSO : ScriptableObject
+public class BeatmapConfigSo : ScriptableObject
 {
     [field: Header("Song Timing")]
 
@@ -12,16 +12,13 @@ public class BeatmapConfigSO : ScriptableObject
     public string BeatmapName { get; private set; }
 
     [field: SerializeField]
-    public double BPM { get; private set; }
+    public double Bpm { get; private set; }
 
     [field: SerializeField]
     public int Subdivisions { get; private set; }
 
     [field: SerializeField]
     public double StartTime { get; private set; }
-
-    [field: SerializeField]
-    public double BeatOffset { get; private set; }
 
     [field: SerializeField]
     public int BeatsPerMeasure { get; private set; }
@@ -39,26 +36,24 @@ public class BeatmapConfigSO : ScriptableObject
     /// <summary>
     ///     Take a time and snap it to the nearest subdivision
     /// </summary>
-    /// <param name="time"></param>
+    /// <param name="rawTime"></param>
     /// <returns></returns>
-    public double QuantizeTime(double time)
+    public double QuantizeTime(double rawTime)
     {
         double startTime = StartTime;
-        double bpm = BPM;
+        double bpm = Bpm;
 
         int subdivisions = Subdivisions;
         subdivisions = subdivisions == 0 ? 1 : subdivisions;
 
-        double beatDuration = 60 / bpm / subdivisions;
+        double subdivDuration = 60 / bpm / subdivisions;
 
-        double beatOffset = BeatOffset;
+        double beatTime = (rawTime - startTime) / subdivDuration;
 
-        double beatTime = (time - startTime) / beatDuration;
+        double quantizedBeatTime = Math.Round(beatTime);
 
-        double quantizedBeatTime = Math.Round(beatTime) + beatOffset;
+        rawTime = startTime + quantizedBeatTime * subdivDuration;
 
-        time = startTime + quantizedBeatTime * beatDuration;
-
-        return time;
+        return rawTime;
     }
 }

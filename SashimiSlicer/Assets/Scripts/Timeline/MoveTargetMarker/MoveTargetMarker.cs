@@ -1,23 +1,27 @@
 using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 
 [DisplayName("BeatMapping/Move Target Marker")]
 public class MoveTargetMarker : Marker, INotification, INotificationOptionProvider
 {
+    [FormerlySerializedAs("emitOnce")]
     [SerializeField]
-    public bool emitOnce;
+    public bool EmitOnce;
 
+    [FormerlySerializedAs("emitInEditor")]
     [SerializeField]
-    public bool emitInEditor;
+    public bool EmitInEditor;
 
+    [FormerlySerializedAs("position")]
     [SerializeField]
-    public Vector3 position;
+    public Vector3 Position;
 
     public PropertyName id { get; }
 
     NotificationFlags INotificationOptionProvider.flags =>
-        (emitOnce ? NotificationFlags.TriggerOnce : default) |
-        (emitInEditor ? NotificationFlags.TriggerInEditMode : default);
+        (EmitOnce ? NotificationFlags.TriggerOnce : default) |
+        (EmitInEditor ? NotificationFlags.TriggerInEditMode : default);
 }

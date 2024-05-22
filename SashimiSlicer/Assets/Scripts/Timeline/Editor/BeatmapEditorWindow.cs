@@ -4,9 +4,9 @@ using UnityEngine;
 public class BeatmapEditorWindow : EditorWindow
 {
     private const string _beatmapConfigPref = "BeatmapEditorWindow.beatmapConfigSO";
-    public static BeatmapConfigSO CurrentEditingBeatmap { get; private set; }
+    public static BeatmapConfigSo CurrentEditingBeatmap { get; private set; }
 
-    private BeatmapConfigSO _beatmapConfig;
+    private BeatmapConfigSo _beatmapConfig;
 
     private void OnGUI()
     {
@@ -18,7 +18,7 @@ public class BeatmapEditorWindow : EditorWindow
     private void OnBecameVisible()
     {
         // Load from editor prefs
-        _beatmapConfig = AssetDatabase.LoadAssetAtPath<BeatmapConfigSO>(
+        _beatmapConfig = AssetDatabase.LoadAssetAtPath<BeatmapConfigSo>(
             EditorPrefs.GetString(_beatmapConfigPref, string.Empty));
 
         CurrentEditingBeatmap = _beatmapConfig;
@@ -33,7 +33,7 @@ public class BeatmapEditorWindow : EditorWindow
     private void DrawFields()
     {
         _beatmapConfig =
-            (BeatmapConfigSO)EditorGUILayout.ObjectField("Beatmap Config", _beatmapConfig, typeof(BeatmapConfigSO),
+            (BeatmapConfigSo)EditorGUILayout.ObjectField("Beatmap Config", _beatmapConfig, typeof(BeatmapConfigSo),
                 false);
 
         CurrentEditingBeatmap = _beatmapConfig;

@@ -28,7 +28,7 @@ public class BeatActionIndicator : MonoBehaviour
         SetVulnerablePhaseIndicatorVisible(false);
     }
 
-    public void TickWaitingForVulnerable(float normalizedTime)
+    public void UpdateWaitingForVulnerable(float normalizedTime)
     {
         _vulnerableShrinkRing.transform.localScale = Vector3.one * Mathf.Lerp(_shrinkScale, 1, normalizedTime);
         SetVulnerablePhaseIndicatorVisible(true);

@@ -31,7 +31,7 @@ public class BeatActionManager : MonoBehaviour
         }
     }
 
-    public BaseBnHAction SpawnSimpleHit(BnHActionSO hitConfig, BaseBnHAction.BnHActionInstance data)
+    public BaseBnHAction SpawnSimpleHit(BnHActionSo hitConfig, BaseBnHAction.BnHActionInstanceConfig data)
     {
         BaseBnHAction blockAndHit = Instantiate(hitConfig.Prefab, _simpleHitParent);
         blockAndHit.Setup(hitConfig, data);

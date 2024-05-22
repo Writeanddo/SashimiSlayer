@@ -8,12 +8,12 @@ public class BnHActionBehavior : PlayableBehaviour
 {
     [ReadOnly]
     [TextArea]
-    public string description = "Simple Hit Behavior";
+    public string Description = "Simple Hit Behavior";
 
     [Tooltip("This is a property")]
-    public BnHActionSO hitConfig;
+    public BnHActionSo HitConfig;
 
-    public BaseBnHAction.BnHActionInstance actionData;
+    public BaseBnHAction.BnHActionInstanceConfig ActionData;
 
     private BeatActionManager _beatActionManager;
 
@@ -33,10 +33,10 @@ public class BnHActionBehavior : PlayableBehaviour
 
         if (_blockAndHit == null)
         {
-            _blockAndHit = _beatActionManager.SpawnSimpleHit(hitConfig, actionData);
+            _blockAndHit = _beatActionManager.SpawnSimpleHit(HitConfig, ActionData);
         }
 
-        Debug.DrawLine(actionData._position, actionData._position + Vector2.up * 10, Color.red);
+        Debug.DrawLine(ActionData.Position, ActionData.Position + Vector2.up * 10, Color.red);
     }
 
     public override void OnBehaviourPause(Playable playable, FrameData info)

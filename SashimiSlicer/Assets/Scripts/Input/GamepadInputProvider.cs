@@ -12,7 +12,7 @@ namespace Input
         private GameplayControls _gameplayControls;
 
         private Vector2 _mousePos;
-        private Gameplay.BlockPoseStates _BlockPoseStates;
+        private Gameplay.BlockPoseStates _blockPoseStates;
         private Gameplay.SheathState _sheathState;
         private Vector2 _swordAngle = Vector2.zero;
 
@@ -21,7 +21,7 @@ namespace Input
             _gameplayControls = new GameplayControls();
             _gameplayControls.Enable();
             _gameplayControls.Gameplay.SetCallbacks(this);
-            _BlockPoseStates = 0;
+            _blockPoseStates = 0;
         }
 
         private void OnDisable()
@@ -85,7 +85,7 @@ namespace Input
 
         private void ChangePoseFlag(Gameplay.BlockPoseStates flag, bool flagState)
         {
-            Gameplay.BlockPoseStates newBlockPoseStates = _BlockPoseStates;
+            Gameplay.BlockPoseStates newBlockPoseStates = _blockPoseStates;
             if (flagState)
             {
                 newBlockPoseStates |= flag;
@@ -95,10 +95,10 @@ namespace Input
                 newBlockPoseStates &= ~flag;
             }
 
-            if (_BlockPoseStates != newBlockPoseStates)
+            if (_blockPoseStates != newBlockPoseStates)
             {
-                _BlockPoseStates = newBlockPoseStates;
-                OnBlockPoseChanged?.Invoke(_BlockPoseStates);
+                _blockPoseStates = newBlockPoseStates;
+                OnBlockPoseChanged?.Invoke(_blockPoseStates);
             }
         }
 
@@ -114,7 +114,7 @@ namespace Input
 
         public override Gameplay.BlockPoseStates GetBlockPose()
         {
-            return _BlockPoseStates;
+            return _blockPoseStates;
         }
     }
 }

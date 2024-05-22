@@ -5,7 +5,7 @@ using UnityEngine.Playables;
 public class BeatmapService : MonoBehaviour
 {
     [SerializeField]
-    private BeatmapConfigSO _beatmapConfig;
+    private BeatmapConfigSo _beatmapConfig;
 
     [SerializeField]
     private TimingService _timingService;

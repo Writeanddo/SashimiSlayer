@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BnHConfig", menuName = "BeatAction/BnHAction")]
-public class BnHActionSO : ScriptableObject
+public class BnHActionSo : ScriptableObject
 {
     [field: SerializeField]
     public BaseBnHAction Prefab { get; private set; }

@@ -1,53 +1,88 @@
 using System;
 using System.Collections.Generic;
-using Input;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-///     A simple entity that attacks the player, then takes a hit (or leaves)
+///     Base class for all BnH actions. All timings in here are in beatmap time space
 /// </summary>
 public class BaseBnHAction : MonoBehaviour
 {
-    public enum VulnerableInteraction
+    public enum InteractionType
     {
-        NoHit,
-        InstantHit
+        IncomingAttack,
+
+        // BlockHold,
+        Vulnerable
     }
 
-    private enum State
+    private enum BnHActionState
     {
-        WaitingToAttack,
-        AttackBlockWindow,
-        WaitingToVulnerable,
-        VulnerableWindow,
+        WaitingForInteraction,
+        InInteraction,
+        WaitingToLeave,
         Leaving
     }
 
     [Serializable]
-    public struct BnHActionInstance
+    public struct BnHActionInstanceConfig
     {
-        public List<AttackInstance> _attacks;
+        public Vector2 Position;
 
-        public double _beatsUntilVulnerable;
+        public bool AutoVulnerableAtEnd;
 
-        public Vector2 _position;
+        [Header("Timing (Beatmap space)")]
 
-        public VulnerableInteraction _vulnerableInteraction;
+        public double ActionStartTime;
+
+        public double ActionEndTime;
+
+        public double ActionBeatLength;
+
+        [SerializeField]
+        private List<InteractionInstanceConfig> _interactions;
+
+        public List<InteractionInstanceConfig> Interactions
+        {
+            get
+            {
+                var list = new List<InteractionInstanceConfig>(_interactions);
+
+                if (AutoVulnerableAtEnd)
+                {
+                    list.Add(new InteractionInstanceConfig
+                    {
+                        InteractionType = InteractionType.Vulnerable,
+                        BeatsUntilStart = ActionBeatLength,
+                        DieOnHit = true
+                    });
+                }
+
+                return list;
+            }
+        }
     }
 
     [Serializable]
-    public struct AttackInstance
+    public struct InteractionInstanceConfig
     {
-        public double _beatsUntilAttack;
-        public string _attackTag;
-        public bool _hold;
-        public Gameplay.BlockPoseStates _blockPose;
+        public InteractionType InteractionType;
+        public double BeatsUntilStart;
+
+        [Header("Vulnerable")]
+
+        public bool DieOnHit;
+
+        [Header("Blocking")]
+
+        public Gameplay.BlockPoseStates BlockPose;
     }
 
-    private struct AttackTiming
+    private struct ScheduledInteraction
     {
-        public double _timeWhenAttackStart;
-        public double _timeWhenAttackBlockWindowEnd;
+        public InteractionInstanceConfig Interaction;
+        public double TimeWhenInteractionStart;
+        public double TimeWhenInteractWindowEnd;
     }
 
     [SerializeField]
@@ -62,17 +97,24 @@ public class BaseBnHAction : MonoBehaviour
     [SerializeField]
     private ParticleSystem _killedParticles;
 
-    private BnHActionInstance _data;
-    private BnHActionSO _hitConfig;
+    private ScheduledInteraction CurrentInteraction => _sequencedInteractionInstances[_currentInteractionIndex];
 
-    private List<AttackTiming> _attackTimings;
+    private BnHActionInstanceConfig _data;
+    private BnHActionSo _hitConfig;
+
+    private List<ScheduledInteraction> _sequencedInteractionInstances;
     private double _actionStartTime;
-    private double _timeWhenVulnerableStart;
-    private double _timeWhenVulnerableEnd;
+    private double _actionEndTime;
 
-    private State _state;
-    private int _attackIndex;
+    private double _previousInteractionEndTime;
+
+    private BnHActionState _bnHActionState;
+    private int _currentInteractionIndex;
     private bool _blocked;
+
+    protected event Action OnHitByProtag;
+    protected event Action OnHitProtag;
+    protected event Action OnBlockByProtag;
 
     private void OnDrawGizmos()
     {
@@ -83,29 +125,41 @@ public class BaseBnHAction : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_indicator.transform.position, _hitConfig.HitboxRadius);
+
+#if UNITY_EDITOR
+        if (Application.isPlaying)
+        {
+            Handles.Label(_indicator.transform.position + Vector3.up * 2,
+                $"State: {_bnHActionState}" +
+                $"\nIndex {_currentInteractionIndex}" +
+                $"\nType: {CurrentInteraction.Interaction.InteractionType}");
+        }
+#endif
     }
 
-    public void Setup(BnHActionSO hitConfig, BnHActionInstance data)
+    public void Setup(BnHActionSo hitConfig, BnHActionInstanceConfig data)
     {
         _hitConfig = hitConfig;
         _data = data;
         _blocked = false;
 
-        transform.position = data._position;
+        transform.position = data.Position;
 
-        _attackIndex = 0;
-        if (_data._attacks.Count > 0)
+        _currentInteractionIndex = 0;
+        if (_data.Interactions.Count > 0)
         {
-            _state = State.WaitingToAttack;
+            _bnHActionState = BnHActionState.WaitingForInteraction;
         }
         else
         {
-            _state = State.WaitingToVulnerable;
+            _bnHActionState = BnHActionState.WaitingToLeave;
         }
 
-        _animator.Play("Spawn");
+        _actionStartTime = data.ActionStartTime;
+        _actionEndTime = data.ActionEndTime;
+        _previousInteractionEndTime = _actionStartTime;
 
-        SetupTiming(data);
+        ScheduleInteractions(data);
 
         if (Protaganist.Instance == null)
         {
@@ -114,9 +168,11 @@ public class BaseBnHAction : MonoBehaviour
 
         Protaganist.Instance.OnBlockAction += OnPlayerAttemptBlock;
         Protaganist.Instance.OnSliceAction += OnPlayerAttemptAttack;
+
+        _animator.Play("Spawn");
     }
 
-    private void SetupTiming(BnHActionInstance data)
+    private void ScheduleInteractions(BnHActionInstanceConfig data)
     {
         var timingService = TimingService.Instance;
         if (timingService == null)
@@ -124,69 +180,74 @@ public class BaseBnHAction : MonoBehaviour
             return;
         }
 
-        _actionStartTime = timingService.CurrentTime;
+        _sequencedInteractionInstances = new List<ScheduledInteraction>();
 
-        _attackTimings = new List<AttackTiming>();
-
-        foreach (AttackInstance attack in data._attacks)
+        foreach (InteractionInstanceConfig interactionConfig in data.Interactions)
         {
-            double timeWhenAttackStart = _actionStartTime
-                                         + timingService.TimePerBeat * attack._beatsUntilAttack
-                                         - _hitConfig.BlockWindowHalfDuration;
-            double timeWhenAttackBlockWindowEnd = timeWhenAttackStart + 2 * _hitConfig.BlockWindowHalfDuration;
-            var attackTiming = new AttackTiming
+            double halfWindow = 0;
+
+            switch (interactionConfig.InteractionType)
             {
-                _timeWhenAttackStart = timeWhenAttackStart,
-                _timeWhenAttackBlockWindowEnd = timeWhenAttackBlockWindowEnd
+                case InteractionType.IncomingAttack:
+                    halfWindow = _hitConfig.BlockWindowHalfDuration;
+                    break;
+                case InteractionType.Vulnerable:
+                    halfWindow = _hitConfig.VulnerableWindowHalfDuration;
+                    break;
+            }
+
+            double interactionStartTime = _actionStartTime
+                                          + timingService.TimePerBeat * interactionConfig.BeatsUntilStart
+                                          - halfWindow;
+            double interactionWindowEndTime = interactionStartTime + 2 * halfWindow;
+
+            var scheduledInteraction = new ScheduledInteraction
+            {
+                Interaction = interactionConfig,
+                TimeWhenInteractionStart = interactionStartTime,
+                TimeWhenInteractWindowEnd = interactionWindowEndTime
             };
 
-            _attackTimings.Add(attackTiming);
+            _sequencedInteractionInstances.Add(scheduledInteraction);
         }
 
-        _timeWhenVulnerableStart = _actionStartTime
-                                   + timingService.TimePerBeat * data._beatsUntilVulnerable
-                                   - _hitConfig.VulnerableWindowHalfDuration;
-
-        _timeWhenVulnerableEnd = _timeWhenVulnerableStart + 2 * _hitConfig.VulnerableWindowHalfDuration;
-
-        _indicator.SetVisible(true);
+        // Sort by start time
+        _sequencedInteractionInstances.Sort(
+            (a, b) =>
+                a.TimeWhenInteractionStart.CompareTo(b.TimeWhenInteractionStart));
     }
 
     public void Tick()
     {
         var timingService = TimingService.Instance;
-        double time = timingService.CurrentTime;
+        double time = timingService.CurrentBeatmapTime;
 
-        if (_state == State.WaitingToAttack)
+        switch (_bnHActionState)
         {
-            TickWaitingToAttack(time);
-        }
-        else if (_state == State.AttackBlockWindow)
-        {
-            TickAttackBlockWindow(time);
-        }
-        else if (_state == State.WaitingToVulnerable)
-        {
-            TickWaitingToVulnerable(time);
-        }
-        else if (_state == State.VulnerableWindow)
-        {
-            TickVulnerableWindow(time);
-        }
-        else if (_state == State.Leaving)
-        {
-            TickLeaving(time);
+            case BnHActionState.WaitingForInteraction:
+                TickWaitingForInteraction(time);
+                break;
+            case BnHActionState.InInteraction:
+                TickInInteraction(time);
+                break;
+            case BnHActionState.WaitingToLeave:
+                TickWaitingToLeave(time);
+                break;
+            case BnHActionState.Leaving:
+                TickLeaving(time);
+                break;
         }
     }
 
     private void OnPlayerAttemptBlock(Protaganist.BlockInstance blockInstance)
     {
-        if (_state != State.AttackBlockWindow)
+        if (_bnHActionState != BnHActionState.InInteraction ||
+            CurrentInteraction.Interaction.InteractionType != InteractionType.IncomingAttack)
         {
             return;
         }
 
-        if (blockInstance.BlockPose != _data._attacks[_attackIndex]._blockPose)
+        if (blockInstance.BlockPose != CurrentInteraction.Interaction.BlockPose)
         {
             return;
         }
@@ -195,9 +256,10 @@ public class BaseBnHAction : MonoBehaviour
         float dist = Protaganist.Instance.DistanceToSwordPlane(pos);
         bool isBlockOnTarget = dist < _hitConfig.HitboxRadius;
 
-        double time = TimingService.Instance.CurrentTime;
-        AttackTiming attackTiming = _attackTimings[_attackIndex];
-        Debug.Log($"Block offset: ${time - (attackTiming._timeWhenAttackStart + _hitConfig.BlockWindowHalfDuration)}");
+        double time = TimingService.Instance.CurrentBeatmapTime;
+        ScheduledInteraction attackInteraction = _sequencedInteractionInstances[_currentInteractionIndex];
+        Debug.Log(
+            $"Block offset: {time - (attackInteraction.TimeWhenInteractionStart + _hitConfig.BlockWindowHalfDuration)}");
 
         if (isBlockOnTarget)
         {
@@ -209,25 +271,32 @@ public class BaseBnHAction : MonoBehaviour
 
     private void OnPlayerAttemptAttack(Protaganist.AttackInstance attackInstance)
     {
-        if (_state != State.VulnerableWindow)
+        if (_bnHActionState != BnHActionState.InInteraction ||
+            CurrentInteraction.Interaction.InteractionType != InteractionType.Vulnerable)
         {
             return;
         }
+
+        double vulnerableStartTime = CurrentInteraction.TimeWhenInteractionStart;
 
         Vector3 pos = _indicator.transform.position;
         float dist = Protaganist.Instance.DistanceToSwordPlane(pos);
         bool isAttackOnTarget = dist < _hitConfig.HitboxRadius;
 
-        double time = TimingService.Instance.CurrentTime;
-        Debug.Log($"Attack offset: ${time - (_timeWhenVulnerableStart + _hitConfig.VulnerableWindowHalfDuration)}");
+        double time = TimingService.Instance.CurrentBeatmapTime;
+        Debug.Log($"Attack offset: {time - (vulnerableStartTime + _hitConfig.VulnerableWindowHalfDuration)}");
 
         if (isAttackOnTarget)
         {
             _killedParticles.Play();
             BossService.Instance.TakeDamage(_hitConfig.DamageTakenToBoss);
-            _indicator.SetVisible(false);
-            _state = State.Leaving;
-            _animator.Play("Die", 0, 0);
+
+            if (CurrentInteraction.Interaction.DieOnHit)
+            {
+                _indicator.SetVisible(false);
+                _bnHActionState = BnHActionState.Leaving;
+                _animator.Play("Die", 0, 0);
+            }
 
             Protaganist.Instance.SuccessfulSlice();
 
@@ -235,102 +304,152 @@ public class BaseBnHAction : MonoBehaviour
         }
     }
 
-    private void TickWaitingToAttack(double time)
+    private void TickWaitingForInteraction(double time)
     {
-        double attackWaitingStartTime = _actionStartTime;
-        if (_attackIndex > 0)
+        _indicator.SetVisible(true);
+
+        InteractionType interactionType = CurrentInteraction.Interaction.InteractionType;
+
+        if (interactionType == InteractionType.IncomingAttack)
         {
-            AttackTiming finalAttackTiming = _attackTimings[_attackIndex - 1];
-            attackWaitingStartTime = finalAttackTiming._timeWhenAttackBlockWindowEnd;
+            TickWaitingForIncomingAttack(time);
+        }
+        else if (interactionType == InteractionType.Vulnerable)
+        {
+            TickWaitingForVulnerable(time);
+        }
+    }
+
+    private void TickWaitingForIncomingAttack(double time)
+    {
+        double attackStartTime =
+            CurrentInteraction.TimeWhenInteractionStart;
+        double attackMiddleTime = attackStartTime + _hitConfig.BlockWindowHalfDuration;
+
+        if (time >= attackStartTime)
+        {
+            _bnHActionState = BnHActionState.InInteraction;
         }
 
-        AttackTiming attackTiming = _attackTimings[_attackIndex];
-        double timeWhenAttackStart = attackTiming._timeWhenAttackStart;
-
-        var normalizedTime = (float)((time - attackWaitingStartTime) / (timeWhenAttackStart - attackWaitingStartTime));
-        _indicator.TickWaitingForAttack(normalizedTime, _data._attacks[_attackIndex]._blockPose);
-
-        if (time >= timeWhenAttackStart)
-        {
-            _state = State.AttackBlockWindow;
-        }
-
-        if (time + _attackAnimationWindup >= timeWhenAttackStart)
+        if (time + _attackAnimationWindup >= attackMiddleTime)
         {
             _animator.Play("Attack");
+        }
+
+        var normalizedTime =
+            (float)((time - _previousInteractionEndTime) / (attackMiddleTime - _previousInteractionEndTime));
+        _indicator.TickWaitingForAttack(normalizedTime, _data.Interactions[_currentInteractionIndex].BlockPose);
+    }
+
+    private void TickWaitingForVulnerable(double time)
+    {
+        double vulnStartTime = CurrentInteraction.TimeWhenInteractionStart;
+        double vulnMiddleTime = vulnStartTime + _hitConfig.VulnerableWindowHalfDuration;
+
+        var normalizedTime = (float)((time - _previousInteractionEndTime) /
+                                     (vulnMiddleTime - _previousInteractionEndTime));
+
+        _indicator.UpdateWaitingForVulnerable(normalizedTime);
+
+        if (time >= vulnStartTime)
+        {
+            _bnHActionState = BnHActionState.InInteraction;
+        }
+    }
+
+    private void TickInInteraction(double time)
+    {
+        InteractionType interactionType =
+            CurrentInteraction.Interaction.InteractionType;
+
+        if (interactionType == InteractionType.IncomingAttack)
+        {
+            TickAttackBlockWindow(time);
+        }
+        else if (interactionType == InteractionType.Vulnerable)
+        {
+            TickVulnerableWindow(time);
         }
     }
 
     private void TickAttackBlockWindow(double time)
     {
-        AttackTiming attackTiming = _attackTimings[_attackIndex];
-        double timeWhenAttackBlockWindowEnd = attackTiming._timeWhenAttackBlockWindowEnd;
-        if (time >= timeWhenAttackBlockWindowEnd)
+        double blockWindowEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
+        double attackMiddleTime = CurrentInteraction.TimeWhenInteractionStart + _hitConfig.BlockWindowHalfDuration;
+        if (time >= blockWindowEndTime)
         {
-            if (_blocked)
-            {
-            }
-            else
+            if (!_blocked)
             {
                 AudioSource.PlayClipAtPoint(_hitConfig.ImpactSound, Vector3.zero, 1f);
                 Protaganist.Instance.TakeDamage(_hitConfig.DamageDealtToPlayer);
             }
 
-            if (_attackIndex >= _attackTimings.Count - 1)
-            {
-                if (_data._vulnerableInteraction == VulnerableInteraction.InstantHit)
-                {
-                    _state = State.WaitingToVulnerable;
-                }
-                else
-                {
-                    _indicator.SetVisible(false);
-                    _state = State.Leaving;
-                    _animator.Play("Leave");
-                }
-            }
-            else
-            {
-                _state = State.WaitingToAttack;
-                _blocked = false;
-                _attackIndex++;
-            }
-        }
-    }
-
-    private void TickWaitingToVulnerable(double time)
-    {
-        double vulnerableWaitingStartTime = _actionStartTime;
-        if (_attackTimings.Count > 0)
-        {
-            AttackTiming finalAttackTiming = _attackTimings[^1];
-            vulnerableWaitingStartTime = finalAttackTiming._timeWhenAttackBlockWindowEnd;
+            TransitionToNextInteraction(time);
         }
 
-        var normalizedTime = (float)((time - vulnerableWaitingStartTime) /
-                                     (_timeWhenVulnerableStart - vulnerableWaitingStartTime));
-        _indicator.TickWaitingForVulnerable(normalizedTime);
-
-        if (time >= _timeWhenVulnerableStart)
-        {
-            _indicator.SetVisible(false);
-            _state = State.VulnerableWindow;
-            _animator.Play("Leave");
-        }
+        var normalizedTime =
+            (float)((time - _previousInteractionEndTime) / (attackMiddleTime - _previousInteractionEndTime));
+        _indicator.TickWaitingForAttack(normalizedTime, _data.Interactions[_currentInteractionIndex].BlockPose);
     }
 
     private void TickVulnerableWindow(double time)
     {
-        if (time >= _timeWhenVulnerableEnd)
+        double vulnWindowEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
+        double vulnMiddleTime = CurrentInteraction.TimeWhenInteractionStart + _hitConfig.VulnerableWindowHalfDuration;
+        if (time >= vulnWindowEndTime)
         {
-            _indicator.SetVisible(false);
-            _state = State.Leaving;
+            TransitionToNextInteraction(time);
+        }
+
+        var normalizedTime = (float)((time - _previousInteractionEndTime) /
+                                     (vulnMiddleTime - _previousInteractionEndTime));
+        _indicator.UpdateWaitingForVulnerable(normalizedTime);
+    }
+
+    private void TransitionToNextInteraction(double time)
+    {
+        if (_currentInteractionIndex >= _sequencedInteractionInstances.Count - 1)
+        {
+            _bnHActionState = BnHActionState.WaitingToLeave;
+            _animator.Play("Idle");
+        }
+        else
+        {
+            _bnHActionState = BnHActionState.WaitingForInteraction;
+            _blocked = false;
+            _previousInteractionEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
+
+            // Prevent overlaps
+            while (true)
+            {
+                _currentInteractionIndex++;
+                if (time < CurrentInteraction.TimeWhenInteractionStart)
+                {
+                    break;
+                }
+
+                if (_currentInteractionIndex >= _sequencedInteractionInstances.Count - 1)
+                {
+                    _bnHActionState = BnHActionState.WaitingToLeave;
+                    _animator.Play("Idle");
+                }
+            }
+        }
+    }
+
+    private void TickWaitingToLeave(double time)
+    {
+        _indicator.SetVisible(false);
+        if (time >= _actionEndTime)
+        {
+            _bnHActionState = BnHActionState.Leaving;
+            _animator.Play("Leave");
         }
     }
 
     private void TickLeaving(double time)
     {
-        if (time >= _timeWhenVulnerableEnd + 1f)
+        if (time >= _actionEndTime + 2f)
         {
             BeatActionManager.Instance.CleanupBnHHit(this);
         }

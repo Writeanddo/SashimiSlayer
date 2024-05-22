@@ -2,27 +2,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
+using UnityEngine.Serialization;
 
 public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
 {
+    [FormerlySerializedAs("animationClip")]
     [SerializeField]
-    private AnimationClip animationClip;
+    private AnimationClip _animationClip;
 
+    [FormerlySerializedAs("animator")]
     [SerializeField]
-    private Animator animator;
+    private Animator _animator;
 
+    [FormerlySerializedAs("playOnAwake")]
     [SerializeField]
-    private bool playOnAwake;
+    private bool _playOnAwake;
 
-    public PlayableGraph PlayablePlayableGraph => playableGraph;
+    public PlayableGraph PlayablePlayableGraph => _playableGraph;
 
-    private PlayableGraph playableGraph;
+    private PlayableGraph _playableGraph;
 
-    private bool graphCreated;
+    private bool _graphCreated;
 
     private void Awake()
     {
-        if (playOnAwake)
+        if (_playOnAwake)
         {
             Play();
         }
@@ -30,45 +34,45 @@ public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
 
     private void OnDestroy()
     {
-        if (playableGraph.IsValid())
+        if (_playableGraph.IsValid())
         {
-            playableGraph.Destroy();
+            _playableGraph.Destroy();
         }
+    }
+
+    public void GetAnimationClips(List<AnimationClip> results)
+    {
+        results.Add(_animationClip);
     }
 
     public void Play()
     {
         // Lazy instatiation
-        if (!graphCreated)
+        if (!_graphCreated)
         {
-            graphCreated = true;
+            _graphCreated = true;
             CreateGraph();
         }
 
-        if (playableGraph.IsValid())
+        if (_playableGraph.IsValid())
         {
-            playableGraph.Play();
+            _playableGraph.Play();
         }
     }
 
     public void Stop()
     {
-        playableGraph.Stop();
+        _playableGraph.Stop();
     }
 
     private void CreateGraph()
     {
-        playableGraph = PlayableGraph.Create($"{gameObject.name}.SimpleAnimator");
+        _playableGraph = PlayableGraph.Create($"{gameObject.name}.SimpleAnimator");
 
-        var output = AnimationPlayableOutput.Create(playableGraph, string.Empty, animator);
+        var output = AnimationPlayableOutput.Create(_playableGraph, string.Empty, _animator);
 
-        var animationClipPlayable = AnimationClipPlayable.Create(playableGraph, animationClip);
+        var animationClipPlayable = AnimationClipPlayable.Create(_playableGraph, _animationClip);
 
         output.SetSourcePlayable(animationClipPlayable);
-    }
-
-    public void GetAnimationClips(List<AnimationClip> results)
-    {
-        results.Add(animationClip);
     }
 }

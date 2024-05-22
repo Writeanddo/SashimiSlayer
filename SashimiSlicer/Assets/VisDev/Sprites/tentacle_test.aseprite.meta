@@ -128,7 +128,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 463
+      x: 350
       y: 220
       width: 42
       height: 117
@@ -140,7 +140,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 463, y: 220}
+    uvTransform: {x: 350, y: 220}
   - name: tentacle_test_Frame_1
     originalName: 
     pivot: {x: 0.5833334, y: -0.032520324}
@@ -183,15 +183,15 @@ ScriptedImporter:
     uvTransform: {x: 71, y: 220}
   - name: tentacle_test_Frame_3
     originalName: 
-    pivot: {x: 0.4791667, y: 0.08943089}
+    pivot: {x: 0.4791667, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 127
+      x: 239
       y: 220
       width: 48
-      height: 123
+      height: 112
     spriteID: 44b061e3a55e59448859f7222ae6bf91
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 127, y: 220}
+    uvTransform: {x: 239, y: 220}
   - name: tentacle_test_Frame_4
     originalName: 
-    pivot: {x: 0.375, y: 0.45528454}
+    pivot: {x: 0.46153846, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 183
+      x: 461
       y: 220
-      width: 48
-      height: 123
+      width: 39
+      height: 67
     spriteID: d4d52177c318d514681220e6ef0eecd6
     spriteBone: []
     spriteOutline: []
@@ -220,18 +220,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 183, y: 220}
+    uvTransform: {x: 461, y: 220}
   - name: tentacle_test_Frame_5
     originalName: 
-    pivot: {x: 0.2916667, y: 0.9512195}
+    pivot: {x: 0.6363636, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 239
-      y: 220
-      width: 48
-      height: 123
+      x: 435
+      y: 333
+      width: 11
+      height: 6
     spriteID: 7951c4cc3f971834e889f9c73e21f36f
     spriteBone: []
     spriteOutline: []
@@ -240,18 +240,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 239, y: 220}
+    uvTransform: {x: 435, y: 333}
   - name: tentacle_test_Frame_6
     originalName: 
-    pivot: {x: 0.2916667, y: 1.0263158}
+    pivot: {x: 0.75, y: -0.1875}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 407
-      y: 220
-      width: 48
-      height: 114
+      x: 435
+      y: 309
+      width: 16
+      height: 16
     spriteID: fe32044f610879f488c75c7e47c5dc16
     spriteBone: []
     spriteOutline: []
@@ -260,18 +260,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 407, y: 220}
+    uvTransform: {x: 435, y: 309}
   - name: tentacle_test_Frame_7
     originalName: 
-    pivot: {x: 0.75, y: -0.1875}
+    pivot: {x: 0.5925926, y: -0.09677419}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 482
-      y: 4
-      width: 16
-      height: 16
+      x: 400
+      y: 309
+      width: 27
+      height: 31
     spriteID: 29b711141f3eacc49845492423fea4dc
     spriteBone: []
     spriteOutline: []
@@ -280,18 +280,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 482, y: 4}
+    uvTransform: {x: 400, y: 309}
   - name: tentacle_test_Frame_8
     originalName: 
-    pivot: {x: 0.5925926, y: -0.09677419}
+    pivot: {x: 0.3018868, y: -0.037037037}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 71
-      y: 470
-      width: 27
-      height: 31
+      x: 400
+      y: 220
+      width: 53
+      height: 81
     spriteID: 37051285e4e36734cb42aae21faea194
     spriteBone: []
     spriteOutline: []
@@ -300,18 +300,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 71, y: 470}
+    uvTransform: {x: 400, y: 220}
   - name: tentacle_test_Frame_9
     originalName: 
-    pivot: {x: 0.3018868, y: -0.037037037}
+    pivot: {x: 0.34042552, y: -0.027027028}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 126
-      y: 351
-      width: 53
-      height: 81
+      x: 295
+      y: 220
+      width: 47
+      height: 111
     spriteID: b45306d8f3172074e854eb680bb61f63
     spriteBone: []
     spriteOutline: []
@@ -320,28 +320,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 126, y: 351}
+    uvTransform: {x: 295, y: 220}
   - name: tentacle_test_Frame_10
-    originalName: 
-    pivot: {x: 0.34042552, y: -0.027027028}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 71
-      y: 351
-      width: 47
-      height: 111
-    spriteID: ea0d159fe9e141d49a40c2ee80f3de91
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 71, y: 351}
-  - name: tentacle_test_Frame_11
     originalName: 
     pivot: {x: 0.74626863, y: -0.024590163}
     alignment: 9
@@ -352,7 +332,7 @@ ScriptedImporter:
       y: 4
       width: 67
       height: 122
-    spriteID: 7b52e13589c1b1f47ab36ed54446176f
+    spriteID: ea0d159fe9e141d49a40c2ee80f3de91
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -361,7 +341,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 247, y: 4}
-  - name: tentacle_test_Frame_12
+  - name: tentacle_test_Frame_11
     originalName: 
     pivot: {x: 0.8, y: -0.02857143}
     alignment: 9
@@ -372,7 +352,7 @@ ScriptedImporter:
       y: 4
       width: 75
       height: 105
-    spriteID: b0ed822300ea89949bbf1b9629bf5069
+    spriteID: 7b52e13589c1b1f47ab36ed54446176f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -381,7 +361,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 322, y: 4}
-  - name: tentacle_test_Frame_13
+  - name: tentacle_test_Frame_12
     originalName: 
     pivot: {x: 0.66101694, y: -0.033898305}
     alignment: 9
@@ -392,7 +372,7 @@ ScriptedImporter:
       y: 135
       width: 59
       height: 118
-    spriteID: a2c053facd3c853429088126d27a4053
+    spriteID: b0ed822300ea89949bbf1b9629bf5069
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -401,6 +381,26 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 135}
+  - name: tentacle_test_Frame_13
+    originalName: 
+    pivot: {x: 0.5833334, y: -0.032520324}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 127
+      y: 220
+      width: 48
+      height: 123
+    spriteID: a2c053facd3c853429088126d27a4053
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 127, y: 220}
   - name: tentacle_test_Frame_14
     originalName: 
     pivot: {x: 0.5833334, y: -0.032520324}
@@ -408,7 +408,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 295
+      x: 183
       y: 220
       width: 48
       height: 123
@@ -420,28 +420,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 295, y: 220}
+    uvTransform: {x: 183, y: 220}
   - name: tentacle_test_Frame_15
-    originalName: 
-    pivot: {x: 0.5833334, y: -0.032520324}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 351
-      y: 220
-      width: 48
-      height: 123
-    spriteID: 9fbbd9eac4578354cb9634e474d4392c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 351, y: 220}
-  - name: tentacle_test_Frame_16
     originalName: 
     pivot: {x: 0.49090907, y: -0.032520324}
     alignment: 9
@@ -452,7 +432,7 @@ ScriptedImporter:
       y: 4
       width: 110
       height: 123
-    spriteID: 19c6e06110aaff84897ee94650857e3c
+    spriteID: 9fbbd9eac4578354cb9634e474d4392c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -461,7 +441,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 129, y: 4}
-  - name: tentacle_test_Frame_17
+  - name: tentacle_test_Frame_16
     originalName: 
     pivot: {x: 0.4615385, y: -0.032520324}
     alignment: 9
@@ -472,7 +452,7 @@ ScriptedImporter:
       y: 4
       width: 117
       height: 123
-    spriteID: 551797123f955f149a5bca165b84cfe0
+    spriteID: 19c6e06110aaff84897ee94650857e3c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -481,7 +461,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: tentacle_test_Frame_18
+  - name: tentacle_test_Frame_17
     originalName: 
     pivot: {x: 0.5263158, y: -0.00862069}
     alignment: 9
@@ -492,7 +472,7 @@ ScriptedImporter:
       y: 261
       width: 57
       height: 116
-    spriteID: cdbd190416c96d743895e080b664ffc8
+    spriteID: 551797123f955f149a5bca165b84cfe0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -501,7 +481,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 261}
-  - name: tentacle_test_Frame_19
+  - name: tentacle_test_Frame_18
     originalName: 
     pivot: {x: 0.5362319, y: 0}
     alignment: 9
@@ -512,7 +492,7 @@ ScriptedImporter:
       y: 4
       width: 69
       height: 103
-    spriteID: 3582cf1a05e7381418ee62bfea374406
+    spriteID: cdbd190416c96d743895e080b664ffc8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -521,7 +501,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 405, y: 4}
-  - name: tentacle_test_Frame_20
+  - name: tentacle_test_Frame_19
     originalName: 
     pivot: {x: 0.54545456, y: 0}
     alignment: 9
@@ -532,7 +512,7 @@ ScriptedImporter:
       y: 135
       width: 88
       height: 77
-    spriteID: 8e9c0aada8bda9f4f8f59a5bcd921b5c
+    spriteID: 3582cf1a05e7381418ee62bfea374406
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -541,18 +521,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 71, y: 135}
-  - name: tentacle_test_Frame_21
+  - name: tentacle_test_Frame_20
     originalName: 
     pivot: {x: 0.67021275, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 187
-      y: 351
+      x: 167
+      y: 135
       width: 94
       height: 37
-    spriteID: 6085172ea2f1b294ba49d1614b8bccb2
+    spriteID: 8e9c0aada8bda9f4f8f59a5bcd921b5c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -560,7 +540,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 187, y: 351}
+    uvTransform: {x: 167, y: 135}
+  - name: tentacle_test_Frame_6
+    originalName: 
+    pivot: {x: -61, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 295
+      y: 339
+      width: 1
+      height: 2
+    spriteID: 1daee64e72abe4e43964757a56cc9622
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 295, y: 339}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -602,37 +602,28 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 41
-        y: -11
+        y: 0
         width: 48
-        height: 123
+        height: 112
       spriteId: 44b061e3a55e59448859f7222ae6bf91
     - name: tentacle_test_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
         x: 46
-        y: -56
-        width: 48
-        height: 123
+        y: 0
+        width: 39
+        height: 67
       spriteId: d4d52177c318d514681220e6ef0eecd6
     - name: tentacle_test_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
-        x: 50
-        y: -117
-        width: 48
-        height: 123
+        x: 57
+        y: 0
+        width: 11
+        height: 6
       spriteId: 7951c4cc3f971834e889f9c73e21f36f
-    - name: tentacle_test_Frame_6
-      frameIndex: 6
-      additiveSortOrder: 0
-      cellRect:
-        x: 50
-        y: -117
-        width: 48
-        height: 114
-      spriteId: fe32044f610879f488c75c7e47c5dc16
     - name: tentacle_test_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
@@ -641,7 +632,7 @@ ScriptedImporter:
         y: 3
         width: 16
         height: 16
-      spriteId: 29b711141f3eacc49845492423fea4dc
+      spriteId: fe32044f610879f488c75c7e47c5dc16
     - name: tentacle_test_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
@@ -650,7 +641,7 @@ ScriptedImporter:
         y: 3
         width: 27
         height: 31
-      spriteId: 37051285e4e36734cb42aae21faea194
+      spriteId: 29b711141f3eacc49845492423fea4dc
     - name: tentacle_test_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
@@ -659,7 +650,7 @@ ScriptedImporter:
         y: 3
         width: 53
         height: 81
-      spriteId: b45306d8f3172074e854eb680bb61f63
+      spriteId: 37051285e4e36734cb42aae21faea194
     - name: tentacle_test_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
@@ -668,7 +659,7 @@ ScriptedImporter:
         y: 3
         width: 47
         height: 111
-      spriteId: ea0d159fe9e141d49a40c2ee80f3de91
+      spriteId: b45306d8f3172074e854eb680bb61f63
     - name: tentacle_test_Frame_11
       frameIndex: 11
       additiveSortOrder: 0
@@ -677,7 +668,7 @@ ScriptedImporter:
         y: 3
         width: 67
         height: 122
-      spriteId: 7b52e13589c1b1f47ab36ed54446176f
+      spriteId: ea0d159fe9e141d49a40c2ee80f3de91
     - name: tentacle_test_Frame_12
       frameIndex: 12
       additiveSortOrder: 0
@@ -686,7 +677,7 @@ ScriptedImporter:
         y: 3
         width: 75
         height: 105
-      spriteId: b0ed822300ea89949bbf1b9629bf5069
+      spriteId: 7b52e13589c1b1f47ab36ed54446176f
     - name: tentacle_test_Frame_13
       frameIndex: 13
       additiveSortOrder: 0
@@ -695,7 +686,7 @@ ScriptedImporter:
         y: 4
         width: 59
         height: 118
-      spriteId: a2c053facd3c853429088126d27a4053
+      spriteId: b0ed822300ea89949bbf1b9629bf5069
     - name: tentacle_test_Frame_14
       frameIndex: 14
       additiveSortOrder: 0
@@ -704,7 +695,7 @@ ScriptedImporter:
         y: 4
         width: 48
         height: 123
-      spriteId: 473ea71671d37734eaba0cf13af68719
+      spriteId: a2c053facd3c853429088126d27a4053
     - name: tentacle_test_Frame_15
       frameIndex: 15
       additiveSortOrder: 0
@@ -713,7 +704,7 @@ ScriptedImporter:
         y: 4
         width: 48
         height: 123
-      spriteId: 9fbbd9eac4578354cb9634e474d4392c
+      spriteId: 473ea71671d37734eaba0cf13af68719
     - name: tentacle_test_Frame_16
       frameIndex: 16
       additiveSortOrder: 0
@@ -722,7 +713,7 @@ ScriptedImporter:
         y: 4
         width: 110
         height: 123
-      spriteId: 19c6e06110aaff84897ee94650857e3c
+      spriteId: 9fbbd9eac4578354cb9634e474d4392c
     - name: tentacle_test_Frame_17
       frameIndex: 17
       additiveSortOrder: 0
@@ -731,7 +722,7 @@ ScriptedImporter:
         y: 4
         width: 117
         height: 123
-      spriteId: 551797123f955f149a5bca165b84cfe0
+      spriteId: 19c6e06110aaff84897ee94650857e3c
     - name: tentacle_test_Frame_18
       frameIndex: 18
       additiveSortOrder: 0
@@ -740,7 +731,7 @@ ScriptedImporter:
         y: 1
         width: 57
         height: 116
-      spriteId: cdbd190416c96d743895e080b664ffc8
+      spriteId: 551797123f955f149a5bca165b84cfe0
     - name: tentacle_test_Frame_19
       frameIndex: 19
       additiveSortOrder: 0
@@ -749,7 +740,7 @@ ScriptedImporter:
         y: 0
         width: 69
         height: 103
-      spriteId: 3582cf1a05e7381418ee62bfea374406
+      spriteId: cdbd190416c96d743895e080b664ffc8
     - name: tentacle_test_Frame_20
       frameIndex: 20
       additiveSortOrder: 0
@@ -758,7 +749,7 @@ ScriptedImporter:
         y: 0
         width: 88
         height: 77
-      spriteId: 8e9c0aada8bda9f4f8f59a5bcd921b5c
+      spriteId: 3582cf1a05e7381418ee62bfea374406
     - name: tentacle_test_Frame_21
       frameIndex: 21
       additiveSortOrder: 0
@@ -767,7 +758,16 @@ ScriptedImporter:
         y: 0
         width: 94
         height: 37
-      spriteId: 6085172ea2f1b294ba49d1614b8bccb2
+      spriteId: 8e9c0aada8bda9f4f8f59a5bcd921b5c
+    - name: tentacle_test_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 125
+        y: 0
+        width: 1
+        height: 2
+      spriteId: 1daee64e72abe4e43964757a56cc9622
     linkedCells: []
     parentIndex: -1
   platformSettings:

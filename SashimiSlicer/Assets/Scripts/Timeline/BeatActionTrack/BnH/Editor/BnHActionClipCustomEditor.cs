@@ -22,13 +22,13 @@ public class BnHActionClipCustomEditor : Editor
             return;
         }
 
-        BnHActionBehavior actionData = actionClip.template;
+        BnHActionBehavior actionData = actionClip.Template;
         if (actionData == null)
         {
             return;
         }
 
-        Vector3 pos = actionData.actionData._position;
+        Vector3 pos = actionData.ActionData.Position;
 
         Handles.color = Color.red;
         Vector3 newPos = Handles.PositionHandle(pos, Quaternion.identity);
@@ -38,7 +38,7 @@ public class BnHActionClipCustomEditor : Editor
         if (newPos != pos)
         {
             Undo.RecordObject(actionClip, "Edit BnH Action Clip");
-            actionData.actionData._position = newPos;
+            actionData.ActionData.Position = newPos;
             Repaint();
         }
     }

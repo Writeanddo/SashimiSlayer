@@ -10,10 +10,11 @@ public class TimingService : MonoBehaviour
     public int BeatNumber => _beatNumber;
     public double TimePerBeat => _intervalPerBeat;
     public double CurrentTime => _currentTime;
+    public double CurrentBeatmapTime => _currentTime - _startTime;
 
     private int _beatNumber;
 
-    private BeatmapConfigSO _currentBeatmap;
+    private BeatmapConfigSo _currentBeatmap;
 
     private double _currentTime;
     private double _deltaTime;
@@ -82,11 +83,11 @@ public class TimingService : MonoBehaviour
         }
     }
 
-    public void StartBeatmap(BeatmapConfigSO beatmap)
+    public void StartBeatmap(BeatmapConfigSo beatmap)
     {
         _currentBeatmap = beatmap;
         _startTime = AudioSettings.dspTime + beatmap.StartTime;
-        _intervalPerBeat = 60 / _currentBeatmap.BPM;
+        _intervalPerBeat = 60 / _currentBeatmap.Bpm;
     }
 
     private void CalculateBeatTiming(

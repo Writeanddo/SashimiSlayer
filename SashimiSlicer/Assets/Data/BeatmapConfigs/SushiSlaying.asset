@@ -15,10 +15,9 @@ MonoBehaviour:
   <BeatmapName>k__BackingField: 'SUSHI SLAYING
 
 '
-  <BPM>k__BackingField: 132
+  <Bpm>k__BackingField: 132
   <Subdivisions>k__BackingField: 2
-  <StartTime>k__BackingField: 0
-  <BeatOffset>k__BackingField: 0
+  <StartTime>k__BackingField: 0.1
   <BeatsPerMeasure>k__BackingField: 4
   <BeatmapTimeline>k__BackingField: {fileID: 11400000, guid: d68bc4e836b534a479130c17c4938b7d,
     type: 2}

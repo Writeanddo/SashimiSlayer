@@ -8,14 +8,14 @@ public class Protaganist : MonoBehaviour
     public struct BlockInstance
     {
         public Gameplay.BlockPoseStates BlockPose;
-        public Vector3 swordPosition;
-        public float swordAngle;
+        public Vector3 SwordPosition;
+        public float SwordAngle;
     }
 
     public struct AttackInstance
     {
-        public Vector3 swordPosition;
-        public float swordAngle;
+        public Vector3 SwordPosition;
+        public float SwordAngle;
     }
 
     [SerializeField]
@@ -89,15 +89,14 @@ public class Protaganist : MonoBehaviour
         var pose = new BlockInstance
         {
             BlockPose = blockPoseStates,
-            swordPosition = _swordPosition,
-            swordAngle = _swordAngle
+            SwordPosition = _swordPosition,
+            SwordAngle = _swordAngle
         };
         OnBlockAction?.Invoke(pose);
     }
 
     private void OnSheathStateChanged(Gameplay.SheathState newState)
     {
-        Debug.Log($"Sheath state changed to {newState}");
         Gameplay.SheathState oldState = _protagSheathState;
         _protagSheathState = newState;
 
@@ -107,8 +106,8 @@ public class Protaganist : MonoBehaviour
         {
             OnSliceAction?.Invoke(new AttackInstance
             {
-                swordPosition = _swordPosition,
-                swordAngle = _swordAngle
+                SwordPosition = _swordPosition,
+                SwordAngle = _swordAngle
             });
         }
 
@@ -146,7 +145,6 @@ public class Protaganist : MonoBehaviour
 
     public void SuccessfulSlice()
     {
-        Debug.Log("Successful slice");
         ScreenShakeService.Instance.ShakeScreen(0.1f, 0.5f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
     }
 

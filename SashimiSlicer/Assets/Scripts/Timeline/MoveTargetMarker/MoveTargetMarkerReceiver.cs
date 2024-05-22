@@ -11,6 +11,6 @@ public class MoveTargetMarkerReceiver : MonoBehaviour, INotificationReceiver
             return;
         }
 
-        Protaganist.Instance.SetSlashPosition(jumpMarker.position);
+        Protaganist.Instance.SetSlashPosition(jumpMarker.Position);
     }
 }

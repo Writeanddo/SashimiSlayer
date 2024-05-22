@@ -5085,7 +5085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 9185724354866607105}
-  _attackAnimationWindup: 0.18
+  _attackAnimationWindup: 0.25
   _indicator: {fileID: 1637912884012176710}
   _killedParticles: {fileID: 8820880546140617743}
 --- !u!1001 &6417552045795214670

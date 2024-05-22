@@ -850,7 +850,7 @@ MonoBehaviour:
   _attackShrinkRing: {fileID: 5828492484322755032}
   _vulnerableTargetRing: {fileID: 6810692375472598638}
   _vulnerableShrinkRing: {fileID: 7344047560120347734}
-  _shrinkScale: 4
+  _shrinkScale: 5
 --- !u!1 &8152099041034499828
 GameObject:
   m_ObjectHideFlags: 0

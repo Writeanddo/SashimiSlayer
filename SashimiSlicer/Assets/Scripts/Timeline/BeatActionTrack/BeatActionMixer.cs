@@ -4,13 +4,13 @@ using UnityEngine.Playables;
 // on the Text binding
 public class BeatActionMixer : PlayableBehaviour
 {
-    private BeatActionManager m_TrackBinding;
+    private BeatActionManager _mTrackBinding;
 
     // Called every frame that the timeline is evaluated. ProcessFrame is invoked after its' inputs.
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {
-        m_TrackBinding = playerData as BeatActionManager;
-        if (m_TrackBinding == null)
+        _mTrackBinding = playerData as BeatActionManager;
+        if (_mTrackBinding == null)
         {
         }
 

@@ -21,7 +21,7 @@ public class BossService : MonoBehaviour
         }
     }
 
-    public void InitializeBoss(BeatmapConfigSO beatmapConfigSo)
+    public void InitializeBoss(BeatmapConfigSo beatmapConfigSo)
     {
         _healthbar.InitializeBar(beatmapConfigSo.BossHealth);
         _health = beatmapConfigSo.BossHealth;
