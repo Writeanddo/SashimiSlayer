@@ -37,7 +37,76 @@ MonoBehaviour:
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
-  m_Clips: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 1.009090909090909
+    m_ClipIn: 0
+    m_Asset: {fileID: -7897901289147123693}
+    m_Duration: 3.636363636363636
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -9154038518674239263}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Squid
   m_Markers:
     m_Objects: []
 --- !u!114 &-8739017720185291674
@@ -84,6 +153,34 @@ MonoBehaviour:
       ActionEndTime: 0
       ActionBeatLength: 0
       _interactions: []
+--- !u!114 &-7897901289147123693
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: 
+    HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
+    ActionData:
+      Position: {x: 10.153387, y: 1.1217937}
+      AutoVulnerableAtEnd: 0
+      ActionStartTime: 0.9090909090909091
+      ActionEndTime: 4.545454545454545
+      ActionBeatLength: 7.999999999999999
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 6
+        DieOnHitProtag: 1
+        DieOnHit: 0
+        DieOnBlocked: 0
+        BlockPose: 4
 --- !u!114 &-7634491408669650360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,7 +201,76 @@ MonoBehaviour:
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
-  m_Clips: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0.1
+    m_ClipIn: 0
+    m_Asset: {fileID: 6274969261271429369}
+    m_Duration: 3.6363636363636362
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -7634491408669650360}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Squid
   m_Markers:
     m_Objects: []
 --- !u!114 &-7529975730450443829
@@ -471,6 +637,7 @@ MonoBehaviour:
   - {fileID: -7634491408669650360}
   - {fileID: 7855175669344345868}
   - {fileID: -9154038518674239263}
+  - {fileID: 1754087978691026967}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 120
@@ -517,6 +684,98 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: eee
+--- !u!114 &1754087978691026967
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91bec0c62f8641e4fb737dce59b1e0b4, type: 3}
+  m_Name: Beat Action Track (1)
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 1.4636363636363636
+    m_ClipIn: 0
+    m_Asset: {fileID: 5205250569257650688}
+    m_Duration: 4.09090909090909
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 1754087978691026967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Squid
+  m_Markers:
+    m_Objects: []
 --- !u!114 &2145358563145770506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -661,6 +920,34 @@ MonoBehaviour:
       ActionEndTime: 0
       ActionBeatLength: 0
       _interactions: []
+--- !u!114 &5205250569257650688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: 
+    HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
+    ActionData:
+      Position: {x: 10.573251, y: -0.95542645}
+      AutoVulnerableAtEnd: 0
+      ActionStartTime: 1.3636363636363635
+      ActionEndTime: 5.454545454545454
+      ActionBeatLength: 8.999999999999998
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 7
+        DieOnHitProtag: 1
+        DieOnHit: 0
+        DieOnBlocked: 0
+        BlockPose: 5
 --- !u!114 &5329721999695252180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -716,6 +1003,34 @@ MonoBehaviour:
   EmitOnce: 0
   EmitInEditor: 0
   Position: {x: -5.351451, y: -1.3546546, z: 0}
+--- !u!114 &6274969261271429369
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: 
+    HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
+    ActionData:
+      Position: {x: 9.689327, y: 3.9503484}
+      AutoVulnerableAtEnd: 0
+      ActionStartTime: 0
+      ActionEndTime: 3.6363636363636362
+      ActionBeatLength: 8
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 4
+        DieOnHitProtag: 1
+        DieOnHit: 0
+        DieOnBlocked: 0
+        BlockPose: 1
 --- !u!114 &6435859260828590340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -738,10 +1053,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.09
+    m_Start: 7.372727272727272
     m_ClipIn: 0
     m_Asset: {fileID: 6625576298321072546}
-    m_Duration: 9.09090909090909
+    m_Duration: 7.2727272727272725
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6435859260828590340}
     m_EaseInDuration: 0
@@ -820,7 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc55fe93439f27649bcbfa48bd1c33f8, type: 3}
   m_Name: BeatMapping/Move Target Marker
   m_EditorClassIdentifier: 
-  m_Time: 12.727272727272727
+  m_Time: 17.383333333333333
   EmitOnce: 0
   EmitInEditor: 0
   Position: {x: 2.9128966, y: -2.1141992, z: 0}
@@ -842,25 +1157,27 @@ MonoBehaviour:
     ActionData:
       Position: {x: 3.0170817, y: -3.3283682}
       AutoVulnerableAtEnd: 1
-      ActionStartTime: 0
-      ActionEndTime: 9.09090909090909
-      ActionBeatLength: 19.999999999999996
+      ActionStartTime: 7.2727272727272725
+      ActionEndTime: 14.545454545454545
+      ActionBeatLength: 16
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
+        DieOnHitProtag: 0
         DieOnHit: 0
+        DieOnBlocked: 0
         BlockPose: 1
       - InteractionType: 0
         BeatsUntilStart: 8
+        DieOnHitProtag: 0
         DieOnHit: 0
+        DieOnBlocked: 0
         BlockPose: 2
       - InteractionType: 0
         BeatsUntilStart: 12
+        DieOnHitProtag: 0
         DieOnHit: 0
-        BlockPose: 4
-      - InteractionType: 1
-        BeatsUntilStart: 16
-        DieOnHit: 0
+        DieOnBlocked: 0
         BlockPose: 4
 --- !u!114 &6640569924543703568
 MonoBehaviour:
@@ -960,7 +1277,76 @@ MonoBehaviour:
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
-  m_Clips: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0.5545454545454546
+    m_ClipIn: 0
+    m_Asset: {fileID: 9219258123983477239}
+    m_Duration: 3.636363636363636
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7855175669344345868}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Squid
   m_Markers:
     m_Objects: []
 --- !u!114 &8483025368824293763
@@ -985,3 +1371,31 @@ MonoBehaviour:
       ActionEndTime: 0
       ActionBeatLength: 0
       _interactions: []
+--- !u!114 &9219258123983477239
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: 
+    HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
+    ActionData:
+      Position: {x: 10.153387, y: 2.3813844}
+      AutoVulnerableAtEnd: 0
+      ActionStartTime: 0.4545454545454546
+      ActionEndTime: 4.090909090909091
+      ActionBeatLength: 7.999999999999999
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 5
+        DieOnHitProtag: 1
+        DieOnHit: 0
+        DieOnBlocked: 0
+        BlockPose: 2

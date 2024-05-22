@@ -69,11 +69,17 @@ public class BnHActionCore : MonoBehaviour
         public InteractionType InteractionType;
         public double BeatsUntilStart;
 
+        [Header("Attack")]
+
+        public bool DieOnHitProtag;
+
         [Header("Vulnerable")]
 
         public bool DieOnHit;
 
         [Header("Blocking")]
+
+        public bool DieOnBlocked;
 
         public Gameplay.BlockPoseStates BlockPose;
     }
@@ -91,6 +97,7 @@ public class BnHActionCore : MonoBehaviour
     private ScheduledInteraction CurrentInteraction => _sequencedInteractionInstances[_currentInteractionIndex];
 
     public BnHActionSo ActionConfigSo => _actionConfigSo;
+    public double LastInteractionEndTime => _previousInteractionEndTime;
 
     public event Action OnBlockByProtag;
     public event Action OnDamagedByProtag;
@@ -99,6 +106,7 @@ public class BnHActionCore : MonoBehaviour
     public event Action OnSpawn;
     public event Action<double, ScheduledInteraction> OnTickInInteraction;
     public event Action<double, ScheduledInteraction> OnTickWaitingForInteraction;
+    public event Action<double, BnHActionInstanceConfig> OnTickWaitingToLeave;
     public event Action OnTransitionToLeaving;
     public event Action<ScheduledInteraction> OnTransitionToNextInteraction;
     public event Action<ScheduledInteraction> OnTransitionToWaitingToLeave;
@@ -293,13 +301,18 @@ public class BnHActionCore : MonoBehaviour
 
             if (CurrentInteraction.Interaction.DieOnHit)
             {
-                _indicator.SetVisible(false);
-                _bnHActionState = BnHActionState.Leaving;
-                OnKilled?.Invoke();
+                Die();
             }
 
             Protaganist.Instance.SuccessfulSlice();
         }
+    }
+
+    private void Die()
+    {
+        _indicator.SetVisible(false);
+        _bnHActionState = BnHActionState.Leaving;
+        OnKilled?.Invoke();
     }
 
     private void TickWaitingForInteraction(double time)
@@ -379,6 +392,17 @@ public class BnHActionCore : MonoBehaviour
             {
                 OnLandHitOnProtag?.Invoke();
                 Protaganist.Instance.TakeDamage(_actionConfigSo.DamageDealtToPlayer);
+                if (CurrentInteraction.Interaction.DieOnHitProtag)
+                {
+                    Die();
+                }
+            }
+            else
+            {
+                if (CurrentInteraction.Interaction.DieOnBlocked)
+                {
+                    Die();
+                }
             }
 
             TransitionToNextInteraction(time);
@@ -439,6 +463,7 @@ public class BnHActionCore : MonoBehaviour
     private void TickWaitingToLeave(double time)
     {
         _indicator.SetVisible(false);
+        OnTickWaitingToLeave?.Invoke(time, _data);
         if (time >= _actionEndTime)
         {
             _bnHActionState = BnHActionState.Leaving;

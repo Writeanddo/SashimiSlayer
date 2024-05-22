@@ -8,11 +8,16 @@ public class ProtagBody : MonoBehaviour
     [SerializeField]
     private ParticleSystem _blockParticles;
 
+    [SerializeField]
+    private Transform _targetTransform;
+
+    public Vector3 TargetPosition => _targetTransform.position;
+
     private void Start()
     {
         Protaganist.Instance.OnDamageTaken += OnDamageTaken;
         Protaganist.Instance.OnSuccessfulBlock += OnSuccessfulBlock;
-        Protaganist.Instance.SpritePosition = transform.position;
+        Protaganist.Instance.SpritePosition = TargetPosition;
     }
 
     private void OnDestroy()
