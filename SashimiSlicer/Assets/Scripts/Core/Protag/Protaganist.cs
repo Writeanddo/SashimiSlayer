@@ -30,6 +30,17 @@ public class Protaganist : MonoBehaviour
     [SerializeField]
     private float _maxHealth;
 
+    [Header("SFX")]
+
+    [SerializeField]
+    private AudioClip _hurtSFX;
+
+    [SerializeField]
+    private AudioClip _blockSFX;
+
+    [SerializeField]
+    private AudioClip _sliceSFX;
+
     public static Protaganist Instance { get; private set; }
     public Gameplay.SheathState ProtagSheathState => _protagSheathState;
     public Vector3 SpritePosition { get; set; }
@@ -134,17 +145,20 @@ public class Protaganist : MonoBehaviour
         _health -= damage;
         _healthbar.TakeDamage(_health);
         OnDamageTaken?.Invoke();
+        AudioSource.PlayClipAtPoint(_hurtSFX, Vector3.zero, 1f);
         ScreenShakeService.Instance.ShakeScreen(0.1f, 1f, CinemachineImpulseDefinition.ImpulseShapes.Rumble);
     }
 
     public void SuccessfulBlock()
     {
         OnSuccessfulBlock?.Invoke();
+        AudioSource.PlayClipAtPoint(_blockSFX, Vector3.zero, 1f);
         ScreenShakeService.Instance.ShakeScreen(0.05f, 0.15f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
     }
 
     public void SuccessfulSlice()
     {
+        AudioSource.PlayClipAtPoint(_sliceSFX, Vector3.zero, 1f);
         ScreenShakeService.Instance.ShakeScreen(0.1f, 0.5f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
     }
 

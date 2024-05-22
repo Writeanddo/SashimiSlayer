@@ -57,7 +57,7 @@ public class BnHActionClipEditor : ClipEditor
 
     private void DrawInteractions(BnHActionClip actionClip, ClipBackgroundRegion region)
     {
-        foreach (BaseBnHAction.InteractionInstanceConfig interaction in actionClip.Template.ActionData.Interactions)
+        foreach (BnHActionCore.InteractionInstanceConfig interaction in actionClip.Template.ActionData.Interactions)
         {
             double interactionStartTime = interaction.BeatsUntilStart * 60 /
                                           BeatmapEditorWindow.CurrentEditingBeatmap.Bpm;
@@ -67,11 +67,11 @@ public class BnHActionClipEditor : ClipEditor
 
             if (interactionStartTime >= region.startTime && interactionStartTime <= region.endTime)
             {
-                if (interaction.InteractionType == BaseBnHAction.InteractionType.IncomingAttack)
+                if (interaction.InteractionType == BnHActionCore.InteractionType.IncomingAttack)
                 {
                     DrawAttackInteraction(interaction, region, normalizedPos);
                 }
-                else if (interaction.InteractionType == BaseBnHAction.InteractionType.Vulnerable)
+                else if (interaction.InteractionType == BnHActionCore.InteractionType.Vulnerable)
                 {
                     DrawVulnerableInteraction(region, normalizedPos);
                 }
@@ -80,7 +80,7 @@ public class BnHActionClipEditor : ClipEditor
     }
 
     private void DrawAttackInteraction(
-        BaseBnHAction.InteractionInstanceConfig interaction,
+        BnHActionCore.InteractionInstanceConfig interaction,
         ClipBackgroundRegion region,
         float normalizedPos)
     {

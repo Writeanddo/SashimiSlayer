@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 ///     Base class for all BnH actions. All timings in here are in beatmap time space
 /// </summary>
-public class BaseBnHAction : MonoBehaviour
+public class BnHActionCore : MonoBehaviour
 {
     public enum InteractionType
     {
@@ -78,7 +78,7 @@ public class BaseBnHAction : MonoBehaviour
         public Gameplay.BlockPoseStates BlockPose;
     }
 
-    private struct ScheduledInteraction
+    public struct ScheduledInteraction
     {
         public InteractionInstanceConfig Interaction;
         public double TimeWhenInteractionStart;
@@ -86,21 +86,25 @@ public class BaseBnHAction : MonoBehaviour
     }
 
     [SerializeField]
-    private Animator _animator;
-
-    [SerializeField]
-    private float _attackAnimationWindup;
-
-    [SerializeField]
     private BeatActionIndicator _indicator;
-
-    [SerializeField]
-    private ParticleSystem _killedParticles;
 
     private ScheduledInteraction CurrentInteraction => _sequencedInteractionInstances[_currentInteractionIndex];
 
+    public BnHActionSo ActionConfigSo => _actionConfigSo;
+
+    public event Action OnBlockByProtag;
+    public event Action OnDamagedByProtag;
+    public event Action OnKilled;
+    public event Action OnLandHitOnProtag;
+    public event Action OnSpawn;
+    public event Action<double, ScheduledInteraction> OnTickInInteraction;
+    public event Action<double, ScheduledInteraction> OnTickWaitingForInteraction;
+    public event Action OnTransitionToLeaving;
+    public event Action<ScheduledInteraction> OnTransitionToNextInteraction;
+    public event Action<ScheduledInteraction> OnTransitionToWaitingToLeave;
+
     private BnHActionInstanceConfig _data;
-    private BnHActionSo _hitConfig;
+    private BnHActionSo _actionConfigSo;
 
     private List<ScheduledInteraction> _sequencedInteractionInstances;
     private double _actionStartTime;
@@ -112,19 +116,15 @@ public class BaseBnHAction : MonoBehaviour
     private int _currentInteractionIndex;
     private bool _blocked;
 
-    protected event Action OnHitByProtag;
-    protected event Action OnHitProtag;
-    protected event Action OnBlockByProtag;
-
     private void OnDrawGizmos()
     {
-        if (_hitConfig == null)
+        if (_actionConfigSo == null)
         {
             return;
         }
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_indicator.transform.position, _hitConfig.HitboxRadius);
+        Gizmos.DrawWireSphere(_indicator.transform.position, _actionConfigSo.HitboxRadius);
 
 #if UNITY_EDITOR
         if (Application.isPlaying)
@@ -139,7 +139,7 @@ public class BaseBnHAction : MonoBehaviour
 
     public void Setup(BnHActionSo hitConfig, BnHActionInstanceConfig data)
     {
-        _hitConfig = hitConfig;
+        _actionConfigSo = hitConfig;
         _data = data;
         _blocked = false;
 
@@ -169,7 +169,7 @@ public class BaseBnHAction : MonoBehaviour
         Protaganist.Instance.OnBlockAction += OnPlayerAttemptBlock;
         Protaganist.Instance.OnSliceAction += OnPlayerAttemptAttack;
 
-        _animator.Play("Spawn");
+        OnSpawn?.Invoke();
     }
 
     private void ScheduleInteractions(BnHActionInstanceConfig data)
@@ -189,10 +189,10 @@ public class BaseBnHAction : MonoBehaviour
             switch (interactionConfig.InteractionType)
             {
                 case InteractionType.IncomingAttack:
-                    halfWindow = _hitConfig.BlockWindowHalfDuration;
+                    halfWindow = _actionConfigSo.BlockWindowHalfDuration;
                     break;
                 case InteractionType.Vulnerable:
-                    halfWindow = _hitConfig.VulnerableWindowHalfDuration;
+                    halfWindow = _actionConfigSo.VulnerableWindowHalfDuration;
                     break;
             }
 
@@ -254,18 +254,18 @@ public class BaseBnHAction : MonoBehaviour
 
         Vector3 pos = _indicator.transform.position;
         float dist = Protaganist.Instance.DistanceToSwordPlane(pos);
-        bool isBlockOnTarget = dist < _hitConfig.HitboxRadius;
+        bool isBlockOnTarget = dist < _actionConfigSo.HitboxRadius;
 
         double time = TimingService.Instance.CurrentBeatmapTime;
         ScheduledInteraction attackInteraction = _sequencedInteractionInstances[_currentInteractionIndex];
         Debug.Log(
-            $"Block offset: {time - (attackInteraction.TimeWhenInteractionStart + _hitConfig.BlockWindowHalfDuration)}");
+            $"Block offset: {time - (attackInteraction.TimeWhenInteractionStart + _actionConfigSo.BlockWindowHalfDuration)}");
 
         if (isBlockOnTarget)
         {
             _blocked = true;
             Protaganist.Instance.SuccessfulBlock();
-            AudioSource.PlayClipAtPoint(_hitConfig.BlockSound, Vector3.zero, 1f);
+            OnBlockByProtag?.Invoke();
         }
     }
 
@@ -281,26 +281,24 @@ public class BaseBnHAction : MonoBehaviour
 
         Vector3 pos = _indicator.transform.position;
         float dist = Protaganist.Instance.DistanceToSwordPlane(pos);
-        bool isAttackOnTarget = dist < _hitConfig.HitboxRadius;
+        bool isAttackOnTarget = dist < _actionConfigSo.HitboxRadius;
 
         double time = TimingService.Instance.CurrentBeatmapTime;
-        Debug.Log($"Attack offset: {time - (vulnerableStartTime + _hitConfig.VulnerableWindowHalfDuration)}");
+        Debug.Log($"Attack offset: {time - (vulnerableStartTime + _actionConfigSo.VulnerableWindowHalfDuration)}");
 
         if (isAttackOnTarget)
         {
-            _killedParticles.Play();
-            BossService.Instance.TakeDamage(_hitConfig.DamageTakenToBoss);
+            OnDamagedByProtag?.Invoke();
+            BossService.Instance.TakeDamage(_actionConfigSo.DamageTakenToBoss);
 
             if (CurrentInteraction.Interaction.DieOnHit)
             {
                 _indicator.SetVisible(false);
                 _bnHActionState = BnHActionState.Leaving;
-                _animator.Play("Die", 0, 0);
+                OnKilled?.Invoke();
             }
 
             Protaganist.Instance.SuccessfulSlice();
-
-            AudioSource.PlayClipAtPoint(_hitConfig.KilledSound, Vector3.zero, 1f);
         }
     }
 
@@ -309,6 +307,8 @@ public class BaseBnHAction : MonoBehaviour
         _indicator.SetVisible(true);
 
         InteractionType interactionType = CurrentInteraction.Interaction.InteractionType;
+
+        OnTickWaitingForInteraction?.Invoke(time, CurrentInteraction);
 
         if (interactionType == InteractionType.IncomingAttack)
         {
@@ -324,16 +324,11 @@ public class BaseBnHAction : MonoBehaviour
     {
         double attackStartTime =
             CurrentInteraction.TimeWhenInteractionStart;
-        double attackMiddleTime = attackStartTime + _hitConfig.BlockWindowHalfDuration;
+        double attackMiddleTime = attackStartTime + _actionConfigSo.BlockWindowHalfDuration;
 
         if (time >= attackStartTime)
         {
             _bnHActionState = BnHActionState.InInteraction;
-        }
-
-        if (time + _attackAnimationWindup >= attackMiddleTime)
-        {
-            _animator.Play("Attack");
         }
 
         var normalizedTime =
@@ -344,7 +339,7 @@ public class BaseBnHAction : MonoBehaviour
     private void TickWaitingForVulnerable(double time)
     {
         double vulnStartTime = CurrentInteraction.TimeWhenInteractionStart;
-        double vulnMiddleTime = vulnStartTime + _hitConfig.VulnerableWindowHalfDuration;
+        double vulnMiddleTime = vulnStartTime + _actionConfigSo.VulnerableWindowHalfDuration;
 
         var normalizedTime = (float)((time - _previousInteractionEndTime) /
                                      (vulnMiddleTime - _previousInteractionEndTime));
@@ -362,6 +357,8 @@ public class BaseBnHAction : MonoBehaviour
         InteractionType interactionType =
             CurrentInteraction.Interaction.InteractionType;
 
+        OnTickInInteraction?.Invoke(time, CurrentInteraction);
+
         if (interactionType == InteractionType.IncomingAttack)
         {
             TickAttackBlockWindow(time);
@@ -375,13 +372,13 @@ public class BaseBnHAction : MonoBehaviour
     private void TickAttackBlockWindow(double time)
     {
         double blockWindowEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
-        double attackMiddleTime = CurrentInteraction.TimeWhenInteractionStart + _hitConfig.BlockWindowHalfDuration;
+        double attackMiddleTime = CurrentInteraction.TimeWhenInteractionStart + _actionConfigSo.BlockWindowHalfDuration;
         if (time >= blockWindowEndTime)
         {
             if (!_blocked)
             {
-                AudioSource.PlayClipAtPoint(_hitConfig.ImpactSound, Vector3.zero, 1f);
-                Protaganist.Instance.TakeDamage(_hitConfig.DamageDealtToPlayer);
+                OnLandHitOnProtag?.Invoke();
+                Protaganist.Instance.TakeDamage(_actionConfigSo.DamageDealtToPlayer);
             }
 
             TransitionToNextInteraction(time);
@@ -395,7 +392,8 @@ public class BaseBnHAction : MonoBehaviour
     private void TickVulnerableWindow(double time)
     {
         double vulnWindowEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
-        double vulnMiddleTime = CurrentInteraction.TimeWhenInteractionStart + _hitConfig.VulnerableWindowHalfDuration;
+        double vulnMiddleTime =
+            CurrentInteraction.TimeWhenInteractionStart + _actionConfigSo.VulnerableWindowHalfDuration;
         if (time >= vulnWindowEndTime)
         {
             TransitionToNextInteraction(time);
@@ -411,7 +409,7 @@ public class BaseBnHAction : MonoBehaviour
         if (_currentInteractionIndex >= _sequencedInteractionInstances.Count - 1)
         {
             _bnHActionState = BnHActionState.WaitingToLeave;
-            _animator.Play("Idle");
+            OnTransitionToWaitingToLeave?.Invoke(CurrentInteraction);
         }
         else
         {
@@ -425,13 +423,14 @@ public class BaseBnHAction : MonoBehaviour
                 _currentInteractionIndex++;
                 if (time < CurrentInteraction.TimeWhenInteractionStart)
                 {
+                    OnTransitionToNextInteraction?.Invoke(CurrentInteraction);
                     break;
                 }
 
                 if (_currentInteractionIndex >= _sequencedInteractionInstances.Count - 1)
                 {
                     _bnHActionState = BnHActionState.WaitingToLeave;
-                    _animator.Play("Idle");
+                    OnTransitionToWaitingToLeave?.Invoke(CurrentInteraction);
                 }
             }
         }
@@ -443,7 +442,7 @@ public class BaseBnHAction : MonoBehaviour
         if (time >= _actionEndTime)
         {
             _bnHActionState = BnHActionState.Leaving;
-            _animator.Play("Leave");
+            OnTransitionToLeaving?.Invoke();
         }
     }
 

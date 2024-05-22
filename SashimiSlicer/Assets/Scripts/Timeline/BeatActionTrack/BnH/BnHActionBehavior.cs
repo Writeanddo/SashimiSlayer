@@ -13,11 +13,11 @@ public class BnHActionBehavior : PlayableBehaviour
     [Tooltip("This is a property")]
     public BnHActionSo HitConfig;
 
-    public BaseBnHAction.BnHActionInstanceConfig ActionData;
+    public BnHActionCore.BnHActionInstanceConfig ActionData;
 
     private BeatActionManager _beatActionManager;
 
-    private BaseBnHAction _blockAndHit;
+    private BnHActionCore _blockAndHit;
 
     public override void ProcessFrame(Playable playable, FrameData info, object playerData)
     {

@@ -8,7 +8,7 @@ public class BeatActionManager : MonoBehaviour
 
     public static BeatActionManager Instance { get; private set; }
 
-    private readonly List<BaseBnHAction> _simpleHits = new();
+    private readonly List<BnHActionCore> _simpleHits = new();
 
     private void Awake()
     {
@@ -24,22 +24,22 @@ public class BeatActionManager : MonoBehaviour
 
     private void Update()
     {
-        BaseBnHAction[] hits = _simpleHits.ToArray();
-        foreach (BaseBnHAction hit in hits)
+        BnHActionCore[] hits = _simpleHits.ToArray();
+        foreach (BnHActionCore hit in hits)
         {
             hit.Tick();
         }
     }
 
-    public BaseBnHAction SpawnSimpleHit(BnHActionSo hitConfig, BaseBnHAction.BnHActionInstanceConfig data)
+    public BnHActionCore SpawnSimpleHit(BnHActionSo hitConfig, BnHActionCore.BnHActionInstanceConfig data)
     {
-        BaseBnHAction blockAndHit = Instantiate(hitConfig.Prefab, _simpleHitParent);
+        BnHActionCore blockAndHit = Instantiate(hitConfig.Prefab, _simpleHitParent);
         blockAndHit.Setup(hitConfig, data);
         _simpleHits.Add(blockAndHit);
         return blockAndHit;
     }
 
-    public void CleanupBnHHit(BaseBnHAction blockAndHit)
+    public void CleanupBnHHit(BnHActionCore blockAndHit)
     {
         _simpleHits.Remove(blockAndHit);
         if (Application.isPlaying)

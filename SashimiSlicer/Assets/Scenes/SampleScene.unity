@@ -11226,6 +11226,9 @@ MonoBehaviour:
   _swordIndicator: {fileID: 1063034438}
   _healthbar: {fileID: 1885302225}
   _maxHealth: 100
+  _hurtSFX: {fileID: 8300000, guid: ca5733919bfe3aa41bf4378ada8eb453, type: 3}
+  _blockSFX: {fileID: 8300000, guid: 363e7091116d1bc4da05b2c47501545e, type: 3}
+  _sliceSFX: {fileID: 8300000, guid: 5d51cd51a15429345b434b628e8127cf, type: 3}
 --- !u!114 &1063034438
 MonoBehaviour:
   m_ObjectHideFlags: 0

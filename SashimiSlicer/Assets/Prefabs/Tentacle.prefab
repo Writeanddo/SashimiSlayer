@@ -5047,6 +5047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4584757707055110698}
   - component: {fileID: 5351909015360120121}
+  - component: {fileID: 3840632904168517832}
   m_Layer: 0
   m_Name: Tentacle
   m_TagString: Untagged
@@ -5084,10 +5085,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e087f2332fc306c4fb4ff76c09dff698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _indicator: {fileID: 1637912884012176710}
+--- !u!114 &3840632904168517832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719167886461646457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ec628233b59f54f932cd2c86c32219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bnhActionCore: {fileID: 5351909015360120121}
   _animator: {fileID: 9185724354866607105}
   _attackAnimationWindup: 0.25
-  _indicator: {fileID: 1637912884012176710}
-  _killedParticles: {fileID: 8820880546140617743}
+  _damagedParticles: {fileID: 8820880546140617743}
+  _landHitSfx: {fileID: 8300000, guid: e61087ddea380e440bcc70ff239b0f89, type: 3}
 --- !u!1001 &6417552045795214670
 PrefabInstance:
   m_ObjectHideFlags: 0
