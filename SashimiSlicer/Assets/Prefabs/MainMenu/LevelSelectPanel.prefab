@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 3096825598131998105}
   - component: {fileID: 116148503937992090}
   m_Layer: 5
-  m_Name: LevelSelectButton
+  m_Name: LevelSelectPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,8 +194,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8218c2ae73266314eb3c55d02352fc2c, type: 2}
+  m_sharedMaterial: {fileID: -1765554053092685094, guid: 8218c2ae73266314eb3c55d02352fc2c,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -474,8 +475,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Description
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8218c2ae73266314eb3c55d02352fc2c, type: 2}
+  m_sharedMaterial: {fileID: -1765554053092685094, guid: 8218c2ae73266314eb3c55d02352fc2c,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -499,7 +501,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.9
+  m_fontSize: 35.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -8,12 +8,16 @@ public class LevelLoader : MonoBehaviour
     [SerializeField]
     private SceneTransitionUI _sceneTransitionUI;
 
+    [Header("Invoking Events")]
+
     [SerializeField]
     private BeatmapEvent _beatmapStartEvent;
 
     public static LevelLoader Instance { get; private set; }
 
-    private string currentLevel = string.Empty;
+    private string _currentLevel = string.Empty;
+    private GameLevelSO _currentLevelSo;
+    private GameLevelSO _previousBeatmapLevel;
 
     private void Awake()
     {
@@ -28,24 +32,26 @@ public class LevelLoader : MonoBehaviour
 #if UNITY_EDITOR
         if (SceneManager.sceneCount > 1)
         {
-            currentLevel = SceneManager.GetSceneAt(1).name;
+            _currentLevel = SceneManager.GetSceneAt(1).name;
         }
 #endif
     }
 
     public async UniTask LoadLevel(GameLevelSO gameLevel)
     {
+        Debug.Log("Loading level");
         await _sceneTransitionUI.FadeOut();
 
         string sceneName = gameLevel.GameSceneName;
 
-        if (SceneManager.GetSceneByName(currentLevel).isLoaded)
+        if (SceneManager.GetSceneByName(_currentLevel).isLoaded)
         {
-            await SceneManager.UnloadSceneAsync(currentLevel);
+            await SceneManager.UnloadSceneAsync(_currentLevel);
         }
 
         await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        currentLevel = sceneName;
+        _currentLevel = sceneName;
+        _currentLevelSo = gameLevel;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
 
         _sceneTransitionUI.SetTitleText(gameLevel.LevelTitle);
@@ -53,8 +59,19 @@ public class LevelLoader : MonoBehaviour
         if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {
             _beatmapStartEvent.Raise(gameLevel.Beatmap);
+            _previousBeatmapLevel = gameLevel;
         }
 
         await _sceneTransitionUI.FadeIn();
+    }
+
+    public void LoadLastBeatmapLevel()
+    {
+        if (_previousBeatmapLevel == null)
+        {
+            Debug.LogWarning("No previous beatmap level to load");
+        }
+
+        LoadLevel(_previousBeatmapLevel);
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Events.Core;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,8 +11,6 @@ public class BnHActionCore : MonoBehaviour
     public enum InteractionType
     {
         IncomingAttack,
-
-        // BlockHold,
         Vulnerable
     }
 
@@ -97,14 +94,6 @@ public class BnHActionCore : MonoBehaviour
     [SerializeField]
     private BeatActionIndicator _indicator;
 
-    [Header("Events")]
-
-    [SerializeField]
-    private ProtagSwordStateEvent _onBlockByProtag;
-
-    [SerializeField]
-    private ProtagSwordStateEvent _onSliceByProtag;
-
     private ScheduledInteraction CurrentInteraction => _sequencedInteractionInstances[_currentInteractionIndex];
 
     public BnHActionSo ActionConfigSo => _actionConfigSo;
@@ -114,6 +103,8 @@ public class BnHActionCore : MonoBehaviour
     public event Action OnDamagedByProtag;
     public event Action OnKilled;
     public event Action OnLandHitOnProtag;
+
+    public event Action<BnHActionCore> OnReadyForCleanup;
     public event Action OnSpawn;
     public event Action<double, ScheduledInteraction> OnTickInInteraction;
     public event Action<double, ScheduledInteraction> OnTickWaitingForInteraction;
@@ -136,18 +127,6 @@ public class BnHActionCore : MonoBehaviour
     private bool _blocked;
 
     private double _currentTime;
-
-    private void Awake()
-    {
-        _onBlockByProtag.AddListener(OnPlayerAttemptBlock);
-        _onSliceByProtag.AddListener(OnPlayerAttemptAttack);
-    }
-
-    private void OnDestroy()
-    {
-        _onBlockByProtag.RemoveListener(OnPlayerAttemptBlock);
-        _onSliceByProtag.RemoveListener(OnPlayerAttemptAttack);
-    }
 
     private void OnDrawGizmos()
     {
@@ -192,7 +171,10 @@ public class BnHActionCore : MonoBehaviour
         _actionEndTime = data.ActionEndTime;
         _previousInteractionEndTime = _actionStartTime;
 
-        _currentTime = TimingService.Instance.CurrentBeatmapTime;
+        if (TimingService.Instance != null)
+        {
+            _currentTime = TimingService.Instance.CurrentBeatmapTime;
+        }
 
         ScheduleInteractions(data);
 
@@ -272,7 +254,11 @@ public class BnHActionCore : MonoBehaviour
         }
     }
 
-    private void OnPlayerAttemptBlock(Protaganist.ProtagSwordState protagSwordState)
+    /// <summary>
+    ///     Handle protag's attempt to block
+    /// </summary>
+    /// <param name="protagSwordState"></param>
+    public void ApplyPlayerBlock(Protaganist.ProtagSwordState protagSwordState)
     {
         if (_bnHActionState != BnHActionState.InInteraction ||
             CurrentInteraction.Interaction.InteractionType != InteractionType.IncomingAttack)
@@ -295,7 +281,11 @@ public class BnHActionCore : MonoBehaviour
         OnBlockByProtag?.Invoke();
     }
 
-    private void OnPlayerAttemptAttack(Protaganist.ProtagSwordState protagSwordState)
+    /// <summary>
+    ///     Handle protag's attempt to attack
+    /// </summary>
+    /// <param name="protagSwordState"></param>
+    public void ApplyProtagSlice(Protaganist.ProtagSwordState protagSwordState)
     {
         if (_bnHActionState != BnHActionState.InInteraction ||
             CurrentInteraction.Interaction.InteractionType != InteractionType.Vulnerable)
@@ -493,7 +483,7 @@ public class BnHActionCore : MonoBehaviour
     {
         if (time >= _actionEndTime + 2f)
         {
-            BeatActionService.Instance.CleanupBnHHit(this);
+            OnReadyForCleanup?.Invoke(this);
         }
     }
 }

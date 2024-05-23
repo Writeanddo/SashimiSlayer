@@ -75,7 +75,7 @@
                 {
                     "name": "",
                     "id": "7672e99e-3ffc-42d9-be11-2fc2773cf926",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -107,6 +107,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7a427325-233c-4d50-9742-7095554c5d87",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PoseButtonTop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b023dbd5-7153-4450-a3da-c37d1394e4fb",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -118,8 +129,30 @@
                 },
                 {
                     "name": "",
+                    "id": "54fbbef0-de2a-4714-93b9-f890ce7d0815",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PoseButtonMId",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b43bb2dc-8f77-472e-a011-bdee33c1c529",
                     "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PoseButtonBot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "59c731d5-778f-49c0-a3f8-1e749db33811",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

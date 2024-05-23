@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class TimingService : MonoBehaviour
 {
+    [Header("Listening Events")]
+
     [SerializeField]
     private BeatmapEvent _beatmapLoadedEvent;
 
@@ -16,9 +18,8 @@ public class TimingService : MonoBehaviour
     public double CurrentTime => _currentTime;
     public double CurrentBeatmapTime => _currentTime - _startTime;
 
-    private int _beatNumber;
-
     private BeatmapConfigSo _currentBeatmap;
+    private int _beatNumber;
 
     private double _currentTime;
     private double _deltaTime;

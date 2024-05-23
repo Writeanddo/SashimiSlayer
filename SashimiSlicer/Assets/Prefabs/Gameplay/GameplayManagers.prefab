@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1125934048509912513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4712970193404902764}
+  - component: {fileID: 2561343536450094065}
+  m_Layer: 0
+  m_Name: PlayerDeathHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4712970193404902764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125934048509912513}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7503210638679948415}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2561343536450094065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125934048509912513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f515208d283a6c84ab556006ebf2459f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerDeathEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
+  _levelResultLevel: {fileID: 11400000, guid: 170f5efc596d3b4409ada658dcd2a66e, type: 2}
 --- !u!1 &2509604186335571191
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +221,8 @@ MonoBehaviour:
   _director: {fileID: 4379481617919899903}
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
     type: 2}
+  _playerDeathEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
+  _levelResultLevel: {fileID: 11400000, guid: 170f5efc596d3b4409ada658dcd2a66e, type: 2}
 --- !u!1 &4247121317061799972
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,8 +234,8 @@ GameObject:
   - component: {fileID: 908414219806441327}
   - component: {fileID: 4379481617919899903}
   - component: {fileID: 3320804494410305085}
-  - component: {fileID: 7332384411871502465}
   - component: {fileID: 7973889014936138893}
+  - component: {fileID: 1783035853144230810}
   m_Layer: 0
   m_Name: BeatmapTimeline
   m_TagString: Untagged
@@ -222,7 +270,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: d68bc4e836b534a479130c17c4938b7d, type: 2}
   m_InitialState: 0
-  m_WrapMode: 1
+  m_WrapMode: 2
   m_DirectorUpdateMode: 0
   m_InitialTime: 0
   m_SceneBindings:
@@ -254,18 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418c34b43a547104e91600582a43679e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7332384411871502465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4247121317061799972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abbad2f7cb521e64a8325363d0efee31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7973889014936138893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +317,18 @@ MonoBehaviour:
   m_Events:
     m_Signals: []
     m_Events: []
+--- !u!114 &1783035853144230810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247121317061799972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2930038fd3cf453987525a2cb7c59bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5460961408318255829
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8c8f3a9a0274644baf99d8eca5c1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onBlockByProtag: {fileID: 11400000, guid: 4cfa3609e31db094690a78cc3b3e91f3, type: 2}
+  _onSliceByProtag: {fileID: 11400000, guid: 1fc9d5635b7fb36408b893568c3ada1a, type: 2}
 --- !u!1 &6849324837600310558
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,5 +407,6 @@ Transform:
   - {fileID: 4913787320634776501}
   - {fileID: 3285137201050589972}
   - {fileID: 908414219806441327}
+  - {fileID: 4712970193404902764}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

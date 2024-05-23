@@ -470,8 +470,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthbar: {fileID: 524763072824996918}
-  _healthChangeEvent: {fileID: 11400000, guid: 2f0017ef10180574eaa2905f9769556f, type: 2}
-  _maxHealthChangeEvent: {fileID: 11400000, guid: 678f281e2b6fa9440be297b37e1af7bc,
+  _healthChangeEvent: {fileID: 11400000, guid: 437b3037f01661c4d926b43c63f3ae04, type: 2}
+  _maxHealthChangeEvent: {fileID: 11400000, guid: 63656528a7d3cdb46b99ed6431fe445c,
     type: 2}
 --- !u!1 &6510008707643680084
 GameObject:

@@ -38,7 +38,7 @@ public class Protaganist : MonoBehaviour
     private ProtagSwordStateEvent _swordStateChangeEvent;
 
     [SerializeField]
-    private BoolEvent _playerDeadEvent;
+    private VoidEvent _playerDeadEvent;
 
     [Header("Listening Events")]
 
@@ -173,15 +173,21 @@ public class Protaganist : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        _health -= damage;
-        _healthChangeEvent.Raise(_health);
-        _damageTakenEvent.Raise();
         AudioSource.PlayClipAtPoint(_hurtSFX, Vector3.zero, 1f);
         ScreenShakeService.Instance.ShakeScreen(0.1f, 1f, CinemachineImpulseDefinition.ImpulseShapes.Rumble);
 
         if (_health <= 0)
         {
-            _playerDeadEvent.Raise(true);
+            return;
+        }
+
+        _health -= damage;
+        _healthChangeEvent.Raise(_health);
+        _damageTakenEvent.Raise();
+
+        if (_health <= 0)
+        {
+            _playerDeadEvent.Raise();
         }
     }
 

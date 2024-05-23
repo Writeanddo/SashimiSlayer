@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-[DisplayName("BeatMapping/Loop Sync Marker")]
-public class LoopSyncMarker : Marker, INotification, INotificationOptionProvider
+[DisplayName("BeatMapping/Level Finish Marker")]
+public class LevelFinishMarker : Marker, INotification, INotificationOptionProvider
 {
     [SerializeField]
     public bool EmitOnce;

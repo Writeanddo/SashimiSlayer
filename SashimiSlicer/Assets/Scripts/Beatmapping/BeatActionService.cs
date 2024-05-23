@@ -1,30 +1,59 @@
 using System.Collections.Generic;
+using Events.Core;
 using UnityEngine;
 
 public class BeatActionService : MonoBehaviour
 {
-    public static BeatActionService Instance { get; private set; }
+    public struct BeatInteractionResult
+    {
+        public BnHActionCore.InteractionType InteractionType;
+        public bool WasSuccessful;
+    }
 
-    private readonly List<BnHActionCore> _simpleHits = new();
+    [Header("Events")]
+
+    [SerializeField]
+    private ProtagSwordStateEvent _onBlockByProtag;
+
+    [SerializeField]
+    private ProtagSwordStateEvent _onSliceByProtag;
+
+    private readonly List<BnHActionCore> _activeBeatActions = new();
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        _onBlockByProtag.AddListener(OnBlockByProtag);
+        _onSliceByProtag.AddListener(OnSliceByProtag);
     }
 
     private void Update()
     {
-        BnHActionCore[] hits = _simpleHits.ToArray();
+        BnHActionCore[] hits = _activeBeatActions.ToArray();
         foreach (BnHActionCore hit in hits)
         {
             hit.Tick();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        _onBlockByProtag.RemoveListener(OnBlockByProtag);
+        _onSliceByProtag.RemoveListener(OnSliceByProtag);
+    }
+
+    private void OnBlockByProtag(Protaganist.ProtagSwordState swordState)
+    {
+        foreach (BnHActionCore action in _activeBeatActions)
+        {
+            action.ApplyPlayerBlock(swordState);
+        }
+    }
+
+    private void OnSliceByProtag(Protaganist.ProtagSwordState swordState)
+    {
+        foreach (BnHActionCore action in _activeBeatActions)
+        {
+            action.ApplyProtagSlice(swordState);
         }
     }
 
@@ -32,13 +61,14 @@ public class BeatActionService : MonoBehaviour
     {
         BnHActionCore blockAndHit = Instantiate(hitConfig.Prefab, transform);
         blockAndHit.Setup(hitConfig, data);
-        _simpleHits.Add(blockAndHit);
+        _activeBeatActions.Add(blockAndHit);
+        blockAndHit.OnReadyForCleanup += HandleCleanupRequested;
         return blockAndHit;
     }
 
     public void CleanupBnHHit(BnHActionCore blockAndHit)
     {
-        _simpleHits.Remove(blockAndHit);
+        _activeBeatActions.Remove(blockAndHit);
         if (Application.isPlaying)
         {
             Destroy(blockAndHit.gameObject);
@@ -47,5 +77,11 @@ public class BeatActionService : MonoBehaviour
         {
             DestroyImmediate(blockAndHit.gameObject);
         }
+    }
+
+    private void HandleCleanupRequested(BnHActionCore action)
+    {
+        action.OnReadyForCleanup -= HandleCleanupRequested;
+        CleanupBnHHit(action);
     }
 }
