@@ -15,6 +15,13 @@ public class BnHActionCore : MonoBehaviour
         Vulnerable
     }
 
+    private enum BlockState
+    {
+        Waiting,
+        Lockout,
+        Success
+    }
+
     private enum BnHActionState
     {
         WaitingForInteraction,
@@ -128,7 +135,7 @@ public class BnHActionCore : MonoBehaviour
 
     private BnHActionState _bnHActionState;
     private int _currentInteractionIndex;
-    private bool _blocked;
+    private BlockState _blockedState;
 
     private double _currentTime;
 
@@ -157,7 +164,7 @@ public class BnHActionCore : MonoBehaviour
     {
         _actionConfigSo = hitConfig;
         _data = data;
-        _blocked = false;
+        _blockedState = BlockState.Waiting;
 
         transform.position = data.Position;
 
@@ -264,8 +271,8 @@ public class BnHActionCore : MonoBehaviour
     /// <param name="protagSwordState"></param>
     public void ApplyPlayerBlock(Protaganist.ProtagSwordState protagSwordState)
     {
-        if (_bnHActionState != BnHActionState.InInteraction ||
-            CurrentInteraction.Interaction.InteractionType != InteractionType.IncomingAttack)
+        if (CurrentInteraction.Interaction.InteractionType != InteractionType.IncomingAttack ||
+            _blockedState != BlockState.Waiting)
         {
             return;
         }
@@ -280,18 +287,31 @@ public class BnHActionCore : MonoBehaviour
         ScheduledInteraction attackInteraction = _sequencedInteractionInstances[_currentInteractionIndex];
         double offset = time - (attackInteraction.TimeWhenInteractionStart + _actionConfigSo.BlockWindowHalfDuration);
 
-        _blocked = true;
-        Protaganist.Instance.SuccessfulBlock();
-
-        _beatInteractionResultEvent.Raise(new SharedTypes.BeatInteractionResult
+        if (_bnHActionState == BnHActionState.WaitingForInteraction)
         {
-            Action = _actionConfigSo,
-            InteractionType = InteractionType.IncomingAttack,
-            Result = SharedTypes.BeatInteractionResultType.Successful,
-            TimingOffset = offset
-        });
+            double prematureTime = attackInteraction.TimeWhenInteractionStart - time;
 
-        OnBlockByProtag?.Invoke();
+            // See if premature block lockout
+            if (prematureTime < _actionConfigSo.BlockWindowFailDuration)
+            {
+                _blockedState = BlockState.Lockout;
+            }
+        }
+        else if (_bnHActionState == BnHActionState.InInteraction)
+        {
+            _blockedState = BlockState.Success;
+            Protaganist.Instance.SuccessfulBlock();
+
+            _beatInteractionResultEvent.Raise(new SharedTypes.BeatInteractionResult
+            {
+                Action = _actionConfigSo,
+                InteractionType = InteractionType.IncomingAttack,
+                Result = SharedTypes.BeatInteractionResultType.Successful,
+                TimingOffset = offset
+            });
+
+            OnBlockByProtag?.Invoke();
+        }
     }
 
     /// <summary>
@@ -416,7 +436,7 @@ public class BnHActionCore : MonoBehaviour
         double attackMiddleTime = CurrentInteraction.TimeWhenInteractionStart + _actionConfigSo.BlockWindowHalfDuration;
         if (time >= blockWindowEndTime)
         {
-            if (!_blocked)
+            if (_blockedState != BlockState.Success)
             {
                 OnLandHitOnProtag?.Invoke();
                 Protaganist.Instance.TakeDamage(_actionConfigSo.DamageDealtToPlayer);
@@ -480,7 +500,7 @@ public class BnHActionCore : MonoBehaviour
         else
         {
             _bnHActionState = BnHActionState.WaitingForInteraction;
-            _blocked = false;
+            _blockedState = BlockState.Waiting;
             _previousInteractionEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
 
             // Prevent overlaps
