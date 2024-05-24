@@ -1,7 +1,6 @@
 using Cinemachine;
 using Events;
 using Events.Core;
-using Input;
 using UnityEngine;
 
 public class Protaganist : MonoBehaviour
@@ -81,7 +80,7 @@ public class Protaganist : MonoBehaviour
             Destroy(gameObject);
         }
 
-        _inputProvider = InputService.Instance.InputProvider;
+        _inputProvider = InputService.Instance;
 
         _health = _maxHealth;
         _healthChangeEvent.Raise(_health);

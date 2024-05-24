@@ -15,7 +15,7 @@ public class BossService : MonoBehaviour
 
     public static BossService Instance { get; private set; }
 
-    private float _health;
+    private double _levelLength;
 
     private void Awake()
     {
@@ -31,6 +31,12 @@ public class BossService : MonoBehaviour
         _startBeatmapEvent.AddListener(HandleStartBeatmap);
     }
 
+    private void Update()
+    {
+        var t = (float)TimingService.Instance.CurrentBeatmapTime;
+        _bossHealthEvent.Raise((float)_levelLength - t);
+    }
+
     private void OnDestroy()
     {
         _startBeatmapEvent.RemoveListener(HandleStartBeatmap);
@@ -38,14 +44,7 @@ public class BossService : MonoBehaviour
 
     private void HandleStartBeatmap(BeatmapConfigSo beatmapConfigSo)
     {
-        _health = beatmapConfigSo.BossHealth;
-        _bossMaxHealthEvent.Raise(beatmapConfigSo.BossHealth);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        float newHealth = Mathf.Max(0, _health - damage);
-        _health = newHealth;
-        _bossHealthEvent.Raise(newHealth);
+        _levelLength = beatmapConfigSo.BeatmapTimeline.duration - beatmapConfigSo.StartTime;
+        _bossMaxHealthEvent.Raise((float)_levelLength);
     }
 }

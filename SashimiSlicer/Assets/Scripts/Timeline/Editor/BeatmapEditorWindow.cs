@@ -11,7 +11,7 @@ public class BeatmapEditorWindow : EditorWindow
 
     public static BeatmapConfigSo CurrentEditingBeatmap { get; private set; }
 
-    private string _lastEditedScenePath;
+    private string _lastEditedScenePath = string.Empty;
     private UtilsPrefs _prefs;
     private BeatmapConfigSo _beatmapConfig;
 
@@ -87,7 +87,7 @@ public class BeatmapEditorWindow : EditorWindow
 
     private void ModeChanged(PlayModeStateChange param)
     {
-        if (param == PlayModeStateChange.EnteredEditMode)
+        if (param == PlayModeStateChange.EnteredEditMode && _lastEditedScenePath != string.Empty)
         {
             EditorSceneManager.OpenScene(_lastEditedScenePath, OpenSceneMode.Single);
         }

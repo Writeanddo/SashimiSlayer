@@ -39,7 +39,6 @@ public class LevelLoader : MonoBehaviour
 
     public async UniTask LoadLevel(GameLevelSO gameLevel)
     {
-        Debug.Log("Loading level");
         await _sceneTransitionUI.FadeOut();
 
         string sceneName = gameLevel.GameSceneName;

@@ -17,9 +17,6 @@ public class BnHActionSo : ScriptableObject
     [field: Header("Stats")]
 
     [field: SerializeField]
-    public float DamageTakenToBoss { get; private set; }
-
-    [field: SerializeField]
     public float DamageDealtToPlayer { get; private set; }
 
     [field: SerializeField]

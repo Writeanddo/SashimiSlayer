@@ -28,6 +28,7 @@ public class SwordIndicator : MonoBehaviour
     private void Awake()
     {
         _onSwordStateChange.AddListener(OnSwordStateChange);
+        SetSheatheState(Gameplay.SheathState.Sheathed);
     }
 
     private void Update()
@@ -55,11 +56,11 @@ public class SwordIndicator : MonoBehaviour
 
         if (state == Gameplay.SheathState.Sheathed)
         {
-            _lineRenderer.enabled = false;
+            _lineRenderer.widthMultiplier = 0.01f;
         }
         else
         {
-            _lineRenderer.enabled = true;
+            _lineRenderer.widthMultiplier = 0.04f;
         }
     }
 

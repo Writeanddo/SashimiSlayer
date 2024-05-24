@@ -305,7 +305,6 @@ public class BnHActionCore : MonoBehaviour
         if (isAttackOnTarget)
         {
             OnDamagedByProtag?.Invoke();
-            BossService.Instance.TakeDamage(_actionConfigSo.DamageTakenToBoss);
 
             if (CurrentInteraction.Interaction.DieOnHit)
             {

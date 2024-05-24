@@ -31,9 +31,6 @@ public class BeatmapConfigSo : ScriptableObject
     [field: Header("Gameplay Data")]
 
     [field: SerializeField]
-    public float BossHealth { get; private set; }
-
-    [field: SerializeField]
     public int PlayerMaxHealth { get; private set; }
 
     /// <summary>
