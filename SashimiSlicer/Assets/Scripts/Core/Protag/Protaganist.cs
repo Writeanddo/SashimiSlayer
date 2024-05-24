@@ -7,8 +7,9 @@ public class Protaganist : MonoBehaviour
 {
     public struct ProtagSwordState
     {
-        public Gameplay.BlockPoseStates BlockPose;
-        public Gameplay.SheathState SheathState;
+        public SharedTypes.BlockPoseStates BlockPose;
+        public SharedTypes.SheathState SheathState;
+        public SharedTypes.BlockPoseStates RecentHitBlockPose;
         public Vector3 SwordPosition;
         public float SwordAngle;
     }
@@ -44,6 +45,9 @@ public class Protaganist : MonoBehaviour
     [SerializeField]
     private BeatmapEvent _beatmapLoadedEvent;
 
+    [SerializeField]
+    private VoidEvent _onDrawDebugGuiEvent;
+
     [Header("SFX")]
 
     [SerializeField]
@@ -56,15 +60,17 @@ public class Protaganist : MonoBehaviour
     private AudioClip _sliceSFX;
 
     public static Protaganist Instance { get; private set; }
-    public Gameplay.SheathState ProtagSheathState => _protagSheathState;
+    public SharedTypes.SheathState ProtagSheathState => _protagSheathState;
     public Vector3 SpritePosition { get; set; }
+
+    public Vector3 SwordPosition => _swordPosition;
 
     private BaseUserInputProvider _inputProvider;
 
     private float _health;
     private float _maxHealth;
 
-    private Gameplay.SheathState _protagSheathState;
+    private SharedTypes.SheathState _protagSheathState;
     private float _swordAngle;
 
     private Vector3 _swordPosition;
@@ -88,6 +94,7 @@ public class Protaganist : MonoBehaviour
         _inputProvider.OnSheathStateChanged += OnSheathStateChanged;
         _inputProvider.OnBlockPoseChanged += OnPoseStateChanged;
         _beatmapLoadedEvent.AddListener(HandleBeatmapLoaded);
+        _onDrawDebugGuiEvent.AddListener(HandleDrawDebugGUI);
     }
 
     private void Update()
@@ -107,9 +114,10 @@ public class Protaganist : MonoBehaviour
         _inputProvider.OnSheathStateChanged -= OnSheathStateChanged;
         _inputProvider.OnBlockPoseChanged -= OnPoseStateChanged;
         _beatmapLoadedEvent.RemoveListener(HandleBeatmapLoaded);
+        _onDrawDebugGuiEvent.RemoveListener(HandleDrawDebugGUI);
     }
 
-    private void OnGUI()
+    private void HandleDrawDebugGUI()
     {
         GUILayout.Label($"Sword angle: {_swordAngle}");
         GUILayout.Label($"Sword position: {_swordPosition}");
@@ -125,7 +133,7 @@ public class Protaganist : MonoBehaviour
         _healthChangeEvent.Raise(_health);
     }
 
-    private void OnPoseStateChanged(Gameplay.BlockPoseStates blockPoseStates)
+    private void OnPoseStateChanged(SharedTypes.BlockPoseStates blockPoseStates)
     {
         var pose = new ProtagSwordState
         {
@@ -137,14 +145,14 @@ public class Protaganist : MonoBehaviour
         _tryBlockEvent.Raise(pose);
     }
 
-    private void OnSheathStateChanged(Gameplay.SheathState newState)
+    private void OnSheathStateChanged(SharedTypes.SheathState newState)
     {
-        Gameplay.SheathState oldState = _protagSheathState;
+        SharedTypes.SheathState oldState = _protagSheathState;
         _protagSheathState = newState;
 
         // Sword is sheathed from unsheathed means a slice
-        if (newState == Gameplay.SheathState.Sheathed
-            && oldState == Gameplay.SheathState.Unsheathed)
+        if (newState == SharedTypes.SheathState.Sheathed
+            && oldState == SharedTypes.SheathState.Unsheathed)
         {
             _trySliceEvent.Raise(new ProtagSwordState
             {

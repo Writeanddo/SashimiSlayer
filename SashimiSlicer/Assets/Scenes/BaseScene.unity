@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ImpulseDefinition:
     m_ImpulseChannel: 1
-    m_ImpulseShape: 4
+    m_ImpulseShape: 2
     m_CustomImpulseShape:
       serializedVersion: 2
       m_Curve: []
@@ -429,6 +429,7 @@ MonoBehaviour:
     type: 2}
   _loadBeatmapEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251, type: 2}
   _playerDeathEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
+  _onDrawGuiEvent: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
 --- !u!4 &432079949
 Transform:
   m_ObjectHideFlags: 0
@@ -1169,6 +1170,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1549907073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1549907075}
+  - component: {fileID: 1549907074}
+  m_Layer: 0
+  m_Name: DebugService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1549907074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549907073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66046b3f70fcc0a4b95882841f30783a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showGuiLabel: 1
+  _onDrawGuiEvent: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
+--- !u!4 &1549907075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549907073}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1679243679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,6 +1416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gamepadInputProvider: {fileID: 1969117887}
   _swordInputProvider: {fileID: 1969117890}
+  _useHardwareController: 0
+  _onDrawDebugGUI: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
 --- !u!114 &1969117889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1384,6 +1433,7 @@ MonoBehaviour:
   _baudRate: 9600
   _portName: COM9
   _logPackets: 0
+  _onDrawDebugGUI: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
 --- !u!114 &1969117890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1670,6 +1720,8 @@ MonoBehaviour:
   _playerDeadEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
     type: 2}
+  _onDrawDebugGuiEvent: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d,
+    type: 2}
   _hurtSFX: {fileID: 8300000, guid: ca5733919bfe3aa41bf4378ada8eb453, type: 3}
   _blockSFX: {fileID: 8300000, guid: 363e7091116d1bc4da05b2c47501545e, type: 3}
   _sliceSFX: {fileID: 8300000, guid: 5d51cd51a15429345b434b628e8127cf, type: 3}
@@ -1686,6 +1738,7 @@ SceneRoots:
   - {fileID: 238254663579740162}
   - {fileID: 1811963881377612007}
   - {fileID: 432079949}
+  - {fileID: 1549907075}
   - {fileID: 2105647812}
   - {fileID: 938862751}
   - {fileID: 939124853}

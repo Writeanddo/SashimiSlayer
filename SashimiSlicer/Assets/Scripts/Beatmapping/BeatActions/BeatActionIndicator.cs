@@ -20,7 +20,7 @@ public class BeatActionIndicator : MonoBehaviour
     [SerializeField]
     private float _shrinkScale;
 
-    public void TickWaitingForAttack(float normalizedTime, Gameplay.BlockPoseStates blockPose)
+    public void TickWaitingForAttack(float normalizedTime, SharedTypes.BlockPoseStates blockPose)
     {
         _attackShrinkRing.transform.localScale = Vector3.one * Mathf.Lerp(_shrinkScale, 1, normalizedTime);
         SetBlockPoseIndicator(blockPose);
@@ -58,7 +58,7 @@ public class BeatActionIndicator : MonoBehaviour
         _vulnerableShrinkRing.enabled = val;
     }
 
-    private void SetBlockPoseIndicator(Gameplay.BlockPoseStates blockBlockPose)
+    private void SetBlockPoseIndicator(SharedTypes.BlockPoseStates blockBlockPose)
     {
         var check = 1;
         for (var i = 0; i < _blockPoseSprites.Length; i++)

@@ -9,11 +9,11 @@ public class SwordInputProvider : BaseUserInputProvider
     [SerializeField]
     private Transform _quatDebugger;
 
-    public override event Action<Gameplay.BlockPoseStates> OnBlockPoseChanged;
-    public override event Action<Gameplay.SheathState> OnSheathStateChanged;
+    public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
+    public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
 
-    private Gameplay.SheathState _sheathState;
-    private Gameplay.BlockPoseStates _currentBlockPose;
+    private SharedTypes.SheathState _sheathState;
+    private SharedTypes.BlockPoseStates _currentBlockPose;
     private float _swordAngle;
 
     private void Awake()
@@ -28,9 +28,9 @@ public class SwordInputProvider : BaseUserInputProvider
 
     private void HandleSerialRead(SerialReader.SerialReadResult data)
     {
-        Gameplay.SheathState newSheatheState = data.LeftSheatheSwitch && data.RightSheatheSwitch
-            ? Gameplay.SheathState.Unsheathed
-            : Gameplay.SheathState.Sheathed;
+        SharedTypes.SheathState newSheatheState = data.LeftSheatheSwitch && data.RightSheatheSwitch
+            ? SharedTypes.SheathState.Unsheathed
+            : SharedTypes.SheathState.Sheathed;
 
         if (newSheatheState != _sheathState)
         {
@@ -38,21 +38,21 @@ public class SwordInputProvider : BaseUserInputProvider
             OnSheathStateChanged?.Invoke(_sheathState);
         }
 
-        Gameplay.BlockPoseStates newPose = 0;
+        SharedTypes.BlockPoseStates newPose = 0;
 
         if (data.TopButton)
         {
-            newPose |= Gameplay.BlockPoseStates.TopPose;
+            newPose |= SharedTypes.BlockPoseStates.TopPose;
         }
 
         if (data.MiddleButton)
         {
-            newPose |= Gameplay.BlockPoseStates.MidPose;
+            newPose |= SharedTypes.BlockPoseStates.MidPose;
         }
 
         if (data.BottomButton)
         {
-            newPose |= Gameplay.BlockPoseStates.BotPose;
+            newPose |= SharedTypes.BlockPoseStates.BotPose;
         }
 
         if (newPose != _currentBlockPose)
@@ -62,8 +62,7 @@ public class SwordInputProvider : BaseUserInputProvider
         }
 
         Vector3 up = data.SwordOrientation * Vector3.forward;
-        Vector3 proj = Vector3.ProjectOnPlane(up, Vector3.forward);
-        float angle = Mathf.Atan2(proj.y, proj.x) * Mathf.Rad2Deg;
+        float angle = Vector3.Angle(up, Vector3.up) - 90f;
 
         _swordAngle = angle;
         _quatDebugger.transform.rotation = data.SwordOrientation;
@@ -74,12 +73,12 @@ public class SwordInputProvider : BaseUserInputProvider
         return _swordAngle;
     }
 
-    public override Gameplay.SheathState GetSheathState()
+    public override SharedTypes.SheathState GetSheathState()
     {
         return _sheathState;
     }
 
-    public override Gameplay.BlockPoseStates GetBlockPose()
+    public override SharedTypes.BlockPoseStates GetBlockPose()
     {
         return _currentBlockPose;
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Events;
 using UnityEngine;
 
 public class SerialReader : MonoBehaviour
@@ -33,6 +34,11 @@ public class SerialReader : MonoBehaviour
     [SerializeField]
     private bool _logPackets;
 
+    [SerializeField]
+    private VoidEvent _onDrawDebugGUI;
+
+    public bool AbleToConnect { get; private set; }
+
     public event Action<SerialReadResult> OnSerialRead;
 
     private readonly Queue<float> _intervalQueue = new();
@@ -47,9 +53,21 @@ public class SerialReader : MonoBehaviour
 
     private void Awake()
     {
-        InitializeSerialPort();
-        _serialPort.WriteTimeout = 1000;
-        ReadLoop(this.GetCancellationTokenOnDestroy()).Forget();
+        try
+        {
+            InitializeSerialPort();
+            AbleToConnect = true;
+
+            _serialPort.WriteTimeout = 1000;
+            ReadLoop(this.GetCancellationTokenOnDestroy()).Forget();
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+            AbleToConnect = false;
+        }
+
+        _onDrawDebugGUI.AddListener(DrawDebugGUI);
     }
 
     private void OnDestroy()
@@ -62,11 +80,12 @@ public class SerialReader : MonoBehaviour
         {
             Debug.Log(e);
         }
+
+        _onDrawDebugGUI.RemoveListener(DrawDebugGUI);
     }
 
-    private void OnGUI()
+    private void DrawDebugGUI()
     {
-        GUILayout.Space(150);
         GUILayout.Label("Serial Packet Rate: " + _currentPacketRate);
     }
 

@@ -2,119 +2,116 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Input
+public class GamepadInputProvider : BaseUserInputProvider, GameplayControls.IGameplayActions
 {
-    public class GamepadInputProvider : BaseUserInputProvider, GameplayControls.IGameplayActions
+    public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
+    public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
+
+    private GameplayControls _gameplayControls;
+
+    private Vector2 _mousePos;
+    private SharedTypes.BlockPoseStates _blockPoseStates;
+    private SharedTypes.SheathState _sheathState;
+    private Vector2 _swordAngle = Vector2.zero;
+
+    private void OnEnable()
     {
-        public override event Action<Gameplay.BlockPoseStates> OnBlockPoseChanged;
-        public override event Action<Gameplay.SheathState> OnSheathStateChanged;
+        _gameplayControls = new GameplayControls();
+        _gameplayControls.Enable();
+        _gameplayControls.Gameplay.SetCallbacks(this);
+        _blockPoseStates = 0;
+    }
 
-        private GameplayControls _gameplayControls;
+    private void OnDisable()
+    {
+        _gameplayControls.Disable();
+    }
 
-        private Vector2 _mousePos;
-        private Gameplay.BlockPoseStates _blockPoseStates;
-        private Gameplay.SheathState _sheathState;
-        private Vector2 _swordAngle = Vector2.zero;
-
-        private void OnEnable()
+    public void OnSwordAngle(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
-            _gameplayControls = new GameplayControls();
-            _gameplayControls.Enable();
-            _gameplayControls.Gameplay.SetCallbacks(this);
-            _blockPoseStates = 0;
+            _swordAngle = context.ReadValue<Vector2>().normalized;
+        }
+    }
+
+    public void OnUnsheathe(InputAction.CallbackContext context)
+    {
+        bool isPressed = context.ReadValueAsButton();
+
+        SharedTypes.SheathState newState = isPressed
+            ? SharedTypes.SheathState.Unsheathed
+            : SharedTypes.SheathState.Sheathed;
+
+        if (_sheathState != newState)
+        {
+            _sheathState = newState;
+            OnSheathStateChanged?.Invoke(_sheathState);
+        }
+    }
+
+    public void OnPoseButtonTop(InputAction.CallbackContext context)
+    {
+        bool isPressed = context.ReadValueAsButton();
+        ChangePoseFlag(SharedTypes.BlockPoseStates.TopPose, isPressed);
+    }
+
+    public void OnPoseButtonMId(InputAction.CallbackContext context)
+    {
+        bool isPressed = context.ReadValueAsButton();
+        ChangePoseFlag(SharedTypes.BlockPoseStates.MidPose, isPressed);
+    }
+
+    public void OnPoseButtonBot(InputAction.CallbackContext context)
+    {
+        bool isPressed = context.ReadValueAsButton();
+        ChangePoseFlag(SharedTypes.BlockPoseStates.BotPose, isPressed);
+    }
+
+    public void OnMousePos(InputAction.CallbackContext context)
+    {
+        var newMousePos = context.ReadValue<Vector2>();
+        if (newMousePos != _mousePos && Protaganist.Instance != null && Camera.main != null)
+        {
+            Vector2 screenCenter = Camera.main.WorldToScreenPoint(Protaganist.Instance.SwordPosition);
+            Vector2 mouseDelta = newMousePos - screenCenter;
+            _swordAngle = mouseDelta.normalized;
         }
 
-        private void OnDisable()
+        _mousePos = newMousePos;
+    }
+
+    private void ChangePoseFlag(SharedTypes.BlockPoseStates flag, bool flagState)
+    {
+        SharedTypes.BlockPoseStates newBlockPoseStates = _blockPoseStates;
+        if (flagState)
         {
-            _gameplayControls.Disable();
+            newBlockPoseStates |= flag;
+        }
+        else
+        {
+            newBlockPoseStates &= ~flag;
         }
 
-        public void OnSwordAngle(InputAction.CallbackContext context)
+        if (_blockPoseStates != newBlockPoseStates)
         {
-            if (context.performed)
-            {
-                _swordAngle = context.ReadValue<Vector2>().normalized;
-            }
+            _blockPoseStates = newBlockPoseStates;
+            OnBlockPoseChanged?.Invoke(_blockPoseStates);
         }
+    }
 
-        public void OnUnsheathe(InputAction.CallbackContext context)
-        {
-            bool isPressed = context.ReadValueAsButton();
+    public override float GetSwordAngle()
+    {
+        return Mathf.Atan2(_swordAngle.y, _swordAngle.x) * Mathf.Rad2Deg;
+    }
 
-            Gameplay.SheathState newState = isPressed
-                ? Gameplay.SheathState.Unsheathed
-                : Gameplay.SheathState.Sheathed;
+    public override SharedTypes.SheathState GetSheathState()
+    {
+        return _sheathState;
+    }
 
-            if (_sheathState != newState)
-            {
-                _sheathState = newState;
-                OnSheathStateChanged?.Invoke(_sheathState);
-            }
-        }
-
-        public void OnPoseButtonTop(InputAction.CallbackContext context)
-        {
-            bool isPressed = context.ReadValueAsButton();
-            ChangePoseFlag(Gameplay.BlockPoseStates.TopPose, isPressed);
-        }
-
-        public void OnPoseButtonMId(InputAction.CallbackContext context)
-        {
-            bool isPressed = context.ReadValueAsButton();
-            ChangePoseFlag(Gameplay.BlockPoseStates.MidPose, isPressed);
-        }
-
-        public void OnPoseButtonBot(InputAction.CallbackContext context)
-        {
-            bool isPressed = context.ReadValueAsButton();
-            ChangePoseFlag(Gameplay.BlockPoseStates.BotPose, isPressed);
-        }
-
-        public void OnMousePos(InputAction.CallbackContext context)
-        {
-            var newMousePos = context.ReadValue<Vector2>();
-            if (newMousePos != _mousePos)
-            {
-                var screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
-                Vector2 mouseDelta = newMousePos - screenCenter;
-                _swordAngle = mouseDelta.normalized;
-            }
-
-            _mousePos = newMousePos;
-        }
-
-        private void ChangePoseFlag(Gameplay.BlockPoseStates flag, bool flagState)
-        {
-            Gameplay.BlockPoseStates newBlockPoseStates = _blockPoseStates;
-            if (flagState)
-            {
-                newBlockPoseStates |= flag;
-            }
-            else
-            {
-                newBlockPoseStates &= ~flag;
-            }
-
-            if (_blockPoseStates != newBlockPoseStates)
-            {
-                _blockPoseStates = newBlockPoseStates;
-                OnBlockPoseChanged?.Invoke(_blockPoseStates);
-            }
-        }
-
-        public override float GetSwordAngle()
-        {
-            return Mathf.Atan2(_swordAngle.y, _swordAngle.x) * Mathf.Rad2Deg;
-        }
-
-        public override Gameplay.SheathState GetSheathState()
-        {
-            return _sheathState;
-        }
-
-        public override Gameplay.BlockPoseStates GetBlockPose()
-        {
-            return _blockPoseStates;
-        }
+    public override SharedTypes.BlockPoseStates GetBlockPose()
+    {
+        return _blockPoseStates;
     }
 }

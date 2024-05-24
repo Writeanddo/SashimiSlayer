@@ -44,7 +44,7 @@ public class TimingService : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 120;
 
         _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
     }

@@ -14,6 +14,15 @@ public class BnHActionSo : ScriptableObject
     [field: SerializeField]
     public double VulnerableWindowHalfDuration { get; private set; }
 
+    [field: SerializeField]
+    [Tooltip("The time before the block window starts where htting a block will count as a miss (prevent spamming)")]
+    public double BlockWindowFailDuration { get; private set; }
+
+    [field: SerializeField]
+    [Tooltip(
+        "The time before the vulnerable window starts where htting a slice will count as a miss (prevent spamming)")]
+    public double VulnerableWindowFailDuration { get; private set; }
+
     [field: Header("Stats")]
 
     [field: SerializeField]

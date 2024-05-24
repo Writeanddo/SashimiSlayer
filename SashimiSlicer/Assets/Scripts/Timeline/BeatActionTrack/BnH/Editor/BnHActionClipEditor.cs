@@ -84,7 +84,7 @@ public class BnHActionClipEditor : ClipEditor
         ClipBackgroundRegion region,
         float normalizedPos)
     {
-        int posePositionCount = Enum.GetValues(typeof(Gameplay.BlockPoseStates)).Length;
+        int posePositionCount = Enum.GetValues(typeof(SharedTypes.BlockPoseStates)).Length;
 
         // Draw a vertical line at the time of the attack
         Rect linePos = region.position;

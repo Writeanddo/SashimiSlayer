@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class BeatActionService : MonoBehaviour
 {
-    public struct BeatInteractionResult
-    {
-        public BnHActionCore.InteractionType InteractionType;
-        public bool WasSuccessful;
-    }
-
     [Header("Events")]
 
     [SerializeField]

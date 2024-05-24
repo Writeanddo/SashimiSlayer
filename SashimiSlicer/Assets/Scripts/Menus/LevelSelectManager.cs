@@ -46,11 +46,11 @@ public class LevelSelectManager : MonoBehaviour
     private void OnProtagTryBlock(Protaganist.ProtagSwordState swordState)
     {
         int newLevelIndex = _hoveredLevelIndex;
-        if (swordState.BlockPose == Gameplay.BlockPoseStates.TopPose)
+        if (swordState.BlockPose == SharedTypes.BlockPoseStates.TopPose)
         {
             newLevelIndex = Mathf.Clamp(_hoveredLevelIndex - 1, 0, _levelSelectButtons.Count - 1);
         }
-        else if (swordState.BlockPose == Gameplay.BlockPoseStates.BotPose)
+        else if (swordState.BlockPose == SharedTypes.BlockPoseStates.BotPose)
         {
             newLevelIndex = Mathf.Clamp(_hoveredLevelIndex + 1, 0, _levelSelectButtons.Count - 1);
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Events.Core;
 using UnityEditor;
 using UnityEngine;
 
@@ -81,7 +82,7 @@ public class BnHActionCore : MonoBehaviour
 
         public bool DieOnBlocked;
 
-        public Gameplay.BlockPoseStates BlockPose;
+        public SharedTypes.BlockPoseStates BlockPose;
     }
 
     public struct ScheduledInteraction
@@ -93,6 +94,9 @@ public class BnHActionCore : MonoBehaviour
 
     [SerializeField]
     private BeatActionIndicator _indicator;
+
+    [SerializeField]
+    private BeatInteractionResultEvent _beatInteractionResultEvent;
 
     private ScheduledInteraction CurrentInteraction => _sequencedInteractionInstances[_currentInteractionIndex];
 
@@ -266,18 +270,27 @@ public class BnHActionCore : MonoBehaviour
             return;
         }
 
-        if (protagSwordState.BlockPose != CurrentInteraction.Interaction.BlockPose)
+        if ((protagSwordState.BlockPose | CurrentInteraction.Interaction.BlockPose) !=
+            protagSwordState.BlockPose)
         {
             return;
         }
 
         double time = TimingService.Instance.CurrentBeatmapTime;
         ScheduledInteraction attackInteraction = _sequencedInteractionInstances[_currentInteractionIndex];
-        Debug.Log(
-            $"Block offset: {time - (attackInteraction.TimeWhenInteractionStart + _actionConfigSo.BlockWindowHalfDuration)}");
+        double offset = time - (attackInteraction.TimeWhenInteractionStart + _actionConfigSo.BlockWindowHalfDuration);
 
         _blocked = true;
         Protaganist.Instance.SuccessfulBlock();
+
+        _beatInteractionResultEvent.Raise(new SharedTypes.BeatInteractionResult
+        {
+            Action = _actionConfigSo,
+            InteractionType = InteractionType.IncomingAttack,
+            Result = SharedTypes.BeatInteractionResultType.Successful,
+            TimingOffset = offset
+        });
+
         OnBlockByProtag?.Invoke();
     }
 
@@ -300,7 +313,7 @@ public class BnHActionCore : MonoBehaviour
         bool isAttackOnTarget = dist < _actionConfigSo.HitboxRadius;
 
         double time = TimingService.Instance.CurrentBeatmapTime;
-        Debug.Log($"Attack offset: {time - (vulnerableStartTime + _actionConfigSo.VulnerableWindowHalfDuration)}");
+        double offset = time - (vulnerableStartTime + _actionConfigSo.VulnerableWindowHalfDuration);
 
         if (isAttackOnTarget)
         {
@@ -310,6 +323,14 @@ public class BnHActionCore : MonoBehaviour
             {
                 Die();
             }
+
+            _beatInteractionResultEvent.Raise(new SharedTypes.BeatInteractionResult
+            {
+                Action = _actionConfigSo,
+                InteractionType = InteractionType.Vulnerable,
+                Result = SharedTypes.BeatInteractionResultType.Successful,
+                TimingOffset = offset
+            });
 
             Protaganist.Instance.SuccessfulSlice();
         }
@@ -403,6 +424,13 @@ public class BnHActionCore : MonoBehaviour
                 {
                     Die();
                 }
+
+                _beatInteractionResultEvent.Raise(new SharedTypes.BeatInteractionResult
+                {
+                    Action = _actionConfigSo,
+                    InteractionType = InteractionType.IncomingAttack,
+                    Result = SharedTypes.BeatInteractionResultType.Failure
+                });
             }
             else
             {
@@ -425,8 +453,15 @@ public class BnHActionCore : MonoBehaviour
         double vulnWindowEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
         double vulnMiddleTime =
             CurrentInteraction.TimeWhenInteractionStart + _actionConfigSo.VulnerableWindowHalfDuration;
+
         if (time >= vulnWindowEndTime)
         {
+            _beatInteractionResultEvent.Raise(new SharedTypes.BeatInteractionResult
+            {
+                Action = _actionConfigSo,
+                InteractionType = InteractionType.Vulnerable,
+                Result = SharedTypes.BeatInteractionResultType.Failure
+            });
             TransitionToNextInteraction(time);
         }
 

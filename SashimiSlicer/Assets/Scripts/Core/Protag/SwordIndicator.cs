@@ -28,7 +28,7 @@ public class SwordIndicator : MonoBehaviour
     private void Awake()
     {
         _onSwordStateChange.AddListener(OnSwordStateChange);
-        SetSheatheState(Gameplay.SheathState.Sheathed);
+        SetSheatheState(SharedTypes.SheathState.Sheathed);
     }
 
     private void Update()
@@ -49,12 +49,12 @@ public class SwordIndicator : MonoBehaviour
         SetPosition(swordState.SwordPosition);
     }
 
-    private void SetSheatheState(Gameplay.SheathState state)
+    private void SetSheatheState(SharedTypes.SheathState state)
     {
         _lineRenderer.material =
-            state == Gameplay.SheathState.Sheathed ? _idleMaterial : _unsheathedMaterial;
+            state == SharedTypes.SheathState.Sheathed ? _idleMaterial : _unsheathedMaterial;
 
-        if (state == Gameplay.SheathState.Sheathed)
+        if (state == SharedTypes.SheathState.Sheathed)
         {
             _lineRenderer.widthMultiplier = 0.01f;
         }

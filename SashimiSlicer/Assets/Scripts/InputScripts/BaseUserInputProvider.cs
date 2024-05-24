@@ -3,9 +3,9 @@ using UnityEngine;
 
 public abstract class BaseUserInputProvider : MonoBehaviour
 {
-    public abstract event Action<Gameplay.BlockPoseStates> OnBlockPoseChanged;
+    public abstract event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
 
-    public abstract event Action<Gameplay.SheathState> OnSheathStateChanged;
+    public abstract event Action<SharedTypes.SheathState> OnSheathStateChanged;
 
     /// <summary>
     ///     Get the sword angle in degrees
@@ -13,7 +13,7 @@ public abstract class BaseUserInputProvider : MonoBehaviour
     /// <returns></returns>
     public abstract float GetSwordAngle();
 
-    public abstract Gameplay.SheathState GetSheathState();
+    public abstract SharedTypes.SheathState GetSheathState();
 
-    public abstract Gameplay.BlockPoseStates GetBlockPose();
+    public abstract SharedTypes.BlockPoseStates GetBlockPose();
 }
