@@ -12,9 +12,9 @@ public class SwordInputProvider : BaseUserInputProvider
     public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
     public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
 
-    private SharedTypes.SheathState _sheathState;
+    private SharedTypes.SheathState _sheathState = SharedTypes.SheathState.Sheathed;
     private SharedTypes.BlockPoseStates _currentBlockPose;
-    private float _swordAngle;
+    private float _swordAngle = 90f;
 
     private void Awake()
     {
@@ -62,7 +62,7 @@ public class SwordInputProvider : BaseUserInputProvider
         }
 
         Vector3 up = data.SwordOrientation * Vector3.forward;
-        float angle = Vector3.Angle(up, Vector3.up) - 90f;
+        float angle = -Vector3.Angle(up, Vector3.up) + 90f;
 
         _swordAngle = angle;
         _quatDebugger.transform.rotation = data.SwordOrientation;

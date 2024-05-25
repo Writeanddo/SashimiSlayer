@@ -70,7 +70,7 @@ public class Protaganist : MonoBehaviour
     private float _health;
     private float _maxHealth;
 
-    private SharedTypes.SheathState _protagSheathState;
+    private SharedTypes.SheathState _protagSheathState = SharedTypes.SheathState.Sheathed;
     private float _swordAngle;
 
     private Vector3 _swordPosition;

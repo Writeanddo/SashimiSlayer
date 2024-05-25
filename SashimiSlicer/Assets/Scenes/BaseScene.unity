@@ -789,7 +789,7 @@ Transform:
   m_GameObject: {fileID: 1359407511}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.344, z: -0.024}
+  m_LocalPosition: {x: 0.85, y: 1.07, z: -0.024}
   m_LocalScale: {x: 2, y: 0.4, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1244,7 +1244,7 @@ Transform:
   m_GameObject: {fileID: 1679243679}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.136, z: -0.159}
+  m_LocalPosition: {x: 0, y: 1.136, z: 0.19}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1416,7 +1416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gamepadInputProvider: {fileID: 1969117887}
   _swordInputProvider: {fileID: 1969117890}
-  _useHardwareController: 0
+  _useHardwareController: 1
   _onDrawDebugGUI: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
 --- !u!114 &1969117889
 MonoBehaviour:
@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baudRate: 9600
   _portName: COM9
-  _logPackets: 0
+  _logPackets: 1
   _onDrawDebugGUI: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
 --- !u!114 &1969117890
 MonoBehaviour:

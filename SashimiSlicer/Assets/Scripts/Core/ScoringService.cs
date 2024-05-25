@@ -1,13 +1,19 @@
+using System;
 using Events;
 using Events.Core;
 using UnityEngine;
 
 public class ScoringService : MonoBehaviour
 {
-    public struct BeatmapScore
+    public struct BeatmapScore : IComparable<BeatmapScore>
     {
         public int Successes;
         public int Failures;
+
+        public int CompareTo(BeatmapScore other)
+        {
+            return Successes - other.Successes;
+        }
     }
 
     [Header("Listening Events")]
