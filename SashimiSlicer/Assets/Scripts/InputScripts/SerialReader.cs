@@ -51,6 +51,8 @@ public class SerialReader : MonoBehaviour
 
     private int _currentPacketLength;
 
+    private bool _discardedFirst;
+
     private void Awake()
     {
         try
@@ -136,7 +138,14 @@ public class SerialReader : MonoBehaviour
 
                 SerialReadResult serialReadResult = ParsePacket(_packetBuffer);
 
-                OnSerialRead?.Invoke(serialReadResult);
+                if (_discardedFirst)
+                {
+                    OnSerialRead?.Invoke(serialReadResult);
+                }
+                else
+                {
+                    _discardedFirst = true;
+                }
 
                 if (_logPackets)
                 {

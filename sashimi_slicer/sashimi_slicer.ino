@@ -186,7 +186,7 @@ void loop() {
     }
   }
 
-  if(sheatheSwitchL || sheatheSwitchR)
+  if(sheatheSwitchL && sheatheSwitchR)
   {
     digitalWrite(HAPTIC_IN_PIN, HIGH);
   }

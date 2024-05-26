@@ -1,3 +1,4 @@
+using Events;
 using Events.Core;
 using UnityEngine;
 
@@ -7,6 +8,11 @@ public class TimingService : MonoBehaviour
 
     [SerializeField]
     private BeatmapEvent _beatmapLoadedEvent;
+
+    [Header("Invoking Events")]
+
+    [SerializeField]
+    private VoidEvent _beatPassedEvent;
 
     public static TimingService Instance { get; private set; }
 
@@ -94,6 +100,8 @@ public class TimingService : MonoBehaviour
         {
             Debug.DrawLine(Vector3.right * (_beatNumber % 4), Vector3.one * 1000f, Color.magenta,
                 (float)_intervalPerBeat - 0.01f);
+
+            _beatPassedEvent.Raise();
         }
     }
 
