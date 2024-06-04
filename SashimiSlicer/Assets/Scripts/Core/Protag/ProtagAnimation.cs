@@ -39,21 +39,21 @@ public class ProtagAnimation : MonoBehaviour
 
     private void OnProtagBlock(Protaganist.ProtagSwordState state)
     {
-        _animator.Play("ProtagParry");
+        _animator.Play("ProtagParry", 0, 0);
     }
 
     private void OnProtagUnsheathe(Protaganist.ProtagSwordState state)
     {
-        _animator.Play("ProtagParry");
+        _animator.Play("ProtagParry", 0, 0);
     }
 
     private void OnProtagSlice(Protaganist.ProtagSwordState state)
     {
-        _animator.Play("ProtagParry");
+        _animator.Play("ProtagParry", 0, 0);
     }
 
     private void OnProtagTakeDamage()
     {
-        _animator.Play("ProtagHurt");
+        _animator.Play("ProtagHurt", 0, 0);
     }
 }
