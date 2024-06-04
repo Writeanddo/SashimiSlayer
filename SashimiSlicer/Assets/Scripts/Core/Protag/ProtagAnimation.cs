@@ -7,7 +7,10 @@ public class ProtagAnimation : MonoBehaviour
     [Header("Listening Events")]
 
     [SerializeField]
-    private ProtagSwordStateEvent _protagBlockEvent;
+    private VoidEvent _protagSuccessfulBlockEvent;
+
+    [SerializeField]
+    private ProtagSwordStateEvent _protagTryBlockEvent;
 
     [SerializeField]
     private ProtagSwordStateEvent _protagUnsheatheEvent;
@@ -23,7 +26,8 @@ public class ProtagAnimation : MonoBehaviour
 
     private void Awake()
     {
-        _protagBlockEvent.AddListener(OnProtagBlock);
+        _protagSuccessfulBlockEvent.AddListener(OnProtagSuccessfulBlock);
+        _protagTryBlockEvent.AddListener(OnProtagTryBlock);
         _protagUnsheatheEvent.AddListener(OnProtagUnsheathe);
         _protagSliceEvent.AddListener(OnProtagSlice);
         _protagTakeDamageEvent.AddListener(OnProtagTakeDamage);
@@ -31,29 +35,36 @@ public class ProtagAnimation : MonoBehaviour
 
     private void OnDestroy()
     {
-        _protagBlockEvent.RemoveListener(OnProtagBlock);
+        _protagSuccessfulBlockEvent.RemoveListener(OnProtagSuccessfulBlock);
+        _protagTryBlockEvent.RemoveListener(OnProtagTryBlock);
         _protagUnsheatheEvent.RemoveListener(OnProtagUnsheathe);
         _protagSliceEvent.RemoveListener(OnProtagSlice);
         _protagTakeDamageEvent.RemoveListener(OnProtagTakeDamage);
     }
 
-    private void OnProtagBlock(Protaganist.ProtagSwordState state)
+    private void OnProtagSuccessfulBlock()
     {
-        _animator.Play("ProtagParry", 0, 0);
+        _animator.SetTrigger("SuccessfulBlock");
+    }
+
+    private void OnProtagTryBlock(Protaganist.ProtagSwordState state)
+    {
+        _animator.SetTrigger("TryBlock");
     }
 
     private void OnProtagUnsheathe(Protaganist.ProtagSwordState state)
     {
-        _animator.Play("ProtagParry", 0, 0);
+        _animator.SetBool("Sheathed", false);
     }
 
     private void OnProtagSlice(Protaganist.ProtagSwordState state)
     {
-        _animator.Play("ProtagParry", 0, 0);
+        _animator.SetBool("Sheathed", true);
+        _animator.SetTrigger("SuccessfulBlock");
     }
 
     private void OnProtagTakeDamage()
     {
-        _animator.Play("ProtagHurt", 0, 0);
+        _animator.SetTrigger("TakeDamage");
     }
 }

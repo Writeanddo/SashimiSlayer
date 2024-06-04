@@ -21,4 +21,4 @@ MonoBehaviour:
   <BeatsPerMeasure>k__BackingField: 4
   <BeatmapTimeline>k__BackingField: {fileID: 11400000, guid: a7a490df6f3f0af45aae6f5a3d4949d7,
     type: 2}
-  <PlayerMaxHealth>k__BackingField: 71
+  <PlayerMaxHealth>k__BackingField: 5

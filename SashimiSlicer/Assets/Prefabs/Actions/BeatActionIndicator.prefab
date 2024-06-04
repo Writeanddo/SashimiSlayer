@@ -484,7 +484,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3995203660771077882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -846,11 +846,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28657229dbd9204ea80626986c9e5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _protagSwordStateEvent: {fileID: 11400000, guid: f72d4c466ff2ec64ebb5ad85d39cdc47,
+    type: 2}
   _blockPoseSprites:
   - {fileID: 5429573642046920822}
   - {fileID: 8338339488889998119}
   - {fileID: 630171613789070158}
-  _visuals: []
+  _vulnerableRotate:
+  - {fileID: 3911148948693144787}
+  - {fileID: 1692696341644666031}
   _attackClip: {fileID: 7400000, guid: 94c5ab0f925be6547b0cd4b94d209548, type: 2}
   _vulnClip: {fileID: 7400000, guid: 49f30efc5fa96764d9b6fe4203de9882, type: 2}
   _animator: {fileID: 2320314668910774160}

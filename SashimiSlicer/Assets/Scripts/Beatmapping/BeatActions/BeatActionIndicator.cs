@@ -1,12 +1,16 @@
+using Events.Core;
 using UnityEngine;
 
 public class BeatActionIndicator : MonoBehaviour
 {
     [SerializeField]
+    private ProtagSwordStateEvent _protagSwordStateEvent;
+
+    [SerializeField]
     private SpriteRenderer[] _blockPoseSprites;
 
     [SerializeField]
-    private GameObject[] _visuals;
+    private GameObject[] _vulnerableRotate;
 
     [SerializeField]
     private AnimationClip _attackClip;
@@ -16,6 +20,24 @@ public class BeatActionIndicator : MonoBehaviour
 
     [SerializeField]
     private SimpleAnimator _animator;
+
+    private void Awake()
+    {
+        _protagSwordStateEvent.AddListener(OnProtagSwordState);
+    }
+
+    private void OnDestroy()
+    {
+        _protagSwordStateEvent.RemoveListener(OnProtagSwordState);
+    }
+
+    private void OnProtagSwordState(Protaganist.ProtagSwordState state)
+    {
+        foreach (GameObject vulnIndicator in _vulnerableRotate)
+        {
+            vulnIndicator.transform.rotation = Quaternion.AngleAxis(state.SwordAngle, Vector3.forward);
+        }
+    }
 
     public void TickWaitingForAttack(float normalizedTime, SharedTypes.BlockPoseStates blockPose)
     {

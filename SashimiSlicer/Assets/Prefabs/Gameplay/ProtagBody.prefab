@@ -10140,9 +10140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8826ca7a86ac5845b56ef9deeb69f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageTakenEvent: {fileID: 11400000, guid: 7517b3ffc01c7a1449611f21a59752ca, type: 2}
-  _successfulBlockEvent: {fileID: 11400000, guid: 3476f53e20f476e4283cc1509dffd67e,
-    type: 2}
   _targetTransform: {fileID: 1207443418104215904}
 --- !u!114 &1735760969490587814
 MonoBehaviour:
@@ -10156,7 +10153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e96821d1140b06479d80f9802093831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _protagBlockEvent: {fileID: 11400000, guid: 4cfa3609e31db094690a78cc3b3e91f3, type: 2}
+  _protagSuccessfulBlockEvent: {fileID: 11400000, guid: 3476f53e20f476e4283cc1509dffd67e,
+    type: 2}
+  _protagTryBlockEvent: {fileID: 11400000, guid: 4cfa3609e31db094690a78cc3b3e91f3,
+    type: 2}
   _protagUnsheatheEvent: {fileID: 11400000, guid: 57cf023d4fecd634d8adcd692ffbdd07,
     type: 2}
   _protagSliceEvent: {fileID: 11400000, guid: 1fc9d5635b7fb36408b893568c3ada1a, type: 2}

@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66046b3f70fcc0a4b95882841f30783a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showGuiLabel: 1
+  _showGuiLabel: 0
   _onDrawGuiEvent: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
 --- !u!4 &1549907075
 Transform:
