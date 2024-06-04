@@ -53,3 +53,6 @@ TagManager:
   - name: Indicators
     uniqueID: 3308061101
     locked: 0
+  - name: Foreground
+    uniqueID: 4119870573
+    locked: 0

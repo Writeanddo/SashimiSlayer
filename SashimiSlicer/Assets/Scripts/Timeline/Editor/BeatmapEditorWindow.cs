@@ -26,6 +26,7 @@ public class BeatmapEditorWindow : EditorWindow
             EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
 
             _lastEditedScenePath = SceneManager.GetActiveScene().path;
+            Debug.Log(_lastEditedScenePath);
 
             if (!SceneManager.GetSceneByPath(startupScenePath).isLoaded)
             {
@@ -89,6 +90,7 @@ public class BeatmapEditorWindow : EditorWindow
     {
         if (param == PlayModeStateChange.EnteredEditMode && _lastEditedScenePath != string.Empty)
         {
+            Debug.Log("Loading last edited scene");
             EditorSceneManager.OpenScene(_lastEditedScenePath, OpenSceneMode.Single);
         }
         else if (param == PlayModeStateChange.EnteredPlayMode)

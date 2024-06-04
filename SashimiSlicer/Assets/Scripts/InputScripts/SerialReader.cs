@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Events;
@@ -25,9 +26,6 @@ public class SerialReader : MonoBehaviour
 
     [SerializeField]
     private int _baudRate;
-
-    [SerializeField]
-    private string _portName;
 
     [Header("Config")]
 
@@ -93,7 +91,11 @@ public class SerialReader : MonoBehaviour
 
     private void InitializeSerialPort()
     {
-        _serialPort = new SerialPort(_portName, _baudRate);
+        string[] portNames = SerialPort.GetPortNames();
+        string arduinoPort = portNames.LastOrDefault();
+        Debug.Log($"Connecting to {arduinoPort}");
+
+        _serialPort = new SerialPort(arduinoPort, _baudRate);
         _serialPort.Open();
     }
 
@@ -173,10 +175,11 @@ public class SerialReader : MonoBehaviour
 
     private SerialReadResult ParsePacket(byte[] packetBuffer)
     {
-        var x = BitConverter.ToSingle(packetBuffer, 1);
-        var y = BitConverter.ToSingle(packetBuffer, 5);
-        var z = BitConverter.ToSingle(packetBuffer, 9);
-        var w = BitConverter.ToSingle(packetBuffer, 13);
+        var quatOffset = 1;
+        var x = BitConverter.ToSingle(packetBuffer, quatOffset);
+        var y = BitConverter.ToSingle(packetBuffer, quatOffset + 4);
+        var z = BitConverter.ToSingle(packetBuffer, quatOffset + 8);
+        var w = BitConverter.ToSingle(packetBuffer, quatOffset + 12);
 
         var orientation = new Quaternion(x, -z, y, w);
 

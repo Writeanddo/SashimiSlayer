@@ -14,6 +14,9 @@ public class SliceTriggeredButton : MonoBehaviour
     [SerializeField]
     private ProtagSwordStateEvent _protagSliceEvent;
 
+    [SerializeField]
+    private ProtagSwordStateEvent _protagSwordStateEvent;
+
     [Header("Invoking Events")]
 
     [SerializeField]
@@ -24,6 +27,12 @@ public class SliceTriggeredButton : MonoBehaviour
 
     [SerializeField]
     private UnityEvent _buttonSlicedDelayedEvent;
+
+    [SerializeField]
+    private UnityEvent _buttonHoveredEvent;
+
+    [SerializeField]
+    private UnityEvent _buttonUnhoveredEvent;
 
     [Header("Config")]
 
@@ -36,22 +45,51 @@ public class SliceTriggeredButton : MonoBehaviour
     [SerializeField]
     private float _delay;
 
+    [SerializeField]
+    private bool _isInCanvasSpace;
+
     private bool _used;
+
+    private bool _hovered;
 
     private void Awake()
     {
         _protagSliceEvent.AddListener(OnProtagSlice);
+        _protagSwordStateEvent.AddListener(OnProtagSwordState);
     }
 
     private void OnDestroy()
     {
         _protagSliceEvent.RemoveListener(OnProtagSlice);
+        _protagSwordStateEvent.RemoveListener(OnProtagSwordState);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _radius);
+    }
+
+    private void OnProtagSwordState(Protaganist.ProtagSwordState obj)
+    {
+        Vector2 pos = transform.position;
+        if (_isInCanvasSpace)
+        {
+            pos = Camera.main.ScreenToWorldPoint(pos);
+        }
+
+        float dist = Protaganist.Instance.DistanceToSwordPlane(pos);
+
+        if (dist < _radius)
+        {
+            _hovered = true;
+            _buttonHoveredEvent?.Invoke();
+        }
+        else
+        {
+            _hovered = false;
+            _buttonUnhoveredEvent?.Invoke();
+        }
     }
 
     private void OnProtagSlice(Protaganist.ProtagSwordState swordState)
@@ -61,9 +99,7 @@ public class SliceTriggeredButton : MonoBehaviour
             return;
         }
 
-        float dist = Protaganist.Instance.DistanceToSwordPlane(transform.position);
-
-        if (dist < _radius)
+        if (_hovered)
         {
             _used = true;
             Protaganist.Instance.SuccessfulSlice();

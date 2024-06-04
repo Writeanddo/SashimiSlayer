@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4397139440740179943
 Transform:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7780418325497907871
 Transform:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3995203660771077882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -107,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: -986906195
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9ece75a7e04481746ae4b2d795b5a2c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 05b22f5bff5aa93459c2f142cb94a913, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -219,7 +219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5030605451826658687
 Transform:
   m_ObjectHideFlags: 0
@@ -388,7 +388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3619509482340597584
 Transform:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &974253632556735592
 Transform:
   m_ObjectHideFlags: 0
@@ -804,6 +804,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3995203660771077882}
   - component: {fileID: 5743409499505446920}
+  - component: {fileID: 2490771914054515534}
+  - component: {fileID: 2320314668910774160}
+  - component: {fileID: 4683016953833905962}
   m_Layer: 0
   m_Name: BeatActionIndicator
   m_TagString: Untagged
@@ -847,11 +850,61 @@ MonoBehaviour:
   - {fileID: 5429573642046920822}
   - {fileID: 8338339488889998119}
   - {fileID: 630171613789070158}
-  _attackTargetRing: {fileID: 603763874469110897}
-  _attackShrinkRing: {fileID: 5828492484322755032}
-  _vulnerableTargetRing: {fileID: 6810692375472598638}
-  _vulnerableShrinkRing: {fileID: 7344047560120347734}
-  _shrinkScale: 5
+  _visuals: []
+  _attackClip: {fileID: 7400000, guid: 94c5ab0f925be6547b0cd4b94d209548, type: 2}
+  _vulnClip: {fileID: 7400000, guid: 49f30efc5fa96764d9b6fe4203de9882, type: 2}
+  _animator: {fileID: 2320314668910774160}
+--- !u!95 &2490771914054515534
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042563812239892685}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 11306bdc4231c3344aa86061797506c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2320314668910774160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042563812239892685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54a89d361880544baf8d03201e11c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationClip: {fileID: 7400000, guid: 94c5ab0f925be6547b0cd4b94d209548, type: 2}
+  _animator: {fileID: 2490771914054515534}
+  _playOnAwake: 0
+--- !u!114 &4683016953833905962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042563812239892685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc54a89d361880544baf8d03201e11c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationClip: {fileID: 7400000, guid: 49f30efc5fa96764d9b6fe4203de9882, type: 2}
+  _animator: {fileID: 0}
+  _playOnAwake: 0
 --- !u!1 &8152099041034499828
 GameObject:
   m_ObjectHideFlags: 0

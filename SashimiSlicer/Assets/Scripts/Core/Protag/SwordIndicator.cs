@@ -56,11 +56,11 @@ public class SwordIndicator : MonoBehaviour
 
         if (state == SharedTypes.SheathState.Sheathed)
         {
-            _lineRenderer.widthMultiplier = 0.01f;
+            _lineRenderer.widthMultiplier = 0.02f;
         }
         else
         {
-            _lineRenderer.widthMultiplier = 0.04f;
+            _lineRenderer.widthMultiplier = 0.05f;
         }
     }
 

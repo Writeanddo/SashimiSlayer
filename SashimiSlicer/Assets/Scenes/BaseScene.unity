@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
     type: 2}
-  _beatPassedEvent: {fileID: 11400000, guid: 3568152774a1af5478b50921bd1eccc3, type: 2}
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
 --- !u!4 &28433223
 Transform:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_AttackTime: 0
-      m_SustainTime: 0.1
+      m_SustainTime: 0.05
       m_DecayTime: 0.7
       m_ScaleWithImpact: 1
       m_HoldForever: 0
@@ -1337,7 +1337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1847439421
 Transform:
   m_ObjectHideFlags: 0
@@ -1432,7 +1432,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baudRate: 9600
-  _portName: COM9
   _logPackets: 0
   _onDrawDebugGUI: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
 --- !u!114 &1969117890
@@ -1719,6 +1718,7 @@ MonoBehaviour:
   _swordStateChangeEvent: {fileID: 11400000, guid: f72d4c466ff2ec64ebb5ad85d39cdc47,
     type: 2}
   _playerDeadEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
+  _unsheatheEvent: {fileID: 11400000, guid: 57cf023d4fecd634d8adcd692ffbdd07, type: 2}
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
     type: 2}
   _onDrawDebugGuiEvent: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d,

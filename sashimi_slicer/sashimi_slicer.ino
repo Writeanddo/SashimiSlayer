@@ -195,9 +195,9 @@ void loop() {
     digitalWrite(HAPTIC_IN_PIN, LOW);
   }
 
-  if (btnTop || btnMid || btnBot) {
-    digitalWrite(LED_PIN, HIGH);
-  } else {
-    digitalWrite(LED_PIN, LOW);
-  }
+  // if (btnTop || btnMid || btnBot) {
+  //   digitalWrite(LED_PIN, HIGH);
+  // } else {
+  //   digitalWrite(LED_PIN, LOW);
+  // }
 }

@@ -1,18 +1,7 @@
-using System.Collections.Generic;
-using Events;
-using Events.Core;
 using UnityEngine;
 
 public class LevelSelectManager : MonoBehaviour
 {
-    [Header("Listening Events")]
-
-    [SerializeField]
-    private ProtagSwordStateEvent _protagTryBlockEvent;
-
-    [SerializeField]
-    private VoidEvent _startLevelEvent;
-
     [Header("Dependencies")]
 
     [SerializeField]
@@ -24,60 +13,11 @@ public class LevelSelectManager : MonoBehaviour
     [SerializeField]
     private Transform _layoutGroup;
 
-    private readonly List<LevelSelectButton> _levelSelectButtons = new();
-
-    private int _hoveredLevelIndex;
-
-    private bool _levelChosen;
+    private bool _loaded;
 
     private void Awake()
     {
-        _protagTryBlockEvent.AddListener(OnProtagTryBlock);
-        _startLevelEvent.AddListener(StartSelectedLevel);
         SetupLevelSelectUI();
-    }
-
-    private void OnDestroy()
-    {
-        _protagTryBlockEvent.RemoveListener(OnProtagTryBlock);
-        _startLevelEvent.RemoveListener(StartSelectedLevel);
-    }
-
-    private void OnProtagTryBlock(Protaganist.ProtagSwordState swordState)
-    {
-        int newLevelIndex = _hoveredLevelIndex;
-        if (swordState.BlockPose == SharedTypes.BlockPoseStates.TopPose)
-        {
-            newLevelIndex = Mathf.Clamp(_hoveredLevelIndex - 1, 0, _levelSelectButtons.Count - 1);
-        }
-        else if (swordState.BlockPose == SharedTypes.BlockPoseStates.BotPose)
-        {
-            newLevelIndex = Mathf.Clamp(_hoveredLevelIndex + 1, 0, _levelSelectButtons.Count - 1);
-        }
-
-        if (newLevelIndex != _hoveredLevelIndex)
-        {
-            _levelSelectButtons[_hoveredLevelIndex].SetHovered(false);
-            _hoveredLevelIndex = newLevelIndex;
-            _levelSelectButtons[_hoveredLevelIndex].SetHovered(true);
-        }
-    }
-
-    private void StartSelectedLevel()
-    {
-        if (_levelChosen)
-        {
-            return;
-        }
-
-        if (LevelLoader.Instance == null)
-        {
-            Debug.LogError("LevelLoader is null");
-            return;
-        }
-
-        LevelLoader.Instance.LoadLevel(_levelRoster.Levels[_hoveredLevelIndex]);
-        _levelChosen = true;
     }
 
     private void SetupLevelSelectUI()
@@ -85,10 +25,19 @@ public class LevelSelectManager : MonoBehaviour
         foreach (GameLevelSO level in _levelRoster.Levels)
         {
             LevelSelectButton levelSelectButton = Instantiate(_levelSelectButtonPrefab, _layoutGroup);
-            _levelSelectButtons.Add(levelSelectButton);
             levelSelectButton.SetupUI(level);
+            levelSelectButton.OnLevelSelected += OnLevelSelected;
+        }
+    }
+
+    private void OnLevelSelected(GameLevelSO level)
+    {
+        if (_loaded)
+        {
+            return;
         }
 
-        _levelSelectButtons[_hoveredLevelIndex].SetHovered(true);
+        _loaded = true;
+        LevelLoader.Instance.LoadLevel(level);
     }
 }

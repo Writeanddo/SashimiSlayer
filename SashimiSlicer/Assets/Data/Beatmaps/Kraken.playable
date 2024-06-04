@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 8.281818181818181
+    m_Start: 8.291818181818181
     m_ClipIn: 0
     m_Asset: {fileID: -7897901289147123693}
     m_Duration: 3.6363636363636367
@@ -275,10 +275,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 7.372727272727272
+    m_Start: 7.382727272727273
     m_ClipIn: 0
     m_Asset: {fileID: 6274969261271429369}
-    m_Duration: 3.636363636363636
+    m_Duration: 3.636363636363635
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7634491408669650360}
     m_EaseInDuration: 0
@@ -344,7 +344,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Squid
   - m_Version: 1
-    m_Start: 1.009090909090909
+    m_Start: 1.019090909090909
     m_ClipIn: 0
     m_Asset: {fileID: 5782863819736585087}
     m_Duration: 6.363636363636363
@@ -413,10 +413,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Tentacle
   - m_Version: 1
-    m_Start: 14.645454545454545
+    m_Start: 14.655454545454544
     m_ClipIn: 0
     m_Asset: {fileID: -3741123492188180549}
-    m_Duration: 3.6363636363636367
+    m_Duration: 3.636363636363635
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7634491408669650360}
     m_EaseInDuration: 0
@@ -482,7 +482,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Tentacle
   - m_Version: 1
-    m_Start: 11.463636363636363
+    m_Start: 11.473636363636363
     m_ClipIn: 0
     m_Asset: {fileID: 209057989643348218}
     m_Duration: 3.1818181818181817
@@ -894,7 +894,7 @@ MonoBehaviour:
       AdditionalText: 
       ActionStartTime: 14.545454545454545
       ActionEndTime: 18.18181818181818
-      ActionBeatLength: 8.000000000000002
+      ActionBeatLength: 7.999999999999997
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 2
@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 8.736363636363636
+    m_Start: 8.746363636363636
     m_ClipIn: 0
     m_Asset: {fileID: 5205250569257650688}
     m_Duration: 4.09090909090909
@@ -1648,7 +1648,7 @@ MonoBehaviour:
       AdditionalText: 
       ActionStartTime: 15
       ActionEndTime: 18.18181818181818
-      ActionBeatLength: 7
+      ActionBeatLength: 6.9999999999999964
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 2.5
@@ -1839,7 +1839,7 @@ MonoBehaviour:
   m_Time: 0.1
   EmitOnce: 0
   EmitInEditor: 0
-  Position: {x: -5.351451, y: -1.3546546, z: 0}
+  Position: {x: -5.227377, y: -1.0548086, z: 0}
 --- !u!114 &6274969261271429369
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1861,7 +1861,7 @@ MonoBehaviour:
       AdditionalText: 
       ActionStartTime: 7.2727272727272725
       ActionEndTime: 10.909090909090908
-      ActionBeatLength: 7.999999999999999
+      ActionBeatLength: 7.999999999999997
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
@@ -1891,7 +1891,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.1
+    m_Start: 0.11
     m_ClipIn: 0
     m_Asset: {fileID: 5551775925457792276}
     m_Duration: 7.2727272727272725
@@ -1960,7 +1960,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Tentacle
   - m_Version: 1
-    m_Start: 11.009090909090908
+    m_Start: 11.019090909090908
     m_ClipIn: 0
     m_Asset: {fileID: -3822779565223828680}
     m_Duration: 3.6363636363636367
@@ -2092,10 +2092,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 7.827272727272726
+    m_Start: 7.837272727272727
     m_ClipIn: 0
     m_Asset: {fileID: 9219258123983477239}
-    m_Duration: 3.6363636363636367
+    m_Duration: 3.636363636363636
     m_TimeScale: 1
     m_ParentTrack: {fileID: 7855175669344345868}
     m_EaseInDuration: 0
@@ -2161,10 +2161,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Squid
   - m_Version: 1
-    m_Start: 15.1
+    m_Start: 15.11
     m_ClipIn: 0
     m_Asset: {fileID: 4781135546379373648}
-    m_Duration: 3.1818181818181817
+    m_Duration: 3.18181818181818
     m_TimeScale: 1
     m_ParentTrack: {fileID: 7855175669344345868}
     m_EaseInDuration: 0
@@ -2275,7 +2275,7 @@ MonoBehaviour:
       AdditionalText: 
       ActionStartTime: 7.727272727272727
       ActionEndTime: 11.363636363636363
-      ActionBeatLength: 8.000000000000002
+      ActionBeatLength: 7.999999999999999
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4

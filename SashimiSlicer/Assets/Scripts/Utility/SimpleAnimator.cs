@@ -2,19 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Playables;
-using UnityEngine.Serialization;
 
 public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
 {
-    [FormerlySerializedAs("animationClip")]
     [SerializeField]
     private AnimationClip _animationClip;
 
-    [FormerlySerializedAs("animator")]
     [SerializeField]
     private Animator _animator;
 
-    [FormerlySerializedAs("playOnAwake")]
     [SerializeField]
     private bool _playOnAwake;
 
@@ -23,6 +19,8 @@ public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
     private PlayableGraph _playableGraph;
 
     private bool _graphCreated;
+
+    private AnimationClip _currentClip;
 
     private void Awake()
     {
@@ -45,33 +43,68 @@ public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
         results.Add(_animationClip);
     }
 
-    public void Play()
+    public void Play(bool restart = false)
+    {
+        Play(_animationClip, restart);
+    }
+
+    public void Play(AnimationClip clip, bool restart = false)
     {
         // Lazy instatiation
-        if (!_graphCreated)
+        if (!_graphCreated || _currentClip != clip)
         {
+            if (_playableGraph.IsValid())
+            {
+                _playableGraph.Destroy();
+            }
+
             _graphCreated = true;
-            CreateGraph();
+            CreateGraph(clip);
         }
 
         if (_playableGraph.IsValid())
         {
             _playableGraph.Play();
+            if (restart)
+            {
+                _playableGraph.GetRootPlayable(0).SetTime(0);
+            }
         }
     }
 
-    public void Stop()
+    public void SetTime(float time)
     {
-        _playableGraph.Stop();
+        if (_playableGraph.IsValid())
+        {
+            _playableGraph.GetRootPlayable(0).SetTime(time);
+        }
     }
 
-    private void CreateGraph()
+    public void SetNormalizedTime(float normalizedTime)
+    {
+        if (_playableGraph.IsValid())
+        {
+            _playableGraph.GetRootPlayable(0).SetTime(normalizedTime * _currentClip.length);
+        }
+    }
+
+    public void Destroy()
+    {
+        if (_playableGraph.IsValid())
+        {
+            _playableGraph.Destroy();
+        }
+    }
+
+    private void CreateGraph(AnimationClip clip)
     {
         _playableGraph = PlayableGraph.Create($"{gameObject.name}.SimpleAnimator");
 
+        _currentClip = clip;
+
         var output = AnimationPlayableOutput.Create(_playableGraph, string.Empty, _animator);
 
-        var animationClipPlayable = AnimationClipPlayable.Create(_playableGraph, _animationClip);
+        var animationClipPlayable = AnimationClipPlayable.Create(_playableGraph, clip);
 
         output.SetSourcePlayable(animationClipPlayable);
     }

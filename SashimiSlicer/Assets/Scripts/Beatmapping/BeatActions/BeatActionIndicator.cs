@@ -6,56 +6,36 @@ public class BeatActionIndicator : MonoBehaviour
     private SpriteRenderer[] _blockPoseSprites;
 
     [SerializeField]
-    private SpriteRenderer _attackTargetRing;
+    private GameObject[] _visuals;
 
     [SerializeField]
-    private SpriteRenderer _attackShrinkRing;
+    private AnimationClip _attackClip;
 
     [SerializeField]
-    private SpriteRenderer _vulnerableTargetRing;
+    private AnimationClip _vulnClip;
 
     [SerializeField]
-    private SpriteRenderer _vulnerableShrinkRing;
-
-    [SerializeField]
-    private float _shrinkScale;
+    private SimpleAnimator _animator;
 
     public void TickWaitingForAttack(float normalizedTime, SharedTypes.BlockPoseStates blockPose)
     {
-        _attackShrinkRing.transform.localScale = Vector3.one * Mathf.Lerp(_shrinkScale, 1, normalizedTime);
+        _animator.Play(_attackClip);
+        _animator.SetNormalizedTime(normalizedTime);
         SetBlockPoseIndicator(blockPose);
-        SetAttackPhaseIndicatorVisible(true);
-        SetVulnerablePhaseIndicatorVisible(false);
     }
 
     public void UpdateWaitingForVulnerable(float normalizedTime)
     {
-        _vulnerableShrinkRing.transform.localScale = Vector3.one * Mathf.Lerp(_shrinkScale, 1, normalizedTime);
-        SetVulnerablePhaseIndicatorVisible(true);
-        SetAttackPhaseIndicatorVisible(false);
+        _animator.Play(_vulnClip);
+        _animator.SetNormalizedTime(normalizedTime);
     }
 
     public void SetVisible(bool val)
     {
-        SetVulnerablePhaseIndicatorVisible(val);
-        SetAttackPhaseIndicatorVisible(val);
-    }
-
-    private void SetAttackPhaseIndicatorVisible(bool val)
-    {
-        for (var i = 0; i < _blockPoseSprites.Length; i++)
+        if (!val)
         {
-            _blockPoseSprites[i].gameObject.SetActive(val);
+            _animator.Destroy();
         }
-
-        _attackTargetRing.enabled = val;
-        _attackShrinkRing.enabled = val;
-    }
-
-    private void SetVulnerablePhaseIndicatorVisible(bool val)
-    {
-        _vulnerableTargetRing.enabled = val;
-        _vulnerableShrinkRing.enabled = val;
     }
 
     private void SetBlockPoseIndicator(SharedTypes.BlockPoseStates blockBlockPose)

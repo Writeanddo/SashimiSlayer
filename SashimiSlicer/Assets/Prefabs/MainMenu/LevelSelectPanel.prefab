@@ -82,6 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3096825598131998105}
   - component: {fileID: 116148503937992090}
+  - component: {fileID: 7113780541935455035}
   m_Layer: 5
   m_Name: LevelSelectPanel
   m_TagString: Untagged
@@ -125,6 +126,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelNameText: {fileID: 5675602246769536667}
   _levelDescriptionText: {fileID: 4140569904124611235}
+--- !u!114 &7113780541935455035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273246786107236515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d418287a9354c4ba7efadb09e62094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _protagSliceEvent: {fileID: 11400000, guid: 1fc9d5635b7fb36408b893568c3ada1a, type: 2}
+  _protagSwordStateEvent: {fileID: 11400000, guid: f72d4c466ff2ec64ebb5ad85d39cdc47,
+    type: 2}
+  _buttonSlicedEvent: {fileID: 0}
+  _buttonSlicedUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _buttonSlicedDelayedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 116148503937992090}
+        m_TargetAssemblyTypeName: LevelSelectButton, Assembly-CSharp
+        m_MethodName: SelectLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _buttonHoveredEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 116148503937992090}
+        m_TargetAssemblyTypeName: LevelSelectButton, Assembly-CSharp
+        m_MethodName: SetHovered
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _buttonUnhoveredEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 116148503937992090}
+        m_TargetAssemblyTypeName: LevelSelectButton, Assembly-CSharp
+        m_MethodName: SetHovered
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _radius: 1.2
+  _singleUse: 1
+  _delay: 0.2
+  _isInCanvasSpace: 1
 --- !u!1 &5540578695663893524
 GameObject:
   m_ObjectHideFlags: 0

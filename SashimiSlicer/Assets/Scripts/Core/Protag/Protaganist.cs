@@ -40,6 +40,9 @@ public class Protaganist : MonoBehaviour
     [SerializeField]
     private VoidEvent _playerDeadEvent;
 
+    [SerializeField]
+    private ProtagSwordStateEvent _unsheatheEvent;
+
     [Header("Listening Events")]
 
     [SerializeField]
@@ -74,6 +77,8 @@ public class Protaganist : MonoBehaviour
     private float _swordAngle;
 
     private Vector3 _swordPosition;
+
+    private SharedTypes.BlockPoseStates _currentBlockPose;
 
     private void Awake()
     {
@@ -135,6 +140,15 @@ public class Protaganist : MonoBehaviour
 
     private void OnPoseStateChanged(SharedTypes.BlockPoseStates blockPoseStates)
     {
+        // Only if a new button is pressed, not released
+        if ((_currentBlockPose & blockPoseStates) != _currentBlockPose)
+        {
+            _currentBlockPose = blockPoseStates;
+            return;
+        }
+
+        _currentBlockPose = blockPoseStates;
+
         var pose = new ProtagSwordState
         {
             BlockPose = blockPoseStates,
@@ -155,6 +169,16 @@ public class Protaganist : MonoBehaviour
             && oldState == SharedTypes.SheathState.Unsheathed)
         {
             _trySliceEvent.Raise(new ProtagSwordState
+            {
+                SheathState = newState,
+                SwordPosition = _swordPosition,
+                SwordAngle = _swordAngle
+            });
+        }
+
+        else if (newState == SharedTypes.SheathState.Unsheathed && oldState == SharedTypes.SheathState.Sheathed)
+        {
+            _unsheatheEvent.Raise(new ProtagSwordState
             {
                 SheathState = newState,
                 SwordPosition = _swordPosition,

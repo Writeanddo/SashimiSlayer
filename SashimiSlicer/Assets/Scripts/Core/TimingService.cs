@@ -12,7 +12,7 @@ public class TimingService : MonoBehaviour
     [Header("Invoking Events")]
 
     [SerializeField]
-    private VoidEvent _beatPassedEvent;
+    private IntEvent _beatPassedEvent;
 
     public static TimingService Instance { get; private set; }
 
@@ -101,7 +101,7 @@ public class TimingService : MonoBehaviour
             Debug.DrawLine(Vector3.right * (_beatNumber % 4), Vector3.one * 1000f, Color.magenta,
                 (float)_intervalPerBeat - 0.01f);
 
-            _beatPassedEvent.Raise();
+            _beatPassedEvent.Raise(_beatNumber);
         }
     }
 

@@ -18,7 +18,7 @@ public class InputService : BaseUserInputProvider
 
     public static InputService Instance { get; private set; }
 
-    public BaseUserInputProvider InputProvider => _useHardwareController ? _swordInputProvider : _gamepadInputProvider;
+    private BaseUserInputProvider InputProvider => _useHardwareController ? _swordInputProvider : _gamepadInputProvider;
 
     public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
     public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
