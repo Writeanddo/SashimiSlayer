@@ -17,7 +17,7 @@ MonoBehaviour:
 '
   <Bpm>k__BackingField: 120
   <Subdivisions>k__BackingField: 2
-  <StartTime>k__BackingField: 0.11
+  <StartTime>k__BackingField: 6.01
   <BeatsPerMeasure>k__BackingField: 4
   <BeatmapTimeline>k__BackingField: {fileID: 11400000, guid: be7318f6e73332d46a85fe51d61ac8ce,
     type: 2}

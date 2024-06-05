@@ -1,19 +1,26 @@
 using System.IO;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class BeatmapEditorWindow : EditorWindow
 {
     private const string PrefsPath = "Assets/Settings/Editor/User/SimpleUtilsPrefs.asset";
-    private const string _beatmapConfigPref = "BeatmapEditorWindow.beatmapConfigSO";
+    private const string _levelRosterPref = "BeatmapEditorWindow.levelRosterSO";
+    private static LevelRosterSO _levelRoster;
 
-    public static BeatmapConfigSo CurrentEditingBeatmap { get; private set; }
+    // Caching for mapping timeline to beatmap
+    private static TimelineAsset _currentEditingTimeline;
+    private static BeatmapConfigSo _currentEditingBeatmap;
+
+    // Convenience property for easily getting the correct beatmap matching the current timeline
+    public static BeatmapConfigSo CurrentEditingBeatmap => GetBeatmapFromTimeline(TimelineEditor.inspectedAsset);
 
     private string _lastEditedScenePath = string.Empty;
     private UtilsPrefs _prefs;
-    private BeatmapConfigSo _beatmapConfig;
 
     private void OnGUI()
     {
@@ -74,10 +81,28 @@ public class BeatmapEditorWindow : EditorWindow
         EditorApplication.playModeStateChanged += ModeChanged;
 
         // Load editing beatmap from prefs
-        _beatmapConfig = AssetDatabase.LoadAssetAtPath<BeatmapConfigSo>(
-            EditorPrefs.GetString(_beatmapConfigPref, string.Empty));
+        _levelRoster = AssetDatabase.LoadAssetAtPath<LevelRosterSO>(
+            EditorPrefs.GetString(_levelRosterPref, string.Empty));
+    }
 
-        CurrentEditingBeatmap = _beatmapConfig;
+    private static BeatmapConfigSo GetBeatmapFromTimeline(TimelineAsset timeline)
+    {
+        if (timeline == _currentEditingTimeline)
+        {
+            return _currentEditingBeatmap;
+        }
+
+        foreach (GameLevelSO level in _levelRoster.Levels)
+        {
+            if (level.Beatmap.BeatmapTimeline == timeline)
+            {
+                _currentEditingTimeline = timeline;
+                _currentEditingBeatmap = level.Beatmap;
+                return level.Beatmap;
+            }
+        }
+
+        return null;
     }
 
     [MenuItem("Tools/Beatmap Editor Utils")]
@@ -100,12 +125,11 @@ public class BeatmapEditorWindow : EditorWindow
 
     private void DrawBeatmapEditingFields()
     {
-        _beatmapConfig =
-            (BeatmapConfigSo)EditorGUILayout.ObjectField("Beatmap Config", _beatmapConfig, typeof(BeatmapConfigSo),
+        _levelRoster =
+            (LevelRosterSO)EditorGUILayout.ObjectField("Level Roster", _levelRoster, typeof(LevelRosterSO),
                 false);
 
-        CurrentEditingBeatmap = _beatmapConfig;
-        EditorPrefs.SetString(_beatmapConfigPref,
-            _beatmapConfig ? AssetDatabase.GetAssetPath(_beatmapConfig) : string.Empty);
+        EditorPrefs.SetString(_levelRosterPref,
+            _levelRoster ? AssetDatabase.GetAssetPath(_levelRoster) : string.Empty);
     }
 }

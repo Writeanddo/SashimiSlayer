@@ -46,10 +46,15 @@ public class InputService : BaseUserInputProvider
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             EventPassthroughUnsub();
             _useHardwareController = !_useHardwareController;
+            if (_useHardwareController)
+            {
+                _swordInputProvider.ConnectToPort();
+            }
+
             EventPassthroughSub();
         }
     }

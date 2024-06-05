@@ -11,11 +11,13 @@ public class BnHActionClipEditor : ClipEditor
     {
         BeatmapConfigSo beatmapConfig = BeatmapEditorWindow.CurrentEditingBeatmap;
 
-        if (beatmapConfig != null)
+        if (beatmapConfig == null)
         {
-            clip.start = Math.Max(clip.start, beatmapConfig.StartTime);
-            SnapClipToBPM(clip, beatmapConfig);
+            return;
         }
+
+        clip.start = Math.Max(clip.start, beatmapConfig.StartTime);
+        SnapClipToBPM(clip, beatmapConfig);
 
         var clipAsset = clip.asset as BnHActionClip;
         if (clipAsset == null)
@@ -46,21 +48,28 @@ public class BnHActionClipEditor : ClipEditor
             return;
         }
 
+        BeatmapConfigSo beatmapConfig = BeatmapEditorWindow.CurrentEditingBeatmap;
+
+        if (beatmapConfig == null)
+        {
+            return;
+        }
+
         // We assume clip.Start time is properly snapped to the interval
 
-        DrawBeatGuides(clip, region);
+        DrawBeatGuides(beatmapConfig, clip, region);
 
-        DrawInteractions(actionClip, region);
+        DrawInteractions(beatmapConfig, actionClip, region);
 
         base.DrawBackground(clip, region);
     }
 
-    private void DrawInteractions(BnHActionClip actionClip, ClipBackgroundRegion region)
+    private void DrawInteractions(BeatmapConfigSo beatmap, BnHActionClip actionClip, ClipBackgroundRegion region)
     {
         foreach (BnHActionCore.InteractionInstanceConfig interaction in actionClip.Template.ActionData.Interactions)
         {
             double interactionStartTime = interaction.BeatsUntilStart * 60 /
-                                          BeatmapEditorWindow.CurrentEditingBeatmap.Bpm;
+                                          beatmap.Bpm;
 
             float normalizedPos = Mathf.InverseLerp((float)region.startTime, (float)region.endTime,
                 (float)interactionStartTime);
@@ -140,28 +149,26 @@ public class BnHActionClipEditor : ClipEditor
         EditorGUI.DrawRect(crossPos, Color.yellow);
     }
 
-    private void DrawBeatGuides(TimelineClip clip, ClipBackgroundRegion region)
+    private void DrawBeatGuides(BeatmapConfigSo beatmap, TimelineClip clip, ClipBackgroundRegion region)
     {
         // region.startTime is the time of the visible area RELATIVE to the start of the ENTIRE clip
         double drawnAreaStartTime = clip.start + region.startTime;
         double drawnAreaEndTime = clip.start + region.endTime;
 
-        BeatmapConfigSo currentBeatmap = BeatmapEditorWindow.CurrentEditingBeatmap;
-
         // Draw lines on every measure
         var subdivisionInterval = (float)(60 /
-                                          currentBeatmap.Bpm /
-                                          currentBeatmap.Subdivisions);
+                                          beatmap.Bpm /
+                                          beatmap.Subdivisions);
 
-        int subdivsPerMeasure = currentBeatmap.BeatsPerMeasure *
-                                currentBeatmap.Subdivisions;
+        int subdivsPerMeasure = beatmap.BeatsPerMeasure *
+                                beatmap.Subdivisions;
 
         // Find the first subdivision, and snap it to the nearest measure
         var startSubdiv = (int)Math.Ceiling(drawnAreaStartTime / subdivisionInterval);
 
         var endSubdiv = (int)Math.Floor(drawnAreaEndTime / subdivisionInterval);
 
-        double startOffset = currentBeatmap.StartTime % (subdivisionInterval * subdivsPerMeasure);
+        double startOffset = beatmap.StartTime % (subdivisionInterval * subdivsPerMeasure);
 
         for (int i = startSubdiv; i <= endSubdiv; i++)
         {
@@ -177,7 +184,7 @@ public class BnHActionClipEditor : ClipEditor
                 // Start of a measure
                 EditorGUI.DrawRect(linePos, Color.white);
             }
-            else if (i % currentBeatmap.Subdivisions == 0)
+            else if (i % beatmap.Subdivisions == 0)
             {
                 // Start of a beat
                 linePos.height /= 2;

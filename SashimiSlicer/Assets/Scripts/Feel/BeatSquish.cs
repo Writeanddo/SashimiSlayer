@@ -45,6 +45,11 @@ public class BeatSquish : MonoBehaviour
                 continue;
             }
 
+            if (squishable.transform == null)
+            {
+                continue;
+            }
+
             squishable.transform.localScale = new Vector3(1 / _squishScale, _squishScale, 1);
             squishable.transform.DOScaleY(1, _squishDuration);
             squishable.transform.DOScaleX(1, _squishDuration);

@@ -18,6 +18,7 @@ namespace Timeline.Samples
         public int fontSize = 14;
 
         [Tooltip("The text to display")]
+        [TextArea]
         public string text = "";
     }
 }
