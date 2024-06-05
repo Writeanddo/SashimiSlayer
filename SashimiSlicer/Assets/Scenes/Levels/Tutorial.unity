@@ -519,6 +519,9 @@ MonoBehaviour:
   - transform: {fileID: 6086673613799908378}
     beatInterval: 2
     beatOffset: 1
+  - transform: {fileID: 37678080}
+    beatInterval: 2
+    beatOffset: 0
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
 --- !u!4 &1790762256
 Transform:

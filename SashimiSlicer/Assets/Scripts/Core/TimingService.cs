@@ -1,3 +1,4 @@
+using System;
 using Events;
 using Events.Core;
 using UnityEngine;
@@ -123,8 +124,8 @@ public class TimingService : MonoBehaviour
         double lastElapsedTime = lastTime - _startTime;
         timePastBeat = elapsedTime % _intervalPerBeat;
 
-        beatNumber = (int)(elapsedTime / _intervalPerBeat);
-        var lastBeat = (int)(lastElapsedTime / _intervalPerBeat);
+        beatNumber = (int)Math.Floor(elapsedTime / _intervalPerBeat);
+        var lastBeat = (int)Math.Floor(lastElapsedTime / _intervalPerBeat);
 
         didCrossBeat = beatNumber > lastBeat;
     }

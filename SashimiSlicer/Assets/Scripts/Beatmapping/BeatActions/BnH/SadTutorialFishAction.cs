@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class TutorialFishAction : MonoBehaviour
+public class SadTutorialFishAction : MonoBehaviour
 {
     [SerializeField]
-    private Animator _animator;
+    private SpriteRenderer _sprite;
 
     [SerializeField]
     private BnHActionCore _bnhActionCore;
@@ -22,7 +22,7 @@ public class TutorialFishAction : MonoBehaviour
     {
         _bnhActionCore.OnKilled += HandleKilled;
         _bnhActionCore.OnTickWaitingForInteraction += HandleTickWaitingForInteraction;
-        _bnhActionCore.OnTickInInteraction += HandleTickInInteraction;
+        _bnhActionCore.OnTickInInteraction += HandleTickWaitingForInteraction;
         _bnhActionCore.OnTickWaitingToLeave += HandleTickWaitingToLeave;
         _bnhActionCore.OnLandHitOnProtag += HandleLandHitOnProtag;
 
@@ -37,7 +37,6 @@ public class TutorialFishAction : MonoBehaviour
     private void HandleLandHitOnProtag()
     {
         _landedHit = true;
-        _animator.Play("Explode");
         _dieParticles.Play();
     }
 
@@ -48,21 +47,13 @@ public class TutorialFishAction : MonoBehaviour
             return;
         }
 
-        _animator.transform.Rotate(Vector3.forward, 2000f * Time.deltaTime);
+        _sprite.gameObject.transform.Rotate(Vector3.forward, 2000f * Time.deltaTime);
 
         transform.position += Vector3.up * Time.deltaTime * 10f;
         transform.position += Vector3.right * Time.deltaTime * 10f;
     }
 
     private void HandleTickWaitingForInteraction(double time, BnHActionCore.ScheduledInteraction interaction)
-    {
-        if (interaction.Interaction.InteractionType == BnHActionCore.InteractionType.IncomingAttack)
-        {
-            UpdatePosition(time, interaction);
-        }
-    }
-
-    private void HandleTickInInteraction(double time, BnHActionCore.ScheduledInteraction interaction)
     {
         if (interaction.Interaction.InteractionType == BnHActionCore.InteractionType.IncomingAttack)
         {
@@ -84,12 +75,13 @@ public class TutorialFishAction : MonoBehaviour
         transform.position = Vector2.Lerp(_startPos, _targetPos,
             t);
 
-        _animator.transform.rotation = Quaternion.Euler(0, 0,
+        _sprite.transform.rotation = Quaternion.Euler(0, 0,
             Mathf.Atan2(_targetPos.y - _startPos.y, _targetPos.x - _startPos.x) * Mathf.Rad2Deg);
     }
 
     private void HandleKilled()
     {
+        _sprite.enabled = false;
         _dieParticles.Play();
     }
 }
