@@ -82,4 +82,9 @@ public class SwordInputProvider : BaseUserInputProvider
     {
         return _currentBlockPose;
     }
+
+    public void ConnectToPort()
+    {
+        _serialReader.TryConnectToPort();
+    }
 }

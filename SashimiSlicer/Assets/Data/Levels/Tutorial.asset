@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4898a6bbe03df044ad17b6dafd162d8, type: 3}
   m_Name: Tutorial
   m_EditorClassIdentifier: 
-  <GameSceneName>k__BackingField: Kraken
+  <GameSceneName>k__BackingField: Tutorial
   <LevelTitle>k__BackingField: Fish School
   <LevelDescription>k__BackingField: Or was a school of fish? At any rate, learn
     the controls here!
-  <Beatmap>k__BackingField: {fileID: 11400000, guid: 9398447f4e6caf74782f762e3673feed,
+  <Beatmap>k__BackingField: {fileID: 11400000, guid: 927c3dc5372465d4db6ba59d803b358f,
     type: 2}
   <LevelType>k__BackingField: 1

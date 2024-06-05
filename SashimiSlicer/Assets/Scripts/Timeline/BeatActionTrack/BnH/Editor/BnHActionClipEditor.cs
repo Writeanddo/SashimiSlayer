@@ -65,7 +65,8 @@ public class BnHActionClipEditor : ClipEditor
             float normalizedPos = Mathf.InverseLerp((float)region.startTime, (float)region.endTime,
                 (float)interactionStartTime);
 
-            if (interactionStartTime >= region.startTime && interactionStartTime <= region.endTime)
+            // Add 0.01f for precision errors(?)
+            if (interactionStartTime >= region.startTime && interactionStartTime <= region.endTime + 0.01f)
             {
                 if (interaction.InteractionType == BnHActionCore.InteractionType.IncomingAttack)
                 {
@@ -151,6 +152,7 @@ public class BnHActionClipEditor : ClipEditor
         var subdivisionInterval = (float)(60 /
                                           currentBeatmap.Bpm /
                                           currentBeatmap.Subdivisions);
+
         int subdivsPerMeasure = currentBeatmap.BeatsPerMeasure *
                                 currentBeatmap.Subdivisions;
 
@@ -159,9 +161,11 @@ public class BnHActionClipEditor : ClipEditor
 
         var endSubdiv = (int)Math.Floor(drawnAreaEndTime / subdivisionInterval);
 
+        double startOffset = currentBeatmap.StartTime % (subdivisionInterval * subdivsPerMeasure);
+
         for (int i = startSubdiv; i <= endSubdiv; i++)
         {
-            var beatTime = (float)(i * subdivisionInterval + currentBeatmap.StartTime - clip.start);
+            var beatTime = (float)(i * subdivisionInterval + startOffset - clip.start);
             float normalizedBeatTime = Mathf.InverseLerp((float)region.startTime, (float)region.endTime, beatTime);
 
             Rect linePos = region.position;

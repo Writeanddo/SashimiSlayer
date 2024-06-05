@@ -34,7 +34,7 @@ public class BossService : MonoBehaviour
     private void Update()
     {
         var t = (float)TimingService.Instance.CurrentBeatmapTime;
-        _bossHealthEvent.Raise((float)_levelLength - t);
+        _bossHealthEvent.Raise(t);
     }
 
     private void OnDestroy()

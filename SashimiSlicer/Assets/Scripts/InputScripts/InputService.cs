@@ -8,7 +8,7 @@ public class InputService : BaseUserInputProvider
     private BaseUserInputProvider _gamepadInputProvider;
 
     [SerializeField]
-    private BaseUserInputProvider _swordInputProvider;
+    private SwordInputProvider _swordInputProvider;
 
     [SerializeField]
     private bool _useHardwareController;
@@ -35,6 +35,11 @@ public class InputService : BaseUserInputProvider
         }
 
         EventPassthroughSub();
+
+        if (_useHardwareController)
+        {
+            _swordInputProvider.ConnectToPort();
+        }
 
         _onDrawDebugGUI.AddListener(HandleDrawDebugGUI);
     }

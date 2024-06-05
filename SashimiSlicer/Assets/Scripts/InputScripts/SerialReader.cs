@@ -53,20 +53,6 @@ public class SerialReader : MonoBehaviour
 
     private void Awake()
     {
-        try
-        {
-            InitializeSerialPort();
-            AbleToConnect = true;
-
-            _serialPort.WriteTimeout = 1000;
-            ReadLoop(this.GetCancellationTokenOnDestroy()).Forget();
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e);
-            AbleToConnect = false;
-        }
-
         _onDrawDebugGUI.AddListener(DrawDebugGUI);
     }
 
@@ -82,6 +68,32 @@ public class SerialReader : MonoBehaviour
         }
 
         _onDrawDebugGUI.RemoveListener(DrawDebugGUI);
+    }
+
+    public void TryConnectToPort()
+    {
+        try
+        {
+            _serialPort.Close();
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+
+        try
+        {
+            InitializeSerialPort();
+            AbleToConnect = true;
+
+            _serialPort.WriteTimeout = 1000;
+            ReadLoop(this.GetCancellationTokenOnDestroy()).Forget();
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+            AbleToConnect = false;
+        }
     }
 
     private void DrawDebugGUI()

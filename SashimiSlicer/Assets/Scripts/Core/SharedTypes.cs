@@ -28,5 +28,6 @@ public static class SharedTypes
         public BeatInteractionResultType Result;
         public BnHActionSo Action;
         public double TimingOffset;
+        public double NormalizedTimingOffset;
     }
 }

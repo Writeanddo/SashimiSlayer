@@ -307,7 +307,8 @@ public class BnHActionCore : MonoBehaviour
                 Action = _actionConfigSo,
                 InteractionType = InteractionType.IncomingAttack,
                 Result = SharedTypes.BeatInteractionResultType.Successful,
-                TimingOffset = offset
+                TimingOffset = offset,
+                NormalizedTimingOffset = offset / _actionConfigSo.BlockWindowHalfDuration
             });
 
             OnBlockByProtag?.Invoke();
@@ -349,7 +350,8 @@ public class BnHActionCore : MonoBehaviour
                 Action = _actionConfigSo,
                 InteractionType = InteractionType.Vulnerable,
                 Result = SharedTypes.BeatInteractionResultType.Successful,
-                TimingOffset = offset
+                TimingOffset = offset,
+                NormalizedTimingOffset = offset / _actionConfigSo.BlockWindowHalfDuration
             });
 
             Protaganist.Instance.SuccessfulSlice();
