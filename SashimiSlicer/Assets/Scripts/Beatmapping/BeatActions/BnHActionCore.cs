@@ -33,7 +33,7 @@ public class BnHActionCore : MonoBehaviour
     [Serializable]
     public struct BnHActionInstanceConfig
     {
-        public Vector2 Position;
+        public Vector2[] Positions;
 
         public bool AutoVulnerableAtEnd;
 
@@ -108,6 +108,10 @@ public class BnHActionCore : MonoBehaviour
     private ScheduledInteraction CurrentInteraction => _sequencedInteractionInstances[_currentInteractionIndex];
 
     public BnHActionSo ActionConfigSo => _actionConfigSo;
+
+    public BnHActionInstanceConfig Data => _data;
+
+    // The time when the last interaction ended
     public double LastInteractionEndTime => _previousInteractionEndTime;
 
     public event Action OnBlockByProtag;
@@ -166,7 +170,7 @@ public class BnHActionCore : MonoBehaviour
         _data = data;
         _blockedState = BlockState.Waiting;
 
-        transform.position = data.Position;
+        transform.position = data.Positions[0];
 
         _currentInteractionIndex = 0;
         if (_data.Interactions.Count > 0)
@@ -494,6 +498,8 @@ public class BnHActionCore : MonoBehaviour
 
     private void TransitionToNextInteraction(double time)
     {
+        _previousInteractionEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
+
         if (_currentInteractionIndex >= _sequencedInteractionInstances.Count - 1)
         {
             _bnHActionState = BnHActionState.WaitingToLeave;
@@ -503,9 +509,8 @@ public class BnHActionCore : MonoBehaviour
         {
             _bnHActionState = BnHActionState.WaitingForInteraction;
             _blockedState = BlockState.Waiting;
-            _previousInteractionEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
 
-            // Prevent overlaps
+            // Prevent overlapping interactions
             while (true)
             {
                 _currentInteractionIndex++;

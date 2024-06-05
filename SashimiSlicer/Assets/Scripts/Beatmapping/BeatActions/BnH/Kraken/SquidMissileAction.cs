@@ -72,11 +72,11 @@ public class SquidMissileAction : MonoBehaviour
 
     private void UpdatePosition(double time, BnHActionCore.ScheduledInteraction interaction)
     {
-        double attackStartTime =
-            interaction.TimeWhenInteractionStart;
         double attackMiddleTime = interaction.TimeWhenInteractWindowEnd;
 
-        float t = Mathf.InverseLerp((float)_bnhActionCore.LastInteractionEndTime, (float)attackMiddleTime,
+        float t = Mathf.InverseLerp(
+            (float)_bnhActionCore.LastInteractionEndTime,
+            (float)attackMiddleTime,
             (float)time);
 
         t *= t;

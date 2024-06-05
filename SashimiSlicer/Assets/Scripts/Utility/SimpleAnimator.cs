@@ -72,14 +72,6 @@ public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
         }
     }
 
-    public void SetTime(float time)
-    {
-        if (_playableGraph.IsValid())
-        {
-            _playableGraph.GetRootPlayable(0).SetTime(time);
-        }
-    }
-
     public void SetNormalizedTime(float normalizedTime)
     {
         if (_playableGraph.IsValid())
@@ -88,11 +80,13 @@ public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
         }
     }
 
-    public void Destroy()
+    public void Stop()
     {
         if (_playableGraph.IsValid())
         {
-            _playableGraph.Destroy();
+            SetNormalizedTime(1);
+            _playableGraph.Evaluate();
+            _playableGraph.Stop();
         }
     }
 

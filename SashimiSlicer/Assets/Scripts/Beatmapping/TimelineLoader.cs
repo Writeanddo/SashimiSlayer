@@ -25,22 +25,24 @@ public class TimelineLoader : MonoBehaviour
     {
         _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
         _playerDeathEvent.AddListener(HandlePlayerDeath);
-    }
-
-    private void Update()
-    {
-        if (_inProgress && _director.state != PlayState.Playing)
-        {
-            _director.Stop();
-            LevelLoader.Instance.LoadLevel(_levelResultLevel);
-            _inProgress = false;
-        }
+        _director.stopped += HandleTimelineStopped;
     }
 
     private void OnDestroy()
     {
         _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
         _playerDeathEvent.RemoveListener(HandlePlayerDeath);
+    }
+
+    private void HandleTimelineStopped(PlayableDirector obj)
+    {
+        // Check if reached end of timeline
+        if (_inProgress)
+        {
+            _director.Stop();
+            LevelLoader.Instance.LoadLevel(_levelResultLevel);
+            _inProgress = false;
+        }
     }
 
     private void HandlePlayerDeath()

@@ -56,7 +56,7 @@ public class BeatActionIndicator : MonoBehaviour
     {
         if (!val)
         {
-            _animator.Destroy();
+            _animator.Stop();
         }
     }
 

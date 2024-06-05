@@ -36,7 +36,7 @@ public class BnHActionBehavior : PlayableBehaviour
             _blockAndHit = _beatActionService.SpawnSimpleHit(HitConfig, ActionData);
         }
 
-        Debug.DrawLine(ActionData.Position, ActionData.Position + Vector2.up * 10, Color.red);
+        Debug.DrawLine(ActionData.Positions[0], ActionData.Positions[0] + Vector2.up * 10, Color.red);
     }
 
     public override void OnBehaviourPause(Playable playable, FrameData info)

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class TimingBarTick : MonoBehaviour
 {
     [SerializeField]
+    private float _fadeDuration;
+
+    [SerializeField]
     private CanvasGroup _canvasGroup;
 
     [SerializeField]
@@ -15,7 +18,7 @@ public class TimingBarTick : MonoBehaviour
 
     private void Awake()
     {
-        _canvasGroup.DOFade(0, 1.25f).OnComplete(() => Destroy(gameObject));
+        _canvasGroup.DOFade(0, _fadeDuration).SetEase(Ease.OutQuint).OnComplete(() => Destroy(gameObject));
     }
 
     public void SetVisuals(BnHActionCore.InteractionType resultInteractionType)

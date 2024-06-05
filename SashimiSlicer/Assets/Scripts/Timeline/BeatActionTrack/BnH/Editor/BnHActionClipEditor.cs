@@ -28,6 +28,12 @@ public class BnHActionClipEditor : ClipEditor
         clipAsset.Template.ActionData.ActionStartTime = clip.start - beatmapConfig.StartTime;
         clipAsset.Template.ActionData.ActionEndTime = clip.end - beatmapConfig.StartTime;
         clipAsset.Template.ActionData.ActionBeatLength = clip.duration * beatmapConfig.Bpm / 60;
+
+        // Ensure at least one position
+        if (clipAsset.Template.ActionData.Positions == null || clipAsset.Template.ActionData.Positions.Length == 0)
+        {
+            clipAsset.Template.ActionData.Positions = new Vector2[1];
+        }
     }
 
     private void SnapClipToBPM(TimelineClip clip, BeatmapConfigSo beatmapConfig)

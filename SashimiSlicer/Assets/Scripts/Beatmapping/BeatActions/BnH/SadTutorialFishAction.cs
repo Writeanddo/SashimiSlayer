@@ -11,6 +11,9 @@ public class SadTutorialFishAction : MonoBehaviour
     [SerializeField]
     private ParticleSystem _dieParticles;
 
+    [SerializeField]
+    private AnimationCurve _moveCurve;
+
     private BnHActionSo ActionConfigSo => _bnhActionCore.ActionConfigSo;
 
     private Vector2 _startPos;
@@ -25,13 +28,14 @@ public class SadTutorialFishAction : MonoBehaviour
         _bnhActionCore.OnTickInInteraction += HandleTickWaitingForInteraction;
         _bnhActionCore.OnTickWaitingToLeave += HandleTickWaitingToLeave;
         _bnhActionCore.OnLandHitOnProtag += HandleLandHitOnProtag;
-
-        _targetPos = Protaganist.Instance.SpritePosition;
     }
 
     private void Start()
     {
+        // Form an arc from start, with the peak at the target position
         _startPos = transform.position;
+        _targetPos = _bnhActionCore.Data.Positions[1];
+        _sprite.flipX = _targetPos.x > _startPos.x;
     }
 
     private void HandleLandHitOnProtag()
@@ -47,15 +51,27 @@ public class SadTutorialFishAction : MonoBehaviour
             return;
         }
 
-        _sprite.gameObject.transform.Rotate(Vector3.forward, 2000f * Time.deltaTime);
+        double leaveTime = _bnhActionCore.Data.ActionEndTime;
 
-        transform.position += Vector3.up * Time.deltaTime * 10f;
-        transform.position += Vector3.right * Time.deltaTime * 10f;
+        float normalizedTime = Mathf.InverseLerp(
+            (float)_bnhActionCore.LastInteractionEndTime,
+            (float)leaveTime,
+            (float)time);
+
+        float t = _moveCurve.Evaluate(1 - normalizedTime);
+
+        // X velocity is constant, y uses curve
+        transform.position = new Vector2(
+            Mathf.Lerp(_targetPos.x, _targetPos.x + (_targetPos.x - _startPos.x), normalizedTime),
+            Mathf.Lerp(_targetPos.y, _startPos.y, 1 - t)
+        );
+
+        _sprite.transform.rotation = Quaternion.Euler(0, 0, 90 * (1 - t));
     }
 
     private void HandleTickWaitingForInteraction(double time, BnHActionCore.ScheduledInteraction interaction)
     {
-        if (interaction.Interaction.InteractionType == BnHActionCore.InteractionType.IncomingAttack)
+        if (interaction.Interaction.InteractionType == BnHActionCore.InteractionType.Vulnerable)
         {
             UpdatePosition(time, interaction);
         }
@@ -63,20 +79,22 @@ public class SadTutorialFishAction : MonoBehaviour
 
     private void UpdatePosition(double time, BnHActionCore.ScheduledInteraction interaction)
     {
-        double attackStartTime =
-            interaction.TimeWhenInteractionStart;
         double attackMiddleTime = interaction.TimeWhenInteractWindowEnd;
 
-        float t = Mathf.InverseLerp((float)_bnhActionCore.LastInteractionEndTime, (float)attackMiddleTime,
+        float normalizedTime = Mathf.InverseLerp(
+            (float)_bnhActionCore.LastInteractionEndTime,
+            (float)attackMiddleTime,
             (float)time);
 
-        t *= t;
+        float t = _moveCurve.Evaluate(normalizedTime);
 
-        transform.position = Vector2.Lerp(_startPos, _targetPos,
-            t);
+        // X velocity is constant, y uses curve
+        transform.position = new Vector2(
+            Mathf.Lerp(_startPos.x, _targetPos.x, normalizedTime),
+            Mathf.Lerp(_startPos.y, _targetPos.y, t)
+        );
 
-        _sprite.transform.rotation = Quaternion.Euler(0, 0,
-            Mathf.Atan2(_targetPos.y - _startPos.y, _targetPos.x - _startPos.x) * Mathf.Rad2Deg);
+        _sprite.transform.rotation = Quaternion.Euler(0, 0, -90 * (1 - t));
     }
 
     private void HandleKilled()
