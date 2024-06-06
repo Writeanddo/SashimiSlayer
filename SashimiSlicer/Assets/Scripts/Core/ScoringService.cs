@@ -7,8 +7,10 @@ public class ScoringService : MonoBehaviour
 {
     public struct BeatmapScore : IComparable<BeatmapScore>
     {
+        public string BeatmapName;
         public int Successes;
         public int Failures;
+        public bool DidSucceed;
 
         public int CompareTo(BeatmapScore other)
         {
@@ -33,8 +35,6 @@ public class ScoringService : MonoBehaviour
     public static ScoringService Instance { get; private set; }
 
     public BeatmapScore CurrentScore => _currentScore;
-
-    private bool _didPlayerDie;
 
     private BeatmapScore _currentScore;
 
@@ -82,12 +82,13 @@ public class ScoringService : MonoBehaviour
 
     private void HandlePlayerDeath()
     {
-        _didPlayerDie = true;
+        _currentScore.DidSucceed = false;
     }
 
     private void OnLoadBeatmap(BeatmapConfigSo beatmap)
     {
         _currentScore = new BeatmapScore();
-        _didPlayerDie = false;
+        _currentScore.BeatmapName = beatmap.name;
+        _currentScore.DidSucceed = true;
     }
 }

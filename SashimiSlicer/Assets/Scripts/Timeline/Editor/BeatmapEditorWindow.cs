@@ -53,6 +53,16 @@ public class BeatmapEditorWindow : EditorWindow
         GUILayout.Label("Current Editing Beatmap");
 
         DrawBeatmapEditingFields();
+
+        GUILayout.Space(10);
+
+        if (GUILayout.Button("Wipe Highscores"))
+        {
+            foreach (GameLevelSO level in _levelRoster.Levels)
+            {
+                PlayerPrefs.SetFloat($"{level.Beatmap.BeatmapName}.highscore", 0);
+            }
+        }
     }
 
     private void OnBecameInvisible()

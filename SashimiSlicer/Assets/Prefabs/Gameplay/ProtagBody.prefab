@@ -15234,6 +15234,9 @@ MonoBehaviour:
     type: 2}
   _protagTakeDamageEvent: {fileID: 11400000, guid: 7517b3ffc01c7a1449611f21a59752ca,
     type: 2}
+  _protagVictoryEvent: {fileID: 11400000, guid: ee736a2857fd8dd46929098023ce7c51,
+    type: 2}
+  _protagLossEvent: {fileID: 11400000, guid: 7b851042094282748b50bf4ac01b2d6d, type: 2}
   _animator: {fileID: 3734853992565651078}
 --- !u!1 &4564274209847591246
 GameObject:
@@ -16560,7 +16563,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 8353
+        atime1: 11694
         atime2: 39321
         atime3: 65535
         atime4: 0
@@ -16785,8 +16788,8 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0
-      minScalar: 0
+      scalar: 2
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
