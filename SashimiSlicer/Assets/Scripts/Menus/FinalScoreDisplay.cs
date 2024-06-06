@@ -60,7 +60,7 @@ public class FinalScoreDisplay : MonoBehaviour
             _onProtagLoss.Raise();
             _percentageText.enabled = false;
             _percentageText.gameObject.SetActive(false);
-        }
+        } 
 
         float currentHighestAccuracy = PlayerPrefs.GetFloat($"{_finalScore.BeatmapName}.highscore", 0);
 

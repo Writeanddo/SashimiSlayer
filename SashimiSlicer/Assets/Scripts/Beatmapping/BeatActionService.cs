@@ -35,6 +35,19 @@ public class BeatActionService : MonoBehaviour
         _onSliceByProtag.RemoveListener(OnSliceByProtag);
     }
 
+    private void OnValidate()
+    {
+        // Destroy children
+        if (!Application.isPlaying)
+        {
+            BnHActionCore[] hits = GetComponentsInChildren<BnHActionCore>();
+            foreach (BnHActionCore hit in hits)
+            {
+                DestroyImmediate(hit.gameObject);
+            }
+        }
+    }
+
     private void OnBlockByProtag(Protaganist.ProtagSwordState swordState)
     {
         foreach (BnHActionCore action in _activeBeatActions)

@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Events;
 using Events.Core;
 using UnityEngine;
@@ -74,6 +75,7 @@ public class TimingService : MonoBehaviour
     private void OnDestroy()
     {
         _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
+        Debug.Log($"Killed {DOTween.KillAll()} tweens");
     }
 
     private void Tick()

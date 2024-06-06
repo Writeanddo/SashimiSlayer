@@ -9836,12 +9836,12 @@ GameObject:
   - component: {fileID: 4755560728090497567}
   - component: {fileID: 226028147372931124}
   m_Layer: 0
-  m_Name: LineRen
+  m_Name: SheathedRen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4755560728090497567
 Transform:
   m_ObjectHideFlags: 0
@@ -9896,15 +9896,16 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -230312877
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: -175096723
+  m_SortingLayer: 4
+  m_SortingOrder: 100
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 4, y: 0, z: 0}
+  - {x: 8, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.03
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -14931,7 +14932,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -175096723
   m_SortingLayer: 4
-  m_SortingOrder: 5
+  m_SortingOrder: 100
   m_Positions:
   - {x: 0, y: 1, z: 0}
   - {x: 15, y: 1, z: 0}

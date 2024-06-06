@@ -14930,13 +14930,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bnhActionCore: {fileID: 5351909015360120121}
+  _sprite: {fileID: 38135383335388938}
   _animator: {fileID: 9185724354866607105}
   _attackAnimationWindup: 0.4
   _damagedParticles:
   - {fileID: 2547056280107013116}
   - {fileID: 400145925774261982}
   - {fileID: 2882876762901663931}
-  _landHitSfx: {fileID: 8300000, guid: e61087ddea380e440bcc70ff239b0f89, type: 3}
 --- !u!1 &8181838416036536246
 GameObject:
   m_ObjectHideFlags: 0

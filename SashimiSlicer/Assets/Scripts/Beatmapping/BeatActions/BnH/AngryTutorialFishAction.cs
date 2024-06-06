@@ -66,6 +66,7 @@ public class AngryTutorialFishAction : MonoBehaviour
         transform.position += Vector3.right * Time.deltaTime * 15f;
 
         _sprite.transform.rotation = Quaternion.Euler(0, 0, 1200 * (float)time);
+        _sprite.color = new Color(1, 1, 1, 0.7f);
     }
 
     private void HandleTickWaitingForInteraction(double time, BnHActionCore.ScheduledInteraction interaction)

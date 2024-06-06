@@ -6,6 +6,9 @@ public class TentacleAction : MonoBehaviour
     private BnHActionCore _bnhActionCore;
 
     [SerializeField]
+    private SpriteRenderer _sprite;
+
+    [SerializeField]
     private Animator _animator;
 
     [SerializeField]
@@ -37,6 +40,7 @@ public class TentacleAction : MonoBehaviour
     private void HandleTransitionToLeaving()
     {
         _animator.Play("TentacleLeave");
+        _sprite.color = new Color(1, 1, 1, 0.7f);
     }
 
     private void HandleKilled()

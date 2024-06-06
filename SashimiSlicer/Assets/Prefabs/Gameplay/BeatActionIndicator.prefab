@@ -1141,8 +1141,8 @@ MonoBehaviour:
   - {fileID: 5429573642046920822}
   - {fileID: 8338339488889998119}
   - {fileID: 630171613789070158}
-  _poseBurstDuration: 0.5
-  _poseBurstScale: 4
+  _poseBurstDuration: 0.6
+  _poseBurstScale: 5
   _blockPoseBurstSprites:
   - {fileID: 5487668393273414164}
   - {fileID: 870219543454916451}

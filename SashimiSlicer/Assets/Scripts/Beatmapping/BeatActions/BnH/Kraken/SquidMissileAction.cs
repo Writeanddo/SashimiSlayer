@@ -89,6 +89,7 @@ public class SquidMissileAction : MonoBehaviour
         );
 
         _sprite.transform.localRotation = Quaternion.Euler(0, 0, 90 * (1 - t));
+        _sprite.color = new Color(1, 1, 1, 0.7f);
     }
 
     private void HandleTickWaitingForInteraction(double time, BnHActionCore.ScheduledInteraction interaction)

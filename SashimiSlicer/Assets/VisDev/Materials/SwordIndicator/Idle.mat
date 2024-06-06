@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Idle
-  m_Shader: {fileID: -6465566751694194690, guid: 7cf77fdf079fd634c8b63722d1a791fe,
+  m_Shader: {fileID: -6465566751694194690, guid: 88dc1f32d6c4caf4c8121e0304139ee3,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f5230fca300efdc43b02190f99794fe5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -112,6 +112,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HoleOuterRadius: 0.2
+    - _HoleRadius: 0.01
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -129,11 +131,13 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 7.9999995, g: 7.9999995, b: 7.9999995, a: 1}
-    - _Emission: {r: 0, g: 0, b: 0, a: 1}
+    - _Emission: {r: 0.17310987, g: 0, b: 0, a: 0.5254902}
     - _EmissionColor: {r: 3.9999998, g: 3.9999998, b: 3.9999998, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ScrollSpeed: {r: 0.8, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Tile: {r: 15, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8817997814311088398
 MonoBehaviour:
