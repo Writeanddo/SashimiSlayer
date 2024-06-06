@@ -27,7 +27,6 @@ public class SadTutorialFishAction : MonoBehaviour
         _bnhActionCore.OnTickWaitingForInteraction += HandleTickWaitingForInteraction;
         _bnhActionCore.OnTickInInteraction += HandleTickWaitingForInteraction;
         _bnhActionCore.OnTickWaitingToLeave += HandleTickWaitingToLeave;
-        _bnhActionCore.OnLandHitOnProtag += HandleLandHitOnProtag;
     }
 
     private void Start()
@@ -36,12 +35,6 @@ public class SadTutorialFishAction : MonoBehaviour
         _startPos = transform.position;
         _targetPos = _bnhActionCore.Data.Positions[1];
         _sprite.flipX = _targetPos.x > _startPos.x;
-    }
-
-    private void HandleLandHitOnProtag()
-    {
-        _landedHit = true;
-        _dieParticles.Play();
     }
 
     private void HandleTickWaitingToLeave(double time, BnHActionCore.BnHActionInstanceConfig bnHActionInstanceConfig)

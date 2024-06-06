@@ -58,13 +58,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2934478468398264389}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.31, y: -0.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6948830079042895734}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &8820880546140617743
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -319,7 +319,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.35
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1012,7 +1012,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 35
+        scalar: 10
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1458,8 +1458,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
-    enabled: 0
-    mode: 0
+    enabled: 1
+    mode: 1
     timeMode: 0
     fps: 30
     frameOverTime:
@@ -1577,7 +1577,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: 21300000, guid: 887872f7bb17ebd43aac732ba7f6362e, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -1585,8 +1585,8 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -5
-      minScalar: 55
+      scalar: 55
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1638,7 +1638,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0
+      scalar: 25
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4024,7 +4024,7 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 1
+    enabled: 0
     mode: 0
     ratio: 1
     lifetime:
@@ -4876,8 +4876,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2b80fd52c2956454a9dd7741c6eca156, type: 2}
-  - {fileID: 2100000, guid: 2b80fd52c2956454a9dd7741c6eca156, type: 2}
+  - {fileID: 2100000, guid: 9d9553d34393f2746be17027ae5902ae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5003,7 +5002,7 @@ SpriteRenderer:
   m_SortingLayerID: 681681957
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c512873afd71dc44283d4479c017c3e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 547dcec25b5732d4a9f079213d862098, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5056,7 +5055,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4584757707055110698}
   - component: {fileID: 5351909015360120121}
-  - component: {fileID: -6979564888490074285}
+  - component: {fileID: 6312448168416926207}
   m_Layer: 0
   m_Name: AngryTutFish
   m_TagString: Untagged
@@ -5097,7 +5096,7 @@ MonoBehaviour:
   _indicator: {fileID: 1637912884012176710}
   _beatInteractionResultEvent: {fileID: 11400000, guid: bd78ca9baaf0c6b47bad4871ce4bcce3,
     type: 2}
---- !u!114 &-6979564888490074285
+--- !u!114 &6312448168416926207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5106,12 +5105,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6719167886461646457}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2f53cc73eec1f4a834880a96cbb22b, type: 3}
+  m_Script: {fileID: 11500000, guid: aacbad30d5adbdd45aa2f36cfdbe2208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 38135383335388938}
   _bnhActionCore: {fileID: 5351909015360120121}
-  _dieParticles: {fileID: 8820880546140617743}
+  _explosionParticles: {fileID: 8820880546140617743}
   _moveCurve:
     serializedVersion: 2
     m_Curve:

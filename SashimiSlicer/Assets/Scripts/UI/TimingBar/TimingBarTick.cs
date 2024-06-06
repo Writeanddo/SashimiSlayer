@@ -18,6 +18,8 @@ public class TimingBarTick : MonoBehaviour
 
     private void Awake()
     {
+        transform.localScale = Vector3.one * 2f;
+        transform.DOScale(1, 0.25f);
         _canvasGroup.DOFade(0, _fadeDuration).SetEase(Ease.OutQuint).OnComplete(() => Destroy(gameObject));
     }
 
