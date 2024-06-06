@@ -43,6 +43,9 @@ public class Protaganist : MonoBehaviour
     [SerializeField]
     private ProtagSwordStateEvent _unsheatheEvent;
 
+    [SerializeField]
+    private VoidEvent _successfulSliceEvent;
+
     [Header("Listening Events")]
 
     [SerializeField]
@@ -231,6 +234,7 @@ public class Protaganist : MonoBehaviour
 
     public void SuccessfulSlice()
     {
+        _successfulSliceEvent.Raise();
         AudioSource.PlayClipAtPoint(_sliceSFX, Vector3.zero, 1f);
         ScreenShakeService.Instance.ShakeScreen(0.1f, 0.5f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
     }

@@ -26,4 +26,8 @@ public class GameLevelSO : ScriptableObject
 
     [field: SerializeField]
     public LevelTypes LevelType { get; private set; }
+
+    [field: SerializeField]
+
+    public Sprite Thumbnail { get; private set; }
 }

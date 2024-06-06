@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelSelectButton : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class LevelSelectButton : MonoBehaviour
 
     [SerializeField]
     private TMP_Text _levelDescriptionText;
+
+    [SerializeField]
+    private Image _thumbnailImage;
 
     public event Action<GameLevelSO> OnLevelSelected;
 
@@ -20,6 +24,7 @@ public class LevelSelectButton : MonoBehaviour
         _levelNameText.text = level.LevelTitle;
         _levelDescriptionText.text = level.LevelDescription;
         _level = level;
+        _thumbnailImage.sprite = level.Thumbnail;
     }
 
     public void SetHovered(bool val)

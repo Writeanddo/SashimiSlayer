@@ -9,7 +9,7 @@ public class SadTutorialFishAction : MonoBehaviour
     private BnHActionCore _bnhActionCore;
 
     [SerializeField]
-    private ParticleSystem _dieParticles;
+    private ParticleSystem[] _dieParticles;
 
     [SerializeField]
     private AnimationCurve _moveCurve;
@@ -93,6 +93,9 @@ public class SadTutorialFishAction : MonoBehaviour
     private void HandleKilled()
     {
         _sprite.enabled = false;
-        _dieParticles.Play();
+        foreach (ParticleSystem particle in _dieParticles)
+        {
+            particle.Play();
+        }
     }
 }

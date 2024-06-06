@@ -115,10 +115,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1840
-        height: 1627
-      alignment: 9
-      pivot: {x: 0.65702647, y: 0.0044958107}
+        width: 1807.3334
+        height: 1775
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,10 +134,10 @@ TextureImporter:
       name: parry_1
       rect:
         serializedVersion: 2
-        x: 1840
+        x: 1807
         y: 0
-        width: 1840
-        height: 1627
+        width: 1807.3334
+        height: 1775
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,12 +155,12 @@ TextureImporter:
       name: parry_2
       rect:
         serializedVersion: 2
-        x: 3680
+        x: 3614
         y: 0
-        width: 1840
-        height: 1627
-      alignment: 9
-      pivot: {x: 0.65503913, y: 0.0044958107}
+        width: 1807.3334
+        height: 1775
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

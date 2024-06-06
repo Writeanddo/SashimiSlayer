@@ -30,6 +30,7 @@ public class AngryTutorialFishAction : MonoBehaviour
         _bnhActionCore.OnTickInInteraction += HandleTickWaitingForInteraction;
         _bnhActionCore.OnTickWaitingToLeave += HandleTickWaitingToLeave;
         _bnhActionCore.OnLandHitOnProtag += HandleLandHitOnProtag;
+        _bnhActionCore.OnKilled += HandleDied;
     }
 
     private void Start()
@@ -41,6 +42,11 @@ public class AngryTutorialFishAction : MonoBehaviour
 
         _sprite.flipX = _peakPos.x > _startPos.x;
         _angleToTarget = Mathf.Atan2(_targetPos.y - _peakPos.y, _targetPos.x - _peakPos.x) * Mathf.Rad2Deg;
+    }
+
+    private void HandleDied()
+    {
+        _sprite.enabled = false;
     }
 
     private void HandleLandHitOnProtag()

@@ -263,7 +263,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -286,7 +286,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
     Description: 
     HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
     ActionData:
-      Position: {x: 10.153387, y: 1.1217937}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 8.181818181818182
@@ -568,7 +568,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -591,7 +591,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -614,7 +614,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -637,7 +637,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -756,7 +756,7 @@ MonoBehaviour:
     Description: 
     HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
     ActionData:
-      Position: {x: 10.153387, y: 1.1217937}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 19.545454545454543
@@ -785,7 +785,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 11400000, guid: e7f0458cd61d42b4c969c878e98c2945, type: 2}
     ActionData:
-      Position: {x: 0.5185338, y: -4.813746}
+      Positions: []
       AutoVulnerableAtEnd: 1
       AdditionalText: 
       ActionStartTime: 12.727272727272727
@@ -820,7 +820,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 11400000, guid: e7f0458cd61d42b4c969c878e98c2945, type: 2}
     ActionData:
-      Position: {x: 6.856831, y: -5.0290203}
+      Positions: []
       AutoVulnerableAtEnd: 1
       AdditionalText: 
       ActionStartTime: 16.363636363636363
@@ -855,7 +855,7 @@ MonoBehaviour:
     Description: 
     HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
     ActionData:
-      Position: {x: 10.153387, y: 2.3813844}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 19.09090909090909
@@ -901,7 +901,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -924,7 +924,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -947,7 +947,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -970,7 +970,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -993,7 +993,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -1045,7 +1045,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 11400000, guid: e7f0458cd61d42b4c969c878e98c2945, type: 2}
     ActionData:
-      Position: {x: 3.8103883, y: -4.0680285}
+      Positions: []
       AutoVulnerableAtEnd: 1
       AdditionalText: 
       ActionStartTime: 13.181818181818183
@@ -1275,7 +1275,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 11400000, guid: e7f0458cd61d42b4c969c878e98c2945, type: 2}
     ActionData:
-      Position: {x: 3.9961052, y: -4.847387}
+      Positions: []
       AutoVulnerableAtEnd: 1
       AdditionalText: 
       ActionStartTime: 20
@@ -1304,7 +1304,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -1327,7 +1327,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -1499,7 +1499,7 @@ MonoBehaviour:
     Description: 
     HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
     ActionData:
-      Position: {x: 9.689327, y: 3.9503484}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 18.636363636363637
@@ -1528,7 +1528,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -1568,7 +1568,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -1591,7 +1591,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 11400000, guid: e7f0458cd61d42b4c969c878e98c2945, type: 2}
     ActionData:
-      Position: {x: 1.9111347, y: -5.358733}
+      Positions: []
       AutoVulnerableAtEnd: 1
       AdditionalText: 
       ActionStartTime: 16.818181818181817
@@ -1620,7 +1620,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -1643,7 +1643,7 @@ MonoBehaviour:
     Description: 
     HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
     ActionData:
-      Position: {x: 10.573251, y: -0.95542645}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 8.636363636363637
@@ -1672,7 +1672,8 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 11400000, guid: e7f0458cd61d42b4c969c878e98c2945, type: 2}
     ActionData:
-      Position: {x: 0.96435785, y: -4.540195}
+      Positions:
+      - {x: 0, y: 0}
       AutoVulnerableAtEnd: 1
       AdditionalText: 
       ActionStartTime: 0
@@ -1713,7 +1714,8 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 11400000, guid: e7f0458cd61d42b4c969c878e98c2945, type: 2}
     ActionData:
-      Position: {x: 5.6636252, y: -3.7068782}
+      Positions:
+      - {x: 0, y: 0}
       AutoVulnerableAtEnd: 1
       AdditionalText: 
       ActionStartTime: 0.9090909090909092
@@ -1748,7 +1750,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -1770,7 +1772,7 @@ MonoBehaviour:
   m_Time: 0.1
   EmitOnce: 0
   EmitInEditor: 0
-  Position: {x: -5.227377, y: -1.0548086, z: 0}
+  Position: {x: -5.4238763, y: -1.5590332, z: 0}
 --- !u!114 &6274969261271429369
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1787,7 +1789,7 @@ MonoBehaviour:
     Description: 
     HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
     ActionData:
-      Position: {x: 9.689327, y: 3.9503484}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 7.272727272727273
@@ -2247,7 +2249,7 @@ MonoBehaviour:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 0}
     ActionData:
-      Position: {x: 0, y: 0}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 0
@@ -2270,7 +2272,7 @@ MonoBehaviour:
     Description: 
     HitConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
     ActionData:
-      Position: {x: 10.153387, y: 2.3813844}
+      Positions: []
       AutoVulnerableAtEnd: 0
       AdditionalText: 
       ActionStartTime: 7.727272727272727

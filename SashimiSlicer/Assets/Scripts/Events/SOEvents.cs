@@ -8,6 +8,18 @@ namespace Events
         [SerializeField]
         [TextArea]
         private string _description;
+
+        protected Action _internalVoidEvent;
+
+        public void AddListener(Action listener)
+        {
+            _internalVoidEvent += listener;
+        }
+
+        public void RemoveListener(Action listener)
+        {
+            _internalVoidEvent -= listener;
+        }
     }
 
     public abstract class SOEvent<T> : SOEvent
@@ -17,6 +29,7 @@ namespace Events
         public void Raise(T value)
         {
             _internalEvent?.Invoke(value);
+            _internalVoidEvent?.Invoke();
         }
 
         public void AddListener(Action<T> listener)

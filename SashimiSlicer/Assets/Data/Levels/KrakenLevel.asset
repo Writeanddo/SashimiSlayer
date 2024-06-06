@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <GameSceneName>k__BackingField: Kraken
   <LevelTitle>k__BackingField: The Kraken
-  <LevelDescription>k__BackingField: Unlimited calamari
+  <LevelDescription>k__BackingField: A Tentacled Tussle!
   <Beatmap>k__BackingField: {fileID: 11400000, guid: 6e2f3237bb7a3d14188f0f4d1baa9ba4,
     type: 2}
   <LevelType>k__BackingField: 1
+  <Thumbnail>k__BackingField: {fileID: 21300000, guid: 6292ea6dd01b47c4f813cddbd0241949,
+    type: 3}

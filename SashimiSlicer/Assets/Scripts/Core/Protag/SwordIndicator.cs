@@ -1,3 +1,4 @@
+using Events;
 using Events.Core;
 using UnityEngine;
 
@@ -6,15 +7,18 @@ public class SwordIndicator : MonoBehaviour
     [Header("Visuals")]
 
     [SerializeField]
-    private LineRenderer _lineRenderer;
+    private LineRenderer _sheathedLineRen;
 
     [SerializeField]
-    private Material _idleMaterial;
+    private LineRenderer _unsheathedLineRen;
 
     [SerializeField]
-    private Material _unsheathedMaterial;
+    private ParticleSystem _sliceParticle;
 
     [Header("Events")]
+
+    [SerializeField]
+    private SOEvent _protagSuccessfulSliceEvent;
 
     [SerializeField]
     private ProtagSwordStateEvent _onSwordStateChange;
@@ -29,17 +33,29 @@ public class SwordIndicator : MonoBehaviour
     {
         _onSwordStateChange.AddListener(OnSwordStateChange);
         SetSheatheState(SharedTypes.SheathState.Sheathed);
+        _protagSuccessfulSliceEvent.AddListener(OnSuccessfulSlice);
     }
 
     private void Update()
     {
         _cPos = Vector3.Lerp(_cPos, _position, Time.deltaTime * 10f);
-        UpdateOrientation();
+        UpdateOrientation(_sheathedLineRen);
+        UpdateOrientation(_unsheathedLineRen);
     }
 
     private void OnDestroy()
     {
         _onSwordStateChange.RemoveListener(OnSwordStateChange);
+        _protagSuccessfulSliceEvent.RemoveListener(OnSuccessfulSlice);
+    }
+
+    private void OnSuccessfulSlice()
+    {
+        _sliceParticle.transform.position = _cPos;
+        ParticleSystem.MainModule main = _sliceParticle.main;
+        main.startRotation = -_angle * Mathf.Deg2Rad;
+        _sliceParticle.transform.rotation = Quaternion.Euler(0, 0, _angle);
+        _sliceParticle.Play();
     }
 
     private void OnSwordStateChange(Protaganist.ProtagSwordState swordState)
@@ -51,17 +67,8 @@ public class SwordIndicator : MonoBehaviour
 
     private void SetSheatheState(SharedTypes.SheathState state)
     {
-        _lineRenderer.material =
-            state == SharedTypes.SheathState.Sheathed ? _idleMaterial : _unsheathedMaterial;
-
-        if (state == SharedTypes.SheathState.Sheathed)
-        {
-            _lineRenderer.widthMultiplier = 0.02f;
-        }
-        else
-        {
-            _lineRenderer.widthMultiplier = 0.05f;
-        }
+        _sheathedLineRen.enabled = state == SharedTypes.SheathState.Sheathed;
+        _unsheathedLineRen.enabled = state == SharedTypes.SheathState.Unsheathed;
     }
 
     private void SetAngle(float angle)
@@ -74,10 +81,10 @@ public class SwordIndicator : MonoBehaviour
         _position = position;
     }
 
-    private void UpdateOrientation()
+    private void UpdateOrientation(LineRenderer lineRen)
     {
         Quaternion rotation = Quaternion.Euler(0, 0, _angle);
-        _lineRenderer.SetPosition(0, _cPos + rotation * Vector3.left * 1000f);
-        _lineRenderer.SetPosition(1, _cPos + rotation * Vector3.right * 1000f);
+        lineRen.SetPosition(0, _cPos + rotation * Vector3.left * 1000f);
+        lineRen.SetPosition(1, _cPos + rotation * Vector3.right * 1000f);
     }
 }

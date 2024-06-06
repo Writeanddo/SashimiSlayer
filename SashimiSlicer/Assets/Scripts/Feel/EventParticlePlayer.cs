@@ -6,7 +6,7 @@ public class EventParticlePlayer : MonoBehaviour
     [Header("Event")]
 
     [SerializeField]
-    private VoidEvent _event;
+    private SOEvent _event;
 
     [SerializeField]
     private ParticleSystem _particleSystem;

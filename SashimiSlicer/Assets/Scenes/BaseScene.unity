@@ -1719,6 +1719,8 @@ MonoBehaviour:
     type: 2}
   _playerDeadEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
   _unsheatheEvent: {fileID: 11400000, guid: 57cf023d4fecd634d8adcd692ffbdd07, type: 2}
+  _successfulSliceEvent: {fileID: 11400000, guid: 44b03b0ef4788184e89b3831f4eeee5a,
+    type: 2}
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
     type: 2}
   _onDrawDebugGuiEvent: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d,
