@@ -57,13 +57,7 @@ public class Protaganist : MonoBehaviour
     [Header("SFX")]
 
     [SerializeField]
-    private AudioClip _hurtSFX;
-
-    [SerializeField]
-    private AudioClip _blockSFX;
-
-    [SerializeField]
-    private AudioClip _sliceSFX;
+    private AudioClip[] _blockSFX;
 
     public static Protaganist Instance { get; private set; }
     public SharedTypes.SheathState ProtagSheathState => _protagSheathState;
@@ -207,7 +201,6 @@ public class Protaganist : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        AudioSource.PlayClipAtPoint(_hurtSFX, Vector3.zero, 1f);
         ScreenShakeService.Instance.ShakeScreen(0.1f, 1f, CinemachineImpulseDefinition.ImpulseShapes.Rumble);
 
         if (_health <= 0)
@@ -228,14 +221,30 @@ public class Protaganist : MonoBehaviour
     public void SuccessfulBlock()
     {
         _successfulBlockEvent.Raise();
-        AudioSource.PlayClipAtPoint(_blockSFX, Vector3.zero, 1f);
+        if ((_currentBlockPose | SharedTypes.BlockPoseStates.BotPose) == _currentBlockPose)
+        {
+            AudioSource.PlayClipAtPoint(_blockSFX[2], Vector3.zero);
+            AudioSource.PlayClipAtPoint(_blockSFX[2], Vector3.zero);
+        }
+
+        if ((_currentBlockPose | SharedTypes.BlockPoseStates.MidPose) == _currentBlockPose)
+        {
+            AudioSource.PlayClipAtPoint(_blockSFX[1], Vector3.zero);
+            AudioSource.PlayClipAtPoint(_blockSFX[1], Vector3.zero);
+        }
+
+        if ((_currentBlockPose | SharedTypes.BlockPoseStates.TopPose) == _currentBlockPose)
+        {
+            AudioSource.PlayClipAtPoint(_blockSFX[0], Vector3.zero);
+            AudioSource.PlayClipAtPoint(_blockSFX[0], Vector3.zero);
+        }
+
         ScreenShakeService.Instance.ShakeScreen(0.05f, 0.15f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
     }
 
     public void SuccessfulSlice()
     {
         _successfulSliceEvent.Raise();
-        AudioSource.PlayClipAtPoint(_sliceSFX, Vector3.zero, 1f);
         ScreenShakeService.Instance.ShakeScreen(0.1f, 0.5f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
     }
 

@@ -31,7 +31,7 @@ public class FinalScoreDisplay : MonoBehaviour
 
     private float _percentageAnimated;
 
-    private void Awake()
+    private void Start()
     {
         _finalScore = ScoringService.Instance.CurrentScore;
 

@@ -14,11 +14,6 @@ public class TentacleAction : MonoBehaviour
     [SerializeField]
     private ParticleSystem[] _damagedParticles;
 
-    [Header("SFX")]
-
-    [SerializeField]
-    private AudioClip _landHitSfx;
-
     private BnHActionSo ActionConfigSo => _bnhActionCore.ActionConfigSo;
 
     private void Awake()
@@ -28,7 +23,6 @@ public class TentacleAction : MonoBehaviour
         _bnhActionCore.OnTickWaitingForInteraction += HandleTickWaitingForInteraction;
         _bnhActionCore.OnKilled += HandleKilled;
         _bnhActionCore.OnTransitionToLeaving += HandleTransitionToLeaving;
-        _bnhActionCore.OnLandHitOnProtag += HandleLandHitOnProtag;
     }
 
     private void OnDestroy()
@@ -38,12 +32,6 @@ public class TentacleAction : MonoBehaviour
         _bnhActionCore.OnTickWaitingForInteraction -= HandleTickWaitingForInteraction;
         _bnhActionCore.OnKilled -= HandleKilled;
         _bnhActionCore.OnTransitionToLeaving -= HandleTransitionToLeaving;
-        _bnhActionCore.OnLandHitOnProtag -= HandleLandHitOnProtag;
-    }
-
-    private void HandleLandHitOnProtag()
-    {
-        AudioSource.PlayClipAtPoint(_landHitSfx, Vector3.zero, 1f);
     }
 
     private void HandleTransitionToLeaving()

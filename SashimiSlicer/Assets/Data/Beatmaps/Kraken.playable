@@ -143,10 +143,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 12.752727272727274
+    m_Start: 12.732727272727272
     m_ClipIn: 0
     m_Asset: {fileID: 5782863819736585087}
-    m_Duration: 7.27272727272727
+    m_Duration: 7.272727272727272
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7634491408669650360}
     m_EaseInDuration: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Tentacle
   - m_Version: 1
-    m_Start: 20.025454545454544
+    m_Start: 20.005454545454544
     m_ClipIn: 0
     m_Asset: {fileID: 6274969261271429369}
     m_Duration: 6.363636363636367
@@ -702,7 +702,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 20.934545454545454
+    m_Start: 20.914545454545454
     m_ClipIn: 0
     m_Asset: {fileID: -7897901289147123693}
     m_Duration: 5.454545454545457
@@ -793,9 +793,9 @@ MonoBehaviour:
       AutoVulnerableAtEnd: 1
       AutoVulnerableBeatOffset: 0
       AdditionalText: 
-      ActionStartTime: 8.181818181818182
+      ActionStartTime: 8.18181818181818
       ActionEndTime: 14.545454545454543
-      ActionBeatLength: 13.999999999999996
+      ActionBeatLength: 14
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 2
@@ -1054,8 +1054,8 @@ MonoBehaviour:
       AutoVulnerableBeatOffset: 0
       AdditionalText: 
       ActionStartTime: 0
-      ActionEndTime: 7.272727272727273
-      ActionBeatLength: 16.000000000000004
+      ActionEndTime: 7.2727272727272725
+      ActionBeatLength: 16
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
@@ -1096,9 +1096,9 @@ MonoBehaviour:
       AutoVulnerableAtEnd: 1
       AutoVulnerableBeatOffset: 0
       AdditionalText: 
-      ActionStartTime: 7.272727272727273
+      ActionStartTime: 7.2727272727272725
       ActionEndTime: 14.545454545454543
-      ActionBeatLength: 15.999999999999995
+      ActionBeatLength: 15.999999999999998
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 2
@@ -1213,10 +1213,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 5.48
+    m_Start: 5.46
     m_ClipIn: 0
     m_Asset: {fileID: 5551775925457792276}
-    m_Duration: 7.272727272727273
+    m_Duration: 7.2727272727272725
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6435859260828590340}
     m_EaseInDuration: 0
@@ -1345,7 +1345,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 20.48
+    m_Start: 20.46
     m_ClipIn: 0
     m_Asset: {fileID: 9219258123983477239}
     m_Duration: 5.90909090909091
@@ -1414,10 +1414,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Squid
   - m_Version: 1
-    m_Start: 13.661818181818182
+    m_Start: 13.64181818181818
     m_ClipIn: 0
     m_Asset: {fileID: 2054884853932038890}
-    m_Duration: 6.3636363636363615
+    m_Duration: 6.363636363636363
     m_TimeScale: 1
     m_ParentTrack: {fileID: 7855175669344345868}
     m_EaseInDuration: 0

@@ -43,7 +43,7 @@ public class TimingService : MonoBehaviour
     private double _startTime;
     private double _timePastBeat;
 
-    private bool _firstTickSinceLoad;
+    private int _ticksToSync;
 
     private void Awake()
     {
@@ -64,9 +64,9 @@ public class TimingService : MonoBehaviour
     private void Update()
     {
         Tick();
-        if (_firstTickSinceLoad)
+        if (_ticksToSync > 0)
         {
-            _firstTickSinceLoad = false;
+            _ticksToSync--;
             _syncTimeEvent.Raise(_currentTime);
         }
     }
@@ -149,7 +149,7 @@ public class TimingService : MonoBehaviour
         Debug.Log("Resyncing to new start time");
         _startTime = AudioSettings.dspTime + _currentBeatmap.StartTime;
         _lastFrameTime = _currentTime;
-        _firstTickSinceLoad = true;
+        _ticksToSync = 100000;
         Tick();
     }
 }
