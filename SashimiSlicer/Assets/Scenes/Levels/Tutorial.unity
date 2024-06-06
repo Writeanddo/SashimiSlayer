@@ -1363,40 +1363,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2253814195716074541, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 3950902060585002301, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
         type: 3}
       propertyPath: m_Name
       value: ProtagBody
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231902621583176953, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
-        type: 3}
-      propertyPath: ClampVelocityModule.drag.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231902621583176953, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231902621583176953, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.b
-      value: 0.084905505
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231902621583176953, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.g
-      value: 0.91654646
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231902621583176953, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5963297688816790602, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
         type: 3}

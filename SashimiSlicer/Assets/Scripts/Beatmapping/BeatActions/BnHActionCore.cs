@@ -37,6 +37,8 @@ public class BnHActionCore : MonoBehaviour
 
         public bool AutoVulnerableAtEnd;
 
+        public int AutoVulnerableBeatOffset;
+
         public string AdditionalText;
 
         [Header("Timing (Beatmap space)")]
@@ -61,7 +63,7 @@ public class BnHActionCore : MonoBehaviour
                     list.Add(new InteractionInstanceConfig
                     {
                         InteractionType = InteractionType.Vulnerable,
-                        BeatsUntilStart = ActionBeatLength,
+                        BeatsUntilStart = ActionBeatLength + AutoVulnerableBeatOffset,
                         DieOnHit = true
                     });
                 }
@@ -446,10 +448,6 @@ public class BnHActionCore : MonoBehaviour
             {
                 OnLandHitOnProtag?.Invoke();
                 Protaganist.Instance.TakeDamage(_actionConfigSo.DamageDealtToPlayer);
-                if (CurrentInteraction.Interaction.DieOnHitProtag)
-                {
-                    Die();
-                }
 
                 _beatInteractionResultEvent.Raise(new SharedTypes.BeatInteractionResult
                 {
@@ -457,6 +455,11 @@ public class BnHActionCore : MonoBehaviour
                     InteractionType = InteractionType.IncomingAttack,
                     Result = SharedTypes.BeatInteractionResultType.Failure
                 });
+
+                if (CurrentInteraction.Interaction.DieOnHitProtag)
+                {
+                    Die();
+                }
             }
             else
             {
@@ -498,6 +501,11 @@ public class BnHActionCore : MonoBehaviour
 
     private void TransitionToNextInteraction(double time)
     {
+        if (_bnHActionState != BnHActionState.InInteraction)
+        {
+            return;
+        }
+
         _previousInteractionEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
 
         if (_currentInteractionIndex >= _sequencedInteractionInstances.Count - 1)

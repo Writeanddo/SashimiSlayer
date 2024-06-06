@@ -140,8 +140,14 @@ public class SerialReader : MonoBehaviour
 
     private void ProcessAllFromPort()
     {
-        while (_serialPort.BytesToRead > 0)
+        int bytesToRead = _serialPort.BytesToRead;
+        int packetsToRead = bytesToRead / PacketByteCount;
+        int fullPacketBytes = packetsToRead * PacketByteCount;
+        var bytesRead = 0;
+
+        while (bytesRead < fullPacketBytes)
         {
+            bytesRead++;
             var readByte = (byte)_serialPort.ReadByte();
             _packetBuffer[_currentPacketLength] = readByte;
             _currentPacketLength++;
@@ -179,8 +185,6 @@ public class SerialReader : MonoBehaviour
                 _serialPort.ReadExisting();
                 // Starting ack
                 Write(new byte[] { 255 });
-
-                break;
             }
         }
     }
