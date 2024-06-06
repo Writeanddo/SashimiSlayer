@@ -112,6 +112,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HoleOuterRadius: 0.1
+    - _HoleRadius: 0.02
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -133,9 +135,10 @@ Material:
     - _EmissionColor: {r: 3.9999998, g: 3.9999998, b: 3.9999998, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ScrollSpeed: {r: 7, g: 0, b: 0, a: 0}
+    - _ScrollSpeed: {r: 8, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Stretch: {r: 0.2, g: 1, b: 0, a: 0}
+    - _Stretch: {r: 0.01, g: 1, b: 0, a: 0}
+    - _Tile: {r: 12, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8817997814311088398
 MonoBehaviour:

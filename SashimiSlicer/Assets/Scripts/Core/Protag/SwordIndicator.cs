@@ -84,7 +84,9 @@ public class SwordIndicator : MonoBehaviour
     private void UpdateOrientation(LineRenderer lineRen)
     {
         Quaternion rotation = Quaternion.Euler(0, 0, _angle);
-        lineRen.SetPosition(0, _cPos + rotation * Vector3.left * 1000f);
-        lineRen.SetPosition(1, _cPos + rotation * Vector3.right * 1000f);
+        lineRen.positionCount = 3;
+        lineRen.SetPosition(0, _cPos + rotation * Vector3.left * 25f);
+        lineRen.SetPosition(1, _cPos);
+        lineRen.SetPosition(2, _cPos + rotation * Vector3.right * 25f);
     }
 }
