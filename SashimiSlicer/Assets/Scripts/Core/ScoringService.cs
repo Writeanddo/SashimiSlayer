@@ -88,7 +88,7 @@ public class ScoringService : MonoBehaviour
     private void OnLoadBeatmap(BeatmapConfigSo beatmap)
     {
         _currentScore = new BeatmapScore();
-        _currentScore.BeatmapName = beatmap.name;
+        _currentScore.BeatmapName = beatmap.BeatmapName;
         _currentScore.DidSucceed = true;
     }
 }
