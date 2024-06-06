@@ -19,12 +19,16 @@ public class TimelineLoader : MonoBehaviour
     [SerializeField]
     private GameLevelSO _levelResultLevel;
 
+    [SerializeField]
+    private DoubleEvent _syncTimeEvent;
+
     private bool _inProgress;
 
     private void Awake()
     {
         _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
         _playerDeathEvent.AddListener(HandlePlayerDeath);
+        _syncTimeEvent.AddListener(HandleSyncTime);
         _director.stopped += HandleTimelineStopped;
     }
 
@@ -32,6 +36,12 @@ public class TimelineLoader : MonoBehaviour
     {
         _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
         _playerDeathEvent.RemoveListener(HandlePlayerDeath);
+        _syncTimeEvent.RemoveListener(HandleSyncTime);
+    }
+
+    private void HandleSyncTime(double time)
+    {
+        _director.time = time;
     }
 
     private void HandleTimelineStopped(PlayableDirector obj)
@@ -55,6 +65,7 @@ public class TimelineLoader : MonoBehaviour
     {
         _director.playableAsset = beatmap.BeatmapTimeline;
         _director.Play();
+        _director.Evaluate();
         _inProgress = true;
     }
 }

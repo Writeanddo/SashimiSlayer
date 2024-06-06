@@ -62,10 +62,10 @@ public class AngryTutorialFishAction : MonoBehaviour
             return;
         }
 
-        transform.position += Vector3.up * Time.deltaTime * 10f;
-        transform.position += Vector3.right * Time.deltaTime * 10f;
+        transform.position += Vector3.up * Time.deltaTime * 7f;
+        transform.position += Vector3.right * Time.deltaTime * 15f;
 
-        _sprite.transform.rotation = Quaternion.Euler(0, 0, 500 * (float)time);
+        _sprite.transform.rotation = Quaternion.Euler(0, 0, 1200 * (float)time);
     }
 
     private void HandleTickWaitingForInteraction(double time, BnHActionCore.ScheduledInteraction interaction)

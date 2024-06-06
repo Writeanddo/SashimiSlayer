@@ -12,7 +12,7 @@ public class TentacleAction : MonoBehaviour
     private float _attackAnimationWindup;
 
     [SerializeField]
-    private ParticleSystem _damagedParticles;
+    private ParticleSystem[] _damagedParticles;
 
     [Header("SFX")]
 
@@ -48,12 +48,12 @@ public class TentacleAction : MonoBehaviour
 
     private void HandleTransitionToLeaving()
     {
-        _animator.Play("Leave");
+        _animator.Play("TentacleLeave");
     }
 
     private void HandleKilled()
     {
-        _animator.Play("Die");
+        _animator.gameObject.SetActive(false);
     }
 
     private void HandleTickWaitingForInteraction(double time, BnHActionCore.ScheduledInteraction interaction)
@@ -66,18 +66,21 @@ public class TentacleAction : MonoBehaviour
 
             if (time + _attackAnimationWindup >= attackMiddleTime)
             {
-                _animator.Play("Attack");
+                _animator.Play("TentacleAttack");
             }
         }
     }
 
     private void HandleOnDamaged()
     {
-        _damagedParticles.Play();
+        foreach (ParticleSystem particle in _damagedParticles)
+        {
+            particle.Play();
+        }
     }
 
     private void HandleSpawned()
     {
-        _animator.Play("Spawn");
+        _animator.Play("TentacleSpawn");
     }
 }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Events.Core;
 using UnityEngine;
 
@@ -8,6 +9,15 @@ public class BeatActionIndicator : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer[] _blockPoseSprites;
+
+    [SerializeField]
+    private float _poseBurstDuration;
+
+    [SerializeField]
+    private float _poseBurstScale;
+
+    [SerializeField]
+    private SpriteRenderer[] _blockPoseBurstSprites;
 
     [SerializeField]
     private GameObject[] _vulnerableRotate;
@@ -43,7 +53,6 @@ public class BeatActionIndicator : MonoBehaviour
     {
         _animator.Play(_attackClip);
         _animator.SetNormalizedTime(normalizedTime);
-        SetBlockPoseIndicator(blockPose);
     }
 
     public void UpdateWaitingForVulnerable(float normalizedTime)
@@ -60,13 +69,29 @@ public class BeatActionIndicator : MonoBehaviour
         }
     }
 
-    private void SetBlockPoseIndicator(SharedTypes.BlockPoseStates blockBlockPose)
+    public void SetBlockPoseIndicator(SharedTypes.BlockPoseStates blockBlockPose)
     {
         var check = 1;
         for (var i = 0; i < _blockPoseSprites.Length; i++)
         {
-            _blockPoseSprites[i].enabled = (check & (int)blockBlockPose) != 0;
+            bool includesPose = (check & (int)blockBlockPose) != 0;
+            _blockPoseSprites[i].enabled = includesPose;
             check <<= 1;
+
+            SpriteRenderer burstSprite = _blockPoseBurstSprites[i];
+
+            if (includesPose)
+            {
+                burstSprite.enabled = true;
+                burstSprite.transform.localScale = Vector3.one;
+                burstSprite.color = new Color(1, 1, 1, 1);
+                burstSprite.DOFade(0, _poseBurstDuration);
+                burstSprite.transform.DOScale(_poseBurstScale, _poseBurstDuration);
+            }
+            else
+            {
+                burstSprite.enabled = false;
+            }
         }
     }
 }

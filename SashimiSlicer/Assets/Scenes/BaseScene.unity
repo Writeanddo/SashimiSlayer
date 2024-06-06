@@ -155,6 +155,7 @@ MonoBehaviour:
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
     type: 2}
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _syncTimeEvent: {fileID: 11400000, guid: 826bd2b463c2cac408323569e7ad029c, type: 2}
 --- !u!4 &28433223
 Transform:
   m_ObjectHideFlags: 0

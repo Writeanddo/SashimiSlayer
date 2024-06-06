@@ -178,6 +178,12 @@ public class BnHActionCore : MonoBehaviour
         if (_data.Interactions.Count > 0)
         {
             _bnHActionState = BnHActionState.WaitingForInteraction;
+
+            // Update indicator visual since transition isn't called for initial interaction
+            if (_data.Interactions[0].InteractionType == InteractionType.IncomingAttack)
+            {
+                _indicator.SetBlockPoseIndicator(_data.Interactions[0].BlockPose);
+            }
         }
         else
         {
@@ -510,6 +516,7 @@ public class BnHActionCore : MonoBehaviour
 
         if (_currentInteractionIndex >= _sequencedInteractionInstances.Count - 1)
         {
+            // No more interactions
             _bnHActionState = BnHActionState.WaitingToLeave;
             OnTransitionToWaitingToLeave?.Invoke(CurrentInteraction);
         }
@@ -533,6 +540,12 @@ public class BnHActionCore : MonoBehaviour
                     _bnHActionState = BnHActionState.WaitingToLeave;
                     OnTransitionToWaitingToLeave?.Invoke(CurrentInteraction);
                 }
+            }
+
+            // Update indicator visual
+            if (CurrentInteraction.Interaction.InteractionType == InteractionType.IncomingAttack)
+            {
+                _indicator.SetBlockPoseIndicator(CurrentInteraction.Interaction.BlockPose);
             }
         }
     }

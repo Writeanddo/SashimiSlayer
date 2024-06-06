@@ -13,7 +13,7 @@ public class SwordIndicator : MonoBehaviour
     private LineRenderer _unsheathedLineRen;
 
     [SerializeField]
-    private ParticleSystem _sliceParticle;
+    private ParticleSystem[] _sliceParticles;
 
     [Header("Events")]
 
@@ -51,11 +51,14 @@ public class SwordIndicator : MonoBehaviour
 
     private void OnSuccessfulSlice()
     {
-        _sliceParticle.transform.position = _cPos;
-        ParticleSystem.MainModule main = _sliceParticle.main;
-        main.startRotation = -_angle * Mathf.Deg2Rad;
-        _sliceParticle.transform.rotation = Quaternion.Euler(0, 0, _angle);
-        _sliceParticle.Play();
+        foreach (ParticleSystem particle in _sliceParticles)
+        {
+            particle.transform.position = _cPos;
+            ParticleSystem.MainModule main = particle.main;
+            main.startRotation = -_angle * Mathf.Deg2Rad;
+            particle.transform.rotation = Quaternion.Euler(0, 0, _angle);
+            particle.Play();
+        }
     }
 
     private void OnSwordStateChange(Protaganist.ProtagSwordState swordState)

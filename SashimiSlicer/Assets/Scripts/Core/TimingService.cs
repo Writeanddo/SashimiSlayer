@@ -15,6 +15,9 @@ public class TimingService : MonoBehaviour
     [SerializeField]
     private IntEvent _beatPassedEvent;
 
+    [SerializeField]
+    private DoubleEvent _syncTimeEvent;
+
     public static TimingService Instance { get; private set; }
 
     public double DeltaTime => _deltaTime;
@@ -40,6 +43,8 @@ public class TimingService : MonoBehaviour
     private double _startTime;
     private double _timePastBeat;
 
+    private bool _firstTickSinceLoad;
+
     private void Awake()
     {
         if (Instance == null)
@@ -59,6 +64,11 @@ public class TimingService : MonoBehaviour
     private void Update()
     {
         Tick();
+        if (_firstTickSinceLoad)
+        {
+            _firstTickSinceLoad = false;
+            _syncTimeEvent.Raise(_currentTime);
+        }
     }
 
     private void OnDestroy()
@@ -139,6 +149,7 @@ public class TimingService : MonoBehaviour
         Debug.Log("Resyncing to new start time");
         _startTime = AudioSettings.dspTime + _currentBeatmap.StartTime;
         _lastFrameTime = _currentTime;
+        _firstTickSinceLoad = true;
         Tick();
     }
 }
