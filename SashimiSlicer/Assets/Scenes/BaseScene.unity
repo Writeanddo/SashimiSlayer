@@ -1977,10 +1977,14 @@ MonoBehaviour:
     type: 2}
   _onDrawDebugGuiEvent: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d,
     type: 2}
-  _blockSFX:
+  _successfulBlockSfx:
   - {fileID: 8300000, guid: 00651b042b0f6d942a9c91b1bf350d89, type: 3}
   - {fileID: 8300000, guid: c28bdb486dff4ff438686b0e2e747d5f, type: 3}
   - {fileID: 8300000, guid: 60625581005b3de46bb7c9bbd358f586, type: 3}
+  _tryBlockSfx:
+  - {fileID: 8300000, guid: 47396d1a2357a3749aae6001bbc86c45, type: 3}
+  - {fileID: 8300000, guid: 33245dd8750afab4085ae619e4cda5f1, type: 3}
+  - {fileID: 8300000, guid: 96f18fdd1f76db846a5febdb69340aa9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

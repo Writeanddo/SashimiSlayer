@@ -118,6 +118,17 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ea8ad47e-3250-4609-9cbc-b7b810563f7b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Unsheathe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6b4bc36a-da1f-4fa4-bf75-513c8bc65123"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",

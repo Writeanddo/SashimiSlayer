@@ -57,7 +57,10 @@ public class Protaganist : MonoBehaviour
     [Header("SFX")]
 
     [SerializeField]
-    private AudioClip[] _blockSFX;
+    private AudioClip[] _successfulBlockSfx;
+
+    [SerializeField]
+    private AudioClip[] _tryBlockSfx;
 
     public static Protaganist Instance { get; private set; }
     public SharedTypes.SheathState ProtagSheathState => _protagSheathState;
@@ -152,6 +155,7 @@ public class Protaganist : MonoBehaviour
             SwordPosition = _swordPosition,
             SwordAngle = _swordAngle
         };
+        BlockPoseSFX(_tryBlockSfx, _currentBlockPose);
 
         _tryBlockEvent.Raise(pose);
     }
@@ -221,25 +225,30 @@ public class Protaganist : MonoBehaviour
     public void SuccessfulBlock()
     {
         _successfulBlockEvent.Raise();
-        if ((_currentBlockPose | SharedTypes.BlockPoseStates.BotPose) == _currentBlockPose)
-        {
-            AudioSource.PlayClipAtPoint(_blockSFX[2], Vector3.zero);
-            AudioSource.PlayClipAtPoint(_blockSFX[2], Vector3.zero);
-        }
-
-        if ((_currentBlockPose | SharedTypes.BlockPoseStates.MidPose) == _currentBlockPose)
-        {
-            AudioSource.PlayClipAtPoint(_blockSFX[1], Vector3.zero);
-            AudioSource.PlayClipAtPoint(_blockSFX[1], Vector3.zero);
-        }
-
-        if ((_currentBlockPose | SharedTypes.BlockPoseStates.TopPose) == _currentBlockPose)
-        {
-            AudioSource.PlayClipAtPoint(_blockSFX[0], Vector3.zero);
-            AudioSource.PlayClipAtPoint(_blockSFX[0], Vector3.zero);
-        }
+        BlockPoseSFX(_successfulBlockSfx, _currentBlockPose);
 
         ScreenShakeService.Instance.ShakeScreen(0.05f, 0.15f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
+    }
+
+    private void BlockPoseSFX(AudioClip[] clips, SharedTypes.BlockPoseStates blockPose)
+    {
+        if ((blockPose | SharedTypes.BlockPoseStates.BotPose) == blockPose)
+        {
+            AudioSource.PlayClipAtPoint(clips[2], Vector3.zero);
+            AudioSource.PlayClipAtPoint(clips[2], Vector3.zero);
+        }
+
+        if ((blockPose | SharedTypes.BlockPoseStates.MidPose) == blockPose)
+        {
+            AudioSource.PlayClipAtPoint(clips[1], Vector3.zero);
+            AudioSource.PlayClipAtPoint(clips[1], Vector3.zero);
+        }
+
+        if ((blockPose | SharedTypes.BlockPoseStates.TopPose) == blockPose)
+        {
+            AudioSource.PlayClipAtPoint(clips[0], Vector3.zero);
+            AudioSource.PlayClipAtPoint(clips[0], Vector3.zero);
+        }
     }
 
     public void SuccessfulSlice()

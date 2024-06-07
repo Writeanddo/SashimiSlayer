@@ -51,6 +51,7 @@ public class TimingService : MonoBehaviour
 
     private void Awake()
     {
+        DOTween.KillAll();
         if (Instance == null)
         {
             Instance = this;

@@ -41,7 +41,7 @@ public class TimelineLoader : MonoBehaviour
 
     private void HandleSyncTime(double time)
     {
-        _director.time = time;
+        // _director.time = time;
     }
 
     private void HandleTimelineStopped(PlayableDirector obj)

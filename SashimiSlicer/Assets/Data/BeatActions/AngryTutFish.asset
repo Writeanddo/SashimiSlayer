@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 5351909015360120121, guid: e291fa3d1e1ca7346b44ee396058dcd5,
     type: 3}
-  <BlockWindowHalfDuration>k__BackingField: 0.075
-  <VulnerableWindowHalfDuration>k__BackingField: 0.075
+  <BlockWindowHalfDuration>k__BackingField: 0.1
+  <VulnerableWindowHalfDuration>k__BackingField: 0.1
   <BlockWindowFailDuration>k__BackingField: 0.15
   <DamageDealtToPlayer>k__BackingField: 1
   <HitboxRadius>k__BackingField: 1
