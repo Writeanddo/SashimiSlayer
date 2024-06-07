@@ -49,13 +49,13 @@ public class BeatActionIndicator : MonoBehaviour
         }
     }
 
-    public void TickWaitingForAttack(float normalizedTime, SharedTypes.BlockPoseStates blockPose)
+    public void UpdateWaitingForAttackIndicator(float normalizedTime, SharedTypes.BlockPoseStates blockPose)
     {
         _animator.Play(_attackClip);
         _animator.SetNormalizedTime(normalizedTime);
     }
 
-    public void UpdateWaitingForVulnerable(float normalizedTime)
+    public void UpdateWaitingForVulnerableIndicator(float normalizedTime)
     {
         _animator.Play(_vulnClip);
         _animator.SetNormalizedTime(normalizedTime);

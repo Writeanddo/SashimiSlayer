@@ -255,10 +255,9 @@ MonoBehaviour:
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
-    text: 'Tip: leave a hand HOLDING one <color=#fccf03>SYMBOL</color>
+    text: 'Tip: TAP HOLD one <color=#fccf03>SYMBOL</color>
 
-      And
-      only SLAM the other hand!'
+      And TIME the other!'
 --- !u!114 &-7974124173024059953
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -886,7 +885,7 @@ MonoBehaviour:
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
-        DieOnHitProtag: 1
+        DieOnHitProtag: 0
         DieOnHit: 1
         DieOnBlocked: 0
         BlockPose: 6
@@ -1182,7 +1181,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'TOUCH the matching <color=#fccf03>PARRY SYMBOL</color>
+    m_DisplayName: 'TAP the matching <color=#fccf03>PARRY SYMBOL</color>
 
       on
       the scabbard to parry!'
@@ -1236,7 +1235,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Make sure to hit it ON THE BEAT!
+    m_DisplayName: Make sure to tap it ON THE BEAT!
   - m_Version: 1
     m_Start: 12.025
     m_ClipIn: 0
@@ -1302,8 +1301,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: "Next up is the MIDDLE! \nThis one is on the OTHER SIDE of the
-      sword!"
+    m_DisplayName: Middle!
   - m_Version: 1
     m_Start: 30.02
     m_ClipIn: 0
@@ -1438,7 +1436,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'Pull the sword out to <color=#db3b3b>PREPARE</color>
+    m_DisplayName: 'PULL the sword out PARTIALLY to <color=#db3b3b>PREPARE</color>
 
 '
   - m_Version: 1
@@ -1582,7 +1580,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'SLAM it back in
+    m_DisplayName: 'SLAM it back in the scabbard
 
       on the beat to <color=#db3b3b>SLICE</color>!'
   - m_Version: 1
@@ -1617,10 +1615,10 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'Tip: leave a hand HOLDING one <color=#fccf03>SYMBOL</color>
+    m_DisplayName: 'Tip: TAP HOLD one <color=#fccf03>SYMBOL</color>
 
-      And
-      only SLAM the other hand!'
+      And TIME
+      the other!'
   m_Markers:
     m_Objects: []
 --- !u!114 &-3444220449432498738
@@ -1652,7 +1650,7 @@ MonoBehaviour:
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
-        DieOnHitProtag: 1
+        DieOnHitProtag: 0
         DieOnHit: 1
         DieOnBlocked: 0
         BlockPose: 3
@@ -1712,7 +1710,7 @@ MonoBehaviour:
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
-    text: "Next up is the MIDDLE! \nThis one is on the OTHER SIDE of the sword!"
+    text: Middle!
 --- !u!114 &-1562089407968036641
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1864,7 +1862,7 @@ MonoBehaviour:
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
-    text: 'SLAM it back in
+    text: 'SLAM it back in the scabbard
 
       on the beat to <color=#db3b3b>SLICE</color>!'
 --- !u!114 &-802169261663008724
@@ -2000,7 +1998,7 @@ MonoBehaviour:
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
-    text: 'SLAM the matching <color=#fccf03>PARRY SYMBOL</color>
+    text: 'TAP the matching <color=#fccf03>PARRY SYMBOL</color>
 
       on the scabbard
       to parry!'
@@ -2082,7 +2080,7 @@ MonoBehaviour:
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
-    text: 'Pull the sword out to <color=#db3b3b>PREPARE</color>
+    text: 'PULL the sword out PARTIALLY to <color=#db3b3b>PREPARE</color>
 
 '
 --- !u!114 &2145358563145770506
@@ -2124,7 +2122,7 @@ MonoBehaviour:
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
-    text: Make sure to hit it ON THE BEAT!
+    text: Make sure to tap it ON THE BEAT!
 --- !u!114 &2731131515676527816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2724,7 +2722,7 @@ MonoBehaviour:
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
-        DieOnHitProtag: 1
+        DieOnHitProtag: 0
         DieOnHit: 1
         DieOnBlocked: 0
         BlockPose: 5

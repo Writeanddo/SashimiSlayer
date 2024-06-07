@@ -145,6 +145,9 @@ public class BnHActionCore : MonoBehaviour
 
     private double _currentTime;
 
+    // Updates on subdiv crossings, for indicator
+    private float _steppedNormalizedTime;
+
     private void OnDrawGizmos()
     {
         if (_actionConfigSo == null)
@@ -408,7 +411,15 @@ public class BnHActionCore : MonoBehaviour
 
         var normalizedTime =
             (float)((time - _previousInteractionEndTime) / (attackMiddleTime - _previousInteractionEndTime));
-        _indicator.TickWaitingForAttack(normalizedTime, _data.Interactions[_currentInteractionIndex].BlockPose);
+
+        // Step the updates on the indicator
+        if (TimingService.Instance.DidCrossSubdivThisFrame)
+        {
+            _steppedNormalizedTime = normalizedTime;
+        }
+
+        _indicator.UpdateWaitingForAttackIndicator(_steppedNormalizedTime,
+            _data.Interactions[_currentInteractionIndex].BlockPose);
     }
 
     private void TickWaitingForVulnerable(double time)
@@ -419,12 +430,18 @@ public class BnHActionCore : MonoBehaviour
         var normalizedTime = (float)((time - _previousInteractionEndTime) /
                                      (vulnMiddleTime - _previousInteractionEndTime));
 
-        _indicator.UpdateWaitingForVulnerable(normalizedTime);
-
         if (time >= vulnStartTime)
         {
             _bnHActionState = BnHActionState.InInteraction;
         }
+
+        // Step the updates on the indicator
+        if (TimingService.Instance.DidCrossSubdivThisFrame)
+        {
+            _steppedNormalizedTime = normalizedTime;
+        }
+
+        _indicator.UpdateWaitingForVulnerableIndicator(_steppedNormalizedTime);
     }
 
     private void TickInInteraction(double time)
@@ -480,7 +497,8 @@ public class BnHActionCore : MonoBehaviour
 
         var normalizedTime =
             (float)((time - _previousInteractionEndTime) / (attackMiddleTime - _previousInteractionEndTime));
-        _indicator.TickWaitingForAttack(normalizedTime, _data.Interactions[_currentInteractionIndex].BlockPose);
+        _indicator.UpdateWaitingForAttackIndicator(normalizedTime,
+            _data.Interactions[_currentInteractionIndex].BlockPose);
     }
 
     private void TickVulnerableWindow(double time)
@@ -502,7 +520,7 @@ public class BnHActionCore : MonoBehaviour
 
         var normalizedTime = (float)((time - _previousInteractionEndTime) /
                                      (vulnMiddleTime - _previousInteractionEndTime));
-        _indicator.UpdateWaitingForVulnerable(normalizedTime);
+        _indicator.UpdateWaitingForVulnerableIndicator(normalizedTime);
     }
 
     private void TransitionToNextInteraction(double time)
@@ -547,6 +565,8 @@ public class BnHActionCore : MonoBehaviour
             {
                 _indicator.SetBlockPoseIndicator(CurrentInteraction.Interaction.BlockPose);
             }
+
+            _steppedNormalizedTime = 0;
         }
     }
 

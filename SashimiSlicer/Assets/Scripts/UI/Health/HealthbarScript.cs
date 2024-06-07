@@ -25,7 +25,7 @@ public class HealthbarScript : MonoBehaviour
     private void OnDestroy()
     {
         _healthChangeEvent.RemoveListener(TakeDamage);
-        _maxHealthChangeEvent.RemoveListener(InitializeBar);
+        _maxHealthChangeEvent.RemoveListener(InitializeBar); 
     }
 
     public void InitializeBar(float maxHealth)

@@ -23,6 +23,7 @@ public class TimingService : MonoBehaviour
 
     public double DeltaTime => _deltaTime;
     public bool DidCrossBeatThisFrame => _didCrossBeatThisFrame;
+    public bool DidCrossSubdivThisFrame => _didCrossSubdivThisFrame;
     public double TimePastBeat => _timePastBeat;
     public int BeatNumber => _beatNumber;
     public double TimePerBeat => _intervalPerBeat;
@@ -36,8 +37,10 @@ public class TimingService : MonoBehaviour
     private double _deltaTime;
 
     private bool _didCrossBeatThisFrame;
+    private bool _didCrossSubdivThisFrame;
 
     private double _intervalPerBeat;
+    private double _intervalPerSubdiv;
 
     private double _lastFrameTime;
 
@@ -107,6 +110,7 @@ public class TimingService : MonoBehaviour
             _currentTime,
             out _timePastBeat,
             out _didCrossBeatThisFrame,
+            out _didCrossSubdivThisFrame,
             out _beatNumber);
 
         if (_didCrossBeatThisFrame)
@@ -123,6 +127,7 @@ public class TimingService : MonoBehaviour
         _currentBeatmap = beatmap;
         _startTime = AudioSettings.dspTime + beatmap.StartTime;
         _intervalPerBeat = 60 / _currentBeatmap.Bpm;
+        _intervalPerSubdiv = _intervalPerBeat / _currentBeatmap.Subdivisions;
     }
 
     private void CalculateBeatTiming(
@@ -130,6 +135,7 @@ public class TimingService : MonoBehaviour
         double currentTime,
         out double timePastBeat,
         out bool didCrossBeat,
+        out bool didCrossSubdiv,
         out int beatNumber)
     {
         double elapsedTime = currentTime - _startTime;
@@ -140,6 +146,11 @@ public class TimingService : MonoBehaviour
         var lastBeat = (int)Math.Floor(lastElapsedTime / _intervalPerBeat);
 
         didCrossBeat = beatNumber > lastBeat;
+
+        var subdivNumber = (int)Math.Floor(elapsedTime / _intervalPerSubdiv);
+        var lastSubdiv = (int)Math.Floor(lastElapsedTime / _intervalPerSubdiv);
+
+        didCrossSubdiv = subdivNumber > lastSubdiv;
     }
 
     /// <summary>

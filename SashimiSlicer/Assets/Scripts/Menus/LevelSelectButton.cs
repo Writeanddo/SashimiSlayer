@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -15,15 +14,10 @@ public class LevelSelectButton : MonoBehaviour
     [SerializeField]
     private Image _thumbnailImage;
 
-    public event Action<GameLevelSO> OnLevelSelected;
-
-    private GameLevelSO _level;
-
     public void SetupUI(GameLevelSO level)
     {
         _levelNameText.text = level.LevelTitle;
         _levelDescriptionText.text = level.LevelDescription;
-        _level = level;
         _thumbnailImage.sprite = level.Thumbnail;
     }
 
@@ -37,10 +31,5 @@ public class LevelSelectButton : MonoBehaviour
         {
             transform.DOScale(1f, 0.15f);
         }
-    }
-
-    public void SelectLevel()
-    {
-        OnLevelSelected?.Invoke(_level);
     }
 }
