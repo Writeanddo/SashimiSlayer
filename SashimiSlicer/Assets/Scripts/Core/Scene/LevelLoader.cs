@@ -39,6 +39,8 @@ public class LevelLoader : MonoBehaviour
 
     public async UniTask LoadLevel(GameLevelSO gameLevel)
     {
+        _sceneTransitionUI.SetTitleText(gameLevel.LevelTitle);
+
         await _sceneTransitionUI.FadeOut();
 
         string sceneName = gameLevel.GameSceneName;
@@ -52,8 +54,6 @@ public class LevelLoader : MonoBehaviour
         _currentLevel = sceneName;
         _currentLevelSo = gameLevel;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-
-        _sceneTransitionUI.SetTitleText(gameLevel.LevelTitle);
 
         if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {

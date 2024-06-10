@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LevelResult
   m_EditorClassIdentifier: 
   <GameSceneName>k__BackingField: LevelResult
-  <LevelTitle>k__BackingField: Results...
+  <LevelTitle>k__BackingField: Slicing Complete...
   <LevelDescription>k__BackingField: 
   <Beatmap>k__BackingField: {fileID: 0}
   <LevelType>k__BackingField: 2

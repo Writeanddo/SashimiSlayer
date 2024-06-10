@@ -9,10 +9,7 @@ public class SceneTransitionUI : MonoBehaviour
     private TMP_Text _titleText;
 
     [SerializeField]
-    private CanvasGroup _fadeOutCanvasGroup;
-
-    [SerializeField]
-    private CanvasGroup _fadeInCanvasGroup;
+    private RectTransform _fadeInTransform;
 
     [SerializeField]
     private float _fadeOutTime;
@@ -23,6 +20,11 @@ public class SceneTransitionUI : MonoBehaviour
     [SerializeField]
     private float _fadeInDelay;
 
+    private void Awake()
+    {
+        _fadeInTransform.gameObject.SetActive(true);
+    }
+
     public void SetTitleText(string text)
     {
         _titleText.text = text;
@@ -30,19 +32,17 @@ public class SceneTransitionUI : MonoBehaviour
 
     public async UniTask FadeOut()
     {
-        _fadeOutCanvasGroup.DOFade(1, _fadeOutTime);
+        _fadeInTransform.anchoredPosition = new Vector2(-Screen.width, 0);
+        _fadeInTransform.DOMoveX(0, _fadeOutTime).SetEase(Ease.InOutSine);
         await UniTask.Delay((int)(_fadeOutTime * 1000));
-        _fadeOutCanvasGroup.alpha = 1;
     }
 
     public async UniTask FadeIn()
     {
-        _fadeInCanvasGroup.alpha = 1;
-        _fadeOutCanvasGroup.alpha = 0;
+        _fadeInTransform.anchoredPosition = new Vector2(0, 0);
         await UniTask.Delay((int)(_fadeInDelay * 1000));
+        _fadeInTransform.DOMoveX(Screen.width, _fadeInTime).SetEase(Ease.InOutSine);
 
-        _fadeInCanvasGroup.DOFade(0, _fadeInTime);
         await UniTask.Delay((int)(_fadeInTime * 1000));
-        _fadeInCanvasGroup.alpha = 0;
     }
 }

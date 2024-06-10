@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
+#if UNITY_EDITOR
+using UnityEditor.Timeline;
+#endif
 
 #if UNITY_EDITOR
 /// <summary>
