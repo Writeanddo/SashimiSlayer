@@ -744,7 +744,7 @@ MonoBehaviour:
   _squishDuration: 0.15
   _squishTransform:
   - transform: {fileID: 6086673613799908378}
-    beatInterval: 2
+    beatInterval: 1
     beatOffset: 1
   - transform: {fileID: 37678080}
     beatInterval: 2

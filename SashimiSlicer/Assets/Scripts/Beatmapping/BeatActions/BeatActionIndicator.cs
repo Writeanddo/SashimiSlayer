@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class BeatActionIndicator : MonoBehaviour
 {
+    [Header("Events Listening")]
+
     [SerializeField]
     private ProtagSwordStateEvent _protagSwordStateEvent;
+
+    [Header("Visuals")]
 
     [SerializeField]
     private SpriteRenderer[] _blockPoseSprites;
@@ -31,14 +35,26 @@ public class BeatActionIndicator : MonoBehaviour
     [SerializeField]
     private SimpleAnimator _animator;
 
+    private BnHActionCore _bnHActionCore;
+
     private void Awake()
     {
+        _bnHActionCore = GetComponentInParent<BnHActionCore>();
+
         _protagSwordStateEvent.AddListener(OnProtagSwordState);
+        _bnHActionCore.OnKilled += HandleKilled;
+        _bnHActionCore.OnTickWaitingForVulnerable += HandleTickWaitingForVuln;
+        _bnHActionCore.OnTickWaitingForAttack += HandleTickWaitingForAttack;
+        _bnHActionCore.OnTransitionToWaitingToAttack += HandleTransitionToWaitingToAttack;
     }
 
     private void OnDestroy()
     {
         _protagSwordStateEvent.RemoveListener(OnProtagSwordState);
+        _bnHActionCore.OnKilled -= HandleKilled;
+        _bnHActionCore.OnTickWaitingForVulnerable -= HandleTickWaitingForVuln;
+        _bnHActionCore.OnTickWaitingForAttack -= HandleTickWaitingForAttack;
+        _bnHActionCore.OnTransitionToWaitingToAttack -= HandleTransitionToWaitingToAttack;
     }
 
     private void OnProtagSwordState(Protaganist.ProtagSwordState state)
@@ -49,33 +65,34 @@ public class BeatActionIndicator : MonoBehaviour
         }
     }
 
-    public void UpdateWaitingForAttackIndicator(float normalizedTime, SharedTypes.BlockPoseStates blockPose)
+    private void HandleTickWaitingForAttack(BnHActionCore.Timing timing,
+        BnHActionCore.ScheduledInteraction scheduledInteraction)
     {
         _animator.Play(_attackClip);
-        _animator.SetNormalizedTime(normalizedTime);
+        _animator.SetNormalizedTime((float)timing.NormalizedInteractionWaitTime);
     }
 
-    public void UpdateWaitingForVulnerableIndicator(float normalizedTime)
+    private void HandleTickWaitingForVuln(BnHActionCore.Timing timing,
+        BnHActionCore.ScheduledInteraction scheduledInteraction)
     {
         _animator.Play(_vulnClip);
-        _animator.SetNormalizedTime(normalizedTime);
+        _animator.SetNormalizedTime((float)timing.NormalizedInteractionWaitTime);
     }
 
-    public void SetVisible(bool val)
+    private void HandleKilled(BnHActionCore.Timing timing)
     {
-        if (!val)
-        {
-            _animator.Stop();
-        }
+        _animator.Stop();
     }
 
-    public void SetBlockPoseIndicator(SharedTypes.BlockPoseStates blockBlockPose)
+    private void HandleTransitionToWaitingToAttack(BnHActionCore.Timing timing,
+        BnHActionCore.ScheduledInteraction interaction)
     {
+        var blockBlockPose = (int)interaction.Interaction.BlockPose;
         var check = 1;
         for (var i = 0; i < _blockPoseSprites.Length; i++)
         {
-            bool includesPose = (check & (int)blockBlockPose) != 0;
-            _blockPoseSprites[i].enabled = includesPose;
+            bool includesPose = (check & blockBlockPose) != 0;
+            _blockPoseSprites[i].gameObject.SetActive(includesPose);
             check <<= 1;
 
             SpriteRenderer burstSprite = _blockPoseBurstSprites[i];

@@ -16,10 +16,10 @@ public class BeatmapEditorWindow : EditorWindow
     private static TimelineAsset _currentEditingTimeline;
     private static BeatmapConfigSo _currentEditingBeatmap;
 
+    private static string _lastEditedScenePath = string.Empty;
+
     // Convenience property for easily getting the correct beatmap matching the current timeline
     public static BeatmapConfigSo CurrentEditingBeatmap => GetBeatmapFromTimeline(TimelineEditor.inspectedAsset);
-
-    private string _lastEditedScenePath = string.Empty;
     private UtilsPrefs _prefs;
 
     private void OnGUI()
@@ -123,9 +123,9 @@ public class BeatmapEditorWindow : EditorWindow
 
     private void ModeChanged(PlayModeStateChange param)
     {
-        if (param == PlayModeStateChange.EnteredEditMode && _lastEditedScenePath != string.Empty)
+        if (param == PlayModeStateChange.ExitingPlayMode || param == PlayModeStateChange.EnteredEditMode)
         {
-            Debug.Log("Loading last edited scene");
+            Debug.Log($"Loading last edited scene {_lastEditedScenePath}");
             EditorSceneManager.OpenScene(_lastEditedScenePath, OpenSceneMode.Single);
         }
         else if (param == PlayModeStateChange.EnteredPlayMode)

@@ -26,8 +26,9 @@ public class AngryTutorialFishAction : MonoBehaviour
 
     private void Awake()
     {
-        _bnhActionCore.OnTickWaitingForInteraction += HandleTickWaitingForInteraction;
-        _bnhActionCore.OnTickInInteraction += HandleTickWaitingForInteraction;
+        _bnhActionCore.OnTickWaitingForAttack += HandleTickWaitingForAttack;
+        _bnhActionCore.OnTickInAttack += HandleTickWaitingForAttack;
+
         _bnhActionCore.OnTickWaitingToLeave += HandleTickWaitingToLeave;
         _bnhActionCore.OnLandHitOnProtag += HandleLandHitOnProtag;
         _bnhActionCore.OnKilled += HandleDied;
@@ -44,7 +45,7 @@ public class AngryTutorialFishAction : MonoBehaviour
         _angleToTarget = Mathf.Atan2(_targetPos.y - _peakPos.y, _targetPos.x - _peakPos.x) * Mathf.Rad2Deg;
     }
 
-    private void HandleDied()
+    private void HandleDied(BnHActionCore.Timing timing)
     {
         _sprite.enabled = false;
     }
@@ -55,7 +56,8 @@ public class AngryTutorialFishAction : MonoBehaviour
         _explosionParticles.Play();
     }
 
-    private void HandleTickWaitingToLeave(double time, BnHActionCore.BnHActionInstanceConfig bnHActionInstanceConfig)
+    private void HandleTickWaitingToLeave(BnHActionCore.Timing timing,
+        BnHActionCore.BnHActionInstanceConfig bnHActionInstanceConfig)
     {
         if (_landedHit)
         {
@@ -65,28 +67,15 @@ public class AngryTutorialFishAction : MonoBehaviour
         transform.position += Vector3.up * Time.deltaTime * 7f;
         transform.position += Vector3.right * Time.deltaTime * 15f;
 
-        _sprite.transform.rotation = Quaternion.Euler(0, 0, 1200 * (float)time);
+        _sprite.transform.rotation = Quaternion.Euler(0, 0, 1200 * (float)timing.CurrentBeatmapTime);
         _sprite.color = new Color(1, 1, 1, 0.7f);
     }
 
-    private void HandleTickWaitingForInteraction(double time, BnHActionCore.ScheduledInteraction interaction)
+    private void HandleTickWaitingForAttack(BnHActionCore.Timing timing, BnHActionCore.ScheduledInteraction interaction)
     {
-        if (interaction.Interaction.InteractionType == BnHActionCore.InteractionType.IncomingAttack)
-        {
-            UpdatePosition(time, interaction);
-        }
-    }
+        var normalizedTime = (float)timing.NormalizedInteractionWaitTime;
 
-    private void UpdatePosition(double time, BnHActionCore.ScheduledInteraction interaction)
-    {
-        double attackMiddleTime = interaction.TimeWhenInteractWindowEnd;
-
-        float normalizedTime = Mathf.InverseLerp(
-            (float)_bnhActionCore.LastInteractionEndTime,
-            (float)attackMiddleTime,
-            (float)time);
-
-        var thresh = 0.75f;
+        var thresh = 0.5f;
         if (normalizedTime <= thresh)
         {
             float t = _moveCurve.Evaluate(normalizedTime / thresh);

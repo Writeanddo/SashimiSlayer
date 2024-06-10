@@ -125,10 +125,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
   - m_Version: 1
-    m_Start: 94.019
+    m_Start: 90.019
     m_ClipIn: 0
-    m_Asset: {fileID: -4710007844504727193}
-    m_Duration: 4.5
+    m_Asset: {fileID: -4838120429295133237}
+    m_Duration: 6
     m_TimeScale: 1
     m_ParentTrack: {fileID: -9154038518674239263}
     m_EaseInDuration: 0
@@ -192,9 +192,41 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: SadFish
+    m_DisplayName: MootFish
   m_Markers:
     m_Objects: []
+--- !u!114 &-8829481662261200665
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: Simple Hit Behavior
+    HitConfig: {fileID: 11400000, guid: 2367c0acd10c35949a7f9c83b54df5c3, type: 2}
+    ActionData:
+      Positions:
+      - {x: 5.520687, y: -4.9571958}
+      - {x: -0.4437977, y: -1.812154}
+      - {x: -0.2555047, y: 0.64769304}
+      AutoVulnerableAtEnd: 1
+      AutoVulnerableBeatOffset: -2
+      ActionStartTime: 86
+      ActionEndTime: 90
+      ActionBeatLength: 8
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 4
+        DieOnHitProtag: 0
+        DieOnHit: 1
+        DieOnBlocked: 0
+        BlockPose: 2
 --- !u!114 &-8804696853289428826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,29 +267,10 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
       _interactions: []
---- !u!114 &-8714146753546216383
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
-  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  template:
-    color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
-    text: 'Tip: TAP HOLD one <color=#fccf03>SYMBOL</color>
-
-      And TIME the other!'
 --- !u!114 &-7974124173024059953
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -277,7 +290,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -303,7 +315,6 @@ MonoBehaviour:
       - {x: 1.3366416, y: 3.52384}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 6
       ActionEndTime: 9.999999999999998
       ActionBeatLength: 7.9999999999999964
@@ -474,7 +485,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
   - m_Version: 1
-    m_Start: 90.019
+    m_Start: 86.269
     m_ClipIn: 0
     m_Asset: {fileID: 4594152096707104498}
     m_Duration: 3.5
@@ -611,6 +622,213 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
+  - m_Version: 1
+    m_Start: 21.019
+    m_ClipIn: 0
+    m_Asset: {fileID: 6510762862295125311}
+    m_Duration: 4
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -7634491408669650360}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AngryFish
+  - m_Version: 1
+    m_Start: 35.019
+    m_ClipIn: 0
+    m_Asset: {fileID: -1107541818678484538}
+    m_Duration: 4
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -7634491408669650360}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AngryFish
+  - m_Version: 1
+    m_Start: 51.019
+    m_ClipIn: 0
+    m_Asset: {fileID: 4848249662888708543}
+    m_Duration: 4
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -7634491408669650360}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AngryFish
   m_Markers:
     m_Objects: []
 --- !u!114 &-7529975730450443829
@@ -632,7 +850,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -656,7 +873,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -680,7 +896,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -706,7 +921,6 @@ MonoBehaviour:
       - {x: -0.0939281, y: 0.76699114}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 68
       ActionEndTime: 72
       ActionBeatLength: 8
@@ -736,7 +950,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -874,53 +1087,20 @@ MonoBehaviour:
     ActionData:
       Positions:
       - {x: 5.520687, y: -4.9571958}
-      - {x: 0.21606457, y: 2.5199857}
-      - {x: 2.779899, y: 1.0133439}
+      - {x: -0.3864187, y: 2.835572}
+      - {x: 3.3823814, y: 3.079}
       AutoVulnerableAtEnd: 1
       AutoVulnerableBeatOffset: -2
-      AdditionalText: 
-      ActionStartTime: 86
-      ActionEndTime: 91
-      ActionBeatLength: 10
+      ActionStartTime: 84
+      ActionEndTime: 90
+      ActionBeatLength: 12
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
         DieOnHitProtag: 0
         DieOnHit: 1
         DieOnBlocked: 0
-        BlockPose: 6
---- !u!114 &-4710007844504727193
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  Template:
-    Description: Simple Hit Behavior
-    HitConfig: {fileID: 11400000, guid: 446b9787587208d4b8d6a407e4b8b136, type: 2}
-    ActionData:
-      Positions:
-      - {x: 7.4323153, y: -4.688081}
-      - {x: 4.574742, y: 2.1144383}
-      AutoVulnerableAtEnd: 0
-      AutoVulnerableBeatOffset: 0
-      AdditionalText: 
-      ActionStartTime: 88
-      ActionEndTime: 92.5
-      ActionBeatLength: 9
-      _interactions:
-      - InteractionType: 1
-        BeatsUntilStart: 4
-        DieOnHitProtag: 0
-        DieOnHit: 1
-        DieOnBlocked: 0
-        BlockPose: 0
+        BlockPose: 2
 --- !u!114 &-3978938911499228915
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1240,7 +1420,7 @@ MonoBehaviour:
     m_Start: 12.025
     m_ClipIn: 0
     m_Asset: {fileID: 7491613879963432258}
-    m_Duration: 7.999999999999998
+    m_Duration: 11.993999999999998
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3978938911499228915}
     m_EaseInDuration: 0
@@ -1270,16 +1450,16 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Top!
   - m_Version: 1
-    m_Start: 20.025
+    m_Start: 24.019
     m_ClipIn: 0
     m_Asset: {fileID: -1783322031142155871}
-    m_Duration: 10
+    m_Duration: 14
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3978938911499228915}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 0.004999999999999005
+    m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
       m_Curve: []
@@ -1303,43 +1483,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Middle!
   - m_Version: 1
-    m_Start: 30.02
+    m_Start: 38.019
     m_ClipIn: 0
     m_Asset: {fileID: 7075748105982941979}
-    m_Duration: 9.999999999999996
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -3978938911499228915}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0.004999999999999005
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Last up is the BOTTOM!!
-  - m_Version: 1
-    m_Start: 40.019999999999996
-    m_ClipIn: 0
-    m_Asset: {fileID: 5616592450325541884}
-    m_Duration: 4
+    m_Duration: 16
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3978938911499228915}
     m_EaseInDuration: 0
@@ -1367,10 +1514,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'There can be 2 <color=#fccf03>SYMBOLS</color> at once!
-
-      Move
-      both hands onto the scabbard!'
+    m_DisplayName: Last up is the BOTTOM!!
   - m_Version: 1
     m_Start: 54.019999999999996
     m_ClipIn: 0
@@ -1583,42 +1727,6 @@ MonoBehaviour:
     m_DisplayName: 'SLAM it back in the scabbard
 
       on the beat to <color=#db3b3b>SLICE</color>!'
-  - m_Version: 1
-    m_Start: 44.019999999999996
-    m_ClipIn: 0
-    m_Asset: {fileID: -8714146753546216383}
-    m_Duration: 9.994999999999997
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -3978938911499228915}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: 'Tip: TAP HOLD one <color=#fccf03>SYMBOL</color>
-
-      And TIME
-      the other!'
   m_Markers:
     m_Objects: []
 --- !u!114 &-3444220449432498738
@@ -1643,7 +1751,6 @@ MonoBehaviour:
       - {x: 3.4570441, y: 0.8093066}
       AutoVulnerableAtEnd: 1
       AutoVulnerableBeatOffset: -2
-      AdditionalText: 
       ActionStartTime: 74
       ActionEndTime: 79
       ActionBeatLength: 10
@@ -1653,7 +1760,38 @@ MonoBehaviour:
         DieOnHitProtag: 0
         DieOnHit: 1
         DieOnBlocked: 0
-        BlockPose: 3
+        BlockPose: 1
+--- !u!114 &-3196662265864292868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: Simple Hit Behavior
+    HitConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
+    ActionData:
+      Positions:
+      - {x: 4.4315543, y: -5.1906075}
+      - {x: 1.0417063, y: 3.067409}
+      AutoVulnerableAtEnd: 0
+      AutoVulnerableBeatOffset: 0
+      ActionStartTime: 44
+      ActionEndTime: 48
+      ActionBeatLength: 8
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 4
+        DieOnHitProtag: 1
+        DieOnHit: 0
+        DieOnBlocked: 0
+        BlockPose: 4
 --- !u!114 &-2718924908730961750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1671,6 +1809,38 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: EEE
+--- !u!114 &-2501156614850905743
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: Simple Hit Behavior
+    HitConfig: {fileID: 11400000, guid: 2367c0acd10c35949a7f9c83b54df5c3, type: 2}
+    ActionData:
+      Positions:
+      - {x: 5.520687, y: -4.9571958}
+      - {x: -0.32903886, y: -0.2055322}
+      - {x: 1.4775391, y: 1.8703467}
+      AutoVulnerableAtEnd: 1
+      AutoVulnerableBeatOffset: -2
+      ActionStartTime: 85
+      ActionEndTime: 90
+      ActionBeatLength: 10
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 4
+        DieOnHitProtag: 0
+        DieOnHit: 1
+        DieOnBlocked: 0
+        BlockPose: 2
 --- !u!114 &-2042112074663296496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1690,7 +1860,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -1732,7 +1901,6 @@ MonoBehaviour:
       - {x: 2.9315805, y: 3.159956}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 54
       ActionEndTime: 58.00000000000001
       ActionBeatLength: 8.000000000000014
@@ -1762,7 +1930,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -1788,9 +1955,8 @@ MonoBehaviour:
       - {x: -0.7599102, y: 1.834255}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
-      ActionStartTime: 30
-      ActionEndTime: 34
+      ActionStartTime: 40
+      ActionEndTime: 44
       ActionBeatLength: 8
       _interactions:
       - InteractionType: 0
@@ -1818,11 +1984,41 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
       _interactions: []
+--- !u!114 &-1107541818678484538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: Simple Hit Behavior
+    HitConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
+    ActionData:
+      Positions:
+      - {x: 4.4315543, y: -5.1906075}
+      - {x: 1.7202644, y: 0.8960235}
+      AutoVulnerableAtEnd: 0
+      AutoVulnerableBeatOffset: 0
+      ActionStartTime: 29
+      ActionEndTime: 33
+      ActionBeatLength: 8
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 4
+        DieOnHitProtag: 1
+        DieOnHit: 0
+        DieOnBlocked: 0
+        BlockPose: 2
 --- !u!114 &-957739267921107960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1842,7 +2038,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -1884,7 +2079,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -1910,7 +2104,6 @@ MonoBehaviour:
       - {x: 3.616558, y: 1.9154482}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 68.5
       ActionEndTime: 72.5
       ActionBeatLength: 8
@@ -1937,11 +2130,11 @@ MonoBehaviour:
   m_Tracks:
   - {fileID: -5695733966106479653}
   - {fileID: 7655169594171241362}
+  - {fileID: 1754087978691026967}
   - {fileID: 6435859260828590340}
   - {fileID: -7634491408669650360}
   - {fileID: 7855175669344345868}
   - {fileID: -9154038518674239263}
-  - {fileID: 1754087978691026967}
   - {fileID: 2839535838791464466}
   - {fileID: 3688818801659884798}
   - {fileID: -3978938911499228915}
@@ -1972,9 +2165,8 @@ MonoBehaviour:
       - {x: -0.43383074, y: 3.829094}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
-      ActionStartTime: 15.999999999999998
-      ActionEndTime: 20
+      ActionStartTime: 20
+      ActionEndTime: 24
       ActionBeatLength: 8
       _interactions:
       - InteractionType: 0
@@ -2042,6 +2234,38 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: eee
+--- !u!114 &1738709589909449189
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: Simple Hit Behavior
+    HitConfig: {fileID: 11400000, guid: 2367c0acd10c35949a7f9c83b54df5c3, type: 2}
+    ActionData:
+      Positions:
+      - {x: 5.520687, y: -4.9571958}
+      - {x: -0.3864187, y: 2.835572}
+      - {x: 3.3823814, y: 3.079}
+      AutoVulnerableAtEnd: 1
+      AutoVulnerableBeatOffset: -2
+      ActionStartTime: 0
+      ActionEndTime: 5
+      ActionBeatLength: 10
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 4
+        DieOnHitProtag: 0
+        DieOnHit: 1
+        DieOnBlocked: 0
+        BlockPose: 2
 --- !u!114 &1754087978691026967
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2102,7 +2326,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -2142,7 +2365,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -2238,9 +2460,9 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: MootFish
   - m_Version: 1
-    m_Start: 92.019
+    m_Start: 91.019
     m_ClipIn: 0
-    m_Asset: {fileID: -4838120429295133237}
+    m_Asset: {fileID: -2501156614850905743}
     m_Duration: 5
     m_TimeScale: 1
     m_ParentTrack: {fileID: 2839535838791464466}
@@ -2345,9 +2567,8 @@ MonoBehaviour:
       - {x: 1.5202782, y: 4.041524}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
-      ActionStartTime: 83.5
-      ActionEndTime: 87.5
+      ActionStartTime: 79.75
+      ActionEndTime: 83.75
       ActionBeatLength: 8
       _interactions:
       - InteractionType: 1
@@ -2395,10 +2616,79 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 86.019
+    m_Start: 81.019
     m_ClipIn: 0
     m_Asset: {fileID: 5871830573448378196}
-    m_Duration: 5
+    m_Duration: 4
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 3688818801659884798}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: MootFish
+  - m_Version: 1
+    m_Start: 92.019
+    m_ClipIn: 0
+    m_Asset: {fileID: -8829481662261200665}
+    m_Duration: 4
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3688818801659884798}
     m_EaseInDuration: 0
@@ -2486,7 +2776,6 @@ MonoBehaviour:
       - {x: -0.89953554, y: 3.2221766}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 64
       ActionEndTime: 68
       ActionBeatLength: 8
@@ -2518,7 +2807,6 @@ MonoBehaviour:
       - {x: 1.7202644, y: 0.8960235}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 9.999999999999998
       ActionEndTime: 13.999999999999998
       ActionBeatLength: 8
@@ -2548,7 +2836,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -2591,9 +2878,8 @@ MonoBehaviour:
       - {x: -0.2092284, y: 2.519558}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
-      ActionStartTime: 84
-      ActionEndTime: 87.5
+      ActionStartTime: 80.25
+      ActionEndTime: 83.75
       ActionBeatLength: 7
       _interactions:
       - InteractionType: 1
@@ -2621,11 +2907,41 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
       _interactions: []
+--- !u!114 &4848249662888708543
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: Simple Hit Behavior
+    HitConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
+    ActionData:
+      Positions:
+      - {x: 4.4315543, y: -5.1906075}
+      - {x: 1.7202644, y: 0.8960235}
+      AutoVulnerableAtEnd: 0
+      AutoVulnerableBeatOffset: 0
+      ActionStartTime: 45
+      ActionEndTime: 49
+      ActionBeatLength: 8
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 4
+        DieOnHitProtag: 1
+        DieOnHit: 0
+        DieOnBlocked: 0
+        BlockPose: 4
 --- !u!114 &5145844636911831059
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2645,30 +2961,10 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
       _interactions: []
---- !u!114 &5616592450325541884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
-  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  template:
-    color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
-    text: 'There can be 2 <color=#fccf03>SYMBOLS</color> at once!
-
-      Move both
-      hands onto the scabbard!'
 --- !u!114 &5826171284927687792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2688,7 +2984,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0
@@ -2715,17 +3010,16 @@ MonoBehaviour:
       - {x: 6.20774, y: 0.6784904}
       AutoVulnerableAtEnd: 1
       AutoVulnerableBeatOffset: -2
-      AdditionalText: 
-      ActionStartTime: 80
-      ActionEndTime: 85
-      ActionBeatLength: 10
+      ActionStartTime: 75
+      ActionEndTime: 79
+      ActionBeatLength: 8
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
         DieOnHitProtag: 0
         DieOnHit: 1
         DieOnBlocked: 0
-        BlockPose: 5
+        BlockPose: 4
 --- !u!114 &5898022459129549792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2902,7 +3196,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 22.019
+    m_Start: 26.019
     m_ClipIn: 0
     m_Asset: {fileID: 740399739385724420}
     m_Duration: 4
@@ -2971,7 +3265,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 32.019
+    m_Start: 42.019
     m_ClipIn: 0
     m_Asset: {fileID: 7343239012535794622}
     m_Duration: 4
@@ -3040,7 +3334,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 36.019
+    m_Start: 46.019
     m_ClipIn: 0
     m_Asset: {fileID: -1434375293400013238}
     m_Duration: 4
@@ -3109,7 +3403,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 26.019
+    m_Start: 30.019
     m_ClipIn: 0
     m_Asset: {fileID: 7151922270815197381}
     m_Duration: 4
@@ -3178,9 +3472,9 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 50.019
+    m_Start: 20.019
     m_ClipIn: 0
-    m_Asset: {fileID: 7104979353128862346}
+    m_Asset: {fileID: 6707668431205087505}
     m_Duration: 4
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6435859260828590340}
@@ -3247,9 +3541,78 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 42.019
+    m_Start: 34.019
     m_ClipIn: 0
-    m_Asset: {fileID: 7270431548263385508}
+    m_Asset: {fileID: 7137553239587303201}
+    m_Duration: 4
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 6435859260828590340}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AngryFish
+  - m_Version: 1
+    m_Start: 50.019
+    m_ClipIn: 0
+    m_Asset: {fileID: -3196662265864292868}
     m_Duration: 4
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6435859260828590340}
@@ -3338,7 +3701,6 @@ MonoBehaviour:
       - {x: 1.2487519, y: 0.7861722}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 60.00000000000001
       ActionEndTime: 64
       ActionBeatLength: 8
@@ -3349,6 +3711,37 @@ MonoBehaviour:
         DieOnHit: 1
         DieOnBlocked: 0
         BlockPose: 0
+--- !u!114 &6510762862295125311
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: Simple Hit Behavior
+    HitConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
+    ActionData:
+      Positions:
+      - {x: 4.4315543, y: -5.1906075}
+      - {x: 1.7202644, y: 0.8960235}
+      AutoVulnerableAtEnd: 0
+      AutoVulnerableBeatOffset: 0
+      ActionStartTime: 14.999999999999998
+      ActionEndTime: 19
+      ActionBeatLength: 8
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 4
+        DieOnHitProtag: 1
+        DieOnHit: 0
+        DieOnBlocked: 0
+        BlockPose: 1
 --- !u!114 &6640569924543703568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3365,6 +3758,37 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: Cheese
+--- !u!114 &6707668431205087505
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    Description: Simple Hit Behavior
+    HitConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
+    ActionData:
+      Positions:
+      - {x: 4.4315543, y: -5.1906075}
+      - {x: 1.0417063, y: 3.067409}
+      AutoVulnerableAtEnd: 0
+      AutoVulnerableBeatOffset: 0
+      ActionStartTime: 13.999999999999998
+      ActionEndTime: 18
+      ActionBeatLength: 8
+      _interactions:
+      - InteractionType: 0
+        BeatsUntilStart: 4
+        DieOnHitProtag: 1
+        DieOnHit: 0
+        DieOnBlocked: 0
+        BlockPose: 1
 --- !u!114 &6947833509793112056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3399,7 +3823,7 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
     text: Last up is the BOTTOM!!
---- !u!114 &7104979353128862346
+--- !u!114 &7137553239587303201
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3409,20 +3833,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
   Template:
     Description: Simple Hit Behavior
     HitConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     ActionData:
       Positions:
-      - {x: 4.8437886, y: -4.727576}
-      - {x: 2.3474345, y: 0.5874809}
+      - {x: 4.4315543, y: -5.1906075}
+      - {x: 1.0417063, y: 3.067409}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
-      ActionStartTime: 44
-      ActionEndTime: 48
+      ActionStartTime: 28
+      ActionEndTime: 32
       ActionBeatLength: 8
       _interactions:
       - InteractionType: 0
@@ -3430,7 +3853,7 @@ MonoBehaviour:
         DieOnHitProtag: 1
         DieOnHit: 0
         DieOnBlocked: 0
-        BlockPose: 5
+        BlockPose: 2
 --- !u!114 &7151922270815197381
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3452,9 +3875,8 @@ MonoBehaviour:
       - {x: 2.8269634, y: 2.006886}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
-      ActionStartTime: 20
-      ActionEndTime: 24
+      ActionStartTime: 24
+      ActionEndTime: 28
       ActionBeatLength: 8
       _interactions:
       - InteractionType: 0
@@ -3463,38 +3885,6 @@ MonoBehaviour:
         DieOnHit: 0
         DieOnBlocked: 0
         BlockPose: 2
---- !u!114 &7270431548263385508
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  Template:
-    Description: Simple Hit Behavior
-    HitConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
-    ActionData:
-      Positions:
-      - {x: 1.2569151, y: -4.9769306}
-      - {x: -0.43383074, y: 3.829094}
-      AutoVulnerableAtEnd: 0
-      AutoVulnerableBeatOffset: 0
-      AdditionalText: 
-      ActionStartTime: 36
-      ActionEndTime: 40
-      ActionBeatLength: 8
-      _interactions:
-      - InteractionType: 0
-        BeatsUntilStart: 4
-        DieOnHitProtag: 1
-        DieOnHit: 0
-        DieOnBlocked: 0
-        BlockPose: 5
 --- !u!114 &7343239012535794622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3516,9 +3906,8 @@ MonoBehaviour:
       - {x: -0.43383074, y: 3.829094}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
-      ActionStartTime: 26
-      ActionEndTime: 30
+      ActionStartTime: 36
+      ActionEndTime: 40
       ActionBeatLength: 8
       _interactions:
       - InteractionType: 0
@@ -3674,7 +4063,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
   - m_Version: 1
-    m_Start: 89.519
+    m_Start: 85.769
     m_ClipIn: 0
     m_Asset: {fileID: 3033539266294842978}
     m_Duration: 4
@@ -3742,6 +4131,75 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
+  - m_Version: 1
+    m_Start: 6.019
+    m_ClipIn: 0
+    m_Asset: {fileID: 1738709589909449189}
+    m_Duration: 5
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7855175669344345868}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: MootFish
   m_Markers:
     m_Objects: []
 --- !u!114 &8483025368824293763
@@ -3763,7 +4221,6 @@ MonoBehaviour:
       Positions: []
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      AdditionalText: 
       ActionStartTime: 0
       ActionEndTime: 0
       ActionBeatLength: 0

@@ -5079,6 +5079,7 @@ GameObject:
   - component: {fileID: 4584757707055110698}
   - component: {fileID: 5351909015360120121}
   - component: {fileID: 2449298220846478715}
+  - component: {fileID: 1879570413504948326}
   m_Layer: 0
   m_Name: SquidMissile
   m_TagString: Untagged
@@ -5117,9 +5118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e087f2332fc306c4fb4ff76c09dff698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _indicator: {fileID: 1637912884012176710}
   _beatInteractionResultEvent: {fileID: 11400000, guid: bd78ca9baaf0c6b47bad4871ce4bcce3,
     type: 2}
+  _hitboxTransform: {fileID: 4584757707055110698}
 --- !u!114 &2449298220846478715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5164,6 +5165,22 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _anim: {fileID: 9185724354866607105}
+--- !u!114 &1879570413504948326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719167886461646457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 576467afaad82c443b32fb84e49c1ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bnHActionCore: {fileID: 5351909015360120121}
+  _spawnSound: {fileID: 8300000, guid: 3743c12ec7cbc924489a0cf4188d753d, type: 3}
+  _startAttackSound: {fileID: 8300000, guid: 09f62feb1d070064ba923cc2a171643a, type: 3}
+  _startVulnerableSound: {fileID: 0}
 --- !u!1001 &1821913675923851650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5398,18 +5415,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d52b4ffafae7e842b7af681379c9db4, type: 3}
---- !u!114 &1637912884012176710 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5743409499505446920, guid: 0d52b4ffafae7e842b7af681379c9db4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6417552045795214670}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e28657229dbd9204ea80626986c9e5bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7961916753182534580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,

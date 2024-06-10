@@ -14,8 +14,6 @@ public class SadTutorialFishAction : MonoBehaviour
     [SerializeField]
     private AnimationCurve _moveCurve;
 
-    private BnHActionSo ActionConfigSo => _bnhActionCore.ActionConfigSo;
-
     private Vector2 _startPos;
     private Vector2 _targetPos;
 
@@ -24,8 +22,10 @@ public class SadTutorialFishAction : MonoBehaviour
     private void Awake()
     {
         _bnhActionCore.OnKilled += HandleKilled;
-        _bnhActionCore.OnTickWaitingForInteraction += HandleTickWaitingForInteraction;
-        _bnhActionCore.OnTickInInteraction += HandleTickWaitingForInteraction;
+
+        _bnhActionCore.OnTickWaitingForVulnerable += HandleTickWaitingForVulnerable;
+        _bnhActionCore.OnTickInVulnerable += HandleTickWaitingForVulnerable;
+
         _bnhActionCore.OnTickWaitingToLeave += HandleTickWaitingToLeave;
     }
 
@@ -37,19 +37,15 @@ public class SadTutorialFishAction : MonoBehaviour
         _sprite.flipX = _targetPos.x > _startPos.x;
     }
 
-    private void HandleTickWaitingToLeave(double time, BnHActionCore.BnHActionInstanceConfig bnHActionInstanceConfig)
+    private void HandleTickWaitingToLeave(BnHActionCore.Timing timing,
+        BnHActionCore.BnHActionInstanceConfig bnHActionInstanceConfig)
     {
         if (_landedHit)
         {
             return;
         }
 
-        double leaveTime = _bnhActionCore.Data.ActionEndTime;
-
-        float normalizedTime = Mathf.InverseLerp(
-            (float)_bnhActionCore.LastInteractionEndTime,
-            (float)leaveTime,
-            (float)time);
+        var normalizedTime = (float)timing.NormalizedLeaveWaitTime;
 
         float t = _moveCurve.Evaluate(1 - normalizedTime);
 
@@ -63,22 +59,10 @@ public class SadTutorialFishAction : MonoBehaviour
         _sprite.color = new Color(1, 1, 1, 0.7f);
     }
 
-    private void HandleTickWaitingForInteraction(double time, BnHActionCore.ScheduledInteraction interaction)
+    private void HandleTickWaitingForVulnerable(BnHActionCore.Timing timing,
+        BnHActionCore.ScheduledInteraction interaction)
     {
-        if (interaction.Interaction.InteractionType == BnHActionCore.InteractionType.Vulnerable)
-        {
-            UpdatePosition(time, interaction);
-        }
-    }
-
-    private void UpdatePosition(double time, BnHActionCore.ScheduledInteraction interaction)
-    {
-        double attackMiddleTime = interaction.TimeWhenInteractWindowEnd;
-
-        float normalizedTime = Mathf.InverseLerp(
-            (float)_bnhActionCore.LastInteractionEndTime,
-            (float)attackMiddleTime,
-            (float)time);
+        var normalizedTime = (float)timing.NormalizedInteractionWaitTime;
 
         float t = _moveCurve.Evaluate(normalizedTime);
 
@@ -91,7 +75,7 @@ public class SadTutorialFishAction : MonoBehaviour
         _sprite.transform.rotation = Quaternion.Euler(0, 0, -90 * (1 - t));
     }
 
-    private void HandleKilled()
+    private void HandleKilled(BnHActionCore.Timing timing)
     {
         _sprite.enabled = false;
         foreach (ParticleSystem particle in _dieParticles)

@@ -23,43 +23,33 @@ public class TentacleAction : MonoBehaviour
     {
         _bnhActionCore.OnSpawn += HandleSpawned;
         _bnhActionCore.OnDamagedByProtag += HandleOnDamaged;
-        _bnhActionCore.OnTickWaitingForInteraction += HandleTickWaitingForInteraction;
+
+        _bnhActionCore.OnTickWaitingForAttack += HandleTickWaitingForAttack;
+
         _bnhActionCore.OnKilled += HandleKilled;
         _bnhActionCore.OnTransitionToLeaving += HandleTransitionToLeaving;
     }
 
-    private void OnDestroy()
-    {
-        _bnhActionCore.OnSpawn -= HandleSpawned;
-        _bnhActionCore.OnDamagedByProtag -= HandleOnDamaged;
-        _bnhActionCore.OnTickWaitingForInteraction -= HandleTickWaitingForInteraction;
-        _bnhActionCore.OnKilled -= HandleKilled;
-        _bnhActionCore.OnTransitionToLeaving -= HandleTransitionToLeaving;
-    }
-
-    private void HandleTransitionToLeaving()
+    private void HandleTransitionToLeaving(BnHActionCore.Timing timing)
     {
         _animator.Play("TentacleLeave");
         _sprite.color = new Color(1, 1, 1, 0.7f);
     }
 
-    private void HandleKilled()
+    private void HandleKilled(BnHActionCore.Timing timing)
     {
         _animator.gameObject.SetActive(false);
     }
 
-    private void HandleTickWaitingForInteraction(double time, BnHActionCore.ScheduledInteraction interaction)
+    private void HandleTickWaitingForAttack(BnHActionCore.Timing timing, BnHActionCore.ScheduledInteraction interaction)
     {
-        if (interaction.Interaction.InteractionType == BnHActionCore.InteractionType.IncomingAttack)
-        {
-            double attackStartTime =
-                interaction.TimeWhenInteractionStart;
-            double attackMiddleTime = attackStartTime + ActionConfigSo.BlockWindowHalfDuration;
+        double attackStartTime =
+            interaction.TimeWhenInteractionStart;
+        double attackMiddleTime = attackStartTime + ActionConfigSo.BlockWindowHalfDuration;
 
-            if (time + _attackAnimationWindup >= attackMiddleTime)
-            {
-                _animator.Play("TentacleAttack");
-            }
+        if (timing.CurrentBeatmapTime + _attackAnimationWindup >= attackMiddleTime)
+        {
+            _animator.Play("TentacleAttack");
         }
     }
 

@@ -9,6 +9,15 @@ using UnityEngine;
 /// </summary>
 public class BnHActionCore : MonoBehaviour
 {
+    public enum BnHActionState
+    {
+        Spawn,
+        WaitingForInteraction,
+        InInteraction,
+        WaitingToLeave,
+        Leaving
+    }
+
     public enum InteractionType
     {
         IncomingAttack,
@@ -22,14 +31,9 @@ public class BnHActionCore : MonoBehaviour
         Success
     }
 
-    private enum BnHActionState
-    {
-        WaitingForInteraction,
-        InInteraction,
-        WaitingToLeave,
-        Leaving
-    }
-
+    /// <summary>
+    ///     Represents the data needed to create an action
+    /// </summary>
     [Serializable]
     public struct BnHActionInstanceConfig
     {
@@ -38,8 +42,6 @@ public class BnHActionCore : MonoBehaviour
         public bool AutoVulnerableAtEnd;
 
         public int AutoVulnerableBeatOffset;
-
-        public string AdditionalText;
 
         [Header("Timing (Beatmap space)")]
 
@@ -73,6 +75,21 @@ public class BnHActionCore : MonoBehaviour
         }
     }
 
+    public struct Timing
+    {
+        public double CurrentBeatmapTime;
+
+        // Normalized time in terms of the current interaction's wait time
+        public double NormalizedInteractionWaitTime;
+
+        // Normalized time in terms of the total action time
+        public double NormalizedTotalTime;
+        public double NormalizedLeaveWaitTime;
+    }
+
+    /// <summary>
+    ///     Represents the data needed to create an interaction
+    /// </summary>
     [Serializable]
     public struct InteractionInstanceConfig
     {
@@ -94,41 +111,53 @@ public class BnHActionCore : MonoBehaviour
         public SharedTypes.BlockPoseStates BlockPose;
     }
 
+    /// <summary>
+    ///     Represents a single interaction that has been scheduled
+    /// </summary>
     public struct ScheduledInteraction
     {
         public InteractionInstanceConfig Interaction;
         public double TimeWhenInteractionStart;
+        public double InteractionMiddleTime;
         public double TimeWhenInteractWindowEnd;
     }
 
-    [SerializeField]
-    private BeatActionIndicator _indicator;
-
+    /* Inspector fields */
     [SerializeField]
     private BeatInteractionResultEvent _beatInteractionResultEvent;
 
+    [SerializeField]
+    private Transform _hitboxTransform;
+
+    /* Props */
     private ScheduledInteraction CurrentInteraction => _sequencedInteractionInstances[_currentInteractionIndex];
 
     public BnHActionSo ActionConfigSo => _actionConfigSo;
 
     public BnHActionInstanceConfig Data => _data;
 
-    // The time when the last interaction ended
-    public double LastInteractionEndTime => _previousInteractionEndTime;
+    /* Events */
 
     public event Action OnBlockByProtag;
     public event Action OnDamagedByProtag;
-    public event Action OnKilled;
     public event Action OnLandHitOnProtag;
 
-    public event Action<BnHActionCore> OnReadyForCleanup;
     public event Action OnSpawn;
-    public event Action<double, ScheduledInteraction> OnTickInInteraction;
-    public event Action<double, ScheduledInteraction> OnTickWaitingForInteraction;
-    public event Action<double, BnHActionInstanceConfig> OnTickWaitingToLeave;
-    public event Action OnTransitionToLeaving;
-    public event Action<ScheduledInteraction> OnTransitionToNextInteraction;
-    public event Action<ScheduledInteraction> OnTransitionToWaitingToLeave;
+    public event Action<Timing> OnKilled;
+    public event Action<BnHActionCore> OnReadyForCleanup;
+
+    public event Action<Timing, ScheduledInteraction> OnTransitionToWaitingToAttack;
+    public event Action<Timing, ScheduledInteraction> OnTickWaitingForAttack;
+    public event Action<Timing, ScheduledInteraction> OnTransitionToWaitingToVulnerable;
+    public event Action<Timing, ScheduledInteraction> OnTickWaitingForVulnerable;
+    public event Action<Timing, ScheduledInteraction> OnTickInAttack;
+    public event Action<Timing, ScheduledInteraction> OnTickInVulnerable;
+
+    public event Action<Timing> OnTransitionToLeaving;
+    public event Action<Timing, ScheduledInteraction> OnTransitionToWaitingToLeave;
+    public event Action<Timing, BnHActionInstanceConfig> OnTickWaitingToLeave;
+
+    /* Internal fields */
 
     private BnHActionInstanceConfig _data;
     private BnHActionSo _actionConfigSo;
@@ -143,10 +172,7 @@ public class BnHActionCore : MonoBehaviour
     private int _currentInteractionIndex;
     private BlockState _blockedState;
 
-    private double _currentTime;
-
-    // Updates on subdiv crossings, for indicator
-    private float _steppedNormalizedTime;
+    private Timing _currentTiming;
 
     private void OnDrawGizmos()
     {
@@ -156,15 +182,16 @@ public class BnHActionCore : MonoBehaviour
         }
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_indicator.transform.position, _actionConfigSo.HitboxRadius);
+        Gizmos.DrawWireSphere(_hitboxTransform.transform.position, _actionConfigSo.HitboxRadius);
 
 #if UNITY_EDITOR
         if (Application.isPlaying)
         {
-            Handles.Label(_indicator.transform.position + Vector3.up * 2,
+            Handles.Label(_hitboxTransform.transform.position + Vector3.up * 2,
                 $"State: {_bnHActionState}" +
                 $"\nIndex {_currentInteractionIndex}" +
-                $"\nType: {CurrentInteraction.Interaction.InteractionType}");
+                $"\nType: {CurrentInteraction.Interaction.InteractionType}" +
+                $"\n Time: {JsonUtility.ToJson(_currentTiming)}");
         }
 #endif
     }
@@ -173,40 +200,32 @@ public class BnHActionCore : MonoBehaviour
     {
         _actionConfigSo = hitConfig;
         _data = data;
-        _blockedState = BlockState.Waiting;
 
-        transform.position = data.Positions[0];
-
-        _currentInteractionIndex = 0;
-        if (_data.Interactions.Count > 0)
-        {
-            _bnHActionState = BnHActionState.WaitingForInteraction;
-
-            // Update indicator visual since transition isn't called for initial interaction
-            if (_data.Interactions[0].InteractionType == InteractionType.IncomingAttack)
-            {
-                _indicator.SetBlockPoseIndicator(_data.Interactions[0].BlockPose);
-            }
-        }
-        else
-        {
-            _bnHActionState = BnHActionState.WaitingToLeave;
-        }
-
+        // Calculating timings
         _actionStartTime = data.ActionStartTime;
         _actionEndTime = data.ActionEndTime;
         _previousInteractionEndTime = _actionStartTime;
 
-        if (TimingService.Instance != null)
-        {
-            _currentTime = TimingService.Instance.CurrentBeatmapTime;
-        }
+        UpdateTiming();
+
+        // Move to initial position
+        transform.position = data.Positions[0];
+
+        // Setup initial state
+        _blockedState = BlockState.Waiting;
+        _bnHActionState = BnHActionState.Spawn;
 
         ScheduleInteractions(data);
 
-        if (Protaganist.Instance == null)
+        // Transition to first interaction, or else go straight to leaving
+        _currentInteractionIndex = -1;
+        if (_data.Interactions.Count > 0)
         {
-            return;
+            TransitionToNextInteraction(_currentTiming);
+        }
+        else
+        {
+            _bnHActionState = BnHActionState.WaitingToLeave;
         }
 
         OnSpawn?.Invoke();
@@ -245,7 +264,8 @@ public class BnHActionCore : MonoBehaviour
             {
                 Interaction = interactionConfig,
                 TimeWhenInteractionStart = interactionStartTime,
-                TimeWhenInteractWindowEnd = interactionWindowEndTime
+                TimeWhenInteractWindowEnd = interactionWindowEndTime,
+                InteractionMiddleTime = interactionStartTime + halfWindow
             };
 
             _sequencedInteractionInstances.Add(scheduledInteraction);
@@ -259,25 +279,48 @@ public class BnHActionCore : MonoBehaviour
 
     public void Tick()
     {
-        var timingService = TimingService.Instance;
-        _currentTime += timingService.DeltaTime;
-        double time = _currentTime;
+        UpdateTiming();
 
         switch (_bnHActionState)
         {
             case BnHActionState.WaitingForInteraction:
-                TickWaitingForInteraction(time);
+                TickWaitingForInteraction(_currentTiming);
                 break;
             case BnHActionState.InInteraction:
-                TickInInteraction(time);
+                TickInInteraction(_currentTiming);
                 break;
             case BnHActionState.WaitingToLeave:
-                TickWaitingToLeave(time);
+                TickWaitingToLeave(_currentTiming);
                 break;
             case BnHActionState.Leaving:
-                TickLeaving(time);
+                TickLeaving(_currentTiming);
                 break;
         }
+    }
+
+    private void UpdateTiming()
+    {
+        var timingService = TimingService.Instance;
+        _currentTiming.CurrentBeatmapTime = timingService.CurrentBeatmapTime;
+        double time = _currentTiming.CurrentBeatmapTime;
+
+        // Calculate timings for within the interaction
+        if (_bnHActionState == BnHActionState.WaitingForInteraction || _bnHActionState == BnHActionState.InInteraction)
+        {
+            double interactionMiddleTime = CurrentInteraction.InteractionMiddleTime;
+            var normalizedTime = (float)((time - _previousInteractionEndTime) /
+                                         (interactionMiddleTime - _previousInteractionEndTime));
+
+            _currentTiming.NormalizedInteractionWaitTime = normalizedTime;
+        }
+
+        if (_bnHActionState == BnHActionState.WaitingToLeave)
+        {
+            _currentTiming.NormalizedLeaveWaitTime = (time - _previousInteractionEndTime) /
+                                                     (_actionEndTime - _previousInteractionEndTime);
+        }
+
+        _currentTiming.NormalizedTotalTime = (time - _actionStartTime) / (_actionEndTime - _actionStartTime);
     }
 
     /// <summary>
@@ -342,13 +385,15 @@ public class BnHActionCore : MonoBehaviour
             return;
         }
 
+        UpdateTiming();
+
         double vulnerableStartTime = CurrentInteraction.TimeWhenInteractionStart;
 
-        Vector3 pos = _indicator.transform.position;
+        Vector3 pos = _hitboxTransform.transform.position;
         float dist = Protaganist.Instance.DistanceToSwordPlane(pos);
         bool isAttackOnTarget = dist < _actionConfigSo.HitboxRadius;
 
-        double time = TimingService.Instance.CurrentBeatmapTime;
+        double time = _currentTiming.CurrentBeatmapTime;
         double offset = time - (vulnerableStartTime + _actionConfigSo.VulnerableWindowHalfDuration);
 
         if (isAttackOnTarget)
@@ -357,7 +402,7 @@ public class BnHActionCore : MonoBehaviour
 
             if (CurrentInteraction.Interaction.DieOnHit)
             {
-                Die();
+                Die(_currentTiming);
             }
 
             _beatInteractionResultEvent.Raise(new SharedTypes.BeatInteractionResult
@@ -373,99 +418,77 @@ public class BnHActionCore : MonoBehaviour
         }
     }
 
-    private void Die()
+    private void Die(Timing timing)
     {
-        _indicator.SetVisible(false);
         _bnHActionState = BnHActionState.Leaving;
-        OnKilled?.Invoke();
+        OnKilled?.Invoke(timing);
     }
 
-    private void TickWaitingForInteraction(double time)
+    private void TickWaitingForInteraction(Timing timing)
     {
-        _indicator.SetVisible(true);
-
         InteractionType interactionType = CurrentInteraction.Interaction.InteractionType;
-
-        OnTickWaitingForInteraction?.Invoke(time, CurrentInteraction);
-
         if (interactionType == InteractionType.IncomingAttack)
         {
-            TickWaitingForIncomingAttack(time);
+            TickWaitingForIncomingAttack(timing);
+            OnTickWaitingForAttack?.Invoke(timing, CurrentInteraction);
         }
         else if (interactionType == InteractionType.Vulnerable)
         {
-            TickWaitingForVulnerable(time);
+            TickWaitingForVulnerable(timing);
+            OnTickWaitingForVulnerable?.Invoke(timing, CurrentInteraction);
         }
     }
 
-    private void TickWaitingForIncomingAttack(double time)
+    private void TickWaitingForIncomingAttack(Timing timing)
     {
         double attackStartTime =
             CurrentInteraction.TimeWhenInteractionStart;
-        double attackMiddleTime = attackStartTime + _actionConfigSo.BlockWindowHalfDuration;
 
-        if (time >= attackStartTime)
+        if (timing.CurrentBeatmapTime >= attackStartTime)
         {
             _bnHActionState = BnHActionState.InInteraction;
         }
-
-        var normalizedTime =
-            (float)((time - _previousInteractionEndTime) / (attackMiddleTime - _previousInteractionEndTime));
-
-        // Step the updates on the indicator
-        if (TimingService.Instance.DidCrossSubdivThisFrame)
+        else
         {
-            _steppedNormalizedTime = normalizedTime;
+            OnTickWaitingForAttack?.Invoke(timing, CurrentInteraction);
         }
-
-        _indicator.UpdateWaitingForAttackIndicator(_steppedNormalizedTime,
-            _data.Interactions[_currentInteractionIndex].BlockPose);
     }
 
-    private void TickWaitingForVulnerable(double time)
+    private void TickWaitingForVulnerable(Timing timing)
     {
         double vulnStartTime = CurrentInteraction.TimeWhenInteractionStart;
-        double vulnMiddleTime = vulnStartTime + _actionConfigSo.VulnerableWindowHalfDuration;
 
-        var normalizedTime = (float)((time - _previousInteractionEndTime) /
-                                     (vulnMiddleTime - _previousInteractionEndTime));
-
-        if (time >= vulnStartTime)
+        if (timing.CurrentBeatmapTime >= vulnStartTime)
         {
             _bnHActionState = BnHActionState.InInteraction;
         }
-
-        // Step the updates on the indicator
-        if (TimingService.Instance.DidCrossSubdivThisFrame)
+        else
         {
-            _steppedNormalizedTime = normalizedTime;
+            OnTickWaitingForVulnerable?.Invoke(timing, CurrentInteraction);
         }
-
-        _indicator.UpdateWaitingForVulnerableIndicator(_steppedNormalizedTime);
     }
 
-    private void TickInInteraction(double time)
+    private void TickInInteraction(Timing timing)
     {
         InteractionType interactionType =
             CurrentInteraction.Interaction.InteractionType;
 
-        OnTickInInteraction?.Invoke(time, CurrentInteraction);
-
         if (interactionType == InteractionType.IncomingAttack)
         {
-            TickAttackBlockWindow(time);
+            TickAttackBlockWindow(timing);
+            OnTickInAttack?.Invoke(timing, CurrentInteraction);
         }
         else if (interactionType == InteractionType.Vulnerable)
         {
-            TickVulnerableWindow(time);
+            TickVulnerableWindow(timing);
+            OnTickInVulnerable?.Invoke(timing, CurrentInteraction);
         }
     }
 
-    private void TickAttackBlockWindow(double time)
+    private void TickAttackBlockWindow(Timing timing)
     {
         double blockWindowEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
-        double attackMiddleTime = CurrentInteraction.TimeWhenInteractionStart + _actionConfigSo.BlockWindowHalfDuration;
-        if (time >= blockWindowEndTime)
+        if (timing.CurrentBeatmapTime >= blockWindowEndTime)
         {
             if (_blockedState != BlockState.Success)
             {
@@ -481,33 +504,26 @@ public class BnHActionCore : MonoBehaviour
 
                 if (CurrentInteraction.Interaction.DieOnHitProtag)
                 {
-                    Die();
+                    Die(timing);
                 }
             }
             else
             {
                 if (CurrentInteraction.Interaction.DieOnBlocked)
                 {
-                    Die();
+                    Die(timing);
                 }
             }
 
-            TransitionToNextInteraction(time);
+            TransitionToNextInteraction(timing);
         }
-
-        var normalizedTime =
-            (float)((time - _previousInteractionEndTime) / (attackMiddleTime - _previousInteractionEndTime));
-        _indicator.UpdateWaitingForAttackIndicator(normalizedTime,
-            _data.Interactions[_currentInteractionIndex].BlockPose);
     }
 
-    private void TickVulnerableWindow(double time)
+    private void TickVulnerableWindow(Timing timing)
     {
         double vulnWindowEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
-        double vulnMiddleTime =
-            CurrentInteraction.TimeWhenInteractionStart + _actionConfigSo.VulnerableWindowHalfDuration;
 
-        if (time >= vulnWindowEndTime)
+        if (timing.CurrentBeatmapTime >= vulnWindowEndTime)
         {
             _beatInteractionResultEvent.Raise(new SharedTypes.BeatInteractionResult
             {
@@ -515,28 +531,27 @@ public class BnHActionCore : MonoBehaviour
                 InteractionType = InteractionType.Vulnerable,
                 Result = SharedTypes.BeatInteractionResultType.Failure
             });
-            TransitionToNextInteraction(time);
+            TransitionToNextInteraction(timing);
         }
-
-        var normalizedTime = (float)((time - _previousInteractionEndTime) /
-                                     (vulnMiddleTime - _previousInteractionEndTime));
-        _indicator.UpdateWaitingForVulnerableIndicator(normalizedTime);
     }
 
-    private void TransitionToNextInteraction(double time)
+    private void TransitionToNextInteraction(Timing timing)
     {
-        if (_bnHActionState != BnHActionState.InInteraction)
+        bool isSpawning = _bnHActionState == BnHActionState.Spawn;
+
+        if (_bnHActionState != BnHActionState.InInteraction
+            && _bnHActionState != BnHActionState.Spawn)
         {
             return;
         }
 
-        _previousInteractionEndTime = CurrentInteraction.TimeWhenInteractWindowEnd;
+        _previousInteractionEndTime = isSpawning ? _actionStartTime : CurrentInteraction.TimeWhenInteractWindowEnd;
 
         if (_currentInteractionIndex >= _sequencedInteractionInstances.Count - 1)
         {
             // No more interactions
             _bnHActionState = BnHActionState.WaitingToLeave;
-            OnTransitionToWaitingToLeave?.Invoke(CurrentInteraction);
+            OnTransitionToWaitingToLeave?.Invoke(timing, CurrentInteraction);
         }
         else
         {
@@ -547,43 +562,42 @@ public class BnHActionCore : MonoBehaviour
             while (true)
             {
                 _currentInteractionIndex++;
-                if (time < CurrentInteraction.TimeWhenInteractionStart)
+                if (timing.CurrentBeatmapTime < CurrentInteraction.TimeWhenInteractionStart)
                 {
-                    OnTransitionToNextInteraction?.Invoke(CurrentInteraction);
+                    if (CurrentInteraction.Interaction.InteractionType == InteractionType.IncomingAttack)
+                    {
+                        OnTransitionToWaitingToAttack?.Invoke(timing, CurrentInteraction);
+                    }
+                    else if (CurrentInteraction.Interaction.InteractionType == InteractionType.Vulnerable)
+                    {
+                        OnTransitionToWaitingToVulnerable?.Invoke(timing, CurrentInteraction);
+                    }
+
                     break;
                 }
 
                 if (_currentInteractionIndex >= _sequencedInteractionInstances.Count - 1)
                 {
                     _bnHActionState = BnHActionState.WaitingToLeave;
-                    OnTransitionToWaitingToLeave?.Invoke(CurrentInteraction);
+                    OnTransitionToWaitingToLeave?.Invoke(timing, CurrentInteraction);
                 }
             }
-
-            // Update indicator visual
-            if (CurrentInteraction.Interaction.InteractionType == InteractionType.IncomingAttack)
-            {
-                _indicator.SetBlockPoseIndicator(CurrentInteraction.Interaction.BlockPose);
-            }
-
-            _steppedNormalizedTime = 0;
         }
     }
 
-    private void TickWaitingToLeave(double time)
+    private void TickWaitingToLeave(Timing timing)
     {
-        _indicator.SetVisible(false);
-        OnTickWaitingToLeave?.Invoke(time, _data);
-        if (time >= _actionEndTime)
+        OnTickWaitingToLeave?.Invoke(timing, _data);
+        if (timing.CurrentBeatmapTime >= _actionEndTime)
         {
             _bnHActionState = BnHActionState.Leaving;
-            OnTransitionToLeaving?.Invoke();
+            OnTransitionToLeaving?.Invoke(timing);
         }
     }
 
-    private void TickLeaving(double time)
+    private void TickLeaving(Timing timing)
     {
-        if (time >= _actionEndTime + 2f)
+        if (timing.CurrentBeatmapTime >= _actionEndTime + 2f)
         {
             OnReadyForCleanup?.Invoke(this);
         }
