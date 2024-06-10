@@ -1,77 +1,70 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class AngryTutorialFishAction : MonoBehaviour
+public class ThreePointAttack : MonoBehaviour
 {
+    [SerializeField]
+    private BnHActionCore _bnhActionCore;
+
+    [Header("Positions")]
+
+    [SerializeField]
+    private int _startPosIndex;
+
+    [SerializeField]
+    private int _peakPosIndex;
+
+    [Header("Visuals")]
+
     [SerializeField]
     private SpriteRenderer _sprite;
 
     [SerializeField]
-    private BnHActionCore _bnhActionCore;
+    private AnimationCurve _moveCurve;
 
     [SerializeField]
     private ParticleSystem _explosionParticles;
 
-    [SerializeField]
-    private AnimationCurve _moveCurve;
+    [Header("Events")]
 
-    private BnHActionSo ActionConfigSo => _bnhActionCore.ActionConfigSo;
+    public UnityEvent OnHitPeak;
 
     private Vector2 _startPos;
     private Vector2 _peakPos;
     private Vector2 _targetPos;
-
-    private bool _landedHit;
-
     private float _angleToTarget;
+
+    private bool _hitPeak;
 
     private void Awake()
     {
         _bnhActionCore.OnTickWaitingForAttack += HandleTickWaitingForAttack;
         _bnhActionCore.OnTickInAttack += HandleTickWaitingForAttack;
-
-        _bnhActionCore.OnTickWaitingToLeave += HandleTickWaitingToLeave;
         _bnhActionCore.OnLandHitOnProtag += HandleLandHitOnProtag;
-        _bnhActionCore.OnKilled += HandleDied;
     }
 
     private void Start()
     {
         // Form an arc from start, with the peak at the target position
-        _startPos = transform.position;
-        _peakPos = _bnhActionCore.Data.Positions[1];
+        _startPos = _bnhActionCore.Data.Positions[_startPosIndex];
+        _peakPos = _bnhActionCore.Data.Positions[_peakPosIndex];
         _targetPos = Protaganist.Instance.SpritePosition;
-
         _sprite.flipX = _peakPos.x > _startPos.x;
-        _angleToTarget = Mathf.Atan2(_targetPos.y - _peakPos.y, _targetPos.x - _peakPos.x) * Mathf.Rad2Deg;
-    }
 
-    private void HandleDied(BnHActionCore.Timing timing)
-    {
-        _sprite.enabled = false;
+        _angleToTarget = Mathf.Atan2(_targetPos.y - _peakPos.y, _targetPos.x - _peakPos.x) * Mathf.Rad2Deg;
     }
 
     private void HandleLandHitOnProtag()
     {
-        _landedHit = true;
         _explosionParticles.Play();
-    }
-
-    private void HandleTickWaitingToLeave(BnHActionCore.Timing timing,
-        BnHActionCore.BnHActionInstanceConfig bnHActionInstanceConfig)
-    {
-
-        transform.position += Vector3.up * Time.deltaTime * 7f;
-        transform.position += Vector3.right * Time.deltaTime * 15f;
-
-        _sprite.transform.rotation = Quaternion.Euler(0, 0, 1200 * (float)timing.CurrentBeatmapTime);
-        _sprite.color = new Color(1, 1, 1, 0.7f);
     }
 
     private void HandleTickWaitingForAttack(BnHActionCore.Timing timing, BnHActionCore.ScheduledInteraction interaction)
     {
+        // Lerp from start pos to peak pos, then to target pos
         var normalizedTime = (float)timing.NormalizedInteractionWaitTime;
 
-        var thresh = 0.5f;
+        var thresh = 0.75f;
         if (normalizedTime <= thresh)
         {
             float t = _moveCurve.Evaluate(normalizedTime / thresh);
@@ -83,6 +76,12 @@ public class AngryTutorialFishAction : MonoBehaviour
         }
         else
         {
+            if (!_hitPeak && normalizedTime >= thresh)
+            {
+                _hitPeak = true;
+                OnHitPeak.Invoke();
+            }
+
             float remappedTime = (normalizedTime - thresh) / (1 - thresh);
 
             transform.position = new Vector2(

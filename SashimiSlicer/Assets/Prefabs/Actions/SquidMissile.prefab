@@ -5078,8 +5078,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4584757707055110698}
   - component: {fileID: 5351909015360120121}
-  - component: {fileID: 2449298220846478715}
-  - component: {fileID: 1879570413504948326}
+  - component: {fileID: 1126804359791738572}
+  - component: {fileID: 6601682482599097147}
   m_Layer: 0
   m_Name: SquidMissile
   m_TagString: Untagged
@@ -5100,6 +5100,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7743280445875377526}
   - {fileID: 6948830079042895734}
   - {fileID: 7961916753182534580}
   - {fileID: 7407001948907140046}
@@ -5121,7 +5122,7 @@ MonoBehaviour:
   _beatInteractionResultEvent: {fileID: 11400000, guid: bd78ca9baaf0c6b47bad4871ce4bcce3,
     type: 2}
   _hitboxTransform: {fileID: 4584757707055110698}
---- !u!114 &2449298220846478715
+--- !u!114 &1126804359791738572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5130,12 +5131,69 @@ MonoBehaviour:
   m_GameObject: {fileID: 6719167886461646457}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c60f8beccda8948a865dbf5400f36d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4edcf68e3db13c842bf2ac9fcd9923c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 38135383335388938}
   _bnhActionCore: {fileID: 5351909015360120121}
+  _startPosIndex: 0
+  _peakPosIndex: 1
+  _sprite: {fileID: 38135383335388938}
+  _moveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _explosionParticles: {fileID: 8820880546140617743}
+  OnHitPeak:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8998238423337882039}
+        m_TargetAssemblyTypeName: SimpleAudio, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6601682482599097147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719167886461646457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f073851e60780b4696d2409c18a32ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bnhActionCore: {fileID: 5351909015360120121}
+  _startPosIndex: 0
+  _vulnerablePosIndex: 2
+  _sprite: {fileID: 38135383335388938}
   _dieParticles:
   - {fileID: 906504126636784770}
   - {fileID: 3044961230406062496}
@@ -5164,14 +5222,61 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _anim: {fileID: 9185724354866607105}
---- !u!114 &1879570413504948326
+  OnEnterDazed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9185724354866607105}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SquidVulnerable
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &7381459145768466746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7743280445875377526}
+  - component: {fileID: 8559348983169891108}
+  - component: {fileID: 8998238423337882039}
+  m_Layer: 0
+  m_Name: SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7743280445875377526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381459145768466746}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.2830594, y: 0.4131211, z: -0.058626406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4584757707055110698}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8559348983169891108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6719167886461646457}
+  m_GameObject: {fileID: 7381459145768466746}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 576467afaad82c443b32fb84e49c1ee8, type: 3}
@@ -5179,8 +5284,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bnHActionCore: {fileID: 5351909015360120121}
   _spawnSound: {fileID: 8300000, guid: 3743c12ec7cbc924489a0cf4188d753d, type: 3}
-  _startAttackSound: {fileID: 8300000, guid: 09f62feb1d070064ba923cc2a171643a, type: 3}
+  _startAttackSound: {fileID: 0}
   _startVulnerableSound: {fileID: 0}
+--- !u!114 &8998238423337882039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381459145768466746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed851c6a66c1a64fafd1212d956273a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 09f62feb1d070064ba923cc2a171643a, type: 3}
 --- !u!1001 &1821913675923851650
 PrefabInstance:
   m_ObjectHideFlags: 0
