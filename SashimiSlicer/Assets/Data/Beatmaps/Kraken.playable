@@ -1825,7 +1825,7 @@ MonoBehaviour:
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
-        DieOnHitProtag: 1
+        DieOnHitProtag: 0
         DieOnHit: 1
         DieOnBlocked: 0
         BlockPose: 4
@@ -3484,7 +3484,7 @@ MonoBehaviour:
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
-        DieOnHitProtag: 1
+        DieOnHitProtag: 0
         DieOnHit: 1
         DieOnBlocked: 0
         BlockPose: 4
@@ -5074,7 +5074,7 @@ MonoBehaviour:
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
-        DieOnHitProtag: 1
+        DieOnHitProtag: 0
         DieOnHit: 1
         DieOnBlocked: 0
         BlockPose: 1
@@ -5950,7 +5950,7 @@ MonoBehaviour:
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
-        DieOnHitProtag: 1
+        DieOnHitProtag: 0
         DieOnHit: 1
         DieOnBlocked: 0
         BlockPose: 2
