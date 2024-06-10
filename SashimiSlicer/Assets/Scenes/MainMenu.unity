@@ -350,8 +350,6 @@ MonoBehaviour:
   _levelSelectButtonPrefab: {fileID: 116148503937992090, guid: 95e37dacc483c6344b04cacf7662d687,
     type: 3}
   _layoutGroup: {fileID: 472467207}
-  _protagTryBlockEvent: {fileID: 11400000, guid: 4cfa3609e31db094690a78cc3b3e91f3,
-    type: 2}
 --- !u!1 &472467206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,7 +1559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1813234502
 RectTransform:
   m_ObjectHideFlags: 0
