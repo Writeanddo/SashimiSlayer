@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 74.519
+    m_Start: 74.515
     m_ClipIn: 0
     m_Asset: {fileID: -239423293326726579}
     m_Duration: 4
@@ -125,7 +125,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
   - m_Version: 1
-    m_Start: 90.019
+    m_Start: 90.015
     m_ClipIn: 0
     m_Asset: {fileID: -4838120429295133237}
     m_Duration: 6
@@ -315,9 +315,9 @@ MonoBehaviour:
       - {x: 1.3366416, y: 3.52384}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      ActionStartTime: 6
-      ActionEndTime: 9.999999999999998
-      ActionBeatLength: 7.9999999999999964
+      ActionStartTime: 6.000000000000001
+      ActionEndTime: 10
+      ActionBeatLength: 8
       _interactions:
       - InteractionType: 0
         BeatsUntilStart: 4
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 66.019
+    m_Start: 66.015
     m_ClipIn: 0
     m_Asset: {fileID: 6436699955974109884}
     m_Duration: 4
@@ -416,7 +416,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
   - m_Version: 1
-    m_Start: 70.019
+    m_Start: 70.015
     m_ClipIn: 0
     m_Asset: {fileID: 3716184509759587934}
     m_Duration: 4
@@ -485,10 +485,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
   - m_Version: 1
-    m_Start: 60.019
+    m_Start: 60.015
     m_ClipIn: 0
     m_Asset: {fileID: -1562089407968036641}
-    m_Duration: 4.000000000000007
+    m_Duration: 4
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7634491408669650360}
     m_EaseInDuration: 0
@@ -554,7 +554,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
   - m_Version: 1
-    m_Start: 21.019
+    m_Start: 21.015
     m_ClipIn: 0
     m_Asset: {fileID: 6510762862295125311}
     m_Duration: 4
@@ -623,7 +623,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 35.019
+    m_Start: 35.015
     m_ClipIn: 0
     m_Asset: {fileID: -1107541818678484538}
     m_Duration: 4
@@ -692,7 +692,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 51.019
+    m_Start: 51.015
     m_ClipIn: 0
     m_Asset: {fileID: 4848249662888708543}
     m_Duration: 4
@@ -761,7 +761,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 86.519
+    m_Start: 86.515
     m_ClipIn: 0
     m_Asset: {fileID: 4594152096707104498}
     m_Duration: 3.5
@@ -998,7 +998,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -9221014856125030268}
-    m_Duration: 102.44498866213152
+    m_Duration: 100.015
     m_TimeScale: 1
     m_ParentTrack: {fileID: -5695733966106479653}
     m_EaseInDuration: 0
@@ -1587,7 +1587,7 @@ MonoBehaviour:
     m_Start: 76.01999999999998
     m_ClipIn: 0
     m_Asset: {fileID: -6125411894686911541}
-    m_Duration: 22.000000000000014
+    m_Duration: 19.99500000000002
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3978938911499228915}
     m_EaseInDuration: 0
@@ -1620,10 +1620,10 @@ MonoBehaviour:
       then
       turn <color=#db3b3b>VULNERABLE</color> after!'
   - m_Version: 1
-    m_Start: 98.02
+    m_Start: 96.015
     m_ClipIn: 0
     m_Asset: {fileID: 6947833509793112056}
-    m_Duration: 4.4249886621315255
+    m_Duration: 4
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3978938911499228915}
     m_EaseInDuration: 0
@@ -1902,8 +1902,8 @@ MonoBehaviour:
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
       ActionStartTime: 54
-      ActionEndTime: 58.00000000000001
-      ActionBeatLength: 8.000000000000014
+      ActionEndTime: 58
+      ActionBeatLength: 8
       _interactions:
       - InteractionType: 1
         BeatsUntilStart: 4
@@ -2234,38 +2234,6 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: eee
---- !u!114 &1738709589909449189
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: SimpleHitClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  Template:
-    Description: Simple Hit Behavior
-    HitConfig: {fileID: 11400000, guid: 2367c0acd10c35949a7f9c83b54df5c3, type: 2}
-    ActionData:
-      Positions:
-      - {x: 5.520687, y: -4.9571958}
-      - {x: -0.3864187, y: 2.835572}
-      - {x: 3.3823814, y: 3.079}
-      AutoVulnerableAtEnd: 1
-      AutoVulnerableBeatOffset: -2
-      ActionStartTime: 0
-      ActionEndTime: 5
-      ActionBeatLength: 10
-      _interactions:
-      - InteractionType: 0
-        BeatsUntilStart: 4
-        DieOnHitProtag: 0
-        DieOnHit: 1
-        DieOnBlocked: 0
-        BlockPose: 2
 --- !u!114 &1754087978691026967
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2391,7 +2359,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 80.019
+    m_Start: 80.015
     m_ClipIn: 0
     m_Asset: {fileID: -3444220449432498738}
     m_Duration: 5
@@ -2460,7 +2428,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: MootFish
   - m_Version: 1
-    m_Start: 91.019
+    m_Start: 91.015
     m_ClipIn: 0
     m_Asset: {fileID: -2501156614850905743}
     m_Duration: 5
@@ -2616,7 +2584,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 81.019
+    m_Start: 81.015
     m_ClipIn: 0
     m_Asset: {fileID: 5871830573448378196}
     m_Duration: 4
@@ -2685,7 +2653,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: MootFish
   - m_Version: 1
-    m_Start: 92.019
+    m_Start: 92.015
     m_ClipIn: 0
     m_Asset: {fileID: -8829481662261200665}
     m_Duration: 4
@@ -2807,8 +2775,8 @@ MonoBehaviour:
       - {x: 1.7202644, y: 0.8960235}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      ActionStartTime: 9.999999999999998
-      ActionEndTime: 13.999999999999998
+      ActionStartTime: 10
+      ActionEndTime: 14
       ActionBeatLength: 8
       _interactions:
       - InteractionType: 0
@@ -3058,10 +3026,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 12.019
+    m_Start: 12.015
     m_ClipIn: 0
     m_Asset: {fileID: -7752068094772475667}
-    m_Duration: 3.9999999999999982
+    m_Duration: 4
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6435859260828590340}
     m_EaseInDuration: 0
@@ -3127,7 +3095,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 16.019
+    m_Start: 16.015
     m_ClipIn: 0
     m_Asset: {fileID: 3888999677968770011}
     m_Duration: 4
@@ -3196,7 +3164,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 26.019
+    m_Start: 26.015
     m_ClipIn: 0
     m_Asset: {fileID: 740399739385724420}
     m_Duration: 4
@@ -3265,7 +3233,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 42.019
+    m_Start: 42.015
     m_ClipIn: 0
     m_Asset: {fileID: 7343239012535794622}
     m_Duration: 4
@@ -3334,7 +3302,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 46.019
+    m_Start: 46.015
     m_ClipIn: 0
     m_Asset: {fileID: -1434375293400013238}
     m_Duration: 4
@@ -3403,7 +3371,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 30.019
+    m_Start: 30.015
     m_ClipIn: 0
     m_Asset: {fileID: 7151922270815197381}
     m_Duration: 4
@@ -3472,7 +3440,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 20.019
+    m_Start: 20.015
     m_ClipIn: 0
     m_Asset: {fileID: 6707668431205087505}
     m_Duration: 4
@@ -3541,7 +3509,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 34.019
+    m_Start: 34.015
     m_ClipIn: 0
     m_Asset: {fileID: 7137553239587303201}
     m_Duration: 4
@@ -3610,7 +3578,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AngryFish
   - m_Version: 1
-    m_Start: 50.019
+    m_Start: 50.015
     m_ClipIn: 0
     m_Asset: {fileID: -3196662265864292868}
     m_Duration: 4
@@ -3701,7 +3669,7 @@ MonoBehaviour:
       - {x: 1.2487519, y: 0.7861722}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      ActionStartTime: 60.00000000000001
+      ActionStartTime: 60
       ActionEndTime: 64
       ActionBeatLength: 8
       _interactions:
@@ -3732,7 +3700,7 @@ MonoBehaviour:
       - {x: 1.7202644, y: 0.8960235}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      ActionStartTime: 14.999999999999998
+      ActionStartTime: 15
       ActionEndTime: 19
       ActionBeatLength: 8
       _interactions:
@@ -3779,7 +3747,7 @@ MonoBehaviour:
       - {x: 1.0417063, y: 3.067409}
       AutoVulnerableAtEnd: 0
       AutoVulnerableBeatOffset: 0
-      ActionStartTime: 13.999999999999998
+      ActionStartTime: 14
       ActionEndTime: 18
       ActionBeatLength: 8
       _interactions:
@@ -3994,7 +3962,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 74.019
+    m_Start: 74.015
     m_ClipIn: 0
     m_Asset: {fileID: -6461530159667801413}
     m_Duration: 4
@@ -4063,7 +4031,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
   - m_Version: 1
-    m_Start: 86.019
+    m_Start: 86.015
     m_ClipIn: 0
     m_Asset: {fileID: 3033539266294842978}
     m_Duration: 4
@@ -4131,75 +4099,6 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: SadFish
-  - m_Version: 1
-    m_Start: 6.019
-    m_ClipIn: 0
-    m_Asset: {fileID: 1738709589909449189}
-    m_Duration: 5
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 7855175669344345868}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: MootFish
   m_Markers:
     m_Objects: []
 --- !u!114 &8483025368824293763
