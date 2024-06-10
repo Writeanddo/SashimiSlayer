@@ -21,6 +21,6 @@ public class EventAudioPlayer : MonoBehaviour
 
     private void PlayAudio()
     {
-        AudioSource.PlayClipAtPoint(_clip, transform.position);
+        SFXPlayer.Instance.PlaySFX(_clip);
     }
 }

@@ -72,7 +72,7 @@ public class ThreePointAttack : MonoBehaviour
                 Mathf.Lerp(_startPos.x, _peakPos.x, normalizedTime / thresh),
                 Mathf.Lerp(_startPos.y, _peakPos.y, t)
             );
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, -90 * (1 - t));
+            _sprite.transform.localRotation = Quaternion.Euler(0, 0, -90 * (1 - t));
         }
         else
         {
@@ -90,7 +90,7 @@ public class ThreePointAttack : MonoBehaviour
             );
 
             // angle towards target
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, 180 + _angleToTarget);
+            _sprite.transform.localRotation = Quaternion.Euler(0, 0, 180 + _angleToTarget);
         }
     }
 }

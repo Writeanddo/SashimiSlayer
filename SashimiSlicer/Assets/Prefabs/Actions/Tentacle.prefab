@@ -14917,7 +14917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beatInteractionResultEvent: {fileID: 11400000, guid: bd78ca9baaf0c6b47bad4871ce4bcce3,
     type: 2}
-  _hitboxTransform: {fileID: 4584757707055110698}
+  _hitboxTransform: {fileID: 7961916753182534580}
 --- !u!114 &3840632904168517832
 MonoBehaviour:
   m_ObjectHideFlags: 0

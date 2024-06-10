@@ -7,6 +7,6 @@ public class SimpleAudio : MonoBehaviour
 
     public void Play()
     {
-        AudioSource.PlayClipAtPoint(_clip, Vector3.zero);
+        SFXPlayer.Instance.PlaySFX(_clip);
     }
 }

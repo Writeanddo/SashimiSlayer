@@ -3475,7 +3475,7 @@ MonoBehaviour:
       Positions:
       - {x: 5.521158, y: -4.8231783}
       - {x: 3.2421546, y: 1.6681454}
-      - {x: -2.7790964, y: 2.2726598}
+      - {x: -3.8475363, y: 1.7932935}
       AutoVulnerableAtEnd: 1
       AutoVulnerableBeatOffset: -2
       ActionStartTime: 101.81818181818181
@@ -5941,7 +5941,7 @@ MonoBehaviour:
       Positions:
       - {x: 5.521158, y: -4.8231783}
       - {x: 3.2421546, y: 1.6681454}
-      - {x: -2.7790964, y: 2.2726598}
+      - {x: -2.754695, y: 3.3608}
       AutoVulnerableAtEnd: 1
       AutoVulnerableBeatOffset: -2
       ActionStartTime: 100.9090909090909

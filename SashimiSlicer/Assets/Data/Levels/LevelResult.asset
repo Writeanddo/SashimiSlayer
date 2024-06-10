@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: LevelResult
   m_EditorClassIdentifier: 
   <GameSceneName>k__BackingField: LevelResult
-  <LevelTitle>k__BackingField: 
+  <LevelTitle>k__BackingField: Results...
   <LevelDescription>k__BackingField: 
   <Beatmap>k__BackingField: {fileID: 0}
   <LevelType>k__BackingField: 2
+  <Thumbnail>k__BackingField: {fileID: 0}

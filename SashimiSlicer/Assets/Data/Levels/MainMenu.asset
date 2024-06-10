@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: MainMenu
   m_EditorClassIdentifier: 
   <GameSceneName>k__BackingField: MainMenu
-  <LevelTitle>k__BackingField: 
+  <LevelTitle>k__BackingField: Level Select
   <LevelDescription>k__BackingField: 
   <Beatmap>k__BackingField: {fileID: 0}
+  <LevelType>k__BackingField: 0
+  <Thumbnail>k__BackingField: {fileID: 0}

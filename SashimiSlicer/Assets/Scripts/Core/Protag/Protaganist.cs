@@ -234,20 +234,17 @@ public class Protaganist : MonoBehaviour
     {
         if ((blockPose | SharedTypes.BlockPoseStates.BotPose) == blockPose)
         {
-            AudioSource.PlayClipAtPoint(clips[2], Vector3.zero);
-            AudioSource.PlayClipAtPoint(clips[2], Vector3.zero);
+            SFXPlayer.Instance.PlaySFX(clips[2]);
         }
 
         if ((blockPose | SharedTypes.BlockPoseStates.MidPose) == blockPose)
         {
-            AudioSource.PlayClipAtPoint(clips[1], Vector3.zero);
-            AudioSource.PlayClipAtPoint(clips[1], Vector3.zero);
+            SFXPlayer.Instance.PlaySFX(clips[1]);
         }
 
         if ((blockPose | SharedTypes.BlockPoseStates.TopPose) == blockPose)
         {
-            AudioSource.PlayClipAtPoint(clips[0], Vector3.zero);
-            AudioSource.PlayClipAtPoint(clips[0], Vector3.zero);
+            SFXPlayer.Instance.PlaySFX(clips[0]);
         }
     }
 

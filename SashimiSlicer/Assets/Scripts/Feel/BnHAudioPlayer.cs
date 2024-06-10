@@ -34,7 +34,7 @@ public class BnHAudioPlayer : MonoBehaviour
     {
         if (_spawnSound != null)
         {
-            AudioSource.PlayClipAtPoint(_spawnSound, Vector3.zero);
+            SFXPlayer.Instance.PlaySFX(_spawnSound);
         }
     }
 
@@ -43,7 +43,7 @@ public class BnHAudioPlayer : MonoBehaviour
     {
         if (_startAttackSound != null)
         {
-            AudioSource.PlayClipAtPoint(_startAttackSound, Vector3.zero);
+            SFXPlayer.Instance.PlaySFX(_startAttackSound);
         }
     }
 
@@ -52,7 +52,7 @@ public class BnHAudioPlayer : MonoBehaviour
     {
         if (_startVulnerableSound != null)
         {
-            AudioSource.PlayClipAtPoint(_startVulnerableSound, Vector3.zero);
+            SFXPlayer.Instance.PlaySFX(_startVulnerableSound);
         }
     }
 }

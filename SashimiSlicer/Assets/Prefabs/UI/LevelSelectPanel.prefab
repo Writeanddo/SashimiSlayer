@@ -285,7 +285,7 @@ MonoBehaviour:
         m_CallState: 2
   _radius: 1.5
   _singleUse: 1
-  _delay: 1.5
+  _delay: 1.2
   _isInCanvasSpace: 1
 --- !u!114 &7555741910710114041
 MonoBehaviour:
