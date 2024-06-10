@@ -66,11 +66,6 @@ public class MootTutorialFishAction : MonoBehaviour
     private void HandleTickWaitingToLeave(BnHActionCore.Timing timing,
         BnHActionCore.BnHActionInstanceConfig bnHActionInstanceConfig)
     {
-        if (_landedHit)
-        {
-            return;
-        }
-
         // Lerp from the vulnerable position to the start position vertical (basically disappearing back into the sea)
         var normalizedTime = (float)timing.NormalizedLeaveWaitTime;
 

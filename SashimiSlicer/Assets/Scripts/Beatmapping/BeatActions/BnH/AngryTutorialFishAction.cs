@@ -59,10 +59,6 @@ public class AngryTutorialFishAction : MonoBehaviour
     private void HandleTickWaitingToLeave(BnHActionCore.Timing timing,
         BnHActionCore.BnHActionInstanceConfig bnHActionInstanceConfig)
     {
-        if (_landedHit)
-        {
-            return;
-        }
 
         transform.position += Vector3.up * Time.deltaTime * 7f;
         transform.position += Vector3.right * Time.deltaTime * 15f;

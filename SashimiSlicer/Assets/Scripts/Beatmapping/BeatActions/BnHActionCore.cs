@@ -187,11 +187,16 @@ public class BnHActionCore : MonoBehaviour
 #if UNITY_EDITOR
         if (Application.isPlaying)
         {
+            var style = new GUIStyle
+            {
+                fontSize = 12,
+                normal = { textColor = Color.red }
+            };
             Handles.Label(_hitboxTransform.transform.position + Vector3.up * 2,
                 $"State: {_bnHActionState}" +
                 $"\nIndex {_currentInteractionIndex}" +
                 $"\nType: {CurrentInteraction.Interaction.InteractionType}" +
-                $"\n Time: {JsonUtility.ToJson(_currentTiming)}");
+                $"\n Time: {JsonUtility.ToJson(_currentTiming)}", style);
         }
 #endif
     }
