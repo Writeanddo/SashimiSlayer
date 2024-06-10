@@ -48,7 +48,7 @@ public class LevelLoader : MonoBehaviour
             gameLevel.PreloadMusic.LoadAudioData();
         }
 
-        if (_currentLevelSo.LevelType == GameLevelSO.LevelTypes.Gameplay)
+        if (_currentLevelSo != null && _currentLevelSo.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {
             _currentLevelSo.PreloadMusic.UnloadAudioData();
         }
