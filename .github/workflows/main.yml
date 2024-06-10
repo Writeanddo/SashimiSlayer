@@ -21,7 +21,7 @@ on:
   workflow_dispatch:
       
 jobs:
-  BuildForWebGL:
+  UnityBuilds:
     runs-on: ubuntu-latest
     strategy:
       matrix:
