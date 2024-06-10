@@ -43,6 +43,16 @@ public class LevelLoader : MonoBehaviour
 
         await _sceneTransitionUI.FadeOut();
 
+        if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
+        {
+            gameLevel.PreloadMusic.LoadAudioData();
+        }
+
+        if (_currentLevelSo.LevelType == GameLevelSO.LevelTypes.Gameplay)
+        {
+            _currentLevelSo.PreloadMusic.UnloadAudioData();
+        }
+
         string sceneName = gameLevel.GameSceneName;
 
         if (SceneManager.GetSceneByName(_currentLevel).isLoaded)

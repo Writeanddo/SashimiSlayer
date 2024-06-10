@@ -22,3 +22,5 @@ MonoBehaviour:
   <LevelType>k__BackingField: 1
   <Thumbnail>k__BackingField: {fileID: 21300000, guid: c512873afd71dc44283d4479c017c3e9,
     type: 3}
+  <PreloadMusic>k__BackingField: {fileID: 8300000, guid: b3c361c425f8e3949bab57f7355eef0b,
+    type: 3}

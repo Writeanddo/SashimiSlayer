@@ -316,7 +316,7 @@ MonoBehaviour:
     m_DissipationMode: 2
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -1, z: 0}
+  m_DefaultVelocity: {x: -0.75, y: -0.25, z: 0}
 --- !u!114 &162499280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,8 +416,8 @@ Camera:
   m_GameObject: {fileID: 250528272}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6862745, g: 0.8431373, b: 0.92549026, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

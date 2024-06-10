@@ -30,4 +30,7 @@ public class GameLevelSO : ScriptableObject
     [field: SerializeField]
 
     public Sprite Thumbnail { get; private set; }
+
+    [field: SerializeField]
+    public AudioClip PreloadMusic { get; private set; }
 }
