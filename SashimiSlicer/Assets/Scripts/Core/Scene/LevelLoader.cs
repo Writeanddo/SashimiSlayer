@@ -46,6 +46,10 @@ public class LevelLoader : MonoBehaviour
         if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {
             gameLevel.PreloadMusic.LoadAudioData();
+            while (gameLevel.PreloadMusic.loadState != AudioDataLoadState.Loaded)
+            {
+                await UniTask.Yield();
+            }
         }
 
         if (_currentLevelSo != null && _currentLevelSo.LevelType == GameLevelSO.LevelTypes.Gameplay)
