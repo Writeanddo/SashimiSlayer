@@ -81,6 +81,9 @@ public class BnHActionCore : MonoBehaviour
 
         // Normalized time in terms of the current interaction's wait time
         public double NormalizedInteractionWaitTime;
+        public double SubdivSteppedNormalizedInteractionWaitTime;
+        public double BeatSteppedNormalizedInteractionWaitTime;
+        
 
         // Normalized time in terms of the total action time
         public double NormalizedTotalTime;
@@ -206,6 +209,14 @@ public class BnHActionCore : MonoBehaviour
         _actionConfigSo = hitConfig;
         _data = data;
 
+        // Move to initial position
+        transform.position = data.Positions[0];
+        
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+
         // Calculating timings
         _actionStartTime = data.ActionStartTime;
         _actionEndTime = data.ActionEndTime;
@@ -213,8 +224,6 @@ public class BnHActionCore : MonoBehaviour
 
         UpdateTiming();
 
-        // Move to initial position
-        transform.position = data.Positions[0];
 
         // Setup initial state
         _blockedState = BlockState.Waiting;
@@ -306,6 +315,12 @@ public class BnHActionCore : MonoBehaviour
     private void UpdateTiming()
     {
         var timingService = TimingService.Instance;
+        
+        if(timingService == null)
+        {
+            return;
+        }
+        
         _currentTiming.CurrentBeatmapTime = timingService.CurrentBeatmapTime;
         double time = _currentTiming.CurrentBeatmapTime;
 
@@ -317,6 +332,15 @@ public class BnHActionCore : MonoBehaviour
                                          (interactionMiddleTime - _previousInteractionEndTime));
 
             _currentTiming.NormalizedInteractionWaitTime = normalizedTime;
+            
+            if(timingService.DidCrossBeatThisFrame)
+            {
+                _currentTiming.BeatSteppedNormalizedInteractionWaitTime = normalizedTime;
+            } 
+            if(timingService.DidCrossSubdivThisFrame)
+            {
+                _currentTiming.SubdivSteppedNormalizedInteractionWaitTime = normalizedTime;
+            }
         }
 
         if (_bnHActionState == BnHActionState.WaitingToLeave)

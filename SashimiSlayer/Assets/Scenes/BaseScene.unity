@@ -1634,6 +1634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f13ff292d913448977e948bc1dc3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onControlSchemeChanged: {fileID: 11400000, guid: 1587be54aaec6e848b921a0c977ecaa4,
+    type: 2}
   _gamepadInputProvider: {fileID: 1969117887}
   _swordInputProvider: {fileID: 1969117890}
   _useHardwareController: 0

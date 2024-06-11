@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class BeatActionIndicator : MonoBehaviour
 {
+    private enum UpdateType
+    {
+        Smooth,
+        Beat,
+        Subdiv
+    }
+    
     [Header("Events Listening")]
 
     [SerializeField]
     private ProtagSwordStateEvent _protagSwordStateEvent;
 
     [Header("Visuals")]
-
+    
+    [SerializeField]
+    private UpdateType _updateType;
+    
     [SerializeField]
     private SpriteRenderer[] _blockPoseSprites;
 
@@ -69,14 +79,29 @@ public class BeatActionIndicator : MonoBehaviour
         BnHActionCore.ScheduledInteraction scheduledInteraction)
     {
         _animator.Play(_attackClip);
-        _animator.SetNormalizedTime((float)timing.NormalizedInteractionWaitTime);
+        _animator.SetNormalizedTime(GetTime(timing));
     }
 
     private void HandleTickWaitingForVuln(BnHActionCore.Timing timing,
         BnHActionCore.ScheduledInteraction scheduledInteraction)
     {
         _animator.Play(_vulnClip);
-        _animator.SetNormalizedTime((float)timing.NormalizedInteractionWaitTime);
+        _animator.SetNormalizedTime(GetTime(timing));
+    }
+    
+    private float GetTime(BnHActionCore.Timing timing)
+    {
+        switch (_updateType)
+        {
+            case UpdateType.Smooth:
+                return (float)timing.NormalizedInteractionWaitTime;
+            case UpdateType.Beat:
+                return (float)timing.BeatSteppedNormalizedInteractionWaitTime;
+            case UpdateType.Subdiv:
+                return (float)timing.SubdivSteppedNormalizedInteractionWaitTime;
+            default:
+                return (float)timing.NormalizedInteractionWaitTime;
+        }
     }
 
     private void HandleKilled(BnHActionCore.Timing timing)

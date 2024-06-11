@@ -206,6 +206,17 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""947fe3b9-3c9f-4ae7-aa10-f1f0e31b9fad"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PoseButtonTop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b023dbd5-7153-4450-a3da-c37d1394e4fb"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
@@ -250,6 +261,28 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1474649e-5823-424b-a1ff-dc1a32088e42"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PoseButtonMId"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""057cbf27-c811-460b-a77b-9bb162c2cfbf"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PoseButtonMId"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b43bb2dc-8f77-472e-a011-bdee33c1c529"",
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
@@ -274,6 +307,17 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""100cbe11-251a-4fe3-80ad-178f90c712e5"",
                     ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PoseButtonBot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bad70e17-a8c5-4fcf-963c-ff18dc31b3b1"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

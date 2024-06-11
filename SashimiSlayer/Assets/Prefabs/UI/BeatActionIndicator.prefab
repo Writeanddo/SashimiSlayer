@@ -1222,6 +1222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _protagSwordStateEvent: {fileID: 11400000, guid: f72d4c466ff2ec64ebb5ad85d39cdc47,
     type: 2}
+  _updateType: 2
   _blockPoseSprites:
   - {fileID: 5429573642046920822}
   - {fileID: 8338339488889998119}

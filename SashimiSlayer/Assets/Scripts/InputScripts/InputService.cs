@@ -1,9 +1,16 @@
 using System;
+using System.Linq;
 using Events;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputService : BaseUserInputProvider
 {
+
+    
+    [SerializeField]
+    private IntEvent _onControlSchemeChanged;
+    
     [SerializeField]
     private BaseUserInputProvider _gamepadInputProvider;
 
@@ -22,7 +29,11 @@ public class InputService : BaseUserInputProvider
 
     public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
     public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
-
+    
+    public int ControlScheme => _controlScheme;
+    
+    private int _controlScheme = 0;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -42,6 +53,11 @@ public class InputService : BaseUserInputProvider
         }
 
         _onDrawDebugGUI.AddListener(HandleDrawDebugGUI);
+        
+        InputSystem.onDeviceChange += (device, change) =>
+        {
+            UpdateControlScheme();
+        };
     }
 
     private void Update()
@@ -54,9 +70,34 @@ public class InputService : BaseUserInputProvider
             {
                 _swordInputProvider.ConnectToPort();
             }
-
+            
+            UpdateControlScheme();
+            
             EventPassthroughSub();
         }
+        
+    }
+    
+    private void UpdateControlScheme()
+    {
+        if (_useHardwareController)
+        {
+            _controlScheme = 2;
+        }
+        else
+        {
+            // See if gamepad is connected
+            if (InputSystem.devices.Count(device => device is Gamepad) > 0)
+            {
+                _controlScheme = 1;
+            }
+            else
+            {
+                _controlScheme = 0;
+            }
+        }
+        
+        _onControlSchemeChanged.Raise(_controlScheme);
     }
 
     private void OnDestroy()
@@ -69,6 +110,7 @@ public class InputService : BaseUserInputProvider
     private void HandleDrawDebugGUI()
     {
         GUILayout.Label($"hw control: {_useHardwareController}");
+        GUILayout.Label($"control scheme: {_controlScheme}");
     }
 
     private void EventPassthroughSub()
