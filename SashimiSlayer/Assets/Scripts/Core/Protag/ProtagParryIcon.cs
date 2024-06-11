@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Events.Core;
 using UnityEngine;
 
@@ -33,11 +34,17 @@ public class ProtagParryIcon : MonoBehaviour
 
     private void HandleSuccessBlock(Protaganist.ProtagSwordState swordState)
     {
+        HideAll(swordState).Forget();
+    }
+    
+    private async UniTaskVoid HideAll(Protaganist.ProtagSwordState swordState)
+    {
+        await UniTask.Yield();
         for (var i = 0; i < _animators.Length; i++)
         {
             _animators[i].Stop();
         }
-    }
+    } 
 
     private void HandleTryBlock(Protaganist.ProtagSwordState swordState)
     {
