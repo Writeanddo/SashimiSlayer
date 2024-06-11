@@ -224,7 +224,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sashimi Slicer!!!
+  m_text: Sashimi Slayer!!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8218c2ae73266314eb3c55d02352fc2c, type: 2}
   m_sharedMaterial: {fileID: -1765554053092685094, guid: 8218c2ae73266314eb3c55d02352fc2c,
