@@ -21,7 +21,10 @@ public class ProtagAnimation : MonoBehaviour
     private SOEvent _protagSuccessfulSliceEvent;
 
     [SerializeField]
-    private VoidEvent _protagTakeDamageEvent;
+    private SOEvent _protagTakeDamageEvent;
+
+    [SerializeField]
+    private SOEvent _protagDeadEvent;
 
     [SerializeField]
     private SOEvent _protagVictoryEvent;
@@ -43,6 +46,7 @@ public class ProtagAnimation : MonoBehaviour
         _protagSuccessfulSliceEvent.AddListener(OnProtagSuccessfulSlice);
 
         _protagTakeDamageEvent.AddListener(OnProtagTakeDamage);
+        _protagDeadEvent.AddListener(OnProtagDead);
 
         _protagVictoryEvent.AddListener(OnProtagVictory);
         _protagLossEvent.AddListener(OnProtagLoss);
@@ -59,6 +63,7 @@ public class ProtagAnimation : MonoBehaviour
         _protagSuccessfulSliceEvent.RemoveListener(OnProtagSuccessfulSlice);
 
         _protagTakeDamageEvent.RemoveListener(OnProtagTakeDamage);
+        _protagDeadEvent.RemoveListener(OnProtagDead);
 
         _protagVictoryEvent.RemoveListener(OnProtagVictory);
         _protagLossEvent.RemoveListener(OnProtagLoss);
@@ -67,6 +72,11 @@ public class ProtagAnimation : MonoBehaviour
     private void OnProtagVictory()
     {
         _animator.Play("ProtagVictory", 0, 0);
+    }
+
+    private void OnProtagDead()
+    {
+        _animator.SetBool("ProtagDead", true);
     }
 
     private void OnProtagLoss()

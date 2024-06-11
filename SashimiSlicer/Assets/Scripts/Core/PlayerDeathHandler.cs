@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Events;
 using UnityEngine;
 
@@ -25,6 +26,12 @@ public class PlayerDeathHandler : MonoBehaviour
 
     private void HandlePlayerDeath()
     {
+        OnDeath().Forget();
+    }
+
+    private async UniTaskVoid OnDeath()
+    {
+        await UniTask.Delay(1000);
         LevelLoader.Instance.LoadLevel(_levelResultLevel);
     }
 }
