@@ -7,7 +7,7 @@ env:
   BUILD_NAME_PREFIX: Build
   BUILD_DIR: build
   BUTLER_LINK: https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
-  ITCH_GAME_NAME: doublebrackets/sashimi-slicer
+  ITCH_GAME_NAME: doublebrackets/sashimi-slayer
 
 on: 
   push:
