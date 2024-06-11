@@ -49,7 +49,7 @@ public class SerialReader : MonoBehaviour
 
     private int _currentPacketLength;
 
-    private bool _discardedFirst;
+    private int _toDiscard;
 
     private void Awake()
     {
@@ -83,6 +83,8 @@ public class SerialReader : MonoBehaviour
 
         try
         {
+            _toDiscard = 10;
+
             InitializeSerialPort();
             AbleToConnect = true;
 
@@ -98,6 +100,7 @@ public class SerialReader : MonoBehaviour
 
     private void DrawDebugGUI()
     {
+        GUILayout.Label("Connected to arduino: " + (_serialPort == null ? "No" : _serialPort.IsOpen));
         GUILayout.Label("Serial Packet Rate: " + _currentPacketRate);
     }
 
@@ -158,13 +161,13 @@ public class SerialReader : MonoBehaviour
 
                 SerialReadResult serialReadResult = ParsePacket(_packetBuffer);
 
-                if (_discardedFirst)
+                if (_toDiscard > 0)
                 {
-                    OnSerialRead?.Invoke(serialReadResult);
+                    _toDiscard--;
                 }
                 else
                 {
-                    _discardedFirst = true;
+                    OnSerialRead?.Invoke(serialReadResult);
                 }
 
                 if (_logPackets)

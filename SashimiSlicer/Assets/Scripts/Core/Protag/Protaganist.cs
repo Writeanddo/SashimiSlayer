@@ -26,7 +26,7 @@ public class Protaganist : MonoBehaviour
     private VoidEvent _damageTakenEvent;
 
     [SerializeField]
-    private VoidEvent _successfulBlockEvent;
+    private ProtagSwordStateEvent _successfulBlockEvent;
 
     [SerializeField]
     private ProtagSwordStateEvent _tryBlockEvent;
@@ -44,7 +44,7 @@ public class Protaganist : MonoBehaviour
     private ProtagSwordStateEvent _unsheatheEvent;
 
     [SerializeField]
-    private VoidEvent _successfulSliceEvent;
+    private ProtagSwordStateEvent _successfulSliceEvent;
 
     [Header("Listening Events")]
 
@@ -54,31 +54,17 @@ public class Protaganist : MonoBehaviour
     [SerializeField]
     private VoidEvent _onDrawDebugGuiEvent;
 
-    [Header("SFX")]
-
-    [SerializeField]
-    private AudioClip[] _successfulBlockSfx;
-
-    [SerializeField]
-    private AudioClip[] _tryBlockSfx;
-
     public static Protaganist Instance { get; private set; }
-    public SharedTypes.SheathState ProtagSheathState => _protagSheathState;
     public Vector3 SpritePosition { get; set; }
 
-    public Vector3 SwordPosition => _swordPosition;
+    public Vector3 SwordPosition => _currentSwordState.SwordPosition;
 
     private BaseUserInputProvider _inputProvider;
 
     private float _health;
     private float _maxHealth;
 
-    private SharedTypes.SheathState _protagSheathState = SharedTypes.SheathState.Sheathed;
-    private float _swordAngle;
-
-    private Vector3 _swordPosition;
-
-    private SharedTypes.BlockPoseStates _currentBlockPose;
+    private ProtagSwordState _currentSwordState;
 
     private void Awake()
     {
@@ -104,14 +90,8 @@ public class Protaganist : MonoBehaviour
 
     private void Update()
     {
-        _swordAngle = _inputProvider.GetSwordAngle();
-        _swordStateChangeEvent.Raise(new ProtagSwordState
-        {
-            SwordPosition = _swordPosition,
-            SwordAngle = _swordAngle,
-            SheathState = _protagSheathState,
-            BlockPose = _inputProvider.GetBlockPose()
-        });
+        _currentSwordState.SwordAngle = _inputProvider.GetSwordAngle();
+        _swordStateChangeEvent.Raise(_currentSwordState);
     }
 
     private void OnDestroy()
@@ -124,9 +104,9 @@ public class Protaganist : MonoBehaviour
 
     private void HandleDrawDebugGUI()
     {
-        GUILayout.Label($"Sword angle: {_swordAngle}");
-        GUILayout.Label($"Sword position: {_swordPosition}");
-        GUILayout.Label($"Sheath state: {_protagSheathState}");
+        GUILayout.Label($"Sword angle: {_currentSwordState.SwordAngle}");
+        GUILayout.Label($"Sword position: {_currentSwordState.SwordPosition}");
+        GUILayout.Label($"Sheath state: {_currentSwordState.SheathState}");
         GUILayout.Label($"Pose state: {_inputProvider.GetBlockPose()}");
     }
 
@@ -140,63 +120,50 @@ public class Protaganist : MonoBehaviour
 
     private void OnPoseStateChanged(SharedTypes.BlockPoseStates blockPoseStates)
     {
-        // Only if a new button is pressed, not released
-        if ((_currentBlockPose & blockPoseStates) != _currentBlockPose)
+        var oldState = (int)_currentSwordState.BlockPose;
+        var newState = (int)blockPoseStates;
+
+        _currentSwordState.BlockPose = blockPoseStates;
+        for (var i = 0; i < SharedTypes.NumPoses; i++)
         {
-            _currentBlockPose = blockPoseStates;
-            return;
+            bool isInOldState = oldState.IsIndexInFlag(i);
+            bool isInNewState = newState.IsIndexInFlag(i);
+            if (isInNewState && !isInOldState)
+            {
+                // Only include the most recent hit block pose
+                _currentSwordState.BlockPose = (SharedTypes.BlockPoseStates)(1 << i);
+                _tryBlockEvent.Raise(_currentSwordState);
+            }
         }
-
-        _currentBlockPose = blockPoseStates;
-
-        var pose = new ProtagSwordState
-        {
-            BlockPose = blockPoseStates,
-            SwordPosition = _swordPosition,
-            SwordAngle = _swordAngle
-        };
-        BlockPoseSFX(_tryBlockSfx, _currentBlockPose);
-
-        _tryBlockEvent.Raise(pose);
     }
 
     private void OnSheathStateChanged(SharedTypes.SheathState newState)
     {
-        SharedTypes.SheathState oldState = _protagSheathState;
-        _protagSheathState = newState;
+        SharedTypes.SheathState oldState = _currentSwordState.SheathState;
+        _currentSwordState.SheathState = newState;
 
         // Sword is sheathed from unsheathed means a slice
         if (newState == SharedTypes.SheathState.Sheathed
             && oldState == SharedTypes.SheathState.Unsheathed)
         {
-            _trySliceEvent.Raise(new ProtagSwordState
-            {
-                SheathState = newState,
-                SwordPosition = _swordPosition,
-                SwordAngle = _swordAngle
-            });
+            _trySliceEvent.Raise(_currentSwordState);
         }
 
         else if (newState == SharedTypes.SheathState.Unsheathed && oldState == SharedTypes.SheathState.Sheathed)
         {
-            _unsheatheEvent.Raise(new ProtagSwordState
-            {
-                SheathState = newState,
-                SwordPosition = _swordPosition,
-                SwordAngle = _swordAngle
-            });
+            _unsheatheEvent.Raise(_currentSwordState);
         }
     }
 
     public void SetSwordPosition(Vector3 position)
     {
-        _swordPosition = position;
+        _currentSwordState.SwordPosition = position;
     }
 
     public float DistanceToSwordPlane(Vector3 position)
     {
-        Vector3 swordPlaneNormal = Quaternion.Euler(0, 0, _swordAngle) * Vector3.up;
-        Vector3 swordPlanePoint = _swordPosition;
+        Vector3 swordPlaneNormal = Quaternion.Euler(0, 0, _currentSwordState.SwordAngle) * Vector3.up;
+        Vector3 swordPlanePoint = _currentSwordState.SwordPosition;
 
         Vector3 pointOnPlane = position - swordPlanePoint;
         float distance = Mathf.Abs(Vector3.Dot(pointOnPlane, swordPlaneNormal));
@@ -224,45 +191,19 @@ public class Protaganist : MonoBehaviour
 
     public void SuccessfulBlock()
     {
-        _successfulBlockEvent.Raise();
-        BlockPoseSFX(_successfulBlockSfx, _currentBlockPose);
-
+        _successfulBlockEvent.Raise(_currentSwordState);
         ScreenShakeService.Instance.ShakeScreen(0.05f, 0.15f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
-    }
-
-    private void BlockPoseSFX(AudioClip[] clips, SharedTypes.BlockPoseStates blockPose)
-    {
-        if ((blockPose | SharedTypes.BlockPoseStates.BotPose) == blockPose)
-        {
-            SFXPlayer.Instance.PlaySFX(clips[2]);
-        }
-
-        if ((blockPose | SharedTypes.BlockPoseStates.MidPose) == blockPose)
-        {
-            SFXPlayer.Instance.PlaySFX(clips[1]);
-        }
-
-        if ((blockPose | SharedTypes.BlockPoseStates.TopPose) == blockPose)
-        {
-            SFXPlayer.Instance.PlaySFX(clips[0]);
-        }
     }
 
     public void SuccessfulSlice()
     {
-        _successfulSliceEvent.Raise();
+        _successfulSliceEvent.Raise(_currentSwordState);
         ScreenShakeService.Instance.ShakeScreen(0.1f, 0.5f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
     }
 
     public void SetSlashPosition(Vector3 position)
     {
-        _swordPosition = position;
-        _swordStateChangeEvent.Raise(new ProtagSwordState
-        {
-            SwordPosition = _swordPosition,
-            SwordAngle = _swordAngle,
-            SheathState = _protagSheathState,
-            BlockPose = _inputProvider.GetBlockPose()
-        });
+        _currentSwordState.SwordPosition = position;
+        _swordStateChangeEvent.Raise(_currentSwordState);
     }
 }

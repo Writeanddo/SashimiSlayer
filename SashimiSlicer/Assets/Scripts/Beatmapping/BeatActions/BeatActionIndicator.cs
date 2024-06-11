@@ -87,13 +87,12 @@ public class BeatActionIndicator : MonoBehaviour
     private void HandleTransitionToWaitingToAttack(BnHActionCore.Timing timing,
         BnHActionCore.ScheduledInteraction interaction)
     {
-        var blockBlockPose = (int)interaction.Interaction.BlockPose;
-        var check = 1;
+        var blockPose = (int)interaction.Interaction.BlockPose;
+
         for (var i = 0; i < _blockPoseSprites.Length; i++)
         {
-            bool includesPose = (check & blockBlockPose) != 0;
+            bool includesPose = blockPose.IsIndexInFlag(i);
             _blockPoseSprites[i].gameObject.SetActive(includesPose);
-            check <<= 1;
 
             SpriteRenderer burstSprite = _blockPoseBurstSprites[i];
 

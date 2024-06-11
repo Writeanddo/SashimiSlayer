@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Events.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -37,11 +38,17 @@ public class LevelLoader : MonoBehaviour
 #endif
     }
 
+    private void OnDestroy()
+    {
+        Debug.Log($"Killed {DOTween.KillAll()} tweens");
+    }
+
     public async UniTask LoadLevel(GameLevelSO gameLevel)
     {
         _sceneTransitionUI.SetTitleText(gameLevel.LevelTitle);
 
         await _sceneTransitionUI.FadeOut();
+        Debug.Log($"Killed {DOTween.KillAll()} tweens");
 
         if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {

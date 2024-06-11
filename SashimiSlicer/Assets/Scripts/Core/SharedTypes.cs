@@ -22,6 +22,8 @@ public static class SharedTypes
         Unsheathed
     }
 
+    public const int NumPoses = 3;
+
     public struct BeatInteractionResult
     {
         public BnHActionCore.InteractionType InteractionType;

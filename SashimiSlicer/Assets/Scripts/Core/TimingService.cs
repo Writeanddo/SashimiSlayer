@@ -79,7 +79,6 @@ public class TimingService : MonoBehaviour
     private void OnDestroy()
     {
         _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
-        Debug.Log($"Killed {DOTween.KillAll()} tweens");
     }
 
     private void Tick()
