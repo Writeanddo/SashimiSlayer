@@ -28,6 +28,7 @@ jobs:
         targetPlatform:
           - WebGL
           - StandaloneWindows64
+          - StandaloneOSX
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
