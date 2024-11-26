@@ -22,3 +22,5 @@ MonoBehaviour:
   <BeatmapTimeline>k__BackingField: {fileID: 11400000, guid: d68bc4e836b534a479130c17c4938b7d,
     type: 2}
   <PlayerMaxHealth>k__BackingField: 8
+  <TimingWindowSO>k__BackingField: {fileID: 11400000, guid: 54462036f164d014095fd6aaaee307e5,
+    type: 2}

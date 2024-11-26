@@ -16,8 +16,9 @@ public class LevelLoader : MonoBehaviour
 
     public static LevelLoader Instance { get; private set; }
 
+    public GameLevelSO CurrentLevel { get; private set; }
+
     private string _currentLevel = string.Empty;
-    private GameLevelSO _currentLevelSo;
     private GameLevelSO _previousBeatmapLevel;
 
     private void Awake()
@@ -59,9 +60,9 @@ public class LevelLoader : MonoBehaviour
             }
         }
 
-        if (_currentLevelSo != null && _currentLevelSo.LevelType == GameLevelSO.LevelTypes.Gameplay)
+        if (CurrentLevel != null && CurrentLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {
-            _currentLevelSo.PreloadMusic.UnloadAudioData();
+            CurrentLevel.PreloadMusic.UnloadAudioData();
         }
 
         string sceneName = gameLevel.GameSceneName;
@@ -73,7 +74,7 @@ public class LevelLoader : MonoBehaviour
 
         await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         _currentLevel = sceneName;
-        _currentLevelSo = gameLevel;
+        CurrentLevel = gameLevel;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
 
         if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)

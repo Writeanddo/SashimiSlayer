@@ -1287,7 +1287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationClip: {fileID: 7400000, guid: 49f30efc5fa96764d9b6fe4203de9882, type: 2}
-  _animator: {fileID: 0}
+  _animator: {fileID: 2490771914054515534}
   _playOnAwake: 0
 --- !u!1 &8152099041034499828
 GameObject:

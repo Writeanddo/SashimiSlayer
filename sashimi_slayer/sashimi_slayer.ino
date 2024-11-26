@@ -107,7 +107,7 @@ void setup_gyro() {
 }
 
 
-// Buttons
+// Button state
 int btnTop = 0;
 int btnMid = 0;
 int btnBot = 0;
@@ -115,21 +115,24 @@ int btnBot = 0;
 int sheatheSwitchL = 0;
 int sheatheSwitchR = 0;
 
+// Pin numbers
 #define HAPTIC_IN_PIN 5
-#define BTN_TOP_PIN 14
-#define BTN_MID_PIN 15
-#define BTN_BOT_PIN 16
+#define BTN_TOP_PIN 10
+#define BTN_MID_PIN 11
+#define BTN_BOT_PIN 12
 
 #define SHEATHE_L_PIN 7
 #define SHEATHE_R_PIN 8
-#define LED_PIN 17
+#define LED_PIN LED_BUILTIN
 
 
 char inputBuffer;
 
 void setup() {
   setup_gyro();
+  
   Serial.begin(9600);
+
   pinMode(BTN_TOP_PIN, INPUT_PULLUP);
   pinMode(BTN_MID_PIN, INPUT_PULLUP);
   pinMode(BTN_BOT_PIN, INPUT_PULLUP);
@@ -165,18 +168,26 @@ void sendState()
 }
 
 void loop() {
-  btnTop = digitalRead(BTN_TOP_PIN);
-  btnMid = digitalRead(BTN_MID_PIN);
-  btnBot = digitalRead(BTN_BOT_PIN);
+  // Should be true when pressed, false when not pressed, to work properly with the game logic
+  // Might need inversion for pullup switches
+  btnTop = !digitalRead(BTN_TOP_PIN);
+  btnMid = !digitalRead(BTN_MID_PIN);
+  btnBot = !digitalRead(BTN_BOT_PIN);
+
+  // Should be false when sheathe is in, true when sheathe is out, to work properly with game logic
   sheatheSwitchL = digitalRead(SHEATHE_L_PIN);
   sheatheSwitchR = digitalRead(SHEATHE_R_PIN);
 
-  // read a packet from FIFO
+  // TEMP TESTING BTNS ONLY, GET RID OF THIS LATER
+  sheatheSwitchL = false;
+  sheatheSwitchR = false;
+
+  // read a packet from gyro FIFO
   if (mpu.dmpGetCurrentFIFOPacket(fifoBuffer)) {
     mpu.dmpGetQuaternion(&q, fifoBuffer);
   }
 
-  // Wait for ack to send state
+  // Wait for ack from game instance to send state to game instance
   if(Serial.available())
   {
     Serial.readBytes(&inputBuffer, 1);
@@ -186,6 +197,7 @@ void loop() {
     }
   }
 
+  // Vibrate when sword is drawn
   if(sheatheSwitchL && sheatheSwitchR)
   {
     digitalWrite(HAPTIC_IN_PIN, HIGH);
@@ -195,9 +207,10 @@ void loop() {
     digitalWrite(HAPTIC_IN_PIN, LOW);
   }
 
-  // if (btnTop || btnMid || btnBot) {
-  //   digitalWrite(LED_PIN, HIGH);
-  // } else {
-  //   digitalWrite(LED_PIN, LOW);
-  // }
+  // LED for debugging btns
+  if (btnTop || btnMid || btnBot) {
+    digitalWrite(LED_PIN, HIGH);
+  } else {
+    digitalWrite(LED_PIN, LOW);
+  }
 }

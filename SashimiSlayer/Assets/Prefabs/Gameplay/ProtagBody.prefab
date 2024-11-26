@@ -15219,10 +15219,7 @@ LineRenderer:
   m_SortingLayerID: -175096723
   m_SortingLayer: 4
   m_SortingOrder: 100
-  m_Positions:
-  - {x: 0, y: 1, z: 0}
-  - {x: 15, y: 1, z: 0}
-  - {x: 35, y: 1, z: 0}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.08

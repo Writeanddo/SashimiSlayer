@@ -1,26 +1,32 @@
 using Events;
 using UnityEngine;
 
-public class EventAudioPlayer : MonoBehaviour
+namespace Feel
 {
-    [SerializeField]
-    private AudioClip _clip;
-
-    [SerializeField]
-    private SOEvent _event;
-
-    private void Awake()
+    /// <summary>
+    ///  Plays an audio clip in response to an event.
+    /// </summary>
+    public class EventAudioPlayer : MonoBehaviour
     {
-        _event.AddListener(PlayAudio);
-    }
+        [SerializeField]
+        private AudioClip _clip;
 
-    private void OnDestroy()
-    {
-        _event.RemoveListener(PlayAudio);
-    }
+        [SerializeField]
+        private SOEvent _event;
 
-    private void PlayAudio()
-    {
-        SFXPlayer.Instance.PlaySFX(_clip);
+        private void Awake()
+        {
+            _event.AddListener(PlayAudio);
+        }
+
+        private void OnDestroy()
+        {
+            _event.RemoveListener(PlayAudio);
+        }
+
+        private void PlayAudio()
+        {
+            SFXPlayer.Instance.PlaySFX(_clip);
+        }
     }
 }
