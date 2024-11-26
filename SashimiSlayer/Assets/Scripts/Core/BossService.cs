@@ -31,15 +31,25 @@ public class BossService : MonoBehaviour
         _startBeatmapEvent.AddListener(HandleStartBeatmap);
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        var t = (float)TimingService.Instance.CurrentBeatmapTime;
-        _bossHealthEvent.Raise(t);
+        TimingService.Instance.OnTick += TimeManager_OnTick;
+    }
+
+    private void OnDisable()
+    {
+        TimingService.Instance.OnTick -= TimeManager_OnTick;
     }
 
     private void OnDestroy()
     {
         _startBeatmapEvent.RemoveListener(HandleStartBeatmap);
+    }
+
+    private void TimeManager_OnTick(TimingService.TickInfo tickInfo)
+    {
+        var t = (float)tickInfo.CurrentBeatmapTime;
+        _bossHealthEvent.Raise(t);
     }
 
     private void HandleStartBeatmap(BeatmapConfigSo beatmapConfigSo)

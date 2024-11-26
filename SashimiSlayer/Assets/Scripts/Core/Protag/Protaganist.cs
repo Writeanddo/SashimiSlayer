@@ -1,6 +1,7 @@
 using Cinemachine;
 using Events;
 using Events.Core;
+using Feel;
 using UnityEngine;
 
 public class Protaganist : MonoBehaviour
@@ -12,6 +13,16 @@ public class Protaganist : MonoBehaviour
         public SharedTypes.BlockPoseStates RecentHitBlockPose;
         public Vector3 SwordPosition;
         public float SwordAngle;
+
+        public float DistanceToSwordPlane(Vector3 position)
+        {
+            Vector3 swordPlaneNormal = Quaternion.Euler(0, 0, SwordAngle) * Vector3.up;
+            Vector3 swordPlanePoint = SwordPosition;
+
+            Vector3 pointOnPlane = position - swordPlanePoint;
+            float distance = Mathf.Abs(Vector3.Dot(pointOnPlane, swordPlaneNormal));
+            return distance;
+        }
     }
 
     [Header("Emitting Events")]
@@ -160,16 +171,6 @@ public class Protaganist : MonoBehaviour
         _currentSwordState.SwordPosition = position;
     }
 
-    public float DistanceToSwordPlane(Vector3 position)
-    {
-        Vector3 swordPlaneNormal = Quaternion.Euler(0, 0, _currentSwordState.SwordAngle) * Vector3.up;
-        Vector3 swordPlanePoint = _currentSwordState.SwordPosition;
-
-        Vector3 pointOnPlane = position - swordPlanePoint;
-        float distance = Mathf.Abs(Vector3.Dot(pointOnPlane, swordPlaneNormal));
-        return distance;
-    }
-
     public void TakeDamage(float damage)
     {
         ScreenShakeService.Instance.ShakeScreen(0.1f, 1f, CinemachineImpulseDefinition.ImpulseShapes.Rumble);
@@ -205,5 +206,10 @@ public class Protaganist : MonoBehaviour
     {
         _currentSwordState.SwordPosition = position;
         _swordStateChangeEvent.Raise(_currentSwordState);
+    }
+
+    public float DistanceToSwordPlane(Vector2 pos)
+    {
+        return _currentSwordState.DistanceToSwordPlane(pos);
     }
 }

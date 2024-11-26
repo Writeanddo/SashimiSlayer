@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class TimingBarManager : MonoBehaviour
 {
+    [Header("Listening Events")]
+
     [SerializeField]
-    private BeatInteractionResultEvent _beatInteractionResultEvent;
+    private NoteInteractionFinalResultEvent _noteInteractionFinalResultEvent;
 
     [SerializeField]
     private RectTransform _bar;
@@ -14,22 +16,22 @@ public class TimingBarManager : MonoBehaviour
 
     private void Awake()
     {
-        _beatInteractionResultEvent.AddListener(OnBeatInteractionResult);
+        _noteInteractionFinalResultEvent.AddListener(OnBeatInteractionResult);
     }
 
     private void OnDestroy()
     {
-        _beatInteractionResultEvent.RemoveListener(OnBeatInteractionResult);
+        _noteInteractionFinalResultEvent.RemoveListener(OnBeatInteractionResult);
     }
 
-    private void OnBeatInteractionResult(SharedTypes.BeatInteractionResult result)
+    private void OnBeatInteractionResult(SharedTypes.InteractionFinalResult result)
     {
-        if (result.Result == SharedTypes.BeatInteractionResultType.Failure)
+        if (!result.Successful)
         {
             return;
         }
 
-        var offset = (float)result.NormalizedTimingOffset;
+        float offset = result.TimingResult.NormalizedTimeDelta;
         TimingBarTick hitResult = Instantiate(_hitResultPrefab, _bar);
         var rectTransform = hitResult.GetComponent<RectTransform>();
         hitResult.SetVisuals(result.InteractionType);

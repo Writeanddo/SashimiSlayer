@@ -4,55 +4,61 @@ using DG.Tweening;
 using Events;
 using UnityEngine;
 
-public class BeatSquish : MonoBehaviour
+namespace Feel
 {
-    [Serializable]
-    public struct BeatSquishable
+    /// <summary>
+    /// Squishes a transform on a beat.
+    /// </summary>
+    public class BeatSquish : MonoBehaviour
     {
-        public Transform transform;
-        public int beatInterval;
-        public int beatOffset;
-    }
-
-    [SerializeField]
-    private float _squishScale;
-
-    [SerializeField]
-    private float _squishDuration;
-
-    [SerializeField]
-    private List<BeatSquishable> _squishTransform;
-
-    [SerializeField]
-    private IntEvent _beatPassedEvent;
-
-    private void Awake()
-    {
-        _beatPassedEvent.AddListener(HandleBeatPassed);
-    }
-
-    private void OnDestroy()
-    {
-        _beatPassedEvent.RemoveListener(HandleBeatPassed);
-    }
-
-    private void HandleBeatPassed(int beatNumber)
-    {
-        foreach (BeatSquishable squishable in _squishTransform)
+        [Serializable]
+        public struct BeatSquishable
         {
-            if ((beatNumber + squishable.beatOffset) % squishable.beatInterval != 0)
-            {
-                continue;
-            }
+            public Transform transform;
+            public int beatInterval;
+            public int beatOffset;
+        }
 
-            if (squishable.transform == null)
-            {
-                continue;
-            }
+        [SerializeField]
+        private float _squishScale;
 
-            squishable.transform.localScale = new Vector3(1 / _squishScale, _squishScale, 1);
-            squishable.transform.DOScaleY(1, _squishDuration);
-            squishable.transform.DOScaleX(1, _squishDuration);
+        [SerializeField]
+        private float _squishDuration;
+
+        [SerializeField]
+        private List<BeatSquishable> _squishTransform;
+
+        [SerializeField]
+        private IntEvent _beatPassedEvent;
+
+        private void Awake()
+        {
+            _beatPassedEvent.AddListener(HandleBeatPassed);
+        }
+
+        private void OnDestroy()
+        {
+            _beatPassedEvent.RemoveListener(HandleBeatPassed);
+        }
+
+        private void HandleBeatPassed(int beatNumber)
+        {
+            foreach (BeatSquishable squishable in _squishTransform)
+            {
+                if ((beatNumber + squishable.beatOffset) % squishable.beatInterval != 0)
+                {
+                    continue;
+                }
+
+                if (squishable.transform == null)
+                {
+                    continue;
+                }
+
+                squishable.transform.localScale = new Vector3(1 / _squishScale, _squishScale, 1);
+                squishable.transform.DOScaleY(1, _squishDuration);
+                squishable.transform.DOScaleX(1, _squishDuration);
+            }
         }
     }
 }

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55b03e1938f5454d937feca9a9dbd47, type: 3}
   m_Name: Tutorial
   m_EditorClassIdentifier: 
-  <BeatmapName>k__BackingField: 'SUSHI SLAYING
-
-'
+  <BeatmapName>k__BackingField: CABBAGE
   <Bpm>k__BackingField: 120
   <Subdivisions>k__BackingField: 2
-  <StartTime>k__BackingField: 6.015
+  <StartTime>k__BackingField: 6
   <BeatsPerMeasure>k__BackingField: 4
   <BeatmapTimeline>k__BackingField: {fileID: 11400000, guid: be7318f6e73332d46a85fe51d61ac8ce,
     type: 2}
-  <PlayerMaxHealth>k__BackingField: 2000
+  <PlayerMaxHealth>k__BackingField: 20000
+  <TimingWindowSO>k__BackingField: {fileID: 11400000, guid: 54462036f164d014095fd6aaaee307e5,
+    type: 2}

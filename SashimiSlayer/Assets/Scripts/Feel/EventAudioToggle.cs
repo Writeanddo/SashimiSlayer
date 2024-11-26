@@ -1,36 +1,42 @@
 using Events;
 using UnityEngine;
 
-public class EventAudioToggle : MonoBehaviour
+namespace Feel
 {
-    [SerializeField]
-    private AudioSource _source;
-
-    [SerializeField]
-    private SOEvent _playEvent;
-
-    [SerializeField]
-    private SOEvent _stopEvent;
-
-    private void Awake()
+    /// <summary>
+    /// Starts and stops an audio source in response to events.
+    /// </summary>
+    public class EventAudioToggle : MonoBehaviour
     {
-        _playEvent.AddListener(PlayAudio);
-        _stopEvent.AddListener(StopAudio);
-    }
+        [SerializeField]
+        private AudioSource _source;
 
-    private void OnDestroy()
-    {
-        _playEvent.RemoveListener(PlayAudio);
-        _stopEvent.RemoveListener(StopAudio);
-    }
+        [SerializeField]
+        private SOEvent _playEvent;
 
-    private void PlayAudio()
-    {
-        _source.Play();
-    }
+        [SerializeField]
+        private SOEvent _stopEvent;
 
-    private void StopAudio()
-    {
-        _source.Stop();
+        private void Awake()
+        {
+            _playEvent.AddListener(PlayAudio);
+            _stopEvent.AddListener(StopAudio);
+        }
+
+        private void OnDestroy()
+        {
+            _playEvent.RemoveListener(PlayAudio);
+            _stopEvent.RemoveListener(StopAudio);
+        }
+
+        private void PlayAudio()
+        {
+            _source.Play();
+        }
+
+        private void StopAudio()
+        {
+            _source.Stop();
+        }
     }
 }
