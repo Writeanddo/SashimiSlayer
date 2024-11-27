@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{7f795e88-c04e-4118-8fb5-5c900da98b7f}">
+		<property name="assetPath">
+			<value>SFX/Player/block/blockTry2.wav.asd</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7cd14a9f-71f5-497c-846f-fa301b2af1c2}</destination>
+		</relationship>
+	</object>
+</objects>
