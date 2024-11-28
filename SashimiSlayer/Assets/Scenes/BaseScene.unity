@@ -152,12 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4840bca07f537e14ea9a96dab119bc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelResultLevel: {fileID: 11400000, guid: 170f5efc596d3b4409ada658dcd2a66e, type: 2}
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
     type: 2}
   _beatmapUnloadedEvent: {fileID: 11400000, guid: 10bdfd4824e94144ba44fe0616fcf818,
     type: 2}
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
-  _syncTimeEvent: {fileID: 11400000, guid: 826bd2b463c2cac408323569e7ad029c, type: 2}
 --- !u!4 &28433223
 Transform:
   m_ObjectHideFlags: 0

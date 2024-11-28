@@ -1,3 +1,4 @@
+using Beatmapping.Timing;
 using Events;
 using Events.Core;
 using UnityEngine;
@@ -16,16 +17,12 @@ public class TimelineLoader : MonoBehaviour
     [SerializeField]
     private VoidEvent _playerDeathEvent;
 
-    [SerializeField]
-    private GameLevelSO _levelResultLevel;
-
     private bool _inProgress;
 
     private void Awake()
     {
         _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
         _playerDeathEvent.AddListener(HandlePlayerDeath);
-        _director.stopped += HandleTimelineStopped;
 
         // Use manual to play with FMOD dsp time
         _director.timeUpdateMode = DirectorUpdateMode.Manual;
@@ -33,12 +30,12 @@ public class TimelineLoader : MonoBehaviour
 
     private void OnEnable()
     {
-        TimingService.Instance.OnTick += TimeService_OnTick;
+        BeatmapTimeManager.Instance.OnTick += TimeService_OnTick;
     }
 
     private void OnDisable()
     {
-        TimingService.Instance.OnTick -= TimeService_OnTick;
+        BeatmapTimeManager.Instance.OnTick -= TimeService_OnTick;
     }
 
     private void OnDestroy()
@@ -47,7 +44,7 @@ public class TimelineLoader : MonoBehaviour
         _playerDeathEvent.RemoveListener(HandlePlayerDeath);
     }
 
-    private void TimeService_OnTick(TimingService.TickInfo tickInfo)
+    private void TimeService_OnTick(BeatmapTimeManager.TickInfo tickInfo)
     {
         if (_inProgress)
         {
@@ -59,19 +56,7 @@ public class TimelineLoader : MonoBehaviour
             }
         }
 
-        Debug.Log("Dir: " + _director.time);
         _director.Evaluate();
-    }
-
-    private void HandleTimelineStopped(PlayableDirector obj)
-    {
-        // Check if reached end of timeline
-        if (_inProgress)
-        {
-            _director.Stop();
-            LevelLoader.Instance.LoadLevel(_levelResultLevel);
-            _inProgress = false;
-        }
     }
 
     private void HandlePlayerDeath()

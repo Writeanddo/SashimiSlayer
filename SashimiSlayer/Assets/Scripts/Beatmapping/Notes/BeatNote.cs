@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Beatmapping.Timing;
 using Events.Core;
 using UnityEditor;
 using UnityEngine;
@@ -173,7 +174,7 @@ namespace Beatmapping.Notes
         ///     Update timing and Tick the FSM
         /// </summary>
         /// <param name="tickInfo"></param>
-        public void Tick(TimingService.TickInfo tickInfo)
+        public void Tick(BeatmapTimeManager.TickInfo tickInfo)
         {
             UpdateTiming(tickInfo);
 
@@ -194,7 +195,7 @@ namespace Beatmapping.Notes
             }
         }
 
-        private void UpdateTiming(TimingService.TickInfo tickInfo)
+        private void UpdateTiming(BeatmapTimeManager.TickInfo tickInfo)
         {
             double currentBeatmapTime = tickInfo.CurrentBeatmapTime;
             double beatQuantizedTime = tickInfo.BeatQuantizedBeatmapTime;

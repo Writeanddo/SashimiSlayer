@@ -288,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 353586307110562534, guid: c44823f301eaa194cb12440f2090bddf,
         type: 3}
       propertyPath: m_BlockingMask.m_Bits
-      value: 4294967295
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 2139237253991940856, guid: c44823f301eaa194cb12440f2090bddf,
         type: 3}
@@ -738,7 +738,7 @@ PrefabInstance:
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}
@@ -834,7 +834,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SceneBindings.Array.data[15].key
       value: 
-      objectReference: {fileID: 1754087978691026967, guid: be7318f6e73332d46a85fe51d61ac8ce,
+      objectReference: {fileID: -5543294438097923767, guid: be7318f6e73332d46a85fe51d61ac8ce,
         type: 2}
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}

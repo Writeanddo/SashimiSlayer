@@ -311,9 +311,6 @@ namespace FMODUnity
                     float value = ParameterAutomation.GetValue(link.Slot);
                     eventInstance.setParameterByID(link.ID, value);
                 }
-
-                eventInstance.getTimelinePosition(out int position);
-                Debug.Log(position / 1000f);
             }
         }
 
