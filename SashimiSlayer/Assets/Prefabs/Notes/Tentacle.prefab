@@ -14983,9 +14983,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
-  _spawnSound: {fileID: 8300000, guid: 3743c12ec7cbc924489a0cf4188d753d, type: 3}
-  _startAttackSound: {fileID: 0}
-  _startVulnerableSound: {fileID: 0}
+  _spawnSound:
+    Guid:
+      Data1: -849577297
+      Data2: 1314550373
+      Data3: -348506745
+      Data4: 1846830016
+    Path: event:/KrakenLevel/Squid/SquidSpawn
+  _startAttackSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _startVulnerableSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &8181838416036536246
 GameObject:
   m_ObjectHideFlags: 0

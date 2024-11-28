@@ -4906,7 +4906,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5300693377477165637}
-  - component: {fileID: 7474333317610495233}
   - component: {fileID: 1078217533109811795}
   - component: {fileID: 991656065010153219}
   - component: {fileID: 6651567478086331801}
@@ -4932,20 +4931,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 127223987429404033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7474333317610495233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626432118343460334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc97ffc13254b474b87a249d0fbc2cea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 360da8ff7e9fd004597b17c6930b77b0, type: 3}
-  _event: {fileID: 11400000, guid: 7517b3ffc01c7a1449611f21a59752ca, type: 2}
 --- !u!114 &1078217533109811795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4958,7 +4943,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc97ffc13254b474b87a249d0fbc2cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 523ae6a9bbab6e5498d834279df22b75, type: 3}
+  _sfx:
+    Guid:
+      Data1: -49763394
+      Data2: 1171774641
+      Data3: 989887143
+      Data4: 1560446830
+    Path: event:/PlayerSFX/PlayerTrySlice
   _event: {fileID: 11400000, guid: 1fc9d5635b7fb36408b893568c3ada1a, type: 2}
 --- !u!114 &991656065010153219
 MonoBehaviour:
@@ -4972,7 +4963,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc97ffc13254b474b87a249d0fbc2cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 5d51cd51a15429345b434b628e8127cf, type: 3}
+  _sfx:
+    Guid:
+      Data1: -557360941
+      Data2: 1255033574
+      Data3: -563031882
+      Data4: -622675662
+    Path: event:/PlayerSFX/PlayerSlice
   _event: {fileID: 11400000, guid: c9cd6894bca4a8c43b3f69e78d991d17, type: 2}
 --- !u!114 &6651567478086331801
 MonoBehaviour:
@@ -4986,7 +4983,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc97ffc13254b474b87a249d0fbc2cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: e5c7a3a45035c274da4d8e67346506c7, type: 3}
+  _sfx:
+    Guid:
+      Data1: 979964525
+      Data2: 1075785393
+      Data3: -1335855214
+      Data4: 2117944011
+    Path: event:/PlayerSFX/PlayerHurt
   _event: {fileID: 11400000, guid: 7517b3ffc01c7a1449611f21a59752ca, type: 2}
 --- !u!1 &1143433492268318193
 GameObject:
@@ -5123,13 +5126,19 @@ MonoBehaviour:
   _successfulBlockEvent: {fileID: 11400000, guid: de90496f5929b02439b0d3907887baee,
     type: 2}
   _successfulBlockSfx:
-  - {fileID: 8300000, guid: 00651b042b0f6d942a9c91b1bf350d89, type: 3}
-  - {fileID: 8300000, guid: c28bdb486dff4ff438686b0e2e747d5f, type: 3}
-  - {fileID: 8300000, guid: 60625581005b3de46bb7c9bbd358f586, type: 3}
+    Guid:
+      Data1: -1274161562
+      Data2: 1226694772
+      Data3: -607415161
+      Data4: 1769846533
+    Path: event:/PlayerSFX/PlayerBlock
   _tryBlockSfx:
-  - {fileID: 8300000, guid: 47396d1a2357a3749aae6001bbc86c45, type: 3}
-  - {fileID: 8300000, guid: 33245dd8750afab4085ae619e4cda5f1, type: 3}
-  - {fileID: 8300000, guid: 96f18fdd1f76db846a5febdb69340aa9, type: 3}
+    Guid:
+      Data1: 1837872071
+      Data2: 1174992428
+      Data3: -1130607447
+      Data4: -798957357
+    Path: event:/PlayerSFX/PlayerBlockAttempt
 --- !u!1 &1521972037136413451
 GameObject:
   m_ObjectHideFlags: 0
@@ -25294,8 +25303,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4069202320788655040}
-  - component: {fileID: 7272064272337179711}
   - component: {fileID: 5034296436517468447}
+  - component: {fileID: 3360249814503828151}
   m_Layer: 0
   m_Name: Chargeup
   m_TagString: Untagged
@@ -25318,102 +25327,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 127223987429404033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &7272064272337179711
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3402838143114151688}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6af17ab2dad79ca4b991c3b904968623, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &5034296436517468447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25426,9 +25339,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2069827013abea2468e3907aae9fe01d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: 7272064272337179711}
+  _source: {fileID: 3360249814503828151}
   _playEvent: {fileID: 11400000, guid: 57cf023d4fecd634d8adcd692ffbdd07, type: 2}
   _stopEvent: {fileID: 11400000, guid: 1fc9d5635b7fb36408b893568c3ada1a, type: 2}
+--- !u!114 &3360249814503828151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3402838143114151688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 242545156
+      Data2: 1297223766
+      Data3: -1183213891
+      Data4: -2131419149
+    Path: event:/PlayerSFX/Chargeup
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &3423862396146044447
 GameObject:
   m_ObjectHideFlags: 0

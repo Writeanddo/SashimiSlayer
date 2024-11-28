@@ -1,4 +1,5 @@
 using Beatmapping.Notes;
+using FMODUnity;
 using UnityEngine;
 
 namespace Feel
@@ -8,16 +9,16 @@ namespace Feel
         [SerializeField]
         private BeatNote _beatNote;
 
-        [Header("Audio Clips")]
+        [Header("Audio Events")]
 
         [SerializeField]
-        private AudioClip _spawnSound;
+        private EventReference _spawnSound;
 
         [SerializeField]
-        private AudioClip _startAttackSound;
+        private EventReference _startAttackSound;
 
         [SerializeField]
-        private AudioClip _startVulnerableSound;
+        private EventReference _startVulnerableSound;
 
         private void Awake()
         {
@@ -35,27 +36,27 @@ namespace Feel
 
         private void PlaySpawnSound()
         {
-            if (_spawnSound != null)
+            if (!_spawnSound.IsNull)
             {
-                SFXPlayer.Instance.PlaySFX(_spawnSound);
+                RuntimeManager.PlayOneShot(_spawnSound);
             }
         }
 
         private void PlayTransitionToWaitingToAttack(BeatNote.NoteTiming noteTiming,
             NoteInteraction scheduledInteraction)
         {
-            if (_startAttackSound != null)
+            if (!_startAttackSound.IsNull)
             {
-                SFXPlayer.Instance.PlaySFX(_startAttackSound);
+                RuntimeManager.PlayOneShot(_startAttackSound);
             }
         }
 
         private void PlayTransitionToWaitingToVulnerable(BeatNote.NoteTiming noteTiming,
             NoteInteraction scheduledInteraction)
         {
-            if (_startVulnerableSound != null)
+            if (!_startVulnerableSound.IsNull)
             {
-                SFXPlayer.Instance.PlaySFX(_startVulnerableSound);
+                RuntimeManager.PlayOneShot(_startVulnerableSound);
             }
         }
     }

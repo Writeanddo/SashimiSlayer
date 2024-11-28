@@ -5224,6 +5224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
+  _bodyTransform: {fileID: 0}
   _startPosIndex: 0
   _vulnerablePosIndex: 2
   _sprite: {fileID: 38135383335388938}
@@ -5316,9 +5317,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
-  _spawnSound: {fileID: 8300000, guid: 3743c12ec7cbc924489a0cf4188d753d, type: 3}
-  _startAttackSound: {fileID: 8300000, guid: 09f62feb1d070064ba923cc2a171643a, type: 3}
-  _startVulnerableSound: {fileID: 0}
+  _spawnSound:
+    Guid:
+      Data1: -849577297
+      Data2: 1314550373
+      Data3: -348506745
+      Data4: 1846830016
+    Path: event:/KrakenLevel/Squid/SquidSpawn
+  _startAttackSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _startVulnerableSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &8998238423337882039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5331,7 +5350,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed851c6a66c1a64fafd1212d956273a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 09f62feb1d070064ba923cc2a171643a, type: 3}
+  _clip:
+    Guid:
+      Data1: 1372330880
+      Data2: 1217245148
+      Data3: -248795008
+      Data4: -391567002
+    Path: event:/KrakenLevel/Squid/SquidAttack
 --- !u!1001 &1821913675923851650
 PrefabInstance:
   m_ObjectHideFlags: 0

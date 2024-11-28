@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Events.Core;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -51,18 +53,14 @@ public class LevelLoader : MonoBehaviour
         await _sceneTransitionUI.FadeOut();
         Debug.Log($"Killed {DOTween.KillAll()} tweens");
 
-        if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
-        {
-            gameLevel.PreloadMusic.LoadAudioData();
-            while (gameLevel.PreloadMusic.loadState != AudioDataLoadState.Loaded)
-            {
-                await UniTask.Yield();
-            }
-        }
-
         if (CurrentLevel != null && CurrentLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {
-            CurrentLevel.PreloadMusic.UnloadAudioData();
+            UnloadBanks(CurrentLevel.FmodBanksToPreLoad);
+        }
+
+        if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
+        {
+            LoadBanks(gameLevel.FmodBanksToPreLoad);
         }
 
         string sceneName = gameLevel.GameSceneName;
@@ -94,5 +92,31 @@ public class LevelLoader : MonoBehaviour
         }
 
         LoadLevel(_previousBeatmapLevel);
+    }
+
+    private void LoadBanks(List<string> banks)
+    {
+        foreach (string bankRef in banks)
+        {
+            try
+            {
+                // Preload sample data to avoid latency on play
+                RuntimeManager.LoadBank(bankRef, true);
+            }
+            catch (BankLoadException e)
+            {
+                RuntimeUtils.DebugLogException(e);
+            }
+        }
+
+        RuntimeManager.WaitForAllSampleLoading();
+    }
+
+    private void UnloadBanks(List<string> banks)
+    {
+        foreach (string bankRef in banks)
+        {
+            RuntimeManager.UnloadBank(bankRef);
+        }
     }
 }

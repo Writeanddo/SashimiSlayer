@@ -64,7 +64,7 @@ namespace Beatmapping.BeatNotes.BnH
             // Lerp from the vulnerable position to the start position y (basically falling back into the sea)
             var normalizedTime = (float)noteTiming.NormalizedLeaveWaitTime;
 
-            float t = _moveCurve.Evaluate(1 - normalizedTime);
+            float t = Mathf.Clamp(_moveCurve.Evaluate(1 - normalizedTime), 0, 1);
 
             // X velocity is constant, y uses curve
             _bodyTransform.position = new Vector2(

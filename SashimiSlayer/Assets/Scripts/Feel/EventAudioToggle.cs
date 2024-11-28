@@ -1,15 +1,16 @@
 using Events;
+using FMODUnity;
 using UnityEngine;
 
 namespace Feel
 {
     /// <summary>
-    /// Starts and stops an audio source in response to events.
+    ///     Starts and stops an audio source in response to events.
     /// </summary>
     public class EventAudioToggle : MonoBehaviour
     {
         [SerializeField]
-        private AudioSource _source;
+        private StudioEventEmitter _source;
 
         [SerializeField]
         private SOEvent _playEvent;

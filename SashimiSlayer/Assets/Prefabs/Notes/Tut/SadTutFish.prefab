@@ -253,9 +253,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
-  _spawnSound: {fileID: 8300000, guid: 3743c12ec7cbc924489a0cf4188d753d, type: 3}
-  _startAttackSound: {fileID: 0}
-  _startVulnerableSound: {fileID: 0}
+  _spawnSound:
+    Guid:
+      Data1: 1921564738
+      Data2: 1245025593
+      Data3: -474398820
+      Data4: 1745421926
+    Path: event:/TutorialLevel/SadFish/SadFishSpawn
+  _startAttackSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _startVulnerableSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &8155367101868906669
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,18 +1,22 @@
+using FMODUnity;
 using UnityEngine;
 
 namespace Feel
 {
     /// <summary>
-    /// Exposes an audio clip to be played. Intended to be used with UnityEvents.
+    ///     Exposes an audio clip to be played. Intended to be used with UnityEvents.
     /// </summary>
     public class SimpleAudio : MonoBehaviour
     {
         [SerializeField]
-        private AudioClip _clip;
+        private EventReference _clip;
 
         public void Play()
         {
-            SFXPlayer.Instance.PlaySFX(_clip);
+            if (!_clip.IsNull)
+            {
+                RuntimeManager.PlayOneShot(_clip);
+            }
         }
     }
 }

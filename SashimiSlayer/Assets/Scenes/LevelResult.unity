@@ -6039,7 +6039,7 @@ GameObject:
   - component: {fileID: 1359122443}
   - component: {fileID: 1359122442}
   m_Layer: 0
-  m_Name: Audio
+  m_Name: JingleAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6057,7 +6057,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc97ffc13254b474b87a249d0fbc2cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: b005a9e479652e040b89e20280d1c23b, type: 3}
+  _sfx:
+    Guid:
+      Data1: -1960767139
+      Data2: 1158563019
+      Data3: 207524496
+      Data4: 774872137
+    Path: event:/Menus/FailJingle
   _event: {fileID: 11400000, guid: 7b851042094282748b50bf4ac01b2d6d, type: 2}
 --- !u!114 &1359122443
 MonoBehaviour:
@@ -6071,7 +6077,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc97ffc13254b474b87a249d0fbc2cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 131318d47f9544e40a2d6488bc702ff2, type: 3}
+  _sfx:
+    Guid:
+      Data1: -904545764
+      Data2: 1339098606
+      Data3: -877166171
+      Data4: 1444367794
+    Path: event:/Menus/VictoryJingle
   _event: {fileID: 11400000, guid: ee736a2857fd8dd46929098023ce7c51, type: 2}
 --- !u!4 &1359122444
 Transform:

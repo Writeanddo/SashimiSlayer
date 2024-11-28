@@ -1,22 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9221014856125030268
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
-  m_Name: AudioPlayableAsset
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: b3c361c425f8e3949bab57f7355eef0b, type: 3}
-  m_Loop: 0
-  m_bufferingTime: 0.1
-  m_ClipProperties:
-    volume: 1
 --- !u!114 &-9197228138094701855
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,7 +263,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 1
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &-7974124173024059953
 MonoBehaviour:
@@ -331,7 +314,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 1
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &-7634491408669650360
 MonoBehaviour:
@@ -986,102 +969,6 @@ MonoBehaviour:
 
       then
       turn <color=#db3b3b>VULNERABLE</color> after!'
---- !u!114 &-5695733966106479653
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b22792c3b570444eb18cb78c2af3a74, type: 3}
-  m_Name: Audio Track
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 0
-    m_ClipIn: 0
-    m_Asset: {fileID: -9221014856125030268}
-    m_Duration: 100.015
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -5695733966106479653}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: cabbage_-_6_5_24_8.45_PM_1
-  m_Markers:
-    m_Objects: []
-  m_TrackProperties:
-    volume: 1
-    stereoPan: 0
-    spatialBlend: 0
 --- !u!114 &-5280983828189333441
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1109,7 +996,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 4
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &-4990870751419148061
 MonoBehaviour:
@@ -1138,7 +1025,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 4
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &-4570267411883170350
 MonoBehaviour:
@@ -2129,7 +2016,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 2
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &-2875391443098788150
 MonoBehaviour:
@@ -2780,7 +2667,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 4
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &-239423293326726579
 MonoBehaviour:
@@ -2821,7 +2708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 0
   m_Tracks:
-  - {fileID: -5695733966106479653}
+  - {fileID: 3911333821366668468}
   - {fileID: 7655169594171241362}
   - {fileID: 1754087978691026967}
   - {fileID: 6435859260828590340}
@@ -2868,7 +2755,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 2
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &326455084937333391
 MonoBehaviour:
@@ -3212,7 +3099,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 4
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &1243424104829167819
 MonoBehaviour:
@@ -3300,7 +3187,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 2
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &1754087978691026967
 MonoBehaviour:
@@ -3679,7 +3566,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 1
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &3688818801659884798
 MonoBehaviour:
@@ -3798,6 +3685,100 @@ MonoBehaviour:
       NoteEndTime: 68
       NoteBeatCount: 8
       _interactions: []
+--- !u!114 &3911333821366668468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133253f56854570409c222a87786b263, type: 3}
+  m_Name: FMOD Event Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: 7200402189459744642}
+    m_Duration: 100.015
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 3911333821366668468}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: TutorialMusic
+  m_Markers:
+    m_Objects: []
+  template:
+    volume: 1
 --- !u!114 &4064829025364650962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3848,7 +3829,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 4
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &4367924008656656102
 MonoBehaviour:
@@ -4773,6 +4754,57 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
     text: Last up is the BOTTOM!!
+--- !u!114 &7200402189459744642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987a467495df9d942b56b1b51381d095, type: 3}
+  m_Name: FMODEventPlayable
+  m_EditorClassIdentifier: 
+  Template:
+    EventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StopType: 0
+    Parameters: []
+    ParameterLinks: []
+    ParameterAutomation:
+      Slot00: 0
+      Slot01: 0
+      Slot02: 0
+      Slot03: 0
+      Slot04: 0
+      Slot05: 0
+      Slot06: 0
+      Slot07: 0
+      Slot08: 0
+      Slot09: 0
+      Slot10: 0
+      Slot11: 0
+      Slot12: 0
+      Slot13: 0
+      Slot14: 0
+      Slot15: 0
+  EventLength: 102.444
+  eventName: 
+  EventReference:
+    Guid:
+      Data1: -1280465563
+      Data2: 1079027907
+      Data3: -1869054552
+      Data4: 983716121
+    Path: event:/TutorialLevel/TutorialMusic
+  StopType: 0
+  Parameters: []
 --- !u!114 &7369229150194688093
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4831,7 +4863,7 @@ MonoBehaviour:
       - InteractionData:
           BlockPose: 4
           InteractionType: 0
-          Flags: 0
+          Flags: 1
         BeatsFromNoteStart: 4
 --- !u!114 &7640654825706104017
 MonoBehaviour:
@@ -5214,7 +5246,7 @@ MonoBehaviour:
       - {x: 5.687019, y: -4.516162}
       - {x: 3.4868155, y: -1.4072236}
       - {x: 0.38484246, y: 2.399362}
-      AutoVulnerableAtEnd: 0
+      AutoVulnerableAtEnd: 1
       AutoVulnerableBeatOffset: 0
       NoteStartTime: 0
       NoteEndTime: 4
@@ -5225,11 +5257,6 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
         BeatsFromNoteStart: 4
-      - InteractionData:
-          BlockPose: 2
-          InteractionType: 1
-          Flags: 2
-        BeatsFromNoteStart: 8
 --- !u!114 &8552616335216535303
 MonoBehaviour:
   m_ObjectHideFlags: 1

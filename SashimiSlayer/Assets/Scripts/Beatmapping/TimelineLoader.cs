@@ -32,6 +32,11 @@ public class TimelineLoader : MonoBehaviour
         _director.stopped += HandleTimelineStopped;
     }
 
+    private void Update()
+    {
+        Debug.Log("Dir: " + _director.time);
+    }
+
     private void OnDestroy()
     {
         _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
@@ -41,7 +46,7 @@ public class TimelineLoader : MonoBehaviour
 
     private void HandleSyncTime(double time)
     {
-        // _director.time = time;
+        _director.time = time;
     }
 
     private void HandleTimelineStopped(PlayableDirector obj)

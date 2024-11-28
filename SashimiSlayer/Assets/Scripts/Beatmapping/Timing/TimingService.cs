@@ -2,7 +2,10 @@ using System;
 using DG.Tweening;
 using Events;
 using Events.Core;
+using FMOD;
+using FMODUnity;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class TimingService : MonoBehaviour
 {
@@ -47,6 +50,9 @@ public class TimingService : MonoBehaviour
 
     private int _ticksToSync;
 
+    private int _sampleRate;
+    private ChannelGroup _masterChannel;
+
     private void Awake()
     {
         DOTween.KillAll();
@@ -82,7 +88,7 @@ public class TimingService : MonoBehaviour
     private void Tick()
     {
         // Update dps time
-        double currentDspTime = AudioSettings.dspTime;
+        double currentDspTime = GetCurrentDspTime();
         double dspDeltaTime = currentDspTime - _previousDspTime;
 
         // Calculate time since start of beatmap
@@ -118,14 +124,40 @@ public class TimingService : MonoBehaviour
         OnTick?.Invoke(CurrentTickInfo);
 
         _previousDspTime = currentDspTime;
+
+        Debug.Log("timeservice: " + CurrentTickInfo.CurrentBeatmapTime);
+    }
+
+    private double GetCurrentDspTime()
+    {
+        _masterChannel.getDSPClock(out ulong dspClock, out ulong parentClock);
+        return (double)dspClock / _sampleRate;
+    }
+
+    private void GetDspInfo()
+    {
+        FMOD.System coreSystem = RuntimeManager.CoreSystem;
+        coreSystem.getMasterChannelGroup(out ChannelGroup masterChannelGroup);
+
+        RESULT getFormat =
+            coreSystem.getSoftwareFormat(out int sampleRate, out SPEAKERMODE speakerMode, out int numrawspeakers);
+
+        if (getFormat != RESULT.OK)
+        {
+            Debug.LogError("Failed to get software format");
+        }
+
+        _sampleRate = sampleRate;
+        _masterChannel = masterChannelGroup;
     }
 
     private void HandleStartBeatmap(BeatmapConfigSo beatmap)
     {
+        GetDspInfo();
+
         _currentBeatmap = beatmap;
-        _beatmapDspStartTime = AudioSettings.dspTime + beatmap.StartTime;
-        _timeIntervalPerBeat = 60 / _currentBeatmap.Bpm;
-        _timeIntervalPerSubdiv = _timeIntervalPerBeat / _currentBeatmap.Subdivisions;
+
+        Resync();
     }
 
     /// <summary>
@@ -134,9 +166,15 @@ public class TimingService : MonoBehaviour
     public void Resync()
     {
         Debug.Log("Resyncing to new start time");
-        _beatmapDspStartTime = AudioSettings.dspTime + _currentBeatmap.StartTime;
-        _previousDspTime = AudioSettings.dspTime;
-        _ticksToSync = 100000;
+
+        double dspTime = GetCurrentDspTime();
+        _beatmapDspStartTime = dspTime + _currentBeatmap.StartTime;
+        _previousDspTime = dspTime;
+
+        _timeIntervalPerBeat = 60 / _currentBeatmap.Bpm;
+        _timeIntervalPerSubdiv = _timeIntervalPerBeat / _currentBeatmap.Subdivisions;
+
+        _ticksToSync = 5;
         Tick();
     }
 }
