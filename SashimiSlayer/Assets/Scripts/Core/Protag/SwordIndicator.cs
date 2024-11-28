@@ -23,6 +23,9 @@ public class SwordIndicator : MonoBehaviour
     [SerializeField]
     private ProtagSwordStateEvent _onSwordStateChange;
 
+    [SerializeField]
+    private Vector2Event _swordPivotPositionChangeEvent;
+
     private float _angle;
 
     private Vector3 _position;
@@ -34,11 +37,12 @@ public class SwordIndicator : MonoBehaviour
         _onSwordStateChange.AddListener(OnSwordStateChange);
         SetSheatheState(SharedTypes.SheathState.Sheathed);
         _protagSuccessfulSliceEvent.AddListener(OnSuccessfulSlice);
+        _swordPivotPositionChangeEvent.AddListener(SetPosition);
     }
 
     private void Update()
     {
-        _cPos = Vector3.Lerp(_cPos, _position, Time.deltaTime * 10f);
+        _cPos = _position;
         UpdateOrientation(_sheathedLineRen);
         UpdateOrientation(_unsheathedLineRen);
     }
@@ -47,6 +51,7 @@ public class SwordIndicator : MonoBehaviour
     {
         _onSwordStateChange.RemoveListener(OnSwordStateChange);
         _protagSuccessfulSliceEvent.RemoveListener(OnSuccessfulSlice);
+        _swordPivotPositionChangeEvent.RemoveListener(SetPosition);
     }
 
     private void OnSuccessfulSlice()
@@ -79,7 +84,7 @@ public class SwordIndicator : MonoBehaviour
         _angle = angle;
     }
 
-    private void SetPosition(Vector3 position)
+    private void SetPosition(Vector2 position)
     {
         _position = position;
     }

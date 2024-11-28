@@ -65,6 +65,9 @@ public class Protaganist : MonoBehaviour
     [SerializeField]
     private VoidEvent _onDrawDebugGuiEvent;
 
+    [SerializeField]
+    private Vector2Event _protagSetSwordPivot;
+
     public static Protaganist Instance { get; private set; }
     public Vector3 SpritePosition { get; set; }
 
@@ -97,6 +100,7 @@ public class Protaganist : MonoBehaviour
         _inputProvider.OnBlockPoseChanged += OnPoseStateChanged;
         _beatmapLoadedEvent.AddListener(HandleBeatmapLoaded);
         _onDrawDebugGuiEvent.AddListener(HandleDrawDebugGUI);
+        _protagSetSwordPivot.AddListener(SetSwordPosition);
     }
 
     private void Update()
@@ -111,6 +115,7 @@ public class Protaganist : MonoBehaviour
         _inputProvider.OnBlockPoseChanged -= OnPoseStateChanged;
         _beatmapLoadedEvent.RemoveListener(HandleBeatmapLoaded);
         _onDrawDebugGuiEvent.RemoveListener(HandleDrawDebugGUI);
+        _protagSetSwordPivot.RemoveListener(SetSwordPosition);
     }
 
     private void HandleDrawDebugGUI()
@@ -166,7 +171,7 @@ public class Protaganist : MonoBehaviour
         }
     }
 
-    public void SetSwordPosition(Vector3 position)
+    public void SetSwordPosition(Vector2 position)
     {
         _currentSwordState.SwordPosition = position;
     }

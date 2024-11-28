@@ -19,34 +19,48 @@ public class TimelineLoader : MonoBehaviour
     [SerializeField]
     private GameLevelSO _levelResultLevel;
 
-    [SerializeField]
-    private DoubleEvent _syncTimeEvent;
-
     private bool _inProgress;
 
     private void Awake()
     {
         _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
         _playerDeathEvent.AddListener(HandlePlayerDeath);
-        _syncTimeEvent.AddListener(HandleSyncTime);
         _director.stopped += HandleTimelineStopped;
+
+        // Use manual to play with FMOD dsp time
+        _director.timeUpdateMode = DirectorUpdateMode.Manual;
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        Debug.Log("Dir: " + _director.time);
+        TimingService.Instance.OnTick += TimeService_OnTick;
+    }
+
+    private void OnDisable()
+    {
+        TimingService.Instance.OnTick -= TimeService_OnTick;
     }
 
     private void OnDestroy()
     {
         _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
         _playerDeathEvent.RemoveListener(HandlePlayerDeath);
-        _syncTimeEvent.RemoveListener(HandleSyncTime);
     }
 
-    private void HandleSyncTime(double time)
+    private void TimeService_OnTick(TimingService.TickInfo tickInfo)
     {
-        _director.time = time;
+        if (_inProgress)
+        {
+            _director.time = tickInfo.TimeSinceBeatmapLoad;
+
+            if (_director.time >= _director.duration)
+            {
+                _director.Stop();
+            }
+        }
+
+        Debug.Log("Dir: " + _director.time);
+        _director.Evaluate();
     }
 
     private void HandleTimelineStopped(PlayableDirector obj)

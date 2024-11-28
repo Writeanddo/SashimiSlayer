@@ -11,7 +11,16 @@ public class TimingService : MonoBehaviour
 {
     public struct TickInfo
     {
+        /// <summary>
+        ///     DSP time since beatmap started (the 0th beat, different from load time)
+        /// </summary>
         public double CurrentBeatmapTime;
+
+        /// <summary>
+        ///     DSP time when the beatmap was loaded
+        /// </summary>
+        public double TimeSinceBeatmapLoad;
+
         public double DeltaTime;
 
         public int CurrentBeatIndex;
@@ -25,6 +34,9 @@ public class TimingService : MonoBehaviour
 
     [SerializeField]
     private BeatmapEvent _beatmapLoadedEvent;
+
+    [SerializeField]
+    private BeatmapEvent _beatmapUnloadedEvent;
 
     [Header("Invoking Events")]
 
@@ -43,6 +55,10 @@ public class TimingService : MonoBehaviour
     private BeatmapConfigSo _currentBeatmap;
 
     private double _previousDspTime;
+
+    /// <summary>
+    ///     DSP time when the beatmap loaded
+    /// </summary>
     private double _beatmapDspStartTime;
 
     private double _timeIntervalPerBeat;
@@ -65,24 +81,31 @@ public class TimingService : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 100;
 
         _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
+        _beatmapUnloadedEvent.AddListener(HandleBeatmapUnloaded);
     }
 
     private void Update()
     {
+        if (_currentBeatmap == null)
+        {
+            return;
+        }
+
         Tick();
-        if (_ticksToSync > 0)
+        /*if (_ticksToSync > 0)
         {
             _ticksToSync--;
             _syncTimeEvent.Raise(CurrentTickInfo.CurrentBeatmapTime);
-        }
+        }*/
     }
 
     private void OnDestroy()
     {
         _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
+        _beatmapUnloadedEvent.RemoveListener(HandleBeatmapUnloaded);
     }
 
     private void Tick()
@@ -114,6 +137,7 @@ public class TimingService : MonoBehaviour
         CurrentTickInfo = new TickInfo
         {
             CurrentBeatmapTime = currentBeatmapTime,
+            TimeSinceBeatmapLoad = currentBeatmapTime + _currentBeatmap.StartTime,
             DeltaTime = dspDeltaTime,
             CurrentBeatIndex = currentBeatIndex,
             CurrentSubdivIndex = currentSubdivIndex,
@@ -121,11 +145,11 @@ public class TimingService : MonoBehaviour
             SubdivQuantizedBeatmapTime = currentSubdivIndex * _timeIntervalPerSubdiv
         };
 
+        Debug.Log("service: " + CurrentTickInfo.TimeSinceBeatmapLoad);
+
         OnTick?.Invoke(CurrentTickInfo);
 
         _previousDspTime = currentDspTime;
-
-        Debug.Log("timeservice: " + CurrentTickInfo.CurrentBeatmapTime);
     }
 
     private double GetCurrentDspTime()
@@ -149,6 +173,8 @@ public class TimingService : MonoBehaviour
 
         _sampleRate = sampleRate;
         _masterChannel = masterChannelGroup;
+
+        Debug.Log("Sample rate: " + _sampleRate);
     }
 
     private void HandleStartBeatmap(BeatmapConfigSo beatmap)
@@ -161,7 +187,7 @@ public class TimingService : MonoBehaviour
     }
 
     /// <summary>
-    ///     Resync to a new start time. Used for looping
+    ///     Resync, using current time as the new start time.
     /// </summary>
     public void Resync()
     {
@@ -176,5 +202,10 @@ public class TimingService : MonoBehaviour
 
         _ticksToSync = 5;
         Tick();
+    }
+
+    private void HandleBeatmapUnloaded(BeatmapConfigSo beatmap)
+    {
+        _currentBeatmap = null;
     }
 }

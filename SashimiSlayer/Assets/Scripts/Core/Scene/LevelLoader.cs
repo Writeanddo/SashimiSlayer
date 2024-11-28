@@ -16,11 +16,14 @@ public class LevelLoader : MonoBehaviour
     [SerializeField]
     private BeatmapEvent _beatmapStartEvent;
 
+    [SerializeField]
+    private BeatmapEvent _beatmapUnloadEvent;
+
     public static LevelLoader Instance { get; private set; }
 
     public GameLevelSO CurrentLevel { get; private set; }
 
-    private string _currentLevel = string.Empty;
+    private string _currentLevelSceneName = string.Empty;
     private GameLevelSO _previousBeatmapLevel;
 
     private void Awake()
@@ -36,7 +39,7 @@ public class LevelLoader : MonoBehaviour
 #if UNITY_EDITOR
         if (SceneManager.sceneCount > 1)
         {
-            _currentLevel = SceneManager.GetSceneAt(1).name;
+            _currentLevelSceneName = SceneManager.GetSceneAt(1).name;
         }
 #endif
     }
@@ -65,13 +68,14 @@ public class LevelLoader : MonoBehaviour
 
         string sceneName = gameLevel.GameSceneName;
 
-        if (SceneManager.GetSceneByName(_currentLevel).isLoaded)
+        if (SceneManager.GetSceneByName(_currentLevelSceneName).isLoaded)
         {
-            await SceneManager.UnloadSceneAsync(_currentLevel);
+            await SceneManager.UnloadSceneAsync(_currentLevelSceneName);
+            _beatmapUnloadEvent?.Raise(CurrentLevel.Beatmap);
         }
 
         await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        _currentLevel = sceneName;
+        _currentLevelSceneName = sceneName;
         CurrentLevel = gameLevel;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
 
@@ -100,6 +104,7 @@ public class LevelLoader : MonoBehaviour
         {
             try
             {
+                Debug.Log($"Loading bank {bankRef}");
                 // Preload sample data to avoid latency on play
                 RuntimeManager.LoadBank(bankRef, true);
             }
@@ -116,6 +121,7 @@ public class LevelLoader : MonoBehaviour
     {
         foreach (string bankRef in banks)
         {
+            Debug.Log($"Unloading bank {bankRef}");
             RuntimeManager.UnloadBank(bankRef);
         }
     }

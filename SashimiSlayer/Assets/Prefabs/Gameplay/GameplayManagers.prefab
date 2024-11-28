@@ -126,7 +126,6 @@ MonoBehaviour:
     type: 2}
   _playerDeathEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
   _levelResultLevel: {fileID: 11400000, guid: 170f5efc596d3b4409ada658dcd2a66e, type: 2}
-  _syncTimeEvent: {fileID: 11400000, guid: 826bd2b463c2cac408323569e7ad029c, type: 2}
 --- !u!1 &4247121317061799972
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +174,7 @@ PlayableDirector:
   m_PlayableAsset: {fileID: 11400000, guid: d68bc4e836b534a479130c17c4938b7d, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
-  m_DirectorUpdateMode: 0
+  m_DirectorUpdateMode: 2
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: -5695733966106479653, guid: d68bc4e836b534a479130c17c4938b7d, type: 2}
@@ -201,6 +200,8 @@ PlayableDirector:
   - key: {fileID: -4301246575501675800, guid: d68bc4e836b534a479130c17c4938b7d, type: 2}
     value: {fileID: 0}
   - key: {fileID: 4605633886680212713, guid: d68bc4e836b534a479130c17c4938b7d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -4626324314927229077, guid: d68bc4e836b534a479130c17c4938b7d, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []

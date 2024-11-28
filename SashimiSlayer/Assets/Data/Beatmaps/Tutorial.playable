@@ -3989,22 +3989,6 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 2
         BeatsFromNoteStart: 8
---- !u!114 &5898022459129549792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc55fe93439f27649bcbfa48bd1c33f8, type: 3}
-  m_Name: BeatMapping/Move Target Marker
-  m_EditorClassIdentifier: 
-  m_Time: 0.1
-  EmitOnce: 0
-  EmitInEditor: 0
-  Position: {x: -5.4211974, y: -1.562726, z: 0}
 --- !u!114 &6409219612413131749
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4903,8 +4887,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips: []
   m_Markers:
-    m_Objects:
-    - {fileID: 5898022459129549792}
+    m_Objects: []
 --- !u!114 &7808081131289577438
 MonoBehaviour:
   m_ObjectHideFlags: 1

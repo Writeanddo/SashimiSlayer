@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
     type: 2}
+  _beatmapUnloadedEvent: {fileID: 11400000, guid: 10bdfd4824e94144ba44fe0616fcf818,
+    type: 2}
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
   _syncTimeEvent: {fileID: 11400000, guid: 826bd2b463c2cac408323569e7ad029c, type: 2}
 --- !u!4 &28433223
@@ -355,7 +357,6 @@ GameObject:
   m_Component:
   - component: {fileID: 245860101}
   - component: {fileID: 245860100}
-  - component: {fileID: 245860099}
   m_Layer: 0
   m_Name: FMODSetup
   m_TagString: Untagged
@@ -363,19 +364,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &245860099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 245860098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf0be847042411c48938e3c4f01e3f5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fmodStudioUpdatePeriodMs: 20
 --- !u!114 &245860100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,6 +1122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneTransitionUI: {fileID: 1475056209}
   _beatmapStartEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251, type: 2}
+  _beatmapUnloadEvent: {fileID: 11400000, guid: 10bdfd4824e94144ba44fe0616fcf818,
+    type: 2}
 --- !u!4 &1475056207
 Transform:
   m_ObjectHideFlags: 0
@@ -1871,6 +1861,8 @@ MonoBehaviour:
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
     type: 2}
   _onDrawDebugGuiEvent: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d,
+    type: 2}
+  _protagSetSwordPivot: {fileID: 11400000, guid: 55a449ae478ed574c96efac265420098,
     type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
