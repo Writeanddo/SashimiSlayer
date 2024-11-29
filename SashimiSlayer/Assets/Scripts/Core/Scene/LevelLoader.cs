@@ -95,7 +95,7 @@ public class LevelLoader : MonoBehaviour
             Debug.LogWarning("No previous beatmap level to load");
         }
 
-        LoadLevel(_previousBeatmapLevel);
+        LoadLevel(_previousBeatmapLevel).Forget();
     }
 
     private void LoadBanks(List<string> banks)

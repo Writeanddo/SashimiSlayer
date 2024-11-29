@@ -222,12 +222,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10fbe4dea8aa3bf42ad3cec8c0155f9c, type: 3}
---- !u!4 &539709446 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8231393650296616110, guid: 10fbe4dea8aa3bf42ad3cec8c0155f9c,
-    type: 3}
-  m_PrefabInstance: {fileID: 539709445}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &595073153
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,18 +365,15 @@ MonoBehaviour:
   _squishScale: 0.9
   _squishDuration: 0.15
   _squishTransform:
-  - transform: {fileID: 539709446}
-    beatInterval: 1
-    beatOffset: 1
   - transform: {fileID: 1493418430}
     beatInterval: 2
-    beatOffset: 0
+    beatOffset: 1
   - transform: {fileID: 1661208460}
     beatInterval: 2
-    beatOffset: 0
+    beatOffset: 1
   - transform: {fileID: 1151866108}
     beatInterval: 2
-    beatOffset: 0
+    beatOffset: 1
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
 --- !u!4 &1790762256
 Transform:

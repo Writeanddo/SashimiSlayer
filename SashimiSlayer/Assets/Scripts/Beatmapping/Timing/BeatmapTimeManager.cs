@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Events;
 using Events.Core;
@@ -128,7 +129,7 @@ namespace Beatmapping.Timing
 
         private void EndBeatmap()
         {
-            LevelLoader.Instance.LoadLevel(_levelResultLevel);
+            LevelLoader.Instance.LoadLevel(_levelResultLevel).Forget();
             _beatmapState = BeatmapState.Unloaded;
         }
 
@@ -261,9 +262,6 @@ namespace Beatmapping.Timing
 
             _sampleRate = sampleRate;
             _masterChannel = masterChannelGroup;
-
-            Debug.Log("Sample rate: " + _sampleRate);
-            Debug.Log("Buffer length: " + bufferLength);
         }
     }
 }

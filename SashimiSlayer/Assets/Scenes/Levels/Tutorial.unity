@@ -467,12 +467,9 @@ MonoBehaviour:
   _squishScale: 0.9
   _squishDuration: 0.2
   _squishTransform:
-  - transform: {fileID: 2051233121}
-    beatInterval: 1
-    beatOffset: 1
   - transform: {fileID: 37678080}
     beatInterval: 2
-    beatOffset: 0
+    beatOffset: 1
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
 --- !u!4 &1790762256
 Transform:
@@ -641,12 +638,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10fbe4dea8aa3bf42ad3cec8c0155f9c, type: 3}
---- !u!4 &2051233121 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8231393650296616110, guid: 10fbe4dea8aa3bf42ad3cec8c0155f9c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2051233120}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &2097404318 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4547836984562012649, guid: 07cc0a138bc6a624eb540942b522b906,

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a644fe32534d5d0438421d9e3c8d3841
+guid: 7e3f4e5945572374db6ace96a3235979
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 7
   spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 512
@@ -110,43 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: win_0
+      name: clock_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1557.5
-        height: 1541
-      alignment: 9
-      pivot: {x: 0.5583062, y: 0.1250772}
+        x: 57
+        y: 30
+        width: 375
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e95d7ca131bbf9459d53289175d9b8c
-      internalID: 1203151764
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: win_1
-      rect:
-        serializedVersion: 2
-        x: 1557
-        y: 0
-        width: 1558
-        height: 1541
-      alignment: 9
-      pivot: {x: 0.49823663, y: 0.0054520173}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3eeab282bdaf2e64280e170c10fd5381
-      internalID: 469988823
+      spriteID: 212216e50728fea48b02005664c12786
+      internalID: 1697240356
       vertices: []
       indices: 
       edges: []
@@ -162,8 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      win_0: 1203151764
-      win_1: 469988823
+      clock_0: 1697240356
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

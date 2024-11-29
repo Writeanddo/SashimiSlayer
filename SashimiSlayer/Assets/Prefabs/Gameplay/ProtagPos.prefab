@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7674640129088678999}
+  - component: {fileID: 1996259788244518860}
   m_Layer: 0
   m_Name: ProtagPos
   m_TagString: Untagged
@@ -32,6 +33,25 @@ Transform:
   - {fileID: 8231393650296616110}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1996259788244518860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2569690749598590937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _squishScale: 0.9
+  _squishDuration: 0.3
+  _squishTransform:
+  - transform: {fileID: 8231393650296616110}
+    beatInterval: 2
+    beatOffset: 0
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
 --- !u!1001 &2376259371349891300
 PrefabInstance:
   m_ObjectHideFlags: 0

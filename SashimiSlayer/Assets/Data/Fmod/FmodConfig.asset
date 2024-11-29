@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 355d4db3565421d4ba61aa7cb4acfd61, type: 3}
-  m_Name: EasyTimingWindow
+  m_Script: {fileID: 11500000, guid: 02469c334bf60934588fd96a54e06166, type: 3}
+  m_Name: FmodConfig
   m_EditorClassIdentifier: 
-  <PerfectWindowHalfWidth>k__BackingField: 0.05
-  <PassWindowHalfWidth>k__BackingField: 0.1
-  <LockoutWindowHalfWidth>k__BackingField: 0.25
+  DspBufferLength: 512
+  UpdatePeriodMs: 10

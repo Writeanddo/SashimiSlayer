@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class PanicReset : MonoBehaviour
@@ -9,7 +10,7 @@ public class PanicReset : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            LevelLoader.Instance.LoadLevel(_levelToLoad);
+            LevelLoader.Instance.LoadLevel(_levelToLoad).Forget();
         }
     }
 }

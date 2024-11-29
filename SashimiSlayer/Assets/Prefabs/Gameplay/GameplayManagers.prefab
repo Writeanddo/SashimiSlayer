@@ -125,7 +125,6 @@ MonoBehaviour:
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
     type: 2}
   _playerDeathEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
-  _levelResultLevel: {fileID: 11400000, guid: 170f5efc596d3b4409ada658dcd2a66e, type: 2}
 --- !u!1 &4247121317061799972
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,9 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908414219806441327}
   - component: {fileID: 4379481617919899903}
-  - component: {fileID: 3320804494410305085}
   - component: {fileID: 7973889014936138893}
-  - component: {fileID: 1783035853144230810}
   m_Layer: 0
   m_Name: BeatmapTimeline
   m_TagString: Untagged
@@ -205,18 +202,6 @@ PlayableDirector:
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
---- !u!114 &3320804494410305085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4247121317061799972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 418c34b43a547104e91600582a43679e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7973889014936138893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,18 +217,6 @@ MonoBehaviour:
   m_Events:
     m_Signals: []
     m_Events: []
---- !u!114 &1783035853144230810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4247121317061799972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2930038fd3cf453987525a2cb7c59bb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5460961408318255829
 GameObject:
   m_ObjectHideFlags: 0

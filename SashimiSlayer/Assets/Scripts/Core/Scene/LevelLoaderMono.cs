@@ -1,14 +1,18 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class LevelLoaderMono : MonoBehaviour
+namespace Core.Scene
 {
-    public void LoadLevel(GameLevelSO level)
+    public class LevelLoaderMono : MonoBehaviour
     {
-        LevelLoader.Instance.LoadLevel(level);
-    }
+        public void LoadLevel(GameLevelSO level)
+        {
+            LevelLoader.Instance.LoadLevel(level).Forget();
+        }
 
-    public void LoadLastBeatmapLevel()
-    {
-        LevelLoader.Instance.LoadLastBeatmapLevel();
+        public void LoadLastBeatmapLevel()
+        {
+            LevelLoader.Instance.LoadLastBeatmapLevel();
+        }
     }
 }
