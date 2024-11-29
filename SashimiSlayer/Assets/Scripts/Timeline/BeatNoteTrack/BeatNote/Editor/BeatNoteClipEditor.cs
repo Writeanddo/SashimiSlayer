@@ -20,7 +20,9 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
                 return;
             }
 
+            // Clip shouldn't start before the beatmap
             clip.start = Math.Max(clip.start, beatmapConfig.StartTime);
+
             SnapClipToBPM(clip, beatmapConfig);
 
             var clipAsset = clip.asset as BeatNoteClip;
@@ -29,11 +31,12 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
                 return;
             }
 
+            // Update the internal note data to match the clip
             clipAsset.Template.NoteData.NoteStartTime = clip.start - beatmapConfig.StartTime;
             clipAsset.Template.NoteData.NoteEndTime = clip.end - beatmapConfig.StartTime;
             clipAsset.Template.NoteData.NoteBeatCount = (uint)Math.Round(clip.duration * beatmapConfig.Bpm / 60);
 
-            // Ensure at least one position
+            // Ensure at least one position in the array
             if (clipAsset.Template.NoteData.Positions == null || clipAsset.Template.NoteData.Positions.Length == 0)
             {
                 clipAsset.Template.NoteData.Positions = new Vector2[1];

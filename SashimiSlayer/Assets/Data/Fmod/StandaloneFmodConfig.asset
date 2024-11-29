@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839b43ca0c5dc1f4fb52b414e078519b, type: 3}
-  m_Name: FmodCallbackHandler
+  m_Script: {fileID: 11500000, guid: 02469c334bf60934588fd96a54e06166, type: 3}
+  m_Name: StandaloneFmodConfig
   m_EditorClassIdentifier: 
-  _standaloneConfig: {fileID: 11400000, guid: 10daae50b5f520246915abfeff431129, type: 2}
-  _webGLConfig: {fileID: 11400000, guid: 03148fa8b68d30442aa53fd367f651d8, type: 2}
+  DspBufferLength: 512
+  UpdatePeriodMs: 10

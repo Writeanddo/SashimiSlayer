@@ -11,10 +11,20 @@ namespace Core.Audio
     public class FmodCallbackHandler : PlatformCallbackHandler
     {
         [SerializeField]
-        private FmodConfigSo _config;
+        private FmodConfigSo _standaloneConfig;
+
+        [SerializeField]
+        private FmodConfigSo _webGLConfig;
 
         public override void PreInitialize(FMOD.Studio.System studioSystem, Action<RESULT, string> reportResult)
         {
+            FmodConfigSo usedConfig = _standaloneConfig;
+
+            if (Application.platform == RuntimePlatform.WebGLPlayer && !Application.isEditor)
+            {
+                usedConfig = _webGLConfig;
+            }
+
             FMOD.System coreSystem;
             RESULT result = studioSystem.getCoreSystem(out coreSystem);
             reportResult(result, "studioSystem.getCoreSystem");
@@ -26,16 +36,16 @@ namespace Core.Audio
 
             // Buffer size
             coreSystem.getDSPBufferSize(out uint bufferLength, out int numBuffers);
-            coreSystem.setDSPBufferSize(_config.DspBufferLength, numBuffers);
+            coreSystem.setDSPBufferSize(usedConfig.DspBufferLength, numBuffers);
 
-            Debug.Log($"FMOD DSP buffer length set to {_config.DspBufferLength}");
+            Debug.Log($"FMOD DSP buffer length set to {usedConfig.DspBufferLength}");
 
             // Update period
             studioSystem.getAdvancedSettings(out ADVANCEDSETTINGS settings);
-            settings.studioupdateperiod = _config.UpdatePeriodMs;
+            settings.studioupdateperiod = usedConfig.UpdatePeriodMs;
             studioSystem.setAdvancedSettings(settings);
 
-            Debug.Log($"FMOD update period set to {_config.UpdatePeriodMs}");
+            Debug.Log($"FMOD update period set to {usedConfig.UpdatePeriodMs}");
         }
     }
 }

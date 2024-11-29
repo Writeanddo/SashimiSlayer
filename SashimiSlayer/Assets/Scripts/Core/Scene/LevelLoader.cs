@@ -56,24 +56,28 @@ public class LevelLoader : MonoBehaviour
         await _sceneTransitionUI.FadeOut();
         Debug.Log($"Killed {DOTween.KillAll()} tweens");
 
+        // Unload and load banks
+        // We block until everything is loaded to avoid latency and
+        // prevent issues when the same bank is loaded and unloaded
         if (CurrentLevel != null && CurrentLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {
-            UnloadBanks(CurrentLevel.FmodBanksToPreLoad);
+            await UnloadBanks(CurrentLevel.FmodBanksToPreLoad);
         }
 
         if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {
-            LoadBanks(gameLevel.FmodBanksToPreLoad);
+            await LoadBanks(gameLevel.FmodBanksToPreLoad);
         }
 
+        // Unload the current scene
         string sceneName = gameLevel.GameSceneName;
-
         if (SceneManager.GetSceneByName(_currentLevelSceneName).isLoaded)
         {
             await SceneManager.UnloadSceneAsync(_currentLevelSceneName);
-            _beatmapUnloadEvent?.Raise(CurrentLevel.Beatmap);
+            _beatmapUnloadEvent.Raise(CurrentLevel.Beatmap);
         }
 
+        // Load the new scene
         await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         _currentLevelSceneName = sceneName;
         CurrentLevel = gameLevel;
@@ -98,7 +102,7 @@ public class LevelLoader : MonoBehaviour
         LoadLevel(_previousBeatmapLevel).Forget();
     }
 
-    private void LoadBanks(List<string> banks)
+    private async UniTask LoadBanks(List<string> banks, bool waitForFinish = true)
     {
         foreach (string bankRef in banks)
         {
@@ -114,10 +118,14 @@ public class LevelLoader : MonoBehaviour
             }
         }
 
-        RuntimeManager.WaitForAllSampleLoading();
+        if (waitForFinish)
+        {
+            await UniTask.WaitUntil(() => RuntimeManager.HaveAllBanksLoaded);
+            await UniTask.WaitUntil(() => !RuntimeManager.AnySampleDataLoading());
+        }
     }
 
-    private void UnloadBanks(List<string> banks)
+    private async UniTask UnloadBanks(List<string> banks)
     {
         foreach (string bankRef in banks)
         {
