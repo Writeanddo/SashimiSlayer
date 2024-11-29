@@ -48,7 +48,7 @@ public class TimelineLoader : MonoBehaviour
     {
         if (_inProgress)
         {
-            _director.time = tickInfo.CurrentTimeLevel;
+            _director.time = tickInfo.CurrentLevelTime;
 
             if (_director.time >= _director.duration)
             {
