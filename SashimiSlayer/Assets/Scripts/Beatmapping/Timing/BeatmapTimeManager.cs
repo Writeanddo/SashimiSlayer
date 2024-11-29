@@ -192,11 +192,6 @@ namespace Beatmapping.Timing
 
             OnTick?.Invoke(CurrentTickInfo);
 
-            Debug.Log(CurrentTickInfo.CurrentLevelTime);
-
-            _beatmapSoundtrackInstance.getTimelinePosition(out int currentEventTime);
-            Debug.Log(currentEventTime);
-
             _previousDspTime = currentDspTime;
         }
 
