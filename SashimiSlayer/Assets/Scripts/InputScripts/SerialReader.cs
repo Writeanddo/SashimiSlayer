@@ -60,11 +60,11 @@ public class SerialReader : MonoBehaviour
     {
         try
         {
-            _serialPort.Close();
+            _serialPort?.Close();
         }
         catch (Exception e)
         {
-            Debug.Log(e);
+            Debug.LogError(e);
         }
 
         _onDrawDebugGUI.RemoveListener(DrawDebugGUI);

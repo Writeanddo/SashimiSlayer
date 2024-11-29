@@ -1,4 +1,5 @@
 using System.IO;
+using Timeline;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditor.Timeline;
@@ -63,6 +64,11 @@ public class BeatmapEditorWindow : EditorWindow
                 PlayerPrefs.SetFloat($"{level.Beatmap.BeatmapName}.highscore", 0);
             }
         }
+
+        if (GUILayout.Button("Refresh Timeline"))
+        {
+            TimelineEditor.Refresh(RefreshReason.ContentsModified);
+        }
     }
 
     private void OnBecameInvisible()
@@ -108,6 +114,7 @@ public class BeatmapEditorWindow : EditorWindow
             {
                 _currentEditingTimeline = timeline;
                 _currentEditingBeatmap = level.Beatmap;
+                BeatmapEditorUtil.SetBeatmapConfig(_currentEditingBeatmap);
                 return level.Beatmap;
             }
         }
@@ -123,7 +130,7 @@ public class BeatmapEditorWindow : EditorWindow
 
     private void ModeChanged(PlayModeStateChange param)
     {
-        if (param == PlayModeStateChange.ExitingPlayMode || param == PlayModeStateChange.EnteredEditMode)
+        if (param == PlayModeStateChange.EnteredEditMode)
         {
             Debug.Log($"Loading last edited scene {_lastEditedScenePath}");
             EditorSceneManager.OpenScene(_lastEditedScenePath, OpenSceneMode.Single);

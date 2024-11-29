@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c1cca6658a44c1242bbce41fb08ee3c1, type: 3}
+  m_Sprite: {fileID: 1697240356, guid: 7e3f4e5945572374db6ace96a3235979, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b02ff48bd848ba42835ad46fcae0520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _beatInteractionResultEvent: {fileID: 11400000, guid: bd78ca9baaf0c6b47bad4871ce4bcce3,
+  _noteInteractionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
     type: 2}
   _bar: {fileID: 2768810240632134535}
   _hitResultPrefab: {fileID: 3860755143095216995, guid: 565ae8583e005344585ac657f833ae8c,

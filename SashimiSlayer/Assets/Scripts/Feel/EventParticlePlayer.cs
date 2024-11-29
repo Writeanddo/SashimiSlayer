@@ -1,28 +1,34 @@
 using Events;
 using UnityEngine;
 
-public class EventParticlePlayer : MonoBehaviour
+namespace Feel
 {
-    [Header("Event")]
-
-    [SerializeField]
-    private SOEvent _event;
-
-    [SerializeField]
-    private ParticleSystem _particleSystem;
-
-    private void Awake()
+    /// <summary>
+    ///  Starts and steps a particle system in response to events.
+    /// </summary>
+    public class EventParticlePlayer : MonoBehaviour
     {
-        _event.AddListener(PlayParticle);
-    }
+        [Header("Event")]
 
-    private void OnDestroy()
-    {
-        _event.RemoveListener(PlayParticle);
-    }
+        [SerializeField]
+        private SOEvent _event;
 
-    private void PlayParticle()
-    {
-        _particleSystem.Play();
+        [SerializeField]
+        private ParticleSystem _particleSystem;
+
+        private void Awake()
+        {
+            _event.AddListener(PlayParticle);
+        }
+
+        private void OnDestroy()
+        {
+            _event.RemoveListener(PlayParticle);
+        }
+
+        private void PlayParticle()
+        {
+            _particleSystem.Play();
+        }
     }
 }

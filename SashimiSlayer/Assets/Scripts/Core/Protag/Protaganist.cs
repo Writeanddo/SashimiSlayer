@@ -1,6 +1,7 @@
 using Cinemachine;
 using Events;
 using Events.Core;
+using Feel;
 using UnityEngine;
 
 public class Protaganist : MonoBehaviour
@@ -12,6 +13,16 @@ public class Protaganist : MonoBehaviour
         public SharedTypes.BlockPoseStates RecentHitBlockPose;
         public Vector3 SwordPosition;
         public float SwordAngle;
+
+        public float DistanceToSwordPlane(Vector3 position)
+        {
+            Vector3 swordPlaneNormal = Quaternion.Euler(0, 0, SwordAngle) * Vector3.up;
+            Vector3 swordPlanePoint = SwordPosition;
+
+            Vector3 pointOnPlane = position - swordPlanePoint;
+            float distance = Mathf.Abs(Vector3.Dot(pointOnPlane, swordPlaneNormal));
+            return distance;
+        }
     }
 
     [Header("Emitting Events")]
@@ -54,6 +65,9 @@ public class Protaganist : MonoBehaviour
     [SerializeField]
     private VoidEvent _onDrawDebugGuiEvent;
 
+    [SerializeField]
+    private Vector2Event _protagSetSwordPivot;
+
     public static Protaganist Instance { get; private set; }
     public Vector3 SpritePosition { get; set; }
 
@@ -86,6 +100,7 @@ public class Protaganist : MonoBehaviour
         _inputProvider.OnBlockPoseChanged += OnPoseStateChanged;
         _beatmapLoadedEvent.AddListener(HandleBeatmapLoaded);
         _onDrawDebugGuiEvent.AddListener(HandleDrawDebugGUI);
+        _protagSetSwordPivot.AddListener(SetSwordPosition);
     }
 
     private void Update()
@@ -100,6 +115,7 @@ public class Protaganist : MonoBehaviour
         _inputProvider.OnBlockPoseChanged -= OnPoseStateChanged;
         _beatmapLoadedEvent.RemoveListener(HandleBeatmapLoaded);
         _onDrawDebugGuiEvent.RemoveListener(HandleDrawDebugGUI);
+        _protagSetSwordPivot.RemoveListener(SetSwordPosition);
     }
 
     private void HandleDrawDebugGUI()
@@ -155,19 +171,9 @@ public class Protaganist : MonoBehaviour
         }
     }
 
-    public void SetSwordPosition(Vector3 position)
+    public void SetSwordPosition(Vector2 position)
     {
         _currentSwordState.SwordPosition = position;
-    }
-
-    public float DistanceToSwordPlane(Vector3 position)
-    {
-        Vector3 swordPlaneNormal = Quaternion.Euler(0, 0, _currentSwordState.SwordAngle) * Vector3.up;
-        Vector3 swordPlanePoint = _currentSwordState.SwordPosition;
-
-        Vector3 pointOnPlane = position - swordPlanePoint;
-        float distance = Mathf.Abs(Vector3.Dot(pointOnPlane, swordPlaneNormal));
-        return distance;
     }
 
     public void TakeDamage(float damage)
@@ -205,5 +211,10 @@ public class Protaganist : MonoBehaviour
     {
         _currentSwordState.SwordPosition = position;
         _swordStateChangeEvent.Raise(_currentSwordState);
+    }
+
+    public float DistanceToSwordPlane(Vector2 pos)
+    {
+        return _currentSwordState.DistanceToSwordPlane(pos);
     }
 }

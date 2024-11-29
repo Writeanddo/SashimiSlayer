@@ -1,14 +1,8 @@
-using System;
+using Beatmapping;
+using Beatmapping.Notes;
 
 public static class SharedTypes
 {
-    public enum BeatInteractionResultType
-    {
-        Successful,
-        Failure
-    }
-
-    [Flags]
     public enum BlockPoseStates
     {
         TopPose = 1 << 0,
@@ -24,12 +18,13 @@ public static class SharedTypes
 
     public const int NumPoses = 3;
 
-    public struct BeatInteractionResult
+    /// <summary>
+    ///     The final result of a note interaction; either a success when it occurs, or a failure after the timing window ends
+    /// </summary>
+    public struct InteractionFinalResult
     {
-        public BnHActionCore.InteractionType InteractionType;
-        public BeatInteractionResultType Result;
-        public BnHActionSo Action;
-        public double TimingOffset;
-        public double NormalizedTimingOffset;
+        public TimingWindow.TimingResult TimingResult;
+        public NoteInteraction.InteractionType InteractionType;
+        public bool Successful;
     }
 }

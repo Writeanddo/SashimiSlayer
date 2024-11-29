@@ -1,3 +1,4 @@
+using Beatmapping.Notes;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,9 +24,9 @@ public class TimingBarTick : MonoBehaviour
         _canvasGroup.DOFade(0, _fadeDuration).SetEase(Ease.OutQuint).OnComplete(() => Destroy(gameObject));
     }
 
-    public void SetVisuals(BnHActionCore.InteractionType resultInteractionType)
+    public void SetVisuals(NoteInteraction.InteractionType resultInteractionType)
     {
-        _blockImage.enabled = resultInteractionType == BnHActionCore.InteractionType.IncomingAttack;
-        _sliceImage.enabled = resultInteractionType == BnHActionCore.InteractionType.Vulnerable;
+        _blockImage.enabled = resultInteractionType == NoteInteraction.InteractionType.IncomingAttack;
+        _sliceImage.enabled = resultInteractionType == NoteInteraction.InteractionType.TargetToHit;
     }
 }

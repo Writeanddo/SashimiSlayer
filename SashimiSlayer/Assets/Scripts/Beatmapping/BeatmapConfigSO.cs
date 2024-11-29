@@ -1,4 +1,6 @@
 using System;
+using Beatmapping.Timing;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -28,10 +30,16 @@ public class BeatmapConfigSo : ScriptableObject
     [field: SerializeField]
     public TimelineAsset BeatmapTimeline { get; private set; }
 
+    [field: SerializeField]
+    public EventReference BeatmapSoundtrackEvent { get; private set; }
+
     [field: Header("Gameplay Data")]
 
     [field: SerializeField]
     public int PlayerMaxHealth { get; private set; }
+
+    [field: SerializeField]
+    public TimingWindowSO TimingWindowSO { get; private set; }
 
     /// <summary>
     ///     Take a time and snap it to the nearest subdivision

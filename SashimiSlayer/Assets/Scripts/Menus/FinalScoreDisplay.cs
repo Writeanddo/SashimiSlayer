@@ -1,3 +1,4 @@
+using Beatmapping;
 using DG.Tweening;
 using Events;
 using TMPro;
