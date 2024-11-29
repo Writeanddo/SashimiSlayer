@@ -28,9 +28,9 @@ namespace Beatmapping.Timing
             public double CurrentBeatmapTime;
 
             /// <summary>
-            ///     DSP time when the beatmap was loaded
+            ///     DSP time in level timespace (since the level began)
             /// </summary>
-            public double TimeSinceBeatmapLoad;
+            public double CurrentTimeLevel;
 
             public double DeltaTime;
 
@@ -67,8 +67,14 @@ namespace Beatmapping.Timing
 
         private BeatmapConfigSo _currentBeatmap;
 
+        /// <summary>
+        ///     Global dsp time of previous tick
+        /// </summary>
         private double _previousDspTime;
 
+        /// <summary>
+        ///     Raw dsp time of when the beatmap starts
+        /// </summary>
         private double _beatmapDspStartTime;
 
         private double _timeIntervalPerBeat;
@@ -175,7 +181,7 @@ namespace Beatmapping.Timing
             CurrentTickInfo = new TickInfo
             {
                 CurrentBeatmapTime = currentBeatmapTime,
-                TimeSinceBeatmapLoad = currentBeatmapTime + _currentBeatmap.StartTime,
+                CurrentTimeLevel = currentBeatmapTime + _currentBeatmap.StartTime,
                 DeltaTime = dspDeltaTime,
                 CurrentBeatIndex = currentBeatIndex,
                 CurrentSubdivIndex = currentSubdivIndex,

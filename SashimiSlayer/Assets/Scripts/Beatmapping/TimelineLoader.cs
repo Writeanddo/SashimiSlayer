@@ -48,7 +48,7 @@ public class TimelineLoader : MonoBehaviour
     {
         if (_inProgress)
         {
-            _director.time = tickInfo.TimeSinceBeatmapLoad;
+            _director.time = tickInfo.CurrentTimeLevel;
 
             if (_director.time >= _director.duration)
             {

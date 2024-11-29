@@ -165,8 +165,10 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
         private void DrawBeatGuides(BeatmapConfigSo beatmap, TimelineClip clip, ClipBackgroundRegion region)
         {
             // region.startTime is the time of the visible area RELATIVE to the start of the ENTIRE clip
-            double drawnAreaStartTime = clip.start + region.startTime;
-            double drawnAreaEndTime = clip.start + region.endTime;
+            // Calculate times in beatmap timespace
+            double clipStartTime = clip.start - beatmap.StartTime;
+            double drawnAreaStartTime = clipStartTime + region.startTime;
+            double drawnAreaEndTime = clipStartTime + region.endTime;
 
             // Draw lines on every measure
             var subdivisionInterval = (float)(60 /
@@ -176,17 +178,19 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
             int subdivsPerMeasure = beatmap.BeatsPerMeasure *
                                     beatmap.Subdivisions;
 
-            // Find the first subdivision, and snap it to the nearest measure
+            // Find the enclosing bounds, exclusive
             var startSubdiv = (int)Math.Ceiling(drawnAreaStartTime / subdivisionInterval);
-
             var endSubdiv = (int)Math.Floor(drawnAreaEndTime / subdivisionInterval);
-
-            double startOffset = beatmap.StartTime % (subdivisionInterval * subdivsPerMeasure);
 
             for (int i = startSubdiv; i <= endSubdiv; i++)
             {
-                var beatTime = (float)(i * subdivisionInterval + startOffset - clip.start);
-                float normalizedBeatTime = Mathf.InverseLerp((float)region.startTime, (float)region.endTime, beatTime);
+                // time to place the marking, in beatmap timespace
+                float markingTime = i * subdivisionInterval;
+                // time to place the marking, drawn region timespace
+                float markingRegionTime = markingTime - (float)drawnAreaStartTime;
+
+                float normalizedBeatTime =
+                    Mathf.InverseLerp((float)region.startTime, (float)region.endTime, markingRegionTime);
 
                 Rect linePos = region.position;
                 linePos.x += normalizedBeatTime * linePos.width;

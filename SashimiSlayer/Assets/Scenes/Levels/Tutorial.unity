@@ -471,6 +471,7 @@ MonoBehaviour:
     beatInterval: 2
     beatOffset: 1
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _delay: 0.04
 --- !u!4 &1790762256
 Transform:
   m_ObjectHideFlags: 0
