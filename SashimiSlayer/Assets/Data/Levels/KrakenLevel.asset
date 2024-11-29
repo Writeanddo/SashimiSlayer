@@ -20,5 +20,5 @@ MonoBehaviour:
   <LevelType>k__BackingField: 1
   <Thumbnail>k__BackingField: {fileID: 21300000, guid: 6292ea6dd01b47c4f813cddbd0241949,
     type: 3}
-  <PreloadMusic>k__BackingField: {fileID: 8300000, guid: 354456673a2b3494d8fee5a0a6ea4866,
-    type: 3}
+  <FmodBanksToPreLoad>k__BackingField:
+  - Kraken

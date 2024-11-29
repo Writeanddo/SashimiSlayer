@@ -27,7 +27,7 @@ public class BeatNoteService : MonoBehaviour
 
     private void OnEnable()
     {
-        var timingService = TimingService.Instance;
+        var timingService = BeatmapTimeManager.Instance;
         if (timingService == null)
         {
             Debug.LogWarning("Timing service not found");
@@ -38,7 +38,7 @@ public class BeatNoteService : MonoBehaviour
 
     private void OnDisable()
     {
-        TimingService.Instance.OnTick -= TimeManager_OnTick;
+        BeatmapTimeManager.Instance.OnTick -= TimeManager_OnTick;
     }
 
     private void OnDestroy()
@@ -60,7 +60,7 @@ public class BeatNoteService : MonoBehaviour
         }
     }
 
-    private void TimeManager_OnTick(TimingService.TickInfo tickInfo)
+    private void TimeManager_OnTick(BeatmapTimeManager.TickInfo tickInfo)
     {
         TickNotes(tickInfo);
     }
@@ -129,7 +129,7 @@ public class BeatNoteService : MonoBehaviour
         return note;
     }
 
-    private void TickNotes(TimingService.TickInfo tickInfo)
+    private void TickNotes(BeatmapTimeManager.TickInfo tickInfo)
     {
         BeatNote[] hits = _activeBeatNotes.ToArray();
         foreach (BeatNote hit in hits)

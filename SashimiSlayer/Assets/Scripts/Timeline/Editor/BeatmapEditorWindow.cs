@@ -64,6 +64,11 @@ public class BeatmapEditorWindow : EditorWindow
                 PlayerPrefs.SetFloat($"{level.Beatmap.BeatmapName}.highscore", 0);
             }
         }
+
+        if (GUILayout.Button("Refresh Timeline"))
+        {
+            TimelineEditor.Refresh(RefreshReason.ContentsModified);
+        }
     }
 
     private void OnBecameInvisible()

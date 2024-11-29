@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Game Level", menuName = "Level", order = 51)]
@@ -32,5 +34,6 @@ public class GameLevelSO : ScriptableObject
     public Sprite Thumbnail { get; private set; }
 
     [field: SerializeField]
-    public AudioClip PreloadMusic { get; private set; }
+    [field: BankRef]
+    public List<string> FmodBanksToPreLoad { get; private set; }
 }

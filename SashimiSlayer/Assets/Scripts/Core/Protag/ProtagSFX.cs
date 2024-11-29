@@ -1,8 +1,12 @@
 using Events.Core;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class ProtagSFX : MonoBehaviour
 {
+    private const string BlockPoseParamName = "BlockPose";
+
     [Header("Listening Events")]
 
     [SerializeField]
@@ -14,10 +18,10 @@ public class ProtagSFX : MonoBehaviour
     [Header("SFX")]
 
     [SerializeField]
-    private AudioClip[] _successfulBlockSfx;
+    private EventReference _successfulBlockSfx;
 
     [SerializeField]
-    private AudioClip[] _tryBlockSfx;
+    private EventReference _tryBlockSfx;
 
     private void Awake()
     {
@@ -41,21 +45,14 @@ public class ProtagSFX : MonoBehaviour
         BlockPoseSfx(_successfulBlockSfx, swordState.BlockPose);
     }
 
-    private void BlockPoseSfx(AudioClip[] clips, SharedTypes.BlockPoseStates blockPose)
+    private void BlockPoseSfx(EventReference sfx, SharedTypes.BlockPoseStates blockPose)
     {
-        if ((blockPose | SharedTypes.BlockPoseStates.BotPose) == blockPose)
-        {
-            SFXPlayer.Instance.PlaySFX(clips[2]);
-        }
+        EventInstance instance = RuntimeManager.CreateInstance(sfx);
 
-        if ((blockPose | SharedTypes.BlockPoseStates.MidPose) == blockPose)
-        {
-            SFXPlayer.Instance.PlaySFX(clips[1]);
-        }
+        instance.setParameterByName(BlockPoseParamName, (int)blockPose);
 
-        if ((blockPose | SharedTypes.BlockPoseStates.TopPose) == blockPose)
-        {
-            SFXPlayer.Instance.PlaySFX(clips[0]);
-        }
+        instance.start();
+
+        instance.release();
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using Beatmapping.Timing;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -28,6 +29,9 @@ public class BeatmapConfigSo : ScriptableObject
 
     [field: SerializeField]
     public TimelineAsset BeatmapTimeline { get; private set; }
+
+    [field: SerializeField]
+    public EventReference BeatmapSoundtrackEvent { get; private set; }
 
     [field: Header("Gameplay Data")]
 

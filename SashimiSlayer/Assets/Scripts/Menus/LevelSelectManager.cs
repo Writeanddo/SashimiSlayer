@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class LevelSelectManager : MonoBehaviour
@@ -38,6 +39,6 @@ public class LevelSelectManager : MonoBehaviour
         }
 
         _loaded = true;
-        LevelLoader.Instance.LoadLevel(level);
+        LevelLoader.Instance.LoadLevel(level).Forget();
     }
 }

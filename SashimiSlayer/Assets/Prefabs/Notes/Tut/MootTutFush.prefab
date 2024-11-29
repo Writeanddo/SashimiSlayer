@@ -5247,9 +5247,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
-  _spawnSound: {fileID: 8300000, guid: 3743c12ec7cbc924489a0cf4188d753d, type: 3}
-  _startAttackSound: {fileID: 0}
-  _startVulnerableSound: {fileID: 0}
+  _spawnSound:
+    Guid:
+      Data1: 1698058413
+      Data2: 1242676699
+      Data3: -1081539403
+      Data4: -1326794453
+    Path: event:/TutorialLevel/MootFish/MootFishSpawn
+  _startAttackSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  _startVulnerableSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &6908434738280169107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5262,7 +5280,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed851c6a66c1a64fafd1212d956273a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 09f62feb1d070064ba923cc2a171643a, type: 3}
+  _clip:
+    Guid:
+      Data1: -609372783
+      Data2: 1245136501
+      Data3: 435903654
+      Data4: 520027991
+    Path: event:/TutorialLevel/MootFish/MootFishAttack
 --- !u!1 &7663465407832598782
 GameObject:
   m_ObjectHideFlags: 0

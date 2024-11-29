@@ -1,3 +1,4 @@
+using Beatmapping.Timing;
 using Events;
 using Events.Core;
 using UnityEngine;
@@ -33,12 +34,12 @@ public class BossService : MonoBehaviour
 
     private void OnEnable()
     {
-        TimingService.Instance.OnTick += TimeManager_OnTick;
+        BeatmapTimeManager.Instance.OnTick += TimeManager_OnTick;
     }
 
     private void OnDisable()
     {
-        TimingService.Instance.OnTick -= TimeManager_OnTick;
+        BeatmapTimeManager.Instance.OnTick -= TimeManager_OnTick;
     }
 
     private void OnDestroy()
@@ -46,7 +47,7 @@ public class BossService : MonoBehaviour
         _startBeatmapEvent.RemoveListener(HandleStartBeatmap);
     }
 
-    private void TimeManager_OnTick(TimingService.TickInfo tickInfo)
+    private void TimeManager_OnTick(BeatmapTimeManager.TickInfo tickInfo)
     {
         var t = (float)tickInfo.CurrentBeatmapTime;
         _bossHealthEvent.Raise(t);

@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Events.Core;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,11 +16,14 @@ public class LevelLoader : MonoBehaviour
     [SerializeField]
     private BeatmapEvent _beatmapStartEvent;
 
+    [SerializeField]
+    private BeatmapEvent _beatmapUnloadEvent;
+
     public static LevelLoader Instance { get; private set; }
 
     public GameLevelSO CurrentLevel { get; private set; }
 
-    private string _currentLevel = string.Empty;
+    private string _currentLevelSceneName = string.Empty;
     private GameLevelSO _previousBeatmapLevel;
 
     private void Awake()
@@ -34,7 +39,7 @@ public class LevelLoader : MonoBehaviour
 #if UNITY_EDITOR
         if (SceneManager.sceneCount > 1)
         {
-            _currentLevel = SceneManager.GetSceneAt(1).name;
+            _currentLevelSceneName = SceneManager.GetSceneAt(1).name;
         }
 #endif
     }
@@ -51,29 +56,26 @@ public class LevelLoader : MonoBehaviour
         await _sceneTransitionUI.FadeOut();
         Debug.Log($"Killed {DOTween.KillAll()} tweens");
 
-        if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
-        {
-            gameLevel.PreloadMusic.LoadAudioData();
-            while (gameLevel.PreloadMusic.loadState != AudioDataLoadState.Loaded)
-            {
-                await UniTask.Yield();
-            }
-        }
-
         if (CurrentLevel != null && CurrentLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {
-            CurrentLevel.PreloadMusic.UnloadAudioData();
+            UnloadBanks(CurrentLevel.FmodBanksToPreLoad);
+        }
+
+        if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
+        {
+            LoadBanks(gameLevel.FmodBanksToPreLoad);
         }
 
         string sceneName = gameLevel.GameSceneName;
 
-        if (SceneManager.GetSceneByName(_currentLevel).isLoaded)
+        if (SceneManager.GetSceneByName(_currentLevelSceneName).isLoaded)
         {
-            await SceneManager.UnloadSceneAsync(_currentLevel);
+            await SceneManager.UnloadSceneAsync(_currentLevelSceneName);
+            _beatmapUnloadEvent?.Raise(CurrentLevel.Beatmap);
         }
 
         await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        _currentLevel = sceneName;
+        _currentLevelSceneName = sceneName;
         CurrentLevel = gameLevel;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
 
@@ -93,6 +95,34 @@ public class LevelLoader : MonoBehaviour
             Debug.LogWarning("No previous beatmap level to load");
         }
 
-        LoadLevel(_previousBeatmapLevel);
+        LoadLevel(_previousBeatmapLevel).Forget();
+    }
+
+    private void LoadBanks(List<string> banks)
+    {
+        foreach (string bankRef in banks)
+        {
+            try
+            {
+                Debug.Log($"Loading bank {bankRef}");
+                // Preload sample data to avoid latency on play
+                RuntimeManager.LoadBank(bankRef, true);
+            }
+            catch (BankLoadException e)
+            {
+                RuntimeUtils.DebugLogException(e);
+            }
+        }
+
+        RuntimeManager.WaitForAllSampleLoading();
+    }
+
+    private void UnloadBanks(List<string> banks)
+    {
+        foreach (string bankRef in banks)
+        {
+            Debug.Log($"Unloading bank {bankRef}");
+            RuntimeManager.UnloadBank(bankRef);
+        }
     }
 }

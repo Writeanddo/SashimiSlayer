@@ -1,15 +1,16 @@
 using Events;
+using FMODUnity;
 using UnityEngine;
 
 namespace Feel
 {
     /// <summary>
-    ///  Plays an audio clip in response to an event.
+    ///     Plays a oneshot audio clip in response to an event.
     /// </summary>
     public class EventAudioPlayer : MonoBehaviour
     {
         [SerializeField]
-        private AudioClip _clip;
+        private EventReference _sfx;
 
         [SerializeField]
         private SOEvent _event;
@@ -26,7 +27,7 @@ namespace Feel
 
         private void PlayAudio()
         {
-            SFXPlayer.Instance.PlaySFX(_clip);
+            RuntimeManager.PlayOneShot(_sfx);
         }
     }
 }
