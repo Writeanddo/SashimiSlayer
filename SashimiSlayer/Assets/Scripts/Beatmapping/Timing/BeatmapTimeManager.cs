@@ -8,6 +8,7 @@ using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace Beatmapping.Timing
 {
@@ -30,7 +31,7 @@ namespace Beatmapping.Timing
             /// <summary>
             ///     DSP time in level timespace (since the level began)
             /// </summary>
-            public double CurrentTimeLevel;
+            public double CurrentLevelTime;
 
             public double DeltaTime;
 
@@ -181,7 +182,7 @@ namespace Beatmapping.Timing
             CurrentTickInfo = new TickInfo
             {
                 CurrentBeatmapTime = currentBeatmapTime,
-                CurrentTimeLevel = currentBeatmapTime + _currentBeatmap.StartTime,
+                CurrentLevelTime = currentBeatmapTime + _currentBeatmap.StartTime,
                 DeltaTime = dspDeltaTime,
                 CurrentBeatIndex = currentBeatIndex,
                 CurrentSubdivIndex = currentSubdivIndex,
@@ -190,6 +191,11 @@ namespace Beatmapping.Timing
             };
 
             OnTick?.Invoke(CurrentTickInfo);
+
+            Debug.Log(CurrentTickInfo.CurrentLevelTime);
+
+            _beatmapSoundtrackInstance.getTimelinePosition(out int currentEventTime);
+            Debug.Log(currentEventTime);
 
             _previousDspTime = currentDspTime;
         }
@@ -233,6 +239,11 @@ namespace Beatmapping.Timing
 
         private void HandleBeatmapUnloaded(BeatmapConfigSo beatmap)
         {
+            if (_beatmapSoundtrackInstance.isValid())
+            {
+                _beatmapSoundtrackInstance.stop(STOP_MODE.ALLOWFADEOUT);
+            }
+
             _currentBeatmap = null;
         }
 

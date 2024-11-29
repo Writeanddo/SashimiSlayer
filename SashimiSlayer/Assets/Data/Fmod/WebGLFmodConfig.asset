@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02469c334bf60934588fd96a54e06166, type: 3}
-  m_Name: FmodConfig
+  m_Name: WebGLFmodConfig
   m_EditorClassIdentifier: 
-  DspBufferLength: 512
+  DspBufferLength: 1024
   UpdatePeriodMs: 10
