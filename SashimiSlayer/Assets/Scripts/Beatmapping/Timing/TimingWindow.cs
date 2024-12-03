@@ -54,7 +54,7 @@ namespace Beatmapping
             result.TimeDelta = delta;
             result.Direction = delta < 0 ? Direction.Early : Direction.Late;
 
-            double passWindowHalfWidth = _windowHalfWidths[^1];
+            double passWindowHalfWidth = _windowHalfWidths[^2];
             result.NormalizedTimeDelta = (float)(delta / passWindowHalfWidth);
 
             // Calculating which scoring window the timing falls into

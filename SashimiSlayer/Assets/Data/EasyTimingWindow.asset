@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PerfectWindowHalfWidth>k__BackingField: 0.04
   <PassWindowHalfWidth>k__BackingField: 0.08
-  <LockoutWindowHalfWidth>k__BackingField: 0.15
+  <LockoutWindowHalfWidth>k__BackingField: 0.2
