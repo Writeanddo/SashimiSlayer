@@ -129,12 +129,11 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
             var vertMargin = 5;
             linePos.y = vertMargin;
 
-            var poseChecker = 1;
             float heightOffsetPerTick = (region.position.height - vertMargin * 2) / (posePositionCount - 1);
 
             for (var i = 0; i < posePositionCount; i++)
             {
-                if ((pose & poseChecker) != 0)
+                if (i == pose)
                 {
                     EditorGUI.DrawRect(linePos, Color.cyan);
                 }
@@ -144,7 +143,6 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
                 }
 
                 linePos.y += heightOffsetPerTick;
-                poseChecker <<= 1;
             }
         }
 

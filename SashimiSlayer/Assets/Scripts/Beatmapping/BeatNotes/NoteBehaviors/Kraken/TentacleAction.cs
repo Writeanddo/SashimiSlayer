@@ -1,9 +1,9 @@
 using Beatmapping.Notes;
 using UnityEngine;
 
-namespace Beatmapping.BeatNotes.BnH.Kraken
+namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
 {
-    public class TentacleAction : MonoBehaviour
+    public class TentacleAction : BeatNoteListener
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -20,47 +20,65 @@ namespace Beatmapping.BeatNotes.BnH.Kraken
         [SerializeField]
         private ParticleSystem[] _damagedParticles;
 
-        private void Awake()
+        private void BeatNote_OnTick(BeatNote.NoteTickInfo tickinfo)
         {
-            _beatNote.OnSpawn += HandleSpawned;
-            _beatNote.OnDamagedByProtag += HandleOnDamaged;
+            BeatNote.NoteTimeSegment segment = tickinfo.NoteSegment;
+            if (segment.Type != BeatNote.TimeSegmentType.Interaction)
+            {
+                return;
+            }
 
-            _beatNote.OnTickWaitingForAttack += HandleTickWaitingForAttack;
+            NoteInteraction interaction = segment.Interaction;
 
-            _beatNote.OnNoteEnded += HandleNoteEnded;
-            _beatNote.OnTransitionToLeaving += HandleTransitionToLeaving;
+            if (interaction.Type == NoteInteraction.InteractionType.IncomingAttack)
+            {
+                IncomingAttackVisuals(tickinfo.CurrentBeatmapTime, interaction);
+            }
         }
 
-        private void HandleTransitionToLeaving(BeatNote.NoteTiming noteTiming)
+        private void BeatNote_OnEnd()
         {
             _animator.Play("TentacleLeave");
             _sprite.color = new Color(1, 1, 1, 0.7f);
         }
 
-        private void HandleNoteEnded(BeatNote.NoteTiming noteTiming)
+        private void IncomingAttackVisuals(double currentBeatmapTime, NoteInteraction noteInteraction)
         {
-            _animator.gameObject.SetActive(false);
-        }
-
-        private void HandleTickWaitingForAttack(BeatNote.NoteTiming noteTiming, NoteInteraction noteInteraction)
-        {
-            if (noteTiming.CurrentBeatmapTime + _attackAnimationWindup >= noteInteraction.TargetTime)
+            if (currentBeatmapTime + _attackAnimationWindup >= noteInteraction.TargetTime)
             {
                 _animator.Play("TentacleAttack");
             }
         }
 
-        private void HandleOnDamaged()
+        private void HandleOnSliced(int interactionIndex, NoteInteraction.InteractionAttemptResult result)
         {
             foreach (ParticleSystem particle in _damagedParticles)
             {
                 particle.Play();
             }
+
+            _animator.gameObject.SetActive(false);
         }
 
         private void HandleSpawned()
         {
             _animator.Play("TentacleSpawn");
+        }
+
+        public override void OnNoteInitialized(BeatNote beatNote)
+        {
+            _beatNote.OnNoteStart += HandleSpawned;
+            _beatNote.OnSlicedByProtag += HandleOnSliced;
+            _beatNote.OnTick += BeatNote_OnTick;
+            _beatNote.OnNoteEnd += BeatNote_OnEnd;
+        }
+
+        public override void OnNoteCleanedUp(BeatNote beatNote)
+        {
+            _beatNote.OnNoteStart -= HandleSpawned;
+            _beatNote.OnSlicedByProtag -= HandleOnSliced;
+            _beatNote.OnTick -= BeatNote_OnTick;
+            _beatNote.OnNoteEnd -= BeatNote_OnEnd;
         }
     }
 }

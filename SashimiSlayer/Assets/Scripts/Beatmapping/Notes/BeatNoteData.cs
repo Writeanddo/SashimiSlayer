@@ -48,8 +48,7 @@ namespace Beatmapping.Notes
         {
             var autoVulnerableInteraction = new NoteInteractionData
             {
-                InteractionType = NoteInteraction.InteractionType.TargetToHit,
-                Flags = NoteInteraction.InteractionFlags.EndNoteOnHitByProtag
+                InteractionType = NoteInteraction.InteractionType.TargetToHit
             };
             return new SequencedNoteInteraction
             {

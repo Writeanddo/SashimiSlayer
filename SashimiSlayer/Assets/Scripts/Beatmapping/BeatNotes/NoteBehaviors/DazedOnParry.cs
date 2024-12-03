@@ -2,15 +2,18 @@ using Beatmapping.Notes;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Beatmapping.BeatNotes.BnH
+namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class DazedOnParry : MonoBehaviour
+    public class DazedOnParry : BeatNoteListener
     {
         [SerializeField]
         private BeatNote _beatNote;
 
         [SerializeField]
         private Transform _bodyTransform;
+
+        [SerializeField]
+        private int _interactionIndex;
 
         [Header("Positions")]
 
@@ -41,28 +44,42 @@ namespace Beatmapping.BeatNotes.BnH
 
         private bool _enteredDazed;
 
-        private void Awake()
+        private void BeatNote_OnSlicedByProtag(int interactionIndex,
+            NoteInteraction.InteractionAttemptResult result)
         {
-            _beatNote.OnTickWaitingForVulnerable += HandleTickWaitingForVulnerable;
+            if (interactionIndex != _interactionIndex)
+            {
+                return;
+            }
 
-            _beatNote.OnTickInVulnerable += HandleTickWaitingForVulnerable;
-
-            _beatNote.OnTickWaitingToLeave += HandleTickWaitingToLeave;
-
-            _beatNote.OnNoteEnded += HandleNoteEnded;
+            _sprite.enabled = false;
+            foreach (ParticleSystem particle in _dieParticles)
+            {
+                particle.Play();
+            }
         }
 
-        private void Start()
+        private void BeatNote_OnTick(BeatNote.NoteTickInfo tickinfo)
         {
-            _vulnerablePos = _beatNote.Positions[_vulnerablePosIndex];
-            _startPos = _beatNote.Positions[_startPosIndex];
-            _targetPos = Protaganist.Instance.SpritePosition;
+            BeatNote.NoteTimeSegment segment = tickinfo.NoteSegment;
+
+            if (tickinfo.InteractionIndex != _interactionIndex)
+            {
+                return;
+            }
+
+            NoteInteraction interaction = segment.Interaction;
+
+            if (interaction.Type == NoteInteraction.InteractionType.TargetToHit)
+            {
+                TargetToHitVisuals((float)tickinfo.NormalizedSegmentTime, (float)tickinfo.CurrentBeatmapTime);
+            }
         }
 
-        private void HandleTickWaitingToLeave(BeatNote.NoteTiming noteTiming)
+        /*private void HandleTickWaitingToLeave(BeatNote.NoteTickInfo noteTickInfo)
         {
             // Lerp from the vulnerable position to the start position y (basically falling back into the sea)
-            var normalizedTime = (float)noteTiming.NormalizedLeaveWaitTime;
+            var normalizedTime = (float)noteTickInfo.NormalizedLeaveWaitTime;
 
             float t = _moveCurve.Evaluate(1 - normalizedTime);
 
@@ -75,9 +92,9 @@ namespace Beatmapping.BeatNotes.BnH
             _sprite.transform.rotation = Quaternion.Euler(0, 0, 90 * (1 - t));
             _sprite.color = new Color(1, 1, 1, 0.5f);
         }
+        */
 
-        private void HandleTickWaitingForVulnerable(BeatNote.NoteTiming noteTiming,
-            NoteInteraction noteInteraction)
+        private void TargetToHitVisuals(float normalizedTime, float beatmapTime)
         {
             if (!_enteredDazed)
             {
@@ -86,7 +103,6 @@ namespace Beatmapping.BeatNotes.BnH
             }
 
             // Lerp from target pos to vulnerable pos
-            var normalizedTime = (float)noteTiming.NormalizedInteractionWaitTime;
 
             float t = _moveCurve.Evaluate(normalizedTime);
 
@@ -96,16 +112,27 @@ namespace Beatmapping.BeatNotes.BnH
                 Mathf.Lerp(_targetPos.y, _vulnerablePos.y, t)
             );
 
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, 360f * (float)noteTiming.CurrentBeatmapTime);
+            _sprite.transform.rotation = Quaternion.Euler(0, 0, 360f * beatmapTime);
         }
 
-        private void HandleNoteEnded(BeatNote.NoteTiming noteTiming)
+        public override void OnNoteInitialized(BeatNote beatNote)
         {
-            _sprite.enabled = false;
-            foreach (ParticleSystem particle in _dieParticles)
+            _vulnerablePos = _beatNote.Positions[_vulnerablePosIndex];
+            _startPos = _beatNote.Positions[_startPosIndex];
+
+            if (Protaganist.Instance != null)
             {
-                particle.Play();
+                _targetPos = Protaganist.Instance.SpritePosition;
             }
+
+            _beatNote.OnTick += BeatNote_OnTick;
+            _beatNote.OnSlicedByProtag += BeatNote_OnSlicedByProtag;
+        }
+
+        public override void OnNoteCleanedUp(BeatNote beatNote)
+        {
+            _beatNote.OnTick -= BeatNote_OnTick;
+            _beatNote.OnSlicedByProtag -= BeatNote_OnSlicedByProtag;
         }
     }
 }

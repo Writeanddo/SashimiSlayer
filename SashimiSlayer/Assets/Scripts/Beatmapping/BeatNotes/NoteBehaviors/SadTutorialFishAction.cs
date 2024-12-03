@@ -1,9 +1,9 @@
 using Beatmapping.Notes;
 using UnityEngine;
 
-namespace Beatmapping.BeatNotes.BnH
+namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class SadTutorialFishAction : MonoBehaviour
+    public class SadTutorialFishAction : BeatNoteListener
     {
         [SerializeField]
         private SpriteRenderer _sprite;
@@ -25,33 +25,27 @@ namespace Beatmapping.BeatNotes.BnH
 
         private bool _landedHit;
 
-        private void Awake()
+        private void BeatNote_OnTick(BeatNote.NoteTickInfo tickinfo)
         {
-            _beatNote.OnNoteEnded += HandleNoteEnded;
+            BeatNote.NoteTimeSegment segment = tickinfo.NoteSegment;
 
-            _beatNote.OnTickWaitingForVulnerable += HandleTickWaitingForVulnerable;
-            _beatNote.OnTickInVulnerable += HandleTickWaitingForVulnerable;
+            if (segment.Type == BeatNote.TimeSegmentType.PreEnding)
+            {
+                PreEndingVisual((float)tickinfo.NormalizedSegmentTime);
+            }
 
-            _beatNote.OnTickWaitingToLeave += HandleTickWaitingToLeave;
+            if (segment.Type == BeatNote.TimeSegmentType.Interaction)
+            {
+                TargetToHitVisuals((float)tickinfo.NormalizedSegmentTime);
+            }
         }
 
-        private void Start()
-        {
-            // Form an arc from start, with the peak at the target position
-            _startPos = _beatNote.Positions[0];
-            _bodyTransform.position = _startPos;
-            _targetPos = _beatNote.Positions[1];
-            _sprite.flipX = _targetPos.x > _startPos.x;
-        }
-
-        private void HandleTickWaitingToLeave(BeatNote.NoteTiming noteTiming)
+        private void PreEndingVisual(float normalizedTime)
         {
             if (_landedHit)
             {
                 return;
             }
-
-            var normalizedTime = (float)noteTiming.NormalizedLeaveWaitTime;
 
             float t = _moveCurve.Evaluate(1 - normalizedTime);
 
@@ -65,11 +59,8 @@ namespace Beatmapping.BeatNotes.BnH
             _sprite.color = new Color(1, 1, 1, 0.5f);
         }
 
-        private void HandleTickWaitingForVulnerable(BeatNote.NoteTiming noteTiming,
-            NoteInteraction noteInteraction)
+        private void TargetToHitVisuals(float normalizedTime)
         {
-            var normalizedTime = (float)noteTiming.NormalizedInteractionWaitTime;
-
             float t = _moveCurve.Evaluate(normalizedTime);
 
             // X velocity is constant, y uses curve
@@ -81,13 +72,32 @@ namespace Beatmapping.BeatNotes.BnH
             _sprite.transform.rotation = Quaternion.Euler(0, 0, -90 * (1 - t));
         }
 
-        private void HandleNoteEnded(BeatNote.NoteTiming noteTiming)
+        private void BeatNote_SlicedByProtag(int interactionIndex,
+            NoteInteraction.InteractionAttemptResult result)
         {
             _sprite.enabled = false;
             foreach (ParticleSystem particle in _dieParticles)
             {
                 particle.Play();
             }
+        }
+
+        public override void OnNoteInitialized(BeatNote beatNote)
+        {
+            // Form an arc from start, with the peak at the target position
+            _startPos = _beatNote.Positions[0];
+            _bodyTransform.position = _startPos;
+            _targetPos = _beatNote.Positions[1];
+            _sprite.flipX = _targetPos.x > _startPos.x;
+
+            _beatNote.OnTick += BeatNote_OnTick;
+            _beatNote.OnSlicedByProtag += BeatNote_SlicedByProtag;
+        }
+
+        public override void OnNoteCleanedUp(BeatNote beatNote)
+        {
+            _beatNote.OnTick -= BeatNote_OnTick;
+            _beatNote.OnSlicedByProtag -= BeatNote_SlicedByProtag;
         }
     }
 }

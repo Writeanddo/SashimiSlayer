@@ -5096,6 +5096,11 @@ MonoBehaviour:
   _hitboxTransform: {fileID: 7961916753182534580}
   _noteInteractionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
     type: 2}
+  _beatNoteListeners:
+  - {fileID: 991342725271294696}
+  - {fileID: 4500745815375421082}
+  - {fileID: 4045159823509326401}
+  - {fileID: 1637912884012176710}
 --- !u!114 &991342725271294696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5110,6 +5115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
   _bodyTransform: {fileID: 2525752069901213316}
+  _interactionIndex: 0
   _startPosIndex: 0
   _peakPosIndex: 1
   _sprite: {fileID: 38135383335388938}
@@ -5167,6 +5173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
   _bodyTransform: {fileID: 2525752069901213316}
+  _interactionIndex: 1
   _startPosIndex: 0
   _vulnerablePosIndex: 2
   _sprite: {fileID: 38135383335388938}
@@ -5247,27 +5254,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
-  _spawnSound:
+  _startSound:
     Guid:
-      Data1: 1698058413
-      Data2: 1242676699
-      Data3: -1081539403
-      Data4: -1326794453
-    Path: event:/TutorialLevel/MootFish/MootFishSpawn
-  _startAttackSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  _startVulnerableSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 271691196
+      Data2: 1140943221
+      Data3: 1813688464
+      Data4: -472963136
+    Path: event:/Common/Splash
 --- !u!114 &6908434738280169107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5557,6 +5550,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d52b4ffafae7e842b7af681379c9db4, type: 3}
+--- !u!114 &1637912884012176710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5743409499505446920, guid: 0d52b4ffafae7e842b7af681379c9db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6417552045795214670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28657229dbd9204ea80626986c9e5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7961916753182534580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,

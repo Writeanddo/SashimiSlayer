@@ -62,7 +62,8 @@ public class BeatNoteService : MonoBehaviour
 
     private void TimeManager_OnTick(BeatmapTimeManager.TickInfo tickInfo)
     {
-        TickNotes(tickInfo);
+        // Time manager ticks are during play mode, so include all flags
+        TickNotes(tickInfo, BeatNote.TickFlags.All);
     }
 
     private void OnBlockByProtag(Protaganist.ProtagSwordState swordState)
@@ -81,7 +82,10 @@ public class BeatNoteService : MonoBehaviour
         }
     }
 
-    public BeatNote SpawnNote(BeatNoteTypeSO hitConfig, BeatNoteData data, BeatmapConfigSo beatmap)
+    public BeatNote SpawnNote(BeatNoteTypeSO hitConfig,
+        BeatNoteData data,
+        BeatmapConfigSo beatmap,
+        double initalizeTime)
     {
         TimingWindowSO timingWindowSo = beatmap.TimingWindowSO;
 
@@ -118,6 +122,7 @@ public class BeatNoteService : MonoBehaviour
             data.Positions.ToList(),
             data.NoteStartTime,
             data.NoteEndTime,
+            initalizeTime,
             hitConfig.HitboxRadius,
             hitConfig.DamageDealtToPlayer
         );
@@ -129,31 +134,31 @@ public class BeatNoteService : MonoBehaviour
         return note;
     }
 
-    private void TickNotes(BeatmapTimeManager.TickInfo tickInfo)
+    private void TickNotes(BeatmapTimeManager.TickInfo tickInfo, BeatNote.TickFlags tickFlags)
     {
         BeatNote[] hits = _activeBeatNotes.ToArray();
         foreach (BeatNote hit in hits)
         {
-            hit.Tick(tickInfo);
+            hit.Tick(tickInfo, tickFlags);
         }
     }
 
-    public void CleanupNote(BeatNote blockAndHit)
+    public void CleanupNote(BeatNote note)
     {
-        _activeBeatNotes.Remove(blockAndHit);
+        _activeBeatNotes.Remove(note);
         if (Application.isPlaying)
         {
-            Destroy(blockAndHit.gameObject);
+            Destroy(note.gameObject);
         }
         else
         {
-            DestroyImmediate(blockAndHit.gameObject);
+            DestroyImmediate(note.gameObject);
         }
     }
 
-    private void HandleCleanupRequested(BeatNote action)
+    private void HandleCleanupRequested(BeatNote note)
     {
-        action.OnReadyForCleanup -= HandleCleanupRequested;
-        CleanupNote(action);
+        note.OnReadyForCleanup -= HandleCleanupRequested;
+        CleanupNote(note);
     }
 }

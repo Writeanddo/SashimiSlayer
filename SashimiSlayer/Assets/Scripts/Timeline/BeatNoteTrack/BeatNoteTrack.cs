@@ -16,7 +16,7 @@ namespace Timeline.BeatNoteTrack
         // The runtime instance performs mixing on the timeline clips.
         public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
         {
-            return ScriptPlayable<BeatActionMixer>.Create(graph, inputCount);
+            return ScriptPlayable<BeatNoteMixer>.Create(graph, inputCount);
         }
 
         // Invoked by the timeline editor to put properties into preview mode. This permits the timeline

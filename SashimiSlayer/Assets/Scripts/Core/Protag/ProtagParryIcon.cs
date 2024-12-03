@@ -36,7 +36,7 @@ public class ProtagParryIcon : MonoBehaviour
     {
         HideAll(swordState).Forget();
     }
-    
+
     private async UniTaskVoid HideAll(Protaganist.ProtagSwordState swordState)
     {
         await UniTask.Yield();
@@ -44,16 +44,15 @@ public class ProtagParryIcon : MonoBehaviour
         {
             _animators[i].Stop();
         }
-    } 
+    }
 
     private void HandleTryBlock(Protaganist.ProtagSwordState swordState)
     {
-        var state = (int)swordState.BlockPose;
+        var pose = (int)swordState.BlockPose;
 
         for (var i = 0; i < _animators.Length; i++)
         {
-            bool isIncluded = state.IsIndexInFlag(i);
-            if (isIncluded)
+            if (i == pose)
             {
                 _animators[i].Play(true);
             }

@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 4913787320634776501}
   - component: {fileID: 2761162634390235980}
   m_Layer: 0
-  m_Name: BeatActionService
+  m_Name: BeatNoteService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1088,7 +1088,7 @@ MonoBehaviour:
       NoteBeatCount: 8
       _interactions:
       - InteractionData:
-          BlockPose: 4
+          BlockPose: 1
           InteractionType: 0
           Flags: 1
         BeatsFromNoteStart: 4
@@ -1117,7 +1117,7 @@ MonoBehaviour:
       NoteBeatCount: 8
       _interactions:
       - InteractionData:
-          BlockPose: 4
+          BlockPose: 1
           InteractionType: 0
           Flags: 1
         BeatsFromNoteStart: 4
@@ -2759,7 +2759,7 @@ MonoBehaviour:
       NoteBeatCount: 8
       _interactions:
       - InteractionData:
-          BlockPose: 4
+          BlockPose: 1
           InteractionType: 0
           Flags: 1
         BeatsFromNoteStart: 4
@@ -3191,7 +3191,7 @@ MonoBehaviour:
       NoteBeatCount: 8
       _interactions:
       - InteractionData:
-          BlockPose: 4
+          BlockPose: 1
           InteractionType: 0
           Flags: 1
         BeatsFromNoteStart: 4
@@ -3827,7 +3827,7 @@ MonoBehaviour:
       NoteBeatCount: 8
       _interactions:
       - InteractionData:
-          BlockPose: 4
+          BlockPose: 2
           InteractionType: 0
           Flags: 1
         BeatsFromNoteStart: 4
@@ -4845,7 +4845,7 @@ MonoBehaviour:
       NoteBeatCount: 8
       _interactions:
       - InteractionData:
-          BlockPose: 4
+          BlockPose: 2
           InteractionType: 0
           Flags: 1
         BeatsFromNoteStart: 4
@@ -5227,7 +5227,7 @@ MonoBehaviour:
     NoteData:
       Positions:
       - {x: 5.687019, y: -4.516162}
-      - {x: 3.4868155, y: -1.4072236}
+      - {x: 7.386958, y: -0.48822427}
       - {x: 0.38484246, y: 2.399362}
       AutoVulnerableAtEnd: 1
       AutoVulnerableBeatOffset: 0
@@ -5236,7 +5236,7 @@ MonoBehaviour:
       NoteBeatCount: 8
       _interactions:
       - InteractionData:
-          BlockPose: 2
+          BlockPose: 1
           InteractionType: 0
           Flags: 0
         BeatsFromNoteStart: 4
