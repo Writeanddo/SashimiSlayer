@@ -48,6 +48,11 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
 
         private void BeatNote_OnEnd()
         {
+            if (!_animator.gameObject.activeInHierarchy)
+            {
+                return;
+            }
+
             _animator.Play("TentacleLeave");
             _sprite.color = new Color(1, 1, 1, 0.7f);
         }
