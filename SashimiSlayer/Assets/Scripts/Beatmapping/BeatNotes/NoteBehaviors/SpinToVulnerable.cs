@@ -66,7 +66,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             if (interaction.Type == NoteInteraction.InteractionType.TargetToHit)
             {
-                TargetToHitVisuals((float)tickinfo.NormalizedSegmentTime, (float)tickinfo.CurrentBeatmapTime);
+                TargetToHitVisuals((float)tickinfo.NormalizedSegmentTime, (float)tickinfo.BeatmapTime);
             }
         }
 

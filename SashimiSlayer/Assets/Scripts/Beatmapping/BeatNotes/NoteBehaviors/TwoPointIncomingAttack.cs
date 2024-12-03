@@ -124,8 +124,6 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             _peakPos = _beatNote.GetInteractionPosition(_interactionIndex, 0);
             _targetPos = _beatNote.GetInteractionPosition(_interactionIndex, 1);
 
-            _sprite.flipX = _peakPos.x > _startPos.x;
-
             _bodyTransform.position = _startPos;
 
             _angleToTarget = Mathf.Atan2(_targetPos.y - _peakPos.y, _targetPos.x - _peakPos.x) * Mathf.Rad2Deg;

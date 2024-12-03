@@ -45,7 +45,8 @@ namespace Beatmapping.Notes
 
         public struct NoteTickInfo
         {
-            public double CurrentBeatmapTime;
+            public double BeatmapTime;
+            public double DeltaTime;
 
             public NoteTimeSegment NoteSegment;
 

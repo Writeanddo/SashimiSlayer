@@ -9,7 +9,7 @@ namespace Beatmapping.Notes
         /// </summary>
         public void AttemptPlayerBlock(Protaganist.ProtagSwordState protagSwordState)
         {
-            double currentBeatmapTime = _noteTickInfo.CurrentBeatmapTime;
+            double currentBeatmapTime = _noteTickInfo.BeatmapTime;
             NoteInteraction interaction = _noteTickInfo.InsideInteractionWindow;
 
             if (interaction == null)
@@ -28,7 +28,7 @@ namespace Beatmapping.Notes
                 return;
             }
 
-            Protaganist.Instance.SuccessfulBlock();
+            Protaganist.Instance.SuccessfulBlock(protagSwordState.BlockPose);
 
             var finalResult = new SharedTypes.InteractionFinalResult
             {
@@ -59,7 +59,7 @@ namespace Beatmapping.Notes
             }
 
             // Call interaction logic
-            double currentBeatmapTime = _noteTickInfo.CurrentBeatmapTime;
+            double currentBeatmapTime = _noteTickInfo.BeatmapTime;
             NoteInteraction interaction = _noteTickInfo.InsideInteractionWindow;
 
             if (interaction == null)

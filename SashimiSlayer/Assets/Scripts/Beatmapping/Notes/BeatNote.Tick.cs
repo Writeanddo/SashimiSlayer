@@ -17,7 +17,7 @@ namespace Beatmapping.Notes
             NoteTimeSegment currentSegment = _noteTimeSegments[currentSegmentIndex];
             TimeSegmentType currentSegmentType = currentSegment.Type;
 
-            NoteTimeSegment prevSegment = _previousNoteTickTiming.NoteSegment;
+            NoteTimeSegment prevSegment = _prevTickInfo.NoteSegment;
             TimeSegmentType prevSegmentType = prevSegment.Type;
 
             bool triggerInteractions = tickFlags.HasFlag(TickFlags.TriggerInteractions);
@@ -25,7 +25,7 @@ namespace Beatmapping.Notes
             // Only if this is NOT the first tick
             if (triggerInteractions && !_isFirstTick)
             {
-                CheckForFailures(_noteTickInfo, _previousNoteTickTiming);
+                CheckForFailures(_noteTickInfo, _prevTickInfo);
             }
 
             // We might've skipped the spawn segment (e.g if the first tick is past the spawn segment)
@@ -67,6 +67,7 @@ namespace Beatmapping.Notes
         private void UpdateTiming(BeatmapTimeManager.TickInfo tickInfo, TickFlags tickFlags)
         {
             double currentBeatmapTime = tickInfo.CurrentBeatmapTime;
+            double previousBeatmapTime = _prevTickInfo.BeatmapTime;
 
             int currentSegmentIndex = CalculateCurrentSegmentIndex(currentBeatmapTime);
             NoteTimeSegment currentSegment = _noteTimeSegments[currentSegmentIndex];
@@ -116,10 +117,11 @@ namespace Beatmapping.Notes
 
             int currentInteractionIndex = GetInteractionIndex(currentSegment.Interaction);
 
-            _previousNoteTickTiming = _noteTickInfo;
+            _prevTickInfo = _noteTickInfo;
             _noteTickInfo = new NoteTickInfo
             {
-                CurrentBeatmapTime = currentBeatmapTime,
+                BeatmapTime = currentBeatmapTime,
+                DeltaTime = currentBeatmapTime - previousBeatmapTime,
                 NoteSegment = _noteTimeSegments[currentSegmentIndex],
                 NoteTime = noteTime,
                 NormalizedNoteTime = normalizedNoteTime,

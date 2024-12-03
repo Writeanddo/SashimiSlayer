@@ -92,7 +92,7 @@ namespace Beatmapping.Notes
 
         // State
         private NoteTickInfo _noteTickInfo;
-        private NoteTickInfo _previousNoteTickTiming;
+        private NoteTickInfo _prevTickInfo;
         private List<NoteTimeSegment> _noteTimeSegments;
         private List<NoteInteraction> _allInteractions;
 

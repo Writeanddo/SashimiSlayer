@@ -22,6 +22,9 @@ namespace Beatmapping.BeatNotes
         private SpriteRenderer[] _blockPoseSprites;
 
         [SerializeField]
+        private SpriteRenderer _blockRing;
+
+        [SerializeField]
         private float _poseBurstDuration;
 
         [SerializeField]
@@ -119,6 +122,7 @@ namespace Beatmapping.BeatNotes
                     burstSprite.color = new Color(1, 1, 1, 1);
                     burstSprite.DOFade(0, _poseBurstDuration);
                     burstSprite.transform.DOScale(_poseBurstScale, _poseBurstDuration);
+                    _blockRing.sharedMaterial = burstSprite.sharedMaterial;
                 }
                 else
                 {

@@ -36,7 +36,13 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
 
             if (interaction.Type == NoteInteraction.InteractionType.IncomingAttack)
             {
-                IncomingAttackVisuals(tickinfo.CurrentBeatmapTime, interaction);
+                IncomingAttackVisuals(tickinfo.BeatmapTime, interaction);
+            }
+
+            // Update animator when beatmapping
+            if (!Application.isPlaying)
+            {
+                _animator.Update((float)tickinfo.DeltaTime);
             }
         }
 
