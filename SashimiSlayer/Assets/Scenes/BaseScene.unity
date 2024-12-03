@@ -1849,7 +1849,12 @@ MonoBehaviour:
   _maxHealthChangeEvent: {fileID: 11400000, guid: 63656528a7d3cdb46b99ed6431fe445c,
     type: 2}
   _damageTakenEvent: {fileID: 11400000, guid: 7517b3ffc01c7a1449611f21a59752ca, type: 2}
-  _successfulBlockEvent: {fileID: 11400000, guid: de90496f5929b02439b0d3907887baee,
+  _blockSuccessEvent: {fileID: 11400000, guid: fad3a062bb5635b4aa3ebf80b94fb757, type: 2}
+  _blockSuccessTopEvent: {fileID: 11400000, guid: bcd5a20fb77cb194c9fcc3958bac6571,
+    type: 2}
+  _blockSuccessMidEvent: {fileID: 11400000, guid: de90496f5929b02439b0d3907887baee,
+    type: 2}
+  _blockSuccessBotEvent: {fileID: 11400000, guid: c606fd12f7e8df34999b7b78c8a8c1ee,
     type: 2}
   _tryBlockEvent: {fileID: 11400000, guid: 4cfa3609e31db094690a78cc3b3e91f3, type: 2}
   _trySliceEvent: {fileID: 11400000, guid: 1fc9d5635b7fb36408b893568c3ada1a, type: 2}

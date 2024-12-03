@@ -22,6 +22,9 @@ namespace Beatmapping.BeatNotes
         private SpriteRenderer[] _blockPoseSprites;
 
         [SerializeField]
+        private SpriteRenderer _blockRing;
+
+        [SerializeField]
         private float _poseBurstDuration;
 
         [SerializeField]
@@ -93,12 +96,14 @@ namespace Beatmapping.BeatNotes
         {
             _animator.Play(_attackClip);
             _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime);
+            _animator.UpdateAnim(0);
         }
 
         private void TargetToHitIndicator(BeatNote.NoteTickInfo noteTickInfo)
         {
             _animator.Play(_vulnClip);
             _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime);
+            _animator.UpdateAnim(0);
         }
 
         private void UpdateIncomingAttackIndicator(SharedTypes.BlockPoseStates blockPose)
@@ -117,6 +122,7 @@ namespace Beatmapping.BeatNotes
                     burstSprite.color = new Color(1, 1, 1, 1);
                     burstSprite.DOFade(0, _poseBurstDuration);
                     burstSprite.transform.DOScale(_poseBurstScale, _poseBurstDuration);
+                    _blockRing.sharedMaterial = burstSprite.sharedMaterial;
                 }
                 else
                 {
@@ -133,7 +139,7 @@ namespace Beatmapping.BeatNotes
         public override void OnNoteInitialized(BeatNote beatNote)
         {
             _beatNote = GetComponentInParent<BeatNote>();
-
+            _animator.SetManualUpdate(true);
             _beatNote.OnTick += BeatNote_OnTick;
         }
 

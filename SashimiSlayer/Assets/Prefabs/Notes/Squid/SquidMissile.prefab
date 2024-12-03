@@ -5202,6 +5202,14 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _explosionParticles: {fileID: 8820880546140617743}
+  _middlePointThreshold: 0.5
+  _peakSfx:
+    Guid:
+      Data1: 1372330880
+      Data2: 1217245148
+      Data3: -248795008
+      Data4: -391567002
+    Path: event:/KrakenLevel/Squid/SquidAttack
   OnHitPeak:
     m_PersistentCalls:
       m_Calls:

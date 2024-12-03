@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Beatmapping.Notes;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +11,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
     ///     Spawn -> Attack ready position
     ///     Attack ready position -> Player (Block interaction)
     /// </summary>
-    public class ThreePointAttack : BeatNoteListener
+    public class TwoPointIncomingAttack : BeatNoteListener
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -32,6 +33,15 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         [SerializeField]
         private ParticleSystem _explosionParticles;
 
+        [SerializeField]
+        [Range(0, 1)]
+        private float _middlePointThreshold;
+
+        [Header("Audio")]
+
+        [SerializeField]
+        private EventReference _peakSfx;
+
         [Header("Events")]
 
         public UnityEvent OnHitPeak;
@@ -52,7 +62,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                 return;
             }
 
-            WaitingForAttackVisual((float)tickinfo.NormalizedSegmentTime);
+            WaitingForAttackVisual((float)tickinfo.NormalizedSegmentTime, tickinfo.Flags);
         }
 
         private void BeatNote_ProtagFailBlock(BeatNote.NoteTickInfo tickInfo,
@@ -61,11 +71,11 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             _explosionParticles.Play();
         }
 
-        private void WaitingForAttackVisual(float normalizedTime)
+        private void WaitingForAttackVisual(float normalizedTime, BeatNote.TickFlags flags)
         {
             // Lerp from start pos to peak pos, then to target pos
 
-            var thresh = 0.75f;
+            float thresh = _middlePointThreshold;
             if (normalizedTime <= thresh)
             {
                 float t = _moveCurve.Evaluate(normalizedTime / thresh);
@@ -77,10 +87,14 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             }
             else
             {
-                if (!_hitPeak && normalizedTime >= thresh)
+                if (flags.HasFlag(BeatNote.TickFlags.TriggerInteractions) && !_hitPeak && normalizedTime >= thresh)
                 {
                     _hitPeak = true;
                     OnHitPeak.Invoke();
+                    if (!_peakSfx.IsNull)
+                    {
+                        RuntimeManager.PlayOneShot(_peakSfx);
+                    }
                 }
 
                 float remappedTime = (normalizedTime - thresh) / (1 - thresh);
@@ -109,8 +123,6 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             _startPos = _beatNote.GetPreviousPosition(_interactionIndex);
             _peakPos = _beatNote.GetInteractionPosition(_interactionIndex, 0);
             _targetPos = _beatNote.GetInteractionPosition(_interactionIndex, 1);
-
-            _sprite.flipX = _peakPos.x > _startPos.x;
 
             _bodyTransform.position = _startPos;
 
