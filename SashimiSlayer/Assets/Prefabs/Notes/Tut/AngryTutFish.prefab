@@ -5093,6 +5093,7 @@ GameObject:
   - component: {fileID: 5351909015360120121}
   - component: {fileID: 968238231831404959}
   - component: {fileID: 6312448168416926207}
+  - component: {fileID: 8297755053447737064}
   m_Layer: 0
   m_Name: AngryTutFish
   m_TagString: Untagged
@@ -5217,6 +5218,26 @@ MonoBehaviour:
   _bodyTransform: {fileID: 3397291025441130690}
   _sprite: {fileID: 38135383335388938}
   _explosionParticles: {fileID: 8820880546140617743}
+--- !u!114 &8297755053447737064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719167886461646457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _squishScale: 0.8
+  _squishDuration: 0.3
+  _squishTransform:
+  - transform: {fileID: 3397291025441130690}
+    beatInterval: 2
+    beatOffset: 1
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _delay: 0.02
 --- !u!1 &9134861382885884113
 GameObject:
   m_ObjectHideFlags: 0
