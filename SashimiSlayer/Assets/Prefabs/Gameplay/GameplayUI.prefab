@@ -717,8 +717,10 @@ MonoBehaviour:
   _noteInteractionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
     type: 2}
   _bar: {fileID: 2768810240632134535}
-  _hitResultPrefab: {fileID: 3860755143095216995, guid: 565ae8583e005344585ac657f833ae8c,
-    type: 3}
+  _hitResultPrefab:
+  - {fileID: 4447243001667428522, guid: bc0a6d5ff5b6e734e98ae84049bb25e6, type: 3}
+  - {fileID: 4447243001667428522, guid: 81c76e4dbf4b89f4ca43fc12e1a23876, type: 3}
+  - {fileID: 4447243001667428522, guid: d277f472935e4344c8c1ab34d0fa769e, type: 3}
 --- !u!1 &8932992383858094771
 GameObject:
   m_ObjectHideFlags: 0

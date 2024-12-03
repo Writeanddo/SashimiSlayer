@@ -183,6 +183,7 @@ namespace Beatmapping.Notes
                 {
                     Successful = false,
                     InteractionType = prevInsidePassWindowInteraction.Type,
+                    Pose = prevInsidePassWindowInteraction.BlockPose,
                     // We don't care about the exact timing info for failures
                     TimingResult = default
                 };
