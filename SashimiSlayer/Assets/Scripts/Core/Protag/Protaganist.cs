@@ -37,7 +37,16 @@ public class Protaganist : MonoBehaviour
     private VoidEvent _damageTakenEvent;
 
     [SerializeField]
-    private ProtagSwordStateEvent _successfulBlockEvent;
+    private ProtagSwordStateEvent _blockSuccessEvent;
+
+    [SerializeField]
+    private ProtagSwordStateEvent _blockSuccessTopEvent;
+
+    [SerializeField]
+    private ProtagSwordStateEvent _blockSuccessMidEvent;
+
+    [SerializeField]
+    private ProtagSwordStateEvent _blockSuccessBotEvent;
 
     [SerializeField]
     private ProtagSwordStateEvent _tryBlockEvent;
@@ -136,21 +145,8 @@ public class Protaganist : MonoBehaviour
 
     private void OnPoseStateChanged(SharedTypes.BlockPoseStates blockPoseStates)
     {
-        var oldState = (int)_currentSwordState.BlockPose;
-        var newState = (int)blockPoseStates;
-
         _currentSwordState.BlockPose = blockPoseStates;
-        for (var i = 0; i < SharedTypes.NumPoses; i++)
-        {
-            bool isInOldState = oldState.IsIndexInFlag(i);
-            bool isInNewState = newState.IsIndexInFlag(i);
-            if (isInNewState && !isInOldState)
-            {
-                // Only include the most recent hit block pose
-                _currentSwordState.BlockPose = (SharedTypes.BlockPoseStates)(1 << i);
-                _tryBlockEvent.Raise(_currentSwordState);
-            }
-        }
+        _tryBlockEvent.Raise(_currentSwordState);
     }
 
     private void OnSheathStateChanged(SharedTypes.SheathState newState)
@@ -195,9 +191,23 @@ public class Protaganist : MonoBehaviour
         }
     }
 
-    public void SuccessfulBlock()
+    public void SuccessfulBlock(SharedTypes.BlockPoseStates pose)
     {
-        _successfulBlockEvent.Raise(_currentSwordState);
+        switch (pose)
+        {
+            case SharedTypes.BlockPoseStates.TopPose:
+                _blockSuccessTopEvent.Raise(_currentSwordState);
+                break;
+            case SharedTypes.BlockPoseStates.MidPose:
+                _blockSuccessMidEvent.Raise(_currentSwordState);
+                break;
+            case SharedTypes.BlockPoseStates.BotPose:
+                _blockSuccessBotEvent.Raise(_currentSwordState);
+                break;
+        }
+
+        _blockSuccessEvent.Raise(_currentSwordState);
+
         ScreenShakeService.Instance.ShakeScreen(0.05f, 0.15f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
     }
 

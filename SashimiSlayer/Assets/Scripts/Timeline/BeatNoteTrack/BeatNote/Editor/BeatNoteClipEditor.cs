@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using UnityEditor;
@@ -31,15 +33,64 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
                 return;
             }
 
-            // Update the internal note data to match the clip
-            clipAsset.Template.NoteData.NoteStartTime = clip.start - beatmapConfig.StartTime;
-            clipAsset.Template.NoteData.NoteEndTime = clip.end - beatmapConfig.StartTime;
-            clipAsset.Template.NoteData.NoteBeatCount = (uint)Math.Round(clip.duration * beatmapConfig.Bpm / 60);
+            BeatNoteBehavior template = clipAsset.Template;
 
-            // Ensure at least one position in the array
-            if (clipAsset.Template.NoteData.Positions == null || clipAsset.Template.NoteData.Positions.Length == 0)
+            // Update the internal note data to match the clip
+            template.NoteData.NoteStartTime = clip.start - beatmapConfig.StartTime;
+            template.NoteData.NoteEndTime = clip.end - beatmapConfig.StartTime;
+            template.NoteData.NoteBeatCount = clip.duration * beatmapConfig.Bpm / 60;
+
+            EnforceInteractionUsage(template);
+        }
+
+        private void EnforceInteractionUsage(BeatNoteBehavior template)
+        {
+            List<IInteractionUser.InteractionUsage> interactionUsages =
+                template.NoteConfig.Prefab.GetInteractionUsages().ToList();
+
+            List<SequencedNoteInteraction> sequencedInteractions = template.NoteData.Interactions;
+
+            int requiredNumInteractions =
+                interactionUsages.Count > 0 ? interactionUsages.Max(a => a.InteractionIndex) + 1 : 0;
+
+            // Add interactions if needed
+            if (sequencedInteractions.Count < requiredNumInteractions)
             {
-                clipAsset.Template.NoteData.Positions = new Vector2[1];
+                sequencedInteractions.AddRange(Enumerable.Repeat(new SequencedNoteInteraction(),
+                    requiredNumInteractions - sequencedInteractions.Count));
+            }
+
+            // Validate each interaction
+            foreach (IInteractionUser.InteractionUsage usage in interactionUsages)
+            {
+                int interactionIndex = usage.InteractionIndex;
+
+                SequencedNoteInteraction sequencedInteraction = sequencedInteractions[interactionIndex];
+                NoteInteractionData interactionData = sequencedInteraction.InteractionData;
+
+                interactionData.InteractionType = usage.InteractionType;
+
+                int numPositions = usage.PositionCount;
+
+                if (interactionData.Positions == null)
+                {
+                    interactionData.Positions = new List<Vector2>();
+                }
+
+                // Add or Remove positions if needed
+                if (interactionData.Positions.Count < numPositions)
+                {
+                    interactionData.Positions.AddRange(
+                        Enumerable.Repeat(Vector2.zero, numPositions - interactionData.Positions.Count));
+                }
+                else if (interactionData.Positions.Count > numPositions)
+                {
+                    interactionData.Positions.RemoveRange(numPositions, interactionData.Positions.Count - numPositions);
+                }
+
+                // Kinda awkward to copy around structs...
+                sequencedInteraction.InteractionData = interactionData;
+                sequencedInteractions[interactionIndex] = sequencedInteraction;
             }
         }
 
@@ -79,9 +130,11 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
 
         private void DrawInteractions(BeatmapConfigSo beatmap, BeatNoteClip noteClip, ClipBackgroundRegion region)
         {
+            double noteBeatLength = noteClip.Template.NoteData.NoteBeatCount;
             foreach (SequencedNoteInteraction sequencedInteraction in noteClip.Template.NoteData.Interactions)
             {
-                double interactionStartTime = sequencedInteraction.BeatsFromNoteStart * 60 / beatmap.Bpm;
+                double interactionStartTime =
+                    sequencedInteraction.GetBeatsFromNoteStart(noteBeatLength) * 60 / beatmap.Bpm;
 
                 float normalizedPos = Mathf.InverseLerp(
                     (float)region.startTime,
@@ -129,12 +182,11 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
             var vertMargin = 5;
             linePos.y = vertMargin;
 
-            var poseChecker = 1;
             float heightOffsetPerTick = (region.position.height - vertMargin * 2) / (posePositionCount - 1);
 
             for (var i = 0; i < posePositionCount; i++)
             {
-                if ((pose & poseChecker) != 0)
+                if (i == pose)
                 {
                     EditorGUI.DrawRect(linePos, Color.cyan);
                 }
@@ -144,7 +196,6 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
                 }
 
                 linePos.y += heightOffsetPerTick;
-                poseChecker <<= 1;
             }
         }
 
@@ -190,10 +241,10 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
                 // time to place the marking, in beatmap timespace
                 float markingTime = i * subdivisionInterval;
                 // time to place the marking, drawn region timespace
-                float markingRegionTime = markingTime - (float)drawnAreaStartTime;
+                float markingClipTime = markingTime - (float)clipStartTime;
 
                 float normalizedBeatTime =
-                    Mathf.InverseLerp((float)region.startTime, (float)region.endTime, markingRegionTime);
+                    Mathf.InverseLerp((float)region.startTime, (float)region.endTime, markingClipTime);
 
                 Rect linePos = region.position;
                 linePos.x += normalizedBeatTime * linePos.width;

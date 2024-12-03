@@ -34,12 +34,6 @@ namespace Beatmapping.Timing
             public double CurrentLevelTime;
 
             public double DeltaTime;
-
-            public int CurrentBeatIndex;
-            public int CurrentSubdivIndex;
-
-            public double BeatQuantizedBeatmapTime;
-            public double SubdivQuantizedBeatmapTime;
         }
 
         [Header("Dependencies")]
@@ -183,11 +177,7 @@ namespace Beatmapping.Timing
             {
                 CurrentBeatmapTime = currentBeatmapTime,
                 CurrentLevelTime = currentBeatmapTime + _currentBeatmap.StartTime,
-                DeltaTime = dspDeltaTime,
-                CurrentBeatIndex = currentBeatIndex,
-                CurrentSubdivIndex = currentSubdivIndex,
-                BeatQuantizedBeatmapTime = currentBeatIndex * _timeIntervalPerBeat,
-                SubdivQuantizedBeatmapTime = currentSubdivIndex * _timeIntervalPerSubdiv
+                DeltaTime = dspDeltaTime
             };
 
             OnTick?.Invoke(CurrentTickInfo);

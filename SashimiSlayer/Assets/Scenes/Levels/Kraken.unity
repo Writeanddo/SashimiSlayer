@@ -362,8 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squishScale: 0.9
-  _squishDuration: 0.15
+  _squishScale: 0.96
+  _squishDuration: 0.4
   _squishTransform:
   - transform: {fileID: 1493418430}
     beatInterval: 2
@@ -375,6 +375,7 @@ MonoBehaviour:
     beatInterval: 2
     beatOffset: 1
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _delay: 0.04
 --- !u!4 &1790762256
 Transform:
   m_ObjectHideFlags: 0
@@ -707,7 +708,7 @@ PrefabInstance:
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 20
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}
@@ -786,6 +787,18 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[19].key
       value: 
       objectReference: {fileID: -4301246575501675800, guid: d68bc4e836b534a479130c17c4938b7d,
+        type: 2}
+    - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[20].key
+      value: 
+      objectReference: {fileID: -4626324314927229077, guid: d68bc4e836b534a479130c17c4938b7d,
+        type: 2}
+    - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
+        type: 3}
+      propertyPath: m_SceneBindings.Array.data[21].key
+      value: 
+      objectReference: {fileID: 4605633886680212713, guid: d68bc4e836b534a479130c17c4938b7d,
         type: 2}
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}

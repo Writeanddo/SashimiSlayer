@@ -22,6 +22,8 @@ public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
 
     private AnimationClip _currentClip;
 
+    private bool _manualUpdate;
+
     private void Awake()
     {
         if (_playOnAwake)
@@ -41,6 +43,11 @@ public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
     public void GetAnimationClips(List<AnimationClip> results)
     {
         results.Add(_animationClip);
+    }
+
+    public void UpdateAnim(float deltaTime)
+    {
+        _playableGraph.Evaluate(deltaTime);
     }
 
     public void Play(bool restart = false)
@@ -64,7 +71,11 @@ public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
 
         if (_playableGraph.IsValid())
         {
-            _playableGraph.Play();
+            if (!_manualUpdate)
+            {
+                _playableGraph.Play();
+            }
+
             if (restart)
             {
                 _playableGraph.GetRootPlayable(0).SetTime(0);
@@ -86,6 +97,15 @@ public class SimpleAnimator : MonoBehaviour, IAnimationClipSource
         {
             SetNormalizedTime(1);
             _playableGraph.Evaluate();
+            _playableGraph.Stop();
+        }
+    }
+
+    public void SetManualUpdate(bool manualUpdate)
+    {
+        _manualUpdate = manualUpdate;
+        if (_playableGraph.IsValid())
+        {
             _playableGraph.Stop();
         }
     }

@@ -1,75 +1,33 @@
 using System;
 using System.Collections.Generic;
-using Beatmapping.Timing;
+using System.Linq;
 using Events.Core;
-using UnityEditor;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Beatmapping.Notes
 {
     /// <summary>
-    ///     Represents a single sequenced note with some interactions
+    ///     Represents a single sequenced note with some interactions.
+    ///     Supports scrubbing (arbitrary tick timing)
     /// </summary>
-    public class BeatNote : MonoBehaviour
+    public partial class BeatNote : MonoBehaviour, IInteractionUser
     {
-        private enum NoteState
-        {
-            /// <summary>
-            ///     Note is in process of spawning
-            /// </summary>
-            Spawn,
+        public delegate void TickEventHandler(
+            NoteTickInfo tickInfo);
 
-            /// <summary>
-            ///     Note is timing down towards the next interaction
-            /// </summary>
-            WaitingForInteraction,
+        public delegate void InteractionAttemptEventHandler(
+            int interactionIndex,
+            NoteInteraction.InteractionAttemptResult result);
 
-            /// <summary>
-            ///     Note is currently in an interaction's timing window
-            /// </summary>
-            InInteractionWindow,
+        public delegate void InteractionFinalResultEventHandler(
+            NoteTickInfo tickInfo,
+            SharedTypes.InteractionFinalResult finalResult);
 
-            /// <summary>
-            ///     No more interactions, timing down to note end
-            /// </summary>
-            WaitingToEnd,
-
-            /// <summary>
-            ///     Note is in process of leaving
-            /// </summary>
-            Leaving
-        }
-
-        public struct NoteTiming
-        {
-            public double CurrentBeatmapTime;
-
-            /// <summary>
-            ///     Normalized from the previous interaction target time
-            ///     (or spawn time, if no previous interaction) to the upcoming interaction's target time
-            /// </summary>
-            public double NormalizedInteractionWaitTime;
-
-            /// <summary>
-            ///     Normalized interaction wait time, but stepped at each subdivision
-            /// </summary>
-            public double SubdivSteppedNormalizedInteractionWaitTime;
-
-            /// <summary>
-            ///     Normalized interaction wait time, but stepped at each beat
-            /// </summary>
-            public double BeatSteppedNormalizedInteractionWaitTime;
-
-            /// <summary>
-            ///     Normalized time to the end of the note from the start of the note
-            /// </summary>
-            public double NormalizedNoteTime;
-
-            /// <summary>
-            ///     Normalized time from the final interaction's end time to the note's end time
-            /// </summary>
-            public double NormalizedLeaveWaitTime;
-        }
+        /// <summary>
+        ///     Fixed time between end and cleanup
+        /// </summary>
+        private const double CleanupTime = 3f;
 
         // Serialized fields
         [SerializeField]
@@ -80,445 +38,291 @@ namespace Beatmapping.Notes
         [SerializeField]
         private NoteInteractionFinalResultEvent _noteInteractionFinalResultEvent;
 
-        // Properties
-        private NoteInteraction CurrentInteraction =>
-            _currentInteractionIndex >= _interactions.Count || _currentInteractionIndex < 0
-                ? null
-                : _interactions[_currentInteractionIndex];
+        [SerializeField]
+        private List<BeatNoteListener> _beatNoteListeners;
 
-        public List<Vector2> Positions { get; private set; }
+        public Vector2 StartPosition { get; private set; }
+
+        public Vector2 EndPosition { get; private set; }
 
         // Events
-        public event Action OnBlockByProtag;
-        public event Action OnDamagedByProtag;
-        public event Action OnLandHitOnProtag;
-
-        public event Action OnSpawn;
-        public event Action<NoteTiming> OnNoteEnded;
-        public event Action<BeatNote> OnReadyForCleanup;
-
-        public event Action<NoteTiming, NoteInteraction> OnTransitionToWaitingToAttack;
-        public event Action<NoteTiming, NoteInteraction> OnTickWaitingForAttack;
-        public event Action<NoteTiming, NoteInteraction> OnTransitionToWaitingToVulnerable;
-        public event Action<NoteTiming, NoteInteraction> OnTickWaitingForVulnerable;
-        public event Action<NoteTiming, NoteInteraction> OnTickInAttack;
-        public event Action<NoteTiming, NoteInteraction> OnTickInVulnerable;
-
-        public event Action<NoteTiming> OnTransitionToLeaving;
-        public event Action<NoteTiming, NoteInteraction> OnTransitionToWaitingToLeave;
-        public event Action<NoteTiming> OnTickWaitingToLeave;
-
-        // State
-        private NoteState _noteState;
-        private int _currentInteractionIndex;
 
         /// <summary>
-        ///     Time of the last note event (either an interaction's target time, or spawn time)
+        ///     Note initialized
         /// </summary>
-        private double _lastNoteEventTime;
+        public event Action OnInitialize;
 
-        private NoteTiming _noteTiming;
+        /// <summary>
+        ///     Note started
+        /// </summary>
+        public event Action OnNoteStart;
 
-        // Note configuration
-        private List<NoteInteraction> _interactions;
+        /// <summary>
+        ///     Note ended (not cleaned up)
+        /// </summary>
+        public event Action OnNoteEnd;
 
-        // Arbitrary position data; used by specific note behaviors
+        /// <summary>
+        ///     Protag blocked this note
+        /// </summary>
+        public event InteractionAttemptEventHandler OnBlockedByProtag;
+
+        /// <summary>
+        ///     Protag successfully sliced this note
+        /// </summary>
+        public event InteractionAttemptEventHandler OnSlicedByProtag;
+
+        /// <summary>
+        ///     Protag was hit by an interaction
+        /// </summary>
+        public event InteractionFinalResultEventHandler OnProtagFailBlock;
+
+        /// <summary>
+        ///     Protag missed a slice interaction on this note
+        /// </summary>
+        public event InteractionFinalResultEventHandler OnProtagMissedHit;
+
+        /// <summary>
+        ///     Event invoked when the note is ready to be cleaned up.
+        ///     Listened to by the BeatNoteService, which performs the cleanup
+        /// </summary>
+        public event Action<BeatNote> OnReadyForCleanup;
+
+        public event TickEventHandler OnTick;
+
+        // State
+        private NoteTickInfo _noteTickInfo;
+        private NoteTickInfo _prevTickInfo;
+        private List<NoteTimeSegment> _noteTimeSegments;
+        private List<NoteInteraction> _allInteractions;
+
         private float _hitboxRadius;
         private int _damageDealtToPlayer;
+
+        /// <summary>
+        ///     When the note starts being "active". The note can be initialized before this time
+        /// </summary>
         private double _noteStartTime;
+
+        /// <summary>
+        ///     When the note ends being "active". The note object can still be alive after this time
+        /// </summary>
         private double _noteEndTime;
+
+        private bool _isFirstTick;
+
+        public void OnDestroy()
+        {
+            foreach (BeatNoteListener listener in _beatNoteListeners)
+            {
+                listener.OnNoteCleanedUp(this);
+            }
+        }
 
         private void OnDrawGizmos()
         {
             DrawDebug();
         }
 
-        /// <summary>
-        ///     Initialize the note with the given interactions and positions
-        /// </summary>
-        public void Initialize(
-            List<NoteInteraction> noteInteractions,
-            List<Vector2> interactionPositions,
-            double noteStartTime,
-            double noteEndTime,
-            float hitboxRadius,
-            int damageDealtToPlayer
-        )
+        public IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
         {
-            _interactions = new List<NoteInteraction>(noteInteractions);
-            Positions = new List<Vector2>(interactionPositions);
-            _noteStartTime = noteStartTime;
-            _noteEndTime = noteEndTime;
-            _hitboxRadius = hitboxRadius;
-            _damageDealtToPlayer = damageDealtToPlayer;
+            var positionUsage = new List<IInteractionUser.InteractionUsage>();
 
-            // Timings
-            _lastNoteEventTime = noteStartTime;
-            _noteState = NoteState.Spawn;
-
-            // Transition to first interaction, or else go straight to leaving
-            _currentInteractionIndex = -1;
-            if (_interactions.Count > 0)
+            foreach (BeatNoteListener listener in _beatNoteListeners)
             {
-                TransitionToNextInteraction(_noteTiming);
-            }
-            else
-            {
-                _noteState = NoteState.WaitingToEnd;
-            }
-
-            OnSpawn?.Invoke();
-        }
-
-        /// <summary>
-        ///     Update timing and Tick the FSM
-        /// </summary>
-        /// <param name="tickInfo"></param>
-        public void Tick(BeatmapTimeManager.TickInfo tickInfo)
-        {
-            UpdateTiming(tickInfo);
-
-            switch (_noteState)
-            {
-                case NoteState.WaitingForInteraction:
-                    TickWaitingForInteraction(_noteTiming);
-                    break;
-                case NoteState.InInteractionWindow:
-                    TickInInteraction(_noteTiming);
-                    break;
-                case NoteState.WaitingToEnd:
-                    TickWaitingToLeave(_noteTiming);
-                    break;
-                case NoteState.Leaving:
-                    TickLeaving(_noteTiming);
-                    break;
-            }
-        }
-
-        private void UpdateTiming(BeatmapTimeManager.TickInfo tickInfo)
-        {
-            double currentBeatmapTime = tickInfo.CurrentBeatmapTime;
-            double beatQuantizedTime = tickInfo.BeatQuantizedBeatmapTime;
-            double subdivQuantizedTime = tickInfo.SubdivQuantizedBeatmapTime;
-
-            _noteTiming.CurrentBeatmapTime = currentBeatmapTime;
-
-            // Calculate interaction relative timings
-            if (_noteState is NoteState.WaitingForInteraction or NoteState.InInteractionWindow)
-            {
-                double nextTargetTime = CurrentInteraction.TargetTime;
-
-                float CalculateNormalizedTime(double time)
-                {
-                    return (float)((time - _lastNoteEventTime) /
-                                   (nextTargetTime - _lastNoteEventTime));
-                }
-
-                _noteTiming.NormalizedInteractionWaitTime = CalculateNormalizedTime(currentBeatmapTime);
-                _noteTiming.BeatSteppedNormalizedInteractionWaitTime = CalculateNormalizedTime(beatQuantizedTime);
-                _noteTiming.SubdivSteppedNormalizedInteractionWaitTime = CalculateNormalizedTime(subdivQuantizedTime);
-            }
-
-            if (_noteState == NoteState.WaitingToEnd)
-            {
-                _noteTiming.NormalizedLeaveWaitTime = (currentBeatmapTime - _lastNoteEventTime) /
-                                                      (_noteEndTime - _lastNoteEventTime);
-            }
-
-            _noteTiming.NormalizedNoteTime = (currentBeatmapTime - _noteStartTime) / (_noteEndTime - _noteStartTime);
-        }
-
-        /// <summary>
-        ///     Handle protag's attempt to block
-        /// </summary>
-        public void AttemptPlayerBlock(Protaganist.ProtagSwordState protagSwordState)
-        {
-            NoteInteraction interaction = CurrentInteraction;
-
-            if (interaction == null)
-            {
-                return;
-            }
-
-            double currentBeatmapTime = _noteTiming.CurrentBeatmapTime;
-
-            NoteInteraction.InteractionAttemptResult interactionAttemptResult = interaction.TryInteraction(
-                currentBeatmapTime,
-                NoteInteraction.InteractionType.IncomingAttack,
-                protagSwordState.BlockPose);
-
-            if (!interactionAttemptResult.Passed)
-            {
-                return;
-            }
-
-            Protaganist.Instance.SuccessfulBlock();
-
-            var finalResult = new SharedTypes.InteractionFinalResult
-            {
-                Successful = true,
-                InteractionType = NoteInteraction.InteractionType.IncomingAttack,
-                TimingResult = interactionAttemptResult.TimingResult
-            };
-
-            _noteInteractionFinalResultEvent.Raise(finalResult);
-
-            OnBlockByProtag?.Invoke();
-        }
-
-        /// <summary>
-        ///     Handle protag's attempt to attack
-        /// </summary>
-        /// <param name="protagSwordState"></param>
-        public void AttemptPlayerSlice(Protaganist.ProtagSwordState protagSwordState)
-        {
-            NoteInteraction interaction = CurrentInteraction;
-
-            if (interaction == null)
-            {
-                return;
-            }
-
-            // Check if slice is in hitbox
-            Vector3 pos = _hitboxTransform.transform.position;
-            float dist = protagSwordState.DistanceToSwordPlane(pos);
-            bool isAttackOnTarget = dist < _hitboxRadius;
-
-            if (!isAttackOnTarget)
-            {
-                return;
-            }
-
-            // Call interaction logic
-            double currentBeatmapTime = _noteTiming.CurrentBeatmapTime;
-
-            NoteInteraction.InteractionAttemptResult interactionAttemptResult = interaction.TryInteraction(
-                currentBeatmapTime,
-                NoteInteraction.InteractionType.TargetToHit,
-                protagSwordState.BlockPose);
-
-            // Fails do nothing; failures get handled when the interaction window ends
-            if (!interactionAttemptResult.Passed)
-            {
-                return;
-            }
-
-            // Success!
-            OnDamagedByProtag?.Invoke();
-
-            if (interactionAttemptResult.Flags.HasFlag(NoteInteraction.InteractionFlags.EndNoteOnHitByProtag))
-            {
-                EndNote(_noteTiming);
-            }
-
-            Protaganist.Instance.SuccessfulSlice();
-
-            var finalResult = new SharedTypes.InteractionFinalResult
-            {
-                Successful = true,
-                InteractionType = NoteInteraction.InteractionType.TargetToHit,
-                TimingResult = interactionAttemptResult.TimingResult
-            };
-
-            _noteInteractionFinalResultEvent.Raise(finalResult);
-        }
-
-        private void EndNote(NoteTiming noteTiming)
-        {
-            _noteState = NoteState.Leaving;
-            OnNoteEnded?.Invoke(noteTiming);
-        }
-
-        private void TickWaitingForInteraction(NoteTiming noteTiming)
-        {
-            NoteInteraction.InteractionType interactionType = CurrentInteraction.Type;
-            if (interactionType == NoteInteraction.InteractionType.IncomingAttack)
-            {
-                TickWaitingForIncomingAttack(noteTiming);
-                OnTickWaitingForAttack?.Invoke(noteTiming, CurrentInteraction);
-            }
-            else if (interactionType == NoteInteraction.InteractionType.TargetToHit)
-            {
-                TickWaitingForVulnerable(noteTiming);
-                OnTickWaitingForVulnerable?.Invoke(noteTiming, CurrentInteraction);
-            }
-        }
-
-        private void TickWaitingForIncomingAttack(NoteTiming noteTiming)
-        {
-            // Transition to interaction window if we enter window
-            if (CurrentInteraction.IsTimeInWindow(_noteTiming.CurrentBeatmapTime))
-            {
-                _noteState = NoteState.InInteractionWindow;
-            }
-            else
-            {
-                OnTickWaitingForAttack?.Invoke(noteTiming, CurrentInteraction);
-            }
-        }
-
-        private void TickWaitingForVulnerable(NoteTiming noteTiming)
-        {
-            // Transition to interaction window if we enter window
-            if (CurrentInteraction.IsTimeInWindow(_noteTiming.CurrentBeatmapTime))
-            {
-                _noteState = NoteState.InInteractionWindow;
-            }
-            else
-            {
-                OnTickWaitingForVulnerable?.Invoke(noteTiming, CurrentInteraction);
-            }
-        }
-
-        private void TickInInteraction(NoteTiming noteTiming)
-        {
-            NoteInteraction.InteractionType interactionType = CurrentInteraction.Type;
-
-            if (interactionType == NoteInteraction.InteractionType.IncomingAttack)
-            {
-                TickAttackBlockWindow(noteTiming);
-                OnTickInAttack?.Invoke(noteTiming, CurrentInteraction);
-            }
-            else if (interactionType == NoteInteraction.InteractionType.TargetToHit)
-            {
-                TickVulnerableWindow(noteTiming);
-                OnTickInVulnerable?.Invoke(noteTiming, CurrentInteraction);
-            }
-        }
-
-        private void TickAttackBlockWindow(NoteTiming noteTiming)
-        {
-            bool isInWindow = CurrentInteraction.IsTimeInWindow(noteTiming.CurrentBeatmapTime);
-
-            // Still in window, so don't transition out yet
-            if (isInWindow)
-            {
-                return;
-            }
-
-            // Successes trigger immediately, so are handled in the block attempt
-            // Failures are only certain when we leave the window, so we handle them here
-            if (CurrentInteraction.DidSucceed)
-            {
-                if (CurrentInteraction.Flags.HasFlag(NoteInteraction.InteractionFlags.EndNoteOnBlocked))
-                {
-                    EndNote(noteTiming);
-                }
-            }
-            else
-            {
-                OnLandHitOnProtag?.Invoke();
-                Protaganist.Instance.TakeDamage(1);
-
-                if (CurrentInteraction.Flags.HasFlag(NoteInteraction.InteractionFlags.EndNoteOnHittingProtag))
-                {
-                    EndNote(noteTiming);
-                }
-
-                var finalResult = new SharedTypes.InteractionFinalResult
-                {
-                    Successful = false,
-                    InteractionType = NoteInteraction.InteractionType.IncomingAttack,
-                    TimingResult = default
-                };
-
-                _noteInteractionFinalResultEvent.Raise(finalResult);
-            }
-
-            TransitionToNextInteraction(noteTiming);
-        }
-
-        private void TickVulnerableWindow(NoteTiming noteTiming)
-        {
-            bool isInWindow = CurrentInteraction.IsTimeInWindow(noteTiming.CurrentBeatmapTime);
-
-            // Still in window, so don't transition out yet
-            if (isInWindow)
-            {
-                return;
-            }
-
-            // Successes trigger immediately, so are handled in the block attempt
-            // Failures are only certain when we leave the window, so we handle them here
-            if (!CurrentInteraction.DidSucceed)
-            {
-                var finalResult = new SharedTypes.InteractionFinalResult
-                {
-                    Successful = false,
-                    InteractionType = NoteInteraction.InteractionType.TargetToHit,
-                    TimingResult = default
-                };
-
-                _noteInteractionFinalResultEvent.Raise(finalResult);
-            }
-
-            TransitionToNextInteraction(noteTiming);
-        }
-
-        private void TransitionToNextInteraction(NoteTiming noteTiming)
-        {
-            bool isSpawning = _noteState == NoteState.Spawn;
-
-            // We transition to the next interaction from spawn or the current one (when the window ends)
-            if (_noteState is not (NoteState.Spawn or NoteState.InInteractionWindow))
-            {
-                return;
-            }
-
-            _lastNoteEventTime = isSpawning ? _noteStartTime : CurrentInteraction.TargetTime;
-
-            _noteState = NoteState.WaitingForInteraction;
-
-            while (true)
-            {
-                _currentInteractionIndex++;
-
-                // No more interactions, so we're done
-                if (_currentInteractionIndex >= _interactions.Count)
-                {
-                    _noteState = NoteState.WaitingToEnd;
-                    OnTransitionToWaitingToLeave?.Invoke(noteTiming, CurrentInteraction);
-                    break;
-                }
-
-                // Skip over interactions that are already in the past
-                if (noteTiming.CurrentBeatmapTime >= CurrentInteraction.TargetTime)
+                IEnumerable<IInteractionUser.InteractionUsage> usages = listener.GetInteractionUsages();
+                if (usages == null)
                 {
                     continue;
                 }
 
-                switch (CurrentInteraction.Type)
+                positionUsage.AddRange(usages);
+            }
+
+            return positionUsage;
+        }
+
+        /// <summary>
+        ///     Initialize the note with the given interactions and positions.
+        ///     All time parameters are expected to be in beatmap timespace
+        /// </summary>
+        public void Initialize(
+            List<NoteInteraction> noteInteractions,
+            Vector2 noteStartPos,
+            Vector2 noteEndPos,
+            double noteStartTime,
+            double noteEndTime,
+            double initializeTime,
+            float hitboxRadius,
+            int damageDealtToPlayer
+        )
+        {
+            _allInteractions = new List<NoteInteraction>(noteInteractions);
+            _noteStartTime = noteStartTime;
+            _noteEndTime = noteEndTime;
+            _hitboxRadius = hitboxRadius;
+            _damageDealtToPlayer = damageDealtToPlayer;
+            StartPosition = noteStartPos;
+            EndPosition = noteEndPos;
+
+            // Default values
+            _isFirstTick = true;
+
+            // Build timing segments
+            _noteTimeSegments = BuildNoteTimeSegments(noteInteractions, noteStartTime, noteEndTime, initializeTime);
+
+            foreach (BeatNoteListener listener in _beatNoteListeners)
+            {
+                listener.OnNoteInitialized(this);
+            }
+
+            OnInitialize?.Invoke();
+        }
+
+        private List<NoteTimeSegment> BuildNoteTimeSegments(List<NoteInteraction> interactions,
+            double noteStartTime,
+            double noteEndTime,
+            double initializeTime)
+        {
+            var timeSegments = new List<NoteTimeSegment>();
+
+            // Segment ranging from initiation to when the note "starts"
+            timeSegments.Add(new NoteTimeSegment
+            {
+                SegmentStartTime = initializeTime,
+                Interaction = null,
+                Type = TimeSegmentType.Spawn
+            });
+
+            double nextTime = noteStartTime;
+
+            foreach (NoteInteraction interaction in interactions)
+            {
+                timeSegments.Add(new NoteTimeSegment
                 {
-                    case NoteInteraction.InteractionType.IncomingAttack:
-                        OnTransitionToWaitingToAttack?.Invoke(noteTiming, CurrentInteraction);
-                        break;
-                    case NoteInteraction.InteractionType.TargetToHit:
-                        OnTransitionToWaitingToVulnerable?.Invoke(noteTiming, CurrentInteraction);
-                        break;
+                    SegmentStartTime = nextTime,
+                    Interaction = interaction,
+                    Type = TimeSegmentType.Interaction
+                });
+                nextTime = interaction.TargetTime;
+            }
+
+            // Segment ranging from previous segment to ending
+            timeSegments.Add(new NoteTimeSegment
+            {
+                SegmentStartTime = nextTime,
+                Interaction = null,
+                Type = TimeSegmentType.PreEnding
+            });
+
+            // Segment ranging from ending to final cleanup
+            timeSegments.Add(new NoteTimeSegment
+            {
+                SegmentStartTime = noteEndTime,
+                Interaction = null,
+                Type = TimeSegmentType.Ending
+            });
+
+            // Terminating segment
+            timeSegments.Add(new NoteTimeSegment
+            {
+                SegmentStartTime = noteEndTime + CleanupTime,
+                Interaction = null,
+                Type = TimeSegmentType.CleanedUp
+            });
+
+            return timeSegments;
+        }
+
+        [Button("Detect Listeners")]
+        private void DetectListeners()
+        {
+            BeatNoteListener[] listeners = GetComponentsInChildren<BeatNoteListener>();
+
+            _beatNoteListeners = listeners.Where(a => a != null).ToList();
+
+            foreach (BeatNoteListener listener in _beatNoteListeners)
+            {
+                if (_beatNoteListeners.Contains(listener))
+                {
+                    continue;
                 }
 
-                break;
+                _beatNoteListeners.Add(listener);
             }
         }
 
-        private void TickWaitingToLeave(NoteTiming noteTiming)
+        /// <summary>
+        ///     Get the position right before this interaction
+        /// </summary>
+        /// <param name="interactionIndex"></param>
+        /// <returns></returns>
+        public Vector2 GetPreviousPosition(int interactionIndex)
         {
-            OnTickWaitingToLeave?.Invoke(noteTiming);
-
-            if (noteTiming.CurrentBeatmapTime >= _noteEndTime)
+            // No interactions before this one, use the start position
+            if (interactionIndex == 0)
             {
-                _noteState = NoteState.Leaving;
-                OnTransitionToLeaving?.Invoke(noteTiming);
+                return StartPosition;
             }
+
+            if (interactionIndex > _allInteractions.Count)
+            {
+                Debug.LogWarning($"Interaction index {interactionIndex - 1} out of bounds");
+                return Vector2.zero;
+            }
+
+            NoteInteraction prevSegment = _allInteractions[interactionIndex - 1];
+            List<Vector2> prevPositions = prevSegment.Positions;
+
+            if (prevPositions.Count == 0)
+            {
+                Debug.LogWarning($"Unable to find previous position for interaction {interactionIndex}");
+                return Vector2.zero;
+            }
+
+            return prevPositions[^1];
         }
 
-        private void TickLeaving(NoteTiming noteTiming)
+        public Vector2 GetFinalInteractionPosition()
         {
-            if (noteTiming.CurrentBeatmapTime >= _noteEndTime + 2f)
+            if (_allInteractions.Count == 0)
             {
-                // Call for note service to clean this up
-                OnReadyForCleanup?.Invoke(this);
+                return StartPosition;
             }
+
+            NoteInteraction finalInteraction = _allInteractions[^1];
+            List<Vector2> finalPositions = finalInteraction.Positions;
+
+            if (finalPositions.Count == 0)
+            {
+                return StartPosition;
+            }
+
+            return finalPositions[^1];
+        }
+
+        public Vector2 GetInteractionPosition(int interactionIndex, int positionIndex)
+        {
+            if (interactionIndex >= _allInteractions.Count)
+            {
+                Debug.LogWarning($"Interaction index {interactionIndex} out of bounds");
+                return Vector2.zero;
+            }
+
+            List<Vector2> positions = _allInteractions[interactionIndex].Positions;
+
+            if (positionIndex >= positions.Count)
+            {
+                Debug.LogWarning($"Position index {positionIndex} out of bounds for interaction {interactionIndex}");
+                return Vector2.zero;
+            }
+
+            return positions[positionIndex];
+        }
+
+        private int GetInteractionIndex(NoteInteraction interaction)
+        {
+            return _allInteractions.IndexOf(interaction);
         }
 
         private void DrawDebug()
@@ -526,21 +330,20 @@ namespace Beatmapping.Notes
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(_hitboxTransform.transform.position, _hitboxRadius);
 
-#if UNITY_EDITOR
-            if (Application.isPlaying && CurrentInteraction != null)
+/*#if UNITY_EDITOR
+            if (_noteTickInfo.InteractionIndex != -1)
             {
                 var style = new GUIStyle
                 {
                     fontSize = 12,
                     normal = { textColor = Color.red }
                 };
+
                 Handles.Label(_hitboxTransform.transform.position + Vector3.up * 2,
-                    $"State: {_noteState}" +
                     $"\nIndex {_currentInteractionIndex}" +
                     $"\nType: {CurrentInteraction.Type}" +
-                    $"\n Time: {JsonUtility.ToJson(_noteTiming)}", style);
             }
-#endif
+#endif*/
         }
     }
 }

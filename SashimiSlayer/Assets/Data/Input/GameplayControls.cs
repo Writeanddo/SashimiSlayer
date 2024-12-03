@@ -450,9 +450,9 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
             @PoseButtonTop.started += instance.OnPoseButtonTop;
             @PoseButtonTop.performed += instance.OnPoseButtonTop;
             @PoseButtonTop.canceled += instance.OnPoseButtonTop;
-            @PoseButtonMId.started += instance.OnPoseButtonMId;
-            @PoseButtonMId.performed += instance.OnPoseButtonMId;
-            @PoseButtonMId.canceled += instance.OnPoseButtonMId;
+            @PoseButtonMId.started += instance.OnPoseButtonMid;
+            @PoseButtonMId.performed += instance.OnPoseButtonMid;
+            @PoseButtonMId.canceled += instance.OnPoseButtonMid;
             @PoseButtonBot.started += instance.OnPoseButtonBot;
             @PoseButtonBot.performed += instance.OnPoseButtonBot;
             @PoseButtonBot.canceled += instance.OnPoseButtonBot;
@@ -472,9 +472,9 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
             @PoseButtonTop.started -= instance.OnPoseButtonTop;
             @PoseButtonTop.performed -= instance.OnPoseButtonTop;
             @PoseButtonTop.canceled -= instance.OnPoseButtonTop;
-            @PoseButtonMId.started -= instance.OnPoseButtonMId;
-            @PoseButtonMId.performed -= instance.OnPoseButtonMId;
-            @PoseButtonMId.canceled -= instance.OnPoseButtonMId;
+            @PoseButtonMId.started -= instance.OnPoseButtonMid;
+            @PoseButtonMId.performed -= instance.OnPoseButtonMid;
+            @PoseButtonMId.canceled -= instance.OnPoseButtonMid;
             @PoseButtonBot.started -= instance.OnPoseButtonBot;
             @PoseButtonBot.performed -= instance.OnPoseButtonBot;
             @PoseButtonBot.canceled -= instance.OnPoseButtonBot;
@@ -512,7 +512,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
         void OnSwordAngle(InputAction.CallbackContext context);
         void OnUnsheathe(InputAction.CallbackContext context);
         void OnPoseButtonTop(InputAction.CallbackContext context);
-        void OnPoseButtonMId(InputAction.CallbackContext context);
+        void OnPoseButtonMid(InputAction.CallbackContext context);
         void OnPoseButtonBot(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
     }

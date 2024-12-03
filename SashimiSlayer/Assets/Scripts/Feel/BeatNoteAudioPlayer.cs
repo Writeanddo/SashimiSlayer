@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using FMODUnity;
 using UnityEngine;
 
 namespace Feel
 {
-    public class BeatNoteAudioPlayer : MonoBehaviour
+    public class BeatNoteAudioPlayer : BeatNoteListener
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -12,52 +13,29 @@ namespace Feel
         [Header("Audio Events")]
 
         [SerializeField]
-        private EventReference _spawnSound;
+        private EventReference _startSound;
 
-        [SerializeField]
-        private EventReference _startAttackSound;
-
-        [SerializeField]
-        private EventReference _startVulnerableSound;
-
-        private void Awake()
+        private void PlayStartSound()
         {
-            _beatNote.OnSpawn += PlaySpawnSound;
-            _beatNote.OnTransitionToWaitingToAttack += PlayTransitionToWaitingToAttack;
-            _beatNote.OnTransitionToWaitingToVulnerable += PlayTransitionToWaitingToVulnerable;
-        }
-
-        private void OnDestroy()
-        {
-            _beatNote.OnSpawn -= PlaySpawnSound;
-            _beatNote.OnTransitionToWaitingToAttack -= PlayTransitionToWaitingToAttack;
-            _beatNote.OnTransitionToWaitingToVulnerable -= PlayTransitionToWaitingToVulnerable;
-        }
-
-        private void PlaySpawnSound()
-        {
-            if (!_spawnSound.IsNull)
+            if (!_startSound.IsNull && Application.isPlaying)
             {
-                RuntimeManager.PlayOneShot(_spawnSound);
+                RuntimeManager.PlayOneShot(_startSound);
             }
         }
 
-        private void PlayTransitionToWaitingToAttack(BeatNote.NoteTiming noteTiming,
-            NoteInteraction scheduledInteraction)
+        public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
         {
-            if (!_startAttackSound.IsNull)
-            {
-                RuntimeManager.PlayOneShot(_startAttackSound);
-            }
+            return null;
         }
 
-        private void PlayTransitionToWaitingToVulnerable(BeatNote.NoteTiming noteTiming,
-            NoteInteraction scheduledInteraction)
+        public override void OnNoteInitialized(BeatNote beatNote)
         {
-            if (!_startVulnerableSound.IsNull)
-            {
-                RuntimeManager.PlayOneShot(_startVulnerableSound);
-            }
+            _beatNote.OnNoteStart += PlayStartSound;
+        }
+
+        public override void OnNoteCleanedUp(BeatNote beatNote)
+        {
+            _beatNote.OnNoteStart -= PlayStartSound;
         }
     }
 }
