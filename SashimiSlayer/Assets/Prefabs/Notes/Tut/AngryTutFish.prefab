@@ -5151,8 +5151,6 @@ MonoBehaviour:
   _beatNote: {fileID: 5351909015360120121}
   _bodyTransform: {fileID: 3397291025441130690}
   _interactionIndex: 0
-  _startPosIndex: 0
-  _peakPosIndex: 1
   _sprite: {fileID: 38135383335388938}
   _moveCurve:
     serializedVersion: 2
@@ -5179,6 +5177,14 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _explosionParticles: {fileID: 8820880546140617743}
+  _middlePointThreshold: 0.5
+  _peakSfx:
+    Guid:
+      Data1: -61624085
+      Data2: 1172896522
+      Data3: -2122553943
+      Data4: 1715715527
+    Path: event:/TutorialLevel/AngryFish/AngryFishAttack
   OnHitPeak:
     m_PersistentCalls:
       m_Calls:

@@ -5118,8 +5118,6 @@ MonoBehaviour:
   _beatNote: {fileID: 5351909015360120121}
   _bodyTransform: {fileID: 2525752069901213316}
   _interactionIndex: 0
-  _startPosIndex: 0
-  _peakPosIndex: 1
   _sprite: {fileID: 38135383335388938}
   _moveCurve:
     serializedVersion: 2
@@ -5146,6 +5144,14 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _explosionParticles: {fileID: 8820880546140617743}
+  _middlePointThreshold: 0.5
+  _peakSfx:
+    Guid:
+      Data1: -609372783
+      Data2: 1245136501
+      Data3: 435903654
+      Data4: 520027991
+    Path: event:/TutorialLevel/MootFish/MootFishAttack
   OnHitPeak:
     m_PersistentCalls:
       m_Calls:
