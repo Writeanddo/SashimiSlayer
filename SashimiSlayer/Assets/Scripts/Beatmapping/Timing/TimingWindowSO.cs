@@ -16,7 +16,8 @@ namespace Beatmapping.Timing
 
         public TimingWindow CreateTimingWindow(double targetTime)
         {
-            return new TimingWindow(targetTime, new[] { PerfectWindowHalfWidth, PassWindowHalfWidth });
+            return new TimingWindow(targetTime,
+                new[] { PerfectWindowHalfWidth, PassWindowHalfWidth, LockoutWindowHalfWidth });
         }
     }
 }
