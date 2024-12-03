@@ -43,6 +43,8 @@ namespace Timeline.BeatNoteTrack
                 {
                     input.ProcessFrameMixer(currentBeatmapTime, info, beatmap, playerData as BeatNoteService);
                 }
+
+                input.EditorTick(info, currentBeatmapTime);
             }
         }
     }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Beatmapping;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
@@ -90,6 +89,7 @@ public class BeatNoteService : MonoBehaviour
         TimingWindowSO timingWindowSo = beatmap.TimingWindowSO;
 
         double noteStartTime = data.NoteStartTime;
+        double noteBeatLength = data.NoteBeatCount;
         double timeIntervalPerBeat = 60 / beatmap.Bpm;
 
         // Create interactions from data
@@ -98,15 +98,12 @@ public class BeatNoteService : MonoBehaviour
         NoteInteraction CreateNoteInteraction(SequencedNoteInteraction sequencedInteraction)
         {
             NoteInteractionData interactionData = sequencedInteraction.InteractionData;
-            uint beatOffset = sequencedInteraction.BeatsFromNoteStart;
+            double beatsFromStart = sequencedInteraction.GetBeatsFromNoteStart(noteBeatLength);
 
             TimingWindow timingWindow = timingWindowSo.CreateTimingWindow(
-                noteStartTime + beatOffset * timeIntervalPerBeat);
+                noteStartTime + beatsFromStart * timeIntervalPerBeat);
 
-            return new NoteInteraction(
-                interactionData.InteractionType,
-                interactionData.Flags,
-                interactionData.BlockPose,
+            return interactionData.ToNoteInteraction(
                 timingWindow);
         }
 
@@ -119,7 +116,8 @@ public class BeatNoteService : MonoBehaviour
         BeatNote note = Instantiate(hitConfig.Prefab, transform);
         note.Initialize(
             interactions,
-            data.Positions.ToList(),
+            data.StartPosition,
+            data.EndPosition,
             data.NoteStartTime,
             data.NoteEndTime,
             initalizeTime,

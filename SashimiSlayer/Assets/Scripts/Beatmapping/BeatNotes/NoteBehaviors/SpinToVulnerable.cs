@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class DazedOnParry : BeatNoteListener
+    public class SpinToVulnerable : BeatNoteListener
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -14,14 +15,6 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
         [SerializeField]
         private int _interactionIndex;
-
-        [Header("Positions")]
-
-        [SerializeField]
-        private int _startPosIndex;
-
-        [SerializeField]
-        private int _vulnerablePosIndex;
 
         [Header("Visuals")]
 
@@ -38,8 +31,8 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
         public UnityEvent OnEnterDazed;
 
-        private Vector2 _targetPos;
         private Vector2 _startPos;
+        private Vector2 _endPos;
         private Vector2 _vulnerablePos;
 
         private bool _enteredDazed;
@@ -69,30 +62,13 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             }
 
             NoteInteraction interaction = segment.Interaction;
+            _sprite.color = new Color(1, 1, 1, 1);
 
             if (interaction.Type == NoteInteraction.InteractionType.TargetToHit)
             {
                 TargetToHitVisuals((float)tickinfo.NormalizedSegmentTime, (float)tickinfo.CurrentBeatmapTime);
             }
         }
-
-        /*private void HandleTickWaitingToLeave(BeatNote.NoteTickInfo noteTickInfo)
-        {
-            // Lerp from the vulnerable position to the start position y (basically falling back into the sea)
-            var normalizedTime = (float)noteTickInfo.NormalizedLeaveWaitTime;
-
-            float t = _moveCurve.Evaluate(1 - normalizedTime);
-
-            // X velocity is constant, y uses curve
-            _bodyTransform.position = new Vector2(
-                _bodyTransform.position.x,
-                Mathf.Lerp(_vulnerablePos.y, _startPos.y, 1 - t)
-            );
-
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, 90 * (1 - t));
-            _sprite.color = new Color(1, 1, 1, 0.5f);
-        }
-        */
 
         private void TargetToHitVisuals(float normalizedTime, float beatmapTime)
         {
@@ -108,22 +84,26 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             // X velocity is constant, y uses curve
             _bodyTransform.position = new Vector2(
-                Mathf.Lerp(_targetPos.x, _vulnerablePos.x, normalizedTime),
-                Mathf.Lerp(_targetPos.y, _vulnerablePos.y, t)
+                Mathf.Lerp(_startPos.x, _vulnerablePos.x, normalizedTime),
+                Mathf.Lerp(_startPos.y, _vulnerablePos.y, t)
             );
 
             _sprite.transform.rotation = Quaternion.Euler(0, 0, 360f * beatmapTime);
         }
 
+        public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
+        {
+            return new List<IInteractionUser.InteractionUsage>
+            {
+                new(NoteInteraction.InteractionType.TargetToHit, _interactionIndex, 1)
+            };
+        }
+
         public override void OnNoteInitialized(BeatNote beatNote)
         {
-            _vulnerablePos = _beatNote.Positions[_vulnerablePosIndex];
-            _startPos = _beatNote.Positions[_startPosIndex];
-
-            if (Protaganist.Instance != null)
-            {
-                _targetPos = Protaganist.Instance.SpritePosition;
-            }
+            _vulnerablePos = _beatNote.GetInteractionPosition(_interactionIndex, 0);
+            _startPos = _beatNote.GetPreviousPosition(_interactionIndex);
+            _endPos = _beatNote.EndPosition;
 
             _beatNote.OnTick += BeatNote_OnTick;
             _beatNote.OnSlicedByProtag += BeatNote_OnSlicedByProtag;

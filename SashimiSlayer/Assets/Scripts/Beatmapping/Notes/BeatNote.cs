@@ -11,7 +11,7 @@ namespace Beatmapping.Notes
     ///     Represents a single sequenced note with some interactions.
     ///     Supports scrubbing (arbitrary tick timing)
     /// </summary>
-    public partial class BeatNote : MonoBehaviour
+    public partial class BeatNote : MonoBehaviour, IInteractionUser
     {
         public delegate void TickEventHandler(
             NoteTickInfo tickInfo);
@@ -24,7 +24,10 @@ namespace Beatmapping.Notes
             NoteTickInfo tickInfo,
             SharedTypes.InteractionFinalResult finalResult);
 
-        private const double CleanupTime = 2f;
+        /// <summary>
+        ///     Fixed time between end and cleanup
+        /// </summary>
+        private const double CleanupTime = 3f;
 
         // Serialized fields
         [SerializeField]
@@ -38,7 +41,9 @@ namespace Beatmapping.Notes
         [SerializeField]
         private List<BeatNoteListener> _beatNoteListeners;
 
-        public List<Vector2> Positions { get; private set; }
+        public Vector2 StartPosition { get; private set; }
+
+        public Vector2 EndPosition { get; private set; }
 
         // Events
 
@@ -119,13 +124,32 @@ namespace Beatmapping.Notes
             DrawDebug();
         }
 
+        public IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
+        {
+            var positionUsage = new List<IInteractionUser.InteractionUsage>();
+
+            foreach (BeatNoteListener listener in _beatNoteListeners)
+            {
+                IEnumerable<IInteractionUser.InteractionUsage> usages = listener.GetInteractionUsages();
+                if (usages == null)
+                {
+                    continue;
+                }
+
+                positionUsage.AddRange(usages);
+            }
+
+            return positionUsage;
+        }
+
         /// <summary>
         ///     Initialize the note with the given interactions and positions.
         ///     All time parameters are expected to be in beatmap timespace
         /// </summary>
         public void Initialize(
             List<NoteInteraction> noteInteractions,
-            List<Vector2> interactionPositions,
+            Vector2 noteStartPos,
+            Vector2 noteEndPos,
             double noteStartTime,
             double noteEndTime,
             double initializeTime,
@@ -134,11 +158,12 @@ namespace Beatmapping.Notes
         )
         {
             _allInteractions = new List<NoteInteraction>(noteInteractions);
-            Positions = new List<Vector2>(interactionPositions);
             _noteStartTime = noteStartTime;
             _noteEndTime = noteEndTime;
             _hitboxRadius = hitboxRadius;
             _damageDealtToPlayer = damageDealtToPlayer;
+            StartPosition = noteStartPos;
+            EndPosition = noteEndPos;
 
             // Default values
             _isFirstTick = true;
@@ -227,6 +252,74 @@ namespace Beatmapping.Notes
             }
         }
 
+        /// <summary>
+        ///     Get the position right before this interaction
+        /// </summary>
+        /// <param name="interactionIndex"></param>
+        /// <returns></returns>
+        public Vector2 GetPreviousPosition(int interactionIndex)
+        {
+            // No interactions before this one, use the start position
+            if (interactionIndex == 0)
+            {
+                return StartPosition;
+            }
+
+            if (interactionIndex > _allInteractions.Count)
+            {
+                Debug.LogWarning($"Interaction index {interactionIndex - 1} out of bounds");
+                return Vector2.zero;
+            }
+
+            NoteInteraction prevSegment = _allInteractions[interactionIndex - 1];
+            List<Vector2> prevPositions = prevSegment.Positions;
+
+            if (prevPositions.Count == 0)
+            {
+                Debug.LogWarning($"Unable to find previous position for interaction {interactionIndex}");
+                return Vector2.zero;
+            }
+
+            return prevPositions[^1];
+        }
+
+        public Vector2 GetFinalInteractionPosition()
+        {
+            if (_allInteractions.Count == 0)
+            {
+                return StartPosition;
+            }
+
+            NoteInteraction finalInteraction = _allInteractions[^1];
+            List<Vector2> finalPositions = finalInteraction.Positions;
+
+            if (finalPositions.Count == 0)
+            {
+                return StartPosition;
+            }
+
+            return finalPositions[^1];
+        }
+
+        public Vector2 GetInteractionPosition(int interactionIndex, int positionIndex)
+        {
+            if (interactionIndex >= _allInteractions.Count)
+            {
+                Debug.LogWarning($"Interaction index {interactionIndex} out of bounds");
+                return Vector2.zero;
+            }
+
+            List<Vector2> positions = _allInteractions[interactionIndex].Positions;
+
+            if (positionIndex >= positions.Count)
+            {
+                Debug.LogWarning($"Position index {positionIndex} out of bounds for interaction {interactionIndex}");
+                return Vector2.zero;
+            }
+
+            return positions[positionIndex];
+        }
+
         private int GetInteractionIndex(NoteInteraction interaction)
         {
             return _allInteractions.IndexOf(interaction);
@@ -238,18 +331,17 @@ namespace Beatmapping.Notes
             Gizmos.DrawWireSphere(_hitboxTransform.transform.position, _hitboxRadius);
 
 /*#if UNITY_EDITOR
-            if (Application.isPlaying && CurrentInteraction != null)
+            if (_noteTickInfo.InteractionIndex != -1)
             {
                 var style = new GUIStyle
                 {
                     fontSize = 12,
                     normal = { textColor = Color.red }
                 };
+
                 Handles.Label(_hitboxTransform.transform.position + Vector3.up * 2,
-                    $"State: {_timeSegmentType}" +
                     $"\nIndex {_currentInteractionIndex}" +
                     $"\nType: {CurrentInteraction.Type}" +
-                    $"\n Time: {JsonUtility.ToJson(_noteTiming)}", style);
             }
 #endif*/
         }

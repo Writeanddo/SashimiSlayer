@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,14 +20,6 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
         [SerializeField]
         private int _interactionIndex;
-
-        [Header("Positions")]
-
-        [SerializeField]
-        private int _startPosIndex;
-
-        [SerializeField]
-        private int _peakPosIndex;
 
         [Header("Visuals")]
 
@@ -102,16 +95,20 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             }
         }
 
+        public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
+        {
+            return new List<IInteractionUser.InteractionUsage>
+            {
+                new(NoteInteraction.InteractionType.IncomingAttack, _interactionIndex, 2)
+            };
+        }
+
         public override void OnNoteInitialized(BeatNote beatNote)
         {
             // Form an arc from start, with the peak at the target position
-            _startPos = _beatNote.Positions[_startPosIndex];
-            _peakPos = _beatNote.Positions[_peakPosIndex];
-
-            if (Protaganist.Instance != null)
-            {
-                _targetPos = Protaganist.Instance.SpritePosition;
-            }
+            _startPos = _beatNote.GetPreviousPosition(_interactionIndex);
+            _peakPos = _beatNote.GetInteractionPosition(_interactionIndex, 0);
+            _targetPos = _beatNote.GetInteractionPosition(_interactionIndex, 1);
 
             _sprite.flipX = _peakPos.x > _startPos.x;
 

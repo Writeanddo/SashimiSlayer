@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class SadTutorialFishAction : BeatNoteListener
+    public class SadFishNote : BeatNoteListener
     {
         [SerializeField]
         private SpriteRenderer _sprite;
@@ -22,6 +23,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
         private Vector2 _startPos;
         private Vector2 _targetPos;
+        private Vector2 _endPos;
 
         private bool _landedHit;
 
@@ -51,8 +53,8 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             // X velocity is constant, y uses curve
             _bodyTransform.position = new Vector2(
-                Mathf.Lerp(_targetPos.x, _targetPos.x + (_targetPos.x - _startPos.x), normalizedTime),
-                Mathf.Lerp(_targetPos.y, _startPos.y, 1 - t)
+                Mathf.Lerp(_targetPos.x, _endPos.x, normalizedTime),
+                Mathf.Lerp(_targetPos.y, _endPos.y, 1 - t)
             );
 
             _sprite.transform.rotation = Quaternion.Euler(0, 0, 90 * (1 - t));
@@ -82,12 +84,21 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             }
         }
 
+        public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
+        {
+            return new List<IInteractionUser.InteractionUsage>
+            {
+                new(NoteInteraction.InteractionType.TargetToHit, 0, 1)
+            };
+        }
+
         public override void OnNoteInitialized(BeatNote beatNote)
         {
             // Form an arc from start, with the peak at the target position
-            _startPos = _beatNote.Positions[0];
+            _startPos = _beatNote.StartPosition;
             _bodyTransform.position = _startPos;
-            _targetPos = _beatNote.Positions[1];
+            _targetPos = _beatNote.GetInteractionPosition(0, 0);
+            _endPos = _beatNote.EndPosition;
             _sprite.flipX = _targetPos.x > _startPos.x;
 
             _beatNote.OnTick += BeatNote_OnTick;

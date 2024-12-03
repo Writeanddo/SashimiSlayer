@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using FMODUnity;
 using UnityEngine;
@@ -20,6 +21,11 @@ namespace Feel
             {
                 RuntimeManager.PlayOneShot(_startSound);
             }
+        }
+
+        public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
+        {
+            return null;
         }
 
         public override void OnNoteInitialized(BeatNote beatNote)

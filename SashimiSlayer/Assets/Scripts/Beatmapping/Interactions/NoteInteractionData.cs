@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Beatmapping.Interactions
 {
@@ -19,9 +21,13 @@ namespace Beatmapping.Interactions
         [Tooltip("Additional interaction flags")]
         public NoteInteraction.InteractionFlags Flags;
 
+        [FormerlySerializedAs("InteractionPositions")]
+        [Tooltip("Positions for the interaction")]
+        public List<Vector2> Positions;
+
         public NoteInteraction ToNoteInteraction(TimingWindow window)
         {
-            return new NoteInteraction(InteractionType, Flags, BlockPose, window);
+            return new NoteInteraction(InteractionType, Flags, BlockPose, Positions, window);
         }
     }
 }

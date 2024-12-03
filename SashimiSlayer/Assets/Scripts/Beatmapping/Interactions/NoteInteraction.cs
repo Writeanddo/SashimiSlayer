@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Beatmapping.Notes
 {
@@ -30,6 +32,7 @@ namespace Beatmapping.Notes
         }
 
         public InteractionType Type { get; }
+        public List<Vector2> Positions { get; }
 
         public double TargetTime => _timingWindow.TargetTime;
 
@@ -46,12 +49,14 @@ namespace Beatmapping.Notes
         public NoteInteraction(InteractionType typeType,
             InteractionFlags interactionFlags,
             SharedTypes.BlockPoseStates blockPose,
+            List<Vector2> positions,
             TimingWindow window)
         {
             Type = typeType;
             Flags = interactionFlags;
             BlockPose = blockPose;
             _timingWindow = window;
+            Positions = positions == null ? null : new List<Vector2>(positions);
             _interactionState = NoteInteractionState.Default;
         }
 

@@ -14968,6 +14968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
   _sprite: {fileID: 38135383335388938}
+  _bodyTransform: {fileID: 6954155129960708260}
   _animator: {fileID: 9185724354866607105}
   _attackAnimationWindup: 0.4
   _damagedParticles:

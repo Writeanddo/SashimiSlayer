@@ -19,6 +19,8 @@ public class BeatmapEditorWindow : EditorWindow
 
     private static string _lastEditedScenePath = string.Empty;
 
+    public static bool AutoRefreshTimeline { get; private set; } = true;
+
     // Convenience property for easily getting the correct beatmap matching the current timeline
     public static BeatmapConfigSo CurrentEditingBeatmap => GetBeatmapFromTimeline(TimelineEditor.inspectedAsset);
     private UtilsPrefs _prefs;
@@ -69,6 +71,8 @@ public class BeatmapEditorWindow : EditorWindow
         {
             TimelineEditor.Refresh(RefreshReason.ContentsModified);
         }
+
+        AutoRefreshTimeline = GUILayout.Toggle(AutoRefreshTimeline, "Auto Refresh Timeline");
     }
 
     private void OnBecameInvisible()

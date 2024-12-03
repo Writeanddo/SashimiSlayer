@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using UnityEngine;
 
@@ -11,6 +12,9 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         [SerializeField]
         private int _interactionIndex;
 
+        [SerializeField]
+        private Transform _bodyTransform;
+
         [Header("Visuals")]
 
         [SerializeField]
@@ -18,6 +22,9 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
         [SerializeField]
         private ParticleSystem _explosionParticles;
+
+        private Vector2 _endPos;
+        private Vector2 _startPos;
 
         private void BeatNote_ProtagFailBlock(BeatNote.NoteTickInfo tickInfo,
             SharedTypes.InteractionFinalResult finalresult)
@@ -39,15 +46,22 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                 return;
             }
 
-            transform.position += Vector3.up * Time.deltaTime * 7f
-                                  + Vector3.left * Time.deltaTime * 15f;
+            _bodyTransform.position = Vector2.Lerp(_startPos, _endPos, (float)tickInfo.NormalizedSegmentTime);
 
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, 1200 * (float)tickInfo.CurrentBeatmapTime);
+            _sprite.transform.rotation = Quaternion.Euler(0, 0, 1200 * (float)tickInfo.SegmentTime);
             _sprite.color = new Color(1, 1, 1, 0.7f);
+        }
+
+        public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
+        {
+            return null;
         }
 
         public override void OnNoteInitialized(BeatNote beatNote)
         {
+            _startPos = beatNote.GetFinalInteractionPosition();
+            _endPos = beatNote.EndPosition;
+
             _beatNote.OnTick += BeatNote_OnTick;
             _beatNote.OnProtagFailBlock += BeatNote_ProtagFailBlock;
         }

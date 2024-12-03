@@ -3,13 +3,15 @@ using Beatmapping.Notes;
 using Beatmapping.Timing;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Serialization;
 
 namespace Timeline.BeatNoteTrack.BeatNote
 {
     [Serializable]
     public class BeatNoteBehavior : PlayableBehaviour
     {
-        public BeatNoteTypeSO HitConfig;
+        [FormerlySerializedAs("HitConfig")]
+        public BeatNoteTypeSO NoteConfig;
 
         public BeatNoteData NoteData;
 
@@ -40,20 +42,10 @@ namespace Timeline.BeatNoteTrack.BeatNote
             if (_beatNote == null)
             {
                 _beatNote = _beatNoteService.SpawnNote(
-                    HitConfig,
+                    NoteConfig,
                     NoteData,
                     beatmap,
                     currentBeatmapTime);
-            }
-
-            // Ticking from the mixer is only for previewing in the editor
-            if (!Application.isPlaying)
-            {
-                _beatNote.Tick(new BeatmapTimeManager.TickInfo
-                {
-                    CurrentBeatmapTime = currentBeatmapTime,
-                    DeltaTime = info.deltaTime
-                }, Beatmapping.Notes.BeatNote.TickFlags.UpdateLocation);
             }
 
             // Debug.DrawLine(NoteData.Positions[0], NoteData.Positions[0] + Vector2.up * 10, Color.red);
@@ -61,12 +53,30 @@ namespace Timeline.BeatNoteTrack.BeatNote
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
-            Cleanup();
+            // Cleanup();
         }
 
         public override void OnPlayableDestroy(Playable playable)
         {
             Cleanup();
+        }
+
+        public void EditorTick(FrameData info, double currentBeatmapTime)
+        {
+            // Ticking from the mixer is only for previewing in the editor
+            if (!Application.isPlaying && _beatNote != null)
+            {
+                _beatNote.Tick(new BeatmapTimeManager.TickInfo
+                {
+                    CurrentBeatmapTime = currentBeatmapTime,
+                    DeltaTime = info.deltaTime
+                }, Beatmapping.Notes.BeatNote.TickFlags.UpdateLocation);
+
+                if (currentBeatmapTime < NoteData.NoteStartTime)
+                {
+                    Cleanup();
+                }
+            }
         }
 
         private void Cleanup()

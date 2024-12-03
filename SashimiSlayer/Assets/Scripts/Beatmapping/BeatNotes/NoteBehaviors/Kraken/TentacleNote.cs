@@ -1,15 +1,19 @@
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
 {
-    public class TentacleAction : BeatNoteListener
+    public class TentacleNote : BeatNoteListener
     {
         [SerializeField]
         private BeatNote _beatNote;
 
         [SerializeField]
         private SpriteRenderer _sprite;
+
+        [SerializeField]
+        private Transform _bodyTransform;
 
         [SerializeField]
         private Animator _animator;
@@ -65,12 +69,19 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
             _animator.Play("TentacleSpawn");
         }
 
+        public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
+        {
+            return null;
+        }
+
         public override void OnNoteInitialized(BeatNote beatNote)
         {
             _beatNote.OnNoteStart += HandleSpawned;
             _beatNote.OnSlicedByProtag += HandleOnSliced;
             _beatNote.OnTick += BeatNote_OnTick;
             _beatNote.OnNoteEnd += BeatNote_OnEnd;
+
+            _bodyTransform.position = beatNote.StartPosition;
         }
 
         public override void OnNoteCleanedUp(BeatNote beatNote)

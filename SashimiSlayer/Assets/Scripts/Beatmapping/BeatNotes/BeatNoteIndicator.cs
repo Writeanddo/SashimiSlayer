@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using DG.Tweening;
 using Events.Core;
@@ -42,6 +43,16 @@ namespace Beatmapping.BeatNotes
         private SimpleAnimator _animator;
 
         private BeatNote _beatNote;
+
+        private void Start()
+        {
+            _protagSwordStateEvent.AddListener(OnProtagSwordState);
+        }
+
+        private void OnDestroy()
+        {
+            _protagSwordStateEvent.RemoveListener(OnProtagSwordState);
+        }
 
         private void BeatNote_OnTick(BeatNote.NoteTickInfo tickinfo)
         {
@@ -114,17 +125,20 @@ namespace Beatmapping.BeatNotes
             }
         }
 
+        public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
+        {
+            return null;
+        }
+
         public override void OnNoteInitialized(BeatNote beatNote)
         {
             _beatNote = GetComponentInParent<BeatNote>();
 
-            _protagSwordStateEvent.AddListener(OnProtagSwordState);
             _beatNote.OnTick += BeatNote_OnTick;
         }
 
         public override void OnNoteCleanedUp(BeatNote beatNote)
         {
-            _protagSwordStateEvent.RemoveListener(OnProtagSwordState);
             _beatNote.OnTick -= BeatNote_OnTick;
         }
     }
