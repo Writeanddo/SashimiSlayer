@@ -1,15 +1,16 @@
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Beatmapping.BeatNotes.BnH
+namespace Beatmapping.BeatNotes.NoteBehaviors
 {
     /// <summary>
     ///     Attack Note that moves in three stages
     ///     Spawn -> Attack ready position
     ///     Attack ready position -> Player (Block interaction)
     /// </summary>
-    public class ThreePointAttack : MonoBehaviour
+    public class ThreePointAttack : BeatNoteListener
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -17,13 +18,8 @@ namespace Beatmapping.BeatNotes.BnH
         [SerializeField]
         private Transform _bodyTransform;
 
-        [Header("Positions")]
-
         [SerializeField]
-        private int _startPosIndex;
-
-        [SerializeField]
-        private int _peakPosIndex;
+        private int _interactionIndex;
 
         [Header("Visuals")]
 
@@ -47,35 +43,27 @@ namespace Beatmapping.BeatNotes.BnH
 
         private bool _hitPeak;
 
-        private void Awake()
+        private void BeatNote_OnTick(BeatNote.NoteTickInfo tickinfo)
         {
-            _beatNote.OnTickWaitingForAttack += HandleTickWaitingForAttack;
-            _beatNote.OnTickInAttack += HandleTickWaitingForAttack;
-            _beatNote.OnLandHitOnProtag += HandleLandHitOnProtag;
+            BeatNote.NoteTimeSegment segment = tickinfo.NoteSegment;
+
+            if (tickinfo.InteractionIndex != _interactionIndex)
+            {
+                return;
+            }
+
+            WaitingForAttackVisual((float)tickinfo.NormalizedSegmentTime);
         }
 
-        private void Start()
-        {
-            // Form an arc from start, with the peak at the target position
-            _startPos = _beatNote.Positions[_startPosIndex];
-            _peakPos = _beatNote.Positions[_peakPosIndex];
-            _targetPos = Protaganist.Instance.SpritePosition;
-            _sprite.flipX = _peakPos.x > _startPos.x;
-
-            _bodyTransform.position = _startPos;
-
-            _angleToTarget = Mathf.Atan2(_targetPos.y - _peakPos.y, _targetPos.x - _peakPos.x) * Mathf.Rad2Deg;
-        }
-
-        private void HandleLandHitOnProtag()
+        private void BeatNote_ProtagFailBlock(BeatNote.NoteTickInfo tickInfo,
+            SharedTypes.InteractionFinalResult finalResult)
         {
             _explosionParticles.Play();
         }
 
-        private void HandleTickWaitingForAttack(BeatNote.NoteTiming noteTiming, NoteInteraction noteInteraction)
+        private void WaitingForAttackVisual(float normalizedTime)
         {
             // Lerp from start pos to peak pos, then to target pos
-            var normalizedTime = (float)noteTiming.NormalizedInteractionWaitTime;
 
             var thresh = 0.75f;
             if (normalizedTime <= thresh)
@@ -105,6 +93,37 @@ namespace Beatmapping.BeatNotes.BnH
                 // angle towards target
                 _sprite.transform.localRotation = Quaternion.Euler(0, 0, 180 + _angleToTarget);
             }
+        }
+
+        public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
+        {
+            return new List<IInteractionUser.InteractionUsage>
+            {
+                new(NoteInteraction.InteractionType.IncomingAttack, _interactionIndex, 2)
+            };
+        }
+
+        public override void OnNoteInitialized(BeatNote beatNote)
+        {
+            // Form an arc from start, with the peak at the target position
+            _startPos = _beatNote.GetPreviousPosition(_interactionIndex);
+            _peakPos = _beatNote.GetInteractionPosition(_interactionIndex, 0);
+            _targetPos = _beatNote.GetInteractionPosition(_interactionIndex, 1);
+
+            _sprite.flipX = _peakPos.x > _startPos.x;
+
+            _bodyTransform.position = _startPos;
+
+            _angleToTarget = Mathf.Atan2(_targetPos.y - _peakPos.y, _targetPos.x - _peakPos.x) * Mathf.Rad2Deg;
+
+            _beatNote.OnTick += BeatNote_OnTick;
+            _beatNote.OnProtagFailBlock += BeatNote_ProtagFailBlock;
+        }
+
+        public override void OnNoteCleanedUp(BeatNote beatNote)
+        {
+            _beatNote.OnTick -= BeatNote_OnTick;
+            _beatNote.OnProtagFailBlock -= BeatNote_ProtagFailBlock;
         }
     }
 }

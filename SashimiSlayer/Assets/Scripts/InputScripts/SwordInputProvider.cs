@@ -42,17 +42,19 @@ public class SwordInputProvider : BaseUserInputProvider
 
         if (data.TopButton)
         {
-            newPose |= SharedTypes.BlockPoseStates.TopPose;
+            newPose = SharedTypes.BlockPoseStates.TopPose;
         }
-
-        if (data.MiddleButton)
+        else if (data.MiddleButton)
         {
-            newPose |= SharedTypes.BlockPoseStates.MidPose;
+            newPose = SharedTypes.BlockPoseStates.MidPose;
         }
-
-        if (data.BottomButton)
+        else if (data.BottomButton)
         {
-            newPose |= SharedTypes.BlockPoseStates.BotPose;
+            newPose = SharedTypes.BlockPoseStates.BotPose;
+        }
+        else
+        {
+            newPose = (SharedTypes.BlockPoseStates)(-1);
         }
 
         if (newPose != _currentBlockPose)

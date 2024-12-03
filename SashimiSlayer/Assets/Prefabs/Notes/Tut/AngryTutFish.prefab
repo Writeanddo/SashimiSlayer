@@ -5131,6 +5131,11 @@ MonoBehaviour:
   _hitboxTransform: {fileID: 7961916753182534580}
   _noteInteractionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
     type: 2}
+  _beatNoteListeners:
+  - {fileID: 968238231831404959}
+  - {fileID: 6312448168416926207}
+  - {fileID: 7802386708947927710}
+  - {fileID: 1637912884012176710}
 --- !u!114 &968238231831404959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5145,6 +5150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
   _bodyTransform: {fileID: 3397291025441130690}
+  _interactionIndex: 0
   _startPosIndex: 0
   _peakPosIndex: 1
   _sprite: {fileID: 38135383335388938}
@@ -5201,6 +5207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
+  _interactionIndex: 0
+  _bodyTransform: {fileID: 3397291025441130690}
   _sprite: {fileID: 38135383335388938}
   _explosionParticles: {fileID: 8820880546140617743}
 --- !u!1 &9134861382885884113
@@ -5249,27 +5257,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
-  _spawnSound:
+  _startSound:
     Guid:
       Data1: 88887796
       Data2: 1206464606
       Data3: -1964395854
       Data4: -235094931
     Path: event:/TutorialLevel/AngryFish/AngryFishSpawn
-  _startAttackSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  _startVulnerableSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
 --- !u!114 &4930257788930777231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5374,7 +5368,7 @@ PrefabInstance:
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.47
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
@@ -5394,17 +5388,17 @@ PrefabInstance:
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
@@ -5431,6 +5425,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d52b4ffafae7e842b7af681379c9db4, type: 3}
+--- !u!114 &1637912884012176710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5743409499505446920, guid: 0d52b4ffafae7e842b7af681379c9db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6417552045795214670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28657229dbd9204ea80626986c9e5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7961916753182534580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,

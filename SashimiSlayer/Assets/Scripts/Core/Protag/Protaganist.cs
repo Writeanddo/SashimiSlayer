@@ -136,21 +136,8 @@ public class Protaganist : MonoBehaviour
 
     private void OnPoseStateChanged(SharedTypes.BlockPoseStates blockPoseStates)
     {
-        var oldState = (int)_currentSwordState.BlockPose;
-        var newState = (int)blockPoseStates;
-
         _currentSwordState.BlockPose = blockPoseStates;
-        for (var i = 0; i < SharedTypes.NumPoses; i++)
-        {
-            bool isInOldState = oldState.IsIndexInFlag(i);
-            bool isInNewState = newState.IsIndexInFlag(i);
-            if (isInNewState && !isInOldState)
-            {
-                // Only include the most recent hit block pose
-                _currentSwordState.BlockPose = (SharedTypes.BlockPoseStates)(1 << i);
-                _tryBlockEvent.Raise(_currentSwordState);
-            }
-        }
+        _tryBlockEvent.Raise(_currentSwordState);
     }
 
     private void OnSheathStateChanged(SharedTypes.SheathState newState)

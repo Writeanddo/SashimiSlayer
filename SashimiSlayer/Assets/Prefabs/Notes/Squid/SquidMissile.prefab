@@ -5116,6 +5116,7 @@ GameObject:
   - component: {fileID: 5351909015360120121}
   - component: {fileID: 1126804359791738572}
   - component: {fileID: 6601682482599097147}
+  - component: {fileID: 731252525552784334}
   m_Layer: 0
   m_Name: SquidMissile
   m_TagString: Untagged
@@ -5151,9 +5152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e087f2332fc306c4fb4ff76c09dff698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitboxTransform: {fileID: 4584757707055110698}
+  _hitboxTransform: {fileID: 7961916753182534580}
   _noteInteractionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
     type: 2}
+  _beatNoteListeners:
+  - {fileID: 1126804359791738572}
+  - {fileID: 6601682482599097147}
+  - {fileID: 731252525552784334}
+  - {fileID: 8559348983169891108}
+  - {fileID: 1637912884012176710}
 --- !u!114 &1126804359791738572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5168,8 +5175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
   _bodyTransform: {fileID: 7200301394065197706}
-  _startPosIndex: 0
-  _peakPosIndex: 1
+  _interactionIndex: 0
   _sprite: {fileID: 38135383335388938}
   _moveCurve:
     serializedVersion: 2
@@ -5224,9 +5230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
-  _bodyTransform: {fileID: 0}
-  _startPosIndex: 0
-  _vulnerablePosIndex: 2
+  _bodyTransform: {fileID: 7200301394065197706}
+  _interactionIndex: 1
   _sprite: {fileID: 38135383335388938}
   _dieParticles:
   - {fileID: 906504126636784770}
@@ -5271,6 +5276,20 @@ MonoBehaviour:
           m_StringArgument: SquidVulnerable
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &731252525552784334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719167886461646457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbfca9306f9241d3be71f982ec2eca28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 38135383335388938}
+  _bodyTransform: {fileID: 7200301394065197706}
 --- !u!1 &7381459145768466746
 GameObject:
   m_ObjectHideFlags: 0
@@ -5317,27 +5336,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
-  _spawnSound:
+  _startSound:
     Guid:
       Data1: -849577297
       Data2: 1314550373
       Data3: -348506745
       Data4: 1846830016
     Path: event:/KrakenLevel/Squid/SquidSpawn
-  _startAttackSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  _startVulnerableSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
 --- !u!114 &8998238423337882039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5534,7 +5539,7 @@ PrefabInstance:
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
@@ -5591,6 +5596,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d52b4ffafae7e842b7af681379c9db4, type: 3}
+--- !u!114 &1637912884012176710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5743409499505446920, guid: 0d52b4ffafae7e842b7af681379c9db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6417552045795214670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28657229dbd9204ea80626986c9e5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7961916753182534580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,

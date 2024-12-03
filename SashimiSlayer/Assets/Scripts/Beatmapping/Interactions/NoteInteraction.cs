@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Beatmapping.Notes
 {
@@ -24,22 +26,13 @@ namespace Beatmapping.Notes
         public enum InteractionFlags
         {
             /// <summary>
-            ///     End the note immediately if this interaction hits the protag
+            ///     Do not end the note on a successful hit. NOTE: THIS IS CURRENTLY UNUSED AND HAS NO DEFINED BEHAVIOR
             /// </summary>
-            EndNoteOnHittingProtag = 1 << 0,
-
-            /// <summary>
-            ///     End the note immediately of this interaction is hit by the protag
-            /// </summary>
-            EndNoteOnHitByProtag = 1 << 1,
-
-            /// <summary>
-            ///     End the note immediately if this interaction is blocked
-            /// </summary>
-            EndNoteOnBlocked = 1 << 2
+            DoNotEndOnHit = 1 << 1
         }
 
         public InteractionType Type { get; }
+        public List<Vector2> Positions { get; }
 
         public double TargetTime => _timingWindow.TargetTime;
 
@@ -56,12 +49,14 @@ namespace Beatmapping.Notes
         public NoteInteraction(InteractionType typeType,
             InteractionFlags interactionFlags,
             SharedTypes.BlockPoseStates blockPose,
+            List<Vector2> positions,
             TimingWindow window)
         {
             Type = typeType;
             Flags = interactionFlags;
             BlockPose = blockPose;
             _timingWindow = window;
+            Positions = positions == null ? null : new List<Vector2>(positions);
             _interactionState = NoteInteractionState.Default;
         }
 
@@ -138,7 +133,23 @@ namespace Beatmapping.Notes
             return result;
         }
 
-        public bool IsTimeInWindow(double time)
+        /// <summary>
+        ///     Is the given time within the interaction window for this interaction? Includes anti-spam lockout window
+        /// </summary>
+        /// <param name="time">time in beatmap timespace</param>
+        /// <returns></returns>
+        public bool IsInInteractTimingWindow(double time)
+        {
+            return _timingWindow.CalculateTimingResult(time).Score is TimingWindow.Score.Pass
+                or TimingWindow.Score.Perfect or TimingWindow.Score.FailLockout;
+        }
+
+        /// <summary>
+        ///     Is the given time within the passing window for this interaction?
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        public bool IsInPassTimingWindow(double time)
         {
             return _timingWindow.CalculateTimingResult(time).Score is TimingWindow.Score.Pass
                 or TimingWindow.Score.Perfect;

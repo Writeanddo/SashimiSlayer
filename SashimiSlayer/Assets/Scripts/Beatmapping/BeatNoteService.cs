@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Beatmapping;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
@@ -62,7 +61,8 @@ public class BeatNoteService : MonoBehaviour
 
     private void TimeManager_OnTick(BeatmapTimeManager.TickInfo tickInfo)
     {
-        TickNotes(tickInfo);
+        // Time manager ticks are during play mode, so include all flags
+        TickNotes(tickInfo, BeatNote.TickFlags.All);
     }
 
     private void OnBlockByProtag(Protaganist.ProtagSwordState swordState)
@@ -81,11 +81,15 @@ public class BeatNoteService : MonoBehaviour
         }
     }
 
-    public BeatNote SpawnNote(BeatNoteTypeSO hitConfig, BeatNoteData data, BeatmapConfigSo beatmap)
+    public BeatNote SpawnNote(BeatNoteTypeSO hitConfig,
+        BeatNoteData data,
+        BeatmapConfigSo beatmap,
+        double initalizeTime)
     {
         TimingWindowSO timingWindowSo = beatmap.TimingWindowSO;
 
         double noteStartTime = data.NoteStartTime;
+        double noteBeatLength = data.NoteBeatCount;
         double timeIntervalPerBeat = 60 / beatmap.Bpm;
 
         // Create interactions from data
@@ -94,15 +98,12 @@ public class BeatNoteService : MonoBehaviour
         NoteInteraction CreateNoteInteraction(SequencedNoteInteraction sequencedInteraction)
         {
             NoteInteractionData interactionData = sequencedInteraction.InteractionData;
-            uint beatOffset = sequencedInteraction.BeatsFromNoteStart;
+            double beatsFromStart = sequencedInteraction.GetBeatsFromNoteStart(noteBeatLength);
 
             TimingWindow timingWindow = timingWindowSo.CreateTimingWindow(
-                noteStartTime + beatOffset * timeIntervalPerBeat);
+                noteStartTime + beatsFromStart * timeIntervalPerBeat);
 
-            return new NoteInteraction(
-                interactionData.InteractionType,
-                interactionData.Flags,
-                interactionData.BlockPose,
+            return interactionData.ToNoteInteraction(
                 timingWindow);
         }
 
@@ -115,9 +116,11 @@ public class BeatNoteService : MonoBehaviour
         BeatNote note = Instantiate(hitConfig.Prefab, transform);
         note.Initialize(
             interactions,
-            data.Positions.ToList(),
+            data.StartPosition,
+            data.EndPosition,
             data.NoteStartTime,
             data.NoteEndTime,
+            initalizeTime,
             hitConfig.HitboxRadius,
             hitConfig.DamageDealtToPlayer
         );
@@ -129,31 +132,31 @@ public class BeatNoteService : MonoBehaviour
         return note;
     }
 
-    private void TickNotes(BeatmapTimeManager.TickInfo tickInfo)
+    private void TickNotes(BeatmapTimeManager.TickInfo tickInfo, BeatNote.TickFlags tickFlags)
     {
         BeatNote[] hits = _activeBeatNotes.ToArray();
         foreach (BeatNote hit in hits)
         {
-            hit.Tick(tickInfo);
+            hit.Tick(tickInfo, tickFlags);
         }
     }
 
-    public void CleanupNote(BeatNote blockAndHit)
+    public void CleanupNote(BeatNote note)
     {
-        _activeBeatNotes.Remove(blockAndHit);
+        _activeBeatNotes.Remove(note);
         if (Application.isPlaying)
         {
-            Destroy(blockAndHit.gameObject);
+            Destroy(note.gameObject);
         }
         else
         {
-            DestroyImmediate(blockAndHit.gameObject);
+            DestroyImmediate(note.gameObject);
         }
     }
 
-    private void HandleCleanupRequested(BeatNote action)
+    private void HandleCleanupRequested(BeatNote note)
     {
-        action.OnReadyForCleanup -= HandleCleanupRequested;
-        CleanupNote(action);
+        note.OnReadyForCleanup -= HandleCleanupRequested;
+        CleanupNote(note);
     }
 }

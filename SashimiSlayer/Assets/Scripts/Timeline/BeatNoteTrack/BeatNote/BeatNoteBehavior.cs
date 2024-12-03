@@ -1,14 +1,17 @@
 using System;
 using Beatmapping.Notes;
+using Beatmapping.Timing;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Serialization;
 
 namespace Timeline.BeatNoteTrack.BeatNote
 {
     [Serializable]
     public class BeatNoteBehavior : PlayableBehaviour
     {
-        public BeatNoteTypeSO HitConfig;
+        [FormerlySerializedAs("HitConfig")]
+        public BeatNoteTypeSO NoteConfig;
 
         public BeatNoteData NoteData;
 
@@ -16,11 +19,17 @@ namespace Timeline.BeatNoteTrack.BeatNote
 
         private Beatmapping.Notes.BeatNote _beatNote;
 
-        public override void ProcessFrame(Playable playable, FrameData info, object playerData)
+        /// <summary>
+        ///     Process the frame. This should be called by the BeatNoteMixer
+        /// </summary>
+        public void ProcessFrameMixer(double beatmapTime,
+            FrameData info,
+            BeatmapConfigSo beatmap,
+            BeatNoteService service)
         {
             if (_beatNoteService == null)
             {
-                _beatNoteService = playerData as BeatNoteService;
+                _beatNoteService = service;
 
                 if (_beatNoteService == null)
                 {
@@ -28,30 +37,23 @@ namespace Timeline.BeatNoteTrack.BeatNote
                 }
             }
 
+            double currentBeatmapTime = beatmapTime;
+
             if (_beatNote == null)
             {
-                BeatmapConfigSo beatmap;
-                if (Application.isPlaying)
-                {
-                    beatmap = LevelLoader.Instance.CurrentLevel.Beatmap;
-                }
-                else
-                {
-                    beatmap = BeatmapEditorUtil.CurrentEditingBeatmapConfig;
-                }
-
                 _beatNote = _beatNoteService.SpawnNote(
-                    HitConfig,
+                    NoteConfig,
                     NoteData,
-                    beatmap);
+                    beatmap,
+                    currentBeatmapTime);
             }
 
-            Debug.DrawLine(NoteData.Positions[0], NoteData.Positions[0] + Vector2.up * 10, Color.red);
+            // Debug.DrawLine(NoteData.Positions[0], NoteData.Positions[0] + Vector2.up * 10, Color.red);
         }
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
-            Cleanup();
+            // Cleanup();
         }
 
         public override void OnPlayableDestroy(Playable playable)
@@ -59,8 +61,27 @@ namespace Timeline.BeatNoteTrack.BeatNote
             Cleanup();
         }
 
+        public void EditorTick(FrameData info, double currentBeatmapTime)
+        {
+            // Ticking from the mixer is only for previewing in the editor
+            if (!Application.isPlaying && _beatNote != null)
+            {
+                _beatNote.Tick(new BeatmapTimeManager.TickInfo
+                {
+                    CurrentBeatmapTime = currentBeatmapTime,
+                    DeltaTime = info.deltaTime
+                }, Beatmapping.Notes.BeatNote.TickFlags.UpdateLocation);
+
+                if (currentBeatmapTime < NoteData.NoteStartTime)
+                {
+                    Cleanup();
+                }
+            }
+        }
+
         private void Cleanup()
         {
+            // During play mode the note and note manager handle cleanup
             if (Application.isPlaying)
             {
                 return;

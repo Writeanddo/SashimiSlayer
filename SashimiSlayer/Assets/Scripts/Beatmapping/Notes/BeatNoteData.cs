@@ -11,11 +11,8 @@ namespace Beatmapping.Notes
     [Serializable]
     public struct BeatNoteData
     {
-        public Vector2[] Positions;
-
-        public bool AutoVulnerableAtEnd;
-
-        public int AutoVulnerableBeatOffset;
+        public Vector2 StartPosition;
+        public Vector2 EndPosition;
 
         [Header("Timing (Beatmap space)")]
 
@@ -23,48 +20,33 @@ namespace Beatmapping.Notes
 
         public double NoteEndTime;
 
-        public uint NoteBeatCount;
+        public double NoteBeatCount;
 
         [SerializeField]
-        private List<SequencedNoteInteraction> _interactions;
-
-        public IEnumerable<SequencedNoteInteraction> Interactions
-        {
-            get
-            {
-                foreach (SequencedNoteInteraction sequencedNoteInteraction in _interactions)
-                {
-                    yield return sequencedNoteInteraction;
-                }
-
-                if (AutoVulnerableAtEnd)
-                {
-                    yield return CreateAutoVulnerableNoteInteraction();
-                }
-            }
-        }
-
-        private SequencedNoteInteraction CreateAutoVulnerableNoteInteraction()
-        {
-            var autoVulnerableInteraction = new NoteInteractionData
-            {
-                InteractionType = NoteInteraction.InteractionType.TargetToHit,
-                Flags = NoteInteraction.InteractionFlags.EndNoteOnHitByProtag
-            };
-            return new SequencedNoteInteraction
-            {
-                BeatsFromNoteStart = (uint)(NoteBeatCount + AutoVulnerableBeatOffset),
-                InteractionData = autoVulnerableInteraction
-            };
-        }
+        public List<SequencedNoteInteraction> Interactions;
     }
 
     [Serializable]
     public struct SequencedNoteInteraction
     {
+        [Tooltip("Beat offset")]
+        [SerializeField]
+        private double _beatOffset;
+
+        [Tooltip("If true, the beat offset is from the end of the note")]
+        [SerializeField]
+        private bool _offsetFromEnd;
+
         public NoteInteractionData InteractionData;
 
-        [Tooltip(" Offset from the start of the note, in beats")]
-        public uint BeatsFromNoteStart;
+        /// <summary>
+        ///     Get the interaction beat offset from the start of the note
+        /// </summary>
+        /// <param name="noteBeatLength"></param>
+        /// <returns></returns>
+        public double GetBeatsFromNoteStart(double noteBeatLength)
+        {
+            return _offsetFromEnd ? noteBeatLength - _beatOffset : _beatOffset;
+        }
     }
 }

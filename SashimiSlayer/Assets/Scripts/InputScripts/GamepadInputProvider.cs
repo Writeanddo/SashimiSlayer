@@ -52,20 +52,29 @@ public class GamepadInputProvider : BaseUserInputProvider, GameplayControls.IGam
 
     public void OnPoseButtonTop(InputAction.CallbackContext context)
     {
-        bool isPressed = context.ReadValueAsButton();
-        ChangePoseFlag(SharedTypes.BlockPoseStates.TopPose, isPressed);
+        if (context.ReadValueAsButton())
+        {
+            OnBlockPoseChanged?.Invoke(SharedTypes.BlockPoseStates.TopPose);
+            _blockPoseStates = SharedTypes.BlockPoseStates.TopPose;
+        }
     }
 
-    public void OnPoseButtonMId(InputAction.CallbackContext context)
+    public void OnPoseButtonMid(InputAction.CallbackContext context)
     {
-        bool isPressed = context.ReadValueAsButton();
-        ChangePoseFlag(SharedTypes.BlockPoseStates.MidPose, isPressed);
+        if (context.ReadValueAsButton())
+        {
+            OnBlockPoseChanged?.Invoke(SharedTypes.BlockPoseStates.MidPose);
+            _blockPoseStates = SharedTypes.BlockPoseStates.MidPose;
+        }
     }
 
     public void OnPoseButtonBot(InputAction.CallbackContext context)
     {
-        bool isPressed = context.ReadValueAsButton();
-        ChangePoseFlag(SharedTypes.BlockPoseStates.BotPose, isPressed);
+        if (context.ReadValueAsButton())
+        {
+            OnBlockPoseChanged?.Invoke(SharedTypes.BlockPoseStates.BotPose);
+            _blockPoseStates = SharedTypes.BlockPoseStates.BotPose;
+        }
     }
 
     public void OnMousePos(InputAction.CallbackContext context)
@@ -79,25 +88,6 @@ public class GamepadInputProvider : BaseUserInputProvider, GameplayControls.IGam
         }
 
         _mousePos = newMousePos;
-    }
-
-    private void ChangePoseFlag(SharedTypes.BlockPoseStates flag, bool flagState)
-    {
-        SharedTypes.BlockPoseStates newBlockPoseStates = _blockPoseStates;
-        if (flagState)
-        {
-            newBlockPoseStates |= flag;
-        }
-        else
-        {
-            newBlockPoseStates &= ~flag;
-        }
-
-        if (_blockPoseStates != newBlockPoseStates)
-        {
-            _blockPoseStates = newBlockPoseStates;
-            OnBlockPoseChanged?.Invoke(_blockPoseStates);
-        }
     }
 
     public override float GetSwordAngle()

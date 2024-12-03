@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Beatmapping.Notes;
 using DG.Tweening;
 using Events.Core;
@@ -5,15 +6,8 @@ using UnityEngine;
 
 namespace Beatmapping.BeatNotes
 {
-    public class BeatNoteIndicator : MonoBehaviour
+    public class BeatNoteIndicator : BeatNoteListener
     {
-        private enum UpdateType
-        {
-            Smooth,
-            Beat,
-            Subdiv
-        }
-
         [Header("Events Listening")]
 
         [SerializeField]
@@ -50,24 +44,41 @@ namespace Beatmapping.BeatNotes
 
         private BeatNote _beatNote;
 
-        private void Awake()
+        private void Start()
         {
-            _beatNote = GetComponentInParent<BeatNote>();
-
             _protagSwordStateEvent.AddListener(OnProtagSwordState);
-            _beatNote.OnNoteEnded += HandleNoteEnded;
-            _beatNote.OnTickWaitingForVulnerable += HandleTickWaitingForVuln;
-            _beatNote.OnTickWaitingForAttack += HandleTickWaitingForAttack;
-            _beatNote.OnTransitionToWaitingToAttack += HandleTransitionToWaitingToAttack;
         }
 
         private void OnDestroy()
         {
             _protagSwordStateEvent.RemoveListener(OnProtagSwordState);
-            _beatNote.OnNoteEnded -= HandleNoteEnded;
-            _beatNote.OnTickWaitingForVulnerable -= HandleTickWaitingForVuln;
-            _beatNote.OnTickWaitingForAttack -= HandleTickWaitingForAttack;
-            _beatNote.OnTransitionToWaitingToAttack -= HandleTransitionToWaitingToAttack;
+        }
+
+        private void BeatNote_OnTick(BeatNote.NoteTickInfo tickinfo)
+        {
+            BeatNote.TimeSegmentType segmentType = tickinfo.NoteSegment.Type;
+
+            if (segmentType != BeatNote.TimeSegmentType.Interaction)
+            {
+                _animator.Stop();
+                return;
+            }
+
+            NoteInteraction interaction = tickinfo.NoteSegment.Interaction;
+
+            switch (interaction.Type)
+            {
+                case NoteInteraction.InteractionType.IncomingAttack:
+                    UpdateIncomingAttackIndicator(interaction.BlockPose);
+                    IncomingAttackIndicator(tickinfo);
+                    break;
+                case NoteInteraction.InteractionType.TargetToHit:
+                    TargetToHitIndicator(tickinfo);
+                    break;
+                default:
+                    Debug.LogError("Invalid interaction type");
+                    break;
+            }
         }
 
         private void OnProtagSwordState(Protaganist.ProtagSwordState state)
@@ -78,48 +89,23 @@ namespace Beatmapping.BeatNotes
             }
         }
 
-        private void HandleTickWaitingForAttack(BeatNote.NoteTiming noteTiming,
-            NoteInteraction noteInteraction)
+        private void IncomingAttackIndicator(BeatNote.NoteTickInfo noteTickInfo)
         {
             _animator.Play(_attackClip);
-            _animator.SetNormalizedTime(GetTime(noteTiming));
+            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime);
         }
 
-        private void HandleTickWaitingForVuln(BeatNote.NoteTiming noteTiming,
-            NoteInteraction noteInteraction)
+        private void TargetToHitIndicator(BeatNote.NoteTickInfo noteTickInfo)
         {
             _animator.Play(_vulnClip);
-            _animator.SetNormalizedTime(GetTime(noteTiming));
+            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime);
         }
 
-        private float GetTime(BeatNote.NoteTiming noteTiming)
+        private void UpdateIncomingAttackIndicator(SharedTypes.BlockPoseStates blockPose)
         {
-            switch (_updateType)
-            {
-                case UpdateType.Smooth:
-                    return (float)noteTiming.NormalizedInteractionWaitTime;
-                case UpdateType.Beat:
-                    return (float)noteTiming.BeatSteppedNormalizedInteractionWaitTime;
-                case UpdateType.Subdiv:
-                    return (float)noteTiming.SubdivSteppedNormalizedInteractionWaitTime;
-                default:
-                    return (float)noteTiming.NormalizedInteractionWaitTime;
-            }
-        }
-
-        private void HandleNoteEnded(BeatNote.NoteTiming noteTiming)
-        {
-            _animator.Stop();
-        }
-
-        private void HandleTransitionToWaitingToAttack(BeatNote.NoteTiming noteTiming,
-            NoteInteraction noteInteraction)
-        {
-            var blockPose = (int)noteInteraction.BlockPose;
-
             for (var i = 0; i < _blockPoseSprites.Length; i++)
             {
-                bool includesPose = blockPose.IsIndexInFlag(i);
+                bool includesPose = (int)blockPose == i;
                 _blockPoseSprites[i].gameObject.SetActive(includesPose);
 
                 SpriteRenderer burstSprite = _blockPoseBurstSprites[i];
@@ -137,6 +123,23 @@ namespace Beatmapping.BeatNotes
                     burstSprite.enabled = false;
                 }
             }
+        }
+
+        public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
+        {
+            return null;
+        }
+
+        public override void OnNoteInitialized(BeatNote beatNote)
+        {
+            _beatNote = GetComponentInParent<BeatNote>();
+
+            _beatNote.OnTick += BeatNote_OnTick;
+        }
+
+        public override void OnNoteCleanedUp(BeatNote beatNote)
+        {
+            _beatNote.OnTick -= BeatNote_OnTick;
         }
     }
 }

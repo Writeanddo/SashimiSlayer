@@ -5058,6 +5058,7 @@ GameObject:
   - component: {fileID: 5351909015360120121}
   - component: {fileID: 991342725271294696}
   - component: {fileID: 4500745815375421082}
+  - component: {fileID: 7811776593614375789}
   m_Layer: 0
   m_Name: MootTutFush
   m_TagString: Untagged
@@ -5096,6 +5097,12 @@ MonoBehaviour:
   _hitboxTransform: {fileID: 7961916753182534580}
   _noteInteractionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
     type: 2}
+  _beatNoteListeners:
+  - {fileID: 991342725271294696}
+  - {fileID: 4500745815375421082}
+  - {fileID: 7811776593614375789}
+  - {fileID: 4045159823509326401}
+  - {fileID: 1637912884012176710}
 --- !u!114 &991342725271294696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5110,6 +5117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
   _bodyTransform: {fileID: 2525752069901213316}
+  _interactionIndex: 0
   _startPosIndex: 0
   _peakPosIndex: 1
   _sprite: {fileID: 38135383335388938}
@@ -5167,8 +5175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
   _bodyTransform: {fileID: 2525752069901213316}
-  _startPosIndex: 0
-  _vulnerablePosIndex: 2
+  _interactionIndex: 1
   _sprite: {fileID: 38135383335388938}
   _dieParticles:
   - {fileID: 4015519751502662832}
@@ -5201,6 +5208,20 @@ MonoBehaviour:
   OnEnterDazed:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7811776593614375789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719167886461646457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbfca9306f9241d3be71f982ec2eca28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 38135383335388938}
+  _bodyTransform: {fileID: 2525752069901213316}
 --- !u!1 &7171339913466141170
 GameObject:
   m_ObjectHideFlags: 0
@@ -5247,27 +5268,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beatNote: {fileID: 5351909015360120121}
-  _spawnSound:
+  _startSound:
     Guid:
-      Data1: 1698058413
-      Data2: 1242676699
-      Data3: -1081539403
-      Data4: -1326794453
-    Path: event:/TutorialLevel/MootFish/MootFishSpawn
-  _startAttackSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  _startVulnerableSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 271691196
+      Data2: 1140943221
+      Data3: 1813688464
+      Data4: -472963136
+    Path: event:/Common/Splash
 --- !u!114 &6908434738280169107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5500,12 +5507,12 @@ PrefabInstance:
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
@@ -5520,17 +5527,17 @@ PrefabInstance:
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
@@ -5557,6 +5564,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d52b4ffafae7e842b7af681379c9db4, type: 3}
+--- !u!114 &1637912884012176710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5743409499505446920, guid: 0d52b4ffafae7e842b7af681379c9db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6417552045795214670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28657229dbd9204ea80626986c9e5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7961916753182534580 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3995203660771077882, guid: 0d52b4ffafae7e842b7af681379c9db4,
