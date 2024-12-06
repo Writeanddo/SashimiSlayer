@@ -60,11 +60,15 @@ public class SwordInputProvider : BaseUserInputProvider
         if (newPose != _currentBlockPose)
         {
             _currentBlockPose = newPose;
-            OnBlockPoseChanged?.Invoke(_currentBlockPose);
+            if (newPose != (SharedTypes.BlockPoseStates)(-1))
+            {
+                OnBlockPoseChanged?.Invoke(_currentBlockPose);
+            }
         }
 
         Vector3 up = data.SwordOrientation * Vector3.forward;
         float angle = -Vector3.Angle(up, Vector3.up) + 90f;
+        angle = -angle;
 
         _swordAngle = angle;
         _quatDebugger.transform.rotation = data.SwordOrientation;

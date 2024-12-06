@@ -53,7 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f5230fca300efdc43b02190f99794fe5, type: 3}
+        m_Texture: {fileID: 2800000, guid: b72b26ee4556d2d4ebe4eed230d57189, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -112,8 +112,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HoleOuterRadius: 0.2
-    - _HoleRadius: 0.01
+    - _HoleOuterRadius: 0.1
+    - _HoleRadius: 0.02
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -131,13 +131,13 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 7.9999995, g: 7.9999995, b: 7.9999995, a: 1}
-    - _Emission: {r: 0.17310987, g: 0, b: 0, a: 0.5254902}
+    - _Emission: {r: 11.984314, g: 0, b: 0.14526427, a: 1}
     - _EmissionColor: {r: 3.9999998, g: 3.9999998, b: 3.9999998, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ScrollSpeed: {r: 0.8, g: 0, b: 0, a: 0}
+    - _ScrollSpeed: {r: 2, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Tile: {r: 15, g: 0, b: 0, a: 0}
+    - _Tile: {r: 12, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8817997814311088398
 MonoBehaviour:

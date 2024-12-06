@@ -15,6 +15,9 @@ public class ProtagAnimation : MonoBehaviour
     private SOEvent _protagUnsheatheEvent;
 
     [SerializeField]
+    private SOEvent _protagSheatheEvent;
+
+    [SerializeField]
     private SOEvent _protagTrySliceEvent;
 
     [SerializeField]
@@ -41,6 +44,7 @@ public class ProtagAnimation : MonoBehaviour
         _protagTryBlockEvent.AddListener(OnProtagTryBlock);
 
         _protagUnsheatheEvent.AddListener(OnProtagUnsheathe);
+        _protagSheatheEvent.AddListener(OnProtagSheathe);
 
         _protagTrySliceEvent.AddListener(OnProtagTrySlice);
         _protagSuccessfulSliceEvent.AddListener(OnProtagSuccessfulSlice);
@@ -58,6 +62,7 @@ public class ProtagAnimation : MonoBehaviour
         _protagTryBlockEvent.RemoveListener(OnProtagTryBlock);
 
         _protagUnsheatheEvent.RemoveListener(OnProtagUnsheathe);
+        _protagSheatheEvent.RemoveListener(OnProtagSheathe);
 
         _protagTrySliceEvent.RemoveListener(OnProtagTrySlice);
         _protagSuccessfulSliceEvent.RemoveListener(OnProtagSuccessfulSlice);
@@ -99,10 +104,14 @@ public class ProtagAnimation : MonoBehaviour
         _animator.SetBool("Sheathed", false);
     }
 
-    private void OnProtagTrySlice()
+    private void OnProtagSheathe()
     {
         _animator.SetBool("Sheathed", true);
-        _animator.SetTrigger("TrySlice");
+    }
+
+    private void OnProtagTrySlice()
+    {
+        // _animator.SetTrigger("TrySlice");
     }
 
     private void OnProtagSuccessfulSlice()

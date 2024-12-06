@@ -64,6 +64,9 @@ public class Protaganist : MonoBehaviour
     private ProtagSwordStateEvent _unsheatheEvent;
 
     [SerializeField]
+    private ProtagSwordStateEvent _sheatheEvent;
+
+    [SerializeField]
     private ProtagSwordStateEvent _successfulSliceEvent;
 
     [Header("Listening Events")]
@@ -155,15 +158,19 @@ public class Protaganist : MonoBehaviour
         _currentSwordState.SheathState = newState;
 
         // Sword is sheathed from unsheathed means a slice
-        if (newState == SharedTypes.SheathState.Sheathed
-            && oldState == SharedTypes.SheathState.Unsheathed)
+        if (newState == SharedTypes.SheathState.Unsheathed
+            && oldState == SharedTypes.SheathState.Sheathed)
         {
             _trySliceEvent.Raise(_currentSwordState);
         }
 
-        else if (newState == SharedTypes.SheathState.Unsheathed && oldState == SharedTypes.SheathState.Sheathed)
+        if (newState == SharedTypes.SheathState.Unsheathed && oldState == SharedTypes.SheathState.Sheathed)
         {
             _unsheatheEvent.Raise(_currentSwordState);
+        }
+        else if (newState == SharedTypes.SheathState.Sheathed && oldState == SharedTypes.SheathState.Unsheathed)
+        {
+            _sheatheEvent.Raise(_currentSwordState);
         }
     }
 
