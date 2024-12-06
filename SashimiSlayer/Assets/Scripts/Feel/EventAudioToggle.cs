@@ -26,6 +26,7 @@ namespace Feel
 
         private void OnDestroy()
         {
+            _source.Stop();
             _playEvent.RemoveListener(PlayAudio);
             _stopEvent.RemoveListener(StopAudio);
         }
