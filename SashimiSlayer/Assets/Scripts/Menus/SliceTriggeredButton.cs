@@ -101,11 +101,10 @@ public class SliceTriggeredButton : MonoBehaviour
 
         if (_hovered)
         {
-            _used = true;
             Protaganist.Instance.SuccessfulSlice();
 
+            _used = true;
             _buttonSlicedUnityEvent?.Invoke();
-
             TriggerDelayedEvent(_delay).Forget();
         }
     }
