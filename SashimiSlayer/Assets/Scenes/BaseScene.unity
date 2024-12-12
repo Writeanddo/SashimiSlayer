@@ -1871,6 +1871,9 @@ MonoBehaviour:
     type: 2}
   _protagSetSwordPivot: {fileID: 11400000, guid: 55a449ae478ed574c96efac265420098,
     type: 2}
+  _damageScreenShake: {fileID: 11400000, guid: fad18fb22ba344d4880ce634ffcbb160, type: 2}
+  _blockScreenShake: {fileID: 11400000, guid: a41083569f483974fb6416b3b5f0c335, type: 2}
+  _sliceScreenShake: {fileID: 11400000, guid: f9a0a07aa2568c242adf19f428d9cff0, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
