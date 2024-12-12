@@ -1315,7 +1315,7 @@ MonoBehaviour:
   _attackClip: {fileID: 7400000, guid: 94c5ab0f925be6547b0cd4b94d209548, type: 2}
   _vulnClip: {fileID: 7400000, guid: 49f30efc5fa96764d9b6fe4203de9882, type: 2}
   _animator: {fileID: 2320314668910774160}
-  _animationNormalizedTimeOffset: 0.02
+  _animationNormalizedTimeOffset: 0.04
   OnBlockPose:
     m_PersistentCalls:
       m_Calls: []

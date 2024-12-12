@@ -55,7 +55,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PoseButtonMId"",
+                    ""name"": ""PoseButtonMid"",
                     ""type"": ""PassThrough"",
                     ""id"": ""f0f51208-706e-4519-ac55-3ea20dd7f47a"",
                     ""expectedControlType"": ""Button"",
@@ -222,7 +222,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PoseButtonMId"",
+                    ""action"": ""PoseButtonMid"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -233,7 +233,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PoseButtonMId"",
+                    ""action"": ""PoseButtonMid"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -244,7 +244,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PoseButtonMId"",
+                    ""action"": ""PoseButtonMid"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -255,7 +255,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PoseButtonMId"",
+                    ""action"": ""PoseButtonMid"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -266,7 +266,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PoseButtonMId"",
+                    ""action"": ""PoseButtonMid"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -277,7 +277,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PoseButtonMId"",
+                    ""action"": ""PoseButtonMid"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -352,7 +352,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
         m_Gameplay_SwordAngle = m_Gameplay.FindAction("SwordAngle", throwIfNotFound: true);
         m_Gameplay_Unsheathe = m_Gameplay.FindAction("Unsheathe", throwIfNotFound: true);
         m_Gameplay_PoseButtonTop = m_Gameplay.FindAction("PoseButtonTop", throwIfNotFound: true);
-        m_Gameplay_PoseButtonMId = m_Gameplay.FindAction("PoseButtonMId", throwIfNotFound: true);
+        m_Gameplay_PoseButtonMid = m_Gameplay.FindAction("PoseButtonMid", throwIfNotFound: true);
         m_Gameplay_PoseButtonBot = m_Gameplay.FindAction("PoseButtonBot", throwIfNotFound: true);
         m_Gameplay_MousePos = m_Gameplay.FindAction("MousePos", throwIfNotFound: true);
     }
@@ -419,7 +419,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_SwordAngle;
     private readonly InputAction m_Gameplay_Unsheathe;
     private readonly InputAction m_Gameplay_PoseButtonTop;
-    private readonly InputAction m_Gameplay_PoseButtonMId;
+    private readonly InputAction m_Gameplay_PoseButtonMid;
     private readonly InputAction m_Gameplay_PoseButtonBot;
     private readonly InputAction m_Gameplay_MousePos;
     public struct GameplayActions
@@ -429,7 +429,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
         public InputAction @SwordAngle => m_Wrapper.m_Gameplay_SwordAngle;
         public InputAction @Unsheathe => m_Wrapper.m_Gameplay_Unsheathe;
         public InputAction @PoseButtonTop => m_Wrapper.m_Gameplay_PoseButtonTop;
-        public InputAction @PoseButtonMId => m_Wrapper.m_Gameplay_PoseButtonMId;
+        public InputAction @PoseButtonMid => m_Wrapper.m_Gameplay_PoseButtonMid;
         public InputAction @PoseButtonBot => m_Wrapper.m_Gameplay_PoseButtonBot;
         public InputAction @MousePos => m_Wrapper.m_Gameplay_MousePos;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
@@ -450,9 +450,9 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
             @PoseButtonTop.started += instance.OnPoseButtonTop;
             @PoseButtonTop.performed += instance.OnPoseButtonTop;
             @PoseButtonTop.canceled += instance.OnPoseButtonTop;
-            @PoseButtonMId.started += instance.OnPoseButtonMid;
-            @PoseButtonMId.performed += instance.OnPoseButtonMid;
-            @PoseButtonMId.canceled += instance.OnPoseButtonMid;
+            @PoseButtonMid.started += instance.OnPoseButtonMid;
+            @PoseButtonMid.performed += instance.OnPoseButtonMid;
+            @PoseButtonMid.canceled += instance.OnPoseButtonMid;
             @PoseButtonBot.started += instance.OnPoseButtonBot;
             @PoseButtonBot.performed += instance.OnPoseButtonBot;
             @PoseButtonBot.canceled += instance.OnPoseButtonBot;
@@ -472,9 +472,9 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
             @PoseButtonTop.started -= instance.OnPoseButtonTop;
             @PoseButtonTop.performed -= instance.OnPoseButtonTop;
             @PoseButtonTop.canceled -= instance.OnPoseButtonTop;
-            @PoseButtonMId.started -= instance.OnPoseButtonMid;
-            @PoseButtonMId.performed -= instance.OnPoseButtonMid;
-            @PoseButtonMId.canceled -= instance.OnPoseButtonMid;
+            @PoseButtonMid.started -= instance.OnPoseButtonMid;
+            @PoseButtonMid.performed -= instance.OnPoseButtonMid;
+            @PoseButtonMid.canceled -= instance.OnPoseButtonMid;
             @PoseButtonBot.started -= instance.OnPoseButtonBot;
             @PoseButtonBot.performed -= instance.OnPoseButtonBot;
             @PoseButtonBot.canceled -= instance.OnPoseButtonBot;

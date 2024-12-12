@@ -1,1 +1,2 @@
 *.zip
+.github/workflows/my.secrets
