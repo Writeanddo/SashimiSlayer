@@ -6,8 +6,8 @@ concurrency:
 
 env:
   PROJ_DIR: SashimiSlayer
-  PROJ_NAME: SashimiSlayer
-  BUILD_NAME_PREFIX: Build
+  PROJ_NAME: Sashimi Slayer
+  BUILD_NAME_PREFIX: TESTTEST
   BUILD_DIR: build
   BUTLER_LINK: https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
   ITCH_GAME_NAME: doublebrackets/sashimi-slayer
@@ -58,6 +58,7 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           unityVersion: auto
+          buildName: ${{ env.PROJ_NAME }}
           projectPath: ${{env.PROJ_DIR}}
           buildsPath: ${{env.BUILD_PATH}}
           
