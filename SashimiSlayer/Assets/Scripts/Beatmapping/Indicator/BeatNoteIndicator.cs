@@ -39,6 +39,9 @@ namespace Beatmapping.BeatNotes
         [SerializeField]
         private SimpleAnimator _animator;
 
+        [SerializeField]
+        private float _animationNormalizedTimeOffset;
+
         public UnityEvent<SharedTypes.BlockPoseStates> OnBlockPose;
 
         private BeatNote _beatNote;
@@ -106,7 +109,7 @@ namespace Beatmapping.BeatNotes
                 _interactionType = NoteInteraction.InteractionType.IncomingAttack;
             }
 
-            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime);
+            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime + _animationNormalizedTimeOffset);
             _animator.UpdateAnim(0);
         }
 
@@ -119,7 +122,7 @@ namespace Beatmapping.BeatNotes
                 _interactionType = NoteInteraction.InteractionType.TargetToHit;
             }
 
-            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime);
+            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime + _animationNormalizedTimeOffset);
             _animator.UpdateAnim(0);
         }
 
