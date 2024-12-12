@@ -34,7 +34,8 @@ namespace Beatmapping.Notes
             {
                 Successful = true,
                 InteractionType = NoteInteraction.InteractionType.IncomingAttack,
-                TimingResult = interactionAttemptResult.TimingResult
+                TimingResult = interactionAttemptResult.TimingResult,
+                Pose = protagSwordState.BlockPose
             };
 
             _noteInteractionFinalResultEvent.Raise(finalResult);

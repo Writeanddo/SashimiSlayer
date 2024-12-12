@@ -117,13 +117,13 @@ int sheatheSwitchR = 0;
 
 // Pin numbers
 #define HAPTIC_IN_PIN 5
-#define BTN_TOP_PIN 10
-#define BTN_MID_PIN 11
-#define BTN_BOT_PIN 12
+#define BTN_TOP_PIN 14
+#define BTN_MID_PIN 15
+#define BTN_BOT_PIN 16
 
 #define SHEATHE_L_PIN 7
 #define SHEATHE_R_PIN 8
-#define LED_PIN LED_BUILTIN
+#define LED_PIN 17
 
 
 char inputBuffer;
@@ -178,10 +178,6 @@ void loop() {
   sheatheSwitchL = digitalRead(SHEATHE_L_PIN);
   sheatheSwitchR = digitalRead(SHEATHE_R_PIN);
 
-  // TEMP TESTING BTNS ONLY, GET RID OF THIS LATER
-  sheatheSwitchL = false;
-  sheatheSwitchR = false;
-
   // read a packet from gyro FIFO
   if (mpu.dmpGetCurrentFIFOPacket(fifoBuffer)) {
     mpu.dmpGetQuaternion(&q, fifoBuffer);
@@ -196,6 +192,8 @@ void loop() {
       sendState();
     }
   }
+
+  // Serial.println(sheatheSwitchL);
 
   // Vibrate when sword is drawn
   if(sheatheSwitchL && sheatheSwitchR)

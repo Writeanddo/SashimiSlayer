@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Events;
 using Events.Core;
 using UnityEngine;
@@ -26,6 +27,8 @@ public class SwordIndicator : MonoBehaviour
     [SerializeField]
     private Vector2Event _swordPivotPositionChangeEvent;
 
+    private readonly List<ParticleSystem.MinMaxCurve> _initialParticleRot = new();
+
     private float _angle;
 
     private Vector3 _position;
@@ -38,6 +41,11 @@ public class SwordIndicator : MonoBehaviour
         SetSheatheState(SharedTypes.SheathState.Sheathed);
         _protagSuccessfulSliceEvent.AddListener(OnSuccessfulSlice);
         _swordPivotPositionChangeEvent.AddListener(SetPosition);
+
+        foreach (ParticleSystem particle in _sliceParticles)
+        {
+            _initialParticleRot.Add(particle.main.startRotation);
+        }
     }
 
     private void Update()
@@ -56,11 +64,17 @@ public class SwordIndicator : MonoBehaviour
 
     private void OnSuccessfulSlice()
     {
-        foreach (ParticleSystem particle in _sliceParticles)
+        for (var i = 0; i < _sliceParticles.Length; i++)
         {
-            particle.transform.position = _cPos;
+            ParticleSystem particle = _sliceParticles[i];
+            // particle.transform.position = _cPos;
+            ParticleSystem.MinMaxCurve curve = _initialParticleRot[i];
+            curve.constantMin += -_angle * Mathf.Deg2Rad;
+            curve.constantMax += -_angle * Mathf.Deg2Rad;
+
             ParticleSystem.MainModule main = particle.main;
-            main.startRotation = -_angle * Mathf.Deg2Rad;
+            main.startRotation = curve;
+
             particle.transform.rotation = Quaternion.Euler(0, 0, _angle);
             particle.Play();
         }

@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 5351909015360120121}
   - component: {fileID: -6979564888490074285}
   - component: {fileID: 2277456349810839253}
+  - component: {fileID: 290907648341497043}
   m_Layer: 0
   m_Name: SadTutFish
   m_TagString: Untagged
@@ -264,6 +265,26 @@ MonoBehaviour:
       Data3: -474398820
       Data4: 1745421926
     Path: event:/TutorialLevel/SadFish/SadFishSpawn
+--- !u!114 &290907648341497043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719167886461646457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _squishScale: 0.8
+  _squishDuration: 0.3
+  _squishTransform:
+  - transform: {fileID: 7407001948907140046}
+    beatInterval: 2
+    beatOffset: 1
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _delay: 0.02
 --- !u!1 &8155367101868906669
 GameObject:
   m_ObjectHideFlags: 0

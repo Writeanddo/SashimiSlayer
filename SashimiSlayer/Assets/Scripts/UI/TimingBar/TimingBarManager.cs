@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Events.Core;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class TimingBarManager : MonoBehaviour
     private RectTransform _bar;
 
     [SerializeField]
-    private TimingBarTick _hitResultPrefab;
+    private List<TimingBarTick> _hitResultPrefab;
 
     private void Awake()
     {
@@ -32,7 +33,8 @@ public class TimingBarManager : MonoBehaviour
         }
 
         float offset = result.TimingResult.NormalizedTimeDelta;
-        TimingBarTick hitResult = Instantiate(_hitResultPrefab, _bar);
+
+        TimingBarTick hitResult = Instantiate(_hitResultPrefab[(int)result.Pose], _bar);
         var rectTransform = hitResult.GetComponent<RectTransform>();
         hitResult.SetVisuals(result.InteractionType);
         rectTransform.anchoredPosition = new Vector3(offset * _bar.rect.width / 2f, 0, 0);

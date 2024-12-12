@@ -14912,6 +14912,7 @@ GameObject:
   - component: {fileID: 5351909015360120121}
   - component: {fileID: 3840632904168517832}
   - component: {fileID: 6847246372933769589}
+  - component: {fileID: 6781392711925701353}
   m_Layer: 0
   m_Name: Tentacle
   m_TagString: Untagged
@@ -14995,6 +14996,26 @@ MonoBehaviour:
       Data3: 1416080307
       Data4: 1382047807
     Path: event:/KrakenLevel/Tentacle/TentacleSpawn
+--- !u!114 &6781392711925701353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719167886461646457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _squishScale: 0.95
+  _squishDuration: 0.3
+  _squishTransform:
+  - transform: {fileID: 2582670670720076266}
+    beatInterval: 2
+    beatOffset: 1
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _delay: 0.02
 --- !u!1 &8181838416036536246
 GameObject:
   m_ObjectHideFlags: 0

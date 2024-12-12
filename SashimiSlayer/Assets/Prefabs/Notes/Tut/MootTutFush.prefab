@@ -5059,6 +5059,7 @@ GameObject:
   - component: {fileID: 991342725271294696}
   - component: {fileID: 4500745815375421082}
   - component: {fileID: 7811776593614375789}
+  - component: {fileID: 6500995875620482867}
   m_Layer: 0
   m_Name: MootTutFush
   m_TagString: Untagged
@@ -5228,6 +5229,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sprite: {fileID: 38135383335388938}
   _bodyTransform: {fileID: 2525752069901213316}
+--- !u!114 &6500995875620482867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719167886461646457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _squishScale: 0.8
+  _squishDuration: 0.3
+  _squishTransform:
+  - transform: {fileID: 7407001948907140046}
+    beatInterval: 2
+    beatOffset: 1
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _delay: 0.02
 --- !u!1 &7171339913466141170
 GameObject:
   m_ObjectHideFlags: 0

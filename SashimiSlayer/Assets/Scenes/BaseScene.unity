@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baudRate: 9600
-  _logPackets: 1
+  _logPackets: 0
   _onDrawDebugGUI: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
 --- !u!114 &1969117890
 MonoBehaviour:
@@ -1862,6 +1862,7 @@ MonoBehaviour:
     type: 2}
   _playerDeadEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
   _unsheatheEvent: {fileID: 11400000, guid: 57cf023d4fecd634d8adcd692ffbdd07, type: 2}
+  _sheatheEvent: {fileID: 11400000, guid: d0d9571abd5476346a304f13acb437c6, type: 2}
   _successfulSliceEvent: {fileID: 11400000, guid: c9cd6894bca4a8c43b3f69e78d991d17,
     type: 2}
   _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,

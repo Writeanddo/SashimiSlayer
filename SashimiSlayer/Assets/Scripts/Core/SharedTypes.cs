@@ -25,6 +25,7 @@ public static class SharedTypes
     {
         public TimingWindow.TimingResult TimingResult;
         public NoteInteraction.InteractionType InteractionType;
+        public BlockPoseStates Pose;
         public bool Successful;
     }
 }
