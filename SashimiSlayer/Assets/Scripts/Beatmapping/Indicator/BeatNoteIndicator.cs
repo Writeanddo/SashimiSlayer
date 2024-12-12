@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using Beatmapping.Indicator;
 using Beatmapping.Notes;
 using DG.Tweening;
 using Events.Core;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Beatmapping.BeatNotes
 {
@@ -13,25 +16,16 @@ namespace Beatmapping.BeatNotes
         [SerializeField]
         private ProtagSwordStateEvent _protagSwordStateEvent;
 
+        [SerializeField]
+        private List<IndicatorVisual> _indicatorVisuals;
+
         [Header("Visuals")]
 
         [SerializeField]
         private UpdateType _updateType;
 
         [SerializeField]
-        private SpriteRenderer[] _blockPoseSprites;
-
-        [SerializeField]
         private SpriteRenderer _blockRing;
-
-        [SerializeField]
-        private float _poseBurstDuration;
-
-        [SerializeField]
-        private float _poseBurstScale;
-
-        [SerializeField]
-        private SpriteRenderer[] _blockPoseBurstSprites;
 
         [SerializeField]
         private GameObject[] _vulnerableRotate;
@@ -45,7 +39,14 @@ namespace Beatmapping.BeatNotes
         [SerializeField]
         private SimpleAnimator _animator;
 
+        [SerializeField]
+        private float _animationNormalizedTimeOffset;
+
+        public UnityEvent<SharedTypes.BlockPoseStates> OnBlockPose;
+
         private BeatNote _beatNote;
+
+        private NoteInteraction.InteractionType _interactionType = (NoteInteraction.InteractionType)(-1);
 
         private void Start()
         {
@@ -57,6 +58,12 @@ namespace Beatmapping.BeatNotes
             _protagSwordStateEvent.RemoveListener(OnProtagSwordState);
         }
 
+        [Button("Detect Visuals")]
+        private void DetectVisuals()
+        {
+            _indicatorVisuals = new List<IndicatorVisual>(GetComponentsInChildren<IndicatorVisual>(true));
+        }
+
         private void BeatNote_OnTick(BeatNote.NoteTickInfo tickinfo)
         {
             BeatNote.TimeSegmentType segmentType = tickinfo.NoteSegment.Type;
@@ -64,6 +71,7 @@ namespace Beatmapping.BeatNotes
             if (segmentType != BeatNote.TimeSegmentType.Interaction)
             {
                 _animator.Stop();
+                _interactionType = (NoteInteraction.InteractionType)(-1);
                 return;
             }
 
@@ -94,40 +102,37 @@ namespace Beatmapping.BeatNotes
 
         private void IncomingAttackIndicator(BeatNote.NoteTickInfo noteTickInfo)
         {
-            _animator.Play(_attackClip);
-            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime);
+            if (_interactionType != NoteInteraction.InteractionType.IncomingAttack)
+            {
+                _animator.Stop();
+                _animator.Play(_attackClip);
+                _interactionType = NoteInteraction.InteractionType.IncomingAttack;
+            }
+
+            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime + _animationNormalizedTimeOffset);
             _animator.UpdateAnim(0);
         }
 
         private void TargetToHitIndicator(BeatNote.NoteTickInfo noteTickInfo)
         {
-            _animator.Play(_vulnClip);
-            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime);
+            if (_interactionType != NoteInteraction.InteractionType.TargetToHit)
+            {
+                _animator.Stop();
+                _animator.Play(_vulnClip);
+                _interactionType = NoteInteraction.InteractionType.TargetToHit;
+            }
+
+            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime + _animationNormalizedTimeOffset);
             _animator.UpdateAnim(0);
         }
 
         private void UpdateIncomingAttackIndicator(SharedTypes.BlockPoseStates blockPose)
         {
-            for (var i = 0; i < _blockPoseSprites.Length; i++)
+            OnBlockPose.Invoke(blockPose);
+
+            foreach (IndicatorVisual indicatorVisual in _indicatorVisuals)
             {
-                bool includesPose = (int)blockPose == i;
-                _blockPoseSprites[i].gameObject.SetActive(includesPose);
-
-                SpriteRenderer burstSprite = _blockPoseBurstSprites[i];
-
-                if (includesPose)
-                {
-                    burstSprite.enabled = true;
-                    burstSprite.transform.localScale = Vector3.one;
-                    burstSprite.color = new Color(1, 1, 1, 1);
-                    burstSprite.DOFade(0, _poseBurstDuration);
-                    burstSprite.transform.DOScale(_poseBurstScale, _poseBurstDuration);
-                    _blockRing.sharedMaterial = burstSprite.sharedMaterial;
-                }
-                else
-                {
-                    burstSprite.enabled = false;
-                }
+                indicatorVisual.OnBlockPose(blockPose);
             }
         }
 

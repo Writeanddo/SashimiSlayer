@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baudRate: 9600
-  _logPackets: 1
+  _logPackets: 0
   _onDrawDebugGUI: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
 --- !u!114 &1969117890
 MonoBehaviour:

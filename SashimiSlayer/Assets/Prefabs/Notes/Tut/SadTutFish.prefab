@@ -280,7 +280,7 @@ MonoBehaviour:
   _squishScale: 0.8
   _squishDuration: 0.3
   _squishTransform:
-  - transform: {fileID: 2411946255710559967}
+  - transform: {fileID: 7407001948907140046}
     beatInterval: 2
     beatOffset: 1
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
