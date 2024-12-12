@@ -65,12 +65,12 @@ namespace Beatmapping.Timing
         /// <summary>
         ///     Global dsp time of previous tick
         /// </summary>
-        private double _previousDspTime;
+        private double _previousEventTime;
 
         /// <summary>
-        ///     Raw dsp time of when the beatmap starts
+        ///     Raw event time of when the beatmap starts
         /// </summary>
-        private double _beatmapDspStartTime;
+        private double _beatmapStartTime;
 
         private double _timeIntervalPerBeat;
         private double _timeIntervalPerSubdiv;
@@ -150,12 +150,13 @@ namespace Beatmapping.Timing
         private void TickPlaying()
         {
             // Update dps time
-            double currentDspTime = GetCurrentDspTime();
-            double dspDeltaTime = currentDspTime - _previousDspTime;
+            _beatmapSoundtrackInstance.getTimelinePosition(out int eventTime);
+            double currentEventTime = eventTime / 1000.0;
+            double eventDeltaTime = currentEventTime - _previousEventTime;
 
             // Calculate time since start of beatmap
-            double currentBeatmapTime = currentDspTime - _beatmapDspStartTime;
-            double previousBeatmapTime = _previousDspTime - _beatmapDspStartTime;
+            double currentBeatmapTime = currentEventTime - _beatmapStartTime;
+            double previousBeatmapTime = _previousEventTime - _beatmapStartTime;
 
             var currentBeatIndex = (int)Math.Floor(currentBeatmapTime / _timeIntervalPerBeat);
             var previousBeatIndex = (int)Math.Floor(previousBeatmapTime / _timeIntervalPerBeat);
@@ -177,12 +178,12 @@ namespace Beatmapping.Timing
             {
                 CurrentBeatmapTime = currentBeatmapTime,
                 CurrentLevelTime = currentBeatmapTime + _currentBeatmap.StartTime,
-                DeltaTime = dspDeltaTime
+                DeltaTime = eventDeltaTime
             };
 
             OnTick?.Invoke(CurrentTickInfo);
 
-            _previousDspTime = currentDspTime;
+            _previousEventTime = currentEventTime;
         }
 
         /// <summary>
@@ -200,9 +201,9 @@ namespace Beatmapping.Timing
 
             if (currentEventTime > 0)
             {
-                double startTime = GetCurrentDspTime() - eventTimeSeconds;
-                _beatmapDspStartTime = startTime + _currentBeatmap.StartTime;
-                _previousDspTime = startTime;
+                // Event time starts at 0, so we don't need to adjust from the config start time
+                _beatmapStartTime = _currentBeatmap.StartTime;
+                _previousEventTime = eventTimeSeconds;
 
                 _timeIntervalPerBeat = 60 / _currentBeatmap.Bpm;
                 _timeIntervalPerSubdiv = _timeIntervalPerBeat / _currentBeatmap.Subdivisions;
