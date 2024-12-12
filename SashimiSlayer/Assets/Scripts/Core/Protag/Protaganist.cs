@@ -1,4 +1,3 @@
-using Cinemachine;
 using Events;
 using Events.Core;
 using Feel;
@@ -79,6 +78,17 @@ public class Protaganist : MonoBehaviour
 
     [SerializeField]
     private Vector2Event _protagSetSwordPivot;
+
+    [Header("Screen Shake")]
+
+    [SerializeField]
+    private ScreenShakeSO _damageScreenShake;
+
+    [SerializeField]
+    private ScreenShakeSO _blockScreenShake;
+
+    [SerializeField]
+    private ScreenShakeSO _sliceScreenShake;
 
     public static Protaganist Instance { get; private set; }
     public Vector3 SpritePosition { get; set; }
@@ -181,7 +191,7 @@ public class Protaganist : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        ScreenShakeService.Instance.ShakeScreen(0.1f, 1f, CinemachineImpulseDefinition.ImpulseShapes.Rumble);
+        ScreenShakeService.Instance.ShakeScreen(_damageScreenShake);
 
         if (_health <= 0)
         {
@@ -215,13 +225,13 @@ public class Protaganist : MonoBehaviour
 
         _blockSuccessEvent.Raise(_currentSwordState);
 
-        ScreenShakeService.Instance.ShakeScreen(0.05f, 0.15f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
+        ScreenShakeService.Instance.ShakeScreen(_blockScreenShake);
     }
 
     public void SuccessfulSlice()
     {
         _successfulSliceEvent.Raise(_currentSwordState);
-        ScreenShakeService.Instance.ShakeScreen(0.1f, 0.5f, CinemachineImpulseDefinition.ImpulseShapes.Bump);
+        ScreenShakeService.Instance.ShakeScreen(_sliceScreenShake);
     }
 
     public void SetSlashPosition(Vector3 position)

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Feel
 {
     /// <summary>
-    /// Service for shaking the screen.
+    ///     Service for shaking the screen.
     /// </summary>
     public class ScreenShakeService : MonoBehaviour
     {
@@ -25,11 +25,16 @@ namespace Feel
             }
         }
 
-        public void ShakeScreen(float duration, float magnitude, CinemachineImpulseDefinition.ImpulseShapes shapes)
+        public void ShakeScreen(float duration, Vector3 velocity, CinemachineImpulseDefinition.ImpulseShapes shapes)
         {
             _impulseSource.m_ImpulseDefinition.m_TimeEnvelope.m_SustainTime = duration;
             _impulseSource.m_ImpulseDefinition.m_ImpulseShape = shapes;
-            _impulseSource.GenerateImpulse(magnitude);
+            _impulseSource.GenerateImpulseWithVelocity(velocity);
+        }
+
+        public void ShakeScreen(ScreenShakeSO screenShakeSO)
+        {
+            ShakeScreen(screenShakeSO.Duration, screenShakeSO.ScaledVelocity, screenShakeSO.Shapes);
         }
     }
 }
