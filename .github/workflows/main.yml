@@ -40,15 +40,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Library Cache
-        uses: actions/cache@v3
-        with:
-          path: ${{env.PROJ_DIR}}/Library
-          key: Library-${{ env.PROJ_NAME }}-${{ matrix.targetPlatform }}-${{ hashFiles('${{env.PROJ_DIR}}/Assets/**', '${{env.PROJ_DIR}}/Packages/**', '${{env.PROJ_DIR}}/ProjectSettings/**') }}
-          restore-keys: |
-            Library-${{ env.PROJ_NAME }}-${{ matrix.targetPlatform }}-
-            Library-${{ env.PROJ_NAME }}-
-        
       - name: Git Semantic Version
         uses: paulhatch/semantic-version@v5.4.0
         id: semantic_version
@@ -59,6 +50,15 @@ jobs:
           debug: true
           # Automatically bump patch version
           bump_each_commit: true
+
+      - name: Library Cache
+        uses: actions/cache@v3
+        with:
+          path: ${{env.PROJ_DIR}}/Library
+          key: Library-${{ env.PROJ_NAME }}-${{ matrix.targetPlatform }}-${{ hashFiles('${{env.PROJ_DIR}}/Assets/**', '${{env.PROJ_DIR}}/Packages/**', '${{env.PROJ_DIR}}/ProjectSettings/**') }}
+          restore-keys: |
+            Library-${{ env.PROJ_NAME }}-${{ matrix.targetPlatform }}-
+            Library-${{ env.PROJ_NAME }}-
           
       - name: Build Unity Project
         uses: game-ci/unity-builder@v4
