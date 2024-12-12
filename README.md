@@ -1,6 +1,6 @@
 # SashimiSlayer
-An Alt Control Rhythm Slice'em up!
+An Alt Control Rhythm Slice'em up game.
 
-Designed for play with a custom sword controller, but playable through keyboard & mouse / gamepad as well (although not nearly as cool)
+Originally designed alongside an arduino powered custom sword controller.
 
-https://doublebrackets.itch.io/sashimi-slayer
+Play at: https://doublebrackets.itch.io/sashimi-slayer
