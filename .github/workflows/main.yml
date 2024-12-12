@@ -70,9 +70,8 @@ jobs:
 
       # Zip before uploading to itch isn't required, but lower upload size
       - name: Zip Build
-        uses: montudor/action-zip@v1
-        with:
-          args: zip -qq -r ${{env.BUILD_DIR}}/${{env.BUILD_NAME_PREFIX}}-${{ matrix.targetPlatform }}.zip ${{env.BUILD_DIR}}/${{ matrix.targetPlatform }}
+        run: |
+          args: zip -v -r ${{env.BUILD_DIR}}/${{env.BUILD_NAME_PREFIX}}-${{ matrix.targetPlatform }}.zip ${{env.BUILD_DIR}}/${{ matrix.targetPlatform }}
           
       - name: Download Butler
         run: |
@@ -85,6 +84,7 @@ jobs:
       - name: Push Build to Butler
         run: |
           ./butler push ${{env.BUILD_DIR}}/${{env.BUILD_NAME_PREFIX}}-${{ matrix.targetPlatform }}.zip ${{env.ITCH_GAME_NAME}}:${{ matrix.targetPlatform }}
+          echo "${{env.BUILD_DIR}}/${{env.BUILD_NAME_PREFIX}}-${{ matrix.targetPlatform }}.zip ${{env.ITCH_GAME_NAME}}:${{ matrix.targetPlatform }}"
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
     
