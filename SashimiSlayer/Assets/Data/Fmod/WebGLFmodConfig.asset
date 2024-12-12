@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02469c334bf60934588fd96a54e06166, type: 3}
   m_Name: WebGLFmodConfig
   m_EditorClassIdentifier: 
-  DspBufferLength: 768
+  DspBufferLength: 512
   UpdatePeriodMs: 10
