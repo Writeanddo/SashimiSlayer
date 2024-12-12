@@ -49,6 +49,17 @@ jobs:
             Library-${{ env.PROJ_NAME }}-${{ matrix.targetPlatform }}-
             Library-${{ env.PROJ_NAME }}-
         
+      - name: Git Semantic Version
+        uses: paulhatch/semantic-version@v5.4.0
+        id: semantic_version
+        with:
+          # Named version, will be used as suffix for name version tag
+          namespace: ${{ env.PROJ_NAME }}
+          # If enabled, diagnostic information will be added to the action output.
+          debug: true
+          # Automatically bump patch version
+          bump_each_commit: true
+          
       - name: Build Unity Project
         uses: game-ci/unity-builder@v4
         env:
@@ -61,20 +72,29 @@ jobs:
           buildName: ${{ env.PROJ_NAME }}
           projectPath: ${{env.PROJ_DIR}}
           buildsPath: ${{env.BUILD_PATH}}
+          # use existing semver
+          versioning: Custom
+          version: ${{steps.semantic_version.outputs.version}}
           
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{env.BUILD_NAME_PREFIX}}-${{ matrix.targetPlatform }}
           path: ${{env.BUILD_DIR}}/${{ matrix.targetPlatform }}
+    
+      # Write some strings to env variables for reusing
+      - name: SaveStrings
+        run: | 
+          echo "ZIP_NAME=${{env.BUILD_NAME_PREFIX}}-${{ matrix.targetPlatform }}.zip" >> $GITHUB_ENV
 
       # Zip before uploading to itch isn't required, but lower upload size
+      # Rename the directory to the project name to look cleaner when downloading off itch
       - name: Zip Build
         run: |
-          tree -L 4
-          cd ${{env.BUILD_DIR}}/${{ matrix.targetPlatform }}
-          sudo zip -v -r ../../${{env.BUILD_DIR}}/${{env.BUILD_NAME_PREFIX}}-${{ matrix.targetPlatform }}.zip .
-          cd ../..
+          cd "${{env.BUILD_DIR}}"
+          sudo mv "${{ matrix.targetPlatform }}" "${{ env.PROJ_NAME }}"
+          sudo zip -v -r "../$ZIP_NAME" "${{ env.PROJ_NAME }}"
+          cd ..
           
       - name: Download Butler
         run: |
@@ -84,10 +104,10 @@ jobs:
           ./butler -V
           tree -L 4
 
+      # The zip folder name gets replaced by an itch.io generated name when uploaded, so whatever it is here doesn't matter too much
       - name: Push Build to Butler
         run: |
-          ./butler push ${{env.BUILD_DIR}}/${{env.BUILD_NAME_PREFIX}}-${{ matrix.targetPlatform }}.zip ${{env.ITCH_GAME_NAME}}:${{ matrix.targetPlatform }}
-          echo "${{env.BUILD_DIR}}/${{env.BUILD_NAME_PREFIX}}-${{ matrix.targetPlatform }}.zip ${{env.ITCH_GAME_NAME}}:${{ matrix.targetPlatform }}"
+          ./butler push $ZIP_NAME ${{env.ITCH_GAME_NAME}}:${{ matrix.targetPlatform }} --userversion ${{steps.semantic_version.outputs.version}}
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
     
