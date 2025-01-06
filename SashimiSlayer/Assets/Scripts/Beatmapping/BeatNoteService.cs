@@ -112,6 +112,9 @@ public class BeatNoteService : MonoBehaviour
             interactions.Add(CreateNoteInteraction(sequencedInteraction));
         }
 
+        // Sort, in case they were configured out of chronological order
+        interactions.Sort((a, b) => a.TargetTime.CompareTo(b.TargetTime));
+
         // Instantiate note and register
         BeatNote note = Instantiate(hitConfig.Prefab, transform);
         note.Initialize(

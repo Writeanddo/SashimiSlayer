@@ -29,6 +29,7 @@ namespace Beatmapping.Notes
             }
 
             // We might've skipped the spawn segment (e.g if the first tick is past the spawn segment)
+            // NOTE: AS of now, spawn segments aren't even used...
             if ((_isFirstTick || prevSegmentType == TimeSegmentType.Spawn) && currentSegmentType != prevSegmentType)
             {
                 OnNoteStart?.Invoke();

@@ -43,6 +43,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             if (segment.Type != BeatNote.TimeSegmentType.PreEnding)
             {
+                _sprite.color = new Color(1, 1, 1, 1f);
                 return;
             }
 
