@@ -19,6 +19,12 @@ namespace Core.Audio
             _noteInteractionFinalResultEvent.AddListener(OnNoteInteractionFinalResult);
         }
 
+        private void Update()
+        {
+            RuntimeManager.StudioSystem.getParameterByName("PreviousNoteStatus", out float newVal);
+            Debug.Log($"PreviousNoteStatus: {newVal}");
+        }
+
         private void OnDestroy()
         {
             _noteInteractionFinalResultEvent.RemoveListener(OnNoteInteractionFinalResult);
@@ -27,9 +33,7 @@ namespace Core.Audio
         private void OnNoteInteractionFinalResult(SharedTypes.InteractionFinalResult result)
         {
             float val = result.Successful ? 1 : 0;
-            RuntimeManager.StudioSystem.setParameterByName("PreviousNoteStatus", val);
-            RuntimeManager.StudioSystem.getParameterByName("PreviousNoteStatus", out float newVal);
-            Debug.Log($"PreviousNoteStatus: {newVal}");
+            RuntimeManager.StudioSystem.setParameterByName("PreviousNoteStatus", val, true);
         }
     }
 }
