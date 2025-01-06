@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
 
@@ -48,9 +49,9 @@ public class BeatmapEditorWindow : EditorWindow
 
         GUILayout.Space(10);
 
-        if (GUILayout.Button("Open Persistent Data Path"))
+        if (GUILayout.Button("Select Timeline (Shift+W)"))
         {
-            EditorUtility.RevealInFinder(Application.persistentDataPath);
+            SelectTimelineFromScene();
         }
 
         GUILayout.Label("Current Editing Beatmap");
@@ -73,6 +74,13 @@ public class BeatmapEditorWindow : EditorWindow
         }
 
         AutoRefreshTimeline = GUILayout.Toggle(AutoRefreshTimeline, "Auto Refresh Timeline");
+
+        GUILayout.Space(10);
+
+        if (GUILayout.Button("Open Persistent Data Path"))
+        {
+            EditorUtility.RevealInFinder(Application.persistentDataPath);
+        }
     }
 
     private void OnBecameInvisible()
@@ -130,6 +138,28 @@ public class BeatmapEditorWindow : EditorWindow
     public static void ShowWindow()
     {
         GetWindow<BeatmapEditorWindow>("Beatmap Editing Utils");
+    }
+
+    [MenuItem("Tools/Refresh Timeline Editor Window %q")]
+    public static void RefreshTimelineEditor()
+    {
+        TimelineEditor.Refresh(RefreshReason.ContentsAddedOrRemoved);
+    }
+
+    [MenuItem("Tools/Refresh Timeline Editor Window #w")]
+    public static void SelectTimelineFromScene()
+    {
+        // Search the current scene for a playable director
+        var director = FindObjectOfType<PlayableDirector>();
+
+        if (director == null)
+        {
+            Debug.LogWarning("No PlayableDirector found in scene");
+            return;
+        }
+
+        // Select it
+        Selection.activeGameObject = director.gameObject;
     }
 
     private void ModeChanged(PlayModeStateChange param)
