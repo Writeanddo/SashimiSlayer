@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 9.090363636363636
+    m_Start: 9.076363636363636
     m_ClipIn: 0
     m_Asset: {fileID: 6035179135911414988}
     m_Duration: 7.272727272727272
@@ -329,7 +329,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SlapTentacle
   - m_Version: 1
-    m_Start: 19.999454545454544
+    m_Start: 19.985454545454544
     m_ClipIn: 0
     m_Asset: {fileID: 5181581437254009509}
     m_Duration: 9.090909090909093
@@ -2153,8 +2153,8 @@ MonoBehaviour:
     NoteData:
       StartPosition: {x: 5.0631466, y: -3.9972208}
       EndPosition: {x: 0.8215811, y: -4.9234033}
-      NoteStartTime: 27.272727272727273
-      NoteEndTime: 30.909090909090907
+      NoteStartTime: 27.27272727272727
+      NoteEndTime: 30.909090909090903
       NoteBeatCount: 7.999999999999992
       Interactions:
       - _beatOffset: 4
@@ -2278,8 +2278,8 @@ MonoBehaviour:
       StartPosition: {x: 2.217361, y: -4.7317667}
       EndPosition: {x: -0.521502, y: -5.2997594}
       NoteStartTime: 23.636363636363637
-      NoteEndTime: 27.272727272727273
-      NoteBeatCount: 8.000000000000002
+      NoteEndTime: 27.27272727272727
+      NoteBeatCount: 7.999999999999992
       Interactions:
       - _beatOffset: 4
         _offsetFromEnd: 0
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 5.454
+    m_Start: 5.44
     m_ClipIn: 0
     m_Asset: {fileID: -5864128891532757927}
     m_Duration: 3.636363636363636
@@ -2500,10 +2500,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SquidMissile
   - m_Version: 1
-    m_Start: 29.090363636363637
+    m_Start: 29.076363636363638
     m_ClipIn: 0
     m_Asset: {fileID: 6217209131700525996}
-    m_Duration: 3.6363636363636367
+    m_Duration: 3.636363636363633
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6435859260828590340}
     m_EaseInDuration: 0
@@ -3052,7 +3052,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SquidMissile
   - m_Version: 1
-    m_Start: 32.726727272727274
+    m_Start: 32.71272727272727
     m_ClipIn: 0
     m_Asset: {fileID: 5820458967047597235}
     m_Duration: 3.636363636363633
@@ -3121,7 +3121,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: SquidMissile
   - m_Version: 1
-    m_Start: 16.363090909090907
+    m_Start: 16.349090909090908
     m_ClipIn: 0
     m_Asset: {fileID: -8869147466658630207}
     m_Duration: 3.6363636363636367
@@ -3467,7 +3467,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 21.817636363636364
+    m_Start: 21.803636363636365
     m_ClipIn: 0
     m_Asset: {fileID: 4794022737709250795}
     m_Duration: 7.272727272727273

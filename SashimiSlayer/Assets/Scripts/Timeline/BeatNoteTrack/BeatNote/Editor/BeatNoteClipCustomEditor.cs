@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Beatmapping.Editor;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using UnityEditor;
@@ -7,6 +8,9 @@ using UnityEngine;
 
 namespace Timeline.BeatNoteTrack.BeatNote.Editor
 {
+    /// <summary>
+    ///     Draws custom in-scene handles for the BeatNoteClip
+    /// </summary>
     [CustomEditor(typeof(BeatNoteClip))]
     public class BeatNoteClipCustomEditor : UnityEditor.Editor
     {
@@ -101,7 +105,7 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
         private void OnPositionHandleChange(BeatNoteClip noteClip)
         {
             Undo.RecordObject(noteClip, "Edited Timeline Note Clip Position");
-            if (BeatmapEditorWindow.AutoRefreshTimeline)
+            if (SashimiSlayerUtils.AutoRefreshTimeline)
             {
                 TimelineEditor.Refresh(RefreshReason.ContentsModified);
             }

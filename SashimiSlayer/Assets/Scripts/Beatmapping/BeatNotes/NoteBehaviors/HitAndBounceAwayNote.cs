@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Beatmapping.Notes;
+using Beatmapping.Tooling;
 using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
@@ -43,6 +44,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             if (segment.Type != BeatNote.TimeSegmentType.PreEnding)
             {
+                _sprite.color = new Color(1, 1, 1, 1f);
                 return;
             }
 

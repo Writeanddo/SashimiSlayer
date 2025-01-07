@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Beatmapping.Editor;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
+using Beatmapping.Tooling;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
@@ -10,12 +12,15 @@ using UnityEngine.Timeline;
 
 namespace Timeline.BeatNoteTrack.BeatNote.Editor
 {
+    /// <summary>
+    ///     Draws custom indicators in the timeline editor for notes
+    /// </summary>
     [CustomTimelineEditor(typeof(BeatNoteClip))]
     public class BeatNoteClipEditor : ClipEditor
     {
         public override void OnClipChanged(TimelineClip clip)
         {
-            BeatmapConfigSo beatmapConfig = BeatmapEditorWindow.CurrentEditingBeatmap;
+            BeatmapConfigSo beatmapConfig = SashimiSlayerUtils.CurrentEditingBeatmap;
 
             if (beatmapConfig == null)
             {
@@ -112,7 +117,7 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
                 return;
             }
 
-            BeatmapConfigSo beatmapConfig = BeatmapEditorWindow.CurrentEditingBeatmap;
+            BeatmapConfigSo beatmapConfig = SashimiSlayerUtils.CurrentEditingBeatmap;
 
             if (beatmapConfig == null)
             {
@@ -120,8 +125,6 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
             }
 
             // We assume clip.Start time is properly snapped to the interval
-
-            DrawBeatGuides(beatmapConfig, clip, region);
 
             DrawInteractions(beatmapConfig, actionClip, region);
 
@@ -214,60 +217,6 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
             crossPos.y = linePos.height / 2 - 2;
             crossPos.height = 5;
             EditorGUI.DrawRect(crossPos, Color.yellow);
-        }
-
-        private void DrawBeatGuides(BeatmapConfigSo beatmap, TimelineClip clip, ClipBackgroundRegion region)
-        {
-            // region.startTime is the time of the visible area RELATIVE to the start of the ENTIRE clip
-            // Calculate times in beatmap timespace
-            double clipStartTime = clip.start - beatmap.StartTime;
-            double drawnAreaStartTime = clipStartTime + region.startTime;
-            double drawnAreaEndTime = clipStartTime + region.endTime;
-
-            // Draw lines on every measure
-            var subdivisionInterval = (float)(60 /
-                                              beatmap.Bpm /
-                                              beatmap.Subdivisions);
-
-            int subdivsPerMeasure = beatmap.BeatsPerMeasure *
-                                    beatmap.Subdivisions;
-
-            // Find the enclosing bounds, exclusive
-            var startSubdiv = (int)Math.Ceiling(drawnAreaStartTime / subdivisionInterval);
-            var endSubdiv = (int)Math.Floor(drawnAreaEndTime / subdivisionInterval);
-
-            for (int i = startSubdiv; i <= endSubdiv; i++)
-            {
-                // time to place the marking, in beatmap timespace
-                float markingTime = i * subdivisionInterval;
-                // time to place the marking, drawn region timespace
-                float markingClipTime = markingTime - (float)clipStartTime;
-
-                float normalizedBeatTime =
-                    Mathf.InverseLerp((float)region.startTime, (float)region.endTime, markingClipTime);
-
-                Rect linePos = region.position;
-                linePos.x += normalizedBeatTime * linePos.width;
-
-                linePos.width = 1;
-                if (i % subdivsPerMeasure == 0)
-                {
-                    // Start of a measure
-                    EditorGUI.DrawRect(linePos, Color.white);
-                }
-                else if (i % beatmap.Subdivisions == 0)
-                {
-                    // Start of a beat
-                    linePos.height /= 2;
-                    EditorGUI.DrawRect(linePos, Color.white);
-                }
-                else
-                {
-                    // Start of a subdiv
-                    linePos.height = 2;
-                    EditorGUI.DrawRect(linePos, Color.gray);
-                }
-            }
         }
     }
 }
