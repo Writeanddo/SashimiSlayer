@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Timeline.BeatNoteTrack.BeatNote.Editor
 {
+    /// <summary>
+    ///     Draws custom in-scene handles for the BeatNoteClip
+    /// </summary>
     [CustomEditor(typeof(BeatNoteClip))]
     public class BeatNoteClipCustomEditor : UnityEditor.Editor
     {
