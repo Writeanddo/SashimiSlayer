@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Beatmapping.Notes;
+using Beatmapping.Tooling;
 using FMODUnity;
 using UnityEngine;
 

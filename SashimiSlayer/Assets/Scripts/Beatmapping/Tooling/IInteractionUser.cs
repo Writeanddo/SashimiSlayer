@@ -1,26 +1,29 @@
 using System.Collections.Generic;
 using Beatmapping.Notes;
 
-public interface IInteractionUser
+namespace Beatmapping.Tooling
 {
-    public IEnumerable<InteractionUsage> GetInteractionUsages();
-
-    /// <summary>
-    ///     What interactions and positions does this listener use?
-    ///     This is used to automatically fill out beat note data in the beatmapping tool, based on the prefab setup
-    /// </summary>
-    public struct InteractionUsage
+    public interface IInteractionUser
     {
-        public int InteractionIndex;
-        public NoteInteraction.InteractionType InteractionType;
-        public int PositionCount;
+        public IEnumerable<InteractionUsage> GetInteractionUsages();
 
-        public InteractionUsage(NoteInteraction.InteractionType interactionType, int interactionIndex,
-            int positionCount)
+        /// <summary>
+        ///     What interactions and positions does this listener use?
+        ///     This lets specific interaction "outputs" declare what interactions, types, and positions it needs to function
+        /// </summary>
+        public struct InteractionUsage
         {
-            InteractionIndex = interactionIndex;
-            PositionCount = positionCount;
-            InteractionType = interactionType;
+            public int InteractionIndex;
+            public NoteInteraction.InteractionType InteractionType;
+            public int PositionCount;
+
+            public InteractionUsage(NoteInteraction.InteractionType interactionType, int interactionIndex,
+                int positionCount)
+            {
+                InteractionIndex = interactionIndex;
+                PositionCount = positionCount;
+                InteractionType = interactionType;
+            }
         }
     }
 }

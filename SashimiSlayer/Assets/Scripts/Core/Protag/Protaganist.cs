@@ -1,3 +1,4 @@
+using Beatmapping.Tooling;
 using Events;
 using Events.Core;
 using Feel;
@@ -198,7 +199,11 @@ public class Protaganist : MonoBehaviour
             return;
         }
 
-        _health -= damage;
+        if (!BeatmappingUtilities.ProtagInvincible)
+        {
+            _health -= damage;
+        }
+
         _healthChangeEvent.Raise(_health);
         _damageTakenEvent.Raise();
 

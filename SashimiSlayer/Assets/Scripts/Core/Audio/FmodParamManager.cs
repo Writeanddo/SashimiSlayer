@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Core.Audio
 {
     /// <summary>
-    ///     Script that handles global FMOD params
+    ///     Script that handles setting global FMOD params
     /// </summary>
     public class FmodParamManager : MonoBehaviour
     {
@@ -17,12 +17,6 @@ namespace Core.Audio
         private void Awake()
         {
             _noteInteractionFinalResultEvent.AddListener(OnNoteInteractionFinalResult);
-        }
-
-        private void Update()
-        {
-            RuntimeManager.StudioSystem.getParameterByName("PreviousNoteStatus", out float newVal);
-            Debug.Log($"PreviousNoteStatus: {newVal}");
         }
 
         private void OnDestroy()

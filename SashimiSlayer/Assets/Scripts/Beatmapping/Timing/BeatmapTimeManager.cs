@@ -1,4 +1,5 @@
 using System;
+using Beatmapping.Tooling;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Events;
@@ -218,7 +219,12 @@ namespace Beatmapping.Timing
 
             _currentBeatmap = beatmap;
 
-            StartBeatmapTrack(beatmap);
+            // Testing util to start from the timeline playhead
+            double startTime = BeatmappingUtilities.StartFromTimelinePlayhead
+                ? BeatmappingUtilities.TimelinePlayheadTime
+                : 0;
+
+            StartBeatmapTrack(beatmap, startTime);
 
             _beatmapState = BeatmapState.WaitingForSoundtrackEvent;
         }
@@ -233,9 +239,12 @@ namespace Beatmapping.Timing
             _currentBeatmap = null;
         }
 
-        private void StartBeatmapTrack(BeatmapConfigSo beatmap)
+        private void StartBeatmapTrack(BeatmapConfigSo beatmap, double startTime)
         {
             EventInstance soundtrack = RuntimeManager.CreateInstance(beatmap.BeatmapSoundtrackEvent);
+
+            soundtrack.setTimelinePosition((int)(startTime * 1000));
+
             soundtrack.start();
             soundtrack.release();
 

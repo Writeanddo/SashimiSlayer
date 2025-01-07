@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Beatmapping.Indicator;
 using Beatmapping.Notes;
+using Beatmapping.Tooling;
 using DG.Tweening;
 using Events.Core;
 using Sirenix.OdinInspector;

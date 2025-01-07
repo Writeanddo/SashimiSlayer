@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Beatmapping.Editor;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
+using Beatmapping.Tooling;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
@@ -15,7 +17,7 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
     {
         public override void OnClipChanged(TimelineClip clip)
         {
-            BeatmapConfigSo beatmapConfig = BeatmapEditorWindow.CurrentEditingBeatmap;
+            BeatmapConfigSo beatmapConfig = SashimiSlayerUtils.CurrentEditingBeatmap;
 
             if (beatmapConfig == null)
             {
@@ -112,7 +114,7 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
                 return;
             }
 
-            BeatmapConfigSo beatmapConfig = BeatmapEditorWindow.CurrentEditingBeatmap;
+            BeatmapConfigSo beatmapConfig = SashimiSlayerUtils.CurrentEditingBeatmap;
 
             if (beatmapConfig == null)
             {
