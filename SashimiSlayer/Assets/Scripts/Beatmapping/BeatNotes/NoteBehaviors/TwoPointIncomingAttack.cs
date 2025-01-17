@@ -12,7 +12,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
     ///     Spawn -> Attack ready position
     ///     Attack ready position -> Player (Block interaction)
     /// </summary>
-    public class TwoPointIncomingAttack : BeatNoteListener
+    public class TwoPointIncomingAttack : BeatNoteModule
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -67,7 +67,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         }
 
         private void BeatNote_ProtagFailBlock(BeatNote.NoteTickInfo tickInfo,
-            SharedTypes.InteractionFinalResult finalResult)
+            NoteInteraction.FinalResult finalResult)
         {
             _explosionParticles.Play();
         }

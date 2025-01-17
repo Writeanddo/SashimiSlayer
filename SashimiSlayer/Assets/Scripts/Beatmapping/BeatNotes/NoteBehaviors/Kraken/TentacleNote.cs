@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
 {
-    public class TentacleNote : BeatNoteListener
+    public class TentacleNote : BeatNoteModule
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -66,7 +66,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
             }
         }
 
-        private void HandleOnSliced(int interactionIndex, NoteInteraction.InteractionAttemptResult result)
+        private void HandleOnSliced(int interactionIndex, NoteInteraction.AttemptResult result)
         {
             foreach (ParticleSystem particle in _damagedParticles)
             {

@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 namespace Beatmapping.BeatNotes
 {
-    public class BeatNoteIndicator : BeatNoteListener
+    public class BeatNoteIndicator : BeatNoteModule
     {
         [Header("Events Listening")]
 

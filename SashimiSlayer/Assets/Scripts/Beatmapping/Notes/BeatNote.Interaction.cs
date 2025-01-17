@@ -17,28 +17,50 @@ namespace Beatmapping.Notes
                 return;
             }
 
-            NoteInteraction.InteractionAttemptResult interactionAttemptResult = interaction.TryInteraction(
+            NoteInteraction.AttemptResult interactionAttemptResult = interaction.TryInteraction(
                 currentBeatmapTime,
                 NoteInteraction.InteractionType.IncomingAttack,
                 protagSwordState.BlockPose);
 
-            // Fails do nothing; failures get handled inside tick logic when the interaction window ends 
+            // Hitting in the fail window means instant failure
+            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.Fail)
+            {
+                var earlyFailResult = new NoteInteraction.FinalResult(
+                    interactionAttemptResult.TimingResult,
+                    NoteInteraction.InteractionType.IncomingAttack,
+                    false
+                )
+                {
+                    Pose = protagSwordState.BlockPose
+                };
+
+                _noteInteractionFinalResultEvent.Raise(earlyFailResult);
+                OnInteractionFinalResult?.Invoke(_noteTickInfo, earlyFailResult);
+                OnProtagFailBlock?.Invoke(_noteTickInfo, earlyFailResult);
+
+                return;
+            }
+
+            // No pass means do nothing
             if (!interactionAttemptResult.Passed)
             {
                 return;
             }
 
+            // Success!
             Protaganist.Instance.SuccessfulBlock(protagSwordState.BlockPose);
 
-            var finalResult = new SharedTypes.InteractionFinalResult
+            var finalResult = new NoteInteraction.FinalResult(
+                interactionAttemptResult.TimingResult,
+                NoteInteraction.InteractionType.IncomingAttack,
+                true
+            )
             {
-                Successful = true,
-                InteractionType = NoteInteraction.InteractionType.IncomingAttack,
-                TimingResult = interactionAttemptResult.TimingResult,
                 Pose = protagSwordState.BlockPose
             };
 
             _noteInteractionFinalResultEvent.Raise(finalResult);
+            OnInteractionFinalResult?.Invoke(_noteTickInfo, finalResult);
 
             OnBlockedByProtag?.Invoke(GetInteractionIndex(interaction), interactionAttemptResult);
         }
@@ -68,12 +90,25 @@ namespace Beatmapping.Notes
                 return;
             }
 
-            NoteInteraction.InteractionAttemptResult interactionAttemptResult = interaction.TryInteraction(
+            NoteInteraction.AttemptResult interactionAttemptResult = interaction.TryInteraction(
                 currentBeatmapTime,
                 NoteInteraction.InteractionType.TargetToHit,
                 protagSwordState.BlockPose);
 
-            // Fails do nothing; failures get handled inside tick logic when the interaction window ends
+            // Hitting in the early lockout window fails immediately
+            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.Fail)
+            {
+                var earlyFailResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
+                    NoteInteraction.InteractionType.TargetToHit,
+                    false);
+
+                _noteInteractionFinalResultEvent.Raise(earlyFailResult);
+                OnInteractionFinalResult?.Invoke(_noteTickInfo, earlyFailResult);
+                OnProtagMissedHit?.Invoke(_noteTickInfo, earlyFailResult);
+                return;
+            }
+
+            // Other fails simply do nothing
             if (!interactionAttemptResult.Passed)
             {
                 return;
@@ -84,14 +119,12 @@ namespace Beatmapping.Notes
 
             Protaganist.Instance.SuccessfulSlice();
 
-            var finalResult = new SharedTypes.InteractionFinalResult
-            {
-                Successful = true,
-                InteractionType = NoteInteraction.InteractionType.TargetToHit,
-                TimingResult = interactionAttemptResult.TimingResult
-            };
+            var finalResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
+                NoteInteraction.InteractionType.TargetToHit,
+                true);
 
             _noteInteractionFinalResultEvent.Raise(finalResult);
+            OnInteractionFinalResult?.Invoke(_noteTickInfo, finalResult);
         }
     }
 }

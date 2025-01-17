@@ -12,12 +12,12 @@ namespace Beatmapping.Timing
         public double PassWindowHalfWidth { get; private set; }
 
         [field: SerializeField]
-        public double LockoutWindowHalfWidth { get; private set; }
+        public double FailWindowHalfWidth { get; private set; }
 
         public TimingWindow CreateTimingWindow(double targetTime)
         {
             return new TimingWindow(targetTime,
-                new[] { PerfectWindowHalfWidth, PassWindowHalfWidth, LockoutWindowHalfWidth });
+                new[] { PerfectWindowHalfWidth, PassWindowHalfWidth, FailWindowHalfWidth });
         }
     }
 }

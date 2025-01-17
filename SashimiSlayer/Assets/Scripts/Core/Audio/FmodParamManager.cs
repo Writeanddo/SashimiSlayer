@@ -1,3 +1,4 @@
+using Beatmapping.Notes;
 using Events.Core;
 using FMODUnity;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace Core.Audio
             _noteInteractionFinalResultEvent.RemoveListener(OnNoteInteractionFinalResult);
         }
 
-        private void OnNoteInteractionFinalResult(SharedTypes.InteractionFinalResult result)
+        private void OnNoteInteractionFinalResult(NoteInteraction.FinalResult result)
         {
             float val = result.Successful ? 1 : 0;
             RuntimeManager.StudioSystem.setParameterByName("PreviousNoteStatus", val, true);

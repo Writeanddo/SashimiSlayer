@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Beatmapping.Notes;
 using Events.Core;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ public class TimingBarManager : MonoBehaviour
         _noteInteractionFinalResultEvent.RemoveListener(OnBeatInteractionResult);
     }
 
-    private void OnBeatInteractionResult(SharedTypes.InteractionFinalResult result)
+    private void OnBeatInteractionResult(NoteInteraction.FinalResult result)
     {
         if (!result.Successful)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class HitAndBounceAwayNote : BeatNoteListener
+    public class HitAndBounceAwayNote : BeatNoteModule
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -28,7 +28,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         private Vector2 _startPos;
 
         private void BeatNote_ProtagFailBlock(BeatNote.NoteTickInfo tickInfo,
-            SharedTypes.InteractionFinalResult finalresult)
+            NoteInteraction.FinalResult finalresult)
         {
             if (tickInfo.InteractionIndex != _interactionIndex)
             {

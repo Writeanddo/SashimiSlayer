@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class SpinToVulnerable : BeatNoteListener
+    public class SpinToVulnerable : BeatNoteModule
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -39,7 +39,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         private bool _enteredDazed;
 
         private void BeatNote_OnSlicedByProtag(int interactionIndex,
-            NoteInteraction.InteractionAttemptResult result)
+            NoteInteraction.AttemptResult result)
         {
             if (interactionIndex != _interactionIndex)
             {
