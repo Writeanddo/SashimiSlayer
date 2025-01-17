@@ -10,7 +10,7 @@ using UnityEngine.Timeline;
 
 namespace Beatmapping.Editor
 {
-    public class SashimiSlayerUtils : EditorWindow
+    public class SashimiSlayerUtilWindow : EditorWindow
     {
         private const string PrefsPath = "Assets/Settings/Editor/User/SimpleUtilsPrefs.asset";
         private const string _levelRosterPref = "BeatmapEditorWindow.levelRosterSO";
@@ -58,6 +58,9 @@ namespace Beatmapping.Editor
             BeatmappingUtilities.StartFromTimelinePlayhead =
                 GUILayout.Toggle(BeatmappingUtilities.StartFromTimelinePlayhead,
                     $"Start Level From Timeline Playhead ({BeatmappingUtilities.TimelinePlayheadTime.ToString()})");
+
+            BeatmappingUtilities.PlayFromEditedBeatmap = GUILayout.Toggle(BeatmappingUtilities.PlayFromEditedBeatmap,
+                "Play from Edited Beatmap");
 
             GUILayout.Space(10);
             GUILayout.Label("Save Data", EditorStyles.boldLabel);
@@ -135,7 +138,7 @@ namespace Beatmapping.Editor
         [MenuItem("Tools/Sashimi Slayer Tools")]
         public static void ShowWindow()
         {
-            GetWindow<SashimiSlayerUtils>("Sashimi Slayer Tools");
+            GetWindow<SashimiSlayerUtilWindow>("Sashimi Slayer Tools");
         }
 
         [MenuItem("Tools/Refresh Timeline Editor Window #r")]

@@ -1573,28 +1573,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1973045994}
   - component: {fileID: 1973045993}
-  - component: {fileID: 1973045992}
+  - component: {fileID: 1973045995}
   m_Layer: 0
-  m_Name: Setup
+  m_Name: Bootup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1973045992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973045991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04c59deb93d597540b6e92048e4fc1b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bootupConfigSO: {fileID: 11400000, guid: 58dc6f5ba8c452642bf6e462070d6eca, type: 2}
-  _studioBankLoader: {fileID: 1973045993}
 --- !u!114 &1973045993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1631,6 +1617,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1973045995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973045991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c59deb93d597540b6e92048e4fc1b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bootupConfigSO: {fileID: 11400000, guid: 58dc6f5ba8c452642bf6e462070d6eca, type: 2}
+  _levelRosterSO: {fileID: 11400000, guid: e3cbf2d063334b841b46feb0ed798cb2, type: 2}
+  _studioBankLoader: {fileID: 1973045993}
 --- !u!1 &2056106402
 GameObject:
   m_ObjectHideFlags: 0

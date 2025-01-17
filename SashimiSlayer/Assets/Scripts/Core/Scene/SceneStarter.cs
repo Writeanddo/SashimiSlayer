@@ -1,35 +1,58 @@
+using Beatmapping.Tooling;
 using Cysharp.Threading.Tasks;
 using FMODUnity;
 using UnityEngine;
 
-public class SceneStarter : MonoBehaviour
+namespace Core.Scene
 {
-    [SerializeField]
-    private BootupConfigSO _bootupConfigSO;
-
-    [SerializeField]
-    private StudioBankLoader _studioBankLoader;
-
-    private void Start()
+    /// <summary>
+    ///     Bootstrapping script inside base scene to startup and load initial resources.
+    /// </summary>
+    public class SceneStarter : MonoBehaviour
     {
-        Startup().Forget();
-    }
+        [SerializeField]
+        private BootupConfigSO _bootupConfigSO;
 
-    private void OnDestroy()
-    {
-        _studioBankLoader.Unload();
-    }
+        [SerializeField]
+        private LevelRosterSO _levelRosterSO;
 
-    private async UniTaskVoid Startup()
-    {
-        Debug.Log("Loading starting banks");
-        _studioBankLoader.Load();
+        [SerializeField]
+        private StudioBankLoader _studioBankLoader;
 
-        await UniTask.WaitUntil(() => RuntimeManager.HaveAllBanksLoaded);
-        await UniTask.WaitUntil(() => !RuntimeManager.AnySampleDataLoading());
+        private void Start()
+        {
+            Startup().Forget();
+        }
 
-        Debug.Log("All banks loaded");
+        private void OnDestroy()
+        {
+            _studioBankLoader.Unload();
+        }
 
-        LevelLoader.Instance.LoadLevel(_bootupConfigSO.InitialGameLevel).Forget();
+        private async UniTaskVoid Startup()
+        {
+            Debug.Log("Loading starting banks");
+            _studioBankLoader.Load();
+
+            await UniTask.WaitUntil(() => RuntimeManager.HaveAllBanksLoaded);
+            await UniTask.WaitUntil(() => !RuntimeManager.AnySampleDataLoading());
+
+            Debug.Log("All banks loaded");
+
+            // Load startup level
+            if (BeatmappingUtilities.PlayFromEditedBeatmap)
+            {
+                foreach (GameLevelSO level in _levelRosterSO.Levels)
+                {
+                    if (level.Beatmap == BeatmappingUtilities.CurrentEditingBeatmapConfig)
+                    {
+                        LevelLoader.Instance.LoadLevel(level).Forget();
+                        return;
+                    }
+                }
+            }
+
+            LevelLoader.Instance.LoadLevel(_bootupConfigSO.InitialGameLevel).Forget();
+        }
     }
 }

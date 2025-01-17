@@ -1,3 +1,4 @@
+using Beatmapping;
 using Beatmapping.Tooling;
 using Timeline.BeatNoteTrack.BeatNote;
 using UnityEngine;

@@ -105,7 +105,7 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
         private void OnPositionHandleChange(BeatNoteClip noteClip)
         {
             Undo.RecordObject(noteClip, "Edited Timeline Note Clip Position");
-            if (SashimiSlayerUtils.AutoRefreshTimeline)
+            if (SashimiSlayerUtilWindow.AutoRefreshTimeline)
             {
                 TimelineEditor.Refresh(RefreshReason.ContentsModified);
             }
