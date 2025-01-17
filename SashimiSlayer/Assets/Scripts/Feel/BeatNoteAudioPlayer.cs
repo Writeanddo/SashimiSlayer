@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Feel
 {
-    public class BeatNoteAudioPlayer : BeatNoteListener
+    public class BeatNoteAudioPlayer : BeatNoteModule
     {
         [SerializeField]
         private BeatNote _beatNote;

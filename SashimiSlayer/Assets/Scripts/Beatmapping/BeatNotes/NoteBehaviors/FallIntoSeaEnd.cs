@@ -8,7 +8,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
     /// <summary>
     ///     Visual where the note falls into the sea from End to Cleanup
     /// </summary>
-    public class FallIntoSeaEnd : BeatNoteListener
+    public class FallIntoSeaEnd : BeatNoteModule
     {
         private const float Gravity = 9.8f;
 

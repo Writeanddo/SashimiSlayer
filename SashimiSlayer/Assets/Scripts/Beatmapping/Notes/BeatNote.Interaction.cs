@@ -22,24 +22,26 @@ namespace Beatmapping.Notes
                 NoteInteraction.InteractionType.IncomingAttack,
                 protagSwordState.BlockPose);
 
-            // Hitting in the early lockout window fails immediately
-            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.FailLockout)
+            // Hitting in the fail window means instant failure
+            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.Fail)
             {
-                var lockoutResult = new NoteInteraction.FinalResult(
+                var earlyFailResult = new NoteInteraction.FinalResult(
                     interactionAttemptResult.TimingResult,
                     NoteInteraction.InteractionType.IncomingAttack,
-                    false,
-                    this
+                    false
                 )
                 {
                     Pose = protagSwordState.BlockPose
                 };
 
-                _noteInteractionFinalResultEvent.Raise(lockoutResult);
+                _noteInteractionFinalResultEvent.Raise(earlyFailResult);
+                OnInteractionFinalResult?.Invoke(_noteTickInfo, earlyFailResult);
+                OnProtagFailBlock?.Invoke(_noteTickInfo, earlyFailResult);
+
                 return;
             }
 
-            // Other fails simply do nothing
+            // No pass means do nothing
             if (!interactionAttemptResult.Passed)
             {
                 return;
@@ -51,14 +53,14 @@ namespace Beatmapping.Notes
             var finalResult = new NoteInteraction.FinalResult(
                 interactionAttemptResult.TimingResult,
                 NoteInteraction.InteractionType.IncomingAttack,
-                true,
-                this
+                true
             )
             {
                 Pose = protagSwordState.BlockPose
             };
 
             _noteInteractionFinalResultEvent.Raise(finalResult);
+            OnInteractionFinalResult?.Invoke(_noteTickInfo, finalResult);
 
             OnBlockedByProtag?.Invoke(GetInteractionIndex(interaction), interactionAttemptResult);
         }
@@ -94,14 +96,15 @@ namespace Beatmapping.Notes
                 protagSwordState.BlockPose);
 
             // Hitting in the early lockout window fails immediately
-            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.FailLockout)
+            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.Fail)
             {
-                var lockoutResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
+                var earlyFailResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
                     NoteInteraction.InteractionType.TargetToHit,
-                    false,
-                    this);
+                    false);
 
-                _noteInteractionFinalResultEvent.Raise(lockoutResult);
+                _noteInteractionFinalResultEvent.Raise(earlyFailResult);
+                OnInteractionFinalResult?.Invoke(_noteTickInfo, earlyFailResult);
+                OnProtagMissedHit?.Invoke(_noteTickInfo, earlyFailResult);
                 return;
             }
 
@@ -118,10 +121,10 @@ namespace Beatmapping.Notes
 
             var finalResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
                 NoteInteraction.InteractionType.TargetToHit,
-                true,
-                this);
+                true);
 
             _noteInteractionFinalResultEvent.Raise(finalResult);
+            OnInteractionFinalResult?.Invoke(_noteTickInfo, finalResult);
         }
     }
 }

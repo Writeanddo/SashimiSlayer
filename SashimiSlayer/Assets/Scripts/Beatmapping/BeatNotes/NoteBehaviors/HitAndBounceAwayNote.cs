@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class HitAndBounceAwayNote : BeatNoteListener
+    public class HitAndBounceAwayNote : BeatNoteModule
     {
         [SerializeField]
         private BeatNote _beatNote;

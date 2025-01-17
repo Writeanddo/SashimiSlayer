@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class SadFishNote : BeatNoteListener
+    public class SadFishNote : BeatNoteModule
     {
         [SerializeField]
         private SpriteRenderer _sprite;

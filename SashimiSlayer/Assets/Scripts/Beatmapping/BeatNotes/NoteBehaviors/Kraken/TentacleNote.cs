@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
 {
-    public class TentacleNote : BeatNoteListener
+    public class TentacleNote : BeatNoteModule
     {
         [SerializeField]
         private BeatNote _beatNote;

@@ -42,6 +42,16 @@ namespace Beatmapping.Notes
 
             OnTick?.Invoke(_noteTickInfo);
 
+            // Confusing logic to detect when the note should be reset.
+            // The idea is that if we were previously in some non-interaction segment
+            // and we suddenly enter an interaction segment,
+            // then we're either going from the start, or we looped back after the note ended
+            // upon which we should reset the state
+            if (prevSegmentType != TimeSegmentType.Interaction && currentSegmentType == TimeSegmentType.Interaction)
+            {
+                ResetState();
+            }
+
             switch (currentSegmentType)
             {
                 case TimeSegmentType.Spawn:
@@ -181,8 +191,7 @@ namespace Beatmapping.Notes
             {
                 var finalResult = new NoteInteraction.FinalResult(default,
                     prevInsidePassWindowInteraction.Type,
-                    false,
-                    this)
+                    false)
                 {
                     Pose = prevInsidePassWindowInteraction.BlockPose
                 };
@@ -192,11 +201,6 @@ namespace Beatmapping.Notes
                 {
                     case NoteInteraction.InteractionType.IncomingAttack:
                         OnProtagFailBlock?.Invoke(previousTiming, finalResult);
-                        if (Protaganist.Instance)
-                        {
-                            Protaganist.Instance.TakeDamage(1);
-                        }
-
                         break;
                     case NoteInteraction.InteractionType.TargetToHit:
                         OnProtagMissedHit?.Invoke(previousTiming, finalResult);
@@ -204,6 +208,17 @@ namespace Beatmapping.Notes
                 }
 
                 _noteInteractionFinalResultEvent.Raise(finalResult);
+                OnInteractionFinalResult?.Invoke(previousTiming, finalResult);
+            }
+
+            // Only apply player damage at the end of the window, EVEN in the case of an early fail
+            if (interactionState != NoteInteraction.NoteInteractionState.Success
+                && prevInsidePassWindowInteraction.Type == NoteInteraction.InteractionType.IncomingAttack)
+            {
+                if (Protaganist.Instance)
+                {
+                    Protaganist.Instance.TakeDamage(1);
+                }
             }
         }
     }

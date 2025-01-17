@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class SpinToVulnerable : BeatNoteListener
+    public class SpinToVulnerable : BeatNoteModule
     {
         [SerializeField]
         private BeatNote _beatNote;

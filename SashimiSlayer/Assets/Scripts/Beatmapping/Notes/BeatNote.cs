@@ -5,6 +5,7 @@ using Beatmapping.Tooling;
 using Events.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Beatmapping.Notes
 {
@@ -39,8 +40,9 @@ namespace Beatmapping.Notes
         [SerializeField]
         private NoteInteractionFinalResultEvent _noteInteractionFinalResultEvent;
 
+        [FormerlySerializedAs("_beatNoteListeners")]
         [SerializeField]
-        private List<BeatNoteListener> _beatNoteListeners;
+        private List<BeatNoteModule> _beatNoteModules;
 
         public Vector2 StartPosition { get; private set; }
 
@@ -84,6 +86,11 @@ namespace Beatmapping.Notes
         public event InteractionFinalResultEventHandler OnProtagMissedHit;
 
         /// <summary>
+        ///     Event invoked when an interaction's final result occurs
+        /// </summary>
+        public event InteractionFinalResultEventHandler OnInteractionFinalResult;
+
+        /// <summary>
         ///     Event invoked when the note is ready to be cleaned up.
         ///     Listened to by the BeatNoteService, which performs the cleanup
         /// </summary>
@@ -114,7 +121,7 @@ namespace Beatmapping.Notes
 
         public void OnDestroy()
         {
-            foreach (BeatNoteListener listener in _beatNoteListeners)
+            foreach (BeatNoteModule listener in _beatNoteModules)
             {
                 listener.OnNoteCleanedUp(this);
             }
@@ -129,7 +136,7 @@ namespace Beatmapping.Notes
         {
             var positionUsage = new List<IInteractionUser.InteractionUsage>();
 
-            foreach (BeatNoteListener listener in _beatNoteListeners)
+            foreach (BeatNoteModule listener in _beatNoteModules)
             {
                 IEnumerable<IInteractionUser.InteractionUsage> usages = listener.GetInteractionUsages();
                 if (usages == null)
@@ -172,12 +179,31 @@ namespace Beatmapping.Notes
             // Build timing segments
             _noteTimeSegments = BuildNoteTimeSegments(noteInteractions, noteStartTime, noteEndTime, initializeTime);
 
-            foreach (BeatNoteListener listener in _beatNoteListeners)
+            foreach (BeatNoteModule listener in _beatNoteModules)
             {
                 listener.OnNoteInitialized(this);
             }
 
             OnInitialize?.Invoke();
+        }
+
+        /// <summary>
+        ///     Reset the internal state of the note so it can be looped or pooled.
+        /// </summary>
+        public void ResetState()
+        {
+            // Currently the only state is the interaction state
+            foreach (NoteInteraction interaction in _allInteractions)
+            {
+                interaction.ResetState();
+            }
+
+            foreach (BeatNoteModule listener in _beatNoteModules)
+            {
+                listener.ResetState();
+            }
+
+            _isFirstTick = true;
         }
 
         private List<NoteTimeSegment> BuildNoteTimeSegments(List<NoteInteraction> interactions,
@@ -238,23 +264,23 @@ namespace Beatmapping.Notes
         [Button("Detect Listeners")]
         private void DetectListeners()
         {
-            BeatNoteListener[] listeners = GetComponentsInChildren<BeatNoteListener>();
+            BeatNoteModule[] listeners = GetComponentsInChildren<BeatNoteModule>();
 
-            _beatNoteListeners = listeners.Where(a => a != null).ToList();
+            _beatNoteModules = listeners.Where(a => a != null).ToList();
 
-            foreach (BeatNoteListener listener in _beatNoteListeners)
+            foreach (BeatNoteModule listener in _beatNoteModules)
             {
-                if (_beatNoteListeners.Contains(listener))
+                if (_beatNoteModules.Contains(listener))
                 {
                     continue;
                 }
 
-                _beatNoteListeners.Add(listener);
+                _beatNoteModules.Add(listener);
             }
         }
 
         /// <summary>
-        ///     Get the position right before this interaction
+        ///     Get the position right before the current interaction
         /// </summary>
         /// <param name="interactionIndex"></param>
         /// <returns></returns>
