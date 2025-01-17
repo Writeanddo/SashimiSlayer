@@ -76,7 +76,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         }
 
         private void BeatNote_SlicedByProtag(int interactionIndex,
-            NoteInteraction.InteractionAttemptResult result)
+            NoteInteraction.AttemptResult result)
         {
             _sprite.enabled = false;
             foreach (ParticleSystem particle in _dieParticles)

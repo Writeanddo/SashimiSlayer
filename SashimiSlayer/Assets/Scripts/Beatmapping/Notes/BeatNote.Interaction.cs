@@ -17,24 +17,44 @@ namespace Beatmapping.Notes
                 return;
             }
 
-            NoteInteraction.InteractionAttemptResult interactionAttemptResult = interaction.TryInteraction(
+            NoteInteraction.AttemptResult interactionAttemptResult = interaction.TryInteraction(
                 currentBeatmapTime,
                 NoteInteraction.InteractionType.IncomingAttack,
                 protagSwordState.BlockPose);
 
-            // Fails do nothing; failures get handled inside tick logic when the interaction window ends 
+            // Hitting in the early lockout window fails immediately
+            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.FailLockout)
+            {
+                var lockoutResult = new NoteInteraction.FinalResult(
+                    interactionAttemptResult.TimingResult,
+                    NoteInteraction.InteractionType.IncomingAttack,
+                    false,
+                    this
+                )
+                {
+                    Pose = protagSwordState.BlockPose
+                };
+
+                _noteInteractionFinalResultEvent.Raise(lockoutResult);
+                return;
+            }
+
+            // Other fails simply do nothing
             if (!interactionAttemptResult.Passed)
             {
                 return;
             }
 
+            // Success!
             Protaganist.Instance.SuccessfulBlock(protagSwordState.BlockPose);
 
-            var finalResult = new SharedTypes.InteractionFinalResult
+            var finalResult = new NoteInteraction.FinalResult(
+                interactionAttemptResult.TimingResult,
+                NoteInteraction.InteractionType.IncomingAttack,
+                true,
+                this
+            )
             {
-                Successful = true,
-                InteractionType = NoteInteraction.InteractionType.IncomingAttack,
-                TimingResult = interactionAttemptResult.TimingResult,
                 Pose = protagSwordState.BlockPose
             };
 
@@ -68,12 +88,24 @@ namespace Beatmapping.Notes
                 return;
             }
 
-            NoteInteraction.InteractionAttemptResult interactionAttemptResult = interaction.TryInteraction(
+            NoteInteraction.AttemptResult interactionAttemptResult = interaction.TryInteraction(
                 currentBeatmapTime,
                 NoteInteraction.InteractionType.TargetToHit,
                 protagSwordState.BlockPose);
 
-            // Fails do nothing; failures get handled inside tick logic when the interaction window ends
+            // Hitting in the early lockout window fails immediately
+            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.FailLockout)
+            {
+                var lockoutResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
+                    NoteInteraction.InteractionType.TargetToHit,
+                    false,
+                    this);
+
+                _noteInteractionFinalResultEvent.Raise(lockoutResult);
+                return;
+            }
+
+            // Other fails simply do nothing
             if (!interactionAttemptResult.Passed)
             {
                 return;
@@ -84,12 +116,10 @@ namespace Beatmapping.Notes
 
             Protaganist.Instance.SuccessfulSlice();
 
-            var finalResult = new SharedTypes.InteractionFinalResult
-            {
-                Successful = true,
-                InteractionType = NoteInteraction.InteractionType.TargetToHit,
-                TimingResult = interactionAttemptResult.TimingResult
-            };
+            var finalResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
+                NoteInteraction.InteractionType.TargetToHit,
+                true,
+                this);
 
             _noteInteractionFinalResultEvent.Raise(finalResult);
         }

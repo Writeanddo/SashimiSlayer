@@ -66,7 +66,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
             }
         }
 
-        private void HandleOnSliced(int interactionIndex, NoteInteraction.InteractionAttemptResult result)
+        private void HandleOnSliced(int interactionIndex, NoteInteraction.AttemptResult result)
         {
             foreach (ParticleSystem particle in _damagedParticles)
             {

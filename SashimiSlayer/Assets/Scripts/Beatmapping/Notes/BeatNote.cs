@@ -19,11 +19,11 @@ namespace Beatmapping.Notes
 
         public delegate void InteractionAttemptEventHandler(
             int interactionIndex,
-            NoteInteraction.InteractionAttemptResult result);
+            NoteInteraction.AttemptResult result);
 
         public delegate void InteractionFinalResultEventHandler(
             NoteTickInfo tickInfo,
-            SharedTypes.InteractionFinalResult finalResult);
+            NoteInteraction.FinalResult finalResult);
 
         /// <summary>
         ///     Fixed time between end and cleanup

@@ -1,4 +1,5 @@
 using System;
+using Beatmapping.Notes;
 using Events;
 using Events.Core;
 using UnityEngine;
@@ -70,7 +71,7 @@ namespace Beatmapping
             GUILayout.Label(JsonUtility.ToJson(_currentScore));
         }
 
-        private void OnBeatInteractionResult(SharedTypes.InteractionFinalResult interactionFinalResult)
+        private void OnBeatInteractionResult(NoteInteraction.FinalResult interactionFinalResult)
         {
             if (interactionFinalResult.Successful)
             {

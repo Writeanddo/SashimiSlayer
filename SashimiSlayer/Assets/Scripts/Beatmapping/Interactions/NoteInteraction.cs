@@ -36,7 +36,7 @@ namespace Beatmapping.Notes
 
         public double TargetTime => _timingWindow.TargetTime;
 
-        public bool DidSucceed => _interactionState == NoteInteractionState.Success;
+        public NoteInteractionState State => _interactionState;
 
         public InteractionFlags Flags { get; }
 
@@ -67,7 +67,7 @@ namespace Beatmapping.Notes
         /// <param name="attemptedInteraction">the interaction attempted by the protag</param>
         /// <param name="blockPose">the block pose protag is using, if relevant</param>
         /// <returns></returns>
-        public InteractionAttemptResult TryInteraction(
+        public AttemptResult TryInteraction(
             double attemptTime,
             InteractionType attemptedInteraction,
             SharedTypes.BlockPoseStates blockPose = default)
@@ -75,7 +75,7 @@ namespace Beatmapping.Notes
             // Interaction already succeeded
             if (_interactionState == NoteInteractionState.Success)
             {
-                return new InteractionAttemptResult
+                return new AttemptResult
                 {
                     ValidInteraction = false
                 };
@@ -84,7 +84,7 @@ namespace Beatmapping.Notes
             // Interaction type doesn't match
             if (attemptedInteraction != Type)
             {
-                return new InteractionAttemptResult
+                return new AttemptResult
                 {
                     ValidInteraction = false
                 };
@@ -94,7 +94,7 @@ namespace Beatmapping.Notes
             if (Type == InteractionType.IncomingAttack &&
                 blockPose != BlockPose)
             {
-                return new InteractionAttemptResult
+                return new AttemptResult
                 {
                     ValidInteraction = false
                 };
@@ -103,7 +103,7 @@ namespace Beatmapping.Notes
             // Locked out by a previous interaction that landed in the lockout window
             if (_interactionState == NoteInteractionState.LockedOut)
             {
-                return new InteractionAttemptResult
+                return new AttemptResult
                 {
                     ValidInteraction = false
                 };
@@ -118,7 +118,7 @@ namespace Beatmapping.Notes
                 _interactionState = NoteInteractionState.LockedOut;
             }
 
-            var result = new InteractionAttemptResult
+            var result = new AttemptResult
             {
                 ValidInteraction = true,
                 TimingResult = timingResult,
@@ -155,7 +155,10 @@ namespace Beatmapping.Notes
                 or TimingWindow.Score.Perfect;
         }
 
-        public struct InteractionAttemptResult
+        /// <summary>
+        ///     The result of an interaction attempt (i.e an attempted block or slice)
+        /// </summary>
+        public struct AttemptResult
         {
             /// <summary>
             ///     Was the interaction attempt even valid? (matching type, correct block pose, not locked out)
@@ -173,7 +176,29 @@ namespace Beatmapping.Notes
                                   TimingResult.Score is TimingWindow.Score.Pass or TimingWindow.Score.Perfect;
         }
 
-        private enum NoteInteractionState
+        /// <summary>
+        ///     The final result of a note interaction; either a success when it occurs, or a failure after the timing window ends
+        /// </summary>
+        public struct FinalResult
+        {
+            public TimingWindow.TimingResult TimingResult;
+            public InteractionType InteractionType;
+            public SharedTypes.BlockPoseStates Pose;
+            public bool Successful;
+            public BeatNote Note;
+
+            public FinalResult(TimingWindow.TimingResult timingResult, InteractionType interactionType, bool successful,
+                BeatNote note)
+            {
+                TimingResult = timingResult;
+                InteractionType = interactionType;
+                Successful = successful;
+                Note = note;
+                Pose = default;
+            }
+        }
+
+        public enum NoteInteractionState
         {
             Default,
             LockedOut,

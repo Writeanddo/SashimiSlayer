@@ -67,7 +67,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         }
 
         private void BeatNote_ProtagFailBlock(BeatNote.NoteTickInfo tickInfo,
-            SharedTypes.InteractionFinalResult finalResult)
+            NoteInteraction.FinalResult finalResult)
         {
             _explosionParticles.Play();
         }
