@@ -1,3 +1,4 @@
+using Beatmapping;
 using UnityEngine;
 
 namespace Events.Core

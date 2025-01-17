@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Beatmapping.Tooling
 {
     /// <summary>
@@ -8,8 +6,6 @@ namespace Beatmapping.Tooling
     /// </summary>
     public static class BeatmappingUtilities
     {
-        private static BeatmapConfigSo _editingBeatmapConfig;
-
         /// <summary>
         ///     Should the player be invincible, for beatmapping purposes.
         /// </summary>
@@ -25,22 +21,16 @@ namespace Beatmapping.Tooling
         /// </summary>
         public static double TimelinePlayheadTime { get; set; }
 
-        public static BeatmapConfigSo CurrentEditingBeatmapConfig
-        {
-            get
-            {
-                if (Application.isPlaying)
-                {
-                    Debug.LogError("EditingBeatmapConfig  should only be used in edit mode");
-                }
+        /// <summary>
+        ///     Load directly into the edited beatmap on play
+        /// </summary>
+        public static bool PlayFromEditedBeatmap { get; set; }
 
-                return _editingBeatmapConfig;
-            }
-        }
+        public static BeatmapConfigSo CurrentEditingBeatmapConfig { get; private set; }
 
         public static void SetBeatmapConfig(BeatmapConfigSo beatmapConfig)
         {
-            _editingBeatmapConfig = beatmapConfig;
+            CurrentEditingBeatmapConfig = beatmapConfig;
         }
     }
 }

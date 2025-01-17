@@ -1,3 +1,4 @@
+using Beatmapping;
 using Beatmapping.Timing;
 using Events;
 using Events.Core;
