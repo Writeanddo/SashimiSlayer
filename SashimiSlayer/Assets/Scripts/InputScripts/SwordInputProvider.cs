@@ -9,6 +9,9 @@ public class SwordInputProvider : BaseUserInputProvider
     [SerializeField]
     private Transform _quatDebugger;
 
+    [SerializeField]
+    private float _angleMultiplier;
+
     public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
     public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
 
@@ -70,7 +73,7 @@ public class SwordInputProvider : BaseUserInputProvider
         float angle = -Vector3.Angle(up, Vector3.up) + 90f;
         angle = -angle;
 
-        _swordAngle = angle;
+        _swordAngle = angle * _angleMultiplier;
         _quatDebugger.transform.rotation = data.SwordOrientation;
     }
 

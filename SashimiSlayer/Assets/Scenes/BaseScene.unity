@@ -1563,6 +1563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serialReader: {fileID: 1969117889}
   _quatDebugger: {fileID: 1847439421}
+  _angleMultiplier: 1.5
 --- !u!1 &1973045991
 GameObject:
   m_ObjectHideFlags: 0
