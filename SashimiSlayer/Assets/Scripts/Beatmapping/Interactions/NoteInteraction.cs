@@ -165,6 +165,14 @@ namespace Beatmapping.Notes
         }
 
         /// <summary>
+        ///     Set the interaction as failed
+        /// </summary>
+        public void SetFailed()
+        {
+            State = NoteInteractionState.Fail;
+        }
+
+        /// <summary>
         ///     The result of an interaction attempt (i.e an attempted block or slice)
         /// </summary>
         public struct AttemptResult
