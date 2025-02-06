@@ -23,7 +23,7 @@ namespace Beatmapping.Notes
                 protagSwordState.BlockPose);
 
             // Hitting in the fail window means instant failure
-            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.Fail)
+            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.Miss)
             {
                 var earlyFailResult = new NoteInteraction.FinalResult(
                     interactionAttemptResult.TimingResult,
@@ -96,7 +96,7 @@ namespace Beatmapping.Notes
                 protagSwordState.BlockPose);
 
             // Hitting in the early lockout window fails immediately
-            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.Fail)
+            if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.Miss)
             {
                 var earlyFailResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
                     NoteInteraction.InteractionType.TargetToHit,

@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 355d4db3565421d4ba61aa7cb4acfd61, type: 3}
-  m_Name: DefaultTimingWindow
+  m_Script: {fileID: 11500000, guid: 1afd2fe22e630454cbca76383f672d4b, type: 3}
+  m_Name: ScoreConfig
   m_EditorClassIdentifier: 
-  <PerfectWindowHalfWidth>k__BackingField: 0.05
-  <PassWindowHalfWidth>k__BackingField: 0.1
-  <FailWindowHalfWidth>k__BackingField: 0.2
+  PointsForEarly: 50
+  PointsForLate: 50
+  PointsForPerfect: 100
+  PointsForMiss: 0

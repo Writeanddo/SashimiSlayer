@@ -189,6 +189,8 @@ namespace Beatmapping.Notes
             // An early miss (a lockout) or a success were handled immediately, so no need to handle it here
             if (interactionState == NoteInteraction.NoteInteractionState.Default)
             {
+                prevInsidePassWindowInteraction.SetFailed();
+
                 var finalResult = new NoteInteraction.FinalResult(default,
                     prevInsidePassWindowInteraction.Type,
                     false)
