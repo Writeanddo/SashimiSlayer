@@ -16,7 +16,7 @@ namespace Beatmapping
             /// <summary>
             ///     Within failure window means instant failure
             /// </summary>
-            Fail,
+            Miss,
 
             /// <summary>
             ///     Timing is outside of all windows, so completely ignore it

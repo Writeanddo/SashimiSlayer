@@ -134,7 +134,7 @@ namespace Beatmapping.Notes
             {
                 State = NoteInteractionState.Success;
             }
-            else if (result.TimingResult.Score == TimingWindow.Score.Fail)
+            else if (result.TimingResult.Score == TimingWindow.Score.Miss)
             {
                 State = NoteInteractionState.Fail;
             }
@@ -150,7 +150,7 @@ namespace Beatmapping.Notes
         public bool IsInInteractTimingWindow(double time)
         {
             return _timingWindow.CalculateTimingResult(time).Score is TimingWindow.Score.Pass
-                or TimingWindow.Score.Perfect or TimingWindow.Score.Fail;
+                or TimingWindow.Score.Perfect or TimingWindow.Score.Miss;
         }
 
         /// <summary>

@@ -1,76 +1,81 @@
-using Beatmapping;
 using Beatmapping.Timing;
 using Events;
 using Events.Core;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class TimelineLoader : MonoBehaviour
+namespace Beatmapping
 {
-    [SerializeField]
-    private PlayableDirector _director;
-
-    [Header("Listening Events")]
-
-    [SerializeField]
-    private BeatmapEvent _beatmapLoadedEvent;
-
-    [SerializeField]
-    private VoidEvent _playerDeathEvent;
-
-    private bool _inProgress;
-
-    private void Awake()
+    /// <summary>
+    ///     Handles the timeline playback in coordination with the music
+    /// </summary>
+    public class TimelineLoader : MonoBehaviour
     {
-        _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
-        _playerDeathEvent.AddListener(HandlePlayerDeath);
+        [SerializeField]
+        private PlayableDirector _director;
 
-        // Use manual to play with FMOD dsp time
-        _director.timeUpdateMode = DirectorUpdateMode.Manual;
-    }
+        [Header("Listening Events")]
 
-    private void OnEnable()
-    {
-        BeatmapTimeManager.Instance.OnTick += TimeService_OnTick;
-    }
+        [SerializeField]
+        private BeatmapEvent _beatmapLoadedEvent;
 
-    private void OnDisable()
-    {
-        BeatmapTimeManager.Instance.OnTick -= TimeService_OnTick;
-    }
+        [SerializeField]
+        private VoidEvent _playerDeathEvent;
 
-    private void OnDestroy()
-    {
-        _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
-        _playerDeathEvent.RemoveListener(HandlePlayerDeath);
-    }
+        private bool _inProgress;
 
-    private void TimeService_OnTick(BeatmapTimeManager.TickInfo tickInfo)
-    {
-        if (_inProgress)
+        private void Awake()
         {
-            _director.time = tickInfo.CurrentLevelTime;
+            _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
+            _playerDeathEvent.AddListener(HandlePlayerDeath);
 
-            if (_director.time >= _director.duration)
-            {
-                _director.Stop();
-            }
+            // Use manual to play with FMOD dsp time
+            _director.timeUpdateMode = DirectorUpdateMode.Manual;
         }
 
-        _director.Evaluate();
-    }
+        private void OnEnable()
+        {
+            BeatmapTimeManager.Instance.OnTick += TimeService_OnTick;
+        }
 
-    private void HandlePlayerDeath()
-    {
-        _inProgress = false;
-        _director.Pause();
-    }
+        private void OnDisable()
+        {
+            BeatmapTimeManager.Instance.OnTick -= TimeService_OnTick;
+        }
 
-    private void HandleStartBeatmap(BeatmapConfigSo beatmap)
-    {
-        _director.playableAsset = beatmap.BeatmapTimeline;
-        _director.Play();
-        _director.Evaluate();
-        _inProgress = true;
+        private void OnDestroy()
+        {
+            _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
+            _playerDeathEvent.RemoveListener(HandlePlayerDeath);
+        }
+
+        private void TimeService_OnTick(BeatmapTimeManager.TickInfo tickInfo)
+        {
+            if (_inProgress)
+            {
+                _director.time = tickInfo.CurrentLevelTime;
+
+                if (_director.time >= _director.duration)
+                {
+                    _director.Stop();
+                }
+            }
+
+            _director.Evaluate();
+        }
+
+        private void HandlePlayerDeath()
+        {
+            _inProgress = false;
+            _director.Pause();
+        }
+
+        private void HandleStartBeatmap(BeatmapConfigSo beatmap)
+        {
+            _director.playableAsset = beatmap.BeatmapTimeline;
+            _director.Play();
+            _director.Evaluate();
+            _inProgress = true;
+        }
     }
 }
