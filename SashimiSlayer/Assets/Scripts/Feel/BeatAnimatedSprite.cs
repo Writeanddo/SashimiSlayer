@@ -89,6 +89,7 @@ namespace Feel
         {
             await UniTask.Delay((int)(_delay * 1000));
 
+            // Prevent changing after transitioning away
             if (!_animationEnabled)
             {
                 return;
@@ -113,7 +114,6 @@ namespace Feel
                 return;
             }
 
-            Debug.Log("Transitioning from " + name + " to " + to.name);
             to.Play(currentSubdiv);
             Stop();
         }

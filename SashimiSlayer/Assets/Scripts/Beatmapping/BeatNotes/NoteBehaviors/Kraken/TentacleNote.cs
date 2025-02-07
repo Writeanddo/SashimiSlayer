@@ -82,6 +82,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
                 return;
             }
 
+            // This is reallllly jank...
             int targetSubdivIndex = BeatmapTimeManager.Instance.GetClosestSubdivOfTime(noteInteraction.TargetTime);
 
             if (currentSubdiv + _attackAnimationWindup >= targetSubdivIndex)
