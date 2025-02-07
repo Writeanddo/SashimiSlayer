@@ -80,7 +80,6 @@ namespace Feel
                     }
                 }
 
-                Debug.Log($"{name} setting sprite {spriteIndex}");
                 SetSprite(spriteIndex).Forget();
             }
         }
