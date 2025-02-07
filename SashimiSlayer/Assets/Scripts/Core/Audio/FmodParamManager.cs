@@ -15,6 +15,8 @@ namespace Core.Audio
         [SerializeField]
         private NoteInteractionFinalResultEvent _noteInteractionFinalResultEvent;
 
+        private int _successfulStreak;
+
         private void Awake()
         {
             _noteInteractionFinalResultEvent.AddListener(OnNoteInteractionFinalResult);
@@ -27,8 +29,16 @@ namespace Core.Audio
 
         private void OnNoteInteractionFinalResult(NoteInteraction.FinalResult result)
         {
-            float val = result.Successful ? 1 : 0;
-            RuntimeManager.StudioSystem.setParameterByName("PreviousNoteStatus", val, true);
+            if (result.Successful)
+            {
+                _successfulStreak++;
+            }
+            else
+            {
+                _successfulStreak = 0;
+            }
+
+            RuntimeManager.StudioSystem.setParameterByName("SuccessStreak", _successfulStreak, true);
         }
     }
 }
