@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="ParameterPreset" id="{687600ec-b239-44d4-ae2e-1f6f54e3cf34}">
 		<property name="name">
-			<value>PreviousNoteStatus</value>
+			<value>SuccessStreak</value>
 		</property>
 		<relationship name="folder">
 			<destination>{8df83157-9691-4434-aca2-263b160c6e86}</destination>
@@ -13,14 +13,10 @@
 	</object>
 	<object class="GameParameter" id="{5c43aea1-4b8e-4ac2-92fb-537701595495}">
 		<property name="parameterType">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<property name="maximum">
-			<value>2</value>
-		</property>
-		<property name="enumerationLabels">
-			<value>Failed</value>
-			<value>Succeeded</value>
+			<value>101</value>
 		</property>
 		<property name="isGlobal">
 			<value>true</value>
