@@ -58,12 +58,12 @@ namespace Beatmapping.Notes
         /// <summary>
         ///     Note started
         /// </summary>
-        public event Action OnNoteStart;
+        public event TickEventHandler OnNoteStart;
 
         /// <summary>
         ///     Note ended (not cleaned up)
         /// </summary>
-        public event Action OnNoteEnd;
+        public event TickEventHandler OnNoteEnd;
 
         /// <summary>
         ///     Protag blocked this note

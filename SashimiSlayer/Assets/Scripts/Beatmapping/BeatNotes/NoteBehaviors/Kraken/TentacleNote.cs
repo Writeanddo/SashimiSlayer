@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using Beatmapping.Notes;
+using Beatmapping.Timing;
 using Beatmapping.Tooling;
+using Feel;
 using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
 {
     public class TentacleNote : BeatNoteModule
     {
+        [Header("Depends")]
+
         [SerializeField]
         private BeatNote _beatNote;
 
@@ -16,14 +20,30 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
         [SerializeField]
         private Transform _bodyTransform;
 
-        [SerializeField]
-        private Animator _animator;
+        [Header("Animations")]
 
         [SerializeField]
-        private float _attackAnimationWindup;
+        private BeatAnimatedSprite _spawnAnimation;
+
+        [SerializeField]
+        private BeatAnimatedSprite _attackAnimation;
+
+        [SerializeField]
+        private BeatAnimatedSprite _leaveAnimation;
+
+        [SerializeField]
+        private BeatAnimatedSprite _idleAnimation;
+
+        [SerializeField]
+        private int _attackAnimationWindup;
 
         [SerializeField]
         private ParticleSystem[] _damagedParticles;
+
+        /// <summary>
+        ///     Used to prevent the attack animation from playing multiple times
+        /// </summary>
+        private NoteInteraction _attackAnimationPlayedInteraction;
 
         private void BeatNote_OnTick(BeatNote.NoteTickInfo tickinfo)
         {
@@ -37,32 +57,38 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
 
             if (interaction.Type == NoteInteraction.InteractionType.IncomingAttack)
             {
-                IncomingAttackVisuals(tickinfo.BeatmapTime, interaction);
-            }
-
-            // Update animator when beatmapping
-            if (!Application.isPlaying)
-            {
-                _animator.Update((float)tickinfo.DeltaTime);
+                if (interaction != _attackAnimationPlayedInteraction)
+                {
+                    IncomingAttackVisuals(tickinfo.SubdivisionIndex, interaction);
+                }
             }
         }
 
-        private void BeatNote_OnEnd()
+        private void BeatNote_OnEnd(BeatNote.NoteTickInfo tickinfo)
         {
-            if (!_animator.gameObject.activeInHierarchy)
+            _idleAnimation.ForceTransition(_leaveAnimation, tickinfo.SubdivisionIndex);
+            _sprite.color = new Color(1, 1, 1, 0.7f);
+        }
+
+        /// <summary>
+        ///     Play the attack animation some number of subdivisions before the target time
+        /// </summary>
+        /// <param name="currentSubdiv"></param>
+        /// <param name="noteInteraction"></param>
+        private void IncomingAttackVisuals(int currentSubdiv, NoteInteraction noteInteraction)
+        {
+            if (BeatmapTimeManager.Instance == null)
             {
                 return;
             }
 
-            _animator.Play("TentacleLeave");
-            _sprite.color = new Color(1, 1, 1, 0.7f);
-        }
+            int targetSubdivIndex = BeatmapTimeManager.Instance.GetClosestSubdivOfTime(noteInteraction.TargetTime);
 
-        private void IncomingAttackVisuals(double currentBeatmapTime, NoteInteraction noteInteraction)
-        {
-            if (currentBeatmapTime + _attackAnimationWindup >= noteInteraction.TargetTime)
+            if (currentSubdiv + _attackAnimationWindup >= targetSubdivIndex)
             {
-                _animator.Play("TentacleAttack");
+                _idleAnimation.ForceTransition(_attackAnimation, currentSubdiv);
+                _attackAnimation.SetupTransitionOnEnd(_idleAnimation);
+                _attackAnimationPlayedInteraction = noteInteraction;
             }
         }
 
@@ -73,12 +99,13 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
                 particle.Play();
             }
 
-            _animator.gameObject.SetActive(false);
+            _sprite.gameObject.SetActive(false);
         }
 
-        private void HandleSpawned()
+        private void HandleSpawned(BeatNote.NoteTickInfo tickinfo)
         {
-            _animator.Play("TentacleSpawn");
+            _spawnAnimation.Play(tickinfo.SubdivisionIndex);
+            _spawnAnimation.SetupTransitionOnEnd(_idleAnimation);
         }
 
         public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()

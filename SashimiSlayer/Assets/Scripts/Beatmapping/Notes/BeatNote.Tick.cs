@@ -32,12 +32,12 @@ namespace Beatmapping.Notes
             // NOTE: AS of now, spawn segments aren't even used...
             if ((_isFirstTick || prevSegmentType == TimeSegmentType.Spawn) && currentSegmentType != prevSegmentType)
             {
-                OnNoteStart?.Invoke();
+                OnNoteStart?.Invoke(_noteTickInfo);
             }
 
             if (prevSegmentType != TimeSegmentType.Ending && currentSegmentType == TimeSegmentType.Ending)
             {
-                OnNoteEnd?.Invoke();
+                OnNoteEnd?.Invoke(_noteTickInfo);
             }
 
             OnTick?.Invoke(_noteTickInfo);
@@ -144,6 +144,8 @@ namespace Beatmapping.Notes
 
                 SegmentIndex = currentSegmentIndex,
                 InteractionIndex = currentInteractionIndex,
+
+                SubdivisionIndex = tickInfo.SubdivIndex,
 
                 Flags = tickFlags
             };
