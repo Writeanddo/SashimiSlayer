@@ -16,7 +16,8 @@ namespace Feel
         [SerializeField]
         private EventReference _startSound;
 
-        private void PlayStartSound()
+        private void PlayStartSound(BeatNote.NoteTickInfo tickInfo)
+
         {
             if (!_startSound.IsNull && Application.isPlaying)
             {

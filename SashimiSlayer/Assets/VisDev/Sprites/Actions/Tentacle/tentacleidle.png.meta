@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a8f3f8c4633962744987f69c2c6fcd39
+guid: f453863b0d598db4ea3f5981d7e79fef
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -37,15 +37,15 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 7
   spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 256
@@ -110,85 +110,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tentacleattack_0
+      name: tentacleidle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1745.5
+        width: 1624
         height: 2048
       alignment: 9
-      pivot: {x: 0.45403522, y: 0.087149575}
+      pivot: {x: 0.58750993, y: 0.08574696}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 318fefb9882695d439668d7838bcbd1c
-      internalID: 398352611
+      spriteID: 5430965ce1dfc5044a06ea4df5070036
+      internalID: -315833708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tentacleattack_1
+      name: tentacleidle_1
       rect:
         serializedVersion: 2
-        x: 1745
+        x: 1624
         y: 0
-        width: 1416
+        width: 1624
         height: 2048
       alignment: 9
-      pivot: {x: 0.4019334, y: 0.08564278}
+      pivot: {x: 0.48939267, y: 0.08890107}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3037428333d74b42a9df98b4be3c34d
-      internalID: 1551366167
+      spriteID: 928d59850c473574a91e3926be003fec
+      internalID: 942080932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tentacleattack_2
+      name: tentacleidle_2
       rect:
         serializedVersion: 2
-        x: 3194
+        x: 3248
         y: 0
-        width: 1746
+        width: 1624
         height: 2048
       alignment: 9
-      pivot: {x: 0.76510596, y: 0.10372396}
+      pivot: {x: 0.47082984, y: 0.08784964}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28e1b322bd4915e4f8960abe257c6c8b
-      internalID: 1486425864
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tentacleattack_3
-      rect:
-        serializedVersion: 2
-        x: 4862
-        y: 0
-        width: 1900
-        height: 2048
-      alignment: 9
-      pivot: {x: 0.6997672, y: 0.08865624}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c37f3aa87428d4745af7345d2a2883df
-      internalID: 228425024
+      spriteID: ffafff64459807548adbf62b297f09cb
+      internalID: -667355227
       vertices: []
       indices: 
       edges: []
@@ -204,10 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tentacleattack_0: 398352611
-      tentacleattack_1: 1551366167
-      tentacleattack_2: 1486425864
-      tentacleattack_3: 228425024
+      tentacleidle_0: -315833708
+      tentacleidle_1: 942080932
+      tentacleidle_2: -667355227
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

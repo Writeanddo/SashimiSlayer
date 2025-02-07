@@ -35,6 +35,8 @@ namespace Beatmapping.Timing
             public double CurrentLevelTime;
 
             public double DeltaTime;
+
+            public int SubdivIndex;
         }
 
         [Header("Dependencies")]
@@ -54,6 +56,9 @@ namespace Beatmapping.Timing
 
         [SerializeField]
         private IntEvent _beatPassedEvent;
+
+        [SerializeField]
+        private IntEvent _subdivPassedEvent;
 
         public static BeatmapTimeManager Instance { get; private set; }
 
@@ -174,17 +179,28 @@ namespace Beatmapping.Timing
                 _beatPassedEvent.Raise(currentBeatIndex);
             }
 
+            if (crossedSubdivThisTick)
+            {
+                _subdivPassedEvent.Raise(currentSubdivIndex);
+            }
+
             // Invoke tick event
             CurrentTickInfo = new TickInfo
             {
                 CurrentBeatmapTime = currentBeatmapTime,
                 CurrentLevelTime = currentBeatmapTime + _currentBeatmap.StartTime,
-                DeltaTime = eventDeltaTime
+                DeltaTime = eventDeltaTime,
+                SubdivIndex = currentSubdivIndex
             };
 
             OnTick?.Invoke(CurrentTickInfo);
 
             _previousEventTime = currentEventTime;
+        }
+
+        public int GetClosestSubdivOfTime(double beatmapTime)
+        {
+            return (int)Math.Round(beatmapTime / _timeIntervalPerSubdiv);
         }
 
         /// <summary>
