@@ -1093,6 +1093,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 7573257304618524508, guid: 07cc0a138bc6a624eb540942b522b906,
+        type: 3}
+      propertyPath: m_text
+      value: This is tutorial text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573257304618524508, guid: 07cc0a138bc6a624eb540942b522b906,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573257304618524508, guid: 07cc0a138bc6a624eb540942b522b906,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a067bd8e2d609564fb379d7befbe2674,
+        type: 2}
+    - target: {fileID: 7573257304618524508, guid: 07cc0a138bc6a624eb540942b522b906,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573257304618524508, guid: 07cc0a138bc6a624eb540942b522b906,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7243388180163275987, guid: a067bd8e2d609564fb379d7befbe2674,
+        type: 2}
+    - target: {fileID: 7573257304618524508, guid: 07cc0a138bc6a624eb540942b522b906,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9010416200091871115, guid: 07cc0a138bc6a624eb540942b522b906,
         type: 3}
       propertyPath: m_LocalPosition.x
