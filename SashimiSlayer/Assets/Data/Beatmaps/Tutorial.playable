@@ -582,7 +582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: 'Now let''s put it together!
 
 '
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: 'Oh yeah, <color=#db3b3b>AIM</color> first!
 
       Just <color=#db3b3b>TILT</color>
@@ -1925,7 +1925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: 'Some creatures will <color=#fccf03>ATTACK</color> you first,
 
       then
@@ -3468,7 +3468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: Middle!
 --- !u!114 &-1649321787190573901
 MonoBehaviour:
@@ -3856,7 +3856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: 'SLAM it back in the scabbard
 
       on the beat to <color=#db3b3b>SLICE</color>!'
@@ -3910,7 +3910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: 'And sometimes different creatures
 
       will attack together!'
@@ -4422,7 +4422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: 'TAP the matching <color=#fccf03>PARRY SYMBOL</color>
 
       on the scabbard
@@ -5447,7 +5447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: 'PULL the sword out PARTIALLY to <color=#db3b3b>PREPARE</color>
 
 '
@@ -5465,7 +5465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: 'Let''s slice multiple fish at once!
 
 '
@@ -5533,7 +5533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: Make sure to tap it ON THE BEAT!
 --- !u!114 &2731131515676527816
 MonoBehaviour:
@@ -5731,7 +5731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: Let's start with <color=#fccf03>PARRYING</color>!
 --- !u!114 &3059920026468890087
 MonoBehaviour:
@@ -7193,7 +7193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: 'Play this level again
 
       if you need some more practice!'
@@ -7211,7 +7211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: Last up is the BOTTOM!!
 --- !u!114 &7200402189459744642
 MonoBehaviour:
@@ -7331,7 +7331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: Top!
 --- !u!114 &7640654825706104017
 MonoBehaviour:
@@ -7347,7 +7347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: Ready to slice up some fish?
 --- !u!114 &7655169594171241362
 MonoBehaviour:
@@ -8164,7 +8164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: Now for <color=#db3b3b>SLICING</color> them up!
 --- !u!114 &8576271579617503411
 MonoBehaviour:
@@ -8210,7 +8210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 48
     text: The fish'll fight back, though!
 --- !u!114 &9200778565876298408
 MonoBehaviour:
