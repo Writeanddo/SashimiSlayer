@@ -56,3 +56,6 @@ TagManager:
   - name: Foreground
     uniqueID: 4119870573
     locked: 0
+  - name: OverlayTexture
+    uniqueID: 1234646207
+    locked: 0

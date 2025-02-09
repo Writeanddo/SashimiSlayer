@@ -66,6 +66,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProtagBody
       objectReference: {fileID: 0}
+    - target: {fileID: 5838704236670542280, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
+        type: 3}
+      propertyPath: _distortionPrefab
+      value: 
+      objectReference: {fileID: 4403442407987266660, guid: 805d2ba54abced949853a60f6df46d48,
+        type: 3}
     - target: {fileID: 5963297688816790602, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
         type: 3}
       propertyPath: m_LocalPosition.x
