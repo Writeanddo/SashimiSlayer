@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
+    /// <summary>
+    ///     Module where the note spins to a vulnerable position
+    /// </summary>
     public class SpinToVulnerable : BeatNoteModule
     {
         [SerializeField]

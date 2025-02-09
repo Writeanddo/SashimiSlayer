@@ -34,16 +34,16 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             if (segment.Type == BeatNote.TimeSegmentType.PreEnding)
             {
-                PreEndingVisual((float)tickinfo.NormalizedSegmentTime);
+                PreEndingOnTick((float)tickinfo.NormalizedSegmentTime);
             }
 
             if (segment.Type == BeatNote.TimeSegmentType.Interaction)
             {
-                TargetToHitVisuals((float)tickinfo.NormalizedSegmentTime);
+                InteractionOnTick((float)tickinfo.NormalizedSegmentTime);
             }
         }
 
-        private void PreEndingVisual(float normalizedTime)
+        private void PreEndingOnTick(float normalizedTime)
         {
             if (_landedHit)
             {
@@ -62,7 +62,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             _sprite.color = new Color(1, 1, 1, 0.5f);
         }
 
-        private void TargetToHitVisuals(float normalizedTime)
+        private void InteractionOnTick(float normalizedTime)
         {
             float t = _moveCurve.Evaluate(normalizedTime);
 
@@ -73,6 +73,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             );
 
             _sprite.transform.rotation = Quaternion.Euler(0, 0, -90 * (1 - t));
+            _sprite.color = new Color(1, 1, 1, 1f);
         }
 
         private void BeatNote_SlicedByProtag(int interactionIndex,
