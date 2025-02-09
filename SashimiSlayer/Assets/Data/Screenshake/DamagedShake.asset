@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12fb73d999e92ad45884393a0cc918b3, type: 3}
-  m_Name: SliceShake
+  m_Name: DamagedShake
   m_EditorClassIdentifier: 
-  <Duration>k__BackingField: 0.1
+  <Duration>k__BackingField: 0.11
   <Velocity>k__BackingField: {x: -0.75, y: -0.25, z: 0}
-  <Magnitude>k__BackingField: 0.85
-  <Shapes>k__BackingField: 2
+  <Magnitude>k__BackingField: 0.9
+  <Shapes>k__BackingField: 4
