@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731716, g: 0.13414738, b: 0.121078566, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -730,7 +730,7 @@ PrefabInstance:
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 16
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}
@@ -832,13 +832,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SceneBindings.Array.data[16].key
       value: 
-      objectReference: {fileID: 2839535838791464466, guid: be7318f6e73332d46a85fe51d61ac8ce,
+      objectReference: {fileID: -4103571415117731955, guid: be7318f6e73332d46a85fe51d61ac8ce,
         type: 2}
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[17].key
       value: 
-      objectReference: {fileID: 3688818801659884798, guid: be7318f6e73332d46a85fe51d61ac8ce,
+      objectReference: {fileID: 4539167557533657206, guid: be7318f6e73332d46a85fe51d61ac8ce,
         type: 2}
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}
@@ -978,12 +978,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SceneBindings.Array.data[16].value
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3092560596456903502}
     - target: {fileID: 4379481617919899903, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}
       propertyPath: m_SceneBindings.Array.data[17].value
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3092560596456903502}
     - target: {fileID: 6849324837600310558, guid: aa08b2ed03f82b1429418869623ebc9b,
         type: 3}
       propertyPath: m_Name
