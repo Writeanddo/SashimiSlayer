@@ -64,7 +64,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _DistortionStrength: 1
-    - _FalloffExp: 2
+    - _FalloffExp: 1
     m_Colors:
     - _Distortion: {r: -0.06, g: 0, b: 0, a: 0}
     - _DistortionFactor: {r: 1, g: 1, b: 0, a: 0}
