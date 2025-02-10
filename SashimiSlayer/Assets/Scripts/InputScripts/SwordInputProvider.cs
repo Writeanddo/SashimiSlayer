@@ -1,99 +1,115 @@
 using System;
+using Events;
 using UnityEngine;
 
-public class SwordInputProvider : BaseUserInputProvider
+namespace InputScripts
 {
-    [SerializeField]
-    private SerialReader _serialReader;
-
-    [SerializeField]
-    private Transform _quatDebugger;
-
-    [SerializeField]
-    private float _angleMultiplier;
-
-    public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
-    public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
-
-    private SharedTypes.SheathState _sheathState = SharedTypes.SheathState.Sheathed;
-    private SharedTypes.BlockPoseStates _currentBlockPose;
-    private float _swordAngle = 90f;
-
-    private void Awake()
+    public class SwordInputProvider : BaseUserInputProvider
     {
-        _serialReader.OnSerialRead += HandleSerialRead;
-    }
+        [Header("Depends")]
 
-    private void OnDestroy()
-    {
-        _serialReader.OnSerialRead -= HandleSerialRead;
-    }
+        [SerializeField]
+        private SerialReader _serialReader;
 
-    private void HandleSerialRead(SerialReader.SerialReadResult data)
-    {
-        SharedTypes.SheathState newSheatheState = data.LeftSheatheSwitch && data.RightSheatheSwitch
-            ? SharedTypes.SheathState.Unsheathed
-            : SharedTypes.SheathState.Sheathed;
+        [SerializeField]
+        private Transform _quatDebugger;
 
-        if (newSheatheState != _sheathState)
+        [Header("Events (In)")]
+
+        [SerializeField]
+        private FloatEvent _angleMultiplierEvent;
+
+        public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
+        public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
+
+        private SharedTypes.SheathState _sheathState = SharedTypes.SheathState.Sheathed;
+        private SharedTypes.BlockPoseStates _currentBlockPose;
+        private float _swordAngle = 90f;
+
+        private float _angleMultiplier = 1f;
+
+        private void Awake()
         {
-            _sheathState = newSheatheState;
-            OnSheathStateChanged?.Invoke(_sheathState);
+            _serialReader.OnSerialRead += HandleSerialRead;
+            _angleMultiplierEvent.AddListener(SetAngleMultiplier);
         }
 
-        SharedTypes.BlockPoseStates newPose = 0;
-
-        if (data.TopButton)
+        private void OnDestroy()
         {
-            newPose = SharedTypes.BlockPoseStates.TopPose;
-        }
-        else if (data.MiddleButton)
-        {
-            newPose = SharedTypes.BlockPoseStates.MidPose;
-        }
-        else if (data.BottomButton)
-        {
-            newPose = SharedTypes.BlockPoseStates.BotPose;
-        }
-        else
-        {
-            newPose = (SharedTypes.BlockPoseStates)(-1);
+            _serialReader.OnSerialRead -= HandleSerialRead;
+            _angleMultiplierEvent.RemoveListener(SetAngleMultiplier);
         }
 
-        if (newPose != _currentBlockPose)
+        private void SetAngleMultiplier(float angleMultiplier)
         {
-            _currentBlockPose = newPose;
-            if (newPose != (SharedTypes.BlockPoseStates)(-1))
+            _angleMultiplier = angleMultiplier;
+        }
+
+        private void HandleSerialRead(SerialReader.SerialReadResult data)
+        {
+            SharedTypes.SheathState newSheatheState = data.LeftSheatheSwitch && data.RightSheatheSwitch
+                ? SharedTypes.SheathState.Unsheathed
+                : SharedTypes.SheathState.Sheathed;
+
+            if (newSheatheState != _sheathState)
             {
-                OnBlockPoseChanged?.Invoke(_currentBlockPose);
+                _sheathState = newSheatheState;
+                OnSheathStateChanged?.Invoke(_sheathState);
             }
+
+            SharedTypes.BlockPoseStates newPose = 0;
+
+            if (data.TopButton)
+            {
+                newPose = SharedTypes.BlockPoseStates.TopPose;
+            }
+            else if (data.MiddleButton)
+            {
+                newPose = SharedTypes.BlockPoseStates.MidPose;
+            }
+            else if (data.BottomButton)
+            {
+                newPose = SharedTypes.BlockPoseStates.BotPose;
+            }
+            else
+            {
+                newPose = (SharedTypes.BlockPoseStates)(-1);
+            }
+
+            if (newPose != _currentBlockPose)
+            {
+                _currentBlockPose = newPose;
+                if (newPose != (SharedTypes.BlockPoseStates)(-1))
+                {
+                    OnBlockPoseChanged?.Invoke(_currentBlockPose);
+                }
+            }
+
+            Vector3 up = data.SwordOrientation * Vector3.forward;
+            float angle = -Vector3.Angle(up, Vector3.up) + 90f;
+
+            _swordAngle = angle * _angleMultiplier;
+            _quatDebugger.transform.rotation = data.SwordOrientation;
         }
 
-        Vector3 up = data.SwordOrientation * Vector3.forward;
-        float angle = -Vector3.Angle(up, Vector3.up) + 90f;
-        angle = -angle;
+        public override float GetSwordAngle()
+        {
+            return _swordAngle;
+        }
 
-        _swordAngle = angle * _angleMultiplier;
-        _quatDebugger.transform.rotation = data.SwordOrientation;
-    }
+        public override SharedTypes.SheathState GetSheathState()
+        {
+            return _sheathState;
+        }
 
-    public override float GetSwordAngle()
-    {
-        return _swordAngle;
-    }
+        public override SharedTypes.BlockPoseStates GetBlockPose()
+        {
+            return _currentBlockPose;
+        }
 
-    public override SharedTypes.SheathState GetSheathState()
-    {
-        return _sheathState;
-    }
-
-    public override SharedTypes.BlockPoseStates GetBlockPose()
-    {
-        return _currentBlockPose;
-    }
-
-    public void ConnectToPort()
-    {
-        _serialReader.TryConnectToPort();
+        public void ConnectToPort()
+        {
+            _serialReader.TryConnectToPort();
+        }
     }
 }

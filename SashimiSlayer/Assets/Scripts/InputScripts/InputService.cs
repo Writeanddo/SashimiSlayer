@@ -1,16 +1,22 @@
 using System;
 using System.Linq;
 using Events;
+using InputScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputService : BaseUserInputProvider
 {
+    [Header("Event (In)")]
 
-    
     [SerializeField]
     private IntEvent _onControlSchemeChanged;
-    
+
+    [SerializeField]
+    private BoolEvent _onMenuToggled;
+
+    [Header("Depends")]
+
     [SerializeField]
     private BaseUserInputProvider _gamepadInputProvider;
 
@@ -27,13 +33,16 @@ public class InputService : BaseUserInputProvider
 
     private BaseUserInputProvider InputProvider => _useHardwareController ? _swordInputProvider : _gamepadInputProvider;
 
+    public int ControlScheme { get; private set; }
+
     public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
     public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
-    
-    public int ControlScheme => _controlScheme;
-    
-    private int _controlScheme = 0;
-    
+
+    /// <summary>
+    ///     Disables input when menus are open
+    /// </summary>
+    private int _overlayMenus;
+
     private void Awake()
     {
         if (Instance == null)
@@ -53,11 +62,9 @@ public class InputService : BaseUserInputProvider
         }
 
         _onDrawDebugGUI.AddListener(HandleDrawDebugGUI);
-        
-        InputSystem.onDeviceChange += (device, change) =>
-        {
-            UpdateControlScheme();
-        };
+        _onMenuToggled.AddListener(HandleMenuToggled);
+
+        InputSystem.onDeviceChange += (device, change) => { UpdateControlScheme(); };
     }
 
     private void Update()
@@ -70,34 +77,11 @@ public class InputService : BaseUserInputProvider
             {
                 _swordInputProvider.ConnectToPort();
             }
-            
+
             UpdateControlScheme();
-            
+
             EventPassthroughSub();
         }
-        
-    }
-    
-    private void UpdateControlScheme()
-    {
-        if (_useHardwareController)
-        {
-            _controlScheme = 2;
-        }
-        else
-        {
-            // See if gamepad is connected
-            if (InputSystem.devices.Count(device => device is Gamepad) > 0)
-            {
-                _controlScheme = 1;
-            }
-            else
-            {
-                _controlScheme = 0;
-            }
-        }
-        
-        _onControlSchemeChanged.Raise(_controlScheme);
     }
 
     private void OnDestroy()
@@ -105,12 +89,40 @@ public class InputService : BaseUserInputProvider
         EventPassthroughUnsub();
 
         _onDrawDebugGUI.RemoveListener(HandleDrawDebugGUI);
+        _onMenuToggled.RemoveListener(HandleMenuToggled);
+    }
+
+    private void HandleMenuToggled(bool isMenuOpen)
+    {
+        _overlayMenus += isMenuOpen ? 1 : -1;
+    }
+
+    private void UpdateControlScheme()
+    {
+        if (_useHardwareController)
+        {
+            ControlScheme = 2;
+        }
+        else
+        {
+            // See if gamepad is connected
+            if (InputSystem.devices.Count(device => device is Gamepad) > 0)
+            {
+                ControlScheme = 1;
+            }
+            else
+            {
+                ControlScheme = 0;
+            }
+        }
+
+        _onControlSchemeChanged.Raise(ControlScheme);
     }
 
     private void HandleDrawDebugGUI()
     {
         GUILayout.Label($"hw control: {_useHardwareController}");
-        GUILayout.Label($"control scheme: {_controlScheme}");
+        GUILayout.Label($"control scheme: {ControlScheme}");
     }
 
     private void EventPassthroughSub()
@@ -127,11 +139,21 @@ public class InputService : BaseUserInputProvider
 
     private void HandleBlockPoseChanged(SharedTypes.BlockPoseStates state)
     {
+        if (_overlayMenus > 0)
+        {
+            return;
+        }
+
         OnBlockPoseChanged?.Invoke(state);
     }
 
     private void HandleSheatheStateChanged(SharedTypes.SheathState state)
     {
+        if (_overlayMenus > 0)
+        {
+            return;
+        }
+
         OnSheathStateChanged?.Invoke(state);
     }
 
