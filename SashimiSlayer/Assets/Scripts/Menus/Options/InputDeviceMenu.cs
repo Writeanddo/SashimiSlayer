@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Events;
 using TMPro;
 using UnityEngine;
@@ -74,6 +75,15 @@ namespace Menus.Options
         public void ReloadSerialPortDropdown()
         {
             List<string> serialPorts = SerialPort.GetPortNames().ToList();
+
+            // Filter out ports that are not COM ports
+            var comPortRegex = new Regex(@"COM\d+");
+            var macPortRegex = new Regex(@"/dev/tty.*");
+
+            serialPorts = serialPorts.Where(port =>
+                comPortRegex.IsMatch(port) ||
+                macPortRegex.IsMatch(port)).ToList();
+
             _serialPortDropdown.ClearOptions();
             _serialPortDropdown.AddOptions(serialPorts);
         }
