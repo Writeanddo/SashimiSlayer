@@ -51,9 +51,7 @@ namespace Menus.Options
 
         public void ToggleMenu(bool state)
         {
-            _canvasGroup.alpha = state ? 1 : 0;
-            _canvasGroup.interactable = state;
-            _canvasGroup.blocksRaycasts = state;
+            _canvasGroup.SetEnabled(state);
             _menuOpen = state;
         }
 

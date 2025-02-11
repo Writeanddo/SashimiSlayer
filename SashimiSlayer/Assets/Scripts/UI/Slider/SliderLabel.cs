@@ -15,22 +15,19 @@ namespace UI
         private TMP_Text _label;
 
         [SerializeField]
-        private Vector2 _valueRange;
-
-        [SerializeField]
         private Style _style;
 
         public void SetValue(float value)
         {
             if (_style == Style.Percentage)
             {
-                _label.text = $"{Mathf.Lerp(_valueRange.x, _valueRange.y, value) * 100:F0}%";
+                _label.text = $"{value * 100:F0}%";
                 return;
             }
 
             if (_style == Style.Value)
             {
-                _label.text = $"{Mathf.Lerp(_valueRange.x, _valueRange.y, value):F2}";
+                _label.text = $"{value:F2}";
             }
         }
     }
