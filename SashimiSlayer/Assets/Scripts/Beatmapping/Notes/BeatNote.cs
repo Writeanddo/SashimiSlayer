@@ -213,6 +213,13 @@ namespace Beatmapping.Notes
         {
             var timeSegments = new List<NoteTimeSegment>();
 
+            // Initiationalize time can't be after the note starts
+            // But with the current logic it usually is 1 frame after due to how Timeline behaviors work
+            if (initializeTime > noteStartTime)
+            {
+                initializeTime = noteStartTime;
+            }
+
             // Segment ranging from initiation to when the note "starts"
             timeSegments.Add(new NoteTimeSegment
             {

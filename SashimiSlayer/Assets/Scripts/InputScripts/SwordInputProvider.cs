@@ -9,7 +9,7 @@ namespace InputScripts
         [Header("Depends")]
 
         [SerializeField]
-        private SerialReader _serialReader;
+        private SwordSerialReader _serialReader;
 
         [SerializeField]
         private Transform _quatDebugger;
@@ -50,7 +50,7 @@ namespace InputScripts
             _angleMultiplier = angleMultiplier;
         }
 
-        private void HandleSerialRead(SerialReader.SerialReadResult data)
+        private void HandleSerialRead(SwordSerialReader.SerialReadResult data)
         {
             SharedTypes.SheathState newSheatheState = data.LeftSheatheSwitch && data.RightSheatheSwitch
                 ? SharedTypes.SheathState.Unsheathed

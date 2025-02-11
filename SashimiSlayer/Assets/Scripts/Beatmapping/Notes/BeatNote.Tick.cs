@@ -9,9 +9,15 @@ namespace Beatmapping.Notes
         ///     Update timing and invoke tick events
         /// </summary>
         /// <param name="tickInfo"></param>
+        /// <param name="tickFlags"></param>
         public void Tick(BeatmapTimeManager.TickInfo tickInfo, TickFlags tickFlags)
         {
-            UpdateTiming(tickInfo, tickFlags);
+            bool inValidSegment = UpdateTiming(tickInfo, tickFlags);
+
+            if (!inValidSegment)
+            {
+                return;
+            }
 
             int currentSegmentIndex = _noteTickInfo.SegmentIndex;
             NoteTimeSegment currentSegment = _noteTimeSegments[currentSegmentIndex];
@@ -75,12 +81,25 @@ namespace Beatmapping.Notes
             _isFirstTick = false;
         }
 
-        private void UpdateTiming(BeatmapTimeManager.TickInfo tickInfo, TickFlags tickFlags)
+        /// <summary>
+        ///     Update timing information
+        /// </summary>
+        /// <param name="tickInfo"></param>
+        /// <param name="tickFlags"></param>
+        /// <returns>true if we're in a segment, false otherwise</returns>
+        private bool UpdateTiming(BeatmapTimeManager.TickInfo tickInfo, TickFlags tickFlags)
         {
             double currentBeatmapTime = tickInfo.CurrentBeatmapTime;
             double previousBeatmapTime = _prevTickInfo.BeatmapTime;
 
             int currentSegmentIndex = CalculateCurrentSegmentIndex(currentBeatmapTime);
+
+            // We're before the spawn segment
+            if (currentSegmentIndex == -1)
+            {
+                return false;
+            }
+
             NoteTimeSegment currentSegment = _noteTimeSegments[currentSegmentIndex];
 
             // Note timespace timings
@@ -149,24 +168,34 @@ namespace Beatmapping.Notes
 
                 Flags = tickFlags
             };
+
+            return true;
         }
 
         private int CalculateCurrentSegmentIndex(double currentBeatmapTime)
         {
+            var inSegment = false;
             int segmentIndex = -1;
-            for (var i = 1; i < _noteTimeSegments.Count; i++)
+            for (var i = 0; i < _noteTimeSegments.Count; i++)
             {
                 if (currentBeatmapTime < _noteTimeSegments[i].SegmentStartTime)
                 {
                     segmentIndex = i - 1;
+                    inSegment = true;
                     break;
                 }
             }
 
             // If we're past the last segment, we're in the last segment (cleanup)
-            if (segmentIndex == -1)
+            if (!inSegment)
             {
                 segmentIndex = _noteTimeSegments.Count - 1;
+            }
+
+            // We're before spawn segment
+            if (segmentIndex == -1)
+            {
+                return -1;
             }
 
             return segmentIndex;

@@ -356,7 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: Make sure to tap it ON THE BEAT!
 --- !u!114 &-8274668627040563170
 MonoBehaviour:
@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: Now let's try <color=#fccf03>PARRYING</color>!
 --- !u!114 &-6695465242239634703
 MonoBehaviour:
@@ -2046,7 +2046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: Top!
 --- !u!114 &-4987747828965761766
 MonoBehaviour:
@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -3425,7 +3425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: 'Some creatures will <color=#fccf03>ATTACK</color> you first,
 
       then
@@ -3474,7 +3474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: "Listen to the <color=#db3b3b>BEAT</color>, \nthen <color=#db3b3b>PULL</color>
       the sword out to <color=#db3b3b>SLICE</color>!\n\n"
 --- !u!114 &-3156594010454479955
@@ -3491,7 +3491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: 'Let''s start with <color=#db3b3b>SLICING</color>!
 
       Is your sword
@@ -3513,7 +3513,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -3659,7 +3659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: Middle!
 --- !u!114 &-2483172139029492391
 MonoBehaviour:
@@ -3675,7 +3675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: 'Pay attention to the <color=#fccf03>PARRY SYMBOLS</color>!
 
 '
@@ -3723,7 +3723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: 'And sometimes different creatures
 
       will attack together!'
@@ -3847,7 +3847,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -4007,7 +4007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: 'Remember to <color=#db3b3b>RETURN</color> the sword to the
 
       <color=#db3b3b>SCABBARD</color>
@@ -4397,7 +4397,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -4655,7 +4655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: 'Play this level again
 
       if you need some more practice!'
@@ -6303,7 +6303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: '<color=#fccf03>TAP</color> the matching <color=#fccf03>PARRY SYMBOL</color>
 
       on
@@ -8171,7 +8171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: 'Let''s slice multiple fish at once!
 
 '
@@ -8205,7 +8205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 36
+    fontSize: 43
     text: 'First, <color=#db3b3b>TILT</color> the sword to <color=#db3b3b>AIM</color>!
 
 '
