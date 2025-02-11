@@ -103,7 +103,7 @@
 			<value>1.25</value>
 		</property>
 		<property name="pitch">
-			<value>-2</value>
+			<value>-1.80000007</value>
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{7e3e8b76-6db6-45e3-886a-e2c726b0f131}</destination>
@@ -134,7 +134,7 @@
 			<value>1.2434013605442178</value>
 		</property>
 		<property name="pitch">
-			<value>-2</value>
+			<value>-1.80000007</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{6b79ef78-796d-4836-bd62-ab6e0356cfc7}</destination>
