@@ -19,6 +19,9 @@ namespace InputScripts
         [SerializeField]
         private FloatEvent _angleMultiplierEvent;
 
+        [SerializeField]
+        private StringEvent _connectToSerialPort;
+
         public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
         public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
 
@@ -32,12 +35,14 @@ namespace InputScripts
         {
             _serialReader.OnSerialRead += HandleSerialRead;
             _angleMultiplierEvent.AddListener(SetAngleMultiplier);
+            _connectToSerialPort.AddListener(ConnectToPort);
         }
 
         private void OnDestroy()
         {
             _serialReader.OnSerialRead -= HandleSerialRead;
             _angleMultiplierEvent.RemoveListener(SetAngleMultiplier);
+            _connectToSerialPort.RemoveListener(ConnectToPort);
         }
 
         private void SetAngleMultiplier(float angleMultiplier)

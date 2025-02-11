@@ -35,6 +35,11 @@ public class SerialReader : MonoBehaviour
     [SerializeField]
     private VoidEvent _onDrawDebugGUI;
 
+    [Header("Events (Out)")]
+
+    [SerializeField]
+    private StringEvent _serialPortConnectionStatus;
+
     public bool AbleToConnect { get; private set; }
 
     public event Action<SerialReadResult> OnSerialRead;
@@ -60,11 +65,11 @@ public class SerialReader : MonoBehaviour
     {
         try
         {
-            _serialPort?.Close();
+            CleanUp();
         }
         catch (Exception e)
         {
-            Debug.LogError(e);
+            ShowException(e);
         }
 
         _onDrawDebugGUI.RemoveListener(DrawDebugGUI);
@@ -74,26 +79,29 @@ public class SerialReader : MonoBehaviour
     {
         try
         {
-            _serialPort.Close();
+            CleanUp();
         }
         catch (Exception e)
         {
-            Debug.Log(e);
+            ShowException(e);
         }
 
         try
         {
             _toDiscard = 10;
+            _serialPortConnectionStatus.Raise("Connecting to serial port");
 
             InitializeSerialPort();
             AbleToConnect = true;
+
+            _serialPortConnectionStatus.Raise("Connected to serial port");
 
             _serialPort.WriteTimeout = 1000;
             ReadLoop(this.GetCancellationTokenOnDestroy()).Forget();
         }
         catch (Exception e)
         {
-            Debug.Log(e);
+            ShowException(e);
             AbleToConnect = false;
         }
     }
@@ -112,6 +120,25 @@ public class SerialReader : MonoBehaviour
 
         _serialPort = new SerialPort(arduinoPort, _baudRate);
         _serialPort.Open();
+        _serialPort.ErrorReceived += HandleErrorReceived;
+    }
+
+    private void CleanUp()
+    {
+        if (_serialPort == null)
+        {
+            return;
+        }
+
+        _serialPort.ErrorReceived -= HandleErrorReceived;
+        _serialPort.Close();
+        _serialPort.Dispose();
+    }
+
+    private void HandleErrorReceived(object sender, SerialErrorReceivedEventArgs e)
+    {
+        Debug.Log(e.ToString());
+        _serialPortConnectionStatus.Raise(e.ToString());
     }
 
     private async UniTaskVoid ReadLoop(CancellationToken cancellationToken)
@@ -133,12 +160,18 @@ public class SerialReader : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log(e.Message);
+            ShowException(e);
         }
         finally
         {
-            _serialPort.Close();
+            CleanUp();
         }
+    }
+
+    private void ShowException(Exception e)
+    {
+        Debug.Log(e.Message);
+        _serialPortConnectionStatus.Raise(e.GetType() + ":" + e.Message);
     }
 
     private void ProcessAllFromPort()

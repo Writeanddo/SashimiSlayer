@@ -7,13 +7,18 @@ using UnityEngine.InputSystem;
 
 public class InputService : BaseUserInputProvider
 {
-    [Header("Event (In)")]
+    [Header("Event (Out)")]
 
     [SerializeField]
     private IntEvent _onControlSchemeChanged;
 
+    [Header("Event (In)")]
+
     [SerializeField]
     private BoolEvent _onMenuToggled;
+
+    [SerializeField]
+    private BoolEvent _setUseHardwareController;
 
     [Header("Depends")]
 
@@ -63,6 +68,7 @@ public class InputService : BaseUserInputProvider
 
         _onDrawDebugGUI.AddListener(HandleDrawDebugGUI);
         _onMenuToggled.AddListener(HandleMenuToggled);
+        _setUseHardwareController.AddListener(HandleSetUseHardwareController);
 
         InputSystem.onDeviceChange += (device, change) => { UpdateControlScheme(); };
     }
@@ -71,16 +77,7 @@ public class InputService : BaseUserInputProvider
     {
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            EventPassthroughUnsub();
-            _useHardwareController = !_useHardwareController;
-            if (_useHardwareController)
-            {
-                _swordInputProvider.ConnectToPort();
-            }
-
-            UpdateControlScheme();
-
-            EventPassthroughSub();
+            SetUseHardwareController(!_useHardwareController);
         }
     }
 
@@ -90,6 +87,22 @@ public class InputService : BaseUserInputProvider
 
         _onDrawDebugGUI.RemoveListener(HandleDrawDebugGUI);
         _onMenuToggled.RemoveListener(HandleMenuToggled);
+        _setUseHardwareController.RemoveListener(HandleSetUseHardwareController);
+    }
+
+    private void HandleSetUseHardwareController(bool useHardwareController)
+    {
+        SetUseHardwareController(useHardwareController);
+    }
+
+    private void SetUseHardwareController(bool useHardwareController)
+    {
+        _useHardwareController = useHardwareController;
+        EventPassthroughUnsub();
+
+        UpdateControlScheme();
+
+        EventPassthroughSub();
     }
 
     private void HandleMenuToggled(bool isMenuOpen)
