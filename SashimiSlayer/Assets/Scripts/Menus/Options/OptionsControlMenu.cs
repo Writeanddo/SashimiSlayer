@@ -7,7 +7,7 @@ namespace Menus.Options
     public class OptionsControlMenu : MonoBehaviour
     {
         private const string SwordAimMultiplier = "SwordAngleMultiplier";
-        private const string FlipSwordAim = "MusicVolume";
+        private const string FlipSwordAim = "SwordAngleFlip";
 
         [Header("Events (Out)")]
 
@@ -32,11 +32,16 @@ namespace Menus.Options
             _swordAngleMultiplier = PlayerPrefs.GetFloat(SwordAimMultiplier, 1);
             _swordAngleFlip = PlayerPrefs.GetInt(FlipSwordAim, 0) == 1;
 
+            _swordAngleMultiplierSlider.onValueChanged.AddListener(HandleSwordAngleMultiplierChange);
+            _swordAngleFlipToggle.onValueChanged.AddListener(HandleSwordAngleFlipChange);
+        }
+
+        private void Start()
+        {
             _swordAngleMultiplierSlider.value = _swordAngleMultiplier;
             _swordAngleFlipToggle.isOn = _swordAngleFlip;
 
-            _swordAngleMultiplierSlider.onValueChanged.AddListener(HandleSwordAngleMultiplierChange);
-            _swordAngleFlipToggle.onValueChanged.AddListener(HandleSwordAngleFlipChange);
+            UpdateSwordAngleMultiplier();
         }
 
         private void OnDestroy()

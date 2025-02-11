@@ -45,8 +45,24 @@ namespace Menus.Options
             _inputDeviceDropdown.onValueChanged.AddListener(HandleInputDeviceChanged);
             _connectButton.onClick.AddListener(HandleConnect);
             _serialPortConnectionStatus.AddListener(HandleSerialPortConnectionStatus);
+        }
 
+        private void Start()
+        {
             ReloadSerialPortDropdown();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                _inputDeviceDropdown.value = _inputDeviceDropdown.value == 0 ? 1 : 0;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                HandleConnect();
+            }
         }
 
         private void OnDestroy()
@@ -81,8 +97,10 @@ namespace Menus.Options
             var macPortRegex = new Regex(@"/dev/tty.*");
 
             serialPorts = serialPorts.Where(port =>
-                comPortRegex.IsMatch(port) ||
-                macPortRegex.IsMatch(port)).ToList();
+                    comPortRegex.IsMatch(port) ||
+                    macPortRegex.IsMatch(port))
+                .Reverse()
+                .ToList();
 
             _serialPortDropdown.ClearOptions();
             _serialPortDropdown.AddOptions(serialPorts);

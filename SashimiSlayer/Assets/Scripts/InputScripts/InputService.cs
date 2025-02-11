@@ -61,24 +61,11 @@ public class InputService : BaseUserInputProvider
 
         EventPassthroughSub();
 
-        if (_useHardwareController)
-        {
-            _swordInputProvider.ConnectToPort();
-        }
-
         _onDrawDebugGUI.AddListener(HandleDrawDebugGUI);
         _onMenuToggled.AddListener(HandleMenuToggled);
         _setUseHardwareController.AddListener(HandleSetUseHardwareController);
 
         InputSystem.onDeviceChange += (device, change) => { UpdateControlScheme(); };
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetUseHardwareController(!_useHardwareController);
-        }
     }
 
     private void OnDestroy()
@@ -97,8 +84,10 @@ public class InputService : BaseUserInputProvider
 
     private void SetUseHardwareController(bool useHardwareController)
     {
-        _useHardwareController = useHardwareController;
+        Debug.Log($"Setting useHardwareController to {useHardwareController}");
         EventPassthroughUnsub();
+
+        _useHardwareController = useHardwareController;
 
         UpdateControlScheme();
 

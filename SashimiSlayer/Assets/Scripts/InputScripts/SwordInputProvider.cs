@@ -47,7 +47,6 @@ namespace InputScripts
 
         private void SetAngleMultiplier(float angleMultiplier)
         {
-            Debug.Log($"Setting angle multiplier to {angleMultiplier}");
             _angleMultiplier = angleMultiplier;
         }
 

@@ -47,6 +47,10 @@ namespace Menus.Options
             _sfxVolumeSlider.value = _sfxVolume;
             _musicVolumeSlider.value = _musicVolume;
             _masterVolumeSlider.value = _masterVolume;
+
+            UpdateMusicVolume(_musicVolume);
+            UpdateSfxVolume(_sfxVolume);
+            UpdateMasterVolume(_masterVolume);
         }
 
         private void OnDestroy()
