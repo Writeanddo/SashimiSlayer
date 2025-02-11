@@ -4,7 +4,7 @@ using Beatmapping.Tooling;
 using FMODUnity;
 using UnityEngine;
 
-namespace Feel
+namespace Feel.Notes
 {
     public class BeatNoteAudioPlayer : BeatNoteModule
     {
@@ -32,12 +32,12 @@ namespace Feel
 
         public override void OnNoteInitialized(BeatNote beatNote)
         {
-            _beatNote.OnNoteStart += PlayStartSound;
+            _beatNote.OnFirstInteractionTick += PlayStartSound;
         }
 
         public override void OnNoteCleanedUp(BeatNote beatNote)
         {
-            _beatNote.OnNoteStart -= PlayStartSound;
+            _beatNote.OnFirstInteractionTick -= PlayStartSound;
         }
     }
 }

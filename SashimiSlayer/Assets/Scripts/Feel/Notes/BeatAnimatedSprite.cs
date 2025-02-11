@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using Events;
 using UnityEngine;
 
-namespace Feel
+namespace Feel.Notes
 {
     /// <summary>
     ///     Simple sprite flipbook that changes whenever a beat event is triggered

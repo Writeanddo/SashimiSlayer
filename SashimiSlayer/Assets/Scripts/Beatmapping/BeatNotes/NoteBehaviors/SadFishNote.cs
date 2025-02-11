@@ -105,12 +105,19 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             _beatNote.OnTick += BeatNote_OnTick;
             _beatNote.OnSlicedByProtag += BeatNote_SlicedByProtag;
+            _beatNote.OnNoteStart += HandleStart;
         }
 
         public override void OnNoteCleanedUp(BeatNote beatNote)
         {
             _beatNote.OnTick -= BeatNote_OnTick;
             _beatNote.OnSlicedByProtag -= BeatNote_SlicedByProtag;
+            _beatNote.OnNoteStart -= HandleStart;
+        }
+
+        private void HandleStart(BeatNote.NoteTickInfo tickInfo)
+        {
+            _sprite.enabled = true;
         }
     }
 }

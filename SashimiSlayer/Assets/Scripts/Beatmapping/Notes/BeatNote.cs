@@ -29,7 +29,7 @@ namespace Beatmapping.Notes
         /// <summary>
         ///     Fixed time between end and cleanup
         /// </summary>
-        private const double CleanupTime = 3f;
+        private const double CleanupTime = 1f;
 
         // Serialized fields
         [SerializeField]
@@ -59,6 +59,11 @@ namespace Beatmapping.Notes
         ///     Note started
         /// </summary>
         public event TickEventHandler OnNoteStart;
+
+        /// <summary>
+        ///     First tick of first interaction segment
+        /// </summary>
+        public event TickEventHandler OnFirstInteractionTick;
 
         /// <summary>
         ///     Note ended (not cleaned up)
@@ -118,6 +123,7 @@ namespace Beatmapping.Notes
         private double _noteEndTime;
 
         private bool _isFirstTick;
+        private bool _isFirstInteraction;
 
         public void OnDestroy()
         {
@@ -175,6 +181,7 @@ namespace Beatmapping.Notes
 
             // Default values
             _isFirstTick = true;
+            _isFirstInteraction = true;
 
             // Build timing segments
             _noteTimeSegments = BuildNoteTimeSegments(noteInteractions, noteStartTime, noteEndTime, initializeTime);
@@ -204,6 +211,7 @@ namespace Beatmapping.Notes
             }
 
             _isFirstTick = true;
+            _isFirstInteraction = true;
         }
 
         private List<NoteTimeSegment> BuildNoteTimeSegments(List<NoteInteraction> interactions,
@@ -212,6 +220,13 @@ namespace Beatmapping.Notes
             double initializeTime)
         {
             var timeSegments = new List<NoteTimeSegment>();
+
+            // Initiationalize time can't be after the note starts
+            // But with the current logic it usually is 1 frame after due to how Timeline behaviors work
+            if (initializeTime > noteStartTime)
+            {
+                initializeTime = noteStartTime;
+            }
 
             // Segment ranging from initiation to when the note "starts"
             timeSegments.Add(new NoteTimeSegment

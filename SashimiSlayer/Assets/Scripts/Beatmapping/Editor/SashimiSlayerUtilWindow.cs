@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Beatmapping.Tooling;
 using UnityEditor;
@@ -188,7 +189,15 @@ namespace Beatmapping.Editor
             if (param == PlayModeStateChange.EnteredEditMode)
             {
                 Debug.Log($"Loading last edited scene {_lastEditedScenePath}");
-                EditorSceneManager.OpenScene(_lastEditedScenePath, OpenSceneMode.Single);
+                try
+                {
+                    EditorSceneManager.OpenScene(_lastEditedScenePath, OpenSceneMode.Single);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                    throw;
+                }
             }
             else if (param == PlayModeStateChange.EnteredPlayMode)
             {

@@ -4,6 +4,7 @@ using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Timing;
 using Events.Core;
+using UnityEditor;
 using UnityEngine;
 
 public class BeatNoteService : MonoBehaviour
@@ -51,11 +52,14 @@ public class BeatNoteService : MonoBehaviour
         // Destroy children, in case timeline failed to clean up
         if (!Application.isPlaying)
         {
-            BeatNote[] notes = GetComponentsInChildren<BeatNote>();
-            foreach (BeatNote note in notes)
+            EditorApplication.delayCall += () =>
             {
-                DestroyImmediate(note.gameObject);
-            }
+                BeatNote[] notes = GetComponentsInChildren<BeatNote>();
+                foreach (BeatNote note in notes)
+                {
+                    DestroyImmediate(note.gameObject);
+                }
+            };
         }
     }
 
