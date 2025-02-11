@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Beatmapping.Notes;
 using Beatmapping.Timing;
 using Beatmapping.Tooling;
-using Feel;
+using Feel.Notes;
 using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken

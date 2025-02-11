@@ -5022,6 +5022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6948830079042895734}
+  - component: {fileID: 1924171939460008806}
   m_Layer: 0
   m_Name: Particles
   m_TagString: Untagged
@@ -5046,6 +5047,19 @@ Transform:
   - {fileID: 2875768919792415271}
   m_Father: {fileID: 2525752069901213316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1924171939460008806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6497704529160691952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a845c6a01319bfe438cf1e51fc07abc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startParticle: {fileID: 818500993272724119}
 --- !u!1 &6719167886461646457
 GameObject:
   m_ObjectHideFlags: 0
@@ -5103,6 +5117,7 @@ MonoBehaviour:
   - {fileID: 4500745815375421082}
   - {fileID: 7811776593614375789}
   - {fileID: 4045159823509326401}
+  - {fileID: 1924171939460008806}
   - {fileID: 1637912884012176710}
   - {fileID: 346900133094929436}
 --- !u!114 &991342725271294696
@@ -5605,6 +5620,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6df742b4dfde7e43a14d43711d52f16, type: 3}
+--- !u!198 &818500993272724119 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3889097183450388815, guid: c6df742b4dfde7e43a14d43711d52f16,
+    type: 3}
+  m_PrefabInstance: {fileID: 4513520629988418520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4741904607035182694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9182168958009454014, guid: c6df742b4dfde7e43a14d43711d52f16,

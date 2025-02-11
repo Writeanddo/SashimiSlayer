@@ -12,12 +12,7 @@ namespace Beatmapping.Notes
         /// <param name="tickFlags"></param>
         public void Tick(BeatmapTimeManager.TickInfo tickInfo, TickFlags tickFlags)
         {
-            bool inValidSegment = UpdateTiming(tickInfo, tickFlags);
-
-            if (!inValidSegment)
-            {
-                return;
-            }
+            UpdateTiming(tickInfo, tickFlags);
 
             int currentSegmentIndex = _noteTickInfo.SegmentIndex;
             NoteTimeSegment currentSegment = _noteTimeSegments[currentSegmentIndex];
@@ -48,23 +43,18 @@ namespace Beatmapping.Notes
 
             OnTick?.Invoke(_noteTickInfo);
 
-            // Confusing logic to detect when the note should be reset.
-            // The idea is that if we were previously in some non-interaction segment
-            // and we suddenly enter an interaction segment,
-            // then we're either going from the start, or we looped back after the note ended
-            // upon which we should reset the state
-            if (prevSegmentType != TimeSegmentType.Interaction && currentSegmentType == TimeSegmentType.Interaction)
-            {
-                ResetState();
-            }
-
             switch (currentSegmentType)
             {
                 case TimeSegmentType.Spawn:
                     // No special behavior
                     break;
                 case TimeSegmentType.Interaction:
-                    // No special behavior
+                    if (_isFirstInteraction)
+                    {
+                        _isFirstInteraction = false;
+                        OnFirstInteractionTick?.Invoke(_noteTickInfo);
+                    }
+
                     break;
                 case TimeSegmentType.PreEnding:
                     // No special behavior
@@ -79,6 +69,12 @@ namespace Beatmapping.Notes
             }
 
             _isFirstTick = false;
+
+            // TODO: More robust logic to handle loopbacks. Right now any loopback results in a total reset..
+            if (_prevTickInfo.BeatmapTime > _noteTickInfo.BeatmapTime)
+            {
+                ResetState();
+            }
         }
 
         /// <summary>
@@ -87,18 +83,12 @@ namespace Beatmapping.Notes
         /// <param name="tickInfo"></param>
         /// <param name="tickFlags"></param>
         /// <returns>true if we're in a segment, false otherwise</returns>
-        private bool UpdateTiming(BeatmapTimeManager.TickInfo tickInfo, TickFlags tickFlags)
+        private void UpdateTiming(BeatmapTimeManager.TickInfo tickInfo, TickFlags tickFlags)
         {
             double currentBeatmapTime = tickInfo.CurrentBeatmapTime;
             double previousBeatmapTime = _prevTickInfo.BeatmapTime;
 
             int currentSegmentIndex = CalculateCurrentSegmentIndex(currentBeatmapTime);
-
-            // We're before the spawn segment
-            if (currentSegmentIndex == -1)
-            {
-                return false;
-            }
 
             NoteTimeSegment currentSegment = _noteTimeSegments[currentSegmentIndex];
 
@@ -168,8 +158,6 @@ namespace Beatmapping.Notes
 
                 Flags = tickFlags
             };
-
-            return true;
         }
 
         private int CalculateCurrentSegmentIndex(double currentBeatmapTime)
@@ -192,10 +180,10 @@ namespace Beatmapping.Notes
                 segmentIndex = _noteTimeSegments.Count - 1;
             }
 
-            // We're before spawn segment
+            // We're before spawn segment; for now, just use first segment
             if (segmentIndex == -1)
             {
-                return -1;
+                return 0;
             }
 
             return segmentIndex;

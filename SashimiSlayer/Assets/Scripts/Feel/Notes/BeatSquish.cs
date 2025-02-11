@@ -5,7 +5,7 @@ using DG.Tweening;
 using Events;
 using UnityEngine;
 
-namespace Feel
+namespace Feel.Notes
 {
     /// <summary>
     ///     Squishes a transform on a beat.

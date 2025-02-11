@@ -15023,6 +15023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6948830079042895734}
+  - component: {fileID: 1992380325157710876}
   m_Layer: 0
   m_Name: Particles
   m_TagString: Untagged
@@ -15047,6 +15048,19 @@ Transform:
   - {fileID: 2875768919792415271}
   m_Father: {fileID: 6954155129960708260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1992380325157710876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6497704529160691952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a845c6a01319bfe438cf1e51fc07abc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startParticle: {fileID: 4361619759158010329}
 --- !u!1 &6719167886461646457
 GameObject:
   m_ObjectHideFlags: 0
@@ -15101,6 +15115,7 @@ MonoBehaviour:
   _beatNoteModules:
   - {fileID: 3840632904168517832}
   - {fileID: 6847246372933769589}
+  - {fileID: 1992380325157710876}
   - {fileID: 1637912884012176710}
   - {fileID: 8901563390936171178}
 --- !u!114 &3840632904168517832
@@ -20187,6 +20202,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6df742b4dfde7e43a14d43711d52f16, type: 3}
+--- !u!198 &4361619759158010329 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3889097183450388815, guid: c6df742b4dfde7e43a14d43711d52f16,
+    type: 3}
+  m_PrefabInstance: {fileID: 684352837185468566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8508092732567049512 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9182168958009454014, guid: c6df742b4dfde7e43a14d43711d52f16,
