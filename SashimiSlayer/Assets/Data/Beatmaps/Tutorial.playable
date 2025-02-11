@@ -342,6 +342,22 @@ MonoBehaviour:
       NoteEndTime: 0
       NoteBeatCount: 0
       Interactions: []
+--- !u!114 &-8542992235533403859
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: Make sure to tap it ON THE BEAT!
 --- !u!114 &-8274668627040563170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1250,6 +1266,22 @@ MonoBehaviour:
       NoteEndTime: 0
       NoteBeatCount: 0
       Interactions: []
+--- !u!114 &-6840777843569228543
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: Now let's try <color=#fccf03>PARRYING</color>!
 --- !u!114 &-6695465242239634703
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1271,6 +1303,534 @@ MonoBehaviour:
 
     You
     can just mute these tracks, and use the clips as templates for duplicating.'
+--- !u!114 &-6530153297842992967
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4c6dca4c6104146a980452cd07ed09, type: 3}
+  m_Name: Text Track (1)
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: -3156594010454479955}
+    m_Duration: 3.025
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: 'Let''s start with <color=#db3b3b>SLICING</color>!
+
+      Is your
+      sword securely in its scabbard?
+
+'
+  - m_Version: 1
+    m_Start: 40.375
+    m_ClipIn: 0
+    m_Asset: {fileID: 3979012539847299876}
+    m_Duration: 3.605000000000004
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: '<color=#fccf03>TAP</color> the matching <color=#fccf03>PARRY
+      SYMBOL</color>
+
+      on the scabbard to parry!'
+  - m_Version: 1
+    m_Start: 43.980000000000004
+    m_ClipIn: 0
+    m_Asset: {fileID: -8542992235533403859}
+    m_Duration: 2.286666999999996
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Make sure to tap it ON THE BEAT!
+  - m_Version: 1
+    m_Start: 46.266667
+    m_ClipIn: 0
+    m_Asset: {fileID: -5061952078371075300}
+    m_Duration: 6.713333000000006
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Top!
+  - m_Version: 1
+    m_Start: 52.980000000000004
+    m_ClipIn: 0
+    m_Asset: {fileID: -2611741983970835049}
+    m_Duration: 8
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Middle!
+  - m_Version: 1
+    m_Start: 63.980000000000004
+    m_ClipIn: 0
+    m_Asset: {fileID: -2483172139029492391}
+    m_Duration: 4.030000000000001
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: 'Now let''s put it together!
+
+'
+  - m_Version: 1
+    m_Start: 3.025
+    m_ClipIn: 0
+    m_Asset: {fileID: 7649258662320957175}
+    m_Duration: 6.033333333333333
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: 'First, <color=#db3b3b>TILT</color> the sword to <color=#db3b3b>AIM</color>!
+
+'
+  - m_Version: 1
+    m_Start: 14.000000333333332
+    m_ClipIn: 0
+    m_Asset: {fileID: -1193287415606608565}
+    m_Duration: 7.979999666666668
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: 'Remember to <color=#db3b3b>RETURN</color> the sword to the
+
+      <color=#db3b3b>SCABBARD</color>
+      when the slice is <color=#db3b3b>DONE</color>!'
+  - m_Version: 1
+    m_Start: 29.98
+    m_ClipIn: 0
+    m_Asset: {fileID: 7623303194789307746}
+    m_Duration: 4.938333333333333
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: 'Let''s slice multiple fish at once!
+
+'
+  - m_Version: 1
+    m_Start: 68.98
+    m_ClipIn: 0
+    m_Asset: {fileID: -3858965760601158821}
+    m_Duration: 11
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: 'Some creatures will <color=#fccf03>ATTACK</color> you first,
+
+      then
+      turn <color=#db3b3b>VULNERABLE</color> after!'
+  - m_Version: 1
+    m_Start: 84.39166666666667
+    m_ClipIn: 0
+    m_Asset: {fileID: -2312942630638775313}
+    m_Duration: 8.588333333333338
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: 'And sometimes different creatures
+
+      will attack together!'
+  - m_Version: 1
+    m_Start: 92.98
+    m_ClipIn: 0
+    m_Asset: {fileID: 1348314074683732154}
+    m_Duration: 8.644999999999996
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: 'Play this level again
+
+      if you need some more practice!'
+  - m_Version: 1
+    m_Start: 9.058333333333334
+    m_ClipIn: 0
+    m_Asset: {fileID: -3422261592518303231}
+    m_Duration: 4.921666666666667
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: "Listen to the <color=#db3b3b>BEAT</color>, \nthen <color=#db3b3b>PULL</color>
+      the sword out to <color=#db3b3b>SLICE</color>!\n\n"
+  - m_Version: 1
+    m_Start: 38.375
+    m_ClipIn: 0
+    m_Asset: {fileID: -6840777843569228543}
+    m_Duration: 2
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -6530153297842992967}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Now let's try <color=#fccf03>PARRYING</color>!
+  m_Markers:
+    m_Objects: []
 --- !u!114 &-6430330407143984895
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1472,6 +2032,22 @@ MonoBehaviour:
     m_Objects: []
   template:
     volume: 1
+--- !u!114 &-5061952078371075300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: Top!
 --- !u!114 &-4987747828965761766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1583,7 +2159,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 10.000000333333332
+    m_Start: 38.375
     m_ClipIn: 0
     m_Asset: {fileID: 5453071219871070160}
     m_Duration: 11.979999666666668
@@ -1595,25 +2171,7 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1634,7 +2192,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: uparrow
   - m_Version: 1
-    m_Start: 21.98
+    m_Start: 50.35499966666667
     m_ClipIn: 0
     m_Asset: {fileID: 326455084937333391}
     m_Duration: 8
@@ -1667,7 +2225,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Circle
   - m_Version: 1
-    m_Start: 28.98
+    m_Start: 57.35499966666667
     m_ClipIn: 0
     m_Asset: {fileID: 7369229150194688093}
     m_Duration: 7.0000000000000036
@@ -1700,10 +2258,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: downarrow
   - m_Version: 1
-    m_Start: 48.15833333333333
+    m_Start: 4.0000003333333325
     m_ClipIn: 0
     m_Asset: {fileID: 1851534653032527962}
-    m_Duration: 27.86166666666668
+    m_Duration: 32.979999666666664
     m_TimeScale: 1
     m_ParentTrack: {fileID: -4570267411883170350}
     m_EaseInDuration: 0
@@ -1718,25 +2276,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2204,7 +2744,7 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 0
+  m_Muted: 1
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
@@ -2835,6 +3375,25 @@ MonoBehaviour:
       will attack together!'
   m_Markers:
     m_Objects: []
+--- !u!114 &-3858965760601158821
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: 'Some creatures will <color=#fccf03>ATTACK</color> you first,
+
+      then
+      turn <color=#db3b3b>VULNERABLE</color> after!'
 --- !u!114 &-3634343203690756900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2865,6 +3424,44 @@ MonoBehaviour:
           Positions:
           - {x: 3.3377, y: 0.5726727}
           - {x: -3.3234575, y: -1.2413217}
+--- !u!114 &-3422261592518303231
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: "Listen to the <color=#db3b3b>BEAT</color>, \nthen <color=#db3b3b>PULL</color>
+      the sword out to <color=#db3b3b>SLICE</color>!\n\n"
+--- !u!114 &-3156594010454479955
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: 'Let''s start with <color=#db3b3b>SLICING</color>!
+
+      Is your sword
+      securely in its scabbard?
+
+'
 --- !u!114 &-2875391443098788150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2902,10 +3499,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 63.019999999999996
+    m_Start: 21.98
     m_ClipIn: 0
     m_Asset: {fileID: -7130786777256410516}
-    m_Duration: 13.000000000000014
+    m_Duration: 14.999999999999993
     m_TimeScale: 1
     m_ParentTrack: {fileID: -2735045481876680768}
     m_EaseInDuration: 0
@@ -3027,6 +3624,40 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: EEE
+--- !u!114 &-2611741983970835049
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: Middle!
+--- !u!114 &-2483172139029492391
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: 'Now let''s put it together!
+
+'
 --- !u!114 &-2356826019249161487
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3057,6 +3688,24 @@ MonoBehaviour:
           Positions:
           - {x: 5.464647, y: 1.8640335}
           - {x: -4.956649, y: -1.0514157}
+--- !u!114 &-2312942630638775313
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: 'And sometimes different creatures
+
+      will attack together!'
 --- !u!114 &-2153007269867364316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3184,7 +3833,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 10.000000333333332
+    m_Start: 38.405
     m_ClipIn: 0
     m_Asset: {fileID: 9200778565876298408}
     m_Duration: 11.979999666666668
@@ -3196,49 +3845,13 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -3253,7 +3866,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: keyboard_arrows_up
   - m_Version: 1
-    m_Start: 21.98
+    m_Start: 50.38499966666667
     m_ClipIn: 0
     m_Asset: {fileID: 6409219612413131749}
     m_Duration: 7
@@ -3304,7 +3917,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: keyboard_arrows_right
   - m_Version: 1
-    m_Start: 29.98
+    m_Start: 58.38499966666667
     m_ClipIn: 0
     m_Asset: {fileID: -1337305880284548175}
     m_Duration: 5.970000000000002
@@ -3337,10 +3950,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: keyboard_arrows_down
   - m_Version: 1
-    m_Start: 48.15833333333333
+    m_Start: 4.008333666666658
     m_ClipIn: 0
     m_Asset: {fileID: -784610141679136459}
-    m_Duration: 27.853333333333353
+    m_Duration: 32.97166633333333
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1649321787190573901}
     m_EaseInDuration: 0
@@ -3355,25 +3968,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -3425,6 +4020,25 @@ MonoBehaviour:
   template:
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: beb1b2dd84085cf4aa71a205bcaa28e3, type: 3}
+--- !u!114 &-1193287415606608565
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: 'Remember to <color=#db3b3b>RETURN</color> the sword to the
+
+      <color=#db3b3b>SCABBARD</color>
+      when the slice is <color=#db3b3b>DONE</color>!'
 --- !u!114 &-1123799448097150218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3662,6 +4276,7 @@ MonoBehaviour:
   - {fileID: 1754087978691026967}
   - {fileID: 6435859260828590340}
   - {fileID: -3978938911499228915}
+  - {fileID: -6530153297842992967}
   - {fileID: -1649321787190573901}
   - {fileID: 333289140108319668}
   - {fileID: -2735045481876680768}
@@ -3816,7 +4431,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 10.000000333333332
+    m_Start: 38.405
     m_ClipIn: 0
     m_Asset: {fileID: -9185749747084666272}
     m_Duration: 11.979999666666668
@@ -3828,25 +4443,7 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -3867,7 +4464,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: xbox_dpad_up
   - m_Version: 1
-    m_Start: 21.98
+    m_Start: 50.38499966666667
     m_ClipIn: 0
     m_Asset: {fileID: 6504808530526546947}
     m_Duration: 7
@@ -3900,7 +4497,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: xbox_dpad_right
   - m_Version: 1
-    m_Start: 29.98
+    m_Start: 58.38499966666667
     m_ClipIn: 0
     m_Asset: {fileID: -2875391443098788150}
     m_Duration: 5.970000000000002
@@ -3933,10 +4530,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: xbox_dpad_down
   - m_Version: 1
-    m_Start: 48.15833333333333
+    m_Start: 4.0000003333333325
     m_ClipIn: 0
     m_Asset: {fileID: 3059920026468890087}
-    m_Duration: 27.86166666666668
+    m_Duration: 32.97999966666667
     m_TimeScale: 1
     m_ParentTrack: {fileID: 333289140108319668}
     m_EaseInDuration: 0
@@ -3951,25 +4548,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -4122,6 +4701,24 @@ MonoBehaviour:
           Positions:
           - {x: 6.516875, y: 2.6449375}
           - {x: -4.7798786, y: -0.8392911}
+--- !u!114 &1348314074683732154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: 'Play this level again
+
+      if you need some more practice!'
 --- !u!114 &1448729550972709652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5614,6 +6211,25 @@ MonoBehaviour:
           Flags: 0
           Positions:
           - {x: 3.056495, y: 0.531917}
+--- !u!114 &3979012539847299876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: '<color=#fccf03>TAP</color> the matching <color=#fccf03>PARRY SYMBOL</color>
+
+      on
+      the scabbard to parry!'
 --- !u!114 &4064829025364650962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7391,6 +8007,24 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
     text: Top!
+--- !u!114 &7623303194789307746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: 'Let''s slice multiple fish at once!
+
+'
 --- !u!114 &7640654825706104017
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7407,6 +8041,24 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
     text: Ready to slice up some fish?
+--- !u!114 &7649258662320957175
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d50529701587b498a8994b10bd9a8d, type: 3}
+  m_Name: TextPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 0, g: 0, b: 0, a: 1}
+    fontSize: 36
+    text: 'First, <color=#db3b3b>TILT</color> the sword to <color=#db3b3b>AIM</color>!
+
+'
 --- !u!114 &7655169594171241362
 MonoBehaviour:
   m_ObjectHideFlags: 1
