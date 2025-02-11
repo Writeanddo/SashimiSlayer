@@ -660,6 +660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: {fileID: 909857792915888218}
+  _slider: {fileID: 7626305004753626630}
   _style: 0
 --- !u!1 &3889711987183549400
 GameObject:
