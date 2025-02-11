@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using Beatmapping.Notes;
+using Beatmapping.Tooling;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class SpinToVulnerable : BeatNoteListener
+    /// <summary>
+    ///     Module where the note spins to a vulnerable position
+    /// </summary>
+    public class SpinToVulnerable : BeatNoteModule
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -38,7 +42,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         private bool _enteredDazed;
 
         private void BeatNote_OnSlicedByProtag(int interactionIndex,
-            NoteInteraction.InteractionAttemptResult result)
+            NoteInteraction.AttemptResult result)
         {
             if (interactionIndex != _interactionIndex)
             {

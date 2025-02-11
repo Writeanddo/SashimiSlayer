@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f944f8bf431d3fb49b378e3718bc5b49, type: 3}
   m_Name: InteractionFinalResult
   m_EditorClassIdentifier: 
-  _description: 
+  _description: Emits the final result of each beat interaction

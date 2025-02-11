@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using Beatmapping.Notes;
+using Beatmapping.Tooling;
 using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class SadFishNote : BeatNoteListener
+    public class SadFishNote : BeatNoteModule
     {
         [SerializeField]
         private SpriteRenderer _sprite;
@@ -33,16 +34,16 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             if (segment.Type == BeatNote.TimeSegmentType.PreEnding)
             {
-                PreEndingVisual((float)tickinfo.NormalizedSegmentTime);
+                PreEndingOnTick((float)tickinfo.NormalizedSegmentTime);
             }
 
             if (segment.Type == BeatNote.TimeSegmentType.Interaction)
             {
-                TargetToHitVisuals((float)tickinfo.NormalizedSegmentTime);
+                InteractionOnTick((float)tickinfo.NormalizedSegmentTime);
             }
         }
 
-        private void PreEndingVisual(float normalizedTime)
+        private void PreEndingOnTick(float normalizedTime)
         {
             if (_landedHit)
             {
@@ -61,7 +62,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             _sprite.color = new Color(1, 1, 1, 0.5f);
         }
 
-        private void TargetToHitVisuals(float normalizedTime)
+        private void InteractionOnTick(float normalizedTime)
         {
             float t = _moveCurve.Evaluate(normalizedTime);
 
@@ -72,10 +73,11 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             );
 
             _sprite.transform.rotation = Quaternion.Euler(0, 0, -90 * (1 - t));
+            _sprite.color = new Color(1, 1, 1, 1f);
         }
 
         private void BeatNote_SlicedByProtag(int interactionIndex,
-            NoteInteraction.InteractionAttemptResult result)
+            NoteInteraction.AttemptResult result)
         {
             _sprite.enabled = false;
             foreach (ParticleSystem particle in _dieParticles)
@@ -103,12 +105,19 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             _beatNote.OnTick += BeatNote_OnTick;
             _beatNote.OnSlicedByProtag += BeatNote_SlicedByProtag;
+            _beatNote.OnNoteStart += HandleStart;
         }
 
         public override void OnNoteCleanedUp(BeatNote beatNote)
         {
             _beatNote.OnTick -= BeatNote_OnTick;
             _beatNote.OnSlicedByProtag -= BeatNote_SlicedByProtag;
+            _beatNote.OnNoteStart -= HandleStart;
+        }
+
+        private void HandleStart(BeatNote.NoteTickInfo tickInfo)
+        {
+            _sprite.enabled = true;
         }
     }
 }

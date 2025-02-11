@@ -61,7 +61,7 @@ public class LevelLoader : MonoBehaviour
         // prevent issues when the same bank is loaded and unloaded
         if (CurrentLevel != null && CurrentLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
         {
-            await UnloadBanks(CurrentLevel.FmodBanksToPreLoad);
+            UnloadBanks(CurrentLevel.FmodBanksToPreLoad);
         }
 
         if (gameLevel.LevelType == GameLevelSO.LevelTypes.Gameplay)
@@ -125,7 +125,7 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    private async UniTask UnloadBanks(List<string> banks)
+    private void UnloadBanks(List<string> banks)
     {
         foreach (string bankRef in banks)
         {

@@ -1,3 +1,5 @@
+using Beatmapping;
+using Beatmapping.Tooling;
 using Timeline.BeatNoteTrack.BeatNote;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -26,12 +28,19 @@ namespace Timeline.BeatNoteTrack
             }
             else
             {
-                beatmap = BeatmapEditorUtil.CurrentEditingBeatmapConfig;
+                beatmap = BeatmappingUtilities.CurrentEditingBeatmapConfig;
             }
 
             double currentTime = playable.GetTime();
             double currentBeatmapTime = currentTime - beatmap.StartTime;
 
+            // If scrubbing in editing mode, cache the playhead time
+            if (!Application.isPlaying)
+            {
+                BeatmappingUtilities.TimelinePlayheadTime = currentTime;
+            }
+
+            // Iterate through all the notes in the track and process frame
             int inputCount = playable.GetInputCount();
             for (var i = 0; i < inputCount; i++)
             {

@@ -17,7 +17,7 @@ MonoBehaviour:
 '
   <Bpm>k__BackingField: 132
   <Subdivisions>k__BackingField: 2
-  <StartTime>k__BackingField: 5.44
+  <StartTime>k__BackingField: 5.43
   <BeatsPerMeasure>k__BackingField: 4
   <BeatmapTimeline>k__BackingField: {fileID: 11400000, guid: d68bc4e836b534a479130c17c4938b7d,
     type: 2}
@@ -28,6 +28,6 @@ MonoBehaviour:
       Data3: 333011362
       Data4: -135783907
     Path: event:/KrakenLevel/KrakenMusic
-  <PlayerMaxHealth>k__BackingField: 8
+  <PlayerMaxHealth>k__BackingField: 6666
   <TimingWindowSO>k__BackingField: {fileID: 11400000, guid: 54462036f164d014095fd6aaaee307e5,
     type: 2}

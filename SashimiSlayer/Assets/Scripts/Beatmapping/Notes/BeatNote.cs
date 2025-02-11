@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Beatmapping.Tooling;
 using Events.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Beatmapping.Notes
 {
@@ -18,16 +20,16 @@ namespace Beatmapping.Notes
 
         public delegate void InteractionAttemptEventHandler(
             int interactionIndex,
-            NoteInteraction.InteractionAttemptResult result);
+            NoteInteraction.AttemptResult result);
 
         public delegate void InteractionFinalResultEventHandler(
             NoteTickInfo tickInfo,
-            SharedTypes.InteractionFinalResult finalResult);
+            NoteInteraction.FinalResult finalResult);
 
         /// <summary>
         ///     Fixed time between end and cleanup
         /// </summary>
-        private const double CleanupTime = 3f;
+        private const double CleanupTime = 1f;
 
         // Serialized fields
         [SerializeField]
@@ -38,8 +40,9 @@ namespace Beatmapping.Notes
         [SerializeField]
         private NoteInteractionFinalResultEvent _noteInteractionFinalResultEvent;
 
+        [FormerlySerializedAs("_beatNoteListeners")]
         [SerializeField]
-        private List<BeatNoteListener> _beatNoteListeners;
+        private List<BeatNoteModule> _beatNoteModules;
 
         public Vector2 StartPosition { get; private set; }
 
@@ -55,12 +58,17 @@ namespace Beatmapping.Notes
         /// <summary>
         ///     Note started
         /// </summary>
-        public event Action OnNoteStart;
+        public event TickEventHandler OnNoteStart;
+
+        /// <summary>
+        ///     First tick of first interaction segment
+        /// </summary>
+        public event TickEventHandler OnFirstInteractionTick;
 
         /// <summary>
         ///     Note ended (not cleaned up)
         /// </summary>
-        public event Action OnNoteEnd;
+        public event TickEventHandler OnNoteEnd;
 
         /// <summary>
         ///     Protag blocked this note
@@ -81,6 +89,11 @@ namespace Beatmapping.Notes
         ///     Protag missed a slice interaction on this note
         /// </summary>
         public event InteractionFinalResultEventHandler OnProtagMissedHit;
+
+        /// <summary>
+        ///     Event invoked when an interaction's final result occurs
+        /// </summary>
+        public event InteractionFinalResultEventHandler OnInteractionFinalResult;
 
         /// <summary>
         ///     Event invoked when the note is ready to be cleaned up.
@@ -110,10 +123,11 @@ namespace Beatmapping.Notes
         private double _noteEndTime;
 
         private bool _isFirstTick;
+        private bool _isFirstInteraction;
 
         public void OnDestroy()
         {
-            foreach (BeatNoteListener listener in _beatNoteListeners)
+            foreach (BeatNoteModule listener in _beatNoteModules)
             {
                 listener.OnNoteCleanedUp(this);
             }
@@ -128,7 +142,7 @@ namespace Beatmapping.Notes
         {
             var positionUsage = new List<IInteractionUser.InteractionUsage>();
 
-            foreach (BeatNoteListener listener in _beatNoteListeners)
+            foreach (BeatNoteModule listener in _beatNoteModules)
             {
                 IEnumerable<IInteractionUser.InteractionUsage> usages = listener.GetInteractionUsages();
                 if (usages == null)
@@ -167,16 +181,37 @@ namespace Beatmapping.Notes
 
             // Default values
             _isFirstTick = true;
+            _isFirstInteraction = true;
 
             // Build timing segments
             _noteTimeSegments = BuildNoteTimeSegments(noteInteractions, noteStartTime, noteEndTime, initializeTime);
 
-            foreach (BeatNoteListener listener in _beatNoteListeners)
+            foreach (BeatNoteModule listener in _beatNoteModules)
             {
                 listener.OnNoteInitialized(this);
             }
 
             OnInitialize?.Invoke();
+        }
+
+        /// <summary>
+        ///     Reset the internal state of the note so it can be looped or pooled.
+        /// </summary>
+        public void ResetState()
+        {
+            // Currently the only state is the interaction state
+            foreach (NoteInteraction interaction in _allInteractions)
+            {
+                interaction.ResetState();
+            }
+
+            foreach (BeatNoteModule listener in _beatNoteModules)
+            {
+                listener.ResetState();
+            }
+
+            _isFirstTick = true;
+            _isFirstInteraction = true;
         }
 
         private List<NoteTimeSegment> BuildNoteTimeSegments(List<NoteInteraction> interactions,
@@ -185,6 +220,13 @@ namespace Beatmapping.Notes
             double initializeTime)
         {
             var timeSegments = new List<NoteTimeSegment>();
+
+            // Initiationalize time can't be after the note starts
+            // But with the current logic it usually is 1 frame after due to how Timeline behaviors work
+            if (initializeTime > noteStartTime)
+            {
+                initializeTime = noteStartTime;
+            }
 
             // Segment ranging from initiation to when the note "starts"
             timeSegments.Add(new NoteTimeSegment
@@ -237,23 +279,23 @@ namespace Beatmapping.Notes
         [Button("Detect Listeners")]
         private void DetectListeners()
         {
-            BeatNoteListener[] listeners = GetComponentsInChildren<BeatNoteListener>();
+            BeatNoteModule[] listeners = GetComponentsInChildren<BeatNoteModule>();
 
-            _beatNoteListeners = listeners.Where(a => a != null).ToList();
+            _beatNoteModules = listeners.Where(a => a != null).ToList();
 
-            foreach (BeatNoteListener listener in _beatNoteListeners)
+            foreach (BeatNoteModule listener in _beatNoteModules)
             {
-                if (_beatNoteListeners.Contains(listener))
+                if (_beatNoteModules.Contains(listener))
                 {
                     continue;
                 }
 
-                _beatNoteListeners.Add(listener);
+                _beatNoteModules.Add(listener);
             }
         }
 
         /// <summary>
-        ///     Get the position right before this interaction
+        ///     Get the position right before the current interaction
         /// </summary>
         /// <param name="interactionIndex"></param>
         /// <returns></returns>

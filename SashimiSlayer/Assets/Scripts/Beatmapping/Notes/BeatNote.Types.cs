@@ -95,6 +95,8 @@ namespace Beatmapping.Notes
             /// </summary>
             public int SegmentIndex;
 
+            public int SubdivisionIndex;
+
             public TickFlags Flags;
         }
 

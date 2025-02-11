@@ -1,4 +1,5 @@
 using System;
+using Beatmapping.Tooling;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Events;
@@ -34,6 +35,8 @@ namespace Beatmapping.Timing
             public double CurrentLevelTime;
 
             public double DeltaTime;
+
+            public int SubdivIndex;
         }
 
         [Header("Dependencies")]
@@ -53,6 +56,9 @@ namespace Beatmapping.Timing
 
         [SerializeField]
         private IntEvent _beatPassedEvent;
+
+        [SerializeField]
+        private IntEvent _subdivPassedEvent;
 
         public static BeatmapTimeManager Instance { get; private set; }
 
@@ -173,17 +179,28 @@ namespace Beatmapping.Timing
                 _beatPassedEvent.Raise(currentBeatIndex);
             }
 
+            if (crossedSubdivThisTick)
+            {
+                _subdivPassedEvent.Raise(currentSubdivIndex);
+            }
+
             // Invoke tick event
             CurrentTickInfo = new TickInfo
             {
                 CurrentBeatmapTime = currentBeatmapTime,
                 CurrentLevelTime = currentBeatmapTime + _currentBeatmap.StartTime,
-                DeltaTime = eventDeltaTime
+                DeltaTime = eventDeltaTime,
+                SubdivIndex = currentSubdivIndex
             };
 
             OnTick?.Invoke(CurrentTickInfo);
 
             _previousEventTime = currentEventTime;
+        }
+
+        public int GetClosestSubdivOfTime(double beatmapTime)
+        {
+            return (int)Math.Round(beatmapTime / _timeIntervalPerSubdiv);
         }
 
         /// <summary>
@@ -218,7 +235,12 @@ namespace Beatmapping.Timing
 
             _currentBeatmap = beatmap;
 
-            StartBeatmapTrack(beatmap);
+            // Testing util to start from the timeline playhead
+            double startTime = BeatmappingUtilities.StartFromTimelinePlayhead
+                ? BeatmappingUtilities.TimelinePlayheadTime
+                : 0;
+
+            StartBeatmapTrack(beatmap, startTime);
 
             _beatmapState = BeatmapState.WaitingForSoundtrackEvent;
         }
@@ -233,9 +255,12 @@ namespace Beatmapping.Timing
             _currentBeatmap = null;
         }
 
-        private void StartBeatmapTrack(BeatmapConfigSo beatmap)
+        private void StartBeatmapTrack(BeatmapConfigSo beatmap, double startTime)
         {
             EventInstance soundtrack = RuntimeManager.CreateInstance(beatmap.BeatmapSoundtrackEvent);
+
+            soundtrack.setTimelinePosition((int)(startTime * 1000));
+
             soundtrack.start();
             soundtrack.release();
 

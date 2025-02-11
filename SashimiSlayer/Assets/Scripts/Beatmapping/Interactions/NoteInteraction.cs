@@ -31,20 +31,25 @@ namespace Beatmapping.Notes
             DoNotEndOnHit = 1 << 1
         }
 
+        public enum NoteInteractionState
+        {
+            Default,
+            Fail,
+            Success
+        }
+
         public InteractionType Type { get; }
         public List<Vector2> Positions { get; }
 
         public double TargetTime => _timingWindow.TargetTime;
 
-        public bool DidSucceed => _interactionState == NoteInteractionState.Success;
+        public NoteInteractionState State { get; private set; }
 
         public InteractionFlags Flags { get; }
 
         public SharedTypes.BlockPoseStates BlockPose { get; }
 
         private readonly TimingWindow _timingWindow;
-
-        private NoteInteractionState _interactionState;
 
         public NoteInteraction(InteractionType typeType,
             InteractionFlags interactionFlags,
@@ -57,7 +62,12 @@ namespace Beatmapping.Notes
             BlockPose = blockPose;
             _timingWindow = window;
             Positions = positions == null ? null : new List<Vector2>(positions);
-            _interactionState = NoteInteractionState.Default;
+            State = NoteInteractionState.Default;
+        }
+
+        public void ResetState()
+        {
+            State = NoteInteractionState.Default;
         }
 
         /// <summary>
@@ -67,15 +77,15 @@ namespace Beatmapping.Notes
         /// <param name="attemptedInteraction">the interaction attempted by the protag</param>
         /// <param name="blockPose">the block pose protag is using, if relevant</param>
         /// <returns></returns>
-        public InteractionAttemptResult TryInteraction(
+        public AttemptResult TryInteraction(
             double attemptTime,
             InteractionType attemptedInteraction,
             SharedTypes.BlockPoseStates blockPose = default)
         {
-            // Interaction already succeeded
-            if (_interactionState == NoteInteractionState.Success)
+            // Interaction already succeeded or failed
+            if (State != NoteInteractionState.Default)
             {
-                return new InteractionAttemptResult
+                return new AttemptResult
                 {
                     ValidInteraction = false
                 };
@@ -84,7 +94,7 @@ namespace Beatmapping.Notes
             // Interaction type doesn't match
             if (attemptedInteraction != Type)
             {
-                return new InteractionAttemptResult
+                return new AttemptResult
                 {
                     ValidInteraction = false
                 };
@@ -94,31 +104,26 @@ namespace Beatmapping.Notes
             if (Type == InteractionType.IncomingAttack &&
                 blockPose != BlockPose)
             {
-                return new InteractionAttemptResult
-                {
-                    ValidInteraction = false
-                };
-            }
-
-            // Locked out by a previous interaction that landed in the lockout window
-            if (_interactionState == NoteInteractionState.LockedOut)
-            {
-                return new InteractionAttemptResult
+                return new AttemptResult
                 {
                     ValidInteraction = false
                 };
             }
 
             TimingWindow.TimingResult timingResult = _timingWindow.CalculateTimingResult(attemptTime);
-            InteractionFlags flags = Flags;
 
-            // Lockout windows are to prevent spamming
-            if (timingResult.Score == TimingWindow.Score.FailLockout)
+            // Outside timing window completely, counted as invalid
+            if (timingResult.Score == TimingWindow.Score.Invalid)
             {
-                _interactionState = NoteInteractionState.LockedOut;
+                return new AttemptResult
+                {
+                    ValidInteraction = false
+                };
             }
 
-            var result = new InteractionAttemptResult
+            InteractionFlags flags = Flags;
+
+            var result = new AttemptResult
             {
                 ValidInteraction = true,
                 TimingResult = timingResult,
@@ -127,7 +132,11 @@ namespace Beatmapping.Notes
 
             if (result.Passed)
             {
-                _interactionState = NoteInteractionState.Success;
+                State = NoteInteractionState.Success;
+            }
+            else if (result.TimingResult.Score == TimingWindow.Score.Miss)
+            {
+                State = NoteInteractionState.Fail;
             }
 
             return result;
@@ -141,7 +150,7 @@ namespace Beatmapping.Notes
         public bool IsInInteractTimingWindow(double time)
         {
             return _timingWindow.CalculateTimingResult(time).Score is TimingWindow.Score.Pass
-                or TimingWindow.Score.Perfect or TimingWindow.Score.FailLockout;
+                or TimingWindow.Score.Perfect or TimingWindow.Score.Miss;
         }
 
         /// <summary>
@@ -155,7 +164,18 @@ namespace Beatmapping.Notes
                 or TimingWindow.Score.Perfect;
         }
 
-        public struct InteractionAttemptResult
+        /// <summary>
+        ///     Set the interaction as failed
+        /// </summary>
+        public void SetFailed()
+        {
+            State = NoteInteractionState.Fail;
+        }
+
+        /// <summary>
+        ///     The result of an interaction attempt (i.e an attempted block or slice)
+        /// </summary>
+        public struct AttemptResult
         {
             /// <summary>
             ///     Was the interaction attempt even valid? (matching type, correct block pose, not locked out)
@@ -173,11 +193,23 @@ namespace Beatmapping.Notes
                                   TimingResult.Score is TimingWindow.Score.Pass or TimingWindow.Score.Perfect;
         }
 
-        private enum NoteInteractionState
+        /// <summary>
+        ///     The final result of a note interaction; either a success when it occurs, or a failure after the timing window ends
+        /// </summary>
+        public struct FinalResult
         {
-            Default,
-            LockedOut,
-            Success
+            public TimingWindow.TimingResult TimingResult;
+            public InteractionType InteractionType;
+            public SharedTypes.BlockPoseStates Pose;
+            public bool Successful;
+
+            public FinalResult(TimingWindow.TimingResult timingResult, InteractionType interactionType, bool successful)
+            {
+                TimingResult = timingResult;
+                InteractionType = interactionType;
+                Successful = successful;
+                Pose = default;
+            }
         }
     }
 }

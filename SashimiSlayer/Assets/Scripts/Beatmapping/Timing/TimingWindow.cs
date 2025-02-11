@@ -14,10 +14,14 @@ namespace Beatmapping
             Pass,
 
             /// <summary>
-            ///     Failed, but within the lockout window, so no further interactions can be attempted
+            ///     Within failure window means instant failure
             /// </summary>
-            FailLockout,
-            Fail
+            Miss,
+
+            /// <summary>
+            ///     Timing is outside of all windows, so completely ignore it
+            /// </summary>
+            Invalid
         }
 
         public enum Direction
@@ -71,7 +75,7 @@ namespace Beatmapping
 
             if (windowIndex == -1)
             {
-                result.Score = Score.Fail;
+                result.Score = Score.Invalid;
             }
             else
             {

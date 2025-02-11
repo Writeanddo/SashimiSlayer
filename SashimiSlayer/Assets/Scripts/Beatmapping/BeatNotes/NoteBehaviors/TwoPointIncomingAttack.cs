@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Beatmapping.Notes;
+using Beatmapping.Tooling;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,7 +12,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
     ///     Spawn -> Attack ready position
     ///     Attack ready position -> Player (Block interaction)
     /// </summary>
-    public class TwoPointIncomingAttack : BeatNoteListener
+    public class TwoPointIncomingAttack : BeatNoteModule
     {
         [SerializeField]
         private BeatNote _beatNote;
@@ -66,7 +67,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         }
 
         private void BeatNote_ProtagFailBlock(BeatNote.NoteTickInfo tickInfo,
-            SharedTypes.InteractionFinalResult finalResult)
+            NoteInteraction.FinalResult finalResult)
         {
             _explosionParticles.Play();
         }
@@ -75,19 +76,20 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         {
             // Lerp from start pos to peak pos, then to target pos
 
-            float thresh = _middlePointThreshold;
-            if (normalizedTime <= thresh)
+            float trajectoryPeakTime = _middlePointThreshold;
+            if (normalizedTime <= trajectoryPeakTime)
             {
-                float t = _moveCurve.Evaluate(normalizedTime / thresh);
+                float t = _moveCurve.Evaluate(normalizedTime / trajectoryPeakTime);
                 _bodyTransform.position = new Vector2(
-                    Mathf.Lerp(_startPos.x, _peakPos.x, normalizedTime / thresh),
+                    Mathf.Lerp(_startPos.x, _peakPos.x, normalizedTime / trajectoryPeakTime),
                     Mathf.Lerp(_startPos.y, _peakPos.y, t)
                 );
                 _sprite.transform.localRotation = Quaternion.Euler(0, 0, -90 * (1 - t));
             }
             else
             {
-                if (flags.HasFlag(BeatNote.TickFlags.TriggerInteractions) && !_hitPeak && normalizedTime >= thresh)
+                if (flags.HasFlag(BeatNote.TickFlags.TriggerInteractions) && !_hitPeak &&
+                    normalizedTime >= trajectoryPeakTime)
                 {
                     _hitPeak = true;
                     OnHitPeak.Invoke();
@@ -97,7 +99,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                     }
                 }
 
-                float remappedTime = (normalizedTime - thresh) / (1 - thresh);
+                float remappedTime = (normalizedTime - trajectoryPeakTime) / (1 - trajectoryPeakTime);
 
                 _bodyTransform.position = new Vector2(
                     Mathf.Lerp(_peakPos.x, _targetPos.x, remappedTime),
@@ -107,6 +109,9 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                 // angle towards target
                 _sprite.transform.localRotation = Quaternion.Euler(0, 0, 180 + _angleToTarget);
             }
+
+            // Make sure sprite is no longer transparent, to prevent ghosts when looping
+            _sprite.color = new Color(1, 1, 1, 1);
         }
 
         public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
