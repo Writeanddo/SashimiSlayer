@@ -618,7 +618,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 1
           InteractionType: 0
           Flags: 0
           Positions:
@@ -1471,7 +1471,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 1
           InteractionType: 0
           Flags: 0
           Positions: []
@@ -2351,7 +2351,7 @@ MonoBehaviour:
       - _beatOffset: 12
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 1
           InteractionType: 0
           Flags: 0
           Positions: []
@@ -2403,7 +2403,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 0
           InteractionType: 0
           Flags: 0
           Positions:
@@ -2523,7 +2523,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 1
           InteractionType: 0
           Flags: 0
           Positions:
@@ -2622,7 +2622,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 0
           InteractionType: 0
           Flags: 0
           Positions: []
@@ -2636,7 +2636,7 @@ MonoBehaviour:
       - _beatOffset: 0
         _offsetFromEnd: 1
         InteractionData:
-          BlockPose: 2
+          BlockPose: 0
           InteractionType: 1
           Flags: 0
           Positions: []
@@ -2750,7 +2750,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 1
           InteractionType: 0
           Flags: 0
           Positions:
@@ -2839,7 +2839,7 @@ MonoBehaviour:
       - _beatOffset: 12
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 0
           InteractionType: 0
           Flags: 0
           Positions: []
@@ -2912,7 +2912,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 0
           InteractionType: 0
           Flags: 0
           Positions: []
@@ -3821,7 +3821,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 1
           InteractionType: 0
           Flags: 0
           Positions: []
@@ -3877,7 +3877,7 @@ MonoBehaviour:
       - _beatOffset: 12
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 0
           InteractionType: 0
           Flags: 0
           Positions: []
@@ -3912,7 +3912,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 0
           InteractionType: 0
           Flags: 0
           Positions: []
@@ -3954,7 +3954,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 2
+          BlockPose: 1
           InteractionType: 0
           Flags: 0
           Positions: []
