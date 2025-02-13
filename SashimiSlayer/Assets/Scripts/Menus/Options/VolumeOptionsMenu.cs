@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Menus.Options
 {
-    public class OptionsVolumeMenu : MonoBehaviour
+    public class VolumeOptionsMenu : MonoBehaviour
     {
         private const string SfxKey = "SfxVolume";
         private const string MusicKey = "MusicVolume";
