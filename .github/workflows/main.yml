@@ -107,7 +107,7 @@ jobs:
       # The zip folder name gets replaced by an itch.io generated name when uploaded, so whatever it is here doesn't matter too much
       - name: Push Build to Butler
         run: |
-          ./butler push $ZIP_NAME ${{env.ITCH_GAME_NAME}}:${{ matrix.targetPlatform }} --userversion ${{steps.semantic_version.outputs.version}}
+          ./butler push -v $ZIP_NAME ${{env.ITCH_GAME_NAME}}:${{ matrix.targetPlatform }} --userversion ${{steps.semantic_version.outputs.version}}
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
     

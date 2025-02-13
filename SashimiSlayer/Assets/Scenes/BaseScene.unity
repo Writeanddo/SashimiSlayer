@@ -4425,7 +4425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baudRate: 9600
-  _logPackets: 0
+  _logPackets: 1
   _onDrawDebugGUI: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
   _serialPortConnectionStatus: {fileID: 11400000, guid: c2d14197b2d74754ab3a6c9273a93780,
     type: 2}
