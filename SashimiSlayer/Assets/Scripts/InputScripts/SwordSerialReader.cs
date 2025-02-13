@@ -9,6 +9,9 @@ using UnityEngine;
 
 namespace InputScripts
 {
+    /// <summary>
+    ///     Reads serial data from the sword controller
+    /// </summary>
     public class SwordSerialReader : MonoBehaviour
     {
         public struct SerialReadResult
@@ -23,7 +26,9 @@ namespace InputScripts
 
         private const int RateCountWindow = 10;
 
-        // 1 byte for buttons, 16 bytes for quaternion
+        /// <summary>
+        ///     1 byte for buttons, 16 bytes for quaternion
+        /// </summary>
         private const int PacketByteCount = 17;
 
         [SerializeField]
@@ -226,7 +231,7 @@ namespace InputScripts
                     _currentPacketLength = 0;
 
                     _serialPort.ReadExisting();
-                    // Starting ack
+                    // Write ack to arduino
                     Write(new byte[] { 255 });
                 }
             }

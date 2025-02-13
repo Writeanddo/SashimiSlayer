@@ -1,18 +1,24 @@
+using System.Collections.Generic;
 using Events;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Menus.Options
 {
-    public class OptionsControlMenu : MonoBehaviour
+    public class AltControlOptionsMenu : MonoBehaviour
     {
         private const string SwordAimMultiplier = "SwordAngleMultiplier";
         private const string FlipSwordAim = "SwordAngleFlip";
+        private const string UpAxis = "UpAxis";
 
         [Header("Events (Out)")]
 
         [SerializeField]
         private FloatEvent _swordAngleMultiplierChangeEvent;
+
+        [SerializeField]
+        private IntEvent _upAxisChangedEvent;
 
         [Header("Sword Angle Multiplier")]
 
@@ -24,23 +30,36 @@ namespace Menus.Options
         [SerializeField]
         private Toggle _swordAngleFlipToggle;
 
+        [Header("Up Angle Axis")]
+
+        [SerializeField]
+        private TMP_Dropdown _upAxisDropdown;
+
         private float _swordAngleMultiplier;
         private bool _swordAngleFlip;
+
+        private int _upAxis;
 
         private void Awake()
         {
             _swordAngleMultiplier = PlayerPrefs.GetFloat(SwordAimMultiplier, 1);
             _swordAngleFlip = PlayerPrefs.GetInt(FlipSwordAim, 0) == 1;
+            _upAxis = PlayerPrefs.GetInt(UpAxis, 1);
 
             _swordAngleMultiplierSlider.onValueChanged.AddListener(HandleSwordAngleMultiplierChange);
             _swordAngleFlipToggle.onValueChanged.AddListener(HandleSwordAngleFlipChange);
+            _upAxisDropdown.onValueChanged.AddListener(HandleUpAxisChange);
+
+            SetupDropdown();
         }
 
         private void Start()
         {
             _swordAngleMultiplierSlider.value = _swordAngleMultiplier;
             _swordAngleFlipToggle.isOn = _swordAngleFlip;
+            _upAxisDropdown.value = _upAxis;
 
+            HandleUpAxisChange(_upAxis);
             UpdateSwordAngleMultiplier();
         }
 
@@ -48,6 +67,20 @@ namespace Menus.Options
         {
             _swordAngleMultiplierSlider.onValueChanged.RemoveListener(HandleSwordAngleMultiplierChange);
             _swordAngleFlipToggle.onValueChanged.RemoveListener(HandleSwordAngleFlipChange);
+            _upAxisDropdown.onValueChanged.RemoveListener(HandleUpAxisChange);
+        }
+
+        private void SetupDropdown()
+        {
+            _upAxisDropdown.ClearOptions();
+            _upAxisDropdown.AddOptions(new List<string> { "X", "Y", "Z" });
+        }
+
+        private void HandleUpAxisChange(int value)
+        {
+            _upAxis = value;
+            PlayerPrefs.SetInt(UpAxis, _upAxis);
+            _upAxisChangedEvent.Raise(_upAxis);
         }
 
         private void HandleSwordAngleMultiplierChange(float value)

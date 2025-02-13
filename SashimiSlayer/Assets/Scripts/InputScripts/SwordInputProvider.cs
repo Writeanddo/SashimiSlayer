@@ -4,8 +4,18 @@ using UnityEngine;
 
 namespace InputScripts
 {
+    /// <summary>
+    ///     Handles interpreting sword controller data into game inputs
+    /// </summary>
     public class SwordInputProvider : BaseUserInputProvider
     {
+        public enum UpAxis
+        {
+            X,
+            Y,
+            Z
+        }
+
         [Header("Depends")]
 
         [SerializeField]
@@ -22,8 +32,13 @@ namespace InputScripts
         [SerializeField]
         private StringEvent _connectToSerialPort;
 
+        [SerializeField]
+        private IntEvent _upAxisChangedEvent;
+
         public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
         public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
+
+        private UpAxis _upAxis = UpAxis.Y;
 
         private SharedTypes.SheathState _sheathState = SharedTypes.SheathState.Sheathed;
         private SharedTypes.BlockPoseStates _currentBlockPose;
@@ -36,6 +51,7 @@ namespace InputScripts
             _serialReader.OnSerialRead += HandleSerialRead;
             _angleMultiplierEvent.AddListener(SetAngleMultiplier);
             _connectToSerialPort.AddListener(ConnectToPort);
+            _upAxisChangedEvent.AddListener(HandleUpAxisChanged);
         }
 
         private void OnDestroy()
@@ -43,6 +59,12 @@ namespace InputScripts
             _serialReader.OnSerialRead -= HandleSerialRead;
             _angleMultiplierEvent.RemoveListener(SetAngleMultiplier);
             _connectToSerialPort.RemoveListener(ConnectToPort);
+            _upAxisChangedEvent.RemoveListener(HandleUpAxisChanged);
+        }
+
+        private void HandleUpAxisChanged(int axis)
+        {
+            _upAxis = (UpAxis)axis;
         }
 
         private void SetAngleMultiplier(float angleMultiplier)
@@ -90,11 +112,36 @@ namespace InputScripts
                 }
             }
 
-            Vector3 up = data.SwordOrientation * Vector3.forward;
-            float angle = -Vector3.Angle(up, Vector3.up) + 90f;
-
-            _swordAngle = angle * _angleMultiplier;
+            _swordAngle = ProcessSwordOrientation(data.SwordOrientation);
             _quatDebugger.transform.rotation = data.SwordOrientation;
+        }
+
+        /// <summary>
+        ///     Converts the quaternion to the in-game float angle
+        /// </summary>
+        /// <param name="quat"></param>
+        /// <returns></returns>
+        private float ProcessSwordOrientation(Quaternion quat)
+        {
+            Vector3 upAxis = Vector3.zero;
+
+            switch (_upAxis)
+            {
+                case UpAxis.X:
+                    upAxis = Vector3.right;
+                    break;
+                case UpAxis.Y:
+                    upAxis = Vector3.up;
+                    break;
+                case UpAxis.Z:
+                    upAxis = Vector3.forward;
+                    break;
+            }
+
+            Vector3 up = quat * upAxis;
+            float angle = -Vector3.Angle(up, Vector3.up) + 90f;
+            angle *= _angleMultiplier;
+            return angle;
         }
 
         public override float GetSwordAngle()
