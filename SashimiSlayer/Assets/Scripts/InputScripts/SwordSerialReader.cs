@@ -30,13 +30,12 @@ namespace InputScripts
         /// </summary>
         private const int PacketByteCount = 17;
 
+        public static bool LogPackets;
+
         [SerializeField]
         private int _baudRate;
 
         [Header("Config")]
-
-        [SerializeField]
-        private bool _logPackets;
 
         [SerializeField]
         private VoidEvent _onDrawDebugGUI;
@@ -214,7 +213,7 @@ namespace InputScripts
                         OnSerialRead?.Invoke(serialReadResult);
                     }
 
-                    if (_logPackets)
+                    if (LogPackets)
                     {
                         var packet = string.Empty;
                         foreach (byte b in _packetBuffer)
