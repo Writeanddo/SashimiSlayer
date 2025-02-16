@@ -128,6 +128,7 @@ namespace InputScripts
             Debug.Log($"Connecting to {arduinoPort}");
 
             _serialPort = new SerialPort(arduinoPort, _baudRate);
+            _serialPort.RtsEnable = true;
             _serialPort.Open();
             _serialPort.ErrorReceived += HandleErrorReceived;
         }
@@ -154,8 +155,9 @@ namespace InputScripts
         {
             try
             {
+                Debug.Log(_serialPort.BytesToRead);
                 // Discard any junk in the buffer
-                _serialPort.ReadExisting();
+                _serialPort.DiscardInBuffer();
 
                 // Starting ack
                 Write(new byte[] { 255 });
@@ -227,9 +229,10 @@ namespace InputScripts
 
                     _currentPacketLength = 0;
 
-                    _serialPort.ReadExisting();
+                    _serialPort.DiscardInBuffer();
                     // Write ack to arduino
                     Write(new byte[] { 255 });
+                    break;
                 }
             }
         }
