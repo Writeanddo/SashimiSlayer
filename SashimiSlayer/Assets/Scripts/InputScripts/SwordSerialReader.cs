@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
-using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Events;
@@ -87,7 +86,7 @@ namespace InputScripts
             _onDrawDebugGUI.RemoveListener(DrawDebugGUI);
         }
 
-        public void TryConnectToPort()
+        public void TryConnectToPort(string portName)
         {
             try
             {
@@ -103,7 +102,7 @@ namespace InputScripts
                 _toDiscard = 10;
                 _serialPortConnectionStatus.Raise("Connecting to serial port");
 
-                InitializeSerialPort();
+                InitializeSerialPort(portName);
                 AbleToConnect = true;
 
                 _serialPortConnectionStatus.Raise("Connected to serial port");
@@ -124,10 +123,8 @@ namespace InputScripts
             GUILayout.Label("Serial Packet Rate: " + _currentPacketRate);
         }
 
-        private void InitializeSerialPort()
+        private void InitializeSerialPort(string arduinoPort)
         {
-            string[] portNames = SerialPort.GetPortNames();
-            string arduinoPort = portNames.LastOrDefault();
             Debug.Log($"Connecting to {arduinoPort}");
 
             _serialPort = new SerialPort(arduinoPort, _baudRate);

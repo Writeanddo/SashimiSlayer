@@ -80,6 +80,7 @@ namespace Menus.Options
         private void HandleConnect()
         {
             string serialPort = _serialPortDropdown.options[_serialPortDropdown.value].text;
+            Debug.Log(serialPort);
             _connectToSerialPort.Raise(serialPort);
         }
 

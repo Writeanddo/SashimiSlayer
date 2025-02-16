@@ -159,9 +159,9 @@ namespace InputScripts
             return _currentBlockPose;
         }
 
-        public void ConnectToPort()
+        public void ConnectToPort(string portName)
         {
-            _serialReader.TryConnectToPort();
+            _serialReader.TryConnectToPort(portName);
         }
     }
 }
