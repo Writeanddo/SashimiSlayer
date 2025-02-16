@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
-using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Events;
@@ -9,6 +8,9 @@ using UnityEngine;
 
 namespace InputScripts
 {
+    /// <summary>
+    ///     Reads serial data from the sword controller
+    /// </summary>
     public class SwordSerialReader : MonoBehaviour
     {
         public struct SerialReadResult
@@ -23,16 +25,17 @@ namespace InputScripts
 
         private const int RateCountWindow = 10;
 
-        // 1 byte for buttons, 16 bytes for quaternion
+        /// <summary>
+        ///     1 byte for buttons, 16 bytes for quaternion
+        /// </summary>
         private const int PacketByteCount = 17;
+
+        public static bool LogPackets;
 
         [SerializeField]
         private int _baudRate;
 
         [Header("Config")]
-
-        [SerializeField]
-        private bool _logPackets;
 
         [SerializeField]
         private VoidEvent _onDrawDebugGUI;
@@ -53,8 +56,6 @@ namespace InputScripts
         private float _intervalSum;
         private float _prevPacketTime;
         private float _currentPacketRate;
-
-        private int _currentPacketLength;
 
         private int _toDiscard;
 
@@ -82,7 +83,7 @@ namespace InputScripts
             _onDrawDebugGUI.RemoveListener(DrawDebugGUI);
         }
 
-        public void TryConnectToPort()
+        public void TryConnectToPort(string portName)
         {
             try
             {
@@ -98,7 +99,7 @@ namespace InputScripts
                 _toDiscard = 10;
                 _serialPortConnectionStatus.Raise("Connecting to serial port");
 
-                InitializeSerialPort();
+                InitializeSerialPort(portName);
                 AbleToConnect = true;
 
                 _serialPortConnectionStatus.Raise("Connected to serial port");
@@ -119,13 +120,16 @@ namespace InputScripts
             GUILayout.Label("Serial Packet Rate: " + _currentPacketRate);
         }
 
-        private void InitializeSerialPort()
+        private void InitializeSerialPort(string arduinoPort)
         {
-            string[] portNames = SerialPort.GetPortNames();
-            string arduinoPort = portNames.LastOrDefault();
             Debug.Log($"Connecting to {arduinoPort}");
 
             _serialPort = new SerialPort(arduinoPort, _baudRate);
+
+            // Disable Rts since we don't use handshaking
+            // Doesn't work on Mac unless we do this
+            _serialPort.RtsEnable = true;
+
             _serialPort.Open();
             _serialPort.ErrorReceived += HandleErrorReceived;
         }
@@ -152,8 +156,9 @@ namespace InputScripts
         {
             try
             {
+                Debug.Log(_serialPort.BytesToRead);
                 // Discard any junk in the buffer
-                _serialPort.ReadExisting();
+                _serialPort.DiscardInBuffer();
 
                 // Starting ack
                 Write(new byte[] { 255 });
@@ -185,51 +190,56 @@ namespace InputScripts
         {
             int bytesToRead = _serialPort.BytesToRead;
             int packetsToRead = bytesToRead / PacketByteCount;
-            int fullPacketBytes = packetsToRead * PacketByteCount;
-            var bytesRead = 0;
 
-            while (bytesRead < fullPacketBytes)
+            if (packetsToRead == 0)
             {
-                bytesRead++;
-                var readByte = (byte)_serialPort.ReadByte();
-                _packetBuffer[_currentPacketLength] = readByte;
-                _currentPacketLength++;
-
-                if (_currentPacketLength == PacketByteCount)
-                {
-                    SamplePacketInterval();
-
-                    SerialReadResult serialReadResult = ParsePacket(_packetBuffer);
-
-                    if (_toDiscard > 0)
-                    {
-                        _toDiscard--;
-                    }
-                    else
-                    {
-                        OnSerialRead?.Invoke(serialReadResult);
-                    }
-
-                    if (_logPackets)
-                    {
-                        var packet = string.Empty;
-                        foreach (byte b in _packetBuffer)
-                        {
-                            // log byte as binary
-                            packet += Convert.ToString(b, 2).PadLeft(8, '0') + " ";
-                        }
-
-                        Debug.Log(JsonUtility.ToJson(serialReadResult));
-                        Debug.Log(packet);
-                    }
-
-                    _currentPacketLength = 0;
-
-                    _serialPort.ReadExisting();
-                    // Starting ack
-                    Write(new byte[] { 255 });
-                }
+                return;
             }
+
+            // Read one packet into buffer
+            var byteIndex = 0;
+            while (byteIndex < PacketByteCount)
+            {
+                var readByte = (byte)_serialPort.ReadByte();
+                _packetBuffer[byteIndex] = readByte;
+                byteIndex++;
+            }
+
+            // Calculate the packet rate
+            SamplePacketInterval();
+
+            // Parse the packet
+            SerialReadResult serialReadResult = ParsePacket(_packetBuffer);
+
+            // Discard some packets at the start
+            if (_toDiscard > 0)
+            {
+                _toDiscard--;
+            }
+            else
+            {
+                OnSerialRead?.Invoke(serialReadResult);
+            }
+
+            if (LogPackets)
+            {
+                var packet = string.Empty;
+                foreach (byte b in _packetBuffer)
+                {
+                    // log byte as binary
+                    packet += Convert.ToString(b, 2).PadLeft(8, '0') + " ";
+                }
+
+                Debug.Log(packetsToRead);
+                Debug.Log(JsonUtility.ToJson(serialReadResult));
+                Debug.Log(packet);
+            }
+
+            // Only read one packet per frame (because of handshake there should only be one)
+            _serialPort.DiscardInBuffer();
+
+            // Write ack to arduino for next packet
+            Write(new byte[] { 255 });
         }
 
         private SerialReadResult ParsePacket(byte[] packetBuffer)

@@ -24,7 +24,7 @@ namespace Menus.Options
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
             {
                 ToggleMenu(!_menuOpen);
                 _menuToggleEvent.Raise(_menuOpen);

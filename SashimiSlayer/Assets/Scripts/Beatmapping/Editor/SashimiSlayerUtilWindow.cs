@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Beatmapping.Tooling;
+using InputScripts;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditor.Timeline;
@@ -62,6 +63,8 @@ namespace Beatmapping.Editor
 
             BeatmappingUtilities.PlayFromEditedBeatmap = GUILayout.Toggle(BeatmappingUtilities.PlayFromEditedBeatmap,
                 "Play from Edited Beatmap");
+
+            SwordSerialReader.LogPackets = GUILayout.Toggle(SwordSerialReader.LogPackets, "Log Sword Packets");
 
             GUILayout.Space(10);
             GUILayout.Label("Save Data", EditorStyles.boldLabel);
