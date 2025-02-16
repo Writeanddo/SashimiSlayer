@@ -11,6 +11,8 @@ namespace Menus.Options
 {
     public class InputDeviceMenu : MonoBehaviour
     {
+        public const string LastPortName = "LastPortName";
+
         [Header("Events (Out)")]
 
         [SerializeField]
@@ -38,8 +40,11 @@ namespace Menus.Options
         [SerializeField]
         private TMP_Text _connectionStatusText;
 
+        private string _lastPortName;
+
         private void Awake()
         {
+            _lastPortName = PlayerPrefs.GetString(LastPortName, "");
             _inputDeviceDropdown.ClearOptions();
             _inputDeviceDropdown.AddOptions(new List<string> { "Default", "Alt-Control Sword" });
             _inputDeviceDropdown.onValueChanged.AddListener(HandleInputDeviceChanged);
@@ -80,7 +85,11 @@ namespace Menus.Options
         private void HandleConnect()
         {
             string serialPort = _serialPortDropdown.options[_serialPortDropdown.value].text;
-            Debug.Log(serialPort);
+
+            // Save to last used port
+            PlayerPrefs.SetString(LastPortName, serialPort);
+            _lastPortName = serialPort;
+
             _connectToSerialPort.Raise(serialPort);
         }
 
@@ -102,6 +111,17 @@ namespace Menus.Options
                     macPortRegex.IsMatch(port))
                 .Reverse()
                 .ToList();
+
+            // Move last used port to the top
+            if (!string.IsNullOrEmpty(_lastPortName))
+            {
+                if (serialPorts.Contains(_lastPortName))
+                {
+                    Debug.Log($"Moving {_lastPortName} to the top since it was last used");
+                    serialPorts.Remove(_lastPortName);
+                    serialPorts.Insert(0, _lastPortName);
+                }
+            }
 
             _serialPortDropdown.ClearOptions();
             _serialPortDropdown.AddOptions(serialPorts);
