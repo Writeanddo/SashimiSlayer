@@ -61,6 +61,11 @@ namespace Beatmapping
                     {
                         DestroyImmediate(note.gameObject);
                     }
+
+                    if (notes.Length > 0)
+                    {
+                        EditorUtility.SetDirty(gameObject);
+                    }
                 };
             }
 #endif
