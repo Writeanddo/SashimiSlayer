@@ -130,6 +130,9 @@ namespace InputScripts
             // Doesn't work on Mac unless we do this
             _serialPort.RtsEnable = true;
 
+            // We don't need to enable Dtr to get it to work on mac, but leaving it here in case
+            // _serialPort.DtrEnable = true;
+
             _serialPort.Open();
             _serialPort.ErrorReceived += HandleErrorReceived;
         }
