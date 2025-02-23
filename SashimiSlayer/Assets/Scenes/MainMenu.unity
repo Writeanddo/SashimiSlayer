@@ -583,8 +583,8 @@ MonoBehaviour:
       Data4: 983716121
     Path: event:/TutorialLevel/TutorialMusic
   Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 0
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
