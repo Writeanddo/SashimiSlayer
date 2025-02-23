@@ -12,6 +12,8 @@ int btnBot = 0;
 int sheatheSwitchL = 0;
 int sheatheSwitchR = 0;
 
+imu::Quaternion q;
+
 // Pin numbers
 #define HAPTIC_IN_PIN 5
 #define BTN_TOP_PIN 14
@@ -46,13 +48,13 @@ void setup() {
 
   setup_gyro();
 
-  // pinMode(BTN_TOP_PIN, INPUT_PULLUP);
-  // pinMode(BTN_MID_PIN, INPUT_PULLUP);
-  // pinMode(BTN_BOT_PIN, INPUT_PULLUP);
-  // pinMode(SHEATHE_L_PIN, INPUT_PULLUP);
-  // pinMode(SHEATHE_R_PIN, INPUT_PULLUP);
-  // pinMode(LED_PIN, OUTPUT);
-  // pinMode(HAPTIC_IN_PIN, OUTPUT);
+  pinMode(BTN_TOP_PIN, INPUT_PULLUP);
+  pinMode(BTN_MID_PIN, INPUT_PULLUP);
+  pinMode(BTN_BOT_PIN, INPUT_PULLUP);
+  pinMode(SHEATHE_L_PIN, INPUT_PULLUP);
+  pinMode(SHEATHE_R_PIN, INPUT_PULLUP);
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(HAPTIC_IN_PIN, OUTPUT);
 }
 
 
@@ -65,7 +67,7 @@ void writeFloat(float f){
   return;
 }
 
-void sendState(imu::Quaternion q)
+void sendState()
 {
   char switches = 0;
   switches |= btnTop;
@@ -83,13 +85,15 @@ void sendState(imu::Quaternion q)
 void loop() {
   // Should be true when pressed, false when not pressed, to work properly with the game logic
   // Might need inversion for pullup switches
-  // btnTop = !digitalRead(BTN_TOP_PIN);
-  // btnMid = !digitalRead(BTN_MID_PIN);
-  // btnBot = !digitalRead(BTN_BOT_PIN);
+  btnTop = !digitalRead(BTN_TOP_PIN);
+  btnMid = !digitalRead(BTN_MID_PIN);
+  btnBot = !digitalRead(BTN_BOT_PIN);
 
   // Should be false when sheathe is in, true when sheathe is out, to work properly with game logic
-  // sheatheSwitchL = digitalRead(SHEATHE_L_PIN);
-  // sheatheSwitchR = digitalRead(SHEATHE_R_PIN);
+  sheatheSwitchL = digitalRead(SHEATHE_L_PIN);
+  sheatheSwitchR = digitalRead(SHEATHE_R_PIN);
+
+  q = bno.getQuat();
 
   // Wait for ack from game instance to send state to game instance
   if(Serial.available())
@@ -97,28 +101,26 @@ void loop() {
     Serial.readBytes(&inputBuffer, 1);
     if(inputBuffer == (char)255)
     {
-      imu::Quaternion quat = bno.getQuat();
-      
-      sendState(quat);
+      sendState();
     }
   }
 
-  // Serial.println(sheatheSwitchL);
+  //Serial.println(sheatheSwitchL);
 
   // Vibrate when sword is drawn
-  // if(sheatheSwitchL && sheatheSwitchR)
-  // {
-  //   digitalWrite(HAPTIC_IN_PIN, HIGH);
-  // }
-  // else
-  // {
-  //   digitalWrite(HAPTIC_IN_PIN, LOW);
-  // }
+  if(sheatheSwitchL && sheatheSwitchR)
+  {
+    digitalWrite(HAPTIC_IN_PIN, HIGH);
+  }
+  else
+  {
+    digitalWrite(HAPTIC_IN_PIN, LOW);
+  }
 
   // LED for debugging btns
-  // if (btnTop || btnMid || btnBot) {
-  //   digitalWrite(LED_PIN, HIGH);
-  // } else {
-  //   digitalWrite(LED_PIN, LOW);
-  // }
+  if (btnTop || btnMid || btnBot) {
+    digitalWrite(LED_PIN, HIGH);
+  } else {
+    digitalWrite(LED_PIN, LOW);
+  }
 }
