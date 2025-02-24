@@ -24,7 +24,7 @@ namespace Beatmapping
 
         private readonly List<BeatNote> _activeBeatNotes = new();
 
-        private bool _spawningEnabled;
+        private bool _spawningEnabled = true;
 
         private void Awake()
         {
