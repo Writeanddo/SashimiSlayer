@@ -79,14 +79,9 @@ namespace Beatmapping.Timing
 
         private void UpdateSpawningEnabled()
         {
-            if (_currentSuccessfulStreak >= _successfulStreakRequiredToUnlockLoopRegion)
-            {
-                _setBeatNoteSpawningEnabledEvent.Raise(true);
-            }
-            else
-            {
-                _setBeatNoteSpawningEnabledEvent.Raise(false);
-            }
+            bool spawningEnabled = _currentSuccessfulStreak >= _successfulStreakRequiredToUnlockLoopRegion;
+            Debug.Log(spawningEnabled);
+            _setBeatNoteSpawningEnabledEvent.Raise(spawningEnabled);
         }
 
         private void OnBeatmapSoundtrackInstanceCreated(EventInstance instance)

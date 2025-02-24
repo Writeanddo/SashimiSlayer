@@ -5299,8 +5299,8 @@ MonoBehaviour:
       StartPosition: {x: 8.611906, y: -4.9381175}
       EndPosition: {x: -3.2340412, y: 6.3353243}
       NoteStartTime: 93.5
-      NoteEndTime: 96.5
-      NoteBeatCount: 6
+      NoteEndTime: 96
+      NoteBeatCount: 5
       Interactions:
       - _beatOffset: 4
         _offsetFromEnd: 0
@@ -5474,7 +5474,7 @@ MonoBehaviour:
     m_Start: 99.48
     m_ClipIn: 0
     m_Asset: {fileID: -501070894553393834}
-    m_Duration: 3
+    m_Duration: 2.5
     m_TimeScale: 1
     m_ParentTrack: {fileID: -320745285350345662}
     m_EaseInDuration: 0
@@ -6325,8 +6325,8 @@ MonoBehaviour:
       StartPosition: {x: 8.611906, y: -4.9381175}
       EndPosition: {x: -10.345152, y: 3.8395975}
       NoteStartTime: 93.25
-      NoteEndTime: 96.25
-      NoteBeatCount: 6
+      NoteEndTime: 96
+      NoteBeatCount: 5.5
       Interactions:
       - _beatOffset: 4
         _offsetFromEnd: 0
@@ -8457,7 +8457,7 @@ MonoBehaviour:
     m_Start: 99.23
     m_ClipIn: 0
     m_Asset: {fileID: 1222858567866660776}
-    m_Duration: 3
+    m_Duration: 2.75
     m_TimeScale: 1
     m_ParentTrack: {fileID: 4539167557533657206}
     m_EaseInDuration: 0
