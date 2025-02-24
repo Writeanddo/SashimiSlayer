@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shrimp_ui_assets_1_6
+      name: knife
       rect:
         serializedVersion: 2
         x: 735
@@ -349,7 +349,7 @@ TextureImporter:
         width: 88
         height: 76
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -383,7 +383,7 @@ TextureImporter:
       ThoughtBubble: 1892634509
       TimeBar: -39360356
       clock: -1795652402
-      shrimp_ui_assets_1_6: -140340198
+      knife: -140340198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
