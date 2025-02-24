@@ -56,7 +56,7 @@ namespace Beatmapping.Notes
         public event Action OnInitialize;
 
         /// <summary>
-        ///     Note started
+        ///     Note started. TODO: Doesn't trigger properly on looping...
         /// </summary>
         public event TickEventHandler OnNoteStart;
 

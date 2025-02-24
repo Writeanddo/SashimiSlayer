@@ -64,6 +64,8 @@ namespace Beatmapping.Timing
 
         public TickInfo CurrentTickInfo { get; private set; }
 
+        public event Action<EventInstance> OnBeatmapSoundtrackInstanceCreated;
+
         public event Action<TickInfo> OnTick;
 
         private BeatmapConfigSo _currentBeatmap;
@@ -235,7 +237,7 @@ namespace Beatmapping.Timing
 
             _currentBeatmap = beatmap;
 
-            // Testing util to start from the timeline playhead
+            // Testing util to start from the editor timeline playhead
             double startTime = BeatmappingUtilities.StartFromTimelinePlayhead
                 ? BeatmappingUtilities.TimelinePlayheadTime
                 : 0;
@@ -262,9 +264,13 @@ namespace Beatmapping.Timing
             soundtrack.setTimelinePosition((int)(startTime * 1000));
 
             soundtrack.start();
+
+            // release the instance when it ends
             soundtrack.release();
 
             _beatmapSoundtrackInstance = soundtrack;
+
+            OnBeatmapSoundtrackInstanceCreated?.Invoke(soundtrack);
         }
 
         private double GetCurrentDspTime()
