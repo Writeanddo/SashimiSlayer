@@ -6,7 +6,7 @@ namespace Events
     public abstract class SOEvent : ScriptableObject
     {
         [SerializeField]
-        [TextArea]
+        [TextArea(3, 10)]
         private string _description;
 
         protected Action _internalVoidEvent;

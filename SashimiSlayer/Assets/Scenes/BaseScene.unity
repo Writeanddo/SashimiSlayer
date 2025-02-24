@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 28433223}
   - component: {fileID: 28433222}
+  - component: {fileID: 28433224}
   m_Layer: 0
   m_Name: TimingService
   m_TagString: Untagged
@@ -174,6 +175,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &28433224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28433221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079a144310f6ff046875115cff76b164, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _beatmapTimeManager: {fileID: 28433222}
+  _setBeatNoteSpawningEnabledEvent: {fileID: 11400000, guid: cf723e3ec26681646873098fad8d1137,
+    type: 2}
+  _noteInteractionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
+    type: 2}
 --- !u!1 &160300754
 GameObject:
   m_ObjectHideFlags: 0
@@ -4590,7 +4608,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baudRate: 9600
-  _logPackets: 1
   _onDrawDebugGUI: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
   _serialPortConnectionStatus: {fileID: 11400000, guid: c2d14197b2d74754ab3a6c9273a93780,
     type: 2}

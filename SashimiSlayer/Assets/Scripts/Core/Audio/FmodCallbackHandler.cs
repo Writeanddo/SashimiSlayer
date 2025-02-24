@@ -7,6 +7,9 @@ using Debug = UnityEngine.Debug;
 
 namespace Core.Audio
 {
+    /// <summary>
+    ///     Callback handler for FMOD to set up the FMOD system with the correct settings.
+    /// </summary>
     [CreateAssetMenu(menuName = "FMOD Callback Handler")]
     public class FmodCallbackHandler : PlatformCallbackHandler
     {

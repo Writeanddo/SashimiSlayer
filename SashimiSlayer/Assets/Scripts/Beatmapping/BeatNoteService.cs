@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Timing;
+using Events;
 using Events.Core;
 using UnityEditor;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Beatmapping
 {
     public class BeatNoteService : MonoBehaviour
     {
-        [Header("Events")]
+        [Header("Events (In)")]
 
         [SerializeField]
         private ProtagSwordStateEvent _onBlockByProtag;
@@ -18,12 +19,18 @@ namespace Beatmapping
         [SerializeField]
         private ProtagSwordStateEvent _onSliceByProtag;
 
+        [SerializeField]
+        private BoolEvent _setSpawnEnabledEvent;
+
         private readonly List<BeatNote> _activeBeatNotes = new();
+
+        private bool _spawningEnabled;
 
         private void Awake()
         {
             _onBlockByProtag.AddListener(OnBlockByProtag);
             _onSliceByProtag.AddListener(OnSliceByProtag);
+            _setSpawnEnabledEvent.AddListener(SetSpawningEnabled);
         }
 
         private void OnEnable()
@@ -46,17 +53,19 @@ namespace Beatmapping
         {
             _onBlockByProtag.RemoveListener(OnBlockByProtag);
             _onSliceByProtag.RemoveListener(OnSliceByProtag);
+            _setSpawnEnabledEvent.RemoveListener(SetSpawningEnabled);
         }
 
         private void OnValidate()
         {
 #if UNITY_EDITOR
-            // Destroy children, in case timeline failed to clean up
+            // Destroy children
+            // Hack fix for an issue where timeline sometimes fails to clean up instantiated notes during editing
             if (!Application.isPlaying)
             {
                 EditorApplication.delayCall += () =>
                 {
-                    BeatNote[] notes = GetComponentsInChildren<BeatNote>();
+                    BeatNote[] notes = FindObjectsByType<BeatNote>(FindObjectsSortMode.None);
                     foreach (BeatNote note in notes)
                     {
                         DestroyImmediate(note.gameObject);
@@ -69,6 +78,11 @@ namespace Beatmapping
                 };
             }
 #endif
+        }
+
+        private void SetSpawningEnabled(bool spawningEnabled)
+        {
+            _spawningEnabled = spawningEnabled;
         }
 
         private void TimeManager_OnTick(BeatmapTimeManager.TickInfo tickInfo)
@@ -98,6 +112,11 @@ namespace Beatmapping
             BeatmapConfigSo beatmap,
             double initalizeTime)
         {
+            if (!_spawningEnabled)
+            {
+                return null;
+            }
+
             TimingWindowSO timingWindowSo = beatmap.TimingWindowSO;
 
             double noteStartTime = data.NoteStartTime;
