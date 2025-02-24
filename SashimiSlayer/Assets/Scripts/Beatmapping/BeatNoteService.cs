@@ -5,6 +5,7 @@ using Beatmapping.Timing;
 using Events;
 using Events.Core;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Beatmapping
@@ -73,7 +74,9 @@ namespace Beatmapping
 
                     if (notes.Length > 0)
                     {
-                        EditorUtility.SetDirty(gameObject);
+                        // Mark scene dirty to force save
+                        EditorSceneManager.MarkSceneDirty(gameObject.scene);
+                        EditorSceneManager.SaveOpenScenes();
                     }
                 };
             }
