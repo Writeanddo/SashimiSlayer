@@ -80,7 +80,6 @@ namespace Beatmapping.Timing
         private void UpdateSpawningEnabled()
         {
             bool spawningEnabled = _currentSuccessfulStreak >= _successfulStreakRequiredToUnlockLoopRegion;
-            Debug.Log(spawningEnabled);
             _setBeatNoteSpawningEnabledEvent.Raise(spawningEnabled);
         }
 
