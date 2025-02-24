@@ -15,10 +15,10 @@ namespace Timeline.Samples
         public Color color = Color.white;
 
         [Tooltip("The size of the font to use")]
-        public int fontSize = 14;
+        public float fontSize = 14;
 
         [Tooltip("The text to display")]
-        [TextArea]
+        [TextArea(3, 10)]
         public string text = "";
     }
 }

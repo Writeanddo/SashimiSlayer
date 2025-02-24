@@ -17,21 +17,6 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: EEE
---- !u!114 &-9185749747084666272
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
-  m_Name: SpritePlayableAsset(Clone)
-  m_EditorClassIdentifier: 
-  template:
-    color: {r: 1, g: 1, b: 1, a: 1}
-    sprite: {fileID: 21300000, guid: 3d316bf3841364b4a8a46e22512e0c15, type: 3}
 --- !u!114 &-9154038518674239263
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -722,7 +707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: Make sure to tap it ON THE BEAT!
 --- !u!114 &-8274668627040563170
 MonoBehaviour:
@@ -805,6 +790,21 @@ MonoBehaviour:
           Positions:
           - {x: 6.516875, y: 2.6449375}
           - {x: -4.7798786, y: -0.8392911}
+--- !u!114 &-7871028062452793031
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
+  m_Name: SpritePlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 1, g: 1, b: 1, a: 1}
+    sprite: {fileID: -501380116, guid: 57473820b4ce4a7449d759a564b6bc15, type: 3}
 --- !u!114 &-7810093664877886947
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1517,6 +1517,18 @@ MonoBehaviour:
     m_DisplayName: AngryTutFish
   m_Markers:
     m_Objects: []
+--- !u!114 &-7601462349319879048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde0d25a170598d46a0b9dc16b4527a5, type: 3}
+  m_Name: ActivationPlayableAsset(Clone)(Clone)
+  m_EditorClassIdentifier: 
 --- !u!114 &-7529975730450443829
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1627,21 +1639,6 @@ MonoBehaviour:
       NoteEndTime: 0
       NoteBeatCount: 0
       Interactions: []
---- !u!114 &-7130786777256410516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
-  m_Name: SpritePlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  template:
-    color: {r: 1, g: 1, b: 1, a: 1}
-    sprite: {fileID: 21300000, guid: 237337ab4765b5944ab4fcc6ef819cd7, type: 3}
 --- !u!114 &-6948035949794287735
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1677,7 +1674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: Now let's try <color=#fccf03>PARRYING</color>!
 --- !u!114 &-6695465242239634703
 MonoBehaviour:
@@ -1722,10 +1719,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 0.20008401572704315
     m_ClipIn: 0
     m_Asset: {fileID: -3156594010454479955}
-    m_Duration: 3.025
+    m_Duration: 2.8249159842729568
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6530153297842992967}
     m_EaseInDuration: 0
@@ -2014,10 +2011,8 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'Remember to <color=#db3b3b>RETURN</color> the sword to the
-
-      <color=#db3b3b>SCABBARD</color>
-      when the slice is <color=#db3b3b>DONE</color>!'
+    m_DisplayName: Remember to <color=#db3b3b>RETURN</color> the sword to the <color=#db3b3b>SCABBARD</color>
+      when the slice is <color=#db3b3b>DONE</color>!
   - m_Version: 1
     m_Start: 29.98
     m_ClipIn: 0
@@ -2125,10 +2120,10 @@ MonoBehaviour:
 
       will attack together!'
   - m_Version: 1
-    m_Start: 105.98
+    m_Start: 106.14637420654297
     m_ClipIn: 0
     m_Asset: {fileID: 1348314074683732154}
-    m_Duration: 4.045000000000002
+    m_Duration: 3.878625793457033
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6530153297842992967}
     m_EaseInDuration: 0
@@ -2192,7 +2187,7 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: "Listen to the <color=#db3b3b>BEAT</color>, \nthen <color=#db3b3b>PULL</color>
-      the sword out to <color=#db3b3b>SLICE</color>!\n\n"
+      the sword out to <color=#db3b3b>SLICE</color>!\n"
   - m_Version: 1
     m_Start: 38.405
     m_ClipIn: 0
@@ -2458,6 +2453,111 @@ MonoBehaviour:
     m_Objects: []
   template:
     volume: 1
+--- !u!114 &-5514918871920249659
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bf7f712d84d26478ebe6a299f21738, type: 3}
+  m_Name: Activation Track (1)
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: -7601462349319879048}
+    m_Duration: 22
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -5514918871920249659}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Active
+  m_Markers:
+    m_Objects: []
+  m_PostPlaybackState: 3
+--- !u!114 &-5295893012419878833
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde0d25a170598d46a0b9dc16b4527a5, type: 3}
+  m_Name: ActivationPlayableAsset(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
 --- !u!114 &-5061952078371075300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2472,7 +2572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: Top!
 --- !u!114 &-4932010516035593875
 MonoBehaviour:
@@ -2563,6 +2663,18 @@ MonoBehaviour:
           Positions:
           - {x: 6.516875, y: 2.6449375}
           - {x: -4.7798786, y: -0.8392911}
+--- !u!114 &-4634883101059139114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde0d25a170598d46a0b9dc16b4527a5, type: 3}
+  m_Name: ActivationPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
 --- !u!114 &-4570267411883170350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2578,83 +2690,17 @@ MonoBehaviour:
   m_Version: 3
   m_AnimClip: {fileID: 0}
   m_Locked: 0
-  m_Muted: 1
+  m_Muted: 0
   m_CustomPlayableFullTypename: 
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 38.375
-    m_ClipIn: 0
-    m_Asset: {fileID: 5453071219871070160}
-    m_Duration: 11.979999666666668
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -4570267411883170350}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: uparrow
-  - m_Version: 1
-    m_Start: 52.980000000000004
-    m_ClipIn: 0
-    m_Asset: {fileID: 326455084937333391}
-    m_Duration: 8
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -4570267411883170350}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: Circle
-  - m_Version: 1
-    m_Start: 4.0000003333333325
+    m_Start: 0.019915644327799242
     m_ClipIn: 0
     m_Asset: {fileID: 1851534653032527962}
-    m_Duration: 32.979999666666664
+    m_Duration: 11.9800843556722
     m_TimeScale: 1
     m_ParentTrack: {fileID: -4570267411883170350}
     m_EaseInDuration: 0
@@ -2682,7 +2728,172 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: spark
+    m_DisplayName: SwordClosed
+  - m_Version: 1
+    m_Start: 12
+    m_ClipIn: 0
+    m_Asset: {fileID: -7871028062452793031}
+    m_Duration: 1.9999159776611322
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -4570267411883170350}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: SwordOpen
+  - m_Version: 1
+    m_Start: 14
+    m_ClipIn: 0
+    m_Asset: {fileID: 3019556567154290596}
+    m_Duration: 1.9999947738647457
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -4570267411883170350}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: SwordClosed
+  - m_Version: 1
+    m_Start: 16
+    m_ClipIn: 0
+    m_Asset: {fileID: 150376950955139614}
+    m_Duration: 2.0000052261352543
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -4570267411883170350}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: 0.000005226135254332576
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: SwordOpen
+  - m_Version: 1
+    m_Start: 20.000084022338868
+    m_ClipIn: 0
+    m_Asset: {fileID: -3515256099790288067}
+    m_Duration: 1.9999159776611322
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -4570267411883170350}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0.019915977661131734
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: SwordOpen
+  - m_Version: 1
+    m_Start: 18
+    m_ClipIn: 0
+    m_Asset: {fileID: 1371462245037197855}
+    m_Duration: 2.0199999999999996
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -4570267411883170350}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0.000005226135254332576
+    m_BlendOutDuration: 0.019915977661131734
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: SwordClosed
   m_Markers:
     m_Objects: []
 --- !u!114 &-4482393949996126886
@@ -3950,11 +4161,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: 'Some creatures will <color=#fccf03>ATTACK</color> you first,
 
       then
       turn <color=#db3b3b>VULNERABLE</color> after!'
+--- !u!114 &-3515256099790288067
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
+  m_Name: SpritePlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 1, g: 1, b: 1, a: 1}
+    sprite: {fileID: -501380116, guid: 57473820b4ce4a7449d759a564b6bc15, type: 3}
 --- !u!114 &-3422261592518303231
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3969,9 +4195,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: "Listen to the <color=#db3b3b>BEAT</color>, \nthen <color=#db3b3b>PULL</color>
-      the sword out to <color=#db3b3b>SLICE</color>!\n\n"
+      the sword out to <color=#db3b3b>SLICE</color>!\n"
 --- !u!114 &-3170220544442205024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4016,7 +4242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: 'Let''s start with <color=#db3b3b>SLICING</color>!
 
       Is your sword
@@ -4120,98 +4346,6 @@ MonoBehaviour:
           Positions:
           - {x: 5.7828336, y: 1.757971}
           - {x: -4.7798786, y: -0.8392911}
---- !u!114 &-2735045481876680768
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678f3c37f344431eafc88657e888c4c8, type: 3}
-  m_Name: Sprite Track (3)
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 1
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 21.98
-    m_ClipIn: 0
-    m_Asset: {fileID: -7130786777256410516}
-    m_Duration: 14.999999999999993
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -2735045481876680768}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: xbox_stick_r_up
-  m_Markers:
-    m_Objects: []
 --- !u!114 &-2733709977444201013
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4341,7 +4475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: Middle!
 --- !u!114 &-2483172139029492391
 MonoBehaviour:
@@ -4357,10 +4491,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: 'Pay attention to the <color=#fccf03>PARRY SYMBOLS</color>!
 
 '
+--- !u!114 &-2427149836673416957
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde0d25a170598d46a0b9dc16b4527a5, type: 3}
+  m_Name: ActivationPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
 --- !u!114 &-2312942630638775313
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4375,7 +4521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: 'And sometimes different creatures
 
       will attack together!'
@@ -4882,146 +5028,6 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
     text: Middle!
---- !u!114 &-1649321787190573901
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678f3c37f344431eafc88657e888c4c8, type: 3}
-  m_Name: Sprite Track
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 1
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 38.405
-    m_ClipIn: 0
-    m_Asset: {fileID: 9200778565876298408}
-    m_Duration: 11.979999666666668
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -1649321787190573901}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: keyboard_arrows_up
-  - m_Version: 1
-    m_Start: 52.980000000000004
-    m_ClipIn: 0
-    m_Asset: {fileID: 6409219612413131749}
-    m_Duration: 8
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -1649321787190573901}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: keyboard_arrows_right
-  - m_Version: 1
-    m_Start: 4.008333666666658
-    m_ClipIn: 0
-    m_Asset: {fileID: -784610141679136459}
-    m_Duration: 32.97166633333333
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -1649321787190573901}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: mouse_left
-  m_Markers:
-    m_Objects: []
 --- !u!114 &-1545550274744602000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5057,11 +5063,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
-    text: 'Remember to <color=#db3b3b>RETURN</color> the sword to the
-
-      <color=#db3b3b>SCABBARD</color>
-      when the slice is <color=#db3b3b>DONE</color>!'
+    fontSize: 6
+    text: Remember to <color=#db3b3b>RETURN</color> the sword to the <color=#db3b3b>SCABBARD</color>
+      when the slice is <color=#db3b3b>DONE</color>!
 --- !u!114 &-1123799448097150218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5210,21 +5214,6 @@ MonoBehaviour:
       NoteEndTime: 0
       NoteBeatCount: 0
       Interactions: []
---- !u!114 &-784610141679136459
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
-  m_Name: SpritePlayableAsset(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  template:
-    color: {r: 1, g: 1, b: 1, a: 1}
-    sprite: {fileID: 21300000, guid: ece89100b18ae9443a6298da46cffd53, type: 3}
 --- !u!114 &-660752812122146628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5875,10 +5864,9 @@ MonoBehaviour:
   - {fileID: 6435859260828590340}
   - {fileID: -3978938911499228915}
   - {fileID: -6530153297842992967}
-  - {fileID: -1649321787190573901}
-  - {fileID: 333289140108319668}
-  - {fileID: -2735045481876680768}
   - {fileID: -4570267411883170350}
+  - {fileID: 7765372441183876958}
+  - {fileID: -5514918871920249659}
   - {fileID: -2058236091415997829}
   m_FixedDuration: 0
   m_EditorSettings:
@@ -5916,6 +5904,21 @@ MonoBehaviour:
           Positions:
           - {x: 5.7828336, y: 1.757971}
           - {x: -4.5519915, y: -0.7633287}
+--- !u!114 &150376950955139614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
+  m_Name: SpritePlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 1, g: 1, b: 1, a: 1}
+    sprite: {fileID: -501380116, guid: 57473820b4ce4a7449d759a564b6bc15, type: 3}
 --- !u!114 &184228052241038804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5992,144 +5995,6 @@ MonoBehaviour:
           Flags: 0
           Positions:
           - {x: -0.09517455, y: 0.58947825}
---- !u!114 &326455084937333391
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
-  m_Name: SpritePlayableAsset(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  template:
-    color: {r: 1, g: 0.8763678, b: 0.19215685, a: 1}
-    sprite: {fileID: -2413806693520163455, guid: f5230fca300efdc43b02190f99794fe5,
-      type: 3}
---- !u!114 &333289140108319668
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678f3c37f344431eafc88657e888c4c8, type: 3}
-  m_Name: Sprite Track (1)
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 1
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 38.405
-    m_ClipIn: 0
-    m_Asset: {fileID: -9185749747084666272}
-    m_Duration: 11.979999666666668
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 333289140108319668}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: xbox_dpad_up
-  - m_Version: 1
-    m_Start: 52.980000000000004
-    m_ClipIn: 0
-    m_Asset: {fileID: 6504808530526546947}
-    m_Duration: 8
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 333289140108319668}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: xbox_dpad_right
-  - m_Version: 1
-    m_Start: 4.0000003333333325
-    m_ClipIn: 0
-    m_Asset: {fileID: 3059920026468890087}
-    m_Duration: 32.97999966666667
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 333289140108319668}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: xbox_rb
-  m_Markers:
-    m_Objects: []
 --- !u!114 &548137353213006393
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6400,7 +6265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: 'Play this level again
 
       if you need some more practice!'
@@ -6434,6 +6299,21 @@ MonoBehaviour:
           Positions:
           - {x: 6.516875, y: 2.6449375}
           - {x: -4.7798786, y: -0.8392911}
+--- !u!114 &1371462245037197855
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
+  m_Name: SpritePlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  template:
+    color: {r: 1, g: 1, b: 1, a: 1}
+    sprite: {fileID: 573210420, guid: 57473820b4ce4a7449d759a564b6bc15, type: 3}
 --- !u!114 &1448729550972709652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7408,8 +7288,8 @@ MonoBehaviour:
   m_Name: SpritePlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
   template:
-    color: {r: 1, g: 0, b: 0, a: 1}
-    sprite: {fileID: 21300000, guid: 887872f7bb17ebd43aac732ba7f6362e, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    sprite: {fileID: 573210420, guid: 57473820b4ce4a7449d759a564b6bc15, type: 3}
 --- !u!114 &1958650794495433812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7809,7 +7689,7 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
     text: Let's start with <color=#fccf03>PARRYING</color>!
---- !u!114 &3059920026468890087
+--- !u!114 &3019556567154290596
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7819,11 +7699,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
-  m_Name: SpritePlayableAsset(Clone)(Clone)(Clone)(Clone)
+  m_Name: SpritePlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
   template:
     color: {r: 1, g: 1, b: 1, a: 1}
-    sprite: {fileID: 21300000, guid: 01174855cb3720b4ebb0c9cd76222adb, type: 3}
+    sprite: {fileID: 573210420, guid: 57473820b4ce4a7449d759a564b6bc15, type: 3}
 --- !u!114 &3241029985881354545
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8176,6 +8056,18 @@ MonoBehaviour:
           Flags: 0
           Positions:
           - {x: -1.3556087, y: 0.20960307}
+--- !u!114 &3577831271815540342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde0d25a170598d46a0b9dc16b4527a5, type: 3}
+  m_Name: ActivationPlayableAsset
+  m_EditorClassIdentifier: 
 --- !u!114 &3688818801659884798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8351,7 +8243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: '<color=#fccf03>TAP</color> the matching <color=#fccf03>PARRY SYMBOL</color>
 
       on
@@ -8713,7 +8605,7 @@ MonoBehaviour:
           Positions:
           - {x: 6.516875, y: 2.0944066}
           - {x: -4.7798786, y: -0.8392911}
---- !u!114 &5453071219871070160
+--- !u!114 &5528408508562251613
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8722,12 +8614,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
-  m_Name: SpritePlayableAsset(Clone)(Clone)
+  m_Script: {fileID: 11500000, guid: fde0d25a170598d46a0b9dc16b4527a5, type: 3}
+  m_Name: ActivationPlayableAsset(Clone)(Clone)
   m_EditorClassIdentifier: 
-  template:
-    color: {r: 0.9847427, g: 1, b: 0.2117647, a: 1}
-    sprite: {fileID: 21300000, guid: c1cca6658a44c1242bbce41fb08ee3c1, type: 3}
 --- !u!114 &5705176671989093271
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8838,6 +8727,18 @@ MonoBehaviour:
           Positions:
           - {x: 6.516875, y: 2.6449375}
           - {x: -4.7798786, y: -0.8392911}
+--- !u!114 &6020818502040477145
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde0d25a170598d46a0b9dc16b4527a5, type: 3}
+  m_Name: ActivationPlayableAsset(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
 --- !u!114 &6031040555285797158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8876,21 +8777,6 @@ MonoBehaviour:
           Flags: 0
           Positions:
           - {x: -0.09517455, y: 0.58947825}
---- !u!114 &6409219612413131749
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
-  m_Name: SpritePlayableAsset(Clone)
-  m_EditorClassIdentifier: 
-  template:
-    color: {r: 1, g: 1, b: 1, a: 1}
-    sprite: {fileID: 21300000, guid: 8e9e960abc75d0a498815cf361e0942b, type: 3}
 --- !u!114 &6435859260828590340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9811,21 +9697,6 @@ MonoBehaviour:
     m_DisplayName: AngryTutFish
   m_Markers:
     m_Objects: []
---- !u!114 &6504808530526546947
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
-  m_Name: SpritePlayableAsset(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  template:
-    color: {r: 1, g: 1, b: 1, a: 1}
-    sprite: {fileID: 21300000, guid: 97c860cd9fd502c45b02759f1a4d882d, type: 3}
 --- !u!114 &6640569924543703568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10143,7 +10014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: 'Let''s slice multiple fish at once!
 
 '
@@ -10177,7 +10048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 43
+    fontSize: 6
     text: 'First, <color=#db3b3b>TILT</color> the sword to <color=#db3b3b>AIM</color>!
 
 '
@@ -10204,6 +10075,444 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects: []
+--- !u!114 &7765372441183876958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bf7f712d84d26478ebe6a299f21738, type: 3}
+  m_Name: Activation Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0
+    m_ClipIn: 0
+    m_Asset: {fileID: 3577831271815540342}
+    m_Duration: 22
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7765372441183876958}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Active
+  - m_Version: 1
+    m_Start: 29.98
+    m_ClipIn: 0
+    m_Asset: {fileID: 5528408508562251613}
+    m_Duration: 7.0000000000000036
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7765372441183876958}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Active
+  - m_Version: 1
+    m_Start: 38.375
+    m_ClipIn: 0
+    m_Asset: {fileID: -5295893012419878833}
+    m_Duration: 22.605000000000004
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7765372441183876958}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Active
+  - m_Version: 1
+    m_Start: 62.480000000000004
+    m_ClipIn: 0
+    m_Asset: {fileID: -4634883101059139114}
+    m_Duration: 17.5
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7765372441183876958}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Active
+  - m_Version: 1
+    m_Start: 87.98
+    m_ClipIn: 0
+    m_Asset: {fileID: -2427149836673416957}
+    m_Duration: 8
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7765372441183876958}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Active
+  - m_Version: 1
+    m_Start: 106.14637420654297
+    m_ClipIn: 0
+    m_Asset: {fileID: 6020818502040477145}
+    m_Duration: 3.878625793457033
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 7765372441183876958}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: Active
+  m_Markers:
+    m_Objects: []
+  m_PostPlaybackState: 3
 --- !u!114 &7855175669344345868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10890,18 +11199,3 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 1}
     fontSize: 36
     text: Now for <color=#db3b3b>SLICING</color> them up!
---- !u!114 &9200778565876298408
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957eea265cfd44f8b8bdf986f81b990c, type: 3}
-  m_Name: SpritePlayableAsset
-  m_EditorClassIdentifier: 
-  template:
-    color: {r: 1, g: 1, b: 1, a: 1}
-    sprite: {fileID: 21300000, guid: e313080c69475c6458ae1a931e158bd2, type: 3}
