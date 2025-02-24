@@ -998,6 +998,7 @@ MonoBehaviour:
   _loadBeatmapEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251, type: 2}
   _playerDeathEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
   _onDrawGuiEvent: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
+  _beatmapScoreEvent: {fileID: 11400000, guid: f426bc2ce53676d4392a01713575b5a6, type: 2}
   _scoreConfig: {fileID: 11400000, guid: 7dd788db8fe8866488d73d8cf5ec42a2, type: 2}
 --- !u!4 &432079949
 Transform:

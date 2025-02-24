@@ -73,8 +73,8 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             );
 
             _sprite.transform.rotation = Quaternion.Euler(0, 0, -90 * (1 - t));
+
             _sprite.color = new Color(1, 1, 1, 1f);
-            _sprite.enabled = true;
         }
 
         private void BeatNote_SlicedByProtag(int interactionIndex,
@@ -106,12 +106,19 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             _beatNote.OnTick += BeatNote_OnTick;
             _beatNote.OnSlicedByProtag += BeatNote_SlicedByProtag;
+            _beatNote.OnNoteEnd += HandleNoteEnd;
         }
 
         public override void OnNoteCleanedUp(BeatNote beatNote)
         {
             _beatNote.OnTick -= BeatNote_OnTick;
             _beatNote.OnSlicedByProtag -= BeatNote_SlicedByProtag;
+            _beatNote.OnNoteEnd -= HandleNoteEnd;
+        }
+
+        private void HandleNoteEnd(BeatNote.NoteTickInfo tickInfo)
+        {
+            _sprite.enabled = true;
         }
     }
 }
