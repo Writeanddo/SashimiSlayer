@@ -59,8 +59,9 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
             Vector3 newStartPos = LabeledPositionHandle(startPos, Color.green, radius, "Start Pos");
             if (startPos != newStartPos)
             {
+                Undo.RecordObject(noteClip, "Edited Timeline Note Clip Position");
                 noteData.NoteData.StartPosition = newStartPos;
-                OnPositionHandleChange(noteClip);
+                OnPositionHandleChange();
             }
 
             Vector2 lineStart = newStartPos;
@@ -80,9 +81,10 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
                         LabeledPositionHandle(pos, c, radius, $"{interactionData.InteractionType}_{i}-{j}");
                     if (pos != newPos)
                     {
+                        Undo.RecordObject(noteClip, "Edited Timeline Note Clip Position");
                         interactionData.Positions[j] = newPos;
                         sequencedInteraction.InteractionData = interactionData;
-                        OnPositionHandleChange(noteClip);
+                        OnPositionHandleChange();
                     }
 
                     Handles.DrawLine(lineStart, newPos);
@@ -95,16 +97,16 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
             Vector3 newEndPos = LabeledPositionHandle(endPos, Color.red, radius, "End Pos");
             if (endPos != newEndPos)
             {
+                Undo.RecordObject(noteClip, "Edited Timeline Note Clip Position");
                 noteData.NoteData.EndPosition = newEndPos;
-                OnPositionHandleChange(noteClip);
+                OnPositionHandleChange();
             }
 
             Handles.DrawLine(lineStart, newEndPos);
         }
 
-        private void OnPositionHandleChange(BeatNoteClip noteClip)
+        private void OnPositionHandleChange()
         {
-            Undo.RecordObject(noteClip, "Edited Timeline Note Clip Position");
             if (SashimiSlayerUtilWindow.AutoRefreshTimeline)
             {
                 TimelineEditor.Refresh(RefreshReason.ContentsModified);
