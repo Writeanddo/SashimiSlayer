@@ -74,7 +74,10 @@ namespace Beatmapping.Timing
                 _currentSuccessfulStreak = 0;
             }
 
-            UpdateSpawningEnabled();
+            // After each interaction unlock the note spawning
+            // This shouldn't ever come into play if the loop guard markers are set up correctly in FMOD
+            // So it's more of a "just in case" someone misplaces a marker...
+            _setBeatNoteSpawningEnabledEvent.Raise(true);
         }
 
         private void UpdateSpawningEnabled()

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Duration>k__BackingField: 0.12
   <Velocity>k__BackingField: {x: -0.75, y: -0.25, z: 0}
-  <Magnitude>k__BackingField: 0.8
+  <Magnitude>k__BackingField: 0.85
   <Shapes>k__BackingField: 2

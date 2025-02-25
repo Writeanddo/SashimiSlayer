@@ -22,6 +22,8 @@ namespace UI
         [SerializeField]
         private int _vibratoStrength;
 
+        private int currentScore = -1;
+
         private void OnEnable()
         {
             _beatmapScoreEvent.AddListener(OnBeatmapScore);
@@ -34,8 +36,13 @@ namespace UI
 
         private void OnBeatmapScore(ScoringService.BeatmapScore score)
         {
-            _scoreText.transform.DOShakePosition(_shakeDuration, _shakeStrength, _vibratoStrength);
-            _scoreText.text = score.FinalScore.ToString();
+            if (currentScore != score.FinalScore)
+            {
+                var newString = score.FinalScore.ToString();
+                currentScore = score.FinalScore;
+                _scoreText.text = newString;
+                _scoreText.transform.DOShakePosition(_shakeDuration, _shakeStrength, _vibratoStrength);
+            }
         }
     }
 }
