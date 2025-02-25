@@ -131,7 +131,7 @@ namespace Core.Protag
             _beatmapLoadedEvent.AddListener(HandleBeatmapLoaded);
             _onDrawDebugGuiEvent.AddListener(HandleDrawDebugGUI);
             _protagSetSwordPivot.AddListener(SetSwordPosition);
-            _sliceResultEvent.AddListener(SuccessfulSlice);
+            _sliceResultEvent.AddListener(HandleSliceResult);
         }
 
         private void Update()
@@ -147,7 +147,7 @@ namespace Core.Protag
             _beatmapLoadedEvent.RemoveListener(HandleBeatmapLoaded);
             _onDrawDebugGuiEvent.RemoveListener(HandleDrawDebugGUI);
             _protagSetSwordPivot.RemoveListener(SetSwordPosition);
-            _sliceResultEvent.RemoveListener(SuccessfulSlice);
+            _sliceResultEvent.RemoveListener(HandleSliceResult);
         }
 
         private void HandleDrawDebugGUI()
@@ -242,10 +242,13 @@ namespace Core.Protag
             ScreenShakeService.Instance.ShakeScreen(_blockScreenShake);
         }
 
-        private void SuccessfulSlice(SliceResultData data)
+        private void HandleSliceResult(SliceResultData data)
         {
-            _successfulSliceEvent.Raise(_currentSwordState);
-            ScreenShakeService.Instance.ShakeScreen(_sliceScreenShake);
+            if (data.SliceCount > 0)
+            {
+                _successfulSliceEvent.Raise(_currentSwordState);
+                ScreenShakeService.Instance.ShakeScreen(_sliceScreenShake);
+            }
         }
 
         public void SetSlashPosition(Vector3 position)
