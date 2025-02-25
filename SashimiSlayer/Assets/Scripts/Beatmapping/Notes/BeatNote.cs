@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Base;
 using Beatmapping.Tooling;
 using Events.Core;
 using Sirenix.OdinInspector;
@@ -13,7 +14,7 @@ namespace Beatmapping.Notes
     ///     Represents a single sequenced note with some interactions.
     ///     Supports scrubbing (arbitrary tick timing)
     /// </summary>
-    public partial class BeatNote : MonoBehaviour, IInteractionUser
+    public partial class BeatNote : DescMono, IInteractionUser
     {
         public delegate void TickEventHandler(
             NoteTickInfo tickInfo);
@@ -39,6 +40,9 @@ namespace Beatmapping.Notes
 
         [SerializeField]
         private NoteInteractionFinalResultEvent _noteInteractionFinalResultEvent;
+
+        [SerializeField]
+        private ObjectSlicedEvent _objectSlicedEvent;
 
         [FormerlySerializedAs("_beatNoteListeners")]
         [SerializeField]

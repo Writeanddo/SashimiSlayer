@@ -4961,6 +4961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a1ec11407ba90448399ceae5b4f547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _devDesc: 
   _healthChangeEvent: {fileID: 11400000, guid: 437b3037f01661c4d926b43c63f3ae04, type: 2}
   _maxHealthChangeEvent: {fileID: 11400000, guid: 63656528a7d3cdb46b99ed6431fe445c,
     type: 2}
@@ -4987,6 +4988,7 @@ MonoBehaviour:
     type: 2}
   _protagSetSwordPivot: {fileID: 11400000, guid: 55a449ae478ed574c96efac265420098,
     type: 2}
+  _sliceResultEvent: {fileID: 11400000, guid: baaa71eb46fd87c48b8f565532be9613, type: 2}
   _damageScreenShake: {fileID: 11400000, guid: fad18fb22ba344d4880ce634ffcbb160, type: 2}
   _blockScreenShake: {fileID: 11400000, guid: a41083569f483974fb6416b3b5f0c335, type: 2}
   _sliceScreenShake: {fileID: 11400000, guid: f9a0a07aa2568c242adf19f428d9cff0, type: 2}

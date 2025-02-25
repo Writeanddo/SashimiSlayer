@@ -1,3 +1,4 @@
+using Core.Protag;
 using Cysharp.Threading.Tasks;
 using Events.Core;
 using UnityEngine;
