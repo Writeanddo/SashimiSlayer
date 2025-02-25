@@ -1,9 +1,9 @@
 using System;
-using UnityEngine;
+using Base;
 
 namespace Beatmapping.Notes
 {
-    public partial class BeatNote : MonoBehaviour
+    public partial class BeatNote : DescMono
     {
         public enum TimeSegmentType
         {

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a5fe83c4dd451c999d985ee0e7db5d, type: 3}
-  m_Name: ProtagSheathe
+  m_Script: {fileID: 11500000, guid: 8bcf6a004c7396e4081ef1920b31dd87, type: 3}
+  m_Name: ObjectSlicedEvent
   m_EditorClassIdentifier: 
-  _description: Event emitted when the protag sheathes the sword
+  _description: Raised by objects when they get sliced
   _debug: 0

@@ -1,9 +1,10 @@
+using Base;
 using Beatmapping.Timing;
-using UnityEngine;
+using Core.Protag;
 
 namespace Beatmapping.Notes
 {
-    public partial class BeatNote : MonoBehaviour
+    public partial class BeatNote : DescMono
     {
         /// <summary>
         ///     Update timing and invoke tick events

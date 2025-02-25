@@ -292,6 +292,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6369628246587916224, guid: c44823f301eaa194cb12440f2090bddf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50.19995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369628246587916224, guid: c44823f301eaa194cb12440f2090bddf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -44.30005
+      objectReference: {fileID: 0}
     - target: {fileID: 6574523326306052234, guid: c44823f301eaa194cb12440f2090bddf,
         type: 3}
       propertyPath: m_Pivot.x
@@ -564,7 +574,7 @@ PrefabInstance:
     - target: {fileID: 2569690749598590937, guid: 10fbe4dea8aa3bf42ad3cec8c0155f9c,
         type: 3}
       propertyPath: m_Name
-      value: ProtagPos
+      value: Protag
       objectReference: {fileID: 0}
     - target: {fileID: 2679603138449089403, guid: 10fbe4dea8aa3bf42ad3cec8c0155f9c,
         type: 3}

@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Timing;
+using Core.Protag;
 using Events;
 using Events.Core;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Beatmapping
 {
@@ -22,6 +24,12 @@ namespace Beatmapping
 
         [SerializeField]
         private BoolEvent _setSpawnEnabledEvent;
+
+        [FormerlySerializedAs("_noteSliceResultEvent")]
+        [Header("Events (Out)")]
+
+        [SerializeField]
+        private SliceResultEvent sliceResultEvent;
 
         private readonly List<BeatNote> _activeBeatNotes = new();
 
@@ -104,10 +112,20 @@ namespace Beatmapping
 
         private void OnSliceByProtag(Protaganist.ProtagSwordState swordState)
         {
+            var sliceCount = 0;
             foreach (BeatNote note in _activeBeatNotes)
             {
-                note.AttemptPlayerSlice(swordState);
+                bool result = note.AttemptPlayerSlice(swordState);
+                if (result)
+                {
+                    sliceCount++;
+                }
             }
+
+            sliceResultEvent.Raise(new SliceResultData
+            {
+                SliceCount = sliceCount
+            });
         }
 
         public BeatNote SpawnNote(BeatNoteTypeSO hitConfig,
