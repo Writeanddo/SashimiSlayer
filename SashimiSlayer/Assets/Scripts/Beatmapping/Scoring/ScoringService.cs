@@ -32,7 +32,7 @@ namespace Beatmapping.Scoring
             }
         }
 
-        [Header("Listening Events")]
+        [Header("Events (In)")]
 
         [SerializeField]
         private NoteInteractionFinalResultEvent _interactionFinalResultEvent;
@@ -45,6 +45,11 @@ namespace Beatmapping.Scoring
 
         [SerializeField]
         private VoidEvent _onDrawGuiEvent;
+
+        [Header("Events (Out)")]
+
+        [SerializeField]
+        private BeatmapScoreEvent _beatmapScoreEvent;
 
         [Header("Depends")]
 
@@ -116,6 +121,8 @@ namespace Beatmapping.Scoring
                     _currentScore.FinalScore += _scoreConfig.PointsForLate;
                 }
             }
+
+            _beatmapScoreEvent.Raise(_currentScore);
         }
 
         private void HandlePlayerDeath()
@@ -131,6 +138,8 @@ namespace Beatmapping.Scoring
                 BeatmapName = beatmap.BeatmapName,
                 DidSucceed = true
             };
+
+            _beatmapScoreEvent.Raise(_currentScore);
         }
     }
 }

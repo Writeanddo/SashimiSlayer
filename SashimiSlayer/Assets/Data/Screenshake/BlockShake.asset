@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fb73d999e92ad45884393a0cc918b3, type: 3}
   m_Name: BlockShake
   m_EditorClassIdentifier: 
-  <Duration>k__BackingField: 0.06
+  <Duration>k__BackingField: 0.07
   <Velocity>k__BackingField: {x: -0.75, y: -0.25, z: 0}
-  <Magnitude>k__BackingField: 0.15
+  <Magnitude>k__BackingField: 0.17
   <Shapes>k__BackingField: 2

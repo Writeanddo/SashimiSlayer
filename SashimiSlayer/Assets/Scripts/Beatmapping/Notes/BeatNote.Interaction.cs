@@ -1,8 +1,11 @@
+using Base;
+using Core.Protag;
+using Events.Core;
 using UnityEngine;
 
 namespace Beatmapping.Notes
 {
-    public partial class BeatNote : MonoBehaviour
+    public partial class BeatNote : DescMono
     {
         /// <summary>
         ///     Handle protag's attempt to block
@@ -69,7 +72,7 @@ namespace Beatmapping.Notes
         ///     Handle protag's attempt to attack
         /// </summary>
         /// <param name="protagSwordState"></param>
-        public void AttemptPlayerSlice(Protaganist.ProtagSwordState protagSwordState)
+        public bool AttemptPlayerSlice(Protaganist.ProtagSwordState protagSwordState)
         {
             // Check if slice is in hitbox
             Vector3 pos = _hitboxTransform.transform.position;
@@ -78,7 +81,7 @@ namespace Beatmapping.Notes
 
             if (!isAttackOnTarget)
             {
-                return;
+                return false;
             }
 
             // Call interaction logic
@@ -87,7 +90,7 @@ namespace Beatmapping.Notes
 
             if (interaction == null)
             {
-                return;
+                return false;
             }
 
             NoteInteraction.AttemptResult interactionAttemptResult = interaction.TryInteraction(
@@ -105,26 +108,30 @@ namespace Beatmapping.Notes
                 _noteInteractionFinalResultEvent.Raise(earlyFailResult);
                 OnInteractionFinalResult?.Invoke(_noteTickInfo, earlyFailResult);
                 OnProtagMissedHit?.Invoke(_noteTickInfo, earlyFailResult);
-                return;
+                return false;
             }
 
             // Other fails simply do nothing
             if (!interactionAttemptResult.Passed)
             {
-                return;
+                return false;
             }
 
             // Success!
             OnSlicedByProtag?.Invoke(GetInteractionIndex(interaction), interactionAttemptResult);
-
-            Protaganist.Instance.SuccessfulSlice();
 
             var finalResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
                 NoteInteraction.InteractionType.TargetToHit,
                 true);
 
             _noteInteractionFinalResultEvent.Raise(finalResult);
+            _objectSlicedEvent.Raise(new ObjectSlicedData
+            {
+                Position = _hitboxTransform.position
+            });
             OnInteractionFinalResult?.Invoke(_noteTickInfo, finalResult);
+
+            return true;
         }
     }
 }

@@ -2,15 +2,19 @@ using System.Collections.Generic;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Timing;
+using Core.Protag;
+using Events;
 using Events.Core;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Beatmapping
 {
     public class BeatNoteService : MonoBehaviour
     {
-        [Header("Events")]
+        [Header("Events (In)")]
 
         [SerializeField]
         private ProtagSwordStateEvent _onBlockByProtag;
@@ -18,12 +22,24 @@ namespace Beatmapping
         [SerializeField]
         private ProtagSwordStateEvent _onSliceByProtag;
 
+        [SerializeField]
+        private BoolEvent _setSpawnEnabledEvent;
+
+        [FormerlySerializedAs("_noteSliceResultEvent")]
+        [Header("Events (Out)")]
+
+        [SerializeField]
+        private SliceResultEvent sliceResultEvent;
+
         private readonly List<BeatNote> _activeBeatNotes = new();
+
+        private bool _spawningEnabled = true;
 
         private void Awake()
         {
             _onBlockByProtag.AddListener(OnBlockByProtag);
             _onSliceByProtag.AddListener(OnSliceByProtag);
+            _setSpawnEnabledEvent.AddListener(SetSpawningEnabled);
         }
 
         private void OnEnable()
@@ -46,17 +62,19 @@ namespace Beatmapping
         {
             _onBlockByProtag.RemoveListener(OnBlockByProtag);
             _onSliceByProtag.RemoveListener(OnSliceByProtag);
+            _setSpawnEnabledEvent.RemoveListener(SetSpawningEnabled);
         }
 
         private void OnValidate()
         {
 #if UNITY_EDITOR
-            // Destroy children, in case timeline failed to clean up
+            // Destroy children
+            // Hack fix for an issue where timeline sometimes fails to clean up instantiated notes during editing
             if (!Application.isPlaying)
             {
                 EditorApplication.delayCall += () =>
                 {
-                    BeatNote[] notes = GetComponentsInChildren<BeatNote>();
+                    BeatNote[] notes = FindObjectsByType<BeatNote>(FindObjectsSortMode.None);
                     foreach (BeatNote note in notes)
                     {
                         DestroyImmediate(note.gameObject);
@@ -64,11 +82,18 @@ namespace Beatmapping
 
                     if (notes.Length > 0)
                     {
-                        EditorUtility.SetDirty(gameObject);
+                        // Mark scene dirty to force save
+                        EditorSceneManager.MarkSceneDirty(gameObject.scene);
+                        EditorSceneManager.SaveOpenScenes();
                     }
                 };
             }
 #endif
+        }
+
+        private void SetSpawningEnabled(bool spawningEnabled)
+        {
+            _spawningEnabled = spawningEnabled;
         }
 
         private void TimeManager_OnTick(BeatmapTimeManager.TickInfo tickInfo)
@@ -87,10 +112,20 @@ namespace Beatmapping
 
         private void OnSliceByProtag(Protaganist.ProtagSwordState swordState)
         {
+            var sliceCount = 0;
             foreach (BeatNote note in _activeBeatNotes)
             {
-                note.AttemptPlayerSlice(swordState);
+                bool result = note.AttemptPlayerSlice(swordState);
+                if (result)
+                {
+                    sliceCount++;
+                }
             }
+
+            sliceResultEvent.Raise(new SliceResultData
+            {
+                SliceCount = sliceCount
+            });
         }
 
         public BeatNote SpawnNote(BeatNoteTypeSO hitConfig,
@@ -98,6 +133,11 @@ namespace Beatmapping
             BeatmapConfigSo beatmap,
             double initalizeTime)
         {
+            if (!_spawningEnabled)
+            {
+                return null;
+            }
+
             TimingWindowSO timingWindowSo = beatmap.TimingWindowSO;
 
             double noteStartTime = data.NoteStartTime;

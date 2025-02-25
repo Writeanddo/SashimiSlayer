@@ -1,3 +1,4 @@
+using Core.Protag;
 using UnityEngine;
 
 public class SetSwordPosition : MonoBehaviour

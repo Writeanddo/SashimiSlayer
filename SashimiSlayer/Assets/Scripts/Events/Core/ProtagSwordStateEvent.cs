@@ -1,3 +1,4 @@
+using Core.Protag;
 using UnityEngine;
 
 namespace Events.Core

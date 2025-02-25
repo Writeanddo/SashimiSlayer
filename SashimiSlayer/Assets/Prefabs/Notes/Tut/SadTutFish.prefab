@@ -210,9 +210,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e087f2332fc306c4fb4ff76c09dff698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _devDesc: 
   _hitboxTransform: {fileID: 7961916753182534580}
   _noteInteractionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
     type: 2}
+  _objectSlicedEvent: {fileID: 11400000, guid: a2c9117a5f6db464ebc4424eb172d481, type: 2}
   _beatNoteModules:
   - {fileID: -6979564888490074285}
   - {fileID: 2277456349810839253}

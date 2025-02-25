@@ -1,3 +1,4 @@
+using Core.Protag;
 using Events.Core;
 using FMOD.Studio;
 using FMODUnity;

@@ -265,6 +265,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBlockByProtag: {fileID: 11400000, guid: 4cfa3609e31db094690a78cc3b3e91f3, type: 2}
   _onSliceByProtag: {fileID: 11400000, guid: 1fc9d5635b7fb36408b893568c3ada1a, type: 2}
+  _setSpawnEnabledEvent: {fileID: 11400000, guid: cf723e3ec26681646873098fad8d1137,
+    type: 2}
+  sliceResultEvent: {fileID: 11400000, guid: baaa71eb46fd87c48b8f565532be9613, type: 2}
 --- !u!1 &6849324837600310558
 GameObject:
   m_ObjectHideFlags: 0
