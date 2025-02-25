@@ -6,9 +6,11 @@ using Core.Protag;
 using Events;
 using Events.Core;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Serialization;
+#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
+#endif
 
 namespace Beatmapping
 {
