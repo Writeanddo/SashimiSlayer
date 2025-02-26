@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using FMODUnity;
@@ -119,7 +120,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         {
             return new List<IInteractionUser.InteractionUsage>
             {
-                new(NoteInteraction.InteractionType.IncomingAttack, _interactionIndex, 2)
+                new(NoteInteraction.InteractionType.Block, _interactionIndex, 2)
             };
         }
 

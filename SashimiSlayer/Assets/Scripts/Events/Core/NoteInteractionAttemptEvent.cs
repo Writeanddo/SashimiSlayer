@@ -1,4 +1,4 @@
-using Beatmapping.Notes;
+using Beatmapping.Interactions;
 using UnityEngine;
 
 namespace Events.Core

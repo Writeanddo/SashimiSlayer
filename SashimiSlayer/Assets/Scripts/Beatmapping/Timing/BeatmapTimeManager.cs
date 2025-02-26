@@ -22,21 +22,54 @@ namespace Beatmapping.Timing
             Playing
         }
 
+        /// <summary>
+        ///     Contains all the timing information about the current tick
+        /// </summary>
         public struct TickInfo
         {
             /// <summary>
             ///     DSP time since beatmap started (the 0th beat, different from load time)
             /// </summary>
-            public double CurrentBeatmapTime;
+            public double BeatmapTime;
 
             /// <summary>
             ///     DSP time in level timespace (since the level began)
             /// </summary>
             public double CurrentLevelTime;
 
-            public double DeltaTime;
+            /// <summary>
+            ///     The beatmap of this tick
+            /// </summary>
+            public BeatmapConfigSo CurrentBeatmap;
 
+            /// <summary>
+            ///     The subdivision index of this tick
+            /// </summary>
             public int SubdivIndex;
+
+            /// <summary>
+            ///     Whether the beat crossed a beat this tick
+            /// </summary>
+            public bool CrossedSubdivThisTick;
+
+            public bool CrossedBeatThisTick => CrossedSubdivThisTick && SubdivIndex % CurrentBeatmap.Subdivisions == 0;
+
+            /// <summary>
+            ///     Given a beatmap time, get the closest subdivision index
+            /// </summary>
+            /// <param name="beatmapTime"></param>
+            /// <returns></returns>
+            public int GetClosestSubdivisionIndex(double beatmapTime)
+            {
+                double timeIntervalPerSubdiv = 60 / CurrentBeatmap.Bpm / CurrentBeatmap.Subdivisions;
+                return (int)Math.Round(beatmapTime / timeIntervalPerSubdiv);
+            }
+
+            public int GetClosestBeatIndex(double beatmapTime)
+            {
+                double timeIntervalPerBeat = 60 / CurrentBeatmap.Bpm;
+                return (int)Math.Round(beatmapTime / timeIntervalPerBeat);
+            }
         }
 
         [Header("Dependencies")]
@@ -189,10 +222,11 @@ namespace Beatmapping.Timing
             // Invoke tick event
             CurrentTickInfo = new TickInfo
             {
-                CurrentBeatmapTime = currentBeatmapTime,
+                BeatmapTime = currentBeatmapTime,
                 CurrentLevelTime = currentBeatmapTime + _currentBeatmap.StartTime,
-                DeltaTime = eventDeltaTime,
-                SubdivIndex = currentSubdivIndex
+                SubdivIndex = currentSubdivIndex,
+                CrossedSubdivThisTick = crossedSubdivThisTick,
+                CurrentBeatmap = _currentBeatmap
             };
 
             OnTick?.Invoke(CurrentTickInfo);

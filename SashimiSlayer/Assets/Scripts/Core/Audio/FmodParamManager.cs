@@ -1,4 +1,4 @@
-using Beatmapping.Notes;
+using Beatmapping.Interactions;
 using Events.Core;
 using FMODUnity;
 using UnityEngine;

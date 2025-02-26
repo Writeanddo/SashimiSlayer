@@ -5274,8 +5274,8 @@ MonoBehaviour:
   Template:
     NoteConfig: {fileID: 11400000, guid: 446b9787587208d4b8d6a407e4b8b136, type: 2}
     NoteData:
-      StartPosition: {x: 4.130702, y: -4.9127874}
-      EndPosition: {x: -4.6175365, y: -4.8911333}
+      StartPosition: {x: 7.1319265, y: -4.9127874}
+      EndPosition: {x: -1.241159, y: -4.8911333}
       NoteStartTime: 28.000000000000004
       NoteEndTime: 31.000000000000004
       NoteBeatCount: 6
@@ -5287,7 +5287,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 0.2603588, y: 0.94746816}
+          - {x: 3.144348, y: 1.9791391}
 --- !u!114 &833097427183589768
 MonoBehaviour:
   m_ObjectHideFlags: 1

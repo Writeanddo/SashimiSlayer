@@ -1,4 +1,5 @@
 using Base;
+using Beatmapping.Interactions;
 using Core.Protag;
 using Events.Core;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace Beatmapping.Notes
 
             NoteInteraction.AttemptResult interactionAttemptResult = interaction.TryInteraction(
                 currentBeatmapTime,
-                NoteInteraction.InteractionType.IncomingAttack,
+                NoteInteraction.InteractionType.Block,
                 protagSwordState.BlockPose);
 
             // Hitting in the fail window means instant failure
@@ -30,7 +31,7 @@ namespace Beatmapping.Notes
             {
                 var earlyFailResult = new NoteInteraction.FinalResult(
                     interactionAttemptResult.TimingResult,
-                    NoteInteraction.InteractionType.IncomingAttack,
+                    NoteInteraction.InteractionType.Block,
                     false
                 )
                 {
@@ -55,7 +56,7 @@ namespace Beatmapping.Notes
 
             var finalResult = new NoteInteraction.FinalResult(
                 interactionAttemptResult.TimingResult,
-                NoteInteraction.InteractionType.IncomingAttack,
+                NoteInteraction.InteractionType.Block,
                 true
             )
             {
@@ -95,14 +96,14 @@ namespace Beatmapping.Notes
 
             NoteInteraction.AttemptResult interactionAttemptResult = interaction.TryInteraction(
                 currentBeatmapTime,
-                NoteInteraction.InteractionType.TargetToHit,
+                NoteInteraction.InteractionType.Slice,
                 protagSwordState.BlockPose);
 
             // Hitting in the early lockout window fails immediately
             if (interactionAttemptResult.TimingResult.Score == TimingWindow.Score.Miss)
             {
                 var earlyFailResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
-                    NoteInteraction.InteractionType.TargetToHit,
+                    NoteInteraction.InteractionType.Slice,
                     false);
 
                 _noteInteractionFinalResultEvent.Raise(earlyFailResult);
@@ -121,7 +122,7 @@ namespace Beatmapping.Notes
             OnSlicedByProtag?.Invoke(GetInteractionIndex(interaction), interactionAttemptResult);
 
             var finalResult = new NoteInteraction.FinalResult(interactionAttemptResult.TimingResult,
-                NoteInteraction.InteractionType.TargetToHit,
+                NoteInteraction.InteractionType.Slice,
                 true);
 
             _noteInteractionFinalResultEvent.Raise(finalResult);

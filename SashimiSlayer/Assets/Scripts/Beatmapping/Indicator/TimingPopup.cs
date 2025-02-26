@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using UnityEngine;

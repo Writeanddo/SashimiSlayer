@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squishScale: 0.8
-  _squishDuration: 0.3
+  _squishScale: 0.85
+  _squishDuration: 0.25
   _squishTransform:
   - transform: {fileID: 8231393650296616110}
     beatInterval: 2
@@ -5007,6 +5007,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7674640129088678999}
     m_Modifications:
+    - target: {fileID: 226028147372931124, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3950902060585002301, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
         type: 3}
       propertyPath: m_Name
@@ -5067,6 +5072,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579447248932807129, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

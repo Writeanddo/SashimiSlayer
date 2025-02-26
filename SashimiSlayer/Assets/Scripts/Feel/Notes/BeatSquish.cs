@@ -37,12 +37,12 @@ namespace Feel.Notes
 
         private void Awake()
         {
-            _beatPassedEvent.AddListener(HandleBeatPassed);
+            _beatPassedEvent?.AddListener(HandleBeatPassed);
         }
 
         private void OnDestroy()
         {
-            _beatPassedEvent.RemoveListener(HandleBeatPassed);
+            _beatPassedEvent?.RemoveListener(HandleBeatPassed);
         }
 
         private void HandleBeatPassed(int beatNumber)
@@ -66,9 +66,22 @@ namespace Feel.Notes
                     continue;
                 }
 
-                squishable.transform.localScale = new Vector3(1 / _squishScale, _squishScale, 1);
-                squishable.transform.DOScaleY(1, _squishDuration);
-                squishable.transform.DOScaleX(1, _squishDuration);
+                Squish(squishable);
+            }
+        }
+
+        private void Squish(BeatSquishable squishable)
+        {
+            squishable.transform.localScale = new Vector3(1 / _squishScale, _squishScale, 1);
+            squishable.transform.DOScaleY(1, _squishDuration);
+            squishable.transform.DOScaleX(1, _squishDuration);
+        }
+
+        public void SquishAllImmediate()
+        {
+            foreach (BeatSquishable squishable in _squishTransform)
+            {
+                Squish(squishable);
             }
         }
     }
