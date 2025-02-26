@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Beatmapping.Notes
+namespace Beatmapping.Interactions
 {
     /// <summary>
     ///     An instantiated note interaction
@@ -14,12 +14,12 @@ namespace Beatmapping.Notes
             /// <summary>
             ///     Interaction where the note will try to hit the protag, and the protag must block
             /// </summary>
-            IncomingAttack,
+            Block,
 
             /// <summary>
             ///     Interaction where the note is vulnerable, and the protag must hit it
             /// </summary>
-            TargetToHit
+            Slice
         }
 
         [Flags]
@@ -101,7 +101,7 @@ namespace Beatmapping.Notes
             }
 
             // Block pose doesn't match
-            if (Type == InteractionType.IncomingAttack &&
+            if (Type == InteractionType.Block &&
                 blockPose != BlockPose)
             {
                 return new AttemptResult

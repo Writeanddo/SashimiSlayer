@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Base;
+using Beatmapping.Interactions;
 using Beatmapping.Tooling;
 using Events.Core;
 using Sirenix.OdinInspector;

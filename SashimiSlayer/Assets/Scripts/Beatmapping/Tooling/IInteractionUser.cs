@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Beatmapping.Notes;
+using Beatmapping.Interactions;
 
 namespace Beatmapping.Tooling
 {

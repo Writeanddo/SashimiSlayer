@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using AOT;
-using Beatmapping.Notes;
+using Beatmapping.Interactions;
 using Events;
 using Events.Core;
 using FMOD;
@@ -88,6 +88,7 @@ namespace Beatmapping.Timing
 
         private void OnBeatmapSoundtrackInstanceCreated(EventInstance instance)
         {
+            return;
             _callback = OnEventCallback;
             instance.setCallback(_callback, EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
         }

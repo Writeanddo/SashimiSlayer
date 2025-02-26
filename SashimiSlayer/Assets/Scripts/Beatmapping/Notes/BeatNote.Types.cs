@@ -1,5 +1,6 @@
 using System;
 using Base;
+using Beatmapping.Interactions;
 using Beatmapping.Timing;
 
 namespace Beatmapping.Notes

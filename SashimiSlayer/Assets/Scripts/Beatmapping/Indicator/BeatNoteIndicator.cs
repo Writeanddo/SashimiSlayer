@@ -1,140 +1,72 @@
 using System.Collections.Generic;
+using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
-using Core.Protag;
-using Events.Core;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Beatmapping.Indicator
 {
+    /// <summary>
+    ///     Script that handles the visual timing indicators for a beat note.
+    /// </summary>
     public class BeatNoteIndicator : BeatNoteModule
     {
-        [Header("Events Listening")]
-
-        [SerializeField]
-        private ProtagSwordStateEvent _protagSwordStateEvent;
-
-        [SerializeField]
-        private List<IndicatorVisual> _indicatorVisuals;
-
         [Header("Visuals")]
 
         [SerializeField]
-        private GameObject[] _vulnerableRotate;
+        private PipTimingIndicator _sliceTimingIndicators;
 
         [SerializeField]
-        private AnimationClip _attackClip;
-
-        [SerializeField]
-        private AnimationClip _vulnClip;
-
-        [SerializeField]
-        private SimpleAnimator _animator;
-
-        [SerializeField]
-        private float _animationNormalizedTimeOffset;
-
-        public UnityEvent<SharedTypes.BlockPoseStates> OnBlockPose;
+        private List<PipTimingIndicator> _blockTimingIndicators;
 
         private BeatNote _beatNote;
 
-        private NoteInteraction.InteractionType _interactionType = (NoteInteraction.InteractionType)(-1);
-
-        private void Start()
+        private void BeatNote_OnTick(BeatNote.NoteTickInfo tickInfo)
         {
-            _protagSwordStateEvent.AddListener(OnProtagSwordState);
-        }
-
-        private void OnDestroy()
-        {
-            _protagSwordStateEvent.RemoveListener(OnProtagSwordState);
-        }
-
-        [Button("Detect Visuals")]
-        private void DetectVisuals()
-        {
-            _indicatorVisuals = new List<IndicatorVisual>(GetComponentsInChildren<IndicatorVisual>(true));
-        }
-
-        private void BeatNote_OnTick(BeatNote.NoteTickInfo tickinfo)
-        {
-            BeatNote.TimeSegmentType segmentType = tickinfo.NoteSegment.Type;
+            BeatNote.TimeSegmentType segmentType = tickInfo.NoteSegment.Type;
 
             if (segmentType != BeatNote.TimeSegmentType.Interaction)
             {
-                _animator.Stop();
-                _interactionType = (NoteInteraction.InteractionType)(-1);
+                _sliceTimingIndicators.SetVisible(false);
+                foreach (PipTimingIndicator blockTimingIndicator in _blockTimingIndicators)
+                {
+                    blockTimingIndicator.SetVisible(false);
+                }
+
                 return;
             }
 
-            NoteInteraction interaction = tickinfo.NoteSegment.Interaction;
-            int currentSubdivision = tickinfo.SubdivisionIndex;
-            double interactionTargetTime = interaction.TargetTime;
-            double targetSubdivision = tickinfo.BeatmapTickInfo.GetClosestSubdivisionIndex(interactionTargetTime);
+            NoteInteraction interaction = tickInfo.NoteSegment.Interaction;
 
-            var subDivisionsRemaining = (int)(targetSubdivision - currentSubdivision);
-
-            if (tickinfo.BeatmapTickInfo.CrossedBeatThisTick)
+            if (!tickInfo.BeatmapTickInfo.CrossedSubdivThisTick)
             {
-                switch (interaction.Type)
+                return;
+            }
+
+            if (interaction.Type == NoteInteraction.InteractionType.Block)
+            {
+                _sliceTimingIndicators.SetVisible(false);
+                TickBlockIndicators(tickInfo, interaction.BlockPose);
+            }
+            else if (interaction.Type == NoteInteraction.InteractionType.Slice)
+            {
+                _sliceTimingIndicators.SetVisible(true);
+                _sliceTimingIndicators.Tick(tickInfo).Forget();
+                foreach (PipTimingIndicator blockIndicator in _blockTimingIndicators)
                 {
-                    case NoteInteraction.InteractionType.IncomingAttack:
-                        UpdateIncomingAttackIndicator(interaction.BlockPose);
-                        IncomingAttackIndicator(tickinfo);
-                        break;
-                    case NoteInteraction.InteractionType.TargetToHit:
-                        TargetToHitIndicator(tickinfo);
-                        break;
-                    default:
-                        Debug.LogError("Invalid interaction type");
-                        break;
+                    blockIndicator.SetVisible(false);
                 }
             }
         }
 
-        private void OnProtagSwordState(Protaganist.ProtagSwordState state)
+        private void TickBlockIndicators(BeatNote.NoteTickInfo tickInfo, SharedTypes.BlockPoseStates blockPose)
         {
-            foreach (GameObject vulnIndicator in _vulnerableRotate)
+            var blockIndex = (int)blockPose;
+            _blockTimingIndicators[blockIndex].Tick(tickInfo).Forget();
+            ;
+            for (var i = 0; i < _blockTimingIndicators.Count; i++)
             {
-                vulnIndicator.transform.rotation = Quaternion.AngleAxis(state.SwordAngle, Vector3.forward);
-            }
-        }
-
-        private void IncomingAttackIndicator(BeatNote.NoteTickInfo noteTickInfo)
-        {
-            if (_interactionType != NoteInteraction.InteractionType.IncomingAttack)
-            {
-                _animator.Stop();
-                _animator.Play(_attackClip);
-                _interactionType = NoteInteraction.InteractionType.IncomingAttack;
-            }
-
-            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime + _animationNormalizedTimeOffset);
-            _animator.UpdateAnim(0);
-        }
-
-        private void TargetToHitIndicator(BeatNote.NoteTickInfo noteTickInfo)
-        {
-            if (_interactionType != NoteInteraction.InteractionType.TargetToHit)
-            {
-                _animator.Stop();
-                _animator.Play(_vulnClip);
-                _interactionType = NoteInteraction.InteractionType.TargetToHit;
-            }
-
-            _animator.SetNormalizedTime((float)noteTickInfo.NormalizedSegmentTime + _animationNormalizedTimeOffset);
-            _animator.UpdateAnim(0);
-        }
-
-        private void UpdateIncomingAttackIndicator(SharedTypes.BlockPoseStates blockPose)
-        {
-            OnBlockPose.Invoke(blockPose);
-
-            foreach (IndicatorVisual indicatorVisual in _indicatorVisuals)
-            {
-                indicatorVisual.OnBlockPose(blockPose);
+                _blockTimingIndicators[i].SetVisible(i == blockIndex);
             }
         }
 
@@ -146,7 +78,6 @@ namespace Beatmapping.Indicator
         public override void OnNoteInitialized(BeatNote beatNote)
         {
             _beatNote = GetComponentInParent<BeatNote>();
-            _animator.SetManualUpdate(true);
             _beatNote.OnTick += BeatNote_OnTick;
         }
 

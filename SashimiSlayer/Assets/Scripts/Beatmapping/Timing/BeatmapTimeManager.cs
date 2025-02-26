@@ -64,6 +64,12 @@ namespace Beatmapping.Timing
                 double timeIntervalPerSubdiv = 60 / CurrentBeatmap.Bpm / CurrentBeatmap.Subdivisions;
                 return (int)Math.Round(beatmapTime / timeIntervalPerSubdiv);
             }
+
+            public int GetClosestBeatIndex(double beatmapTime)
+            {
+                double timeIntervalPerBeat = 60 / CurrentBeatmap.Bpm;
+                return (int)Math.Round(beatmapTime / timeIntervalPerBeat);
+            }
         }
 
         [Header("Dependencies")]

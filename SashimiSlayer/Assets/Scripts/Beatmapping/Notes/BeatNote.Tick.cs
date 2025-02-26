@@ -1,4 +1,5 @@
 using Base;
+using Beatmapping.Interactions;
 using Beatmapping.Timing;
 using Core.Protag;
 
@@ -219,10 +220,10 @@ namespace Beatmapping.Notes
                 // Failure events. Use previous tick info, since that is the tick with the interaction failed
                 switch (prevInsidePassWindowInteraction.Type)
                 {
-                    case NoteInteraction.InteractionType.IncomingAttack:
+                    case NoteInteraction.InteractionType.Block:
                         OnProtagFailBlock?.Invoke(previousTiming, finalResult);
                         break;
-                    case NoteInteraction.InteractionType.TargetToHit:
+                    case NoteInteraction.InteractionType.Slice:
                         OnProtagMissedHit?.Invoke(previousTiming, finalResult);
                         break;
                 }
@@ -233,7 +234,7 @@ namespace Beatmapping.Notes
 
             // Only apply player damage at the end of the window, EVEN in the case of an early fail
             if (interactionState != NoteInteraction.NoteInteractionState.Success
-                && prevInsidePassWindowInteraction.Type == NoteInteraction.InteractionType.IncomingAttack)
+                && prevInsidePassWindowInteraction.Type == NoteInteraction.InteractionType.Block)
             {
                 if (Protaganist.Instance)
                 {

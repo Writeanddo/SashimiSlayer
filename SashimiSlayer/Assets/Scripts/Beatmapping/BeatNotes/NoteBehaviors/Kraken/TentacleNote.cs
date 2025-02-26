@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using Feel.Notes;
@@ -54,7 +55,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
 
             NoteInteraction interaction = segment.Interaction;
 
-            if (interaction.Type == NoteInteraction.InteractionType.IncomingAttack)
+            if (interaction.Type == NoteInteraction.InteractionType.Block)
             {
                 if (interaction != _attackAnimationPlayedInteraction)
                 {
