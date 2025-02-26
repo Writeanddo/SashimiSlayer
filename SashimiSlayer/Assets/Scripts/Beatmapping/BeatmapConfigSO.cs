@@ -18,6 +18,9 @@ namespace Beatmapping
         [field: SerializeField]
         public double Bpm { get; private set; }
 
+        /// <summary>
+        ///     Number of subdivisions per beat.
+        /// </summary>
         [field: SerializeField]
         public int Subdivisions { get; private set; }
 

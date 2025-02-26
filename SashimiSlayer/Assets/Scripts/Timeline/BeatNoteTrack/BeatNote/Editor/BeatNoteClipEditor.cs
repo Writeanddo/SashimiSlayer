@@ -150,11 +150,11 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
                 // Add 0.01f for precision errors(?)
                 if (interactionStartTime >= region.startTime && interactionStartTime <= region.endTime + 0.01f)
                 {
-                    if (interactionData.InteractionType == NoteInteraction.InteractionType.IncomingAttack)
+                    if (interactionData.InteractionType == NoteInteraction.InteractionType.Block)
                     {
                         DrawAttackInteraction(interactionData, region, normalizedPos);
                     }
-                    else if (interactionData.InteractionType == NoteInteraction.InteractionType.TargetToHit)
+                    else if (interactionData.InteractionType == NoteInteraction.InteractionType.Slice)
                     {
                         DrawVulnerableInteraction(region, normalizedPos);
                     }

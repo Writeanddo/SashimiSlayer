@@ -1,5 +1,5 @@
 using System;
-using Beatmapping.Notes;
+using Beatmapping.Interactions;
 using Events;
 using Events.Core;
 using Sirenix.OdinInspector;

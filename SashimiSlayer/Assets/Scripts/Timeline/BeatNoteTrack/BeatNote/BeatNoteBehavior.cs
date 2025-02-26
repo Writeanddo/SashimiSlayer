@@ -2,6 +2,7 @@ using System;
 using Beatmapping;
 using Beatmapping.Notes;
 using Beatmapping.Timing;
+using Beatmapping.Tooling;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
@@ -69,8 +70,8 @@ namespace Timeline.BeatNoteTrack.BeatNote
             {
                 _beatNote.Tick(new BeatmapTimeManager.TickInfo
                 {
-                    CurrentBeatmapTime = currentBeatmapTime,
-                    DeltaTime = info.deltaTime
+                    BeatmapTime = currentBeatmapTime,
+                    CurrentBeatmap = BeatmappingUtilities.CurrentEditingBeatmapConfig
                 }, Beatmapping.Notes.BeatNote.TickFlags.UpdateLocation);
 
                 if (currentBeatmapTime < NoteData.NoteStartTime)

@@ -1,4 +1,4 @@
-using Beatmapping.Notes;
+using Beatmapping.Interactions;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,7 +26,7 @@ public class TimingBarTick : MonoBehaviour
 
     public void SetVisuals(NoteInteraction.InteractionType resultInteractionType)
     {
-        _blockImage.enabled = resultInteractionType == NoteInteraction.InteractionType.IncomingAttack;
-        _sliceImage.enabled = resultInteractionType == NoteInteraction.InteractionType.TargetToHit;
+        _blockImage.enabled = resultInteractionType == NoteInteraction.InteractionType.Block;
+        _sliceImage.enabled = resultInteractionType == NoteInteraction.InteractionType.Slice;
     }
 }

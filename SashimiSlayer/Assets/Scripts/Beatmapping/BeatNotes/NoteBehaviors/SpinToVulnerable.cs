@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using UnityEngine;
@@ -68,7 +69,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             NoteInteraction interaction = segment.Interaction;
             _sprite.color = new Color(1, 1, 1, 1);
 
-            if (interaction.Type == NoteInteraction.InteractionType.TargetToHit)
+            if (interaction.Type == NoteInteraction.InteractionType.Slice)
             {
                 TargetToHitVisuals((float)tickinfo.NormalizedSegmentTime, (float)tickinfo.BeatmapTime);
             }
@@ -99,7 +100,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         {
             return new List<IInteractionUser.InteractionUsage>
             {
-                new(NoteInteraction.InteractionType.TargetToHit, _interactionIndex, 1)
+                new(NoteInteraction.InteractionType.Slice, _interactionIndex, 1)
             };
         }
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using UnityEngine;
@@ -91,7 +92,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         {
             return new List<IInteractionUser.InteractionUsage>
             {
-                new(NoteInteraction.InteractionType.TargetToHit, 0, 1)
+                new(NoteInteraction.InteractionType.Slice, 0, 1)
             };
         }
 

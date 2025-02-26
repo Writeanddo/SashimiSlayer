@@ -1,4 +1,5 @@
 using Base;
+using Beatmapping.Interactions;
 using Beatmapping.Timing;
 using Core.Protag;
 
@@ -86,8 +87,8 @@ namespace Beatmapping.Notes
         /// <returns>true if we're in a segment, false otherwise</returns>
         private void UpdateTiming(BeatmapTimeManager.TickInfo tickInfo, TickFlags tickFlags)
         {
-            double currentBeatmapTime = tickInfo.CurrentBeatmapTime;
-            double previousBeatmapTime = _prevTickInfo.BeatmapTime;
+            double currentBeatmapTime = tickInfo.BeatmapTime;
+            double previousBeatmapTime = _prevTickInfo.BeatmapTickInfo.BeatmapTime;
 
             int currentSegmentIndex = CalculateCurrentSegmentIndex(currentBeatmapTime);
 
@@ -141,8 +142,6 @@ namespace Beatmapping.Notes
             _prevTickInfo = _noteTickInfo;
             _noteTickInfo = new NoteTickInfo
             {
-                BeatmapTime = currentBeatmapTime,
-                DeltaTime = currentBeatmapTime - previousBeatmapTime,
                 NoteSegment = _noteTimeSegments[currentSegmentIndex],
                 NoteTime = noteTime,
                 NormalizedNoteTime = normalizedNoteTime,
@@ -155,7 +154,7 @@ namespace Beatmapping.Notes
                 SegmentIndex = currentSegmentIndex,
                 InteractionIndex = currentInteractionIndex,
 
-                SubdivisionIndex = tickInfo.SubdivIndex,
+                BeatmapTickInfo = tickInfo,
 
                 Flags = tickFlags
             };
@@ -221,10 +220,10 @@ namespace Beatmapping.Notes
                 // Failure events. Use previous tick info, since that is the tick with the interaction failed
                 switch (prevInsidePassWindowInteraction.Type)
                 {
-                    case NoteInteraction.InteractionType.IncomingAttack:
+                    case NoteInteraction.InteractionType.Block:
                         OnProtagFailBlock?.Invoke(previousTiming, finalResult);
                         break;
-                    case NoteInteraction.InteractionType.TargetToHit:
+                    case NoteInteraction.InteractionType.Slice:
                         OnProtagMissedHit?.Invoke(previousTiming, finalResult);
                         break;
                 }
@@ -235,7 +234,7 @@ namespace Beatmapping.Notes
 
             // Only apply player damage at the end of the window, EVEN in the case of an early fail
             if (interactionState != NoteInteraction.NoteInteractionState.Success
-                && prevInsidePassWindowInteraction.Type == NoteInteraction.InteractionType.IncomingAttack)
+                && prevInsidePassWindowInteraction.Type == NoteInteraction.InteractionType.Block)
             {
                 if (Protaganist.Instance)
                 {
