@@ -56,7 +56,7 @@ namespace Beatmapping.Timing
         private void OnTick(BeatmapTimeManager.TickInfo tickInfo)
         {
             // If we looped back to before the guard marker, wipe the marker and unlock the note spawning
-            if (tickInfo.CurrentBeatmapTime < _guardMarkerBeatmapTime)
+            if (tickInfo.BeatmapTime < _guardMarkerBeatmapTime)
             {
                 _successfulStreakRequiredToUnlockLoopRegion = 0;
                 _setBeatNoteSpawningEnabledEvent.Raise(true);
@@ -118,7 +118,7 @@ namespace Beatmapping.Timing
             try
             {
                 _successfulStreakRequiredToUnlockLoopRegion = int.Parse(markerName.Split(' ')[0]);
-                _guardMarkerBeatmapTime = _beatmapTimeManager.CurrentTickInfo.CurrentBeatmapTime;
+                _guardMarkerBeatmapTime = _beatmapTimeManager.CurrentTickInfo.BeatmapTime;
                 UpdateSpawningEnabled();
             }
             catch (Exception)

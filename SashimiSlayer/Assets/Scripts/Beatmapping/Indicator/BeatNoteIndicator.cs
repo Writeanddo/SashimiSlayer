@@ -1,15 +1,13 @@
 using System.Collections.Generic;
-using Beatmapping.Indicator;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using Core.Protag;
-using DG.Tweening;
 using Events.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Beatmapping.BeatNotes
+namespace Beatmapping.Indicator
 {
     public class BeatNoteIndicator : BeatNoteModule
     {
@@ -22,12 +20,6 @@ namespace Beatmapping.BeatNotes
         private List<IndicatorVisual> _indicatorVisuals;
 
         [Header("Visuals")]
-
-        [SerializeField]
-        private UpdateType _updateType;
-
-        [SerializeField]
-        private SpriteRenderer _blockRing;
 
         [SerializeField]
         private GameObject[] _vulnerableRotate;
@@ -78,19 +70,27 @@ namespace Beatmapping.BeatNotes
             }
 
             NoteInteraction interaction = tickinfo.NoteSegment.Interaction;
+            int currentSubdivision = tickinfo.SubdivisionIndex;
+            double interactionTargetTime = interaction.TargetTime;
+            double targetSubdivision = tickinfo.BeatmapTickInfo.GetClosestSubdivisionIndex(interactionTargetTime);
 
-            switch (interaction.Type)
+            var subDivisionsRemaining = (int)(targetSubdivision - currentSubdivision);
+
+            if (tickinfo.BeatmapTickInfo.CrossedBeatThisTick)
             {
-                case NoteInteraction.InteractionType.IncomingAttack:
-                    UpdateIncomingAttackIndicator(interaction.BlockPose);
-                    IncomingAttackIndicator(tickinfo);
-                    break;
-                case NoteInteraction.InteractionType.TargetToHit:
-                    TargetToHitIndicator(tickinfo);
-                    break;
-                default:
-                    Debug.LogError("Invalid interaction type");
-                    break;
+                switch (interaction.Type)
+                {
+                    case NoteInteraction.InteractionType.IncomingAttack:
+                        UpdateIncomingAttackIndicator(interaction.BlockPose);
+                        IncomingAttackIndicator(tickinfo);
+                        break;
+                    case NoteInteraction.InteractionType.TargetToHit:
+                        TargetToHitIndicator(tickinfo);
+                        break;
+                    default:
+                        Debug.LogError("Invalid interaction type");
+                        break;
+                }
             }
         }
 

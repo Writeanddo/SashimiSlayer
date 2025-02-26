@@ -1,5 +1,6 @@
 using System;
 using Base;
+using Beatmapping.Timing;
 
 namespace Beatmapping.Notes
 {
@@ -43,11 +44,11 @@ namespace Beatmapping.Notes
             All = ~None
         }
 
+        /// <summary>
+        ///     Information about the current tick of the note
+        /// </summary>
         public struct NoteTickInfo
         {
-            public double BeatmapTime;
-            public double DeltaTime;
-
             public NoteTimeSegment NoteSegment;
 
             /// <summary>
@@ -95,9 +96,13 @@ namespace Beatmapping.Notes
             /// </summary>
             public int SegmentIndex;
 
-            public int SubdivisionIndex;
+            public BeatmapTimeManager.TickInfo BeatmapTickInfo;
 
             public TickFlags Flags;
+
+            public double BeatmapTime => BeatmapTickInfo.BeatmapTime;
+
+            public int SubdivisionIndex => BeatmapTickInfo.SubdivIndex;
         }
 
         public struct NoteTimeSegment

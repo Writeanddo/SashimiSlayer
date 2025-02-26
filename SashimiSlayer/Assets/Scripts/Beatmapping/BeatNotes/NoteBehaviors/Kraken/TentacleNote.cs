@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Beatmapping.Notes;
-using Beatmapping.Timing;
 using Beatmapping.Tooling;
 using Feel.Notes;
 using UnityEngine;
@@ -59,7 +58,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
             {
                 if (interaction != _attackAnimationPlayedInteraction)
                 {
-                    IncomingAttackVisuals(tickinfo.SubdivisionIndex, interaction);
+                    IncomingAttackVisuals(tickinfo, interaction);
                 }
             }
         }
@@ -73,17 +72,12 @@ namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
         /// <summary>
         ///     Play the attack animation some number of subdivisions before the target time
         /// </summary>
-        /// <param name="currentSubdiv"></param>
+        /// <param name="noteTickInfo"></param>
         /// <param name="noteInteraction"></param>
-        private void IncomingAttackVisuals(int currentSubdiv, NoteInteraction noteInteraction)
+        private void IncomingAttackVisuals(BeatNote.NoteTickInfo noteTickInfo, NoteInteraction noteInteraction)
         {
-            if (BeatmapTimeManager.Instance == null)
-            {
-                return;
-            }
-
-            // This is reallllly jank...
-            int targetSubdivIndex = BeatmapTimeManager.Instance.GetClosestSubdivOfTime(noteInteraction.TargetTime);
+            int targetSubdivIndex = noteTickInfo.BeatmapTickInfo.GetClosestSubdivisionIndex(noteInteraction.TargetTime);
+            int currentSubdiv = noteTickInfo.SubdivisionIndex;
 
             if (currentSubdiv + _attackAnimationWindup >= targetSubdivIndex)
             {

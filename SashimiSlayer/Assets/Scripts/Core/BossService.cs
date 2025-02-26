@@ -50,7 +50,7 @@ public class BossService : MonoBehaviour
 
     private void TimeManager_OnTick(BeatmapTimeManager.TickInfo tickInfo)
     {
-        var t = (float)tickInfo.CurrentBeatmapTime;
+        var t = (float)tickInfo.BeatmapTime;
         _bossHealthEvent.Raise(t);
     }
 

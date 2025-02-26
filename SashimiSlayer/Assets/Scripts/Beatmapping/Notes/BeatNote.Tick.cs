@@ -86,8 +86,8 @@ namespace Beatmapping.Notes
         /// <returns>true if we're in a segment, false otherwise</returns>
         private void UpdateTiming(BeatmapTimeManager.TickInfo tickInfo, TickFlags tickFlags)
         {
-            double currentBeatmapTime = tickInfo.CurrentBeatmapTime;
-            double previousBeatmapTime = _prevTickInfo.BeatmapTime;
+            double currentBeatmapTime = tickInfo.BeatmapTime;
+            double previousBeatmapTime = _prevTickInfo.BeatmapTickInfo.BeatmapTime;
 
             int currentSegmentIndex = CalculateCurrentSegmentIndex(currentBeatmapTime);
 
@@ -141,8 +141,6 @@ namespace Beatmapping.Notes
             _prevTickInfo = _noteTickInfo;
             _noteTickInfo = new NoteTickInfo
             {
-                BeatmapTime = currentBeatmapTime,
-                DeltaTime = currentBeatmapTime - previousBeatmapTime,
                 NoteSegment = _noteTimeSegments[currentSegmentIndex],
                 NoteTime = noteTime,
                 NormalizedNoteTime = normalizedNoteTime,
@@ -155,7 +153,7 @@ namespace Beatmapping.Notes
                 SegmentIndex = currentSegmentIndex,
                 InteractionIndex = currentInteractionIndex,
 
-                SubdivisionIndex = tickInfo.SubdivIndex,
+                BeatmapTickInfo = tickInfo,
 
                 Flags = tickFlags
             };
