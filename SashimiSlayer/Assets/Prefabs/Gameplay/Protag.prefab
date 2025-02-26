@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squishScale: 0.8
-  _squishDuration: 0.3
+  _squishScale: 0.85
+  _squishDuration: 0.25
   _squishTransform:
   - transform: {fileID: 8231393650296616110}
     beatInterval: 2

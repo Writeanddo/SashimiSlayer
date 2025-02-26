@@ -18,6 +18,8 @@ namespace Beatmapping.Timing
     /// </summary>
     public class LoopRegionGuardMarker : MonoBehaviour
     {
+        private static LoopRegionGuardMarker _instance;
+
         [SerializeField]
         private BeatmapTimeManager _beatmapTimeManager;
 
@@ -41,6 +43,7 @@ namespace Beatmapping.Timing
 
         private void Awake()
         {
+            _instance = this;
             _beatmapTimeManager.OnBeatmapSoundtrackInstanceCreated += OnBeatmapSoundtrackInstanceCreated;
             _noteInteractionFinalResultEvent.AddListener(OnNoteInteractionFinalResult);
             _beatmapTimeManager.OnTick += OnTick;
@@ -88,13 +91,21 @@ namespace Beatmapping.Timing
 
         private void OnBeatmapSoundtrackInstanceCreated(EventInstance instance)
         {
-            return;
             _callback = OnEventCallback;
             instance.setCallback(_callback, EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
         }
 
+        /// <summary>
+        ///     Handle guard marker callback.
+        ///     This MUST BE STATIC, or else will cause crashes.
+        ///     https://qa.fmod.com/t/unity-integration-may-be-crashing-unity-editor-if-a-callback-references-unity-gameobject/15501
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="instancePtr"></param>
+        /// <param name="parameterPtr"></param>
+        /// <returns></returns>
         [MonoPInvokeCallback(typeof(EVENT_CALLBACK))]
-        private RESULT OnEventCallback(EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
+        private static RESULT OnEventCallback(EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
         {
             var instance = new EventInstance(instancePtr);
 
@@ -118,9 +129,9 @@ namespace Beatmapping.Timing
 
             try
             {
-                _successfulStreakRequiredToUnlockLoopRegion = int.Parse(markerName.Split(' ')[0]);
-                _guardMarkerBeatmapTime = _beatmapTimeManager.CurrentTickInfo.BeatmapTime;
-                UpdateSpawningEnabled();
+                _instance._successfulStreakRequiredToUnlockLoopRegion = int.Parse(markerName.Split(' ')[0]);
+                _instance._guardMarkerBeatmapTime = _instance._beatmapTimeManager.CurrentTickInfo.BeatmapTime;
+                _instance.UpdateSpawningEnabled();
             }
             catch (Exception)
             {
