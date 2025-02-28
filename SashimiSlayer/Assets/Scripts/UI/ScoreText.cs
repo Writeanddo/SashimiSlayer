@@ -22,7 +22,9 @@ namespace UI
         [SerializeField]
         private int _vibratoStrength;
 
-        private int currentScore = -1;
+        private int _currentScore = -1;
+
+        private bool _isShaking;
 
         private void OnEnable()
         {
@@ -36,12 +38,18 @@ namespace UI
 
         private void OnBeatmapScore(ScoringService.BeatmapScore score)
         {
-            if (currentScore != score.FinalScore)
+            if (_currentScore != score.FinalScore)
             {
                 var newString = score.FinalScore.ToString();
-                currentScore = score.FinalScore;
+                _currentScore = score.FinalScore;
                 _scoreText.text = newString;
-                _scoreText.transform.DOShakePosition(_shakeDuration, _shakeStrength, _vibratoStrength);
+
+                if (!_isShaking)
+                {
+                    _isShaking = true;
+                    _scoreText.transform.DOShakePosition(_shakeDuration, _shakeStrength, _vibratoStrength)
+                        .OnComplete(() => { _isShaking = false; });
+                }
             }
         }
     }

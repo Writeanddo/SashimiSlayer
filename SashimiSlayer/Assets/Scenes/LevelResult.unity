@@ -6081,6 +6081,12 @@ MonoBehaviour:
   _onProtagVictory: {fileID: 11400000, guid: ee736a2857fd8dd46929098023ce7c51, type: 2}
   _onProtagLoss: {fileID: 11400000, guid: 7b851042094282748b50bf4ac01b2d6d, type: 2}
   _scoreConfig: {fileID: 11400000, guid: 7dd788db8fe8866488d73d8cf5ec42a2, type: 2}
+  _delayBetweenLines: 0.36
+  _delayBeforeScore: 1.5
+  _delayBeforeFinalScore: 0.37
+  _shakeDuration: 0.3
+  _shakeStrength: 20
+  _vibratoStrength: 35
 --- !u!1 &1067464254
 GameObject:
   m_ObjectHideFlags: 0
