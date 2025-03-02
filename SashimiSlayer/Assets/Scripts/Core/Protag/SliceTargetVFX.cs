@@ -14,6 +14,9 @@ namespace Core.Protag
         private ObjectSlicedEvent _objectSlicedEvent;
 
         [SerializeField]
+        private SwordIndicator _swordIndicator;
+
+        [SerializeField]
         private OneshotVFX _sliceVFX;
 
         private void Awake()
@@ -28,7 +31,7 @@ namespace Core.Protag
 
         private void OnObjectSliced(ObjectSlicedData data)
         {
-            OneshotVFX.PlayVFX(_sliceVFX, data.Position, Quaternion.identity);
+            OneshotVFX.PlayVFX(_sliceVFX, data.Position, Quaternion.Euler(0, 0, _swordIndicator.Angle));
         }
     }
 }
