@@ -2,6 +2,7 @@ using Base;
 using Beatmapping.Interactions;
 using Events.Core;
 using FMODUnity;
+using TMPro;
 using UnityEngine;
 
 namespace Core.Audio
@@ -18,6 +19,9 @@ namespace Core.Audio
 
         [SerializeField]
         private SliceResultEvent _sliceResultEvent;
+
+        [SerializeField]
+        private TMP_Text _streakDebugText;
 
         private int _successfulStreak;
 
@@ -43,6 +47,8 @@ namespace Core.Audio
             {
                 _successfulStreak = 0;
             }
+
+            _streakDebugText.text = $"{_successfulStreak}";
 
             RuntimeManager.StudioSystem.setParameterByName("SuccessStreak", _successfulStreak, true);
         }
