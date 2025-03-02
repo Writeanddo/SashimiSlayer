@@ -601,6 +601,9 @@ MonoBehaviour:
   _scorePerCountText: {fileID: 4400082744225705224}
   _totalScoreText: {fileID: 6011371363497269022}
   _canvasGroup: {fileID: 3283356473910156332}
+  _shakeDuration: 0.3
+  _shakeStrength: 10
+  _vibratoStrength: 30
 --- !u!225 &3283356473910156332
 CanvasGroup:
   m_ObjectHideFlags: 0

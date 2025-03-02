@@ -1,9 +1,11 @@
 using Beatmapping.Scoring;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Events;
 using Menus.ScoreScreen;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FinalScoreDisplay : MonoBehaviour
 {
@@ -40,6 +42,29 @@ public class FinalScoreDisplay : MonoBehaviour
     [SerializeField]
     private ScoreConfigSO _scoreConfig;
 
+    [Header("Timing")]
+
+    [SerializeField]
+    private float _delayBetweenLines;
+
+    [SerializeField]
+    private float _delayBeforeScore;
+
+    [FormerlySerializedAs("_delayBeforeHighscore")]
+    [SerializeField]
+    private float _delayBeforeFinalScore;
+
+    [Header("Shake")]
+
+    [SerializeField]
+    private float _shakeDuration;
+
+    [SerializeField]
+    private float _shakeStrength;
+
+    [SerializeField]
+    private int _vibratoStrength;
+
     private float _percentageAnimated;
 
     private void Start()
@@ -67,9 +92,9 @@ public class FinalScoreDisplay : MonoBehaviour
         _missLine.SetVisible(false);
         _highscoreText.gameObject.SetActive(false);
 
-        var delay = 500;
+        var delay = (int)(_delayBetweenLines * 1000);
 
-        await UniTask.Delay(1000);
+        await UniTask.Delay((int)(_delayBeforeScore * 1000));
 
         _perfectLine.SetVisible(true);
         _perfectLine.SetCategory("Perfect", scoring.Perfects, _scoreConfig.PointsForPerfect);
@@ -89,10 +114,11 @@ public class FinalScoreDisplay : MonoBehaviour
         _missLine.SetVisible(true);
         _missLine.SetCategory("Miss", scoring.Misses, _scoreConfig.PointsForMiss);
 
-        await UniTask.Delay(delay);
+        await UniTask.Delay((int)(_delayBeforeFinalScore * 1000));
 
         _scoreText.gameObject.SetActive(true);
         _scoreText.text = scoring.FinalScore.ToString();
+        _scoreText.transform.DOShakePosition(_shakeDuration, _shakeStrength, _vibratoStrength);
 
         await UniTask.Delay(delay);
 
@@ -101,6 +127,7 @@ public class FinalScoreDisplay : MonoBehaviour
 
     private void HighScore(ScoringService.BeatmapScore scoring)
     {
+        _highscoreText.transform.DOShakePosition(_shakeDuration, _shakeStrength, _vibratoStrength);
         _highscoreText.gameObject.SetActive(true);
 
         float currentHighestScore = PlayerPrefs.GetFloat($"{scoring.BeatmapName}.highscore", 0);

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -25,9 +26,32 @@ namespace Menus.ScoreScreen
         [SerializeField]
         private CanvasGroup _canvasGroup;
 
+        [Header("Shake")]
+
+        [SerializeField]
+        private float _shakeDuration;
+
+        [SerializeField]
+        private float _shakeStrength;
+
+        [SerializeField]
+        private int _vibratoStrength;
+
+        private bool _isShaking;
+
         public void SetVisible(bool visible)
         {
             _canvasGroup.alpha = visible ? 1 : 0;
+
+            if (visible)
+            {
+                if (!_isShaking)
+                {
+                    _isShaking = true;
+                    _canvasGroup.transform.DOShakePosition(_shakeDuration, _shakeStrength, _vibratoStrength)
+                        .OnComplete(() => { _isShaking = false; });
+                }
+            }
         }
 
         public void SetCategory(string category, int count, int scorePerCount)
