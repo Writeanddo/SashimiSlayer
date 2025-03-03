@@ -385,44 +385,6 @@ MonoBehaviour:
     m_DisplayName: SlapTentacle
   m_Markers:
     m_Objects: []
---- !u!114 &-9115162822522025664
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: BeatNoteClip(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  Template:
-    NoteConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
-    NoteData:
-      StartPosition: {x: 5.4310355, y: -4.3215103}
-      EndPosition: {x: -0.521502, y: -5.2997594}
-      NoteStartTime: 110.9090909090909
-      NoteEndTime: 114.54545454545453
-      NoteBeatCount: 7.999999999999977
-      Interactions:
-      - _beatOffset: 4
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 1
-          InteractionType: 0
-          Flags: 0
-          Positions:
-          - {x: 6.250102, y: 2.8152354}
-          - {x: -5.2304816, y: -1.3383707}
-      - _beatOffset: 0
-        _offsetFromEnd: 1
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 1
-          Flags: 0
-          Positions:
-          - {x: 1.9633934, y: -1.0123906}
 --- !u!114 &-9037917841157054587
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -460,7 +422,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 7.548924, y: -1.0698857}
+          - {x: 3.9591799, y: -1.0698857}
 --- !u!114 &-8961497818919512334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -748,7 +710,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 9.224138, y: -1.1040738}
+          - {x: 6.6600356, y: -1.0698857}
 --- !u!114 &-7690111909398111539
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2035,76 +1997,7 @@ MonoBehaviour:
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 117.70272727272726
-    m_ClipIn: 0
-    m_Asset: {fileID: -3358763510709910651}
-    m_Duration: 2.2727272727272805
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -5565305200711189879}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: SquidMissile
+  m_Clips: []
   m_Markers:
     m_Objects: []
 --- !u!114 &-5560739892351139910
@@ -2284,21 +2177,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions: []
-      - _beatOffset: 11
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 0
-          Flags: 0
-          Positions: []
       - _beatOffset: 15
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 1
-          InteractionType: 0
-          Flags: 0
-          Positions: []
-      - _beatOffset: 19
         _offsetFromEnd: 0
         InteractionData:
           BlockPose: 0
@@ -2426,116 +2305,9 @@ MonoBehaviour:
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 117.24818181818182
-    m_ClipIn: 0
-    m_Asset: {fileID: 8478679756963469731}
-    m_Duration: 2.7272727272727195
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -4301246575501675800}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: SquidMissile
+  m_Clips: []
   m_Markers:
     m_Objects: []
---- !u!114 &-3358763510709910651
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  Template:
-    NoteConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
-    NoteData:
-      StartPosition: {x: 4.7472754, y: -4.3556986}
-      EndPosition: {x: -0.521502, y: -5.2997594}
-      NoteStartTime: 112.27272727272725
-      NoteEndTime: 114.54545454545453
-      NoteBeatCount: 5.000000000000017
-      Interactions:
-      - _beatOffset: 4
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 1
-          InteractionType: 0
-          Flags: 0
-          Positions:
-          - {x: 6.318478, y: 2.6784832}
-          - {x: -5.2304816, y: -1.3383707}
-      - _beatOffset: 0
-        _offsetFromEnd: 1
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 1
-          Flags: 0
-          Positions:
-          - {x: -2.617803, y: -0.94401455}
 --- !u!114 &-2966064571746256957
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2900,7 +2672,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 5.4271584, y: -2.0534139}
+          - {x: 3.7177567, y: -2.0534139}
 --- !u!114 &-60336453637266737
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2929,21 +2701,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions: []
-      - _beatOffset: 8
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 0
-          Flags: 0
-          Positions: []
       - _beatOffset: 12
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 1
-          InteractionType: 0
-          Flags: 0
-          Positions: []
-      - _beatOffset: 16
         _offsetFromEnd: 0
         InteractionData:
           BlockPose: 0
@@ -3220,21 +2978,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions: []
-      - _beatOffset: 10
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 0
-          Flags: 0
-          Positions: []
       - _beatOffset: 14
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 1
-          InteractionType: 0
-          Flags: 0
-          Positions: []
-      - _beatOffset: 18
         _offsetFromEnd: 0
         InteractionData:
           BlockPose: 0
@@ -3531,75 +3275,6 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: SlapTentacle
-  - m_Version: 1
-    m_Start: 116.33909090909091
-    m_ClipIn: 0
-    m_Asset: {fileID: -9115162822522025664}
-    m_Duration: 3.636363636363626
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 3688818801659884798}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: SquidMissile
   m_Markers:
     m_Objects: []
 --- !u!114 &4022066722371015599
@@ -3855,76 +3530,7 @@ MonoBehaviour:
   m_Curves: {fileID: 0}
   m_Parent: {fileID: 11400000}
   m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 116.79363636363635
-    m_ClipIn: 0
-    m_Asset: {fileID: 8155799621013953908}
-    m_Duration: 3.181818181818187
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 5132914916228530079}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: SquidMissile
+  m_Clips: []
   m_Markers:
     m_Objects: []
 --- !u!114 &5145844636911831059
@@ -4230,7 +3836,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 3.2049353, y: -2.0534139}
+          - {x: 1.1194654, y: -2.0534139}
 --- !u!114 &6199717571049171833
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5162,21 +4768,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions: []
-      - _beatOffset: 9
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 0
-          Flags: 0
-          Positions: []
       - _beatOffset: 13
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 1
-          InteractionType: 0
-          Flags: 0
-          Positions: []
-      - _beatOffset: 17
         _offsetFromEnd: 0
         InteractionData:
           BlockPose: 0
@@ -5227,7 +4819,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 7.922883, y: -2.1901655}
+          - {x: 6.350234, y: -2.0534134}
 --- !u!114 &7456551978907676040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5307,7 +4899,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 5.839523, y: -1.0698857}
+          - {x: 1.2583265, y: -1.0698857}
 --- !u!114 &7655169594171241362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5370,7 +4962,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 3.8224287, y: -1.0356977}
+          - {x: -1.5109041, y: -1.0356977}
 --- !u!114 &7855175669344345868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6084,82 +5676,6 @@ MonoBehaviour:
     m_DisplayName: SquidMissile
   m_Markers:
     m_Objects: []
---- !u!114 &8155799621013953908
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  Template:
-    NoteConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
-    NoteData:
-      StartPosition: {x: 5.294283, y: -4.2531347}
-      EndPosition: {x: -0.521502, y: -5.2997594}
-      NoteStartTime: 111.36363636363635
-      NoteEndTime: 114.54545454545453
-      NoteBeatCount: 7.0000000000000115
-      Interactions:
-      - _beatOffset: 4
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 1
-          InteractionType: 0
-          Flags: 0
-          Positions:
-          - {x: 6.4210434, y: 2.6442952}
-          - {x: -5.2304816, y: -1.3383707}
-      - _beatOffset: 0
-        _offsetFromEnd: 1
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 1
-          Flags: 0
-          Positions:
-          - {x: 0.6300602, y: -0.9782026}
---- !u!114 &8478679756963469731
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  Template:
-    NoteConfig: {fileID: 11400000, guid: 2e465285f9ec63a4b885efa64fd0836c, type: 2}
-    NoteData:
-      StartPosition: {x: 5.260096, y: -4.3215103}
-      EndPosition: {x: -0.521502, y: -5.2997594}
-      NoteStartTime: 111.81818181818181
-      NoteEndTime: 114.54545454545453
-      NoteBeatCount: 5.999999999999983
-      Interactions:
-      - _beatOffset: 4
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 1
-          InteractionType: 0
-          Flags: 0
-          Positions:
-          - {x: 6.3868546, y: 2.6784832}
-          - {x: -5.2304816, y: -1.3383707}
-      - _beatOffset: 0
-        _offsetFromEnd: 1
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 1
-          Flags: 0
-          Positions:
-          - {x: -0.97677755, y: -1.0465786}
 --- !u!114 &8483025368824293763
 MonoBehaviour:
   m_ObjectHideFlags: 1
