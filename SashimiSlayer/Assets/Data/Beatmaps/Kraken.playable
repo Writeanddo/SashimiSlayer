@@ -422,7 +422,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 3.3096075, y: -1.0698857}
+          - {x: 3.9591799, y: -1.0698857}
 --- !u!114 &-8961497818919512334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -710,7 +710,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 5.3608913, y: -1.1040738}
+          - {x: 6.6600356, y: -1.0698857}
 --- !u!114 &-7690111909398111539
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2672,7 +2672,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 5.4271584, y: -2.0534139}
+          - {x: 3.7177567, y: -2.0534139}
 --- !u!114 &-60336453637266737
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3836,7 +3836,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 3.2049353, y: -2.0534139}
+          - {x: 1.1194654, y: -2.0534139}
 --- !u!114 &6199717571049171833
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4819,7 +4819,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 7.922883, y: -2.1901655}
+          - {x: 6.350234, y: -2.0534134}
 --- !u!114 &7456551978907676040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4962,7 +4962,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: -0.86133146, y: -1.0356977}
+          - {x: -1.5109041, y: -1.0356977}
 --- !u!114 &7855175669344345868
 MonoBehaviour:
   m_ObjectHideFlags: 1
