@@ -23,6 +23,9 @@ namespace Beatmapping.Indicator
         [SerializeField]
         private ParticleSystem _missParticles;
 
+        [SerializeField]
+        private ParticleSystem[] _perfectSliceParticles;
+
         public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
         {
             return null;
@@ -46,20 +49,33 @@ namespace Beatmapping.Indicator
 
             if (finalresult.Successful)
             {
-                if (timingResultScore == TimingWindow.Score.Pass)
+                switch (timingResultScore)
                 {
-                    if (earlyOrLate == TimingWindow.Direction.Early)
-                    {
+                    case TimingWindow.Score.Pass when earlyOrLate == TimingWindow.Direction.Early:
                         _earlyParticles.Play();
-                    }
-                    else if (earlyOrLate == TimingWindow.Direction.Late)
+                        break;
+                    case TimingWindow.Score.Pass:
                     {
-                        _lateParticles.Play();
+                        if (earlyOrLate == TimingWindow.Direction.Late)
+                        {
+                            _lateParticles.Play();
+                        }
+
+                        break;
                     }
-                }
-                else if (timingResultScore == TimingWindow.Score.Perfect)
-                {
-                    _perfectParticles.Play();
+                    case TimingWindow.Score.Perfect
+                        when finalresult.InteractionType == NoteInteraction.InteractionType.Slice:
+                    {
+                        foreach (ParticleSystem perfectSliceParticle in _perfectSliceParticles)
+                        {
+                            perfectSliceParticle.Play();
+                        }
+
+                        break;
+                    }
+                    case TimingWindow.Score.Perfect:
+                        _perfectParticles.Play();
+                        break;
                 }
             }
             else
