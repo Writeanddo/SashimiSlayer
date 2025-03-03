@@ -31,7 +31,7 @@ namespace Beatmapping.Notes
         /// <summary>
         ///     Fixed time between end and cleanup
         /// </summary>
-        private const double CleanupTime = 1f;
+        private const double CleanupTime = 2.5f;
 
         // Serialized fields
         [SerializeField]

@@ -361,6 +361,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: perfect_top
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 519
+        width: 310
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac084a09a9fdaa74a89fb2e8c2de78d5
+      internalID: 446569702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: perfect_bottom
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 477
+        width: 314
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0bb774a128bfbd489ddf04448be9dc9
+      internalID: 164872946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -384,6 +426,8 @@ TextureImporter:
       TimeBar: -39360356
       clock: -1795652402
       knife: -140340198
+      perfect_bottom: 164872946
+      perfect_top: 446569702
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
