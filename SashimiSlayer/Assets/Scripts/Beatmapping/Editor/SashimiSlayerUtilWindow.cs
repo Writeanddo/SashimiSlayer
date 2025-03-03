@@ -139,19 +139,19 @@ namespace Beatmapping.Editor
             return null;
         }
 
-        [MenuItem("Tools/Sashimi Slayer Tools")]
+        [MenuItem("Sashimi Slayer/Sashimi Slayer Tool Window")]
         public static void ShowWindow()
         {
             GetWindow<SashimiSlayerUtilWindow>("Sashimi Slayer Tools");
         }
 
-        [MenuItem("Tools/Refresh Timeline Editor Window #r")]
+        [MenuItem("Sashimi Slayer/Refresh Timeline Editor Window #r")]
         public static void RefreshTimelineEditor()
         {
             TimelineEditor.Refresh(RefreshReason.ContentsAddedOrRemoved);
         }
 
-        [MenuItem("Tools/Open Current Beatmap Timeline #w")]
+        [MenuItem("Sashimi Slayer/Open Current Beatmap Timeline #w")]
         public static void SelectTimelineFromScene()
         {
             // Search the current scene for a playable director

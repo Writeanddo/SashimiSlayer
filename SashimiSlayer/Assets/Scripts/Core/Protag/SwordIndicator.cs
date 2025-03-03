@@ -32,9 +32,9 @@ namespace Core.Protag
         [SerializeField]
         private Vector2Event _swordPivotPositionChangeEvent;
 
-        private readonly List<ParticleSystem.MinMaxCurve> _initialParticleRot = new();
+        public float Angle { get; private set; }
 
-        private float _angle;
+        private readonly List<ParticleSystem.MinMaxCurve> _initialParticleRot = new();
 
         private Vector3 _position;
 
@@ -74,17 +74,17 @@ namespace Core.Protag
                 ParticleSystem particle = _sliceParticles[i];
                 // particle.transform.position = _cPos;
                 ParticleSystem.MinMaxCurve curve = _initialParticleRot[i];
-                curve.constantMin += -_angle * Mathf.Deg2Rad;
-                curve.constantMax += -_angle * Mathf.Deg2Rad;
+                curve.constantMin += -Angle * Mathf.Deg2Rad;
+                curve.constantMax += -Angle * Mathf.Deg2Rad;
 
                 ParticleSystem.MainModule main = particle.main;
                 main.startRotation = curve;
 
-                particle.transform.rotation = Quaternion.Euler(0, 0, _angle);
+                particle.transform.rotation = Quaternion.Euler(0, 0, Angle);
                 particle.Play();
             }
 
-            Instantiate(_distortionPrefab, _currentSwordPivot, Quaternion.Euler(0, 0, _angle));
+            Instantiate(_distortionPrefab, _currentSwordPivot, Quaternion.Euler(0, 0, Angle));
         }
 
         private void OnSwordStateChange(Protaganist.ProtagSwordState swordState)
@@ -102,7 +102,7 @@ namespace Core.Protag
 
         private void SetAngle(float angle)
         {
-            _angle = angle;
+            Angle = angle;
         }
 
         private void SetPosition(Vector2 position)
@@ -112,7 +112,7 @@ namespace Core.Protag
 
         private void UpdateOrientation(LineRenderer lineRen)
         {
-            Quaternion rotation = Quaternion.Euler(0, 0, _angle);
+            Quaternion rotation = Quaternion.Euler(0, 0, Angle);
             lineRen.positionCount = 3;
             lineRen.SetPosition(0, _currentSwordPivot + rotation * Vector3.left * 25f);
             lineRen.SetPosition(1, _currentSwordPivot);
