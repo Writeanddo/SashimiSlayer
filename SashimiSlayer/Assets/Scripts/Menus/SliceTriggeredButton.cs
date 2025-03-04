@@ -12,6 +12,13 @@ namespace Menus
     /// </summary>
     public class SliceTriggeredButton : MonoBehaviour
     {
+        public enum CanvasType
+        {
+            Worldspace,
+            CameraOverlay,
+            ScreenOverlay
+        }
+
         [Header("Listening Events")]
 
         [SerializeField]
@@ -55,7 +62,7 @@ namespace Menus
         private float _delay;
 
         [SerializeField]
-        private bool _isInCanvasSpace;
+        private CanvasType _isInCanvasSpace;
 
         private bool _used;
 
@@ -81,11 +88,7 @@ namespace Menus
 
         private void OnProtagSwordState(Protaganist.ProtagSwordState obj)
         {
-            Vector2 pos = transform.position;
-            if (_isInCanvasSpace)
-            {
-                pos = Camera.main.ScreenToWorldPoint(pos);
-            }
+            Vector2 pos = CameraCanvasPositionToWorld(transform.position);
 
             float dist = Protaganist.Instance.DistanceToSwordPlane(pos);
 
@@ -110,11 +113,7 @@ namespace Menus
 
             if (_hovered)
             {
-                Vector2 pos = transform.position;
-                if (_isInCanvasSpace)
-                {
-                    pos = Camera.main.ScreenToWorldPoint(pos);
-                }
+                Vector2 pos = CameraCanvasPositionToWorld(transform.position);
 
                 _objectSlicedEvent.Raise(new ObjectSlicedData
                 {
@@ -140,6 +139,19 @@ namespace Menus
             {
                 _buttonSlicedEvent.Raise();
             }
+        }
+
+        private Vector2 CameraCanvasPositionToWorld(Vector2 cameraCanvasPosition)
+        {
+            if (_isInCanvasSpace == CanvasType.CameraOverlay || _isInCanvasSpace == CanvasType.Worldspace)
+            {
+                // Camera overlay canvases are really in world space
+                // Since we're using orthographic we can just return the position directly
+                return cameraCanvasPosition;
+            }
+
+            Camera camera = Camera.main;
+            return camera.ScreenToWorldPoint(cameraCanvasPosition);
         }
     }
 }

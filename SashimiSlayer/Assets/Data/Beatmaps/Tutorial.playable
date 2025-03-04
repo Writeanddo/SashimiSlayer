@@ -42,7 +42,7 @@ MonoBehaviour:
     m_Start: 58.980000000000004
     m_ClipIn: 0
     m_Asset: {fileID: -2733709977444201013}
-    m_Duration: 3
+    m_Duration: 2.75
     m_TimeScale: 1
     m_ParentTrack: {fileID: -9154038518674239263}
     m_EaseInDuration: 0
@@ -529,7 +529,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -5.9765635, y: 6.3612733}
+      EndPosition: {x: -5.9765635, y: 7.950455}
       NoteStartTime: 36
       NoteEndTime: 39
       NoteBeatCount: 6
@@ -598,7 +598,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -10.405365, y: 3.303084}
+      EndPosition: {x: -10.4314165, y: 3.303084}
       NoteStartTime: 44
       NoteEndTime: 47
       NoteBeatCount: 6
@@ -649,7 +649,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 8.611906, y: -4.9381175}
-      EndPosition: {x: -3.2340412, y: 6.3353243}
+      EndPosition: {x: -3.2340412, y: 7.116889}
       NoteStartTime: 84
       NoteEndTime: 87
       NoteBeatCount: 6
@@ -746,7 +746,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -2.8654041, y: 6.43198}
+      EndPosition: {x: -2.8654041, y: 7.3698587}
       NoteStartTime: 57
       NoteEndTime: 60
       NoteBeatCount: 6
@@ -791,7 +791,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 8.611906, y: -4.9381175}
-      EndPosition: {x: -3.2340412, y: 6.3353243}
+      EndPosition: {x: -3.2340412, y: 7.325307}
       NoteStartTime: 92.5
       NoteEndTime: 95.5
       NoteBeatCount: 6
@@ -1759,10 +1759,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: <color=#27e324>TOP!</color>
   - m_Version: 1
-    m_Start: 54.980000000000004
+    m_Start: 53.980000000000004
     m_ClipIn: 0
     m_Asset: {fileID: -2611741983970835049}
-    m_Duration: 6
+    m_Duration: 7
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6530153297842992967}
     m_EaseInDuration: 0
@@ -1830,7 +1830,7 @@ MonoBehaviour:
     m_Start: 3.025
     m_ClipIn: 0
     m_Asset: {fileID: 7649258662320957175}
-    m_Duration: 6.033333333333333
+    m_Duration: 5.674999999999999
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6530153297842992967}
     m_EaseInDuration: 0
@@ -2037,10 +2037,10 @@ MonoBehaviour:
 
       if you need some more practice!'
   - m_Version: 1
-    m_Start: 9.058333333333334
+    m_Start: 8.7
     m_ClipIn: 0
     m_Asset: {fileID: -3422261592518303231}
-    m_Duration: 4.921666666666667
+    m_Duration: 5.280000000000001
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6530153297842992967}
     m_EaseInDuration: 0
@@ -2104,10 +2104,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Now let's try PARRYING!
   - m_Version: 1
-    m_Start: 62.980000000000004
+    m_Start: 61.980000000000004
     m_ClipIn: 0
     m_Asset: {fileID: -6608335133806372840}
-    m_Duration: 3.171666666666667
+    m_Duration: 4.171666666666667
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6530153297842992967}
     m_EaseInDuration: 0
@@ -2501,7 +2501,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 8.611906, y: -4.9381175}
-      EndPosition: {x: -3.2340412, y: 6.3353243}
+      EndPosition: {x: -3.2340412, y: 7.429516}
       NoteStartTime: 85.5
       NoteEndTime: 88.5
       NoteBeatCount: 6
@@ -2577,10 +2577,10 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -2.2643852, y: 6.6794596}
+      EndPosition: {x: -2.2643852, y: 7.457736}
       NoteStartTime: 53.5
-      NoteEndTime: 56.5
-      NoteBeatCount: 6
+      NoteEndTime: 56
+      NoteBeatCount: 5
       Interactions:
       - _beatOffset: 4
         _offsetFromEnd: 0
@@ -4179,10 +4179,10 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -2.2643852, y: 6.6794596}
+      EndPosition: {x: -2.2643852, y: 7.4593797}
       NoteStartTime: 53
-      NoteEndTime: 56
-      NoteBeatCount: 6
+      NoteEndTime: 55.75
+      NoteBeatCount: 5.5
       Interactions:
       - _beatOffset: 4
         _offsetFromEnd: 0
@@ -4366,7 +4366,7 @@ MonoBehaviour:
       - _beatOffset: 4
         _offsetFromEnd: 0
         InteractionData:
-          BlockPose: 0
+          BlockPose: 1
           InteractionType: 0
           Flags: 0
           Positions:
@@ -4600,7 +4600,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 8.611906, y: -4.9381175}
-      EndPosition: {x: -3.2340412, y: 6.3353243}
+      EndPosition: {x: -3.2340412, y: 8.080819}
       NoteStartTime: 93.5
       NoteEndTime: 96
       NoteBeatCount: 5
@@ -4639,7 +4639,7 @@ MonoBehaviour:
     m_Start: 59.480000000000004
     m_ClipIn: 0
     m_Asset: {fileID: -4870925799724017901}
-    m_Duration: 3
+    m_Duration: 2.5
     m_TimeScale: 1
     m_ParentTrack: {fileID: -320745285350345662}
     m_EaseInDuration: 0
@@ -5135,7 +5135,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -2.8654041, y: 6.43198}
+      EndPosition: {x: -2.8654041, y: 7.500119}
       NoteStartTime: 60.5
       NoteEndTime: 63.5
       NoteBeatCount: 6
@@ -5201,7 +5201,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -4.6780033, y: 6.166766}
+      EndPosition: {x: -4.6780033, y: 7.5214787}
       NoteStartTime: 40
       NoteEndTime: 43
       NoteBeatCount: 6
@@ -5304,7 +5304,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -2.2643852, y: 6.6794596}
+      EndPosition: {x: -2.2643852, y: 7.721545}
       NoteStartTime: 52.5
       NoteEndTime: 55.5
       NoteBeatCount: 6
@@ -5363,7 +5363,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 8.611906, y: -4.9381175}
-      EndPosition: {x: -3.302417, y: 6.1301956}
+      EndPosition: {x: -3.302417, y: 7.380699}
       NoteStartTime: 81.5
       NoteEndTime: 84.5
       NoteBeatCount: 6
@@ -5377,36 +5377,6 @@ MonoBehaviour:
           Positions:
           - {x: 5.464647, y: 1.8640335}
           - {x: -4.512205, y: -0.436031}
---- !u!114 &1222858567866660776
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  Template:
-    NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
-    NoteData:
-      StartPosition: {x: 8.611906, y: -4.9381175}
-      EndPosition: {x: -10.345152, y: 3.8395975}
-      NoteStartTime: 93.25
-      NoteEndTime: 96
-      NoteBeatCount: 5.5
-      Interactions:
-      - _beatOffset: 4
-        _offsetFromEnd: 0
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 0
-          Flags: 0
-          Positions:
-          - {x: 5.464647, y: 1.8640335}
-          - {x: -4.5122046, y: -0.6069712}
 --- !u!114 &1243424104829167819
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5442,7 +5412,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -2.2643852, y: 6.6794596}
+      EndPosition: {x: -2.2643852, y: 7.6433907}
       NoteStartTime: 52
       NoteEndTime: 55
       NoteBeatCount: 6
@@ -5490,7 +5460,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -2.8654041, y: 6.43198}
+      EndPosition: {x: -2.8654041, y: 7.4480143}
       NoteStartTime: 61
       NoteEndTime: 64
       NoteBeatCount: 6
@@ -6426,75 +6396,6 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 99.23
-    m_ClipIn: 0
-    m_Asset: {fileID: 1222858567866660776}
-    m_Duration: 2.75
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: 4539167557533657206}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: AngryTutFish
-  - m_Version: 1
     m_Start: 71.98
     m_ClipIn: 0
     m_Asset: {fileID: -174451239854514069}
@@ -6802,7 +6703,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 6.667432, y: -4.513868}
-      EndPosition: {x: -2.2643852, y: 6.6794596}
+      EndPosition: {x: -2.2643852, y: 7.669442}
       NoteStartTime: 49
       NoteEndTime: 52
       NoteBeatCount: 6
@@ -6907,7 +6808,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 8.611906, y: -4.9381175}
-      EndPosition: {x: -3.302417, y: 6.1301956}
+      EndPosition: {x: -3.302417, y: 7.3807}
       NoteStartTime: 80.5
       NoteEndTime: 83.5
       NoteBeatCount: 6
@@ -6937,7 +6838,7 @@ MonoBehaviour:
     NoteConfig: {fileID: 11400000, guid: 8a1e72dd48efb0d4d83d5d580f34e2c1, type: 2}
     NoteData:
       StartPosition: {x: 8.611906, y: -4.9381175}
-      EndPosition: {x: -3.302417, y: 6.1301956}
+      EndPosition: {x: -3.302417, y: 7.380699}
       NoteStartTime: 80
       NoteEndTime: 83
       NoteBeatCount: 6
@@ -7338,10 +7239,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Active
   - m_Version: 1
-    m_Start: 62.980000000000004
+    m_Start: 61.980000000000004
     m_ClipIn: 0
     m_Asset: {fileID: -4634883101059139114}
-    m_Duration: 17
+    m_Duration: 18
     m_TimeScale: 1
     m_ParentTrack: {fileID: 7765372441183876958}
     m_EaseInDuration: 0
