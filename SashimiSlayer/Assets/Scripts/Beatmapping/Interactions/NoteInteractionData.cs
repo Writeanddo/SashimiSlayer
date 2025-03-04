@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Beatmapping.Notes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,12 +13,14 @@ namespace Beatmapping.Interactions
     public struct NoteInteractionData
     {
         [Tooltip("The correct block pose, if this interaction is an attack that can be blocked")]
+        [HideIf("InteractionType", NoteInteraction.InteractionType.Slice)]
         public SharedTypes.BlockPoseStates BlockPose;
 
         [Tooltip("The type of interaction this is")]
         public NoteInteraction.InteractionType InteractionType;
 
         [Tooltip("Additional interaction flags")]
+        [HideInInspector]
         public NoteInteraction.InteractionFlags Flags;
 
         [FormerlySerializedAs("InteractionPositions")]
