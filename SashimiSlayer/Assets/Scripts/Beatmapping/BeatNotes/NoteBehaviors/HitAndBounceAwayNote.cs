@@ -45,14 +45,14 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             if (segment.Type != BeatNote.TimeSegmentType.PreEnding)
             {
-                _sprite.color = new Color(1, 1, 1, 1f);
+                _sprite.SetAlpha(1f);
                 return;
             }
 
             _bodyTransform.position = Vector2.Lerp(_startPos, _endPos, (float)tickInfo.NormalizedSegmentTime);
 
             _sprite.transform.rotation = Quaternion.Euler(0, 0, 1200 * (float)tickInfo.SegmentTime);
-            _sprite.color = new Color(1, 1, 1, 0.7f);
+            _sprite.SetAlpha(0.7f);
         }
 
         public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
