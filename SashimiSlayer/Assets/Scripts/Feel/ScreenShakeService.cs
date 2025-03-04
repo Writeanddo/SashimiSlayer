@@ -13,6 +13,8 @@ namespace Feel
 
         public static ScreenShakeService Instance { get; private set; }
 
+        public float ForceScale { get; set; } = 1;
+
         private void Awake()
         {
             if (Instance == null)
@@ -29,7 +31,7 @@ namespace Feel
         {
             _impulseSource.m_ImpulseDefinition.m_TimeEnvelope.m_SustainTime = duration;
             _impulseSource.m_ImpulseDefinition.m_ImpulseShape = shapes;
-            _impulseSource.GenerateImpulseWithVelocity(velocity);
+            _impulseSource.GenerateImpulseWithVelocity(velocity * ForceScale);
         }
 
         public void ShakeScreen(ScreenShakeSO screenShakeSO)
