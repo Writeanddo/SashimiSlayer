@@ -56,7 +56,7 @@ MonoBehaviour:
   _delay: 0.02
   _shakeDuration: 1
   _shakeStrength: 0.12
-  _shakeVibrato: 23
+  _shakeVibrato: 25
 --- !u!114 &7838767818776944973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ PrefabInstance:
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _shakeVibrato
-      value: 23
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
@@ -269,7 +269,7 @@ PrefabInstance:
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _shakeVibrato
-      value: 23
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
