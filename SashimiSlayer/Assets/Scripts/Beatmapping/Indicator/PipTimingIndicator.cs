@@ -3,6 +3,7 @@ using Base;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Beatmapping.Indicator
@@ -33,6 +34,17 @@ namespace Beatmapping.Indicator
 
         [SerializeField]
         private float _delay;
+
+        [Header("Shake")]
+
+        [SerializeField]
+        private float _shakeDuration;
+
+        [SerializeField]
+        private float _shakeStrength;
+
+        [SerializeField]
+        private int _shakeVibrato;
 
         private readonly List<IndicatorPip> _pips = new();
 
@@ -86,6 +98,7 @@ namespace Beatmapping.Indicator
             int subdivsPerBeat = tickInfo.BeatmapTickInfo.CurrentBeatmap.Subdivisions;
             int currentSubdivision = tickInfo.SubdivisionIndex;
 
+            // We need to calculate in subdivisions for off beats
             double interactionTargetTime = interaction.TargetTime;
             int targetSubdiv = tickInfo.BeatmapTickInfo.GetClosestSubdivisionIndex(interactionTargetTime);
 
@@ -95,8 +108,9 @@ namespace Beatmapping.Indicator
             bool changed = _prevBeatRemaining != beatsRemaining;
             _prevBeatRemaining = beatsRemaining;
 
-            // Don't show anything if too far away
+            // Don't show anything at all if the target subdiv is before any of the pips
             bool shouldShowPips = beatsRemaining < _pips.Count;
+
             for (var i = 0; i < _pips.Count; i++)
             {
                 bool isVisible = i <= beatsRemaining && shouldShowPips;
@@ -110,6 +124,11 @@ namespace Beatmapping.Indicator
                 bool isOn = i == beatsRemaining;
                 _pips[i].SetOn(isOn);
                 _pips[i].SetAlpha(normalized);
+
+                if (i == 1 && isOn)
+                {
+                    _pips[i].transform.DOShakePosition(_shakeDuration, _shakeStrength, _shakeVibrato);
+                }
 
                 if (changed)
                 {
