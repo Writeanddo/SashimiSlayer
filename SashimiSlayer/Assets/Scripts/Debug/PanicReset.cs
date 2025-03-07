@@ -10,7 +10,12 @@ public class PanicReset : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            LevelLoader.Instance.LoadLevel(_levelToLoad).Forget();
+            LoadLevel();
         }
+    }
+
+    public void LoadLevel()
+    {
+        LevelLoader.Instance.LoadLevel(_levelToLoad).Forget();
     }
 }

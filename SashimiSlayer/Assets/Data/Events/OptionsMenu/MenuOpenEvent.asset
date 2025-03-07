@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f70f35c4824ee09fcb50fd8385c0c7, type: 3}
   m_Name: MenuOpenEvent
   m_EditorClassIdentifier: 
-  _description: Triggers whenever a menu opens, to block keyboard input
+  _description: Triggers whenever a menu opens/closes, to block keyboard input
+  _debug: 0

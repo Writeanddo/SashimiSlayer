@@ -85,6 +85,9 @@ namespace Beatmapping.Timing
         [SerializeField]
         private BeatmapEvent _beatmapUnloadedEvent;
 
+        [SerializeField]
+        private BoolEvent _optionsMenuOpenEvent;
+
         [Header("Invoking Events")]
 
         [SerializeField]
@@ -139,6 +142,7 @@ namespace Beatmapping.Timing
 
             _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
             _beatmapUnloadedEvent.AddListener(HandleBeatmapUnloaded);
+            _optionsMenuOpenEvent.AddListener(HandleOptionsMenuOpen);
         }
 
         private void Update()
@@ -167,6 +171,24 @@ namespace Beatmapping.Timing
         {
             _beatmapLoadedEvent.RemoveListener(HandleStartBeatmap);
             _beatmapUnloadedEvent.RemoveListener(HandleBeatmapUnloaded);
+            _optionsMenuOpenEvent.RemoveListener(HandleOptionsMenuOpen);
+        }
+
+        private void HandleOptionsMenuOpen(bool optionsMenuOpen)
+        {
+            if (!_beatmapSoundtrackInstance.isValid())
+            {
+                return;
+            }
+
+            if (optionsMenuOpen)
+            {
+                _beatmapSoundtrackInstance.setPaused(true);
+            }
+            else
+            {
+                _beatmapSoundtrackInstance.setPaused(false);
+            }
         }
 
         private void EndBeatmap()
