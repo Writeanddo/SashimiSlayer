@@ -174,8 +174,6 @@ namespace Beatmapping.Editor
         {
             string startupScenePath = _prefs.StartupScenePath;
 
-            EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-
             _lastEditedScenePath = SceneManager.GetActiveScene().path;
             Debug.Log(_lastEditedScenePath);
 
@@ -183,6 +181,10 @@ namespace Beatmapping.Editor
             {
                 EditorSceneManager.OpenScene(startupScenePath, OpenSceneMode.Single);
             }
+
+            BeatNoteService.CleanupNotes();
+
+            EditorSceneManager.SaveOpenScenes();
 
             EditorApplication.ExecuteMenuItem("Edit/Play");
         }

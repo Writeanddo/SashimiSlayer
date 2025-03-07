@@ -9,7 +9,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 #if UNITY_EDITOR
-using UnityEditor.SceneManagement;
 #endif
 
 namespace Beatmapping
@@ -74,24 +73,21 @@ namespace Beatmapping
             // Hack fix for an issue where timeline sometimes fails to clean up instantiated notes during editing
             if (!Application.isPlaying)
             {
-                EditorApplication.delayCall += () =>
-                {
-                    BeatNote[] notes = FindObjectsByType<BeatNote>(FindObjectsSortMode.None);
-                    foreach (BeatNote note in notes)
-                    {
-                        DestroyImmediate(note.gameObject);
-                    }
-
-                    if (notes.Length > 0)
-                    {
-                        // Mark scene dirty to force save
-                        EditorSceneManager.MarkSceneDirty(gameObject.scene);
-                        EditorSceneManager.SaveOpenScenes();
-                    }
-                };
+                EditorApplication.delayCall += () => { CleanupNotes(); };
             }
 #endif
         }
+
+#if UNITY_EDITOR
+        public static void CleanupNotes()
+        {
+            BeatNote[] notes = FindObjectsByType<BeatNote>(FindObjectsSortMode.None);
+            foreach (BeatNote note in notes)
+            {
+                DestroyImmediate(note.gameObject);
+            }
+        }
+#endif
 
         private void SetSpawningEnabled(bool spawningEnabled)
         {

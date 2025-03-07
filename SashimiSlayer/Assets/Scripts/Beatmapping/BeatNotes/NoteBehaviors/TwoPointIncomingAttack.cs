@@ -112,7 +112,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             }
 
             // Make sure sprite is no longer transparent, to prevent ghosts when looping
-            _sprite.color = new Color(1, 1, 1, 1);
+            _sprite.SetAlpha(1f);
             _sprite.enabled = true;
         }
 

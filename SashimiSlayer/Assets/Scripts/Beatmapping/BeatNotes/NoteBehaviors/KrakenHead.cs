@@ -6,8 +6,15 @@ using UnityEngine;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
-    public class SadFishNote : BeatNoteModule
+    /// <summary>
+    ///     Simple note behavior that moves the note from start to slice position within a fixed time,
+    ///     then to the end position
+    ///     when ending.
+    /// </summary>
+    public class KrakenHeadNote : BeatNoteModule
     {
+        [Header("Depends")]
+
         [SerializeField]
         private SpriteRenderer _sprite;
 
@@ -18,10 +25,18 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         private ParticleSystem[] _dieParticles;
 
         [SerializeField]
-        private AnimationCurve _moveCurve;
+        private Transform _bodyTransform;
+
+        [Header("Movement")]
 
         [SerializeField]
-        private Transform _bodyTransform;
+        private AnimationCurve _enterCurve;
+
+        [SerializeField]
+        private AnimationCurve _exitCurve;
+
+        [SerializeField]
+        private float _entranceDuration;
 
         private Vector2 _startPos;
         private Vector2 _targetPos;
@@ -40,12 +55,12 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             if (segment.Type == BeatNote.TimeSegmentType.Interaction)
             {
-                InteractionOnTick((float)tickinfo.NormalizedSegmentTime);
+                InteractionOnTick((float)tickinfo.NoteTime);
             }
         }
 
         /// <summary>
-        ///     Note exits the screen
+        ///     Note exiting the screen
         /// </summary>
         /// <param name="normalizedTime"></param>
         private void PreEndingOnTick(float normalizedTime)
@@ -55,35 +70,24 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                 return;
             }
 
-            float t = _moveCurve.Evaluate(1 - normalizedTime);
+            float t = _exitCurve.Evaluate(normalizedTime);
 
             // X velocity is constant, y uses curve
             _bodyTransform.position = new Vector2(
-                Mathf.Lerp(_targetPos.x, _endPos.x, normalizedTime),
-                Mathf.Lerp(_targetPos.y, _endPos.y, 1 - t)
+                Mathf.Lerp(_targetPos.x, _endPos.x, t),
+                Mathf.Lerp(_targetPos.y, _endPos.y, t)
             );
-
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, 90 * (1 - t));
-            _sprite.SetAlpha(0.5f);
         }
 
-        /// <summary>
-        ///     Note enters the screen and moves to target position
-        /// </summary>
-        /// <param name="normalizedTime"></param>
-        private void InteractionOnTick(float normalizedTime)
+        private void InteractionOnTick(float rawTime)
         {
-            float t = _moveCurve.Evaluate(normalizedTime);
+            float t = _enterCurve.Evaluate(rawTime / _entranceDuration);
 
             // X velocity is constant, y uses curve
             _bodyTransform.position = new Vector2(
-                Mathf.Lerp(_startPos.x, _targetPos.x, normalizedTime),
+                Mathf.Lerp(_startPos.x, _targetPos.x, t),
                 Mathf.Lerp(_startPos.y, _targetPos.y, t)
             );
-
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, -90 * (1 - t));
-
-            _sprite.SetAlpha(1);
         }
 
         private void BeatNote_SlicedByProtag(int interactionIndex,
@@ -106,12 +110,11 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
         public override void OnNoteInitialized(BeatNote beatNote)
         {
-            // Form an arc from start, with the peak at the target position
+            // Lerp from start to target position with fixed time, then to end
             _startPos = _beatNote.StartPosition;
             _bodyTransform.position = _startPos;
             _targetPos = _beatNote.GetInteractionPosition(0, 0);
             _endPos = _beatNote.EndPosition;
-            _sprite.flipX = _targetPos.x > _startPos.x;
 
             _beatNote.OnTick += BeatNote_OnTick;
             _beatNote.OnSlicedByProtag += BeatNote_SlicedByProtag;
