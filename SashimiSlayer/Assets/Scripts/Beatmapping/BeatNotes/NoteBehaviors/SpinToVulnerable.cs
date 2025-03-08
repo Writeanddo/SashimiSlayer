@@ -67,7 +67,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             }
 
             NoteInteraction interaction = segment.Interaction;
-            _sprite.color = new Color(1, 1, 1, 1);
+            _sprite.SetAlpha(1f);
 
             if (interaction.Type == NoteInteraction.InteractionType.Slice)
             {

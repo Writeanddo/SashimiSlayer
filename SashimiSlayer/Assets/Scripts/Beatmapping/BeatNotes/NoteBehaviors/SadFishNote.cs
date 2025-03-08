@@ -44,6 +44,10 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             }
         }
 
+        /// <summary>
+        ///     Note exits the screen
+        /// </summary>
+        /// <param name="normalizedTime"></param>
         private void PreEndingOnTick(float normalizedTime)
         {
             if (_landedHit)
@@ -60,9 +64,13 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             );
 
             _sprite.transform.rotation = Quaternion.Euler(0, 0, 90 * (1 - t));
-            _sprite.color = new Color(1, 1, 1, 0.5f);
+            _sprite.SetAlpha(0.5f);
         }
 
+        /// <summary>
+        ///     Note enters the screen and moves to target position
+        /// </summary>
+        /// <param name="normalizedTime"></param>
         private void InteractionOnTick(float normalizedTime)
         {
             float t = _moveCurve.Evaluate(normalizedTime);
@@ -75,7 +83,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             _sprite.transform.rotation = Quaternion.Euler(0, 0, -90 * (1 - t));
 
-            _sprite.color = new Color(1, 1, 1, 1f);
+            _sprite.SetAlpha(1);
         }
 
         private void BeatNote_SlicedByProtag(int interactionIndex,

@@ -13,4 +13,11 @@ public static class ExtensionMethods
         canvasGroup.interactable = state;
         canvasGroup.blocksRaycasts = state;
     }
+
+    public static void SetAlpha(this SpriteRenderer spriteRenderer, float alpha)
+    {
+        Color color = spriteRenderer.color;
+        color.a = alpha;
+        spriteRenderer.color = color;
+    }
 }
