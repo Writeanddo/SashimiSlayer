@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355d4db3565421d4ba61aa7cb4acfd61, type: 3}
   m_Name: DefaultTimingWindow
   m_EditorClassIdentifier: 
-  <PerfectWindowHalfWidth>k__BackingField: 0.05
+  <PerfectWindowHalfWidth>k__BackingField: 0.06
   <PassWindowHalfWidth>k__BackingField: 0.1
   <FailWindowHalfWidth>k__BackingField: 0.2
