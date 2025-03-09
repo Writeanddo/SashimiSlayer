@@ -5330,11 +5330,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squishScale: 0.7
+  _squishScale: 0.6
   _squishDuration: 0.3
   _squishTransform:
   - transform: {fileID: 7407001948907140046}
-    beatInterval: 2
+    beatInterval: 1
     beatOffset: 1
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
   _delay: 0.02
