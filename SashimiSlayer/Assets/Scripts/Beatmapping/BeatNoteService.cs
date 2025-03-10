@@ -65,30 +65,7 @@ namespace Beatmapping
             _onSliceByProtag.RemoveListener(OnSliceByProtag);
             _setSpawnEnabledEvent.RemoveListener(SetSpawningEnabled);
         }
-
-        private void OnValidate()
-        {
-#if UNITY_EDITOR
-            // Destroy children
-            // Hack fix for an issue where timeline sometimes fails to clean up instantiated notes during editing
-            if (!Application.isPlaying)
-            {
-                EditorApplication.delayCall += () => { CleanupNotes(); };
-            }
-#endif
-        }
-
-#if UNITY_EDITOR
-        public static void CleanupNotes()
-        {
-            BeatNote[] notes = FindObjectsByType<BeatNote>(FindObjectsSortMode.None);
-            foreach (BeatNote note in notes)
-            {
-                DestroyImmediate(note.gameObject);
-            }
-        }
-#endif
-
+        
         private void SetSpawningEnabled(bool spawningEnabled)
         {
             _spawningEnabled = spawningEnabled;
