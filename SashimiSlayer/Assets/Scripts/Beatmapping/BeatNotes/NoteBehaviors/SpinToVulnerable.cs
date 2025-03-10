@@ -73,6 +73,10 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             {
                 TargetToHitVisuals((float)tickinfo.NormalizedSegmentTime, (float)tickinfo.BeatmapTime);
             }
+            else
+            {
+                _enteredDazed = false;
+            }
         }
 
         private void TargetToHitVisuals(float normalizedTime, float beatmapTime)

@@ -138,8 +138,6 @@ namespace Beatmapping.Timing
                 Destroy(gameObject);
             }
 
-            Application.targetFrameRate = 100;
-
             _beatmapLoadedEvent.AddListener(HandleStartBeatmap);
             _beatmapUnloadedEvent.AddListener(HandleBeatmapUnloaded);
             _optionsMenuOpenEvent.AddListener(HandleOptionsMenuOpen);

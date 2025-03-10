@@ -99,7 +99,11 @@ namespace Core.Protag
         private ScreenShakeSO _sliceScreenShake;
 
         public static Protaganist Instance { get; private set; }
-        public Vector3 SpritePosition { get; set; }
+
+        /// <summary>
+        ///     The position that notes move towards
+        /// </summary>
+        public Vector3 NoteTargetPosition { get; set; }
 
         public Vector3 SwordPosition => _currentSwordState.SwordPosition;
 
