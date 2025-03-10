@@ -5303,7 +5303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squishScale: 0.96
+  _squishScale: 0.92
   _squishDuration: 0.4
   _squishTransform:
   - transform: {fileID: 1493418430}

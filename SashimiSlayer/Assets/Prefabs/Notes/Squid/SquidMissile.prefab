@@ -5222,7 +5222,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _explosionParticles: {fileID: 8820880546140617743}
-  _middlePointThreshold: 0.5
+  _middlePointThreshold: 0.75
   _peakSfx:
     Guid:
       Data1: 1372330880
