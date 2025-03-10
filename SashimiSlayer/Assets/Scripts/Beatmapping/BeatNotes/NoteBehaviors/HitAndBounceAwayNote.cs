@@ -3,6 +3,7 @@ using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Beatmapping.BeatNotes.NoteBehaviors
 {
@@ -25,8 +26,14 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         [SerializeField]
         private ParticleSystem _explosionParticles;
 
+        [Header("Events")]
+
+        public UnityEvent OnBounce;
+
         private Vector2 _endPos;
         private Vector2 _startPos;
+
+        private bool _started;
 
         private void BeatNote_ProtagFailBlock(BeatNote.NoteTickInfo tickInfo,
             NoteInteraction.FinalResult finalresult)
@@ -46,7 +53,14 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             if (segment.Type != BeatNote.TimeSegmentType.PreEnding)
             {
                 _sprite.SetAlpha(1f);
+                _started = false;
                 return;
+            }
+
+            if (!_started)
+            {
+                _started = true;
+                OnBounce.Invoke();
             }
 
             _bodyTransform.position = Vector2.Lerp(_startPos, _endPos, (float)tickInfo.NormalizedSegmentTime);
@@ -64,6 +78,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         {
             _startPos = beatNote.GetFinalInteractionPosition();
             _endPos = beatNote.EndPosition;
+            _started = false;
 
             _beatNote.OnTick += BeatNote_OnTick;
             _beatNote.OnProtagFailBlock += BeatNote_ProtagFailBlock;

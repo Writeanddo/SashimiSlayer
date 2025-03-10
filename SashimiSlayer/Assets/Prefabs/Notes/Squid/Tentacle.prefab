@@ -15183,7 +15183,7 @@ MonoBehaviour:
     beatInterval: 1
     beatOffset: 1
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
-  _delay: 0.02
+  _delay: 0
 --- !u!1 &8181838416036536246
 GameObject:
   m_ObjectHideFlags: 0

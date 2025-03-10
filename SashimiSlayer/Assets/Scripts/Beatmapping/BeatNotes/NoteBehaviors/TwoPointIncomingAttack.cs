@@ -100,11 +100,13 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                     Mathf.Lerp(_startPos.y, _peakPos.y, t)
                 );
                 _sprite.transform.localRotation = Quaternion.Euler(0, 0, -90 * (1 - t));
+                _hitPeak = false;
             }
             else
             {
-                if (flags.HasFlag(BeatNote.TickFlags.TriggerInteractions) && !_hitPeak &&
-                    normalizedTime >= trajectoryPeakTime)
+                if (flags.HasFlag(BeatNote.TickFlags.TriggerInteractions)
+                    && !_hitPeak
+                    && normalizedTime >= trajectoryPeakTime)
                 {
                     _hitPeak = true;
                     OnHitPeak.Invoke();
