@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
+using Core.Protag;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,6 +16,8 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
     /// </summary>
     public class TwoPointIncomingAttack : BeatNoteModule
     {
+        [Header("Configuration")]
+
         [SerializeField]
         private BeatNote _beatNote;
 
@@ -23,6 +26,11 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
         [SerializeField]
         private int _interactionIndex;
+
+        [Header("Trajectory Config")]
+
+        [SerializeField]
+        private float _distanceFromTarget;
 
         [Header("Visuals")]
 
@@ -54,6 +62,12 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         private float _angleToTarget;
 
         private bool _hitPeak;
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(_bodyTransform.position, _distanceFromTarget);
+        }
 
         private void BeatNote_OnTick(BeatNote.NoteTickInfo tickinfo)
         {
@@ -129,14 +143,39 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             // Form an arc from start, with the peak at the target position
             _startPos = _beatNote.GetPreviousPosition(_interactionIndex);
             _peakPos = _beatNote.GetInteractionPosition(_interactionIndex, 0);
-            _targetPos = _beatNote.GetInteractionPosition(_interactionIndex, 1);
 
+            _targetPos = GetTargetPositionFromProtag();
+
+            // Override the target position on the BeatNote so following interactions use the right position
+            _beatNote.SetInteractionPosition(_interactionIndex, 1, _targetPos);
+
+            // _targetPos = _beatNote.GetInteractionPosition(_interactionIndex, 1);
             _bodyTransform.position = _startPos;
 
             _angleToTarget = Mathf.Atan2(_targetPos.y - _peakPos.y, _targetPos.x - _peakPos.x) * Mathf.Rad2Deg;
 
             _beatNote.OnTick += BeatNote_OnTick;
             _beatNote.OnProtagFailBlock += BeatNote_ProtagFailBlock;
+        }
+
+        private Vector2 GetTargetPositionFromProtag()
+        {
+            Vector2 rawTargetPos = Vector2.zero;
+            if (Protaganist.Instance != null)
+            {
+                rawTargetPos = Protaganist.Instance.NoteTargetPosition;
+            }
+            else
+            {
+                var body = FindObjectOfType<ProtagBody>();
+                if (body != null)
+                {
+                    rawTargetPos = body.TargetPosition;
+                }
+            }
+
+            Vector2 dir = (_peakPos - rawTargetPos).normalized;
+            return rawTargetPos + dir * _distanceFromTarget;
         }
 
         public override void OnNoteCleanedUp(BeatNote beatNote)

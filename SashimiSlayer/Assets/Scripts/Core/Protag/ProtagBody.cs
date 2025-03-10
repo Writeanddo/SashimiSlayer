@@ -1,31 +1,40 @@
-using Core.Protag;
 using Events;
 using UnityEngine;
 
-public class ProtagBody : MonoBehaviour
+namespace Core.Protag
 {
-    [Header("Visuals")]
-
-    [SerializeField]
-    private Transform _targetTransform;
-
-    [SerializeField]
-    private Transform _swordPivot;
-
-    [Header("Event Invoking")]
-
-    [SerializeField]
-    private Vector2Event _swordPivotPositionChangeEvent;
-
-    public Vector3 TargetPosition => _targetTransform.position;
-
-    private void Awake()
+    public class ProtagBody : MonoBehaviour
     {
-        Protaganist.Instance.SpritePosition = TargetPosition;
-    }
+        [Header("Visuals")]
 
-    private void Start()
-    {
-        _swordPivotPositionChangeEvent.Raise(_swordPivot.position);
+        [Tooltip("The target transform that Notes move towards")]
+        [SerializeField]
+        private Transform _targetTransform;
+
+        [SerializeField]
+        private Transform _swordPivot;
+
+        [Header("Event Invoking")]
+
+        [SerializeField]
+        private Vector2Event _swordPivotPositionChangeEvent;
+
+        public Vector3 TargetPosition => _targetTransform.position;
+
+        private void Awake()
+        {
+            Protaganist.Instance.NoteTargetPosition = TargetPosition;
+        }
+
+        private void Start()
+        {
+            _swordPivotPositionChangeEvent.Raise(_swordPivot.position);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(TargetPosition, 0.25f);
+        }
     }
 }

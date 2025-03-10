@@ -5137,6 +5137,7 @@ MonoBehaviour:
   _beatNote: {fileID: 5351909015360120121}
   _bodyTransform: {fileID: 2525752069901213316}
   _interactionIndex: 0
+  _distanceFromTarget: 1
   _sprite: {fileID: 38135383335388938}
   _moveCurve:
     serializedVersion: 2
