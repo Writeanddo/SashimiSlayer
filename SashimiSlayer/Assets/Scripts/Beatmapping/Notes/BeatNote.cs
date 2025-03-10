@@ -367,6 +367,26 @@ namespace Beatmapping.Notes
             return positions[positionIndex];
         }
 
+        public Vector2 SetInteractionPosition(int interactionIndex, int positionIndex, Vector2 position)
+        {
+            if (interactionIndex >= _allInteractions.Count)
+            {
+                Debug.LogWarning($"Interaction index {interactionIndex} out of bounds");
+                return Vector2.zero;
+            }
+
+            List<Vector2> positions = _allInteractions[interactionIndex].Positions;
+
+            if (positionIndex >= positions.Count)
+            {
+                Debug.LogWarning($"Position index {positionIndex} out of bounds for interaction {interactionIndex}");
+                return Vector2.zero;
+            }
+
+            positions[positionIndex] = position;
+            return position;
+        }
+
         private int GetInteractionIndex(NoteInteraction interaction)
         {
             return _allInteractions.IndexOf(interaction);

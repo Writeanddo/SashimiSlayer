@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using InputScripts;
 using UnityEditor;
@@ -177,16 +178,27 @@ namespace Beatmapping.Editor
             _lastEditedScenePath = SceneManager.GetActiveScene().path;
             Debug.Log(_lastEditedScenePath);
 
+            CleanupNotes();
+
+            EditorSceneManager.MarkAllScenesDirty();
+            EditorSceneManager.SaveOpenScenes();
+
             if (!SceneManager.GetSceneByPath(startupScenePath).isLoaded)
             {
                 EditorSceneManager.OpenScene(startupScenePath, OpenSceneMode.Single);
             }
 
-            BeatNoteService.CleanupNotes();
-
-            EditorSceneManager.SaveOpenScenes();
-
             EditorApplication.ExecuteMenuItem("Edit/Play");
+        }
+
+        public static void CleanupNotes()
+        {
+            BeatNote[] notes = FindObjectsByType<BeatNote>(FindObjectsSortMode.None);
+            Debug.Log($"Cleaning up {notes.Length} notes");
+            foreach (BeatNote note in notes)
+            {
+                DestroyImmediate(note.gameObject);
+            }
         }
 
         private void ModeChanged(PlayModeStateChange param)
