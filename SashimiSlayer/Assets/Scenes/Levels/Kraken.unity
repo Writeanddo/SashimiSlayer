@@ -5303,8 +5303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squishScale: 0.96
-  _squishDuration: 0.4
   _squishTransform:
   - transform: {fileID: 1493418430}
     beatInterval: 2
@@ -5315,8 +5313,10 @@ MonoBehaviour:
   - transform: {fileID: 1151866108}
     beatInterval: 2
     beatOffset: 1
-  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _squishScale: 0.96
+  _squishDuration: 0.4
   _delay: 0.02
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
 --- !u!4 &1790762256
 Transform:
   m_ObjectHideFlags: 0
