@@ -4,6 +4,8 @@ using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Beatmapping.Indicator
@@ -13,6 +15,8 @@ namespace Beatmapping.Indicator
     /// </summary>
     public class PipTimingIndicator : DescMono
     {
+        [BoldHeader("Pip Timing Indicator")]
+        [InfoBox("Represents a single series of pips that indicate timing")]
         [SerializeField]
         private Transform _visualContainer;
 
@@ -35,11 +39,6 @@ namespace Beatmapping.Indicator
         [SerializeField]
         private float _delay;
 
-        [Header("Shake")]
-
-        [SerializeField]
-        private float _shakeDuration;
-
         [SerializeField]
         private float _shakeStrength;
 
@@ -48,14 +47,25 @@ namespace Beatmapping.Indicator
 
         private readonly List<IndicatorPip> _pips = new();
 
+        [Header("Shake")]
+
+        private float _shakeDuration;
+
         private bool _initialized;
 
         private int _prevBeatRemaining;
+
+        private bool _flashOnNext;
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, transform.position + Vector3.left * _totalDistance);
+        }
+
+        public void FlashOnNext()
+        {
+            _flashOnNext = true;
         }
 
         private void Initialize(BeatmapConfigSo beatmapConfigSo)
@@ -77,6 +87,8 @@ namespace Beatmapping.Indicator
                 pip.SetOn(false);
                 _pips.Add(pip);
             }
+
+            _shakeDuration = (float)(1 / beatmapConfigSo.Bpm * 60);
         }
 
         public void SetVisible(bool visible)
@@ -118,16 +130,24 @@ namespace Beatmapping.Indicator
 
                 if (!isVisible)
                 {
+                    _pips[i].SetOn(false);
                     continue;
                 }
 
                 bool isOn = i == beatsRemaining;
+                bool wasOn = _pips[i].IsOn;
                 _pips[i].SetOn(isOn);
                 _pips[i].SetAlpha(normalized);
 
-                if (i == 1 && isOn)
+                if (i == 1 && isOn && !wasOn)
                 {
-                    _pips[i].transform.DOShakePosition(_shakeDuration, _shakeStrength, _shakeVibrato);
+                    _pips[i].transform.DOShakePosition(_shakeDuration, _shakeStrength, _shakeVibrato, fadeOut: false);
+                }
+
+                if (isOn && !wasOn && _flashOnNext)
+                {
+                    _flashOnNext = false;
+                    _pips[i].Flash();
                 }
 
                 if (changed)

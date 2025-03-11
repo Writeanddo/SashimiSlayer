@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,6 +12,7 @@ namespace Beatmapping.Interactions
     [Serializable]
     public struct NoteInteractionData
     {
+        [AllowNesting]
         [Tooltip("The correct block pose, if this interaction is an attack that can be blocked")]
         [HideIf("InteractionType", NoteInteraction.InteractionType.Slice)]
         public SharedTypes.BlockPoseStates BlockPose;

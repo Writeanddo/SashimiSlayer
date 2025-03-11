@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c59598eabfa1b944b38e25af71bab2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _devDesc: 
+  _devDesc: 'Slice pip timings
+
+'
   _visualContainer: {fileID: 2922187952310214687}
   _totalDistance: 4
   _layoutDirection: {x: -1, y: 0}
@@ -54,9 +56,8 @@ MonoBehaviour:
   _finalPip: {fileID: 5607132048904915572, guid: f707637074385d0449fb367dc9a0712a,
     type: 3}
   _delay: 0.02
-  _shakeDuration: 0.5
-  _shakeStrength: 0.14
-  _shakeVibrato: 30
+  _shakeStrength: 0.12
+  _shakeVibrato: 60
 --- !u!114 &7838767818776944973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,17 +157,17 @@ PrefabInstance:
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _shakeVibrato
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _shakeDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _shakeStrength
-      value: 0.14
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 7497753849002471331, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
@@ -262,6 +263,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
+      propertyPath: _devDesc
+      value: Pip indicator for blocking mid
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
+        type: 3}
       propertyPath: _finalPip
       value: 
       objectReference: {fileID: 5723349784501870178, guid: 3c6af0dd0c9711e40a0e47fec77736e6,
@@ -269,17 +275,17 @@ PrefabInstance:
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _shakeVibrato
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _shakeDuration
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _shakeStrength
-      value: 0.14
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 7497753849002471331, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}

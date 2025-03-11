@@ -2,7 +2,7 @@ using System;
 using Beatmapping.Interactions;
 using Events;
 using Events.Core;
-using Sirenix.OdinInspector;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Beatmapping.Scoring
@@ -60,7 +60,7 @@ namespace Beatmapping.Scoring
 
         public BeatmapScore CurrentScore => _currentScore;
 
-        [ShowInInspector]
+        [ShowNonSerializedField]
         private BeatmapScore _currentScore;
 
         private void Awake()

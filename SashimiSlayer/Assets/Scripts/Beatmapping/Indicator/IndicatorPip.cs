@@ -1,6 +1,8 @@
 using DG.Tweening;
-using Sirenix.OdinInspector;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Beatmapping.Indicator
 {
@@ -9,11 +11,17 @@ namespace Beatmapping.Indicator
     /// </summary>
     public class IndicatorPip : MonoBehaviour
     {
+        [BoldHeader("Timing Indicator Pip")]
+        [InfoBox("Represents a single pip that can be turned on, off and flashed")]
+        [Header("Dependencies")]
+
         [SerializeField]
         private SpriteRenderer _onSprite;
 
         [SerializeField]
         private SpriteRenderer _offSprite;
+
+        [Header("Visuals")]
 
         [SerializeField]
         private AnimationCurve _alphaCurve;
@@ -23,6 +31,13 @@ namespace Beatmapping.Indicator
 
         [SerializeField]
         private float _squishDuration;
+
+        [Header("Events")]
+
+        [SerializeField]
+        private UnityEvent _onPipFlash;
+
+        public bool IsOn { get; private set; }
 
         private float _onSpriteAlpha;
         private float _offSpriteAlpha;
@@ -45,10 +60,16 @@ namespace Beatmapping.Indicator
             SetOn(false);
         }
 
+        public void Flash()
+        {
+            _onPipFlash.Invoke();
+        }
+
         public void SetOn(bool isOn)
         {
             _onSprite.enabled = isOn;
             _offSprite.enabled = !isOn;
+            IsOn = isOn;
         }
 
         public void DoSquish()
