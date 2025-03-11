@@ -321,14 +321,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squishScale: 0.9
-  _squishDuration: 0.25
   _squishTransform:
   - transform: {fileID: 7407001948907140046}
     beatInterval: 2
     beatOffset: 1
-  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _squishScale: 0.9
+  _squishDuration: 0.25
   _delay: 0.02
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
 --- !u!1 &8155367101868906669
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +428,23 @@ PrefabInstance:
       propertyPath: _bnHActionCore
       value: 
       objectReference: {fileID: 5351909015360120121}
+    - target: {fileID: 6572254045117228181, guid: 0d52b4ffafae7e842b7af681379c9db4,
+        type: 3}
+      propertyPath: _beatPip
+      value: 
+      objectReference: {fileID: 5940234337047846021, guid: 139541613dfde064cb99ac8c2dbac4ca,
+        type: 3}
+    - target: {fileID: 6572254045117228181, guid: 0d52b4ffafae7e842b7af681379c9db4,
+        type: 3}
+      propertyPath: _finalPip
+      value: 
+      objectReference: {fileID: 4006758398692822020, guid: 42ce44be92d8a914489fade9e6906587,
+        type: 3}
+    - target: {fileID: 6572254045117228181, guid: 0d52b4ffafae7e842b7af681379c9db4,
+        type: 3}
+      propertyPath: _totalDistance
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8042563812239892685, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: m_Name

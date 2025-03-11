@@ -1,43 +1,52 @@
 using System.Collections.Generic;
 using Beatmapping.Interactions;
+using EditorUtils.BoldHeader;
 using Events.Core;
+using NaughtyAttributes;
 using UnityEngine;
 
-public class TimingBarManager : MonoBehaviour
+namespace UI.TimingBar
 {
-    [Header("Listening Events")]
-
-    [SerializeField]
-    private NoteInteractionFinalResultEvent _noteInteractionFinalResultEvent;
-
-    [SerializeField]
-    private RectTransform _bar;
-
-    [SerializeField]
-    private List<TimingBarTick> _hitResultPrefab;
-
-    private void Awake()
+    public class TimingBarManager : MonoBehaviour
     {
-        _noteInteractionFinalResultEvent.AddListener(OnBeatInteractionResult);
-    }
+        [BoldHeader("(UNUSED) Timing Bar Manager")]
+        [InfoBox("Manages the interaction timing offset bar. Currently Hidden")]
+        [Header("Events (In)")]
 
-    private void OnDestroy()
-    {
-        _noteInteractionFinalResultEvent.RemoveListener(OnBeatInteractionResult);
-    }
+        [SerializeField]
+        private NoteInteractionFinalResultEvent _noteInteractionFinalResultEvent;
 
-    private void OnBeatInteractionResult(NoteInteraction.FinalResult result)
-    {
-        if (!result.Successful)
+        [Header("Dependencies")]
+
+        [SerializeField]
+        private RectTransform _bar;
+
+        [SerializeField]
+        private List<TimingBarTick> _hitResultPrefab;
+
+        private void Awake()
         {
-            return;
+            _noteInteractionFinalResultEvent.AddListener(OnBeatInteractionResult);
         }
 
-        float offset = result.TimingResult.NormalizedTimeDelta;
+        private void OnDestroy()
+        {
+            _noteInteractionFinalResultEvent.RemoveListener(OnBeatInteractionResult);
+        }
 
-        TimingBarTick hitResult = Instantiate(_hitResultPrefab[(int)result.Pose], _bar);
-        var rectTransform = hitResult.GetComponent<RectTransform>();
-        hitResult.SetVisuals(result.InteractionType);
-        rectTransform.anchoredPosition = new Vector3(offset * _bar.rect.width / 2f, 0, 0);
+        private void OnBeatInteractionResult(NoteInteraction.FinalResult result)
+        {
+            if (!result.Successful)
+            {
+                return;
+            }
+
+            float offset = result.TimingResult.NormalizedTimeDelta;
+
+            TimingBarTick hitResult = Instantiate(_hitResultPrefab[(int)result.Pose], _bar);
+            var rectTransform = hitResult.GetComponent<RectTransform>();
+            hitResult.SetVisuals(result.InteractionType);
+            rectTransform.anchoredPosition = new Vector3(offset * _bar.rect.width / 2f, 0, 0);
+        }
     }
 }

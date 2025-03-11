@@ -1,6 +1,7 @@
-using Base;
+using EditorUtils.BoldHeader;
 using Events.Core;
 using Feel;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Core.Protag
@@ -8,10 +9,16 @@ namespace Core.Protag
     /// <summary>
     ///     Handles playing VFX on top of targets that are sliced
     /// </summary>
-    public class SliceTargetVFX : DescMono
+    public class SliceTargetVFX : MonoBehaviour
     {
+        [BoldHeader("Slice Target VFX")]
+        [InfoBox("Handles playing VFX on top of targets that are sliced")]
+        [Header("Events (In)")]
+
         [SerializeField]
         private ObjectSlicedEvent _objectSlicedEvent;
+
+        [Header("Depends")]
 
         [SerializeField]
         private SwordIndicator _swordIndicator;

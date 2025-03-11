@@ -4,6 +4,8 @@ using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Beatmapping.Indicator
@@ -13,6 +15,8 @@ namespace Beatmapping.Indicator
     /// </summary>
     public class PipTimingIndicator : DescMono
     {
+        [BoldHeader("Pip Timing Indicator")]
+        [InfoBox("Represents a single series of pips that indicate timing")]
         [SerializeField]
         private Transform _visualContainer;
 
@@ -52,10 +56,17 @@ namespace Beatmapping.Indicator
 
         private int _prevBeatRemaining;
 
+        private bool _flashOnNext;
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, transform.position + Vector3.left * _totalDistance);
+        }
+
+        public void FlashOnNext()
+        {
+            _flashOnNext = true;
         }
 
         private void Initialize(BeatmapConfigSo beatmapConfigSo)
@@ -118,16 +129,24 @@ namespace Beatmapping.Indicator
 
                 if (!isVisible)
                 {
+                    _pips[i].SetOn(false);
                     continue;
                 }
 
                 bool isOn = i == beatsRemaining;
+                bool wasOn = _pips[i].IsOn;
                 _pips[i].SetOn(isOn);
                 _pips[i].SetAlpha(normalized);
 
-                if (i == 1 && isOn)
+                if (i == 1 && isOn && !wasOn)
                 {
                     _pips[i].transform.DOShakePosition(_shakeDuration, _shakeStrength, _shakeVibrato);
+                }
+
+                if (isOn && !wasOn && _flashOnNext)
+                {
+                    _flashOnNext = false;
+                    _pips[i].Flash();
                 }
 
                 if (changed)

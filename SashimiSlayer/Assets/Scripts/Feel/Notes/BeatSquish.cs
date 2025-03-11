@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using EditorUtils.BoldHeader;
 using Events;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Feel.Notes
@@ -20,6 +22,15 @@ namespace Feel.Notes
             public int beatOffset;
         }
 
+        [BoldHeader("Beat Squisher")]
+        [InfoBox("Squishes some transforms on a beat pattern")]
+        [Header("Targets")]
+
+        [SerializeField]
+        private List<BeatSquishable> _squishTransform;
+
+        [Header("Config")]
+
         [SerializeField]
         private float _squishScale;
 
@@ -27,13 +38,12 @@ namespace Feel.Notes
         private float _squishDuration;
 
         [SerializeField]
-        private List<BeatSquishable> _squishTransform;
+        private float _delay;
+
+        [Header("Event (In)")]
 
         [SerializeField]
         private IntEvent _beatPassedEvent;
-
-        [SerializeField]
-        private float _delay;
 
         private void Awake()
         {

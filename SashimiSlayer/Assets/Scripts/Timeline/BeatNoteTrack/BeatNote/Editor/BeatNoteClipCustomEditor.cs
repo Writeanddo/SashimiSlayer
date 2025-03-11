@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Beatmapping.Editor;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
-using Sirenix.OdinInspector.Editor;
 using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
@@ -13,7 +12,7 @@ namespace Timeline.BeatNoteTrack.BeatNote.Editor
     ///     Draws custom in-scene handles for the BeatNoteClip
     /// </summary>
     [CustomEditor(typeof(BeatNoteClip))]
-    public class BeatNoteClipCustomEditor : OdinEditor
+    public class BeatNoteClipCustomEditor : UnityEditor.Editor
     {
         private static readonly List<Color> _handleColors = new()
         {

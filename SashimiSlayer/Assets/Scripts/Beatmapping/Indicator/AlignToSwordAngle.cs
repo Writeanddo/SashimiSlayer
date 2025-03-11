@@ -1,5 +1,7 @@
 using Core.Protag;
+using EditorUtils.BoldHeader;
 using Events.Core;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Beatmapping.Indicator
@@ -9,6 +11,8 @@ namespace Beatmapping.Indicator
     /// </summary>
     public class AlignToSwordAngle : MonoBehaviour
     {
+        [BoldHeader("Align To Sword Angle")]
+        [InfoBox("Matches a target Transform rotation to the protag's sword angle")]
         [SerializeField]
         private Transform _visualContainer;
 
