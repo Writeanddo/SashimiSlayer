@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 232141349736045575, guid: e559e07fee7a25d4f81a6df98cdc6b6a,
         type: 3}
       propertyPath: m_Name
-      value: BeatSlicePip
+      value: BigSlicePip
       objectReference: {fileID: 0}
     - target: {fileID: 3203325290373590080, guid: e559e07fee7a25d4f81a6df98cdc6b6a,
         type: 3}
@@ -62,6 +62,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654266721889754686, guid: e559e07fee7a25d4f81a6df98cdc6b6a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654266721889754686, guid: e559e07fee7a25d4f81a6df98cdc6b6a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654266721889754686, guid: e559e07fee7a25d4f81a6df98cdc6b6a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654266721889754686, guid: e559e07fee7a25d4f81a6df98cdc6b6a,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976738112833479557, guid: e559e07fee7a25d4f81a6df98cdc6b6a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976738112833479557, guid: e559e07fee7a25d4f81a6df98cdc6b6a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.5789475
+      objectReference: {fileID: 0}
+    - target: {fileID: 7976738112833479557, guid: e559e07fee7a25d4f81a6df98cdc6b6a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8947369
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

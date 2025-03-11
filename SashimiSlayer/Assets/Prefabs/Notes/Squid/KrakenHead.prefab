@@ -443,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 6572254045117228181, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
       propertyPath: _totalDistance
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8042563812239892685, guid: 0d52b4ffafae7e842b7af681379c9db4,
         type: 3}
