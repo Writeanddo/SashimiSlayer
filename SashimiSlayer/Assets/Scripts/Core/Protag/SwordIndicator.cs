@@ -44,7 +44,7 @@ namespace Core.Protag
         {
             _onSwordStateChange.AddListener(OnSwordStateChange);
             SetSheatheState(SharedTypes.SheathState.Sheathed);
-            _protagSuccessfulSliceEvent.AddListener(OnSuccessfulSlice);
+            _protagSuccessfulSliceEvent.AddListener(PlaySliceVFX);
             _swordPivotPositionChangeEvent.AddListener(SetPosition);
 
             foreach (ParticleSystem particle in _sliceParticles)
@@ -63,11 +63,11 @@ namespace Core.Protag
         private void OnDestroy()
         {
             _onSwordStateChange.RemoveListener(OnSwordStateChange);
-            _protagSuccessfulSliceEvent.RemoveListener(OnSuccessfulSlice);
+            _protagSuccessfulSliceEvent.RemoveListener(PlaySliceVFX);
             _swordPivotPositionChangeEvent.RemoveListener(SetPosition);
         }
 
-        private void OnSuccessfulSlice()
+        public void PlaySliceVFX()
         {
             for (var i = 0; i < _sliceParticles.Length; i++)
             {
