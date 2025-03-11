@@ -52,14 +52,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.007858276
-      value: 0.43862915
-      inSlope: 2
-      outSlope: 2
+      time: 0.001376031
+      value: 0.5927644
+      inSlope: 0.99354666
+      outSlope: 0.99354666
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.06413613
     - serializedVersion: 3
       time: 1
       value: 1
@@ -74,6 +74,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   _squishScale: 0.7
   _squishDuration: 0.25
+  _onPipFlash:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &356917924831822296
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +200,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859678327487170415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -239,6 +242,6 @@ SpriteRenderer:
   m_Size: {x: 0.25195312, y: 0.09375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

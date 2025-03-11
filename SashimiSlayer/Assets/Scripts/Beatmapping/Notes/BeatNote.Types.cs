@@ -7,6 +7,9 @@ namespace Beatmapping.Notes
 {
     public partial class BeatNote : DescMono
     {
+        /// <summary>
+        ///     Differe types of note time segments
+        /// </summary>
         public enum TimeSegmentType
         {
             /// <summary>

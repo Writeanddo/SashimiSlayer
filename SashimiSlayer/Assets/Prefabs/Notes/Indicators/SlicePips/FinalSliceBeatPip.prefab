@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3203325290373590080}
   - component: {fileID: 5607132048904915572}
   m_Layer: 0
-  m_Name: FinalBeatPip
+  m_Name: FinalSliceBeatPip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,6 +74,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   _squishScale: 0.7
   _squishDuration: 0.25
+  _onPipFlash:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &340330263716963775
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,6 +37,8 @@ namespace Beatmapping.Indicator
         [SerializeField]
         private UnityEvent _onPipFlash;
 
+        public bool IsOn { get; private set; }
+
         private float _onSpriteAlpha;
         private float _offSpriteAlpha;
 
@@ -67,6 +69,7 @@ namespace Beatmapping.Indicator
         {
             _onSprite.enabled = isOn;
             _offSprite.enabled = !isOn;
+            IsOn = isOn;
         }
 
         public void DoSquish()
