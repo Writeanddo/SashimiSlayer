@@ -5,7 +5,7 @@ using Base;
 using Beatmapping.Interactions;
 using Beatmapping.Tooling;
 using Events.Core;
-using Sirenix.OdinInspector;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Beatmapping.Interactions;
-using Sirenix.OdinInspector;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Beatmapping.Notes
@@ -18,12 +18,15 @@ namespace Beatmapping.Notes
         [Header("Timing (Beatmap space)")]
 
         [ReadOnly]
+        [AllowNesting]
         public double NoteStartTime;
 
         [ReadOnly]
+        [AllowNesting]
         public double NoteEndTime;
 
         [ReadOnly]
+        [AllowNesting]
         public double NoteBeatCount;
 
         [SerializeField]

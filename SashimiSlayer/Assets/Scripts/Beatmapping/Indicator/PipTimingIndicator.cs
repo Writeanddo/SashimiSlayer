@@ -4,6 +4,8 @@ using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Beatmapping.Indicator
@@ -13,6 +15,8 @@ namespace Beatmapping.Indicator
     /// </summary>
     public class PipTimingIndicator : DescMono
     {
+        [BoldHeader("Pip Timing Indicator")]
+        [InfoBox("Represents a single series of pips that indicate timing")]
         [SerializeField]
         private Transform _visualContainer;
 

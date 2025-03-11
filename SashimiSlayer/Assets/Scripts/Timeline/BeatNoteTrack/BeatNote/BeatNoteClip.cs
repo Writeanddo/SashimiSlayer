@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using Timeline.Samples;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
@@ -12,6 +13,7 @@ namespace Timeline.BeatNoteTrack.BeatNote
     public class BeatNoteClip : PlayableAsset, ITimelineClipAsset
     {
         [FormerlySerializedAs("template")]
+        [NoFoldOut]
         public BeatNoteBehavior Template = new();
 
         // Implementation of ITimelineClipAsset. This specifies the capabilities of this timeline clip inside the editor.

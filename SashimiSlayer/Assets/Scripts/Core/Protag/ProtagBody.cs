@@ -1,10 +1,14 @@
+using EditorUtils.BoldHeader;
 using Events;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Core.Protag
 {
     public class ProtagBody : MonoBehaviour
     {
+        [BoldHeader("Protag Body")]
+        [InfoBox("Provides info on the Protag's physical body")]
         [Header("Visuals")]
 
         [Tooltip("The target transform that Notes move towards")]
@@ -14,7 +18,7 @@ namespace Core.Protag
         [SerializeField]
         private Transform _swordPivot;
 
-        [Header("Event Invoking")]
+        [Header("Event (Out)")]
 
         [SerializeField]
         private Vector2Event _swordPivotPositionChangeEvent;

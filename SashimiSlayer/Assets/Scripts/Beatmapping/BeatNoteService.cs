@@ -3,9 +3,10 @@ using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Beatmapping.Timing;
 using Core.Protag;
+using EditorUtils.BoldHeader;
 using Events;
 using Events.Core;
-using UnityEditor;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 #if UNITY_EDITOR
@@ -15,6 +16,8 @@ namespace Beatmapping
 {
     public class BeatNoteService : MonoBehaviour
     {
+        [BoldHeader("Beat Note Service")]
+        [InfoBox("Manages creation, ticking, interactions, and cleanup of beat notes during play")]
         [Header("Events (In)")]
 
         [SerializeField]
@@ -65,7 +68,7 @@ namespace Beatmapping
             _onSliceByProtag.RemoveListener(OnSliceByProtag);
             _setSpawnEnabledEvent.RemoveListener(SetSpawningEnabled);
         }
-        
+
         private void SetSpawningEnabled(bool spawningEnabled)
         {
             _spawningEnabled = spawningEnabled;

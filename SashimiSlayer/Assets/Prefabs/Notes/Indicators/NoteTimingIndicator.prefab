@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c59598eabfa1b944b38e25af71bab2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _devDesc: 
+  _devDesc: 'Slice pip timings
+
+'
   _visualContainer: {fileID: 2922187952310214687}
   _totalDistance: 4
   _layoutDirection: {x: -1, y: 0}
@@ -260,6 +262,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5723349784501870178, guid: d2d20c65a73178a4197807c4ca7598ba,
         type: 3}
+    - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
+        type: 3}
+      propertyPath: _devDesc
+      value: Pip indicator for blocking mid
+      objectReference: {fileID: 0}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _finalPip
