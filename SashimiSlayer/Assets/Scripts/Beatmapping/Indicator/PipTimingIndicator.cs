@@ -39,11 +39,6 @@ namespace Beatmapping.Indicator
         [SerializeField]
         private float _delay;
 
-        [Header("Shake")]
-
-        [SerializeField]
-        private float _shakeDuration;
-
         [SerializeField]
         private float _shakeStrength;
 
@@ -51,6 +46,10 @@ namespace Beatmapping.Indicator
         private int _shakeVibrato;
 
         private readonly List<IndicatorPip> _pips = new();
+
+        [Header("Shake")]
+
+        private float _shakeDuration;
 
         private bool _initialized;
 
@@ -88,6 +87,8 @@ namespace Beatmapping.Indicator
                 pip.SetOn(false);
                 _pips.Add(pip);
             }
+
+            _shakeDuration = (float)(1 / beatmapConfigSo.Bpm * 60);
         }
 
         public void SetVisible(bool visible)
@@ -140,7 +141,7 @@ namespace Beatmapping.Indicator
 
                 if (i == 1 && isOn && !wasOn)
                 {
-                    _pips[i].transform.DOShakePosition(_shakeDuration, _shakeStrength, _shakeVibrato);
+                    _pips[i].transform.DOShakePosition(_shakeDuration, _shakeStrength, _shakeVibrato, fadeOut: false);
                 }
 
                 if (isOn && !wasOn && _flashOnNext)

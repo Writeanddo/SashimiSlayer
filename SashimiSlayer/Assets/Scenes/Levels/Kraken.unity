@@ -5522,6 +5522,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6369628246587916224, guid: c44823f301eaa194cb12440f2090bddf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50.19995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369628246587916224, guid: c44823f301eaa194cb12440f2090bddf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -44.299988
+      objectReference: {fileID: 0}
     - target: {fileID: 6574523326306052234, guid: c44823f301eaa194cb12440f2090bddf,
         type: 3}
       propertyPath: m_Pivot.x
