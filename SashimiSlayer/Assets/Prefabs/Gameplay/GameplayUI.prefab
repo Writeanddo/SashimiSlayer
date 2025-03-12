@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9528302, g: 0.57978815, b: 0.57978815, a: 1}
+  m_Color: {r: 0.7058824, g: 0.20784315, b: 0.20784315, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -817,11 +817,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69f0b7c8dcfddb44a6ffc7d3de06011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _beatmapScoreEvent: {fileID: 11400000, guid: f426bc2ce53676d4392a01713575b5a6, type: 2}
-  _scoreText: {fileID: 6270492004960828275}
   _shakeDuration: 0.2
   _shakeStrength: 15
   _vibratoStrength: 20
+  _beatmapScoreEvent: {fileID: 11400000, guid: f426bc2ce53676d4392a01713575b5a6, type: 2}
+  _scoreText: {fileID: 6270492004960828275}
 --- !u!1 &6285022105517218516
 GameObject:
   m_ObjectHideFlags: 0

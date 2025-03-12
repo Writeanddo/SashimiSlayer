@@ -101,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 1044986642061614050, guid: 5b5ea00b238fcef47828dca0ecb14693,
         type: 3}
       propertyPath: _buttonSlicedDelayedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelLoaderMono, Assembly-CSharp
+      value: Core.Scene.LevelLoaderMono, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1044986642061614050, guid: 5b5ea00b238fcef47828dca0ecb14693,
         type: 3}
@@ -139,7 +139,7 @@ PrefabInstance:
     - target: {fileID: 1044986642061614050, guid: 5b5ea00b238fcef47828dca0ecb14693,
         type: 3}
       propertyPath: _buttonSlicedDelayedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: GameLevelSO, Assembly-CSharp
+      value: Core.Scene.GameLevelSO, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1044986642061614050, guid: 5b5ea00b238fcef47828dca0ecb14693,
         type: 3}
