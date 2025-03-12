@@ -113,8 +113,8 @@ TextureImporter:
       name: top
       rect:
         serializedVersion: 2
-        x: 18
-        y: 18
+        x: 162
+        y: 17
         width: 116
         height: 116
       alignment: 0
@@ -134,8 +134,8 @@ TextureImporter:
       name: mid
       rect:
         serializedVersion: 2
-        x: 168
-        y: 18
+        x: 21
+        y: 17
         width: 116
         height: 116
       alignment: 0

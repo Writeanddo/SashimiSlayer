@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
+using Core.Scene;
 using InputScripts;
 using UnityEditor;
 using UnityEditor.SceneManagement;

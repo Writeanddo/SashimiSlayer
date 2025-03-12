@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.Scene;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Events.Core;
@@ -78,6 +79,7 @@ public class LevelLoader : MonoBehaviour
         }
 
         // Load the new scene
+        Debug.Log($"Loading scene {sceneName}");
         await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         _currentLevelSceneName = sceneName;
         CurrentLevel = gameLevel;

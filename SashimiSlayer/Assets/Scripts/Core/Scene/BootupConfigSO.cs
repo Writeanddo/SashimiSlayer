@@ -1,3 +1,4 @@
+using Core.Scene;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BootupConfigSO", menuName = "BootupConfigSO", order = 51)]
