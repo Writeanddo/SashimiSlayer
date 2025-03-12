@@ -5,7 +5,7 @@ using Beatmapping.Tooling;
 using Feel.Notes;
 using UnityEngine;
 
-namespace Beatmapping.BeatNotes.NoteBehaviors.Kraken
+namespace Beatmapping.NoteBehaviors.Kraken
 {
     public class TentacleNote : BeatNoteModule
     {

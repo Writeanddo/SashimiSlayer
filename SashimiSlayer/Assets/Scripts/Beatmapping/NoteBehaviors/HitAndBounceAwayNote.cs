@@ -1,30 +1,30 @@
 using System.Collections.Generic;
-using Beatmapping.Interactions;
+using Beatmapping.NoteBehaviors.Visuals;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
-namespace Beatmapping.BeatNotes.NoteBehaviors
+namespace Beatmapping.NoteBehaviors
 {
     public class HitAndBounceAwayNote : BeatNoteModule
     {
+        [BoldHeader("Hit and Bounce Away Note")]
+        [InfoBox("Note behavior that involves moving from impact/parry point -> bouncing away offscreen")]
+        [Header("Depends")]
+
         [SerializeField]
         private BeatNote _beatNote;
 
+        [FormerlySerializedAs("_visuals")]
         [SerializeField]
-        private int _interactionIndex;
+        private NoteVisualHandler visualHandler;
 
         [SerializeField]
         private Transform _bodyTransform;
-
-        [Header("Visuals")]
-
-        [SerializeField]
-        private SpriteRenderer _sprite;
-
-        [SerializeField]
-        private ParticleSystem _explosionParticles;
 
         [Header("Events")]
 
@@ -35,24 +35,13 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
         private bool _started;
 
-        private void BeatNote_ProtagFailBlock(BeatNote.NoteTickInfo tickInfo,
-            NoteInteraction.FinalResult finalresult)
-        {
-            if (tickInfo.InteractionIndex != _interactionIndex)
-            {
-                return;
-            }
-
-            _explosionParticles.Play();
-        }
-
         private void BeatNote_OnTick(BeatNote.NoteTickInfo tickInfo)
         {
             BeatNote.NoteTimeSegment segment = tickInfo.NoteSegment;
 
             if (segment.Type != BeatNote.TimeSegmentType.PreEnding)
             {
-                _sprite.SetAlpha(1f);
+                visualHandler.SetSpriteAlpha(1f);
                 _started = false;
                 return;
             }
@@ -65,8 +54,8 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             _bodyTransform.position = Vector2.Lerp(_startPos, _endPos, (float)tickInfo.NormalizedSegmentTime);
 
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, 1200 * (float)tickInfo.SegmentTime);
-            _sprite.SetAlpha(0.7f);
+            visualHandler.SetRotation(1200 * (float)tickInfo.SegmentTime);
+            visualHandler.SetSpriteAlpha(0.7f);
         }
 
         public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
@@ -81,13 +70,11 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             _started = false;
 
             _beatNote.OnTick += BeatNote_OnTick;
-            _beatNote.OnProtagFailBlock += BeatNote_ProtagFailBlock;
         }
 
         public override void OnNoteCleanedUp(BeatNote beatNote)
         {
             _beatNote.OnTick -= BeatNote_OnTick;
-            _beatNote.OnProtagFailBlock -= BeatNote_ProtagFailBlock;
         }
     }
 }

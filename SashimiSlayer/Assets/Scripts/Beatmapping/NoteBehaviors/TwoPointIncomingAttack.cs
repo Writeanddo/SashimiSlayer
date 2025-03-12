@@ -1,13 +1,17 @@
 using System.Collections.Generic;
 using Beatmapping.Interactions;
+using Beatmapping.NoteBehaviors.Visuals;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using Core.Protag;
+using EditorUtils.BoldHeader;
 using FMODUnity;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
-namespace Beatmapping.BeatNotes.NoteBehaviors
+namespace Beatmapping.NoteBehaviors
 {
     /// <summary>
     ///     Attack Note that moves in three stages
@@ -16,7 +20,9 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
     /// </summary>
     public class TwoPointIncomingAttack : BeatNoteModule
     {
-        [Header("Configuration")]
+        [BoldHeader("Two Point Attack Behavior")]
+        [InfoBox("Note behavior that involves moving from start -> peak -> attacking Protag")]
+        [Header("Depends")]
 
         [SerializeField]
         private BeatNote _beatNote;
@@ -24,10 +30,14 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         [SerializeField]
         private Transform _bodyTransform;
 
+        [FormerlySerializedAs("_noteVisual")]
+        [SerializeField]
+        private NoteVisualHandler noteVisualHandler;
+
+        [Header("Config")]
+
         [SerializeField]
         private int _interactionIndex;
-
-        [Header("Trajectory Config")]
 
         [SerializeField]
         private float _distanceFromTarget;
@@ -35,13 +45,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         [Header("Visuals")]
 
         [SerializeField]
-        private SpriteRenderer _sprite;
-
-        [SerializeField]
         private AnimationCurve _moveCurve;
-
-        [SerializeField]
-        private ParticleSystem _explosionParticles;
 
         [SerializeField]
         [Range(0, 1)]
@@ -55,6 +59,8 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         [Header("Events")]
 
         public UnityEvent OnHitPeak;
+
+        public UnityEvent OnHitTarget;
 
         private Vector2 _startPos;
         private Vector2 _peakPos;
@@ -84,7 +90,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         private void BeatNote_ProtagFailBlock(BeatNote.NoteTickInfo tickInfo,
             NoteInteraction.FinalResult finalResult)
         {
-            _explosionParticles.Play();
+            OnHitTarget.Invoke();
         }
 
         private void WaitingForAttackVisual(float normalizedTime, BeatNote.TickFlags flags)
@@ -99,7 +105,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                     Mathf.Lerp(_startPos.x, _peakPos.x, normalizedTime / trajectoryPeakTime),
                     Mathf.Lerp(_startPos.y, _peakPos.y, t)
                 );
-                _sprite.transform.localRotation = Quaternion.Euler(0, 0, -90 * (1 - t));
+                noteVisualHandler.SetRotation(-90 * (1 - t));
                 _hitPeak = false;
             }
             else
@@ -124,12 +130,12 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                 );
 
                 // angle towards target
-                _sprite.transform.localRotation = Quaternion.Euler(0, 0, 180 + _angleToTarget);
+                noteVisualHandler.SetRotation(180 + _angleToTarget);
             }
 
             // Make sure sprite is no longer transparent, to prevent ghosts when looping
-            _sprite.SetAlpha(1f);
-            _sprite.enabled = true;
+            noteVisualHandler.SetSpriteAlpha(1);
+            noteVisualHandler.SetVisible(true);
         }
 
         public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()

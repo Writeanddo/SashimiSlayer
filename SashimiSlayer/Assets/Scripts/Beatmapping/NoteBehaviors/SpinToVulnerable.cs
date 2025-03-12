@@ -1,17 +1,24 @@
 using System.Collections.Generic;
 using Beatmapping.Interactions;
+using Beatmapping.NoteBehaviors.Visuals;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Beatmapping.BeatNotes.NoteBehaviors
+namespace Beatmapping.NoteBehaviors
 {
     /// <summary>
     ///     Module where the note spins to a vulnerable position
     /// </summary>
     public class SpinToVulnerable : BeatNoteModule
     {
+        [BoldHeader("Spin To Vulnerable Behavior")]
+        [InfoBox("Behavior that moves from impact point to vulnerable point while spinning")]
+        [Header("Depends")]
+
         [SerializeField]
         private BeatNote _beatNote;
 
@@ -19,12 +26,12 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
         private Transform _bodyTransform;
 
         [SerializeField]
-        private int _interactionIndex;
+        private NoteVisualHandler _visuals;
 
-        [Header("Visuals")]
+        [Header("Config")]
 
         [SerializeField]
-        private SpriteRenderer _sprite;
+        private int _interactionIndex;
 
         [SerializeField]
         private ParticleSystem[] _dieParticles;
@@ -50,7 +57,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                 return;
             }
 
-            _sprite.enabled = false;
+            _visuals.SetVisible(false);
             foreach (ParticleSystem particle in _dieParticles)
             {
                 particle.Play();
@@ -68,7 +75,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             }
 
             NoteInteraction interaction = segment.Interaction;
-            _sprite.SetAlpha(1f);
+            _visuals.SetSpriteAlpha(1f);
 
             if (interaction.Type == NoteInteraction.InteractionType.Slice)
             {
@@ -94,7 +101,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                 Mathf.Lerp(_startPos.y, _vulnerablePos.y, t)
             );
 
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, 360f * beatmapTime);
+            _visuals.SetRotation(360f * beatmapTime);
         }
 
         public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()

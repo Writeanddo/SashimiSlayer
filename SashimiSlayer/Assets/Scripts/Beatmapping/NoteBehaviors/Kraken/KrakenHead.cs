@@ -4,7 +4,7 @@ using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using UnityEngine;
 
-namespace Beatmapping.BeatNotes.NoteBehaviors
+namespace Beatmapping.NoteBehaviors
 {
     /// <summary>
     ///     Simple note behavior that moves the note from start to slice position within a fixed time,

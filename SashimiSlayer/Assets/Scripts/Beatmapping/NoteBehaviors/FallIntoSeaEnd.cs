@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using Beatmapping.NoteBehaviors.Visuals;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 
-namespace Beatmapping.BeatNotes.NoteBehaviors
+namespace Beatmapping.NoteBehaviors
 {
     /// <summary>
     ///     Visual where the note falls into the sea from End to Cleanup
@@ -12,10 +15,12 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
     {
         private const float Gravity = 9.8f;
 
-        [Header("Dependencies")]
+        [BoldHeader("Fall Into Sea End")]
+        [InfoBox("Behavior where the note falls into the sea from End to Cleanup")]
+        [Header("Depends")]
 
         [SerializeField]
-        private SpriteRenderer _sprite;
+        private NoteVisualHandler _visuals;
 
         [SerializeField]
         private Transform _bodyTransform;
@@ -76,8 +81,8 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             var normalizedTime = (float)(time / _expectedFallTime);
 
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, normalizedTime * 90f);
-            _sprite.color = new Color(1, 1, 1, 0.5f);
+            _visuals.SetRotation(normalizedTime * 90f);
+            _visuals.SetSpriteAlpha(0.5f);
         }
     }
 }

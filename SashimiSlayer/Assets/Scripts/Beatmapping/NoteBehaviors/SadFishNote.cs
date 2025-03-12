@@ -1,15 +1,22 @@
 using System.Collections.Generic;
 using Beatmapping.Interactions;
+using Beatmapping.NoteBehaviors.Visuals;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 
-namespace Beatmapping.BeatNotes.NoteBehaviors
+namespace Beatmapping.NoteBehaviors
 {
     public class SadFishNote : BeatNoteModule
     {
+        [BoldHeader("Sad Fish Note")]
+        [InfoBox("Fish behavior that travels in an arc to the Slice point, then arcs down to the end point")]
+        [Header("Depends")]
+
         [SerializeField]
-        private SpriteRenderer _sprite;
+        private NoteVisualHandler _visual;
 
         [SerializeField]
         private BeatNote _beatNote;
@@ -63,8 +70,8 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                 Mathf.Lerp(_targetPos.y, _endPos.y, 1 - t)
             );
 
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, 90 * (1 - t));
-            _sprite.SetAlpha(0.5f);
+            _visual.SetRotation(90 * (1 - t));
+            _visual.SetSpriteAlpha(0.5f);
         }
 
         /// <summary>
@@ -81,15 +88,14 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
                 Mathf.Lerp(_startPos.y, _targetPos.y, t)
             );
 
-            _sprite.transform.rotation = Quaternion.Euler(0, 0, -90 * (1 - t));
-
-            _sprite.SetAlpha(1);
+            _visual.SetRotation(-90 * (1 - t));
+            _visual.SetSpriteAlpha(1);
         }
 
         private void BeatNote_SlicedByProtag(int interactionIndex,
             NoteInteraction.AttemptResult result)
         {
-            _sprite.enabled = false;
+            _visual.SetVisible(false);
             foreach (ParticleSystem particle in _dieParticles)
             {
                 particle.Play();
@@ -111,7 +117,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             _bodyTransform.position = _startPos;
             _targetPos = _beatNote.GetInteractionPosition(0, 0);
             _endPos = _beatNote.EndPosition;
-            _sprite.flipX = _targetPos.x > _startPos.x;
+            _visual.SetFlipX(_targetPos.x > _startPos.x);
 
             _beatNote.OnTick += BeatNote_OnTick;
             _beatNote.OnSlicedByProtag += BeatNote_SlicedByProtag;
@@ -127,7 +133,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
         private void HandleNoteEnd(BeatNote.NoteTickInfo tickInfo)
         {
-            _sprite.enabled = true;
+            _visual.SetVisible(true);
         }
     }
 }

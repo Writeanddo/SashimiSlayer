@@ -305,6 +305,17 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""c87efbd3-5313-4277-8b62-2e970f617f84"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PoseButtonMid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e5428307-9e26-4ca5-b31f-d56d7ba965a8"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
