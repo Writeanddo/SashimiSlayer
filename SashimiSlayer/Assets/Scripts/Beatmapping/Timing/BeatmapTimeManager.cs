@@ -1,5 +1,6 @@
 using System;
 using Beatmapping.Tooling;
+using Core.Scene;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Events;

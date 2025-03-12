@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.Scene;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LevelRoster", menuName = "MainMenu/LevelRoster")]

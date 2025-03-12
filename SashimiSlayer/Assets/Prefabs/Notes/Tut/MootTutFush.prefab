@@ -4939,6 +4939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2582670670720076266}
   - component: {fileID: 38135383335388938}
+  - component: {fileID: 1131783347347006185}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -5002,7 +5003,7 @@ SpriteRenderer:
   m_SortingLayerID: 681681957
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f0d5a28b55fcd494c90d1ba73b154e2f, type: 3}
+  m_Sprite: {fileID: 1979862954, guid: 44a096689b6c0f84db83087abe99826a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5013,6 +5014,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1131783347347006185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3916862021070009176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2957cd778c90eef46bccf9dd1b3b1fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _incrementEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _spriteRenderer: {fileID: 38135383335388938}
+  _sprites:
+  - {fileID: 1979862954, guid: 44a096689b6c0f84db83087abe99826a, type: 3}
+  - {fileID: -684430914, guid: 44a096689b6c0f84db83087abe99826a, type: 3}
+  _incrementInterval: 1
+  _loop: 1
+  _delay: 0.02
+  _animationEnabled: 1
 --- !u!1 &5091648387929077028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5300,8 +5322,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.05
-      minScalar: 0.85
+      scalar: 1.5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10115,14 +10137,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squishScale: 0.65
-  _squishDuration: 0.3
   _squishTransform:
   - transform: {fileID: 7407001948907140046}
     beatInterval: 1
     beatOffset: 0
-  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _squishScale: 0.65
+  _squishDuration: 0.3
   _delay: 0.02
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
 --- !u!1 &7171339913466141170
 GameObject:
   m_ObjectHideFlags: 0

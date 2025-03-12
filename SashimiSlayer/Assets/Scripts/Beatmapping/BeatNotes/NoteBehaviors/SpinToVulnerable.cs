@@ -63,6 +63,7 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
 
             if (tickinfo.InteractionIndex != _interactionIndex)
             {
+                _enteredDazed = false;
                 return;
             }
 
@@ -72,10 +73,6 @@ namespace Beatmapping.BeatNotes.NoteBehaviors
             if (interaction.Type == NoteInteraction.InteractionType.Slice)
             {
                 TargetToHitVisuals((float)tickinfo.NormalizedSegmentTime, (float)tickinfo.BeatmapTime);
-            }
-            else
-            {
-                _enteredDazed = false;
             }
         }
 

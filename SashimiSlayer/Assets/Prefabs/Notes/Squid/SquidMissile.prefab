@@ -1,5 +1,57 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &158684704324048789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6953034467874985484}
+  - component: {fileID: 2018888156388773246}
+  m_Layer: 0
+  m_Name: StunnedAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6953034467874985484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158684704324048789}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7407001948907140046}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2018888156388773246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158684704324048789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2957cd778c90eef46bccf9dd1b3b1fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _incrementEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _spriteRenderer: {fileID: 38135383335388938}
+  _sprites:
+  - {fileID: 2135334177, guid: 9e6ad7020cd69cd4caedf0e2f2eab862, type: 3}
+  _incrementInterval: 1
+  _loop: 1
+  _delay: 0.02
+  _animationEnabled: 0
 --- !u!1 &1378409683377668149
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,6 +81,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4632554634640325503}
+  - {fileID: 6953034467874985484}
   - {fileID: 2582670670720076266}
   m_Father: {fileID: 7200301394065197706}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -27.61}
@@ -9769,7 +9823,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2582670670720076266}
   - component: {fileID: 38135383335388938}
-  - component: {fileID: 9185724354866607105}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -9833,7 +9886,7 @@ SpriteRenderer:
   m_SortingLayerID: 681681957
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 40bab61e1bda6f747849aa6ec069468e, type: 3}
+  m_Sprite: {fileID: 968987051, guid: 9e6ad7020cd69cd4caedf0e2f2eab862, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9844,27 +9897,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &9185724354866607105
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3916862021070009176}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb9ea398571d6784bb69b03b6ebce284, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5380038148642919746
 GameObject:
   m_ObjectHideFlags: 0
@@ -9902,6 +9934,59 @@ Transform:
   - {fileID: 78144677223389832}
   m_Father: {fileID: 4584757707055110698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6277738286095271837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4632554634640325503}
+  - component: {fileID: 4960933373511980410}
+  m_Layer: 0
+  m_Name: IdleAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4632554634640325503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277738286095271837}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7407001948907140046}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4960933373511980410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277738286095271837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2957cd778c90eef46bccf9dd1b3b1fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _incrementEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _spriteRenderer: {fileID: 38135383335388938}
+  _sprites:
+  - {fileID: 717268447, guid: 9e6ad7020cd69cd4caedf0e2f2eab862, type: 3}
+  - {fileID: 968987051, guid: 9e6ad7020cd69cd4caedf0e2f2eab862, type: 3}
+  _incrementInterval: 1
+  _loop: 1
+  _delay: 0.02
+  _animationEnabled: 1
 --- !u!1 &6497704529160691952
 GameObject:
   m_ObjectHideFlags: 0
@@ -10136,22 +10221,34 @@ MonoBehaviour:
   OnEnterDazed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9185724354866607105}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 4180321602795714808}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SquidVulnerable
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4180321602795714808}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+      - m_Target: {fileID: 4960933373511980410}
+        m_TargetAssemblyTypeName: Feel.Notes.BeatAnimatedSprite, Assembly-CSharp
         m_MethodName: Stop
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2018888156388773246}
+        m_TargetAssemblyTypeName: Feel.Notes.BeatAnimatedSprite, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10186,14 +10283,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squishScale: 0.65
-  _squishDuration: 0.3
   _squishTransform:
   - transform: {fileID: 7407001948907140046}
     beatInterval: 1
     beatOffset: 1
-  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _squishScale: 0.65
+  _squishDuration: 0.3
   _delay: 0.02
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
 --- !u!1 &7381459145768466746
 GameObject:
   m_ObjectHideFlags: 0
