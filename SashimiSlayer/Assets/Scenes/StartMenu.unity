@@ -5596,7 +5596,7 @@ PrefabInstance:
     - target: {fileID: 1485799121125092960, guid: b15670233d1b8444b9c10b47f5234913,
         type: 3}
       propertyPath: _pressPose
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1485799121125092960, guid: b15670233d1b8444b9c10b47f5234913,
         type: 3}
@@ -5680,11 +5680,6 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2931390341293962214, guid: b15670233d1b8444b9c10b47f5234913,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3018770995018090927, guid: b15670233d1b8444b9c10b47f5234913,
         type: 3}
       propertyPath: m_Name
@@ -5728,7 +5723,7 @@ PrefabInstance:
     - target: {fileID: 8276384366198047794, guid: b15670233d1b8444b9c10b47f5234913,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: -4.61
       objectReference: {fileID: 0}
     - target: {fileID: 8276384366198047794, guid: b15670233d1b8444b9c10b47f5234913,
         type: 3}
@@ -15900,19 +15895,7 @@ MonoBehaviour:
         m_CallState: 2
   _onFishAttemptPlace:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1454284757}
-        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1850354907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20947,6 +20930,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1485799121125092960, guid: b15670233d1b8444b9c10b47f5234913,
         type: 3}
+      propertyPath: _pressPose
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485799121125092960, guid: b15670233d1b8444b9c10b47f5234913,
+        type: 3}
       propertyPath: _onButtonPressed.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -20988,7 +20976,7 @@ PrefabInstance:
     - target: {fileID: 3018770995018090927, guid: b15670233d1b8444b9c10b47f5234913,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5004330481466285679, guid: b15670233d1b8444b9c10b47f5234913,
         type: 3}
@@ -21023,7 +21011,7 @@ PrefabInstance:
     - target: {fileID: 8276384366198047794, guid: b15670233d1b8444b9c10b47f5234913,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.29
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 8276384366198047794, guid: b15670233d1b8444b9c10b47f5234913,
         type: 3}
