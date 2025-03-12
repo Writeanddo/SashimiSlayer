@@ -56,7 +56,7 @@ MonoBehaviour:
   _finalPip: {fileID: 5607132048904915572, guid: f707637074385d0449fb367dc9a0712a,
     type: 3}
   _delay: 0.02
-  _shakeStrength: 0.12
+  _shakeStrength: 0.16
   _shakeVibrato: 60
 --- !u!114 &7838767818776944973
 MonoBehaviour:
@@ -167,7 +167,7 @@ PrefabInstance:
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _shakeStrength
-      value: 0.12
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 7497753849002471331, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
@@ -285,7 +285,7 @@ PrefabInstance:
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
       propertyPath: _shakeStrength
-      value: 0.12
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 7497753849002471331, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}

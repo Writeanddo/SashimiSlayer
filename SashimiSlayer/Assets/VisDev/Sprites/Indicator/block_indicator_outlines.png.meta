@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 48b01df6847544f149fe1cf6e812d46c
+guid: 1db8affb5c84fb44c85250032995abff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 7
   spritePivot: {x: 0.5, y: 0}
-  spritePixelsToUnits: 512
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: top
+      name: mid_outline
       rect:
         serializedVersion: 2
-        x: 18
-        y: 18
-        width: 116
-        height: 116
+        x: 0
+        y: 0
+        width: 105
+        height: 102
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cd1a2ade4ea34dd1b700feb58a76b3a
-      internalID: -1454124108
+      spriteID: f542dd0f6a31f3a4f9b81dffefb5ced6
+      internalID: 1712797032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mid
+      name: top_outline
       rect:
         serializedVersion: 2
-        x: 168
-        y: 18
-        width: 116
-        height: 116
+        x: 105
+        y: 0
+        width: 105
+        height: 102
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec4012f2d2d2e47babe1d45c8fdac43e
-      internalID: -727595751
+      spriteID: 51bd7d1f511c22544a88cbe37a020a0e
+      internalID: 287091319
       vertices: []
       indices: 
       edges: []
@@ -162,8 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mid: -727595751
-      top: -1454124108
+      mid_outline: 1712797032
+      top_outline: 287091319
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
