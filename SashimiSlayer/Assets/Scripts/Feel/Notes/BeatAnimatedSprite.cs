@@ -1,5 +1,7 @@
 using Cysharp.Threading.Tasks;
+using EditorUtils.BoldHeader;
 using Events;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Feel.Notes
@@ -9,6 +11,8 @@ namespace Feel.Notes
     /// </summary>
     public class BeatAnimatedSprite : MonoBehaviour
     {
+        [BoldHeader("Beat Animated Sprite")]
+        [InfoBox("Simple sprite flipbook that changes on a beat pattern")]
         [Header("Depends")]
 
         [SerializeField]
@@ -90,6 +94,11 @@ namespace Feel.Notes
 
             // Prevent changing after transitioning away
             if (!_animationEnabled)
+            {
+                return;
+            }
+
+            if (destroyCancellationToken.IsCancellationRequested)
             {
                 return;
             }
