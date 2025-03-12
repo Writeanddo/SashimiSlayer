@@ -100,16 +100,6 @@ namespace Beatmapping.Interactions
                 };
             }
 
-            // Block pose doesn't match
-            if (Type == InteractionType.Block &&
-                blockPose != BlockPose)
-            {
-                return new AttemptResult
-                {
-                    ValidInteraction = false
-                };
-            }
-
             TimingWindow.TimingResult timingResult = _timingWindow.CalculateTimingResult(attemptTime);
 
             // Outside timing window completely, counted as invalid
@@ -129,6 +119,13 @@ namespace Beatmapping.Interactions
                 TimingResult = timingResult,
                 Flags = flags
             };
+
+            // Block pose doesn't match, it's a miss
+            if (Type == InteractionType.Block &&
+                blockPose != BlockPose)
+            {
+                result.TimingResult.Score = TimingWindow.Score.Miss;
+            }
 
             if (result.Passed)
             {
