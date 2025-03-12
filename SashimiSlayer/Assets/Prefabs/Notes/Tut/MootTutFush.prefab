@@ -5027,7 +5027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _incrementEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
-  _spriteRenderer: {fileID: 0}
+  _spriteRenderer: {fileID: 38135383335388938}
   _sprites:
   - {fileID: 1979862954, guid: 44a096689b6c0f84db83087abe99826a, type: 3}
   - {fileID: -684430914, guid: 44a096689b6c0f84db83087abe99826a, type: 3}
@@ -5322,8 +5322,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.05
-      minScalar: 0.85
+      scalar: 1.5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
