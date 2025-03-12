@@ -616,6 +616,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SeaEnv
       objectReference: {fileID: 0}
+    - target: {fileID: 5690936191776377502, guid: c635741f09b6b634aadbc21c039eb2e8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.98823535
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690936191776377502, guid: c635741f09b6b634aadbc21c039eb2e8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690936191776377502, guid: c635741f09b6b634aadbc21c039eb2e8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.43137258
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
