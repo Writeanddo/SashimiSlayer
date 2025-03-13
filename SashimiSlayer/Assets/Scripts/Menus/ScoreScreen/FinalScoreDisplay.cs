@@ -18,6 +18,9 @@ public class FinalScoreDisplay : MonoBehaviour
     private TMP_Text _highscoreText;
 
     [SerializeField]
+    private GameObject _newHighscoreVisual;
+
+    [SerializeField]
     private CategoryLine _perfectLine;
 
     [SerializeField]
@@ -127,26 +130,17 @@ public class FinalScoreDisplay : MonoBehaviour
 
     private void HighScore(ScoringService.BeatmapScore scoring)
     {
-        _highscoreText.transform.DOShakePosition(_shakeDuration, _shakeStrength, _vibratoStrength);
         _highscoreText.gameObject.SetActive(true);
 
         float currentHighestScore = PlayerPrefs.GetFloat($"{scoring.BeatmapName}.highscore", 0);
 
         if (scoring.FinalScore > currentHighestScore && scoring.DidSucceed)
         {
-            _highscoreText.text = "New Highscore!";
+            _newHighscoreVisual.SetActive(true);
+            currentHighestScore = scoring.FinalScore;
             PlayerPrefs.SetFloat($"{scoring.BeatmapName}.highscore", scoring.FinalScore);
         }
-        else
-        {
-            if (currentHighestScore > 0)
-            {
-                _highscoreText.text = $"Highscore: {currentHighestScore}";
-            }
-            else
-            {
-                _highscoreText.text = "No Completions Yet!";
-            }
-        }
+
+        _highscoreText.text = $"{currentHighestScore}";
     }
 }

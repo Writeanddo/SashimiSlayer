@@ -110,85 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: generic_sushi_1
+      name: sushi_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 190
-        height: 176
-      alignment: 9
-      pivot: {x: 0.53588974, y: 0.45599252}
+        width: 200
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 862e285ee6eb9cd499005139fd50c1ef
-      internalID: 1087869524
+      spriteID: 84e0902332d48dd49ac586ad50dd7d01
+      internalID: 2083716331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: generic_sushi_2
+      name: sushi_1
       rect:
         serializedVersion: 2
-        x: 190
+        x: 200
         y: 0
-        width: 179
-        height: 176
-      alignment: 9
-      pivot: {x: 0.49810383, y: 0.4516339}
+        width: 200
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3410b1f7b38745c4ea7e4a8875ca852a
-      internalID: 1294191565
+      spriteID: 0e48b830091e30c42b35e0b00fa7aa06
+      internalID: 1654994026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: generic_sushi_3
+      name: sushi_2
       rect:
         serializedVersion: 2
-        x: 374
+        x: 400
         y: 0
-        width: 199
-        height: 176
-      alignment: 9
-      pivot: {x: 0.4580322, y: 0.42960483}
+        width: 200
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c6ce33be2d22674fa0b96ffd4338ed4
-      internalID: -1026899552
+      spriteID: 1553645c6d7bf80469e55be0371f96e3
+      internalID: -176293130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: squid_sushi_1
+      name: squid_sushi_3
       rect:
         serializedVersion: 2
-        x: 576
+        x: 600
         y: 0
-        width: 199
-        height: 176
-      alignment: 9
-      pivot: {x: 0.49926943, y: 0.49810055}
+        width: 200
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f565126cecfd4c94686dbd7793a38f62
-      internalID: 445195338
+      spriteID: ed8cc700a18de1446b61919788177a47
+      internalID: 1901103578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: squid_sushi_4
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 200
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ada46d6dc0b5d34ca967aa4babefc66
+      internalID: 782740343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: squid_sushi_5
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 200
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc3d8e3b25f41948a988c0fb9fc3515
+      internalID: 1850761809
       vertices: []
       indices: 
       edges: []
@@ -204,10 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      generic_sushi_1: 1087869524
-      generic_sushi_2: 1294191565
-      generic_sushi_3: -1026899552
-      squid_sushi_1: 445195338
+      squid_sushi_3: 1901103578
+      squid_sushi_4: 782740343
+      squid_sushi_5: 1850761809
+      sushi_0: 2083716331
+      sushi_1: 1654994026
+      sushi_2: -176293130
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
