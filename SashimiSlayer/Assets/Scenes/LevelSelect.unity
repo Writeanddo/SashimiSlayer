@@ -1429,6 +1429,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SeaEnv
       objectReference: {fileID: 0}
+    - target: {fileID: 5278432962442586867, guid: c635741f09b6b634aadbc21c039eb2e8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.663
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
