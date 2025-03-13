@@ -4944,10 +4944,10 @@ MonoBehaviour:
   _beatNote: {fileID: 1441247704427616508}
   _visual: {fileID: 8648048418781562551}
   _bodyTransform: {fileID: 8169531864538412295}
-  _spawnAnimation: 1
+  _spawnAnimation: 0
   _attackAnimation: 2
   _leaveAnimation: 3
-  _idleAnimation: 0
+  _idleAnimation: 1
   _attackAnimationWindup: 2
   _damagedParticles:
   - {fileID: 454267361141940012}
@@ -14789,6 +14789,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 363621706291659099, guid: 145834922b2ce6e4391b2bed15e8c7c3,
+        type: 3}
+      propertyPath: _delay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 363621706291659099, guid: 145834922b2ce6e4391b2bed15e8c7c3,
+        type: 3}
+      propertyPath: _squishScale
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 485861119544459364, guid: 145834922b2ce6e4391b2bed15e8c7c3,
         type: 3}
       propertyPath: _beatNoteModules.Array.size
@@ -14829,6 +14839,11 @@ PrefabInstance:
       propertyPath: _beatNoteModules.Array.data[6]
       value: 
       objectReference: {fileID: 3603511495982546779}
+    - target: {fileID: 540161102859959492, guid: 145834922b2ce6e4391b2bed15e8c7c3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1280336683830416164, guid: 145834922b2ce6e4391b2bed15e8c7c3,
         type: 3}
       propertyPath: m_Name
@@ -14858,11 +14873,6 @@ PrefabInstance:
         type: 3}
       propertyPath: _startSound.Guid.Data4
       value: -1326794453
-      objectReference: {fileID: 0}
-    - target: {fileID: 2487541582399672041, guid: 145834922b2ce6e4391b2bed15e8c7c3,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7690596804962082351, guid: 145834922b2ce6e4391b2bed15e8c7c3,
         type: 3}
@@ -15037,12 +15047,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4075597981024062987}
     m_Modifications:
-    - target: {fileID: 3239107590352071918, guid: c7dc9615ed3f231468bad839af15a954,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1285483189, guid: 01572e8a2c0baf046b77c369db772614,
-        type: 3}
     - target: {fileID: 4229644302789971925, guid: c7dc9615ed3f231468bad839af15a954,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,3 +1,4 @@
+using System;
 using Cysharp.Threading.Tasks;
 using EditorUtils.BoldHeader;
 using Events;
@@ -37,6 +38,8 @@ namespace Feel.Notes
 
         [SerializeField]
         private bool _animationEnabled;
+
+        public event Action<BeatAnimatedSprite> OnTransitionOut;
 
         private int _firstIndex;
 
@@ -127,6 +130,7 @@ namespace Feel.Notes
                 return;
             }
 
+            OnTransitionOut?.Invoke(to);
             to.Play(currentSubdiv);
             Stop();
         }

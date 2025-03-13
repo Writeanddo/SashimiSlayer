@@ -22,11 +22,27 @@ namespace Beatmapping.NoteBehaviors.Visuals
         [SerializeField]
         private List<BeatAnimatedSprite> _animatedSprites;
 
-        private int _currentAnimationIndex;
+        [SerializeField]
+        private bool _playFirstAnimationOnStart;
+
+        private int _currentAnimationIndex = -1;
 
         private void Start()
         {
-            PlayAnimation(0, 0);
+            if (_playFirstAnimationOnStart)
+            {
+                PlayAnimation(0, -1);
+            }
+
+            foreach (BeatAnimatedSprite sprite in _animatedSprites)
+            {
+                sprite.OnTransitionOut += HandleAnimTransitionOut;
+            }
+        }
+
+        private void HandleAnimTransitionOut(BeatAnimatedSprite obj)
+        {
+            _currentAnimationIndex = _animatedSprites.IndexOf(obj);
         }
 
         public void SetSpriteAlpha(float alpha)
@@ -53,7 +69,7 @@ namespace Beatmapping.NoteBehaviors.Visuals
 
         public void SetRotation(float rot)
         {
-            transform.localRotation = Quaternion.Euler(0, 0, rot);
+            _spriteRenderer.transform.localRotation = Quaternion.Euler(0, 0, rot);
         }
 
         [Button("Detect Animations")]
@@ -104,7 +120,15 @@ namespace Beatmapping.NoteBehaviors.Visuals
                 return;
             }
 
-            _animatedSprites[index].Play(firstSubdv);
+            if (_currentAnimationIndex != -1)
+            {
+                AnimationForceTransition(_currentAnimationIndex, index, firstSubdv);
+            }
+            else
+            {
+                _animatedSprites[index].Play(firstSubdv);
+                _currentAnimationIndex = index;
+            }
         }
 
         public void SetAnimationTransitionToOnEnd(int fromIndex, int toIndex)

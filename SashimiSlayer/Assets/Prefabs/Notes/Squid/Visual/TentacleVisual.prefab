@@ -1,57 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4699412025435236023
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3340643581556086136}
-  - component: {fileID: 3697353925321710222}
-  m_Layer: 0
-  m_Name: StunnedAnim
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3340643581556086136
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4699412025435236023}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.23861815, w: 0.9711135}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4229644302789971925}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3697353925321710222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4699412025435236023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2957cd778c90eef46bccf9dd1b3b1fe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _incrementEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
-  _spriteRenderer: {fileID: 3239107590352071918}
-  _sprites:
-  - {fileID: 2135334177, guid: 9e6ad7020cd69cd4caedf0e2f2eab862, type: 3}
-  _incrementInterval: 1
-  _loop: 1
-  _delay: 0.02
-  _animationEnabled: 0
 --- !u!1 &5670409485002786581
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +50,7 @@ MonoBehaviour:
   - {fileID: 1285483189, guid: 01572e8a2c0baf046b77c369db772614, type: 3}
   - {fileID: 275445122, guid: 01572e8a2c0baf046b77c369db772614, type: 3}
   - {fileID: 439738784, guid: 01572e8a2c0baf046b77c369db772614, type: 3}
+  - {fileID: 0}
   _incrementInterval: 2
   _loop: 0
   _delay: 0.02
@@ -230,14 +179,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1844495805652922825, guid: 79be9cd7aa386c549b2408ce76e73e2b,
         type: 3}
-      propertyPath: _animatedSprites.Array.size
-      value: 5
+      propertyPath: _playFirstAnimationOnStart
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1844495805652922825, guid: 79be9cd7aa386c549b2408ce76e73e2b,
+        type: 3}
+      propertyPath: _animatedSprites.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1844495805652922825, guid: 79be9cd7aa386c549b2408ce76e73e2b,
+        type: 3}
+      propertyPath: _animatedSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 3255715981027762877}
     - target: {fileID: 1844495805652922825, guid: 79be9cd7aa386c549b2408ce76e73e2b,
         type: 3}
       propertyPath: _animatedSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 3255715981027762877}
+      objectReference: {fileID: 152068932342271121}
     - target: {fileID: 1844495805652922825, guid: 79be9cd7aa386c549b2408ce76e73e2b,
         type: 3}
       propertyPath: _animatedSprites.Array.data[2]
@@ -248,11 +207,6 @@ PrefabInstance:
       propertyPath: _animatedSprites.Array.data[3]
       value: 
       objectReference: {fileID: 661438805783816521}
-    - target: {fileID: 1844495805652922825, guid: 79be9cd7aa386c549b2408ce76e73e2b,
-        type: 3}
-      propertyPath: _animatedSprites.Array.data[4]
-      value: 
-      objectReference: {fileID: 3697353925321710222}
     - target: {fileID: 2471437771935797117, guid: 79be9cd7aa386c549b2408ce76e73e2b,
         type: 3}
       propertyPath: moveWithTransform
@@ -380,6 +334,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 04e29abb5392bc4418998949f8080938,
         type: 3}
+    - target: {fileID: 5329855125515940442, guid: 79be9cd7aa386c549b2408ce76e73e2b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1285483189, guid: 01572e8a2c0baf046b77c369db772614,
+        type: 3}
     - target: {fileID: 6218371809906872889, guid: 79be9cd7aa386c549b2408ce76e73e2b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -437,6 +397,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7428876895447061029, guid: 79be9cd7aa386c549b2408ce76e73e2b,
         type: 3}
+      propertyPath: _incrementEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 445c41cbba60a1b4c991dd2746e5b858,
+        type: 2}
+    - target: {fileID: 7428876895447061029, guid: 79be9cd7aa386c549b2408ce76e73e2b,
+        type: 3}
+      propertyPath: _incrementInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428876895447061029, guid: 79be9cd7aa386c549b2408ce76e73e2b,
+        type: 3}
       propertyPath: _sprites.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -484,12 +455,20 @@ PrefabInstance:
         type: 3}
       insertIndex: 4
       addedObject: {fileID: 5630230137374225295}
-    - targetCorrespondingSourceObject: {fileID: 6896799776656183649, guid: 79be9cd7aa386c549b2408ce76e73e2b,
-        type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 3340643581556086136}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79be9cd7aa386c549b2408ce76e73e2b, type: 3}
+--- !u!114 &152068932342271121 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7428876895447061029, guid: 79be9cd7aa386c549b2408ce76e73e2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7279204368175914676}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2957cd778c90eef46bccf9dd1b3b1fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &3239107590352071918 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5329855125515940442, guid: 79be9cd7aa386c549b2408ce76e73e2b,
