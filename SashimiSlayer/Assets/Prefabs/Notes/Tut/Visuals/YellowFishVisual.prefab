@@ -52,7 +52,7 @@ MonoBehaviour:
   _incrementInterval: 2
   _loop: 1
   _delay: 0.02
-  _animationEnabled: 1
+  _animationEnabled: 0
 --- !u!1 &383422305035546388
 GameObject:
   m_ObjectHideFlags: 0

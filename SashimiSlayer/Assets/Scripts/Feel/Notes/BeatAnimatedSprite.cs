@@ -41,7 +41,8 @@ namespace Feel.Notes
 
         public event Action<BeatAnimatedSprite> OnTransitionOut;
 
-        private int _firstIndex;
+        private int _firstSubdivIndex;
+        private int _currentSubdiv;
 
         private BeatAnimatedSprite _transitionTo;
 
@@ -57,17 +58,14 @@ namespace Feel.Notes
 
         private void HandleEvent(int currentSubdiv)
         {
+            _currentSubdiv = currentSubdiv;
+
             if (!_animationEnabled)
             {
                 return;
             }
 
-            if (_firstIndex == -1)
-            {
-                _firstIndex = currentSubdiv;
-            }
-
-            int relativeIndex = currentSubdiv - _firstIndex;
+            int relativeIndex = currentSubdiv - _firstSubdivIndex;
             if (relativeIndex % _incrementInterval == 0)
             {
                 int spriteIndex = relativeIndex / _incrementInterval;
@@ -138,7 +136,7 @@ namespace Feel.Notes
         public void Play(int firstSubdiv = -1)
         {
             _animationEnabled = true;
-            _firstIndex = firstSubdiv;
+            _firstSubdivIndex = firstSubdiv == -1 ? _currentSubdiv : firstSubdiv;
             _spriteRenderer.sprite = _sprites[0];
         }
 
