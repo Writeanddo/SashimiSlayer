@@ -3,6 +3,7 @@ using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using FMODUnity;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Feel.Notes
 {
@@ -16,9 +17,12 @@ namespace Feel.Notes
         [SerializeField]
         private EventReference _startSound;
 
+        public UnityEvent OnFirstInteractionTick;
+
         private void PlayStartSound(BeatNote.NoteTickInfo tickInfo)
 
         {
+            OnFirstInteractionTick?.Invoke();
             if (!_startSound.IsNull && Application.isPlaying)
             {
                 RuntimeManager.PlayOneShot(_startSound);

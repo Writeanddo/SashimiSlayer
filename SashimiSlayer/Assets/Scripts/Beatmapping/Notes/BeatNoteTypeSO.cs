@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Beatmapping.Notes
@@ -11,6 +12,7 @@ namespace Beatmapping.Notes
         [field: SerializeField]
         public float HitboxRadius { get; private set; }
 
+        [field: ShowAssetPreview]
         [field: SerializeField]
         public BeatNote Prefab { get; private set; }
     }

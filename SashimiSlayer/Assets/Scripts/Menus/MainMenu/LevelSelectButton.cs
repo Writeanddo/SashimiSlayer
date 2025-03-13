@@ -5,43 +5,46 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelectButton : MonoBehaviour
+namespace Menus.MainMenu
 {
-    [SerializeField]
-    private TMP_Text _levelNameText;
-
-    [SerializeField]
-    private TMP_Text _levelDescriptionText;
-
-    [SerializeField]
-    private Image _thumbnailImage;
-
-    public event Action<GameLevelSO> OnLevelSelected;
-
-    private GameLevelSO _level;
-
-    public void SetupUI(GameLevelSO level)
+    public class LevelSelectButton : MonoBehaviour
     {
-        _levelNameText.text = level.LevelTitle;
-        _levelDescriptionText.text = level.LevelDescription;
-        _level = level;
-        _thumbnailImage.sprite = level.Thumbnail;
-    }
+        [SerializeField]
+        private TMP_Text _levelNameText;
 
-    public void SetHovered(bool val)
-    {
-        if (val)
+        [SerializeField]
+        private TMP_Text _levelDescriptionText;
+
+        [SerializeField]
+        private Image _thumbnailImage;
+
+        public event Action<GameLevelSO> OnLevelSelected;
+
+        private GameLevelSO _level;
+
+        public void SetupUI(GameLevelSO level)
         {
-            transform.DOScale(1.25f, 0.15f);
+            _levelNameText.text = level.LevelTitle;
+            _levelDescriptionText.text = level.LevelDescription;
+            _level = level;
+            _thumbnailImage.sprite = level.LevelSelectSprite;
         }
-        else
-        {
-            transform.DOScale(1f, 0.15f);
-        }
-    }
 
-    public void SelectLevel()
-    {
-        OnLevelSelected?.Invoke(_level);
+        public void SetHovered(bool val)
+        {
+            if (val)
+            {
+                transform.DOScale(1.25f, 0.15f);
+            }
+            else
+            {
+                transform.DOScale(1f, 0.15f);
+            }
+        }
+
+        public void SelectLevel()
+        {
+            OnLevelSelected?.Invoke(_level);
+        }
     }
 }
