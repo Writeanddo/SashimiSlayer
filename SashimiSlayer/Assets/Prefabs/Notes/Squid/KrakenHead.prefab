@@ -430,6 +430,11 @@ PrefabInstance:
       propertyPath: _squishDuration
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 363621706291659099, guid: 145834922b2ce6e4391b2bed15e8c7c3,
+        type: 3}
+      propertyPath: _squishTransform.Array.data[0].beatInterval
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 485861119544459364, guid: 145834922b2ce6e4391b2bed15e8c7c3,
         type: 3}
       propertyPath: _beatNoteModules.Array.size
