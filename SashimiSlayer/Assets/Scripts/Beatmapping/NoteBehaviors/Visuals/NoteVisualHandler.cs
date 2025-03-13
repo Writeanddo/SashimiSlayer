@@ -26,9 +26,11 @@ namespace Beatmapping.NoteBehaviors.Visuals
 
         public List<NoteVisual> Visuals;
 
+        private NoteVisualObject CurrentVisualObject => Visuals[_currentVisualIndex].VisualObject;
+
         private int _prevInteractionIndex = -1;
 
-        private int _currentVisualIndex = -1;
+        private int _currentVisualIndex;
 
         public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
         {
@@ -38,6 +40,7 @@ namespace Beatmapping.NoteBehaviors.Visuals
         public override void OnNoteInitialized(BeatNote beatNote)
         {
             beatNote.OnTick += BeatNote_OnTick;
+            SwitchToVisual(_currentVisualIndex);
         }
 
         public override void OnNoteCleanedUp(BeatNote beatNote)
@@ -65,11 +68,17 @@ namespace Beatmapping.NoteBehaviors.Visuals
 
             if (interaction.Type == NoteInteraction.InteractionType.Slice)
             {
-                newVisual = GetSliceVisualIndex(interaction);
+                newVisual = GetSliceVisualIndex();
             }
             else
             {
                 newVisual = GetBlockVisualIndex(interaction);
+            }
+
+            // If no visual found, keep current visual
+            if (newVisual == -1)
+            {
+                return;
             }
 
             if (newVisual == _currentVisualIndex)
@@ -78,49 +87,78 @@ namespace Beatmapping.NoteBehaviors.Visuals
             }
 
             _currentVisualIndex = newVisual;
-            HideAllVisuals();
-            Visuals[newVisual].VisualObject.SetVisible(true);
+            SwitchToVisual(_currentVisualIndex);
+        }
+
+        private void SwitchToVisual(int index)
+        {
+            DisableAllVisuals();
+            Visuals[index].VisualObject.gameObject.SetActive(true);
         }
 
         public void SetHitParticle(bool visible)
         {
-            Visuals[_currentVisualIndex].VisualObject.SetHitParticle(visible);
+            CurrentVisualObject.SetHitParticle(visible);
         }
 
         public void SetTrailParticle(bool visible)
         {
-            Visuals[_currentVisualIndex].VisualObject.SetTrailParticle(visible);
+            CurrentVisualObject.SetTrailParticle(visible);
         }
 
         public void SetFlipX(bool flip)
         {
-            Visuals[_currentVisualIndex].VisualObject.SetFlipX(flip);
+            CurrentVisualObject.SetFlipX(flip);
         }
 
         public void SetSpriteAlpha(float alpha)
         {
-            Visuals[_currentVisualIndex].VisualObject.SetSpriteAlpha(alpha);
+            CurrentVisualObject.SetSpriteAlpha(alpha);
         }
 
         public void SetVisible(bool visible)
         {
-            Visuals[_currentVisualIndex].VisualObject.SetVisible(visible);
+            CurrentVisualObject.SetVisible(visible);
         }
 
         public void SetRotation(float rot)
         {
-            Visuals[_currentVisualIndex].VisualObject.SetRotation(rot);
+            CurrentVisualObject.SetRotation(rot);
         }
 
-        private void HideAllVisuals()
+        public void PlayAnimation(int index, int firstSubdiv)
+        {
+            CurrentVisualObject.PlayAnimation(index, firstSubdiv);
+        }
+
+        /// <summary>
+        ///     Single param variant for Unity Events to use
+        /// </summary>
+        /// <param name="index"></param>
+        public void PlayAnimation(int index)
+        {
+            PlayAnimation(index, -1);
+        }
+
+        public void SetupAnimationTransitionOnEnd(int fromIndex, int toIndex)
+        {
+            CurrentVisualObject.SetAnimationTransitionToOnEnd(fromIndex, toIndex);
+        }
+
+        public void AnimationForceTransition(int fromIndex, int toIndex, int currentSubdiv = -1)
+        {
+            CurrentVisualObject.AnimationForceTransition(fromIndex, toIndex, currentSubdiv);
+        }
+
+        private void DisableAllVisuals()
         {
             foreach (NoteVisual visual in Visuals)
             {
-                visual.VisualObject.SetVisible(false);
+                visual.VisualObject.gameObject.SetActive(false);
             }
         }
 
-        private int GetSliceVisualIndex(NoteInteraction interaction)
+        private int GetSliceVisualIndex()
         {
             return Visuals.FindIndex(v => v.IsForSlicing);
         }

@@ -115,6 +115,11 @@ namespace Feel.Notes
             _transitionTo = transitionTo;
         }
 
+        /// <summary>
+        ///     Force transition to another BeatAnimatedSprite immediately
+        /// </summary>
+        /// <param name="to"></param>
+        /// <param name="currentSubdiv"></param>
         public void ForceTransition(BeatAnimatedSprite to, int currentSubdiv = -1)
         {
             if (!_animationEnabled)

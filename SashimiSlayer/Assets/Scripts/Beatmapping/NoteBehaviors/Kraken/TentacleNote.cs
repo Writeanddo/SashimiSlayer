@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Beatmapping.Interactions;
+using Beatmapping.NoteBehaviors.Visuals;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
-using Feel.Notes;
 using UnityEngine;
 
 namespace Beatmapping.NoteBehaviors.Kraken
@@ -15,7 +15,7 @@ namespace Beatmapping.NoteBehaviors.Kraken
         private BeatNote _beatNote;
 
         [SerializeField]
-        private SpriteRenderer _sprite;
+        private NoteVisualHandler _visual;
 
         [SerializeField]
         private Transform _bodyTransform;
@@ -23,16 +23,16 @@ namespace Beatmapping.NoteBehaviors.Kraken
         [Header("Animations")]
 
         [SerializeField]
-        private BeatAnimatedSprite _spawnAnimation;
+        private int _spawnAnimation;
 
         [SerializeField]
-        private BeatAnimatedSprite _attackAnimation;
+        private int _attackAnimation;
 
         [SerializeField]
-        private BeatAnimatedSprite _leaveAnimation;
+        private int _leaveAnimation;
 
         [SerializeField]
-        private BeatAnimatedSprite _idleAnimation;
+        private int _idleAnimation;
 
         [SerializeField]
         private int _attackAnimationWindup;
@@ -66,8 +66,8 @@ namespace Beatmapping.NoteBehaviors.Kraken
 
         private void BeatNote_OnEnd(BeatNote.NoteTickInfo tickinfo)
         {
-            _idleAnimation.ForceTransition(_leaveAnimation, tickinfo.SubdivisionIndex);
-            _sprite.color = new Color(1, 1, 1, 0.7f);
+            _visual.AnimationForceTransition(_idleAnimation, _leaveAnimation, tickinfo.SubdivisionIndex);
+            _visual.SetSpriteAlpha(0.7f);
         }
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace Beatmapping.NoteBehaviors.Kraken
 
             if (currentSubdiv + _attackAnimationWindup >= targetSubdivIndex)
             {
-                _idleAnimation.ForceTransition(_attackAnimation, currentSubdiv);
-                _attackAnimation.SetupTransitionOnEnd(_idleAnimation);
+                _visual.AnimationForceTransition(_idleAnimation, _attackAnimation, currentSubdiv);
+                _visual.SetupAnimationTransitionOnEnd(_attackAnimation, _idleAnimation);
                 _attackAnimationPlayedInteraction = noteInteraction;
             }
         }
@@ -95,13 +95,13 @@ namespace Beatmapping.NoteBehaviors.Kraken
                 particle.Play();
             }
 
-            _sprite.gameObject.SetActive(false);
+            _visual.SetVisible(false);
         }
 
         private void HandleSpawned(BeatNote.NoteTickInfo tickinfo)
         {
-            _spawnAnimation.Play(tickinfo.SubdivisionIndex);
-            _spawnAnimation.SetupTransitionOnEnd(_idleAnimation);
+            _visual.PlayAnimation(_spawnAnimation, tickinfo.SubdivisionIndex);
+            _visual.SetupAnimationTransitionOnEnd(_spawnAnimation, _idleAnimation);
         }
 
         public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()

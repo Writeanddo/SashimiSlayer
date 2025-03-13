@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using Beatmapping.Interactions;
+using Beatmapping.NoteBehaviors.Visuals;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
+using EditorUtils.BoldHeader;
+using NaughtyAttributes;
 using UnityEngine;
 
-namespace Beatmapping.NoteBehaviors
+namespace Beatmapping.NoteBehaviors.Kraken
 {
     /// <summary>
     ///     Simple note behavior that moves the note from start to slice position within a fixed time,
@@ -13,10 +16,13 @@ namespace Beatmapping.NoteBehaviors
     /// </summary>
     public class KrakenHeadNote : BeatNoteModule
     {
+        [BoldHeader("Kraken Head Note")]
+        [InfoBox(
+            "Kraken head behavior that moves from start to slice position within a fixed time, then to the end position")]
         [Header("Depends")]
 
         [SerializeField]
-        private SpriteRenderer _sprite;
+        private NoteVisualHandler _visual;
 
         [SerializeField]
         private BeatNote _beatNote;
@@ -93,7 +99,7 @@ namespace Beatmapping.NoteBehaviors
         private void BeatNote_SlicedByProtag(int interactionIndex,
             NoteInteraction.AttemptResult result)
         {
-            _sprite.enabled = false;
+            _visual.SetVisible(false);
             foreach (ParticleSystem particle in _dieParticles)
             {
                 particle.Play();
@@ -130,7 +136,7 @@ namespace Beatmapping.NoteBehaviors
 
         private void HandleNoteEnd(BeatNote.NoteTickInfo tickInfo)
         {
-            _sprite.enabled = true;
+            _visual.SetVisible(true);
         }
     }
 }

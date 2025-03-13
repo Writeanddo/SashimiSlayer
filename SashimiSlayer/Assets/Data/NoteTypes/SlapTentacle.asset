@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <DamageDealtToPlayer>k__BackingField: 1
   <HitboxRadius>k__BackingField: 1.4
-  <Prefab>k__BackingField: {fileID: 5351909015360120121, guid: 69293adadd2b93b4ca4b18b6e2f88236,
+  <Prefab>k__BackingField: {fileID: 1441247704427616508, guid: ba08684eb424af442a49d501e21a4e6b,
     type: 3}

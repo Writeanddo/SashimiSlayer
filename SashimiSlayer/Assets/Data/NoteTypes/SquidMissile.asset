@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8242b48814583e4478d5d8708bdc7bcf, type: 3}
   m_Name: SquidMissile
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 5351909015360120121, guid: 9093527ba20365448a5ec0cda7c436e9,
-    type: 3}
-  <BlockWindowHalfDuration>k__BackingField: 0.1
-  <VulnerableWindowHalfDuration>k__BackingField: 0.1
-  <BlockWindowFailDuration>k__BackingField: 0.15
   <DamageDealtToPlayer>k__BackingField: 1
   <HitboxRadius>k__BackingField: 1
+  <Prefab>k__BackingField: {fileID: 1441247704427616508, guid: 8f77458cb61fb224d9e1f53394d0176d,
+    type: 3}

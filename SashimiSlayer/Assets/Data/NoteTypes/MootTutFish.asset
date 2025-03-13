@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8242b48814583e4478d5d8708bdc7bcf, type: 3}
   m_Name: MootTutFish
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 5351909015360120121, guid: c7d7be68ce9024d469afcf13e0e4cb95,
-    type: 3}
-  <BlockWindowHalfDuration>k__BackingField: 0.1
-  <VulnerableWindowHalfDuration>k__BackingField: 0.1
-  <BlockWindowFailDuration>k__BackingField: 0.15
   <DamageDealtToPlayer>k__BackingField: 1
   <HitboxRadius>k__BackingField: 1
+  <Prefab>k__BackingField: {fileID: 1441247704427616508, guid: 7c9d6ca231c5b7d42a85afc08d727d97,
+    type: 3}

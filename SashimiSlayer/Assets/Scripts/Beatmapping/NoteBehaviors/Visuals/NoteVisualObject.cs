@@ -1,7 +1,13 @@
+using System.Collections.Generic;
+using Feel.Notes;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Beatmapping.NoteBehaviors.Visuals
 {
+    /// <summary>
+    ///     Interface for a single instance of a note visual object
+    /// </summary>
     public class NoteVisualObject : MonoBehaviour
     {
         [SerializeField]
@@ -12,6 +18,16 @@ namespace Beatmapping.NoteBehaviors.Visuals
 
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
+
+        [SerializeField]
+        private List<BeatAnimatedSprite> _animatedSprites;
+
+        private int _currentAnimationIndex;
+
+        private void Start()
+        {
+            PlayAnimation(0, 0);
+        }
 
         public void SetSpriteAlpha(float alpha)
         {
@@ -37,7 +53,21 @@ namespace Beatmapping.NoteBehaviors.Visuals
 
         public void SetRotation(float rot)
         {
-            _spriteRenderer.transform.localRotation = Quaternion.Euler(0, 0, rot);
+            transform.localRotation = Quaternion.Euler(0, 0, rot);
+        }
+
+        [Button("Detect Animations")]
+        private void DetectAnimations()
+        {
+            _animatedSprites.Clear();
+            foreach (Transform child in transform)
+            {
+                var sprite = child.GetComponent<BeatAnimatedSprite>();
+                if (sprite != null)
+                {
+                    _animatedSprites.Add(sprite);
+                }
+            }
         }
 
         private void ToggleParticle(ParticleSystem particle, bool visible)
@@ -60,6 +90,31 @@ namespace Beatmapping.NoteBehaviors.Visuals
         public void SetFlipX(bool flip)
         {
             _spriteRenderer.flipX = flip;
+        }
+
+        public void PlayAnimation(int index, int firstSubdv)
+        {
+            if (index == _currentAnimationIndex)
+            {
+                return;
+            }
+
+            if (index >= _animatedSprites.Count)
+            {
+                return;
+            }
+
+            _animatedSprites[index].Play(firstSubdv);
+        }
+
+        public void SetAnimationTransitionToOnEnd(int fromIndex, int toIndex)
+        {
+            _animatedSprites[fromIndex].SetupTransitionOnEnd(_animatedSprites[toIndex]);
+        }
+
+        public void AnimationForceTransition(int fromIndex, int toIndex, int currentSubdiv)
+        {
+            _animatedSprites[fromIndex].ForceTransition(_animatedSprites[toIndex], currentSubdiv);
         }
     }
 }
