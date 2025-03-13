@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 442bdaee91bfc5d418aefabb07555adf
+guid: e78de1549145a1f49b741166435c2a31
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -37,18 +37,18 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spriteMeshType: 0
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
+  spritePixelsToUnits: 512
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: wife_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1283
+        height: 1429
+      alignment: 9
+      pivot: {x: 0.50545347, y: 0.30578545}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1961c148e3fc4064a82610ed91c607af
+      internalID: 2679216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wife_1
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 0
+        width: 1062
+        height: 1429
+      alignment: 9
+      pivot: {x: 0.58564633, y: -0.25074548}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d64973f23bc20045952dcc8d937656f
+      internalID: 1266807294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wife_2
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 0
+        width: 1173.3334
+        height: 1429
+      alignment: 9
+      pivot: {x: 0.52782774, y: 0.0838259}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbf2da1af93d1f7479007051c3b5b28a
+      internalID: 1860661431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +182,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wife_0: 2679216
+      wife_1: 1266807294
+      wife_2: 1860661431
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
