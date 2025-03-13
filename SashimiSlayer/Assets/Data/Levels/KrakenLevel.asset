@@ -18,7 +18,7 @@ MonoBehaviour:
   <Beatmap>k__BackingField: {fileID: 11400000, guid: 6e2f3237bb7a3d14188f0f4d1baa9ba4,
     type: 2}
   <LevelType>k__BackingField: 1
-  <Thumbnail>k__BackingField: {fileID: -1980703861, guid: b43c80a0a2b510842ba451dcc329c987,
+  <LevelSelectSprite>k__BackingField: {fileID: 864293042, guid: d130d6d84cbe4e74b963c3d72761b930,
     type: 3}
   <FmodBanksToPreLoad>k__BackingField:
   - Kraken

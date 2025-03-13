@@ -35,7 +35,7 @@ namespace Core.Scene
 
         [field: SerializeField]
         [field: ShowAssetPreview]
-        public Sprite Thumbnail { get; private set; }
+        public Sprite LevelSelectSprite { get; private set; }
 
         [field: SerializeField]
         [field: BankRef]

@@ -20,7 +20,7 @@ MonoBehaviour:
   <Beatmap>k__BackingField: {fileID: 11400000, guid: 927c3dc5372465d4db6ba59d803b358f,
     type: 2}
   <LevelType>k__BackingField: 1
-  <Thumbnail>k__BackingField: {fileID: 1293657566, guid: 44a096689b6c0f84db83087abe99826a,
+  <LevelSelectSprite>k__BackingField: {fileID: -855184800, guid: d130d6d84cbe4e74b963c3d72761b930,
     type: 3}
   <FmodBanksToPreLoad>k__BackingField:
   - Tutorial
