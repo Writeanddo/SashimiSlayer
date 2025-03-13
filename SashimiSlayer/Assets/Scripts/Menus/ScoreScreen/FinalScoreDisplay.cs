@@ -130,7 +130,6 @@ public class FinalScoreDisplay : MonoBehaviour
 
     private void HighScore(ScoringService.BeatmapScore scoring)
     {
-        _highscoreText.transform.DOShakePosition(_shakeDuration, _shakeStrength, _vibratoStrength);
         _highscoreText.gameObject.SetActive(true);
 
         float currentHighestScore = PlayerPrefs.GetFloat($"{scoring.BeatmapName}.highscore", 0);
@@ -138,18 +137,10 @@ public class FinalScoreDisplay : MonoBehaviour
         if (scoring.FinalScore > currentHighestScore && scoring.DidSucceed)
         {
             _newHighscoreVisual.SetActive(true);
+            currentHighestScore = scoring.FinalScore;
             PlayerPrefs.SetFloat($"{scoring.BeatmapName}.highscore", scoring.FinalScore);
         }
-        else
-        {
-            if (currentHighestScore > 0)
-            {
-                _highscoreText.text = $"{currentHighestScore}";
-            }
-            else
-            {
-                _highscoreText.text = "No Completions Yet!";
-            }
-        }
+
+        _highscoreText.text = $"{currentHighestScore}";
     }
 }

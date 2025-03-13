@@ -193,6 +193,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: new record
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 130
+        width: 179
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7718109c7dd14143b6ac537246ca0c4
+      internalID: 1777232518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -206,6 +227,7 @@ TextureImporter:
     nameFileIdTable:
       highscore_sign: -298928640
       main_menu_button: 572909024
+      new record: 1777232518
       retry_button: -2059129414
       scoreboard: -596726673
   mipmapLimitGroupName: 
