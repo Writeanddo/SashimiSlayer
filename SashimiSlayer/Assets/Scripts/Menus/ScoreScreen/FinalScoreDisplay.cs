@@ -18,6 +18,9 @@ public class FinalScoreDisplay : MonoBehaviour
     private TMP_Text _highscoreText;
 
     [SerializeField]
+    private GameObject _newHighscoreVisual;
+
+    [SerializeField]
     private CategoryLine _perfectLine;
 
     [SerializeField]
@@ -134,14 +137,14 @@ public class FinalScoreDisplay : MonoBehaviour
 
         if (scoring.FinalScore > currentHighestScore && scoring.DidSucceed)
         {
-            _highscoreText.text = "New Highscore!";
+            _newHighscoreVisual.SetActive(true);
             PlayerPrefs.SetFloat($"{scoring.BeatmapName}.highscore", scoring.FinalScore);
         }
         else
         {
             if (currentHighestScore > 0)
             {
-                _highscoreText.text = $"Highscore: {currentHighestScore}";
+                _highscoreText.text = $"{currentHighestScore}";
             }
             else
             {

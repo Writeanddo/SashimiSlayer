@@ -113,10 +113,10 @@ TextureImporter:
       name: scoreboard
       rect:
         serializedVersion: 2
-        x: 27
-        y: 32
-        width: 816
-        height: 702
+        x: 31
+        y: 104
+        width: 812
+        height: 578
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,8 +134,8 @@ TextureImporter:
       name: retry_button
       rect:
         serializedVersion: 2
-        x: 917
-        y: 393
+        x: 915
+        y: 361
         width: 341
         height: 245
       alignment: 0
@@ -155,8 +155,8 @@ TextureImporter:
       name: main_menu_button
       rect:
         serializedVersion: 2
-        x: 921
-        y: 81
+        x: 920
+        y: 50
         width: 333
         height: 241
       alignment: 0
@@ -172,6 +172,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: highscore_sign
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 255
+        width: 185
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3715a4ca240d9ba44bed2b14164f0994
+      internalID: -298928640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -183,6 +204,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      highscore_sign: -298928640
       main_menu_button: 572909024
       retry_button: -2059129414
       scoreboard: -596726673
