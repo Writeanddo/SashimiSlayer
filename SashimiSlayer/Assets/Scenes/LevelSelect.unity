@@ -1497,7 +1497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 247, y: -189}
+  m_AnchoredPosition: {x: 247, y: -182}
   m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1545736103
@@ -1745,11 +1745,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SeaEnv
-      objectReference: {fileID: 0}
-    - target: {fileID: 5278432962442586867, guid: c635741f09b6b634aadbc21c039eb2e8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.663
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

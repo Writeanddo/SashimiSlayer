@@ -210,6 +210,21 @@ MonoBehaviour:
       Data3: -1964395854
       Data4: -235094931
     Path: event:/TutorialLevel/AngryFish/AngryFishSpawn
+  OnFirstInteractionTick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2962495394106457574}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4631952527215307202
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +605,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6df742b4dfde7e43a14d43711d52f16, type: 3}
+--- !u!198 &2962495394106457574 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3889097183450388815, guid: c6df742b4dfde7e43a14d43711d52f16,
+    type: 3}
+  m_PrefabInstance: {fileID: 2081855538852422825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7172442628359702807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9182168958009454014, guid: c6df742b4dfde7e43a14d43711d52f16,

@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695f92f6ca4a43f49aad2aed21ee7665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _devDesc: Plays VFX on top of targets that are sliced
   _objectSlicedEvent: {fileID: 11400000, guid: a2c9117a5f6db464ebc4424eb172d481, type: 2}
   _swordIndicator: {fileID: 8213745344741128492}
   _sliceVFX: {fileID: 1010703470944748570, guid: 8c1d6b1e1cd3ec2418ce0025fde4daa7,
@@ -95,14 +94,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de73918cefdf99e4ebad19ecaf4c04a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squishScale: 0.85
-  _squishDuration: 0.25
   _squishTransform:
   - transform: {fileID: 8231393650296616110}
     beatInterval: 2
     beatOffset: 0
-  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
+  _squishScale: 0.85
+  _squishDuration: 0.25
   _delay: 0.02
+  _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
 --- !u!1001 &2376259371349891300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,6 +110,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7674640129088678999}
     m_Modifications:
+    - target: {fileID: 420514362198293407, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b42a5f8121a07f94896a87c25e21de30,
+        type: 3}
     - target: {fileID: 1173543765282030318, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
         type: 3}
       propertyPath: m_Name
@@ -180,6 +185,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610840091331724856, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610840091331724856, guid: 12a8f3f3660d9c34e98cdc00538cf1f4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.804
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
