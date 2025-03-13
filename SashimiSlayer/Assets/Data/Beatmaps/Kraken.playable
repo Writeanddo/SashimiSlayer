@@ -17,7 +17,6 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: EEE
-<<<<<<< HEAD
 --- !u!114 &-9098992099511155361
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,8 +55,6 @@ MonoBehaviour:
           Flags: 0
           Positions:
           - {x: 4.3991804, y: -1.0908359}
-=======
->>>>>>> 62bac2b495363327bd54f44f4b4d5ee70b4afdc0
 --- !u!114 &-9057752935189469045
 MonoBehaviour:
   m_ObjectHideFlags: 1
