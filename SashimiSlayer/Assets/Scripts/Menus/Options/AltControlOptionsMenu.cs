@@ -9,6 +9,7 @@ namespace Menus.Options
     public class AltControlOptionsMenu : MonoBehaviour
     {
         private const string SwordAimMultiplier = "SwordAngleMultiplier";
+        private const string SwordAngleOffset = "SwordAngleOffset";
         private const string FlipSwordAim = "SwordAngleFlip";
         private const string UpAxis = "UpAxis";
 
@@ -18,12 +19,20 @@ namespace Menus.Options
         private FloatEvent _swordAngleMultiplierChangeEvent;
 
         [SerializeField]
+        private FloatEvent _swordAngleOffsetChangeEvent;
+
+        [SerializeField]
         private IntEvent _upAxisChangedEvent;
 
         [Header("Sword Angle Multiplier")]
 
         [SerializeField]
         private Slider _swordAngleMultiplierSlider;
+
+        [Header("Sword Angle Offset")]
+
+        [SerializeField]
+        private Slider _swordAngleOffsetSlider;
 
         [Header("Sword Angle Flip")]
 
@@ -36,17 +45,19 @@ namespace Menus.Options
         private TMP_Dropdown _upAxisDropdown;
 
         private float _swordAngleMultiplier;
+        private float _swordAngleOffset;
         private bool _swordAngleFlip;
-
         private int _upAxis;
 
         private void Awake()
         {
             _swordAngleMultiplier = PlayerPrefs.GetFloat(SwordAimMultiplier, 1);
+            _swordAngleOffset = PlayerPrefs.GetFloat(SwordAngleOffset, 0);
             _swordAngleFlip = PlayerPrefs.GetInt(FlipSwordAim, 0) == 1;
             _upAxis = PlayerPrefs.GetInt(UpAxis, 1);
 
             _swordAngleMultiplierSlider.onValueChanged.AddListener(HandleSwordAngleMultiplierChange);
+            _swordAngleOffsetSlider.onValueChanged.AddListener(HandleSwordAngleOffsetChange);
             _swordAngleFlipToggle.onValueChanged.AddListener(HandleSwordAngleFlipChange);
             _upAxisDropdown.onValueChanged.AddListener(HandleUpAxisChange);
 
@@ -56,9 +67,11 @@ namespace Menus.Options
         private void Start()
         {
             _swordAngleMultiplierSlider.value = _swordAngleMultiplier;
+            _swordAngleOffsetSlider.value = _swordAngleOffset;
             _swordAngleFlipToggle.isOn = _swordAngleFlip;
             _upAxisDropdown.value = _upAxis;
 
+            HandleSwordAngleMultiplierChange(_swordAngleMultiplier);
             HandleUpAxisChange(_upAxis);
             UpdateSwordAngleMultiplier();
         }
@@ -100,6 +113,13 @@ namespace Menus.Options
         private void UpdateSwordAngleMultiplier()
         {
             _swordAngleMultiplierChangeEvent.Raise(_swordAngleMultiplier * (_swordAngleFlip ? -1 : 1));
+        }
+
+        private void HandleSwordAngleOffsetChange(float value)
+        {
+            _swordAngleOffset = value;
+            PlayerPrefs.SetFloat(SwordAngleOffset, _swordAngleOffset);
+            _swordAngleOffsetChangeEvent.Raise(_swordAngleOffset);
         }
     }
 }

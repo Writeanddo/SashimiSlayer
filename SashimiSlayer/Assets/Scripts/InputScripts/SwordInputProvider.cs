@@ -30,6 +30,9 @@ namespace InputScripts
         private FloatEvent _angleMultiplierEvent;
 
         [SerializeField]
+        private FloatEvent _swordAngleOffsetEvent;
+
+        [SerializeField]
         private StringEvent _connectToSerialPort;
 
         [SerializeField]
@@ -45,11 +48,13 @@ namespace InputScripts
         private float _swordAngle = 90f;
 
         private float _angleMultiplier = 1f;
+        private float _angleOffset;
 
         private void Awake()
         {
             _serialReader.OnSerialRead += HandleSerialRead;
             _angleMultiplierEvent.AddListener(SetAngleMultiplier);
+            _swordAngleOffsetEvent.AddListener(SetAngleOffset);
             _connectToSerialPort.AddListener(ConnectToPort);
             _upAxisChangedEvent.AddListener(HandleUpAxisChanged);
         }
@@ -58,6 +63,7 @@ namespace InputScripts
         {
             _serialReader.OnSerialRead -= HandleSerialRead;
             _angleMultiplierEvent.RemoveListener(SetAngleMultiplier);
+            _swordAngleOffsetEvent.RemoveListener(SetAngleOffset);
             _connectToSerialPort.RemoveListener(ConnectToPort);
             _upAxisChangedEvent.RemoveListener(HandleUpAxisChanged);
         }
@@ -70,6 +76,11 @@ namespace InputScripts
         private void SetAngleMultiplier(float angleMultiplier)
         {
             _angleMultiplier = angleMultiplier;
+        }
+
+        private void SetAngleOffset(float angleOffset)
+        {
+            _angleOffset = angleOffset;
         }
 
         private void HandleSerialRead(SwordSerialReader.SerialReadResult data)
@@ -112,7 +123,7 @@ namespace InputScripts
                 }
             }
 
-            _swordAngle = ProcessSwordOrientation(data.SwordOrientation);
+            _swordAngle = ProcessSwordOrientation(data.SwordOrientation) + _angleOffset;
             _quatDebugger.transform.rotation = data.SwordOrientation;
         }
 
