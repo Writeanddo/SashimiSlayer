@@ -108,6 +108,7 @@ namespace Menus.Options
             _swordAngleFlip = value;
             PlayerPrefs.SetInt(FlipSwordAim, _swordAngleFlip ? 1 : 0);
             UpdateSwordAngleMultiplier();
+            UpdateSwordAngleOffset();
         }
 
         private void UpdateSwordAngleMultiplier()
@@ -119,7 +120,12 @@ namespace Menus.Options
         {
             _swordAngleOffset = value;
             PlayerPrefs.SetFloat(SwordAngleOffset, _swordAngleOffset);
-            _swordAngleOffsetChangeEvent.Raise(_swordAngleOffset);
+            UpdateSwordAngleOffset();
+        }
+
+        private void UpdateSwordAngleOffset()
+        {
+            _swordAngleOffsetChangeEvent.Raise(_swordAngleOffset * (_swordAngleFlip ? -1 : 1));
         }
     }
 }
