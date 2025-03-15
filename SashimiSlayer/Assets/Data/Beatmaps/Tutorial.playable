@@ -482,7 +482,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.7828336, y: 1.757971}
+          - {x: 4.264219, y: 1.988064}
           - {x: -4.7798786, y: -0.8392911}
 --- !u!114 &-8912032260152168032
 MonoBehaviour:
@@ -571,7 +571,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.7828336, y: 1.757971}
+          - {x: 3.7137113, y: 2.8252027}
           - {x: -4.7798786, y: -0.8392911}
 --- !u!114 &-8739017720185291674
 MonoBehaviour:
@@ -622,7 +622,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 3.608561, y: 2.0327678}
           - {x: -4.58058, y: -0.4360311}
 --- !u!114 &-8573989637216269663
 MonoBehaviour:
@@ -667,7 +667,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 5.7867775, y: 1.4958844}
           - {x: -4.5122046, y: -0.6069712}
 --- !u!114 &-8542992235533403859
 MonoBehaviour:
@@ -683,8 +683,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: "Make sure to tap it \n<color=#FF6900>ON THE BEAT!</color>"
+    fontSize: 7.98
+    text: "Keep the rhythm, \n<color=#FF6900>TAP ON THE BEAT!</color>"
 --- !u!114 &-7974124173024059953
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -794,7 +794,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 5.081158, y: 2.1248062}
           - {x: -4.58058, y: -0.4360311}
 --- !u!114 &-7634491408669650360
 MonoBehaviour:
@@ -1544,10 +1544,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: 'Now let''s try PARRYING!
-
-      Keep your sword CLOSED.'
+    fontSize: 9.52
+    text: Time to <color=#3b2798>PARRY!</color>
 --- !u!114 &-6695465242239634703
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1598,10 +1596,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: 'Pay attention to the PARRY SYMBOLS!
-
-'
+    fontSize: 8.04
+    text: "Steady eye on the\n <color=#FF6900>SYM<color=#3b2798>BOLS!\n"
 --- !u!114 &-6530153297842992967
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1693,8 +1689,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'Simply <color=#3b2798>TAP</color> the matching <color=#3b2798>PARRY
-      SYMBOL!</color>
+    m_DisplayName: '<color=#3b2798>TAP</color> the matching <color=#3b2798>BUTTON!</color>
 
 '
   - m_Version: 1
@@ -1747,7 +1742,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: "Make sure to tap it \n<color=#FF6900>ON THE BEAT!</color>"
+    m_DisplayName: "Keep the rhythm, \n<color=#FF6900>TAP ON THE BEAT!</color>"
   - m_Version: 1
     m_Start: 3.025
     m_ClipIn: 0
@@ -1780,7 +1775,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'First, <color=#db3b3b>TILT</color> the sword to <color=#db3b3b>AIM</color>!
+    m_DisplayName: '<color=#db3b3b>TILT</color> to <color=#db3b3b>AIM</color>!
 
 '
   - m_Version: 1
@@ -1815,8 +1810,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Remember to <color=#db3b3b>RETURN</color> the sword to the <color=#db3b3b>SCABBARD</color>
-      when the slice is <color=#db3b3b>DONE</color>!
+    m_DisplayName: "<color=#db3b3b>SHEATHE</color> after \n<color=#db3b3b>SLICING</color>"
   - m_Version: 1
     m_Start: 29.98
     m_ClipIn: 0
@@ -1849,9 +1843,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'Let''s slice multiple fish at once!
-
-'
+    m_DisplayName: <color=#db3b3b>Multi-Slice!
   - m_Version: 1
     m_Start: 70.5
     m_ClipIn: 0
@@ -1884,10 +1876,9 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'Some creatures will <color=#37239D>ATTACK</color> you first,
+    m_DisplayName: 'Some <color=#37239D>ATTACK</color>,
 
-      then
-      turn <color=#db3b3b>VULNERABLE</color> after!'
+      then turn <color=#db3b3b>VULNERABLE!</color>'
   - m_Version: 1
     m_Start: 89.98
     m_ClipIn: 0
@@ -1920,9 +1911,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'And sometimes different creatures
-
-      will attack together!'
+    m_DisplayName: <color=#FF6900>Mix <color=#db3b3b>& <color=#3b2798>Match!
   - m_Version: 1
     m_Start: 106.14637420654297
     m_ClipIn: 0
@@ -1955,9 +1944,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'Play this level again
-
-      if you need some more practice!'
+    m_DisplayName: "Now you're \n<color=#db3b3b>Sashimi Slaying!"
   - m_Version: 1
     m_Start: 8.7
     m_ClipIn: 0
@@ -1990,8 +1977,8 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: "Listen to the <color=#db3b3b>BEAT</color>, \nthen <color=#db3b3b>PULL</color>
-      the sword out to <color=#db3b3b>SLICE</color>!\n"
+    m_DisplayName: "Count the <color=#db3b3b>BEATS</color> and \n<color=#db3b3b>UNSHEATHE</color>
+      to <color=#db3b3b>SLICE</color>!\n"
   - m_Version: 1
     m_Start: 38.00833333333333
     m_ClipIn: 0
@@ -2024,9 +2011,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'Now let''s try PARRYING!
-
-      Keep your sword CLOSED.'
+    m_DisplayName: Time to <color=#3b2798>PARRY!</color>
   - m_Version: 1
     m_Start: 61.980000000000004
     m_ClipIn: 0
@@ -2059,9 +2044,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: 'Pay attention to the PARRY SYMBOLS!
-
-'
+    m_DisplayName: "Steady eye on the\n <color=#FF6900>SYM<color=#3b2798>BOLS!\n"
   m_Markers:
     m_Objects: []
 --- !u!114 &-6430330407143984895
@@ -2396,7 +2379,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 7.151996, y: 0.09998584}
           - {x: -4.58058, y: -0.4360311}
 --- !u!114 &-4932010516035593875
 MonoBehaviour:
@@ -2426,7 +2409,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 6.2776437, y: 1.1737542}
           - {x: -4.5463924, y: -0.47021902}
 --- !u!114 &-4870925799724017901
 MonoBehaviour:
@@ -2456,7 +2439,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 6.516875, y: 2.6449375}
+          - {x: 7.268512, y: 0.43604302}
           - {x: -4.7798786, y: -0.8392911}
 --- !u!114 &-4634883101059139114
 MonoBehaviour:
@@ -2609,7 +2592,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2636,7 +2637,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2669,13 +2688,49 @@ MonoBehaviour:
     m_BlendOutDuration: 0.019915977661131734
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -3790,11 +3845,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: 'Some creatures will <color=#37239D>ATTACK</color> you first,
+    fontSize: 7.2
+    text: 'Some <color=#37239D>ATTACK</color>,
 
-      then
-      turn <color=#db3b3b>VULNERABLE</color> after!'
+      then turn <color=#db3b3b>VULNERABLE!</color>'
 --- !u!114 &-3713989751639845188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3854,9 +3908,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: "Listen to the <color=#db3b3b>BEAT</color>, \nthen <color=#db3b3b>PULL</color>
-      the sword out to <color=#db3b3b>SLICE</color>!\n"
+    fontSize: 7.39
+    text: "Count the <color=#db3b3b>BEATS</color> and \n<color=#db3b3b>UNSHEATHE</color>
+      to <color=#db3b3b>SLICE</color>!\n"
 --- !u!114 &-3156594010454479955
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3973,7 +4027,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.7828336, y: 1.757971}
+          - {x: 5.554141, y: 1.7579709}
           - {x: -4.7798786, y: -0.8392911}
 --- !u!114 &-2733709977444201013
 MonoBehaviour:
@@ -4003,7 +4057,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 6.516875, y: 2.6449375}
+          - {x: 5.811256, y: 0.8962294}
           - {x: -4.7798786, y: -0.8392911}
 --- !u!114 &-2718924908730961750
 MonoBehaviour:
@@ -4050,7 +4104,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.7828336, y: 1.757971}
+          - {x: 6.4906917, y: 0.39670703}
           - {x: -4.476029, y: -0.7253475}
 --- !u!114 &-2560635532049280617
 MonoBehaviour:
@@ -4092,7 +4146,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.033517, y: 2.4983206}
+          - {x: 5.432344, y: 1.4552312}
           - {x: -5.3383737, y: -1.169358}
       - _beatOffset: 0
         _offsetFromEnd: 1
@@ -4128,10 +4182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: 'And sometimes different creatures
-
-      will attack together!'
+    fontSize: 10.61
+    text: <color=#FF6900>Mix <color=#db3b3b>& <color=#3b2798>Match!
 --- !u!114 &-2067477300623986407
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4160,7 +4212,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 3.2404132, y: 2.5236342}
           - {x: -4.5122046, y: -0.6069712}
 --- !u!114 &-2042112074663296496
 MonoBehaviour:
@@ -4218,9 +4270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: Remember to <color=#db3b3b>RETURN</color> the sword to the <color=#db3b3b>SCABBARD</color>
-      when the slice is <color=#db3b3b>DONE</color>!
+    fontSize: 7.78
+    text: "<color=#db3b3b>SHEATHE</color> after \n<color=#db3b3b>SLICING</color>"
 --- !u!114 &-1123799448097150218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4350,7 +4401,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 6.8145275, y: 0.7902651}
           - {x: -4.58058, y: -0.4360311}
 --- !u!114 &-320745285350345662
 MonoBehaviour:
@@ -4855,7 +4906,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.7828336, y: 1.757971}
+          - {x: 7.1480536, y: 0.3927523}
           - {x: -4.7798786, y: -0.8392911}
 --- !u!114 &-39178167214981909
 MonoBehaviour:
@@ -4885,7 +4936,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 6.516875, y: 2.6449375}
+          - {x: 5.427768, y: 2.0313559}
           - {x: -4.7798786, y: -0.8392911}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -5053,7 +5104,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 6.516875, y: 2.6449375}
+          - {x: 5.3817477, y: 1.8626208}
           - {x: -4.7798786, y: -0.8392911}
 --- !u!114 &1003458402168696384
 MonoBehaviour:
@@ -5112,7 +5163,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 7.3207316, y: 0.2227019}
           - {x: -4.512205, y: -0.436031}
 --- !u!114 &1257960077039165815
 MonoBehaviour:
@@ -5142,7 +5193,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 6.516875, y: 2.6449375}
+          - {x: 3.740418, y: 2.3228068}
           - {x: -4.7798786, y: -0.8392911}
 --- !u!114 &1348314074683732154
 MonoBehaviour:
@@ -5158,10 +5209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: 'Play this level again
-
-      if you need some more practice!'
+    fontSize: 9.14
+    text: "Now you're \n<color=#db3b3b>Sashimi Slaying!"
 --- !u!114 &1363379792737387491
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5190,7 +5239,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 6.516875, y: 2.6449375}
+          - {x: 5.979991, y: 0.92690873}
           - {x: -4.7798786, y: -0.8392911}
 --- !u!114 &1371462245037197855
 MonoBehaviour:
@@ -6011,8 +6060,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: 'Simply <color=#3b2798>TAP</color> the matching <color=#3b2798>PARRY SYMBOL!</color>
+    fontSize: 8.44
+    text: '<color=#3b2798>TAP</color> the matching <color=#3b2798>BUTTON!</color>
 
 '
 --- !u!114 &4064829025364650962
@@ -6264,7 +6313,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 6.36968, y: 0.7595863}
           - {x: -4.5463924, y: -0.47021902}
 --- !u!114 &5135465086505722032
 MonoBehaviour:
@@ -6508,7 +6557,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 5.142516, y: 1.9100523}
           - {x: -4.512205, y: -0.436031}
 --- !u!114 &7069389342652722967
 MonoBehaviour:
@@ -6538,7 +6587,7 @@ MonoBehaviour:
           InteractionType: 0
           Flags: 0
           Positions:
-          - {x: 5.464647, y: 1.8640335}
+          - {x: 3.930692, y: 2.5696523}
           - {x: -4.512205, y: -0.436031}
 --- !u!114 &7200402189459744642
 MonoBehaviour:
@@ -6605,10 +6654,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: 'Let''s slice multiple fish at once!
-
-'
+    fontSize: 11
+    text: <color=#db3b3b>Multi-Slice!
 --- !u!114 &7649258662320957175
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6623,8 +6670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     color: {r: 0, g: 0, b: 0, a: 1}
-    fontSize: 6
-    text: 'First, <color=#db3b3b>TILT</color> the sword to <color=#db3b3b>AIM</color>!
+    fontSize: 8.02
+    text: '<color=#db3b3b>TILT</color> to <color=#db3b3b>AIM</color>!
 
 '
 --- !u!114 &7655169594171241362
