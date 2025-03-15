@@ -55,7 +55,7 @@ MonoBehaviour:
     type: 3}
   _finalPip: {fileID: 5607132048904915572, guid: f707637074385d0449fb367dc9a0712a,
     type: 3}
-  _delay: 0.02
+  _delay: 0.03
   _shakeStrength: 0.16
   _shakeVibrato: 60
 --- !u!114 &7838767818776944973
@@ -137,6 +137,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockIndicatorTop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
+        type: 3}
+      propertyPath: _delay
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
@@ -260,6 +265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockPipIndicatorMid
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
+        type: 3}
+      propertyPath: _delay
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
