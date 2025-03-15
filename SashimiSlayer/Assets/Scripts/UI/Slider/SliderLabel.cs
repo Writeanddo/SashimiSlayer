@@ -8,7 +8,8 @@ namespace UI
         public enum Style
         {
             Value,
-            Percentage
+            Percentage,
+            Degrees
         }
 
         [SerializeField]
@@ -43,6 +44,10 @@ namespace UI
             if (_style == Style.Value)
             {
                 _label.text = $"{value:F2}";
+            }
+            else if (_style == Style.Degrees)
+            {
+                _label.text = $"{value:F0}°";
             }
         }
     }

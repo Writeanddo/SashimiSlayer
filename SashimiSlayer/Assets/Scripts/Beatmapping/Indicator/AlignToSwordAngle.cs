@@ -13,8 +13,15 @@ namespace Beatmapping.Indicator
     {
         [BoldHeader("Align To Sword Angle")]
         [InfoBox("Matches a target Transform rotation to the protag's sword angle")]
+        [Header("Depends")]
+
         [SerializeField]
         private Transform _visualContainer;
+
+        [Header("Config")]
+
+        [SerializeField]
+        private float _rotationOffset;
 
         [Header("Event (In)")]
 
@@ -33,7 +40,7 @@ namespace Beatmapping.Indicator
 
         private void OnProtagSwordState(Protaganist.ProtagSwordState state)
         {
-            _visualContainer.rotation = Quaternion.AngleAxis(state.SwordAngle, Vector3.forward);
+            _visualContainer.rotation = Quaternion.AngleAxis(state.SwordAngle + _rotationOffset, Vector3.forward);
         }
     }
 }
