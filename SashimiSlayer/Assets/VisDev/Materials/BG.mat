@@ -83,6 +83,6 @@ Material:
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _Scale: {r: 5, g: 5, b: 0, a: 0}
-    - _Scroll: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Scroll: {r: 0.25, g: 0.25, b: 0, a: 0}
     - _Tiling: {r: 5, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
