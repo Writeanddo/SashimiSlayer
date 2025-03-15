@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: StartMenu
   m_EditorClassIdentifier: 
   <GameSceneName>k__BackingField: StartMenu
-  <LevelTitle>k__BackingField: Sashimi Slayer
+  <LevelTitle>k__BackingField: Start Menu
   <LevelDescription>k__BackingField: 
   <Beatmap>k__BackingField: {fileID: 0}
   <LevelType>k__BackingField: 0
-  <Thumbnail>k__BackingField: {fileID: 0}
+  <LevelSelectSprite>k__BackingField: {fileID: 0}
   <FmodBanksToPreLoad>k__BackingField: []
