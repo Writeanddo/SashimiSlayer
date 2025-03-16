@@ -39,15 +39,17 @@ namespace Beatmapping.Indicator
                     blockTimingIndicator.SetVisible(false);
                 }
 
+                _lastInteractionIndex = -1;
                 return;
             }
 
             NoteInteraction interaction = tickInfo.NoteSegment.Interaction;
 
-            if (!tickInfo.BeatmapTickInfo.CrossedSubdivThisTick)
+            // Optimization that causes a delay for looping notes...
+            /*if (!tickInfo.BeatmapTickInfo.CrossedSubdivThisTick)
             {
                 return;
-            }
+            }*/
 
             bool isNewInteraction = _lastInteractionIndex != tickInfo.InteractionIndex;
             _lastInteractionIndex = tickInfo.InteractionIndex;
