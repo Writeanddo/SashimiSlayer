@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 01572e8a2c0baf046b77c369db772614
+guid: 9465bb01d613c3c4a9f24440774848e5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -37,15 +37,15 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 7
   spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 256
@@ -114,18 +114,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1666
-        height: 1700
+        y: 1500
+        width: 1200
+        height: 1500
       alignment: 9
-      pivot: {x: 0.68087846, y: 0.10630429}
+      pivot: {x: 0.6965587, y: 0.07017033}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bf1d0fcc4b70114daa5cf541869d12b
-      internalID: 439738784
+      spriteID: a7b8b19373935af4491af682741a0fa0
+      internalID: -747525738
       vertices: []
       indices: 
       edges: []
@@ -134,19 +134,19 @@ TextureImporter:
       name: tentacleEnter_1
       rect:
         serializedVersion: 2
-        x: 1666
-        y: 0
-        width: 1666
-        height: 1700
+        x: 1200
+        y: 1500
+        width: 1200
+        height: 1500
       alignment: 9
-      pivot: {x: 0.5556547, y: 0.10825221}
+      pivot: {x: 0.6264744, y: 0.0708103}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2a2fb69286896342800e729650f51c8
-      internalID: 275445122
+      spriteID: 183098aeced7723458fc8e6482cff5a6
+      internalID: -1473975712
       vertices: []
       indices: 
       edges: []
@@ -155,19 +155,82 @@ TextureImporter:
       name: tentacleEnter_2
       rect:
         serializedVersion: 2
-        x: 3332
-        y: 0
-        width: 1666
-        height: 1700
+        x: 2400
+        y: 1500
+        width: 1200
+        height: 1500
       alignment: 9
-      pivot: {x: 0.48211062, y: 0.10630429}
+      pivot: {x: 0.565, y: 0.068}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b6c2236b1f80fa48a07b258b76e7516
-      internalID: 1285483189
+      spriteID: adb9af5231b7d694cb5f70eb223da1c3
+      internalID: 1673026271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleEnter_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1200
+        height: 1500
+      alignment: 9
+      pivot: {x: 0.68924856, y: 0.07938949}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0010da70eec491042821734f0e9d590b
+      internalID: -2124777372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleEnter_4
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 4
+        width: 1200
+        height: 1500
+      alignment: 9
+      pivot: {x: 0.6090046, y: 0.07835404}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87e276c7a05b4a4439efcf856c5236e8
+      internalID: -835522461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleEnter_5
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 1200
+        height: 1500
+      alignment: 9
+      pivot: {x: 0.5624113, y: 0.07731868}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9efe09c37cd6eb0428663185656065a4
+      internalID: 889518750
       vertices: []
       indices: 
       edges: []
@@ -183,9 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tentacleEnter_0: 439738784
-      tentacleEnter_1: 275445122
-      tentacleEnter_2: 1285483189
+      tentacleEnter_0: -747525738
+      tentacleEnter_1: -1473975712
+      tentacleEnter_2: 1673026271
+      tentacleEnter_3: -2124777372
+      tentacleEnter_4: -835522461
+      tentacleEnter_5: 889518750
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

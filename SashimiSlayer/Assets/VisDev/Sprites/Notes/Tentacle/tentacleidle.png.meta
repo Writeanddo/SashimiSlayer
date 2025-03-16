@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f453863b0d598db4ea3f5981d7e79fef
+guid: fc6963a65d99ca84fa2a5122d90d5c8a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -114,18 +114,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1624
-        height: 2048
+        y: 2000
+        width: 1400
+        height: 2000
       alignment: 9
-      pivot: {x: 0.58750993, y: 0.08574696}
+      pivot: {x: 0.565, y: 0.068}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5430965ce1dfc5044a06ea4df5070036
-      internalID: -315833708
+      spriteID: db7e924a9300b2c41ad35d10bf32957f
+      internalID: -1832116618
       vertices: []
       indices: 
       edges: []
@@ -134,19 +134,19 @@ TextureImporter:
       name: tentacleidle_1
       rect:
         serializedVersion: 2
-        x: 1624
-        y: 0
-        width: 1624
-        height: 2048
+        x: 1400
+        y: 2000
+        width: 1400
+        height: 2000
       alignment: 9
-      pivot: {x: 0.48939267, y: 0.08890107}
+      pivot: {x: 0.565, y: 0.068}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 928d59850c473574a91e3926be003fec
-      internalID: 942080932
+      spriteID: 6f8dc30089ad21f498d18fc60852f860
+      internalID: -1934136325
       vertices: []
       indices: 
       edges: []
@@ -155,19 +155,82 @@ TextureImporter:
       name: tentacleidle_2
       rect:
         serializedVersion: 2
-        x: 3248
-        y: 0
-        width: 1624
-        height: 2048
+        x: 2800
+        y: 2000
+        width: 1400
+        height: 2000
       alignment: 9
-      pivot: {x: 0.47082984, y: 0.08784964}
+      pivot: {x: 0.565, y: 0.068}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffafff64459807548adbf62b297f09cb
-      internalID: -667355227
+      spriteID: 94da66be9728723458ba45d5f1cf6816
+      internalID: -1222654950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleidle_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1400
+        height: 2000
+      alignment: 9
+      pivot: {x: 0.56500006, y: 0.08644779}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa9681177dd89142bcaefa102dec01b
+      internalID: 928335946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleidle_4
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 1400
+        height: 2000
+      alignment: 9
+      pivot: {x: 0.5632403, y: 0.08401274}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f456bec9965cd743a2d112daa26ad6a
+      internalID: -1427815903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleidle_5
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 0
+        width: 1400
+        height: 2000
+      alignment: 9
+      pivot: {x: 0.5614807, y: 0.08401274}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8396c9dc996ce8a43b516df468ec039e
+      internalID: 2073269728
       vertices: []
       indices: 
       edges: []
@@ -183,9 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tentacleidle_0: -315833708
-      tentacleidle_1: 942080932
-      tentacleidle_2: -667355227
+      tentacleidle_0: -1832116618
+      tentacleidle_1: -1934136325
+      tentacleidle_2: -1222654950
+      tentacleidle_3: 928335946
+      tentacleidle_4: -1427815903
+      tentacleidle_5: 2073269728
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
