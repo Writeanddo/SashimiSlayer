@@ -93,7 +93,7 @@ namespace Beatmapping.NoteBehaviors.Visuals
         private void SwitchToVisual(int index)
         {
             DisableAllVisuals();
-            Visuals[index].VisualObject.gameObject.SetActive(true);
+            Visuals[index].VisualObject.SetVisualObjectVisible(true);
         }
 
         public void SetHitParticle(bool visible)
@@ -118,7 +118,7 @@ namespace Beatmapping.NoteBehaviors.Visuals
 
         public void SetVisible(bool visible)
         {
-            CurrentVisualObject.SetVisible(visible);
+            CurrentVisualObject.SetSpriteVisible(visible);
         }
 
         public void SetRotation(float rot)
@@ -128,7 +128,11 @@ namespace Beatmapping.NoteBehaviors.Visuals
 
         public void PlayAnimation(int index, int firstSubdiv)
         {
-            CurrentVisualObject.PlayAnimation(index, firstSubdiv);
+            // Run all animations, even for hidden visuals, so switching to them is seamless and sync'd
+            foreach (NoteVisual visual in Visuals)
+            {
+                visual.VisualObject.PlayAnimation(index, firstSubdiv);
+            }
         }
 
         /// <summary>
@@ -142,19 +146,27 @@ namespace Beatmapping.NoteBehaviors.Visuals
 
         public void SetupAnimationTransitionOnEnd(int fromIndex, int toIndex)
         {
-            CurrentVisualObject.SetAnimationTransitionToOnEnd(fromIndex, toIndex);
+            // Run all animations, even for hidden visuals, so switching to them is seamless and sync'd
+            foreach (NoteVisual visual in Visuals)
+            {
+                visual.VisualObject.SetAnimationTransitionToOnEnd(fromIndex, toIndex);
+            }
         }
 
         public void AnimationForceTransition(int fromIndex, int toIndex, int currentSubdiv = -1)
         {
-            CurrentVisualObject.AnimationForceTransition(fromIndex, toIndex, currentSubdiv);
+            // Run all animations, even for hidden visuals, so switching to them is seamless and sync'd
+            foreach (NoteVisual visual in Visuals)
+            {
+                visual.VisualObject.AnimationForceTransition(fromIndex, toIndex, currentSubdiv);
+            }
         }
 
         private void DisableAllVisuals()
         {
             foreach (NoteVisual visual in Visuals)
             {
-                visual.VisualObject.gameObject.SetActive(false);
+                visual.VisualObject.SetVisualObjectVisible(false);
             }
         }
 

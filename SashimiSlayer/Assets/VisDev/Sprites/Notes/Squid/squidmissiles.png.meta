@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f453863b0d598db4ea3f5981d7e79fef
+guid: c78d73c3e1ad93147a7e52c78ec1e44a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -46,9 +46,9 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 0
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
-  spritePixelsToUnits: 256
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 350
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,64 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tentacleidle_0
+      name: squidmissile_shell_idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 814
+        width: 970
+        height: 814
+      alignment: 9
+      pivot: {x: 0.5371014, y: 0.49069223}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7cbd88bb99282a4f83b09dc54d80308
+      internalID: 2044111070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: squidmissile_shell_idle_1
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 814
+        width: 862
+        height: 814
+      alignment: 9
+      pivot: {x: 0.54643613, y: 0.48595005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c8f23752757554ca1ea7f495785926
+      internalID: 1735502208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: squidmissile_shell_stun_0
+      rect:
+        serializedVersion: 2
+        x: 1832
+        y: 814
+        width: 916.3333
+        height: 814
+      alignment: 9
+      pivot: {x: 0.6019266, y: 0.49765816}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3435a4f7321ae66458694084e0bd7925
+      internalID: 107923507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: squidmissile_star_idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1624
-        height: 2048
+        width: 968
+        height: 814
       alignment: 9
-      pivot: {x: 0.58750993, y: 0.08574696}
+      pivot: {x: 0.5393822, y: 0.46019202}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5430965ce1dfc5044a06ea4df5070036
-      internalID: -315833708
+      spriteID: 604e61fa06fb09a4683518fb19fcdc9f
+      internalID: 1044947713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tentacleidle_1
+      name: squidmissile_star_idle_1
       rect:
         serializedVersion: 2
-        x: 1624
+        x: 970
         y: 0
-        width: 1624
-        height: 2048
+        width: 862
+        height: 814
       alignment: 9
-      pivot: {x: 0.48939267, y: 0.08890107}
+      pivot: {x: 0.5287461, y: 0.4578504}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 928d59850c473574a91e3926be003fec
-      internalID: 942080932
+      spriteID: 36c7d9a839345874b817496841138853
+      internalID: -1765500713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tentacleidle_2
+      name: squidmissile_star_stun_0
       rect:
         serializedVersion: 2
-        x: 3248
+        x: 1832
         y: 0
-        width: 1624
-        height: 2048
+        width: 916.3333
+        height: 814
       alignment: 9
-      pivot: {x: 0.47082984, y: 0.08784964}
+      pivot: {x: 0.59360623, y: 0.5023416}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffafff64459807548adbf62b297f09cb
-      internalID: -667355227
+      spriteID: e8fa9c54ccf9b644c8f2458bdec4b8c6
+      internalID: 682832075
       vertices: []
       indices: 
       edges: []
@@ -183,9 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tentacleidle_0: -315833708
-      tentacleidle_1: 942080932
-      tentacleidle_2: -667355227
+      squidmissile_shell_idle_0: 2044111070
+      squidmissile_shell_idle_1: 1735502208
+      squidmissile_shell_stun_0: 107923507
+      squidmissile_star_idle_0: 1044947713
+      squidmissile_star_idle_1: -1765500713
+      squidmissile_star_stun_0: 682832075
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
