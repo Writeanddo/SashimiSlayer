@@ -52,9 +52,14 @@ namespace Beatmapping.NoteBehaviors.Visuals
             _spriteRenderer.color = color;
         }
 
-        public void SetVisible(bool visible)
+        public void SetSpriteVisible(bool visible)
         {
             _spriteRenderer.enabled = visible;
+        }
+
+        public void SetVisualObjectVisible(bool active)
+        {
+            _spriteRenderer.gameObject.SetActive(active);
         }
 
         public void SetHitParticle(bool visible)

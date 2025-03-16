@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 01572e8a2c0baf046b77c369db772614
+guid: fc6963a65d99ca84fa2a5122d90d5c8a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -37,15 +37,15 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 7
   spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 256
@@ -110,64 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tentacleEnter_0
+      name: tentacleidle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2000
+        width: 1400
+        height: 2000
+      alignment: 9
+      pivot: {x: 0.565, y: 0.068}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db7e924a9300b2c41ad35d10bf32957f
+      internalID: -1832116618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleidle_1
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 2000
+        width: 1400
+        height: 2000
+      alignment: 9
+      pivot: {x: 0.565, y: 0.068}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8dc30089ad21f498d18fc60852f860
+      internalID: -1934136325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleidle_2
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 2000
+        width: 1400
+        height: 2000
+      alignment: 9
+      pivot: {x: 0.565, y: 0.068}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94da66be9728723458ba45d5f1cf6816
+      internalID: -1222654950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleidle_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1666
-        height: 1700
+        width: 1400
+        height: 2000
       alignment: 9
-      pivot: {x: 0.68087846, y: 0.10630429}
+      pivot: {x: 0.56500006, y: 0.08644779}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bf1d0fcc4b70114daa5cf541869d12b
-      internalID: 439738784
+      spriteID: 3fa9681177dd89142bcaefa102dec01b
+      internalID: 928335946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tentacleEnter_1
+      name: tentacleidle_4
       rect:
         serializedVersion: 2
-        x: 1666
+        x: 1400
         y: 0
-        width: 1666
-        height: 1700
+        width: 1400
+        height: 2000
       alignment: 9
-      pivot: {x: 0.5556547, y: 0.10825221}
+      pivot: {x: 0.5632403, y: 0.08401274}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2a2fb69286896342800e729650f51c8
-      internalID: 275445122
+      spriteID: 1f456bec9965cd743a2d112daa26ad6a
+      internalID: -1427815903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tentacleEnter_2
+      name: tentacleidle_5
       rect:
         serializedVersion: 2
-        x: 3332
+        x: 2800
         y: 0
-        width: 1666
-        height: 1700
+        width: 1400
+        height: 2000
       alignment: 9
-      pivot: {x: 0.48211062, y: 0.10630429}
+      pivot: {x: 0.5614807, y: 0.08401274}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b6c2236b1f80fa48a07b258b76e7516
-      internalID: 1285483189
+      spriteID: 8396c9dc996ce8a43b516df468ec039e
+      internalID: 2073269728
       vertices: []
       indices: 
       edges: []
@@ -183,9 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tentacleEnter_0: 439738784
-      tentacleEnter_1: 275445122
-      tentacleEnter_2: 1285483189
+      tentacleidle_0: -1832116618
+      tentacleidle_1: -1934136325
+      tentacleidle_2: -1222654950
+      tentacleidle_3: 928335946
+      tentacleidle_4: -1427815903
+      tentacleidle_5: 2073269728
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9e6ad7020cd69cd4caedf0e2f2eab862
+guid: 20e7712b6d5dd6b45beae390f50e1d87
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 7
   spritePivot: {x: 0.5, y: 0}
-  spritePixelsToUnits: 350
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,64 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: squidmissiles_0
+      name: tentacleattack_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 908
-        height: 789
+        x: 0
+        y: 1500
+        width: 2100
+        height: 1500
       alignment: 9
-      pivot: {x: 0.52296793, y: 0.47560117}
+      pivot: {x: 0.454, y: 0.0744}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69b332d6e1e35c2439f5dd3a8a4064b4
-      internalID: 717268447
+      spriteID: b4445af847160f6459150f5a54b7fc8b
+      internalID: 247991463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: squidmissiles_1
+      name: tentacleattack_1
       rect:
         serializedVersion: 2
-        x: 957
-        y: 0
-        width: 875
-        height: 789
+        x: 2096
+        y: 1500
+        width: 2100
+        height: 1500
       alignment: 9
-      pivot: {x: 0.55316854, y: 0.47153473}
+      pivot: {x: 0.85, y: -0.1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04724c8092d695447b63055815b47ddd
-      internalID: 968987051
+      spriteID: 025b7df6637d82749af778e4cc5094ea
+      internalID: -753498489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: squidmissiles_2
+      name: tentacleattack_2
       rect:
         serializedVersion: 2
-        x: 1832
-        y: 0
-        width: 916.3333
-        height: 789
+        x: 4200
+        y: 1500
+        width: 2100
+        height: 1500
       alignment: 9
-      pivot: {x: 0.5927872, y: 0.48373413}
+      pivot: {x: 0.69478863, y: 0.074399985}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aaf0696a2f1260c44ac8c33b50fcf46e
-      internalID: 2135334177
+      spriteID: ba1218fc89fad594ca5d156f147d3d9e
+      internalID: 1811646458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleattack_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2100
+        height: 1500
+      alignment: 9
+      pivot: {x: 0.454, y: 0.0744}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f009974d866edc4eacbdc39b2d62c05
+      internalID: -892112303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleattack_4
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 0
+        width: 2100
+        height: 1500
+      alignment: 9
+      pivot: {x: 0.85, y: -0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a60e646be2f6f43976bb5d632611cc
+      internalID: -2098235194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleattack_5
+      rect:
+        serializedVersion: 2
+        x: 4200
+        y: 0
+        width: 2100
+        height: 1500
+      alignment: 9
+      pivot: {x: 0.7004211, y: 0.10397051}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4a7e884ccce5b4eaecedb4192fba12
+      internalID: -239012325
       vertices: []
       indices: 
       edges: []
@@ -183,9 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      squidmissiles_0: 717268447
-      squidmissiles_1: 968987051
-      squidmissiles_2: 2135334177
+      tentacleattack_0: 247991463
+      tentacleattack_1: -753498489
+      tentacleattack_2: 1811646458
+      tentacleattack_3: -892112303
+      tentacleattack_4: -2098235194
+      tentacleattack_5: -239012325
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
