@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 71307305230467939, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 71307305230467939, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
@@ -141,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 71307305230467939, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 2749510475200589377, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 2749510475200589377, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2749510475200589377, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
@@ -176,7 +176,7 @@ PrefabInstance:
     - target: {fileID: 2749510475200589377, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3274897723916315910, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
@@ -201,7 +201,7 @@ PrefabInstance:
     - target: {fileID: 3274897723916315910, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3274897723916315910, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
@@ -211,7 +211,7 @@ PrefabInstance:
     - target: {fileID: 3274897723916315910, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 15
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4339594712818540469, guid: 46785cd52f2b2f14ca29e84ccc97f85f,
         type: 3}
