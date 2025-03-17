@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d5b13ed7463194c47ac04d1e30e23d0b
+guid: 957ebcbac7fb5a24d9871dfb90dd63fd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 7
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 512
+  spritePivot: {x: 0.5, y: 0}
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: tentacleidle-blank_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1400
+        height: 2000
+      alignment: 9
+      pivot: {x: 0.57751936, y: 0.070065565}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce29ee37b7469ba4a93173e319a1c782
+      internalID: 2136010972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleidle-blank_1
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 1400
+        height: 2000
+      alignment: 9
+      pivot: {x: 0.55764246, y: 0.06728281}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f22d04535c5de1f439f1ca3f5c03c227
+      internalID: 1635734300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacleidle-blank_2
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 0
+        width: 1400
+        height: 2000
+      alignment: 9
+      pivot: {x: 0.5655929, y: 0.06728281}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91d46a0a4a994434197957b1e442b398
+      internalID: 1637017986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +182,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tentacleidle-blank_0: 2136010972
+      tentacleidle-blank_1: 1635734300
+      tentacleidle-blank_2: 1637017986
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
