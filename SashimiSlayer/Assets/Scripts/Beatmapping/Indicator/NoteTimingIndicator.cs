@@ -25,7 +25,7 @@ namespace Beatmapping.Indicator
 
         private BeatNote _beatNote;
 
-        private int _lastInteractionIndex;
+        private NoteInteraction _lastInteraction;
 
         private void BeatNote_OnTick(BeatNote.NoteTickInfo tickInfo)
         {
@@ -39,7 +39,12 @@ namespace Beatmapping.Indicator
                     blockTimingIndicator.SetVisible(false);
                 }
 
-                _lastInteractionIndex = -1;
+                if (_lastInteraction != null && _lastInteraction != null)
+                {
+                    FlashFinalBeat(_lastInteraction);
+                }
+
+                _lastInteraction = null;
                 return;
             }
 
@@ -51,48 +56,75 @@ namespace Beatmapping.Indicator
                 return;
             }*/
 
-            bool isNewInteraction = _lastInteractionIndex != tickInfo.InteractionIndex;
-            _lastInteractionIndex = tickInfo.InteractionIndex;
+            bool isNewInteraction = _lastInteraction != interaction;
 
-            // Flash the first pip of any new interaction
-            bool shouldFlash = isNewInteraction;
+            // Flash the final beat of previous interaction
+            if (isNewInteraction && _lastInteraction != null)
+            {
+                FlashFinalBeat(_lastInteraction);
+            }
 
+            TickInteraction(interaction, tickInfo, isNewInteraction);
+            _lastInteraction = interaction;
+        }
+
+        private void TickInteraction(NoteInteraction interaction, BeatNote.NoteTickInfo tickInfo, bool isNewInteraction)
+        {
             if (interaction.Type == NoteInteraction.InteractionType.Block)
             {
-                _sliceTimingIndicators.SetVisible(false);
-                TickBlockIndicators(tickInfo, interaction.BlockPose, shouldFlash);
+                if (isNewInteraction)
+                {
+                    _sliceTimingIndicators.SetVisible(false);
+                }
+
+                TickBlockIndicators(tickInfo, interaction.BlockPose, isNewInteraction);
             }
             else if (interaction.Type == NoteInteraction.InteractionType.Slice)
             {
-                if (shouldFlash)
+                if (isNewInteraction)
                 {
+                    _sliceTimingIndicators.SetVisible(true);
                     _sliceTimingIndicators.FlashOnNext();
+                    foreach (PipTimingIndicator blockIndicator in _blockTimingIndicators)
+                    {
+                        blockIndicator.SetVisible(false);
+                    }
                 }
 
-                _sliceTimingIndicators.SetVisible(true);
                 _sliceTimingIndicators.Tick(tickInfo).Forget();
-                foreach (PipTimingIndicator blockIndicator in _blockTimingIndicators)
+            }
+        }
+
+        private void FlashFinalBeat(NoteInteraction interaction)
+        {
+            if (interaction.Type == NoteInteraction.InteractionType.Block)
+            {
+                foreach (PipTimingIndicator blockTimingIndicator in _blockTimingIndicators)
                 {
-                    blockIndicator.SetVisible(false);
+                    blockTimingIndicator.FlashFinalBeat();
                 }
+            }
+            else if (interaction.Type == NoteInteraction.InteractionType.Slice)
+            {
+                _sliceTimingIndicators.FlashFinalBeat();
             }
         }
 
         private void TickBlockIndicators(BeatNote.NoteTickInfo tickInfo, SharedTypes.BlockPoseStates blockPose,
-            bool shouldFlash)
+            bool isNewInteraction)
         {
             var blockIndex = (int)blockPose;
-            _blockTimingIndicators[blockIndex].Tick(tickInfo).Forget();
 
             for (var i = 0; i < _blockTimingIndicators.Count; i++)
             {
-                if (shouldFlash)
+                if (isNewInteraction)
                 {
                     _blockTimingIndicators[i].FlashOnNext();
+                    _blockTimingIndicators[i].SetVisible(i == blockIndex);
                 }
-
-                _blockTimingIndicators[i].SetVisible(i == blockIndex);
             }
+
+            _blockTimingIndicators[blockIndex].Tick(tickInfo).Forget();
         }
 
         public override IEnumerable<IInteractionUser.InteractionUsage> GetInteractionUsages()
@@ -102,7 +134,7 @@ namespace Beatmapping.Indicator
 
         public override void OnNoteInitialized(BeatNote beatNote)
         {
-            _lastInteractionIndex = -1;
+            _lastInteraction = null;
             _beatNote = GetComponentInParent<BeatNote>();
             _beatNote.OnTick += BeatNote_OnTick;
         }

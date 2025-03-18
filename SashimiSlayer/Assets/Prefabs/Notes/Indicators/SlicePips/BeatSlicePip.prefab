@@ -280,7 +280,7 @@ PrefabInstance:
     - target: {fileID: 4846344489904593627, guid: 8d2b964e9e53f3140933dceb6fafee92,
         type: 3}
       propertyPath: m_Name
-      value: BlockFlash
+      value: EnterFlash
       objectReference: {fileID: 0}
     - target: {fileID: 6786509408325015486, guid: 8d2b964e9e53f3140933dceb6fafee92,
         type: 3}

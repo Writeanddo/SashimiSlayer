@@ -158,7 +158,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _finalPip
       value: 
-      objectReference: {fileID: 5723349784501870178, guid: e1797d42060eb2d4eb3a765f0d57c221,
+      objectReference: {fileID: 8934249179357556468, guid: b3d024b2eba392742aa38bc71b26ab19,
         type: 3}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}
@@ -286,7 +286,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _finalPip
       value: 
-      objectReference: {fileID: 5723349784501870178, guid: 3c6af0dd0c9711e40a0e47fec77736e6,
+      objectReference: {fileID: 3900101197873431880, guid: bf991d976ebc46c47ba7c9643d0a6fa6,
         type: 3}
     - target: {fileID: 3324664361253158490, guid: 9e49de79ebcfe3e4f98e1b2fa8bb7200,
         type: 3}

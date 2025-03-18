@@ -81,7 +81,8 @@ namespace Beatmapping.Indicator
 
         public void SetVisible(bool isVisible)
         {
-            gameObject.SetActive(isVisible);
+            _onSprite.gameObject.SetActive(isVisible);
+            _offSprite.gameObject.SetActive(isVisible);
         }
 
         public void SetAlpha(float normalized)
