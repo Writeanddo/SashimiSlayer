@@ -25,7 +25,7 @@ public class DebugService : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             _showGuiLabel = !_showGuiLabel;
         }

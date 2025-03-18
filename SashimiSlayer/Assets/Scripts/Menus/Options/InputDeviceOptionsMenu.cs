@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Menus.Options
 {
-    public class InputDeviceMenu : MonoBehaviour
+    public class InputDeviceOptionsMenu : MonoBehaviour
     {
         public const string LastPortName = "LastPortName";
 
@@ -59,15 +59,6 @@ namespace Menus.Options
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                _inputDeviceDropdown.value = _inputDeviceDropdown.value == 0 ? 1 : 0;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                HandleConnect();
-            }
         }
 
         private void OnDestroy()
@@ -80,6 +71,19 @@ namespace Menus.Options
         private void HandleSerialPortConnectionStatus(string status)
         {
             _connectionStatusText.text = status;
+        }
+
+        /// <summary>
+        ///     Quick Connect to the last used port
+        /// </summary>
+        public void QuickConnect()
+        {
+            HandleConnect();
+        }
+
+        public void ToggleInputMode()
+        {
+            _inputDeviceDropdown.value = _inputDeviceDropdown.value == 0 ? 1 : 0;
         }
 
         private void HandleConnect()

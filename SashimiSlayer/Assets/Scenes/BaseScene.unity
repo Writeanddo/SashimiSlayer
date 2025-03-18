@@ -3758,6 +3758,7 @@ GameObject:
   - component: {fileID: 1466236079}
   - component: {fileID: 1466236080}
   - component: {fileID: 1466236081}
+  - component: {fileID: 1466236082}
   m_Layer: 0
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -3867,6 +3868,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _screenShakeSlider: {fileID: 1904397593}
+--- !u!114 &1466236082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466236075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094accf9757ac6149b007f32164cc188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputDeviceOptionsMenu: {fileID: 1466236080}
+  _altControlOptionsMenu: {fileID: 1466236079}
+  _resetToStartMenu: {fileID: 1549907076}
 --- !u!1 &1475056205
 GameObject:
   m_ObjectHideFlags: 0
