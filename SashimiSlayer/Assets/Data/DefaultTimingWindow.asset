@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DefaultTimingWindow
   m_EditorClassIdentifier: 
   <PerfectWindowHalfWidth>k__BackingField: 0.06
-  <PassWindowHalfWidth>k__BackingField: 0.12
+  <PassWindowHalfWidth>k__BackingField: 0.11
   <FailWindowHalfWidth>k__BackingField: 0.2
