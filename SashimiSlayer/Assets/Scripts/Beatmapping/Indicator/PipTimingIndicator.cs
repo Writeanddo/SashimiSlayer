@@ -93,7 +93,20 @@ namespace Beatmapping.Indicator
 
         public void SetVisible(bool visible)
         {
-            _visualContainer.gameObject.SetActive(visible);
+            foreach (IndicatorPip pip in _pips)
+            {
+                pip.SetVisible(visible);
+            }
+        }
+
+        public void FlashFinalBeat()
+        {
+            if (_pips.Count == 0)
+            {
+                return;
+            }
+
+            _pips[0].Flash();
         }
 
         public async UniTaskVoid Tick(BeatNote.NoteTickInfo tickInfo)
@@ -107,14 +120,7 @@ namespace Beatmapping.Indicator
 
             NoteInteraction interaction = tickInfo.NoteSegment.Interaction;
 
-            int subdivsPerBeat = tickInfo.BeatmapTickInfo.CurrentBeatmap.Subdivisions;
-            int currentSubdivision = tickInfo.SubdivisionIndex;
-
-            // We need to calculate in subdivisions for off beats
-            double interactionTargetTime = interaction.TargetTime;
-            int targetSubdiv = tickInfo.BeatmapTickInfo.GetClosestSubdivisionIndex(interactionTargetTime);
-
-            int beatsRemaining = (targetSubdiv - currentSubdivision + 1) / subdivsPerBeat;
+            int beatsRemaining = CalculateBeatRemaining(interaction, tickInfo);
             float normalized = 1 - (float)beatsRemaining / (_pips.Count - 1);
 
             bool changed = _prevBeatRemaining != beatsRemaining;
@@ -155,6 +161,20 @@ namespace Beatmapping.Indicator
                     _pips[i].DoSquish();
                 }
             }
+        }
+
+        private int CalculateBeatRemaining(NoteInteraction interaction, BeatNote.NoteTickInfo tickInfo)
+        {
+            int subdivsPerBeat = tickInfo.BeatmapTickInfo.CurrentBeatmap.Subdivisions;
+            int currentSubdivision = tickInfo.SubdivisionIndex;
+
+            // We need to calculate in subdivisions for off beats
+            double interactionTargetTime = interaction.TargetTime;
+            int targetSubdiv = tickInfo.BeatmapTickInfo.GetClosestSubdivisionIndex(interactionTargetTime);
+
+            int beatsRemaining = (targetSubdiv - currentSubdivision + 1) / subdivsPerBeat;
+
+            return beatsRemaining;
         }
     }
 }
