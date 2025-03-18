@@ -3883,6 +3883,7 @@ MonoBehaviour:
   _inputDeviceOptionsMenu: {fileID: 1466236080}
   _altControlOptionsMenu: {fileID: 1466236079}
   _resetToStartMenu: {fileID: 1549907076}
+  _levelRoster: {fileID: 11400000, guid: e3cbf2d063334b841b46feb0ed798cb2, type: 2}
 --- !u!1 &1475056205
 GameObject:
   m_ObjectHideFlags: 0

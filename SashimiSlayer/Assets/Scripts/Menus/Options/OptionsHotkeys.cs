@@ -19,6 +19,9 @@ namespace Menus.Options
         [SerializeField]
         private ResetToStartMenu _resetToStartMenu;
 
+        [SerializeField]
+        private LevelRosterSO _levelRoster;
+
         // Update is called once per frame
         private void Update()
         {
@@ -40,6 +43,11 @@ namespace Menus.Options
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 _altControlOptionsMenu.ToggleFlipAngle();
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Alpha0))
+            {
+                _levelRoster.WipeHighScores();
             }
         }
     }

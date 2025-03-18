@@ -73,10 +73,7 @@ namespace Beatmapping.Editor
 
             if (GUILayout.Button("Wipe All Highscores"))
             {
-                foreach (GameLevelSO level in _levelRoster.Levels)
-                {
-                    PlayerPrefs.SetFloat($"{level.Beatmap.BeatmapName}.highscore", 0);
-                }
+                _levelRoster.WipeHighScores();
             }
 
             if (GUILayout.Button("Open Persistent Data Path"))
