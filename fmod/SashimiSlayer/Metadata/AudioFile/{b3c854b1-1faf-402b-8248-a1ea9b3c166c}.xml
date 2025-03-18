@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{b3c854b1-1faf-402b-8248-a1ea9b3c166c}">
 		<property name="assetPath">
-			<value>Tracks/cabbage_more_pauses.aif</value>
+			<value>Tracks/tutorial_level_audio.aif</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

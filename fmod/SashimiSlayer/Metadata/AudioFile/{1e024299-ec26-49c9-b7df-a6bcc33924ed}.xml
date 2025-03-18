@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{1e024299-ec26-49c9-b7df-a6bcc33924ed}">
 		<property name="assetPath">
-			<value>lightning_crack.aif</value>
+			<value>SFX/Slice Textures/lightning_crack.aif</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
