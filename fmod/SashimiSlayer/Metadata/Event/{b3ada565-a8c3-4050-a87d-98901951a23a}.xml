@@ -205,8 +205,11 @@
 	<object class="MixerBusPanner" id="{b876af65-db58-402e-acd4-bd324c8b71c7}" />
 	<object class="SingleSound" id="{9f7e02e1-b659-47ee-833a-f4cbdd07575f}">
 		<property name="length">
-			<value>110</value>
+			<value>109</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{4a03c8a8-af32-441f-affe-49ad22068b79}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{b3c854b1-1faf-402b-8248-a1ea9b3c166c}</destination>
 		</relationship>
@@ -959,6 +962,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{039a4d4a-0969-47db-b994-26b4612e1cf3}" />
 	<object class="MixerBusFader" id="{bdbb8080-d4d6-4f3c-b9d8-24ae9e38e08d}" />
+	<object class="FadeCurve" id="{4a03c8a8-af32-441f-affe-49ad22068b79}">
+		<relationship name="startPoint">
+			<destination>{44c39224-6c3e-4b83-b8ee-335a54909660}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{b0e51edb-be6f-464e-9cc9-cbe4eb3208e2}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{5c4c2f0c-1461-48b3-a68d-01350c355b64}">
 		<relationship name="effects">
 			<destination>{324c8fe1-44d7-4c2c-8b84-f2b9db9af09c}</destination>
@@ -1184,6 +1195,25 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{44a53dee-4c74-4977-8967-6d1e650e1240}" />
+	<object class="AutomationPoint" id="{44c39224-6c3e-4b83-b8ee-335a54909660}">
+		<property name="position">
+			<value>108</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{b0e51edb-be6f-464e-9cc9-cbe4eb3208e2}">
+		<property name="position">
+			<value>109</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{324c8fe1-44d7-4c2c-8b84-f2b9db9af09c}" />
 	<object class="AutomationPoint" id="{539fbf7b-8dcb-4ccc-acd2-695b93fc10ec}">
 		<property name="position">

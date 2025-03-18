@@ -29,3 +29,5 @@ MonoBehaviour:
   <PlayerMaxHealth>k__BackingField: 6666
   <TimingWindowSO>k__BackingField: {fileID: 11400000, guid: 54462036f164d014095fd6aaaee307e5,
     type: 2}
+  <ResultsScreenCustomPrefab>k__BackingField: {fileID: 6643969481075471894, guid: 50672a1d1121a1246b1366084dcc26c6,
+    type: 3}

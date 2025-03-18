@@ -88,6 +88,13 @@ public class FinalScoreDisplay : MonoBehaviour
 
     private async UniTaskVoid DisplayUI(ScoringService.BeatmapScore scoring)
     {
+        GameObject customEffect = scoring.Beatmap.ResultsScreenCustomPrefab;
+
+        if (customEffect != null)
+        {
+            Instantiate(customEffect, transform.position, Quaternion.identity);
+        }
+
         _scoreText.gameObject.SetActive(false);
         _perfectLine.SetVisible(false);
         _earlyLine.SetVisible(false);
