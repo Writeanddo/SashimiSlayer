@@ -127,5 +127,10 @@ namespace Menus.Options
         {
             _swordAngleOffsetChangeEvent.Raise(_swordAngleOffset * (_swordAngleFlip ? -1 : 1));
         }
+
+        public void ToggleFlipAngle()
+        {
+            _swordAngleFlipToggle.isOn = !_swordAngleFlipToggle.isOn;
+        }
     }
 }

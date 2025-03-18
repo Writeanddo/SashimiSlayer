@@ -49,7 +49,7 @@ MonoBehaviour:
 
 '
   _visualContainer: {fileID: 2922187952310214687}
-  _totalDistance: 2.6
+  _totalDistance: 2.7
   _layoutDirection: {x: 0, y: 1}
   _beatPip: {fileID: 5607132048904915572, guid: e559e07fee7a25d4f81a6df98cdc6b6a,
     type: 3}
