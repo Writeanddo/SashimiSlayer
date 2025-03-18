@@ -46,6 +46,9 @@ namespace Beatmapping
         [field: SerializeField]
         public TimingWindowSO TimingWindowSO { get; private set; }
 
+        [field: SerializeField]
+        public GameObject ResultsScreenCustomPrefab { get; private set; }
+
         /// <summary>
         ///     Take a time and snap it to the nearest subdivision
         /// </summary>
