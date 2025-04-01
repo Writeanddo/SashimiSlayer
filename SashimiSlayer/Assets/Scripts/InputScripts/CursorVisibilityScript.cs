@@ -2,7 +2,7 @@ using EditorUtils.BoldHeader;
 using Events;
 using UnityEngine;
 
-namespace UI
+namespace InputScripts
 {
     /// <summary>
     ///     Handles hiding/showing cursor

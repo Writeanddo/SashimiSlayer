@@ -220,7 +220,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.3922214, g: 0.57315224, b: 0.735849, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -362,6 +362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8398607499953863076}
+  - component: {fileID: 4105947232510470718}
   m_Layer: 0
   m_Name: CameraSystem
   m_TagString: Untagged
@@ -388,6 +389,21 @@ Transform:
   - {fileID: 8241589073027919872}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4105947232510470718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8737702015865640993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6e9dfade481b5418d7a5464d95d3d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetAspectRatio: 1.7777778
+  _updatePerFrame: 1
+  _camera: {fileID: 8630922400868860460}
 --- !u!1 &8975947836682187668
 GameObject:
   m_ObjectHideFlags: 0
