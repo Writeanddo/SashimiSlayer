@@ -24,6 +24,14 @@ Packages
 - [NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)
 - [UniTask](https://github.com/Cysharp/UniTask)
 
+## License
+
+[CC-BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+ - Creative Commons
+ - Attribution
+ - Sharealike
+ - Non-commercial
+
 ## Alt-Control Hardware & Setup
 
 ### Hardware
