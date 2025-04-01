@@ -5,6 +5,13 @@ using InputScripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum ControlSchemes
+{
+    KeyboardMouse = 0,
+    Gamepad = 1,
+    CustomSword = 2
+}
+
 public class InputService : BaseUserInputProvider
 {
     [Header("Event (Out)")]
@@ -38,7 +45,7 @@ public class InputService : BaseUserInputProvider
 
     private BaseUserInputProvider InputProvider => _useHardwareController ? _swordInputProvider : _gamepadInputProvider;
 
-    public int ControlScheme { get; private set; }
+    public ControlSchemes ControlScheme { get; private set; }
 
     public override event Action<SharedTypes.BlockPoseStates> OnBlockPoseChanged;
     public override event Action<SharedTypes.SheathState> OnSheathStateChanged;
@@ -103,22 +110,22 @@ public class InputService : BaseUserInputProvider
     {
         if (_useHardwareController)
         {
-            ControlScheme = 2;
+            ControlScheme = ControlSchemes.CustomSword;
         }
         else
         {
             // See if gamepad is connected
             if (InputSystem.devices.Count(device => device is Gamepad) > 0)
             {
-                ControlScheme = 1;
+                ControlScheme = ControlSchemes.Gamepad;
             }
             else
             {
-                ControlScheme = 0;
+                ControlScheme = ControlSchemes.KeyboardMouse;
             }
         }
 
-        _onControlSchemeChanged.Raise(ControlScheme);
+        _onControlSchemeChanged.Raise((int)ControlScheme);
     }
 
     private void HandleDrawDebugGUI()

@@ -5562,6 +5562,7 @@ GameObject:
   - component: {fileID: 1969117888}
   - component: {fileID: 1969117890}
   - component: {fileID: 1969117889}
+  - component: {fileID: 1969117891}
   m_Layer: 0
   m_Name: InputService
   m_TagString: Untagged
@@ -5654,6 +5655,22 @@ MonoBehaviour:
   _connectToSerialPort: {fileID: 11400000, guid: 9ccd70ecbcb706141be8ed8c468769f2,
     type: 2}
   _upAxisChangedEvent: {fileID: 11400000, guid: 4fc8f9163265c4e448f6db7f3efa086a,
+    type: 2}
+--- !u!114 &1969117891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969117885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62be26e876d1fb4bbc76d2ae254a648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controlSchemeChanged: {fileID: 11400000, guid: 1587be54aaec6e848b921a0c977ecaa4,
+    type: 2}
+  _optionsMenuToggled: {fileID: 11400000, guid: dbe2d9d70d477fa49a2b203b87339de8,
     type: 2}
 --- !u!1 &1973045991
 GameObject:
