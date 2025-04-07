@@ -1,7 +1,7 @@
-name: Unity-Builder
+name: Unity-Release-Builder
 
 concurrency:
-  group: ci-${{ github.actor }}-${{ github.ref }}-runner
+  group: ci-${{ github.actor }}-${{ github.ref }}-release-runner
   cancel-in-progress: true
 
 env:
