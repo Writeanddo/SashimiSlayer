@@ -46,7 +46,7 @@ namespace Menus.Options
         {
             _lastPortName = PlayerPrefs.GetString(LastPortName, "");
             _inputDeviceDropdown.ClearOptions();
-            _inputDeviceDropdown.AddOptions(new List<string> { "Default", "Alt-Control Sword" });
+            _inputDeviceDropdown.AddOptions(new List<string> { "Conventional Controls", "Alt-Control Sword" });
             _inputDeviceDropdown.onValueChanged.AddListener(HandleInputDeviceChanged);
             _connectButton.onClick.AddListener(HandleConnect);
             _serialPortConnectionStatus.AddListener(HandleSerialPortConnectionStatus);

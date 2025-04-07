@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 880088436}
   - component: {fileID: 880088435}
   - component: {fileID: 880088434}
+  - component: {fileID: 880088438}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -959,7 +960,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 1398976370}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -994,6 +995,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &880088438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880088433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59dad437b283d948a2bb581a868838a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 880088436}
 --- !u!1 &1030289700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,12 +1319,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf021acfd3270044b2dd66c98e15d85, type: 3}
---- !u!20 &1398976370 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8630922400868860460, guid: 8cf021acfd3270044b2dd66c98e15d85,
-    type: 3}
-  m_PrefabInstance: {fileID: 1398976369}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1470736765
 GameObject:
   m_ObjectHideFlags: 0
