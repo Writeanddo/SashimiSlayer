@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{37a3a476-0b2a-42e8-8525-3f5b55b98e4c}">
 		<property name="assetPath">
 			<value>SFX/Player/block/block_try_mid.mp3</value>

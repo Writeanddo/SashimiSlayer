@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="EventFolder" id="{bc02c214-24bd-4f40-b261-082a104f9af3}">
 		<property name="name">
 			<value>MootFish</value>

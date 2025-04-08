@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{93af4397-c818-4867-916b-9947118cfcf8}">
 		<property name="assetPath">
 			<value>SFX/Menus/score_music_maybe.aif</value>

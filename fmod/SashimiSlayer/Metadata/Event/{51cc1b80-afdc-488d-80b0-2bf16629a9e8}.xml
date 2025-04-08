@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{51cc1b80-afdc-488d-80b0-2bf16629a9e8}">
 		<property name="name">
 			<value>SquidAttack</value>
@@ -92,7 +92,6 @@
 		<property name="length">
 			<value>0.36083900226757371</value>
 		</property>
-		<property name="name" />
 		<relationship name="event">
 			<destination>{e599572c-93a0-41e2-bdf1-4f74479b522b}</destination>
 		</relationship>
