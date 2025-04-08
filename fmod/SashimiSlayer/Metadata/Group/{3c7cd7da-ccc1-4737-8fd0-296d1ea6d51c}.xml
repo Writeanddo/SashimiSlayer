@@ -22,5 +22,12 @@
 	</object>
 	<object class="MixerBusPanner" id="{30b6e236-caed-4257-84dd-b8cae2d7d17e}" />
 	<object class="MixerBusFader" id="{700e088a-4077-41b1-a7ed-30084412173e}" />
-	<object class="Sidechain" id="{05401c4f-84b4-43a0-ae03-32c1876e491d}" />
+	<object class="Sidechain" id="{05401c4f-84b4-43a0-ae03-32c1876e491d}">
+		<property name="wetDryEnabled">
+			<value>true</value>
+		</property>
+		<property name="wetMix">
+			<value>19.5</value>
+		</property>
+	</object>
 </objects>
