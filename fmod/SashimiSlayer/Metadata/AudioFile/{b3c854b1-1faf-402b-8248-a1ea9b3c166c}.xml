@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{b3c854b1-1faf-402b-8248-a1ea9b3c166c}">
 		<property name="assetPath">
 			<value>Tracks/tutorial_level_audio.aif</value>

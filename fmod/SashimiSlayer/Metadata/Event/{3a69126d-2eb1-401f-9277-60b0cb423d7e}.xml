@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{3a69126d-2eb1-401f-9277-60b0cb423d7e}">
 		<property name="name">
 			<value>PlayerHurt</value>
@@ -77,8 +77,8 @@
 	</object>
 	<object class="Timeline" id="{7d4f43a2-ff98-44f1-bc0f-03e15d0b092d}">
 		<relationship name="modules">
-			<destination>{a5a5e212-420c-4da9-87d1-18fa8bf14e17}</destination>
 			<destination>{173c9f8a-15ee-4c0b-aa14-cb121e203035}</destination>
+			<destination>{a5a5e212-420c-4da9-87d1-18fa8bf14e17}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{85af4503-b8d2-4a80-af88-ad79b0a5c83c}">

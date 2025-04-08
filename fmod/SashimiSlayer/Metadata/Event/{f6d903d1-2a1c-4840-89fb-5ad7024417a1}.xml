@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{f6d903d1-2a1c-4840-89fb-5ad7024417a1}">
 		<property name="name">
 			<value>PlayerSheathe</value>
@@ -77,8 +77,8 @@
 	</object>
 	<object class="Timeline" id="{44b92769-703b-49e7-a655-5ac755b9c0a8}">
 		<relationship name="modules">
-			<destination>{9d6455a6-7cbf-42d3-bacb-67be586c3e18}</destination>
 			<destination>{ede292c0-9735-47d9-8f2d-8ed5cbfd7230}</destination>
+			<destination>{9d6455a6-7cbf-42d3-bacb-67be586c3e18}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{5239dcb5-7f65-4154-a732-4acd60ee1ac0}">

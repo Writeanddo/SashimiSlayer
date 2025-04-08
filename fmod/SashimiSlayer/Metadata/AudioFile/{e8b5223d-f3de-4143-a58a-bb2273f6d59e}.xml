@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{e8b5223d-f3de-4143-a58a-bb2273f6d59e}">
 		<property name="assetPath">
 			<value>SFX/Ambiance/Thunder.mp3</value>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{d7d1f768-0f33-4bc6-8eae-a8a897c105d0}">
 		<property name="assetPath">
 			<value>SFX/Player/oof.wav</value>

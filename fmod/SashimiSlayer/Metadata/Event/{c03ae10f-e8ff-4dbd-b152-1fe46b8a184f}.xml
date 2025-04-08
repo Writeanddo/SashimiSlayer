@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{c03ae10f-e8ff-4dbd-b152-1fe46b8a184f}">
 		<property name="name">
 			<value>TentacleHitPlayer</value>

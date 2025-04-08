@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{6d8bb3c7-f62c-4608-a94c-9cbcd3e060d0}">
 		<property name="name">
 			<value>PlayerBlockAttempt</value>
@@ -63,8 +63,8 @@
 	<object class="MarkerTrack" id="{eb918eec-c2ff-4078-becd-b880bb588776}" />
 	<object class="GroupTrack" id="{597393e2-65aa-4290-bf68-24afbc328408}">
 		<relationship name="modules">
-			<destination>{6fec88a3-cc55-4560-bde7-f98bd78a89eb}</destination>
 			<destination>{500b938e-310d-44f2-9ecd-d35ce9280449}</destination>
+			<destination>{6fec88a3-cc55-4560-bde7-f98bd78a89eb}</destination>
 			<destination>{06ef4807-1331-4cc8-a541-b2e2b2d5c635}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
@@ -78,8 +78,8 @@
 	</object>
 	<object class="ParameterProxy" id="{68dfb0dd-4fcb-48de-95a1-972e3a0996d9}">
 		<relationship name="modules">
-			<destination>{6fec88a3-cc55-4560-bde7-f98bd78a89eb}</destination>
 			<destination>{500b938e-310d-44f2-9ecd-d35ce9280449}</destination>
+			<destination>{6fec88a3-cc55-4560-bde7-f98bd78a89eb}</destination>
 			<destination>{06ef4807-1331-4cc8-a541-b2e2b2d5c635}</destination>
 		</relationship>
 		<relationship name="preset">
@@ -103,17 +103,17 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{c208709b-806f-46be-b206-32e151b91f3c}" />
-	<object class="EventSound" id="{6fec88a3-cc55-4560-bde7-f98bd78a89eb}">
-		<relationship name="event">
-			<destination>{442236c8-1221-4098-8a5e-f8348246bb53}</destination>
-		</relationship>
-	</object>
 	<object class="EventSound" id="{500b938e-310d-44f2-9ecd-d35ce9280449}">
 		<property name="start">
 			<value>1</value>
 		</property>
 		<relationship name="event">
 			<destination>{2bab3ef0-fc4e-4f32-a635-36d42e9f96bd}</destination>
+		</relationship>
+	</object>
+	<object class="EventSound" id="{6fec88a3-cc55-4560-bde7-f98bd78a89eb}">
+		<relationship name="event">
+			<destination>{442236c8-1221-4098-8a5e-f8348246bb53}</destination>
 		</relationship>
 	</object>
 	<object class="EventSound" id="{06ef4807-1331-4cc8-a541-b2e2b2d5c635}">
