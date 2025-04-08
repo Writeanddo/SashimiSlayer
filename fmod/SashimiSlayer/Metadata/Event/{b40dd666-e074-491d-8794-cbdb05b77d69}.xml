@@ -64,9 +64,14 @@
 	<object class="MarkerTrack" id="{778da473-606c-43e2-bfcf-d4e6bb1b1c1f}" />
 	<object class="GroupTrack" id="{406b1e24-abef-4516-9ee4-3aed45d3591c}">
 		<relationship name="modules">
+<<<<<<< HEAD
 			<destination>{9129f552-427e-4956-9cb6-3c9a75bdc432}</destination>
 			<destination>{700782de-7199-4299-b573-4ed3ae4c462a}</destination>
+=======
+>>>>>>> 7c265b9b (Updating files for fmod 2.03)
 			<destination>{740354e0-a8e0-40c9-9848-0c4cc9ac9933}</destination>
+			<destination>{9129f552-427e-4956-9cb6-3c9a75bdc432}</destination>
+			<destination>{700782de-7199-4299-b573-4ed3ae4c462a}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{19f2c561-bf6f-4b06-9f6d-9282fbfbee70}</destination>
@@ -117,6 +122,17 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{17d123ee-dc08-49b7-8731-cee012111b90}" />
+<<<<<<< HEAD
+=======
+	<object class="EventSound" id="{740354e0-a8e0-40c9-9848-0c4cc9ac9933}">
+		<property name="start">
+			<value>2</value>
+		</property>
+		<relationship name="event">
+			<destination>{0a9722b3-2d50-4f57-a62c-a8facf9ee5ee}</destination>
+		</relationship>
+	</object>
+>>>>>>> 7c265b9b (Updating files for fmod 2.03)
 	<object class="EventSound" id="{9129f552-427e-4956-9cb6-3c9a75bdc432}">
 		<property name="start">
 			<value>1</value>
@@ -126,6 +142,7 @@
 		</relationship>
 	</object>
 	<object class="EventSound" id="{700782de-7199-4299-b573-4ed3ae4c462a}">
+<<<<<<< HEAD
 		<relationship name="event">
 			<destination>{84719b73-7e04-47ce-9f91-e515c7fbc32c}</destination>
 		</relationship>
@@ -134,8 +151,10 @@
 		<property name="start">
 			<value>2</value>
 		</property>
+=======
+>>>>>>> 7c265b9b (Updating files for fmod 2.03)
 		<relationship name="event">
-			<destination>{0a9722b3-2d50-4f57-a62c-a8facf9ee5ee}</destination>
+			<destination>{84719b73-7e04-47ce-9f91-e515c7fbc32c}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{19f2c561-bf6f-4b06-9f6d-9282fbfbee70}">

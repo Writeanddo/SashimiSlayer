@@ -77,8 +77,8 @@
 	</object>
 	<object class="Timeline" id="{f0e89e0a-6816-4102-acaf-b4099ac1c780}">
 		<relationship name="modules">
-			<destination>{2c191aff-6f9c-4e3d-9eaf-f880def2a845}</destination>
 			<destination>{83b53a40-d7fd-44b5-85a2-74f1b1e2533c}</destination>
+			<destination>{2c191aff-6f9c-4e3d-9eaf-f880def2a845}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{0253c496-175c-4d11-a52c-cdd3b17f392c}">

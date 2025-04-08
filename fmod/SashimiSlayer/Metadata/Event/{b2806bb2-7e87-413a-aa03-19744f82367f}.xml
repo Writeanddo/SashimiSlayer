@@ -77,8 +77,8 @@
 	</object>
 	<object class="Timeline" id="{e134af1d-6234-4bf2-9e43-f33c243cf624}">
 		<relationship name="modules">
-			<destination>{2d940f21-cb2a-4356-a498-2cf3c4584d72}</destination>
 			<destination>{99543c05-62e5-4426-94f3-9cd18d2c33ca}</destination>
+			<destination>{2d940f21-cb2a-4356-a498-2cf3c4584d72}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{5751e987-5d2f-4d66-8ebe-c82c51a552e5}</destination>

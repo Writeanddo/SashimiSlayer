@@ -73,11 +73,19 @@
 			<destination>{c9c4b5a7-8728-4caa-8201-bbd7af103be3}</destination>
 		</relationship>
 		<relationship name="modules">
+<<<<<<< HEAD
 			<destination>{89f52ee6-3919-4b56-a3d7-c7549a6a843f}</destination>
 			<destination>{839cf17a-f8d9-4334-bcae-393659fd1150}</destination>
 			<destination>{8f818ace-a8f5-400d-8d1a-34e33aa5dca3}</destination>
 			<destination>{d1ec8f29-3e4e-4b97-afe4-c9a2d23666fd}</destination>
 			<destination>{de52930d-aa6b-45af-b226-0e63eb091474}</destination>
+=======
+			<destination>{de52930d-aa6b-45af-b226-0e63eb091474}</destination>
+			<destination>{8f818ace-a8f5-400d-8d1a-34e33aa5dca3}</destination>
+			<destination>{d1ec8f29-3e4e-4b97-afe4-c9a2d23666fd}</destination>
+			<destination>{839cf17a-f8d9-4334-bcae-393659fd1150}</destination>
+			<destination>{89f52ee6-3919-4b56-a3d7-c7549a6a843f}</destination>
+>>>>>>> 7c265b9b (Updating files for fmod 2.03)
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{0614dfa0-6055-4221-95fa-962ae4a4c47b}</destination>
@@ -88,9 +96,9 @@
 			<destination>{02c22de3-1bdb-430b-8042-7f6b599f8989}</destination>
 		</relationship>
 		<relationship name="modules">
+			<destination>{dea2441a-15c0-492e-b71b-bb81fbda6f3b}</destination>
 			<destination>{4be49381-233b-402a-a9a4-c992fc329856}</destination>
 			<destination>{22e8a87d-e696-41db-9def-211721e828e9}</destination>
-			<destination>{dea2441a-15c0-492e-b71b-bb81fbda6f3b}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{3b6c79bd-142b-4cd7-8f72-a41f0e267e8f}</destination>
@@ -115,12 +123,13 @@
 	</object>
 	<object class="Timeline" id="{9d15b1bd-f5bc-433e-b44b-934d22cb1dd2}">
 		<relationship name="modules">
-			<destination>{89f52ee6-3919-4b56-a3d7-c7549a6a843f}</destination>
 			<destination>{4be49381-233b-402a-a9a4-c992fc329856}</destination>
+			<destination>{89f52ee6-3919-4b56-a3d7-c7549a6a843f}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterProxy" id="{906385c5-0f17-4e66-99ad-3bcc0c366b0b}">
 		<relationship name="modules">
+<<<<<<< HEAD
 			<destination>{be39d460-c461-480f-b559-f19967361a27}</destination>
 			<destination>{f958632c-0f14-4629-b4e8-f34c16c354b3}</destination>
 			<destination>{839cf17a-f8d9-4334-bcae-393659fd1150}</destination>
@@ -130,6 +139,17 @@
 			<destination>{d1ec8f29-3e4e-4b97-afe4-c9a2d23666fd}</destination>
 			<destination>{de52930d-aa6b-45af-b226-0e63eb091474}</destination>
 			<destination>{dea2441a-15c0-492e-b71b-bb81fbda6f3b}</destination>
+=======
+			<destination>{dea2441a-15c0-492e-b71b-bb81fbda6f3b}</destination>
+			<destination>{de52930d-aa6b-45af-b226-0e63eb091474}</destination>
+			<destination>{8f818ace-a8f5-400d-8d1a-34e33aa5dca3}</destination>
+			<destination>{22e8a87d-e696-41db-9def-211721e828e9}</destination>
+			<destination>{be39d460-c461-480f-b559-f19967361a27}</destination>
+			<destination>{d1ec8f29-3e4e-4b97-afe4-c9a2d23666fd}</destination>
+			<destination>{839cf17a-f8d9-4334-bcae-393659fd1150}</destination>
+			<destination>{e75c74bb-338e-419a-bb6b-263b51f672f8}</destination>
+			<destination>{f958632c-0f14-4629-b4e8-f34c16c354b3}</destination>
+>>>>>>> 7c265b9b (Updating files for fmod 2.03)
 		</relationship>
 		<relationship name="preset">
 			<destination>{d96e4ff0-ce13-4989-80c9-9deb078c543a}</destination>
@@ -170,18 +190,12 @@
 			<destination>{a1f8ecca-9d19-4e3f-97dd-d9369e86adf5}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{89f52ee6-3919-4b56-a3d7-c7549a6a843f}">
-		<property name="length">
-			<value>1.25</value>
+	<object class="SingleSound" id="{de52930d-aa6b-45af-b226-0e63eb091474}">
+		<property name="start">
+			<value>3</value>
 		</property>
-		<property name="pitch">
-			<value>-1.80000007</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{7e3e8b76-6db6-45e3-886a-e2c726b0f131}</destination>
-		</relationship>
 		<relationship name="audioFile">
-			<destination>{f7bd639c-dd24-4ff3-aac4-abc6ec75d58a}</destination>
+			<destination>{0d2f73dd-4ad6-49d0-aaaf-49c56074c175}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{839cf17a-f8d9-4334-bcae-393659fd1150}">
@@ -208,14 +222,37 @@
 			<destination>{983a7be3-ae10-436e-921e-9a371c195fd4}</destination>
 		</relationship>
 	</object>
+<<<<<<< HEAD
 	<object class="SingleSound" id="{de52930d-aa6b-45af-b226-0e63eb091474}">
 		<property name="start">
 			<value>3</value>
+=======
+	<object class="SingleSound" id="{839cf17a-f8d9-4334-bcae-393659fd1150}">
+		<property name="start">
+			<value>5</value>
+>>>>>>> 7c265b9b (Updating files for fmod 2.03)
 		</property>
 		<relationship name="audioFile">
 			<destination>{0d2f73dd-4ad6-49d0-aaaf-49c56074c175}</destination>
 		</relationship>
 	</object>
+<<<<<<< HEAD
+=======
+	<object class="SingleSound" id="{89f52ee6-3919-4b56-a3d7-c7549a6a843f}">
+		<property name="length">
+			<value>1.25</value>
+		</property>
+		<property name="pitch">
+			<value>-1.80000007</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{7e3e8b76-6db6-45e3-886a-e2c726b0f131}</destination>
+		</relationship>
+		<relationship name="audioFile">
+			<destination>{f7bd639c-dd24-4ff3-aac4-abc6ec75d58a}</destination>
+		</relationship>
+	</object>
+>>>>>>> 7c265b9b (Updating files for fmod 2.03)
 	<object class="EventMixerGroup" id="{0614dfa0-6055-4221-95fa-962ae4a4c47b}">
 		<property name="volume">
 			<value>-2</value>
@@ -241,6 +278,17 @@
 			<destination>{615701e6-c88c-4d05-a774-bd2af4a39235}</destination>
 		</relationship>
 	</object>
+	<object class="SingleSound" id="{dea2441a-15c0-492e-b71b-bb81fbda6f3b}">
+		<property name="start">
+			<value>5</value>
+		</property>
+		<property name="length">
+			<value>0.5</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{23455171-4d47-4ce7-881b-7b8698c8febf}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{4be49381-233b-402a-a9a4-c992fc329856}">
 		<property name="length">
 			<value>1.2434013605442178</value>
@@ -258,17 +306,6 @@
 	<object class="SingleSound" id="{22e8a87d-e696-41db-9def-211721e828e9}">
 		<property name="start">
 			<value>4</value>
-		</property>
-		<property name="length">
-			<value>0.5</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{23455171-4d47-4ce7-881b-7b8698c8febf}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{dea2441a-15c0-492e-b71b-bb81fbda6f3b}">
-		<property name="start">
-			<value>5</value>
 		</property>
 		<property name="length">
 			<value>0.5</value>
@@ -297,6 +334,23 @@
 			<destination>{9a08df76-cfb4-4fd1-86ea-7e1463885789}</destination>
 		</relationship>
 	</object>
+<<<<<<< HEAD
+=======
+	<object class="SingleSound" id="{e75c74bb-338e-419a-bb6b-263b51f672f8}">
+		<property name="start">
+			<value>4</value>
+		</property>
+		<property name="length">
+			<value>0.20000000000000001</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{86c85223-5d78-4529-b8b6-9bcfd21b03fe}</destination>
+		</relationship>
+		<relationship name="audioFile">
+			<destination>{1e024299-ec26-49c9-b7df-a6bcc33924ed}</destination>
+		</relationship>
+	</object>
+>>>>>>> 7c265b9b (Updating files for fmod 2.03)
 	<object class="SingleSound" id="{f958632c-0f14-4629-b4e8-f34c16c354b3}">
 		<property name="start">
 			<value>5</value>
@@ -578,8 +632,8 @@
 			<destination>{d96e4ff0-ce13-4989-80c9-9deb078c543a}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{6be82ddd-4e6f-4b64-8c21-be62b76ccf15}</destination>
 			<destination>{f0c57c5a-657f-4614-957f-36b4630f169b}</destination>
+			<destination>{6be82ddd-4e6f-4b64-8c21-be62b76ccf15}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{14438855-2dd7-4c20-8c55-7d0ea73c678f}" />
@@ -690,17 +744,42 @@
 			<value>-1</value>
 		</property>
 	</object>
+<<<<<<< HEAD
 	<object class="AutomationPoint" id="{6be82ddd-4e6f-4b64-8c21-be62b76ccf15}">
 		<property name="position">
 			<value>4.0200000000000005</value>
 		</property>
 		<property name="value">
 			<value>-0.5</value>
+=======
+	<object class="AutomationPoint" id="{937ded89-9554-4c30-9f4c-fe93b12ae4dc}">
+		<property name="position">
+			<value>4.0005655015064825</value>
+		</property>
+		<property name="value">
+			<value>2</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{4b054645-7e6f-4872-bb7c-f0fe8dc6d267}">
+		<property name="position">
+			<value>4.9949708682532954</value>
+		</property>
+		<property name="value">
+			<value>5</value>
+>>>>>>> 7c265b9b (Updating files for fmod 2.03)
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{f0c57c5a-657f-4614-957f-36b4630f169b}">
 		<property name="position">
 			<value>5.0095122681608739</value>
+		</property>
+		<property name="value">
+			<value>-0.5</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{6be82ddd-4e6f-4b64-8c21-be62b76ccf15}">
+		<property name="position">
+			<value>4.0200000000000005</value>
 		</property>
 		<property name="value">
 			<value>-0.5</value>
