@@ -72,6 +72,28 @@ namespace Core.Audio
             if (result.Successful)
             {
                 _successfulStreak++;
+
+                var timingParamVal = 0;
+                switch (result.TimingResult.Score)
+                {
+                    case TimingWindow.Score.Pass:
+                        if (result.TimingResult.Direction == TimingWindow.Direction.Early)
+                        {
+                            timingParamVal = 0;
+                        }
+                        else if (result.TimingResult.Direction == TimingWindow.Direction.Late)
+                        {
+                            timingParamVal = 2;
+                        }
+
+                        break;
+                    case TimingWindow.Score.Perfect:
+                        timingParamVal = 1;
+                        break;
+                }
+
+                RuntimeManager.StudioSystem.setParameterByName("InteractionSuccessTiming", timingParamVal,
+                    true);
             }
             else
             {
