@@ -1,5 +1,6 @@
 using System;
 using Beatmapping.Timing;
+using Core.Audio;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -37,6 +38,9 @@ namespace Beatmapping
 
         [field: SerializeField]
         public EventReference BeatmapSoundtrackEvent { get; private set; }
+
+        [field: SerializeField]
+        public PitchShiftValues PitchShiftValues { get; private set; }
 
         [field: Header("Gameplay Data")]
 
