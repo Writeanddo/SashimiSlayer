@@ -16,9 +16,6 @@
 		</relationship>
 	</object>
 	<object class="GameParameter" id="{802da481-5a3d-45e9-8b13-f47da88f1aee}">
-		<property name="minimum">
-			<value>0.5</value>
-		</property>
 		<property name="maximum">
 			<value>2</value>
 		</property>
@@ -26,7 +23,7 @@
 			<value>true</value>
 		</property>
 		<property name="initialValue">
-			<value>1.625</value>
+			<value>0.66700000000000004</value>
 		</property>
 		<property name="isExposedRecursively">
 			<value>false</value>
