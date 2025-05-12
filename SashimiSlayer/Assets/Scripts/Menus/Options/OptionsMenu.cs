@@ -1,5 +1,6 @@
 using Events;
 using UnityEngine;
+using Utility;
 
 namespace Menus.Options
 {

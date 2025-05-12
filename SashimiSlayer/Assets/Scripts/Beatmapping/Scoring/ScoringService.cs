@@ -1,5 +1,6 @@
 using System;
 using Beatmapping.Interactions;
+using EditorUtils.BoldHeader;
 using Events;
 using Events.Core;
 using NaughtyAttributes;
@@ -7,6 +8,9 @@ using UnityEngine;
 
 namespace Beatmapping.Scoring
 {
+    /// <summary>
+    ///     Handles tracking gameplay score and interaction results
+    /// </summary>
     public class ScoringService : MonoBehaviour
     {
         public struct BeatmapScore : IComparable<BeatmapScore>
@@ -33,6 +37,13 @@ namespace Beatmapping.Scoring
             }
         }
 
+        [BoldHeader("Scoring Service")]
+        [InfoBox("Handles tracking gameplay score and interaction results")]
+        [Header("Depends")]
+
+        [SerializeField]
+        private ScoreConfigSO _scoreConfig;
+
         [Header("Events (In)")]
 
         [SerializeField]
@@ -51,11 +62,6 @@ namespace Beatmapping.Scoring
 
         [SerializeField]
         private BeatmapScoreEvent _beatmapScoreEvent;
-
-        [Header("Depends")]
-
-        [SerializeField]
-        private ScoreConfigSO _scoreConfig;
 
         public static ScoringService Instance { get; private set; }
 

@@ -8,10 +8,12 @@ using Utility;
 
 namespace Core.Scene
 {
-    public class SceneTransitionUI : MonoBehaviour
+    public class SceneTransitionVisuals : MonoBehaviour
     {
         [BoldHeader("Scene Transition Visuals")]
         [InfoBox("Handles scene transition visuals")]
+        [Header("Depends")]
+
         [SerializeField]
         private CanvasGroup _transitionCanvasGroup;
 
@@ -23,6 +25,8 @@ namespace Core.Scene
 
         [SerializeField]
         private RectTransform _ref;
+
+        [Header("Config")]
 
         [SerializeField]
         private float _fadeOutTime;
@@ -63,8 +67,6 @@ namespace Core.Scene
                     _fadeInTime)
                 .SetEase(Ease.InOutSine);
             await UniTask.Delay((int)(_fadeOutTime * 1000));
-
-            _transitionCanvasGroup.SetEnabled(false);
         }
 
         public async UniTask FadeIn()
@@ -73,8 +75,6 @@ namespace Core.Scene
             {
                 return;
             }
-
-            _transitionCanvasGroup.SetEnabled(true);
 
             _fadeInTransform.anchoredPosition = new Vector2(0, 0);
             await UniTask.Delay((int)(_fadeInDelay * 1000));
