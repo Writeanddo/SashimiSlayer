@@ -24,18 +24,15 @@
 	<object class="MixerBusFader" id="{c874e371-b0b6-4481-8361-891d909c074a}" />
 	<object class="ThreeEQEffect" id="{5091c0e1-4744-4d00-87e5-30847e3dbdb8}">
 		<relationship name="modulators">
-			<destination>{bc08170c-f0fb-4db7-987b-54970b9de2f9}</destination>
+			<destination>{af065de9-a5e4-4883-93b5-54b312f69d2f}</destination>
 		</relationship>
 	</object>
-	<object class="SidechainModulator" id="{bc08170c-f0fb-4db7-987b-54970b9de2f9}">
+	<object class="SidechainModulator" id="{af065de9-a5e4-4883-93b5-54b312f69d2f}">
 		<property name="nameOfPropertyBeingModulated">
-			<value>midGain</value>
-		</property>
-		<property name="clockSource">
-			<value>1</value>
+			<value>highGain</value>
 		</property>
 		<property name="amount">
-			<value>19</value>
+			<value>16</value>
 		</property>
 		<property name="attackTime">
 			<value>10</value>

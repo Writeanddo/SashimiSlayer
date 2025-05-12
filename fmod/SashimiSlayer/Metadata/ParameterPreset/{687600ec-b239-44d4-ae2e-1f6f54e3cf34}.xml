@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
 	<object class="ParameterPreset" id="{687600ec-b239-44d4-ae2e-1f6f54e3cf34}">
+		<property name="note">
+			<value>How many interactions were successful in a row
+</value>
+		</property>
 		<property name="name">
 			<value>SuccessStreak</value>
 		</property>

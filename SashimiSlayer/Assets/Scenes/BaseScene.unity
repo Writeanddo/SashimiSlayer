@@ -3778,6 +3778,8 @@ MonoBehaviour:
   _noteInteractionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
     type: 2}
   _sliceResultEvent: {fileID: 11400000, guid: baaa71eb46fd87c48b8f565532be9613, type: 2}
+  _beatmapLoadedEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251,
+    type: 2}
   _streakDebugText: {fileID: 663641893}
 --- !u!4 &1447541452
 Transform:

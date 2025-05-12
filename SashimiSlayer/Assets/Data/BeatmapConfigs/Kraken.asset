@@ -28,6 +28,10 @@ MonoBehaviour:
       Data3: 333011362
       Data4: -135783907
     Path: event:/KrakenLevel/KrakenMusic
+  <PitchShiftValues>k__BackingField:
+    SlicePitchShift: 1
+    StarBlockPitchShift: 1
+    ShellBlockPitchShift: 1
   <PlayerMaxHealth>k__BackingField: 6666
   <TimingWindowSO>k__BackingField: {fileID: 11400000, guid: 54462036f164d014095fd6aaaee307e5,
     type: 2}
