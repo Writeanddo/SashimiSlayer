@@ -11,7 +11,7 @@ namespace Beatmapping.Scoring
     {
         public struct BeatmapScore : IComparable<BeatmapScore>
         {
-            public string BeatmapName;
+            public string BeatmapID;
             public BeatmapConfigSo Beatmap;
             public int Perfects;
             public int Earlies;
@@ -136,7 +136,7 @@ namespace Beatmapping.Scoring
             // Reset scoring
             _currentScore = new BeatmapScore
             {
-                BeatmapName = beatmap.BeatmapName,
+                BeatmapID = beatmap.BeatmapID,
                 Beatmap = beatmap,
                 DidSucceed = true
             };

@@ -599,8 +599,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../fmod/SashimiSlayer/SashimiSlayer.fspro
-  sourceBankPath: ../fmod/SashimiSlayer/Build
+  sourceProjectPath: ../SashimiSlayer_FMOD/SashimiSlayer.fspro
+  sourceBankPath: ../SashimiSlayer_FMOD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 0

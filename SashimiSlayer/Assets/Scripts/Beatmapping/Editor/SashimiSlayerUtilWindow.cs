@@ -4,6 +4,7 @@ using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using Core.Scene;
 using InputScripts;
+using Menus.MainMenu;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditor.Timeline;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55b03e1938f5454d937feca9a9dbd47, type: 3}
   m_Name: Tutorial
   m_EditorClassIdentifier: 
-  <BeatmapName>k__BackingField: CABBAGE
+  <BeatmapID>k__BackingField: Tutorial
   <Bpm>k__BackingField: 120
   <Subdivisions>k__BackingField: 2
   <StartTime>k__BackingField: 5.98
