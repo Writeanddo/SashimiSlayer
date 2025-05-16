@@ -624,6 +624,7 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Jellyfish
   - Kraken
   - Menus
   - Player
