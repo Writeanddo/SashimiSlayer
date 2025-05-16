@@ -14,7 +14,7 @@ namespace Beatmapping
 
         [field: SerializeField]
         [field: TextArea]
-        public string BeatmapName { get; private set; }
+        public string BeatmapID { get; private set; }
 
         [field: SerializeField]
         public double Bpm { get; private set; }

@@ -162,6 +162,8 @@ MonoBehaviour:
     type: 2}
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
   _subdivPassedEvent: {fileID: 11400000, guid: 445c41cbba60a1b4c991dd2746e5b858, type: 2}
+  _normalizedProgressEvent: {fileID: 11400000, guid: 88e411d0c80985c4385057f210044732,
+    type: 2}
 --- !u!4 &28433223
 Transform:
   m_ObjectHideFlags: 0
@@ -929,13 +931,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e2c752865736f44a1541b30a606f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreConfig: {fileID: 11400000, guid: 7dd788db8fe8866488d73d8cf5ec42a2, type: 2}
   _interactionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
     type: 2}
   _loadBeatmapEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251, type: 2}
   _playerDeathEvent: {fileID: 11400000, guid: d0f2aa8260a8f9241bac790517c4a7a4, type: 2}
   _onDrawGuiEvent: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
   _beatmapScoreEvent: {fileID: 11400000, guid: f426bc2ce53676d4392a01713575b5a6, type: 2}
-  _scoreConfig: {fileID: 11400000, guid: 7dd788db8fe8866488d73d8cf5ec42a2, type: 2}
 --- !u!4 &432079949
 Transform:
   m_ObjectHideFlags: 0
@@ -1867,7 +1869,7 @@ GameObject:
   - component: {fileID: 938862749}
   - component: {fileID: 938862748}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: SceneTransitionCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3769,12 +3771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023fdb2a7b882414badb84bf3dd4c705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _devDesc: 'Handles setting FMOD parameters for dynamic behavior.
-
-    - Successful
-    Interactions in a row
-
-    - Slice target count'
   _noteInteractionFinalResultEvent: {fileID: 11400000, guid: 62c8f0224e6cd4b4885d7ee487e3bab6,
     type: 2}
   _sliceResultEvent: {fileID: 11400000, guid: baaa71eb46fd87c48b8f565532be9613, type: 2}
@@ -3861,8 +3857,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1601302616}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1466236079
@@ -3968,7 +3963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be88f05f448c5a94daa1765cbdc6768e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneTransitionUI: {fileID: 1475056209}
+  sceneTransitionVisuals: {fileID: 1475056209}
   _beatmapStartEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251, type: 2}
   _beatmapUnloadEvent: {fileID: 11400000, guid: 10bdfd4824e94144ba44fe0616fcf818,
     type: 2}
@@ -3999,6 +3994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d905c92454d51104080e0f1187e55e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transitionCanvasGroup: {fileID: 1490399730}
   _titleText: {fileID: 2056106404}
   _fadeInTransform: {fileID: 1490399729}
   _ref: {fileID: 1081883458}
@@ -4077,11 +4073,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1514205691}
   m_Layer: 0
-  m_Name: ==Services==
+  m_Name: SERVICES ================
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1514205691
 Transform:
@@ -4092,7 +4088,7 @@ Transform:
   m_GameObject: {fileID: 1514205690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.446318, y: -2.6684365, z: -3.3365119}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4441,7 +4437,7 @@ GameObject:
   - component: {fileID: 1601302618}
   - component: {fileID: 1601302617}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: OptionsCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4460,7 +4456,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 380193902}
-  m_Father: {fileID: 1466236078}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6121,11 +6117,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2105647812}
   m_Layer: 0
-  m_Name: ==UI==
+  m_Name: UI ========================
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2105647812
 Transform:
@@ -6136,21 +6132,6 @@ Transform:
   m_GameObject: {fileID: 2105647811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.446318, y: -2.6684365, z: -3.3365119}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &238254663579740162
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2525678646365968480}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6172,39 +6153,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2525678646365968480
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 238254663579740162}
-  - component: {fileID: 2984458953149946171}
-  m_Layer: 0
-  m_Name: BossService
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2984458953149946171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2525678646365968480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 397a9b5f94f44f84da307531c4f557b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startBeatmapEvent: {fileID: 11400000, guid: c6454aecf2d6c4748ac6087f73e2e251, type: 2}
-  _bossHealthEvent: {fileID: 11400000, guid: 88e411d0c80985c4385057f210044732, type: 2}
-  _bossMaxHealthEvent: {fileID: 11400000, guid: dd056c8f787a5e74e8237772a62b22a1,
-    type: 2}
 --- !u!1 &4282618679451664797
 GameObject:
   m_ObjectHideFlags: 0
@@ -6408,14 +6356,14 @@ SceneRoots:
   - {fileID: 162499281}
   - {fileID: 1475056207}
   - {fileID: 28433223}
-  - {fileID: 238254663579740162}
   - {fileID: 1811963881377612007}
   - {fileID: 432079949}
   - {fileID: 1549907075}
-  - {fileID: 1973045994}
   - {fileID: 1447541452}
+  - {fileID: 1466236078}
+  - {fileID: 1973045994}
   - {fileID: 2105647812}
   - {fileID: 938862751}
-  - {fileID: 1466236078}
+  - {fileID: 1601302616}
   - {fileID: 939124853}
   - {fileID: 1640389115}

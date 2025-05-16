@@ -1,9 +1,10 @@
 using System;
-using Base;
 using Beatmapping;
 using Beatmapping.Interactions;
+using EditorUtils.BoldHeader;
 using Events.Core;
 using FMODUnity;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 
@@ -25,8 +26,10 @@ namespace Core.Audio
     /// <summary>
     ///     Script that handles setting global FMOD params
     /// </summary>
-    public class FmodParamManager : DescMono
+    public class FmodParamManager : MonoBehaviour
     {
+        [BoldHeader("FMOD Param Manager")]
+        [InfoBox("Handles setting various global FMOD params (e.g slice timing, streak)")]
         [Header("Events (In)")]
 
         [SerializeField]
