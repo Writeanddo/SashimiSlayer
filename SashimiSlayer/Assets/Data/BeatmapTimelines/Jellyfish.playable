@@ -17,6 +17,36 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: EEE
+--- !u!114 &-8776122377456620255
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    NoteConfig: {fileID: 11400000, guid: 3cf953fffd7093f498aba4fe128d7e52, type: 2}
+    NoteData:
+      StartPosition: {x: 5.201916, y: -4.9900446}
+      EndPosition: {x: -5.223729, y: 6.89398}
+      NoteStartTime: 0
+      NoteEndTime: 1.3953488372093026
+      NoteBeatCount: 4.000000000000001
+      Interactions:
+      - _beatOffset: 3
+        _offsetFromEnd: 0
+        InteractionData:
+          BlockPose: 1
+          InteractionType: 0
+          Flags: 0
+          Positions:
+          - {x: 5.4546857, y: 1.8280971}
+          - {x: 0.21175396, y: 1.3602707}
 --- !u!114 &-8739017720185291674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,10 +111,148 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 6.9757209302325585
+    m_Start: 15.347813953488373
     m_ClipIn: 0
     m_Asset: {fileID: 8142266057632222784}
+    m_Duration: 1.3953488372093013
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -7620407122743851986}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AttackingJellyfish
+  - m_Version: 1
+    m_Start: 12.208279069767443
+    m_ClipIn: 0
+    m_Asset: {fileID: -6300071285853897746}
     m_Duration: 1.395348837209303
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -7620407122743851986}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AttackingJellyfish
+  - m_Version: 1
+    m_Start: 9.417581395348838
+    m_ClipIn: 0
+    m_Asset: {fileID: 1442121357747293677}
+    m_Duration: 1.3953488372093013
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7620407122743851986}
     m_EaseInDuration: 0
@@ -172,35 +340,6 @@ MonoBehaviour:
       NoteEndTime: 0
       NoteBeatCount: 0
       Interactions: []
---- !u!114 &-7374626496054946613
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: BeatNoteClip
-  m_EditorClassIdentifier: 
-  Template:
-    NoteConfig: {fileID: 11400000, guid: cd8b28387250bc848b9a561fcb3a6f6f, type: 2}
-    NoteData:
-      StartPosition: {x: 5.45547, y: -5.4554706}
-      EndPosition: {x: -2.364265, y: -5.5383787}
-      NoteStartTime: 2.093023255813954
-      NoteEndTime: 4.186046511627907
-      NoteBeatCount: 6
-      Interactions:
-      - _beatOffset: 3
-        _offsetFromEnd: 1
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 1
-          Flags: 0
-          Positions:
-          - {x: 0.6209483, y: -0.17741346}
 --- !u!114 &-7137627398019140838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,6 +382,35 @@ MonoBehaviour:
       NoteEndTime: 0
       NoteBeatCount: 0
       Interactions: []
+--- !u!114 &-6508439919755761452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: BeatNoteClip(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    NoteConfig: {fileID: 11400000, guid: cd8b28387250bc848b9a561fcb3a6f6f, type: 2}
+    NoteData:
+      StartPosition: {x: 5.45547, y: -5.4554706}
+      EndPosition: {x: -2.364265, y: -5.5383787}
+      NoteStartTime: 2.093023255813954
+      NoteEndTime: 4.186046511627907
+      NoteBeatCount: 6
+      Interactions:
+      - _beatOffset: 3
+        _offsetFromEnd: 1
+        InteractionData:
+          BlockPose: 0
+          InteractionType: 1
+          Flags: 0
+          Positions:
+          - {x: 0.6209483, y: -0.17741346}
 --- !u!114 &-6430330407143984895
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,6 +432,36 @@ MonoBehaviour:
       NoteEndTime: 0
       NoteBeatCount: 0
       Interactions: []
+--- !u!114 &-6300071285853897746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    NoteConfig: {fileID: 11400000, guid: 3cf953fffd7093f498aba4fe128d7e52, type: 2}
+    NoteData:
+      StartPosition: {x: 5.201916, y: -4.9900446}
+      EndPosition: {x: -5.223729, y: 6.89398}
+      NoteStartTime: 10.116279069767442
+      NoteEndTime: 11.511627906976745
+      NoteBeatCount: 4.000000000000002
+      Interactions:
+      - _beatOffset: 3
+        _offsetFromEnd: 0
+        InteractionData:
+          BlockPose: 1
+          InteractionType: 0
+          Flags: 0
+          Positions:
+          - {x: 5.4546857, y: 1.8280971}
+          - {x: 0.21175396, y: 1.3602707}
 --- !u!114 &-5945326915435382748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -281,8 +479,8 @@ MonoBehaviour:
     NoteData:
       StartPosition: {x: 5.201916, y: -4.9900446}
       EndPosition: {x: -5.223729, y: 6.89398}
-      NoteStartTime: 3.8372093023255816
-      NoteEndTime: 5.232558139534884
+      NoteStartTime: 12.209302325581396
+      NoteEndTime: 13.604651162790699
       NoteBeatCount: 4.000000000000002
       Interactions:
       - _beatOffset: 3
@@ -405,8 +603,8 @@ MonoBehaviour:
     NoteData:
       StartPosition: {x: 5.201916, y: -4.9900446}
       EndPosition: {x: -5.223729, y: 6.89398}
-      NoteStartTime: 4.534883720930232
-      NoteEndTime: 5.930232558139535
+      NoteStartTime: 12.906976744186046
+      NoteEndTime: 14.30232558139535
       NoteBeatCount: 4.000000000000002
       Interactions:
       - _beatOffset: 3
@@ -435,6 +633,36 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: EEE
+--- !u!114 &-2562516819152528196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    NoteConfig: {fileID: 11400000, guid: 3cf953fffd7093f498aba4fe128d7e52, type: 2}
+    NoteData:
+      StartPosition: {x: 5.201916, y: -4.9900446}
+      EndPosition: {x: -5.223729, y: 6.89398}
+      NoteStartTime: 5.232558139534884
+      NoteEndTime: 6.627906976744185
+      NoteBeatCount: 3.9999999999999973
+      Interactions:
+      - _beatOffset: 3
+        _offsetFromEnd: 0
+        InteractionData:
+          BlockPose: 0
+          InteractionType: 0
+          Flags: 0
+          Positions:
+          - {x: 5.4546857, y: 1.8280971}
+          - {x: 0.21175396, y: 1.3602707}
 --- !u!114 &-2131104746913374843
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -452,8 +680,8 @@ MonoBehaviour:
     NoteData:
       StartPosition: {x: 5.201916, y: -4.9900446}
       EndPosition: {x: -5.223729, y: 6.89398}
-      NoteStartTime: 3.4883720930232553
-      NoteEndTime: 4.883720930232558
+      NoteStartTime: 11.86046511627907
+      NoteEndTime: 13.255813953488373
       NoteBeatCount: 4.000000000000002
       Interactions:
       - _beatOffset: 3
@@ -601,76 +829,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 4.185023255813954
-    m_ClipIn: 0
-    m_Asset: {fileID: -7374626496054946613}
-    m_Duration: 2.0930232558139537
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -1017061909413786394}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: VulnerableJellyfish
-  - m_Version: 1
-    m_Start: 8.371069767441861
+    m_Start: 16.743162790697674
     m_ClipIn: 0
     m_Asset: {fileID: -459265962985437290}
     m_Duration: 2.0930232558139537
@@ -739,7 +898,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: VulnerableJellyfish
   - m_Version: 1
-    m_Start: 6.626883720930232
+    m_Start: 14.998976744186047
     m_ClipIn: 0
     m_Asset: {fileID: -3402053389100406080}
     m_Duration: 1.395348837209303
@@ -807,6 +966,213 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: AttackingJellyfish
+  - m_Version: 1
+    m_Start: 4.185023255813954
+    m_ClipIn: 0
+    m_Asset: {fileID: -6508439919755761452}
+    m_Duration: 2.0930232558139537
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -1017061909413786394}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: VulnerableJellyfish
+  - m_Version: 1
+    m_Start: 11.859441860465116
+    m_ClipIn: 0
+    m_Asset: {fileID: 6189522424849632830}
+    m_Duration: 1.395348837209303
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -1017061909413786394}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AttackingJellyfish
+  - m_Version: 1
+    m_Start: 8.371069767441861
+    m_ClipIn: 0
+    m_Asset: {fileID: 7235921062085775856}
+    m_Duration: 2.0930232558139537
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -1017061909413786394}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: VulnerableJellyfish
   m_Markers:
     m_Objects: []
 --- !u!114 &-957739267921107960
@@ -868,8 +1234,8 @@ MonoBehaviour:
     NoteData:
       StartPosition: {x: 5.45547, y: -5.4554706}
       EndPosition: {x: -2.364265, y: -5.5383787}
-      NoteStartTime: 6.279069767441861
-      NoteEndTime: 8.372093023255815
+      NoteStartTime: 14.651162790697674
+      NoteEndTime: 16.74418604651163
       NoteBeatCount: 6
       Interactions:
       - _beatOffset: 3
@@ -906,6 +1272,36 @@ MonoBehaviour:
     m_ScenePreview: 1
   m_DurationMode: 0
   m_MarkerTrack: {fileID: 1448729550972709652}
+--- !u!114 &1442121357747293677
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    NoteConfig: {fileID: 11400000, guid: 3cf953fffd7093f498aba4fe128d7e52, type: 2}
+    NoteData:
+      StartPosition: {x: 5.201916, y: -4.9900446}
+      EndPosition: {x: -5.223729, y: 6.89398}
+      NoteStartTime: 7.325581395348838
+      NoteEndTime: 8.720930232558139
+      NoteBeatCount: 3.9999999999999973
+      Interactions:
+      - _beatOffset: 3
+        _offsetFromEnd: 0
+        InteractionData:
+          BlockPose: 0
+          InteractionType: 0
+          Flags: 0
+          Positions:
+          - {x: 5.4546857, y: 1.8280971}
+          - {x: 0.21175396, y: 1.3602707}
 --- !u!114 &1448729550972709652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -967,6 +1363,36 @@ MonoBehaviour:
       NoteEndTime: 0
       NoteBeatCount: 0
       Interactions: []
+--- !u!114 &2643359066691088830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    NoteConfig: {fileID: 11400000, guid: 3cf953fffd7093f498aba4fe128d7e52, type: 2}
+    NoteData:
+      StartPosition: {x: 5.201916, y: -4.9900446}
+      EndPosition: {x: -5.223729, y: 6.89398}
+      NoteStartTime: 1.0465116279069768
+      NoteEndTime: 2.4418604651162785
+      NoteBeatCount: 3.9999999999999982
+      Interactions:
+      - _beatOffset: 3
+        _offsetFromEnd: 0
+        InteractionData:
+          BlockPose: 0
+          InteractionType: 0
+          Flags: 0
+          Positions:
+          - {x: 5.4546857, y: 1.8280971}
+          - {x: 0.21175396, y: 1.3602707}
 --- !u!114 &2731131515676527816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1027,10 +1453,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 2.092
+    m_Start: 10.81293023255814
     m_ClipIn: 0
     m_Asset: {fileID: 3803388964624513323}
-    m_Duration: 1.3953488372093026
+    m_Duration: 1.395348837209303
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3691485792175041472}
     m_EaseInDuration: 0
@@ -1096,10 +1522,148 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AttackingJellyfish
   - m_Version: 1
-    m_Start: 5.580372093023255
+    m_Start: 13.95246511627907
     m_ClipIn: 0
     m_Asset: {fileID: -2131104746913374843}
     m_Duration: 1.395348837209303
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 3691485792175041472}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AttackingJellyfish
+  - m_Version: 1
+    m_Start: 6.278046511627908
+    m_ClipIn: 0
+    m_Asset: {fileID: 4238548434368010684}
+    m_Duration: 1.3953488372093013
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 3691485792175041472}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AttackingJellyfish
+  - m_Version: 1
+    m_Start: 2.092
+    m_ClipIn: 0
+    m_Asset: {fileID: -8776122377456620255}
+    m_Duration: 1.3953488372093026
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3691485792175041472}
     m_EaseInDuration: 0
@@ -1183,9 +1747,9 @@ MonoBehaviour:
     NoteData:
       StartPosition: {x: 5.201916, y: -4.9900446}
       EndPosition: {x: -5.223729, y: 6.89398}
-      NoteStartTime: 0
-      NoteEndTime: 1.3953488372093026
-      NoteBeatCount: 4.000000000000001
+      NoteStartTime: 8.720930232558139
+      NoteEndTime: 10.116279069767442
+      NoteBeatCount: 4.000000000000002
       Interactions:
       - _beatOffset: 3
         _offsetFromEnd: 0
@@ -1217,6 +1781,36 @@ MonoBehaviour:
       NoteEndTime: 0
       NoteBeatCount: 0
       Interactions: []
+--- !u!114 &4238548434368010684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    NoteConfig: {fileID: 11400000, guid: 3cf953fffd7093f498aba4fe128d7e52, type: 2}
+    NoteData:
+      StartPosition: {x: 5.201916, y: -4.9900446}
+      EndPosition: {x: -5.223729, y: 6.89398}
+      NoteStartTime: 4.186046511627907
+      NoteEndTime: 5.581395348837209
+      NoteBeatCount: 3.9999999999999973
+      Interactions:
+      - _beatOffset: 3
+        _offsetFromEnd: 0
+        InteractionData:
+          BlockPose: 1
+          InteractionType: 0
+          Flags: 0
+          Positions:
+          - {x: 5.4546857, y: 1.8280971}
+          - {x: 0.21175396, y: 1.3602707}
 --- !u!114 &4367924008656656102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1272,9 +1866,9 @@ MonoBehaviour:
     NoteData:
       StartPosition: {x: 5.201916, y: -4.9900446}
       EndPosition: {x: -5.223729, y: 6.89398}
-      NoteStartTime: 1.0465116279069768
-      NoteEndTime: 2.4418604651162785
-      NoteBeatCount: 3.9999999999999982
+      NoteStartTime: 9.069767441860465
+      NoteEndTime: 10.465116279069768
+      NoteBeatCount: 4.000000000000002
       Interactions:
       - _beatOffset: 3
         _offsetFromEnd: 0
@@ -1343,6 +1937,36 @@ MonoBehaviour:
   EmitOnce: 0
   EmitInEditor: 0
   Position: {x: -5.4238763, y: -1.5590332, z: 0}
+--- !u!114 &6189522424849632830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    NoteConfig: {fileID: 11400000, guid: 3cf953fffd7093f498aba4fe128d7e52, type: 2}
+    NoteData:
+      StartPosition: {x: 5.201916, y: -4.9900446}
+      EndPosition: {x: -5.223729, y: 6.89398}
+      NoteStartTime: 9.767441860465116
+      NoteEndTime: 11.162790697674419
+      NoteBeatCount: 4.000000000000002
+      Interactions:
+      - _beatOffset: 3
+        _offsetFromEnd: 0
+        InteractionData:
+          BlockPose: 0
+          InteractionType: 0
+          Flags: 0
+          Positions:
+          - {x: 5.4546857, y: 1.8280971}
+          - {x: 0.21175396, y: 1.3602707}
 --- !u!114 &6640569924543703568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1359,6 +1983,35 @@ MonoBehaviour:
   emitOnce: 0
   emitInEditor: 1
   markerData: Cheese
+--- !u!114 &7235921062085775856
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  Template:
+    NoteConfig: {fileID: 11400000, guid: cd8b28387250bc848b9a561fcb3a6f6f, type: 2}
+    NoteData:
+      StartPosition: {x: 5.45547, y: -5.4554706}
+      EndPosition: {x: -2.364265, y: -5.5383787}
+      NoteStartTime: 6.279069767441861
+      NoteEndTime: 8.372093023255815
+      NoteBeatCount: 6
+      Interactions:
+      - _beatOffset: 3
+        _offsetFromEnd: 1
+        InteractionData:
+          BlockPose: 0
+          InteractionType: 1
+          Flags: 0
+          Positions:
+          - {x: 0.6209483, y: -0.17741346}
 --- !u!114 &7655169594171241362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1405,10 +2058,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 3.138511627906977
+    m_Start: 11.161767441860466
     m_ClipIn: 0
     m_Asset: {fileID: 4723293141564752901}
-    m_Duration: 1.3953488372093017
+    m_Duration: 1.395348837209303
     m_TimeScale: 1
     m_ParentTrack: {fileID: 8012124692829319110}
     m_EaseInDuration: 0
@@ -1474,10 +2127,148 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: AttackingJellyfish
   - m_Version: 1
-    m_Start: 5.929209302325582
+    m_Start: 14.301302325581396
     m_ClipIn: 0
     m_Asset: {fileID: -5945326915435382748}
     m_Duration: 1.395348837209303
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 8012124692829319110}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AttackingJellyfish
+  - m_Version: 1
+    m_Start: 7.324558139534885
+    m_ClipIn: 0
+    m_Asset: {fileID: -2562516819152528196}
+    m_Duration: 1.3953488372093013
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 8012124692829319110}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: AttackingJellyfish
+  - m_Version: 1
+    m_Start: 3.138511627906977
+    m_ClipIn: 0
+    m_Asset: {fileID: 2643359066691088830}
+    m_Duration: 1.3953488372093017
     m_TimeScale: 1
     m_ParentTrack: {fileID: 8012124692829319110}
     m_EaseInDuration: 0
@@ -1561,9 +2352,9 @@ MonoBehaviour:
     NoteData:
       StartPosition: {x: 5.201916, y: -4.9900446}
       EndPosition: {x: -5.223729, y: 6.89398}
-      NoteStartTime: 4.883720930232558
-      NoteEndTime: 6.279069767441861
-      NoteBeatCount: 4.000000000000002
+      NoteStartTime: 13.255813953488373
+      NoteEndTime: 14.651162790697674
+      NoteBeatCount: 3.9999999999999973
       Interactions:
       - _beatOffset: 3
         _offsetFromEnd: 0
