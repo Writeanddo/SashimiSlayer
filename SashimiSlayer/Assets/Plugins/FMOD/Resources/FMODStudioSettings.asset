@@ -626,7 +626,6 @@ MonoBehaviour:
   Banks:
   - Jellyfish
   - Kraken
-  - Menus
   - Player
   - Tutorial
   BanksToLoad: []
