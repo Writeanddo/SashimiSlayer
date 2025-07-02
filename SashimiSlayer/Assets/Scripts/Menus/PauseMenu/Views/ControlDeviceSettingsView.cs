@@ -7,9 +7,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menus.Options
+namespace Menus.PauseMenu.Views
 {
-    public class InputDeviceOptionsMenu : MonoBehaviour
+    public class ControlDeviceSettingsView : PauseMenuView
     {
         public const string LastPortName = "LastPortName";
 

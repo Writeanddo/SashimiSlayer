@@ -2,13 +2,13 @@ using Feel;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menus.Options
+namespace Menus.PauseMenu.Views
 {
-    public class EffectsOption : MonoBehaviour
+    public class MiscSettingsView : PauseMenuView
     {
         private const string ScreenShakeKey = "ScreenShake";
 
-        [Header("Effects")]
+        [Header("Depends")]
 
         [SerializeField]
         private Slider _screenShakeSlider;

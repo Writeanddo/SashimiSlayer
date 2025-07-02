@@ -4,9 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menus.Options
+namespace Menus.PauseMenu.Views
 {
-    public class AltControlOptionsMenu : MonoBehaviour
+    public class InputSettingsView : PauseMenuView
     {
         private const string SwordAimMultiplier = "SwordAngleMultiplier";
         private const string SwordAngleOffset = "SwordAngleOffset";
