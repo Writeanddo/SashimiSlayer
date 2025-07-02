@@ -42,21 +42,6 @@ namespace Menus.PauseMenu.Views
 
         private string _lastPortName;
 
-        private void Awake()
-        {
-            _lastPortName = PlayerPrefs.GetString(LastPortName, "");
-            _inputDeviceDropdown.ClearOptions();
-            _inputDeviceDropdown.AddOptions(new List<string> { "Conventional Controls", "Alt-Control Sword" });
-            _inputDeviceDropdown.onValueChanged.AddListener(HandleInputDeviceChanged);
-            _connectButton.onClick.AddListener(HandleConnect);
-            _serialPortConnectionStatus.AddListener(HandleSerialPortConnectionStatus);
-        }
-
-        private void Start()
-        {
-            ReloadSerialPortDropdown();
-        }
-
         private void Update()
         {
         }
@@ -66,6 +51,21 @@ namespace Menus.PauseMenu.Views
             _inputDeviceDropdown.onValueChanged.RemoveListener(HandleInputDeviceChanged);
             _connectButton.onClick.RemoveListener(HandleConnect);
             _serialPortConnectionStatus.RemoveListener(HandleSerialPortConnectionStatus);
+        }
+
+        public override void ViewAwake()
+        {
+            _lastPortName = PlayerPrefs.GetString(LastPortName, "");
+            _inputDeviceDropdown.ClearOptions();
+            _inputDeviceDropdown.AddOptions(new List<string> { "Conventional Controls", "Alt-Control Sword" });
+            _inputDeviceDropdown.onValueChanged.AddListener(HandleInputDeviceChanged);
+            _connectButton.onClick.AddListener(HandleConnect);
+            _serialPortConnectionStatus.AddListener(HandleSerialPortConnectionStatus);
+        }
+
+        public override void ViewStart()
+        {
+            ReloadSerialPortDropdown();
         }
 
         private void HandleSerialPortConnectionStatus(string status)

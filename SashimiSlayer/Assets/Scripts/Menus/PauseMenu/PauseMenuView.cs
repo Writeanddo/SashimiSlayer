@@ -13,5 +13,13 @@ namespace Menus.PauseMenu
         {
             gameObject.SetActive(false);
         }
+
+        public virtual void ViewAwake()
+        {
+        }
+
+        public virtual void ViewStart()
+        {
+        }
     }
 }

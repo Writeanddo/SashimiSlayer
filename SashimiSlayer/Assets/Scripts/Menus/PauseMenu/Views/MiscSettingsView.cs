@@ -15,21 +15,21 @@ namespace Menus.PauseMenu.Views
 
         private float _screenShakeScale;
 
-        private void Awake()
+        private void OnDestroy()
+        {
+            _screenShakeSlider.onValueChanged.RemoveListener(UpdateScreenShake);
+        }
+
+        public override void ViewAwake()
         {
             _screenShakeSlider.onValueChanged.AddListener(UpdateScreenShake);
             _screenShakeScale = PlayerPrefs.GetFloat(ScreenShakeKey, 1);
             _screenShakeSlider.value = _screenShakeScale;
         }
 
-        private void Start()
+        public override void ViewStart()
         {
             UpdateScreenShake(_screenShakeScale);
-        }
-
-        private void OnDestroy()
-        {
-            _screenShakeSlider.onValueChanged.RemoveListener(UpdateScreenShake);
         }
 
         private void UpdateScreenShake(float value)

@@ -49,7 +49,7 @@ namespace Menus.PauseMenu.Views
         private bool _swordAngleFlip;
         private int _upAxis;
 
-        private void Awake()
+        public override void ViewAwake()
         {
             _swordAngleMultiplier = PlayerPrefs.GetFloat(SwordAimMultiplier, 1);
             _swordAngleOffset = PlayerPrefs.GetFloat(SwordAngleOffset, 0);
@@ -64,7 +64,7 @@ namespace Menus.PauseMenu.Views
             SetupDropdown();
         }
 
-        private void Start()
+        public override void ViewStart()
         {
             _swordAngleMultiplierSlider.value = _swordAngleMultiplier;
             _swordAngleOffsetSlider.value = _swordAngleOffset;

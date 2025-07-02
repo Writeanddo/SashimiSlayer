@@ -30,7 +30,14 @@ namespace Menus.PauseMenu.Views
         private float _musicVolume;
         private float _masterVolume;
 
-        private void Awake()
+        private void OnDestroy()
+        {
+            _musicVolumeSlider.onValueChanged.RemoveListener(UpdateMusicVolume);
+            _sfxVolumeSlider.onValueChanged.RemoveListener(UpdateSfxVolume);
+            _masterVolumeSlider.onValueChanged.RemoveListener(UpdateMasterVolume);
+        }
+
+        public override void ViewAwake()
         {
             _musicBus = RuntimeManager.GetBus("bus:/Music");
             _sfxBus = RuntimeManager.GetBus("bus:/Sfx");
@@ -51,13 +58,6 @@ namespace Menus.PauseMenu.Views
             UpdateMusicVolume(_musicVolume);
             UpdateSfxVolume(_sfxVolume);
             UpdateMasterVolume(_masterVolume);
-        }
-
-        private void OnDestroy()
-        {
-            _musicVolumeSlider.onValueChanged.RemoveListener(UpdateMusicVolume);
-            _sfxVolumeSlider.onValueChanged.RemoveListener(UpdateSfxVolume);
-            _masterVolumeSlider.onValueChanged.RemoveListener(UpdateMasterVolume);
         }
 
         private void UpdateMusicVolume(float volume)

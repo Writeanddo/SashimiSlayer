@@ -74,7 +74,16 @@ namespace Menus.PauseMenu
             foreach (ViewSelection view in _pauseMenuViews)
             {
                 view.View.Hide();
+                view.View.ViewAwake();
                 view.SelectionButton.onClick.AddListener(() => SwitchView(view));
+            }
+        }
+
+        private void Start()
+        {
+            foreach (ViewSelection view in _pauseMenuViews)
+            {
+                view.View.ViewStart();
             }
         }
 
