@@ -27,7 +27,7 @@ namespace Menus.PauseMenu
 
                 if (SelectionButton)
                 {
-                    SelectionButton.Select();
+                    SelectionButton.enabled = false;
                 }
             }
 
@@ -36,6 +36,11 @@ namespace Menus.PauseMenu
                 if (View)
                 {
                     View.Hide();
+                }
+
+                if (SelectionButton)
+                {
+                    SelectionButton.enabled = true;
                 }
             }
         }
