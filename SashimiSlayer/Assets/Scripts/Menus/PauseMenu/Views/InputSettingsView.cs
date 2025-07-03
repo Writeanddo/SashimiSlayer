@@ -4,9 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menus.Options
+namespace Menus.PauseMenu.Views
 {
-    public class AltControlOptionsMenu : MonoBehaviour
+    public class InputSettingsView : PauseMenuView
     {
         private const string SwordAimMultiplier = "SwordAngleMultiplier";
         private const string SwordAngleOffset = "SwordAngleOffset";
@@ -49,7 +49,7 @@ namespace Menus.Options
         private bool _swordAngleFlip;
         private int _upAxis;
 
-        private void Awake()
+        public override void ViewAwake()
         {
             _swordAngleMultiplier = PlayerPrefs.GetFloat(SwordAimMultiplier, 1);
             _swordAngleOffset = PlayerPrefs.GetFloat(SwordAngleOffset, 0);
@@ -64,7 +64,7 @@ namespace Menus.Options
             SetupDropdown();
         }
 
-        private void Start()
+        public override void ViewStart()
         {
             _swordAngleMultiplierSlider.value = _swordAngleMultiplier;
             _swordAngleOffsetSlider.value = _swordAngleOffset;

@@ -2,34 +2,34 @@ using Feel;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menus.Options
+namespace Menus.PauseMenu.Views
 {
-    public class EffectsOption : MonoBehaviour
+    public class MiscSettingsView : PauseMenuView
     {
         private const string ScreenShakeKey = "ScreenShake";
 
-        [Header("Effects")]
+        [Header("Depends")]
 
         [SerializeField]
         private Slider _screenShakeSlider;
 
         private float _screenShakeScale;
 
-        private void Awake()
+        private void OnDestroy()
+        {
+            _screenShakeSlider.onValueChanged.RemoveListener(UpdateScreenShake);
+        }
+
+        public override void ViewAwake()
         {
             _screenShakeSlider.onValueChanged.AddListener(UpdateScreenShake);
             _screenShakeScale = PlayerPrefs.GetFloat(ScreenShakeKey, 1);
             _screenShakeSlider.value = _screenShakeScale;
         }
 
-        private void Start()
+        public override void ViewStart()
         {
             UpdateScreenShake(_screenShakeScale);
-        }
-
-        private void OnDestroy()
-        {
-            _screenShakeSlider.onValueChanged.RemoveListener(UpdateScreenShake);
         }
 
         private void UpdateScreenShake(float value)

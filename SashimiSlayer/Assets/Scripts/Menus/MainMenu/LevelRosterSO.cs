@@ -13,7 +13,7 @@ namespace Menus.MainMenu
 
         public void WipeHighScores()
         {
-            Debug.Log("Wiping high scores");
+            Debug.Log("Wiping all high scores");
             foreach (GameLevelSO level in Levels)
             {
                 PlayerPrefs.SetFloat(FinalScoreDisplay.GetHighscorePrefKey(level.Beatmap.BeatmapID), 0);

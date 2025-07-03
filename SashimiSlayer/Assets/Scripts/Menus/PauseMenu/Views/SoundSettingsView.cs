@@ -3,9 +3,9 @@ using FMODUnity;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menus.Options
+namespace Menus.PauseMenu.Views
 {
-    public class VolumeOptionsMenu : MonoBehaviour
+    public class SoundSettingsView : PauseMenuView
     {
         private const string SfxKey = "SfxVolume";
         private const string MusicKey = "MusicVolume";
@@ -30,7 +30,14 @@ namespace Menus.Options
         private float _musicVolume;
         private float _masterVolume;
 
-        private void Awake()
+        private void OnDestroy()
+        {
+            _musicVolumeSlider.onValueChanged.RemoveListener(UpdateMusicVolume);
+            _sfxVolumeSlider.onValueChanged.RemoveListener(UpdateSfxVolume);
+            _masterVolumeSlider.onValueChanged.RemoveListener(UpdateMasterVolume);
+        }
+
+        public override void ViewAwake()
         {
             _musicBus = RuntimeManager.GetBus("bus:/Music");
             _sfxBus = RuntimeManager.GetBus("bus:/Sfx");
@@ -51,13 +58,6 @@ namespace Menus.Options
             UpdateMusicVolume(_musicVolume);
             UpdateSfxVolume(_sfxVolume);
             UpdateMasterVolume(_masterVolume);
-        }
-
-        private void OnDestroy()
-        {
-            _musicVolumeSlider.onValueChanged.RemoveListener(UpdateMusicVolume);
-            _sfxVolumeSlider.onValueChanged.RemoveListener(UpdateSfxVolume);
-            _masterVolumeSlider.onValueChanged.RemoveListener(UpdateMasterVolume);
         }
 
         private void UpdateMusicVolume(float volume)

@@ -7,9 +7,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Menus.Options
+namespace Menus.PauseMenu.Views
 {
-    public class InputDeviceOptionsMenu : MonoBehaviour
+    public class ControlDeviceSettingsView : PauseMenuView
     {
         public const string LastPortName = "LastPortName";
 
@@ -42,7 +42,14 @@ namespace Menus.Options
 
         private string _lastPortName;
 
-        private void Awake()
+        private void OnDestroy()
+        {
+            _inputDeviceDropdown.onValueChanged.RemoveListener(HandleInputDeviceChanged);
+            _connectButton.onClick.RemoveListener(HandleConnect);
+            _serialPortConnectionStatus.RemoveListener(HandleSerialPortConnectionStatus);
+        }
+
+        public override void ViewAwake()
         {
             _lastPortName = PlayerPrefs.GetString(LastPortName, "");
             _inputDeviceDropdown.ClearOptions();
@@ -52,20 +59,9 @@ namespace Menus.Options
             _serialPortConnectionStatus.AddListener(HandleSerialPortConnectionStatus);
         }
 
-        private void Start()
+        public override void ViewStart()
         {
             ReloadSerialPortDropdown();
-        }
-
-        private void Update()
-        {
-        }
-
-        private void OnDestroy()
-        {
-            _inputDeviceDropdown.onValueChanged.RemoveListener(HandleInputDeviceChanged);
-            _connectButton.onClick.RemoveListener(HandleConnect);
-            _serialPortConnectionStatus.RemoveListener(HandleSerialPortConnectionStatus);
         }
 
         private void HandleSerialPortConnectionStatus(string status)
