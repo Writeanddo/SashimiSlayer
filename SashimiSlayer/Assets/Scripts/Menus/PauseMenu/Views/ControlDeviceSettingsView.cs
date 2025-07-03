@@ -42,10 +42,6 @@ namespace Menus.PauseMenu.Views
 
         private string _lastPortName;
 
-        private void Update()
-        {
-        }
-
         private void OnDestroy()
         {
             _inputDeviceDropdown.onValueChanged.RemoveListener(HandleInputDeviceChanged);
