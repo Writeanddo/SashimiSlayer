@@ -548,6 +548,143 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1388797228
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 809620237398196193, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 809620237398196193, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 7.2421875
+      objectReference: {fileID: 0}
+    - target: {fileID: 809620237398196193, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e1146c5b9279c4f4fa72ac826ca4b11d,
+        type: 3}
+    - target: {fileID: 809620237398196193, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828450255041594840, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_Name
+      value: QueenJellyEnvironment
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227349079362491650, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227349079362491650, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227349079362491650, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227349079362491650, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227349079362491650, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227349079362491650, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227349079362491650, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227349079362491650, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227349079362491650, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227349079362491650, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181301552919319665, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_Name
+      value: QueenJelly
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329973411165883522, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329973411165883522, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329973411165883522, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3809524
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329973411165883522, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 3329973411165883522, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964669955223674934, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964669955223674934, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.95
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 305919686150045288, guid: f0d175bb3cf54684fb1feaa0bca0ff19, type: 3}
+    - {fileID: 2217438256919767910, guid: f0d175bb3cf54684fb1feaa0bca0ff19, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f0d175bb3cf54684fb1feaa0bca0ff19, type: 3}
+--- !u!4 &1388797229 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7964669955223674934, guid: f0d175bb3cf54684fb1feaa0bca0ff19,
+    type: 3}
+  m_PrefabInstance: {fileID: 1388797228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1790762254
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,15 +715,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _squishTransform:
-  - transform: {fileID: 0}
+  - transform: {fileID: 1388797229}
     beatInterval: 3
-    beatOffset: 1
-  - transform: {fileID: 0}
-    beatInterval: 2
-    beatOffset: 1
-  - transform: {fileID: 0}
-    beatInterval: 2
-    beatOffset: 1
+    beatOffset: 0
   _squishScale: 0.96
   _squishDuration: 0.4
   _delay: 0.02
@@ -1528,4 +1659,5 @@ SceneRoots:
   - {fileID: 6235619905464155080}
   - {fileID: 595073154}
   - {fileID: 806435292}
+  - {fileID: 1388797228}
   - {fileID: 1076763765}

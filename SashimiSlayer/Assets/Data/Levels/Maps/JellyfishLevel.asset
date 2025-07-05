@@ -18,7 +18,7 @@ MonoBehaviour:
   <Beatmap>k__BackingField: {fileID: 11400000, guid: 81d98b5d8d82c0d409f2adabc98ead74,
     type: 2}
   <LevelType>k__BackingField: 1
-  <LevelSelectSprite>k__BackingField: {fileID: 21300000, guid: 803b056d9a1a0fc43bc3d7823c49e16c,
+  <LevelSelectSprite>k__BackingField: {fileID: 21300000, guid: e1146c5b9279c4f4fa72ac826ca4b11d,
     type: 3}
   <FmodBanksToPreLoad>k__BackingField:
   - Jellyfish
