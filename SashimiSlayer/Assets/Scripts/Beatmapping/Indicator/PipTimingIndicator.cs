@@ -186,7 +186,7 @@ namespace Beatmapping.Indicator
             _prevBeatRemaining = beatsRemaining;
 
             // Don't show anything at all if the target subdiv is before any of the pips
-            bool shouldShowPips = beatsRemaining < _pips.Count;
+            bool shouldShowPips = beatsRemaining <= _pips.Count;
 
             for (var i = 0; i < _pips.Count; i++)
             {
@@ -200,7 +200,7 @@ namespace Beatmapping.Indicator
                     continue;
                 }
 
-                bool isOn = i <= beatsRemaining;
+                bool isOn = i < beatsRemaining;
                 bool wasOn = _pips[i].IsOn;
                 _pips[i].SetOn(isOn);
                 _pips[i].SetAlpha(normalized);
