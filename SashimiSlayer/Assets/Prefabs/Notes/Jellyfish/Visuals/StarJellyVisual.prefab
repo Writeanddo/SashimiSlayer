@@ -11,19 +11,14 @@ PrefabInstance:
     - target: {fileID: 383422305035546388, guid: ea9e0f74ad3abb844a5459f2f3aa287d,
         type: 3}
       propertyPath: m_Name
-      value: ShellJellyfish
+      value: StarJellyfish
       objectReference: {fileID: 0}
     - target: {fileID: 5329855125515940442, guid: ea9e0f74ad3abb844a5459f2f3aa287d,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1293657566, guid: 44a096689b6c0f84db83087abe99826a,
+      objectReference: {fileID: -2013723004, guid: 460171afd2b518e40bb497a4c4dcbf33,
         type: 3}
-    - target: {fileID: 6218371809906872889, guid: ea9e0f74ad3abb844a5459f2f3aa287d,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7d053b9616697a54382186269e356def, type: 2}
     - target: {fileID: 6896799776656183649, guid: ea9e0f74ad3abb844a5459f2f3aa287d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,19 +73,14 @@ PrefabInstance:
         type: 3}
       propertyPath: _sprites.Array.data[0]
       value: 
-      objectReference: {fileID: 1293657566, guid: 44a096689b6c0f84db83087abe99826a,
+      objectReference: {fileID: -2013723004, guid: 460171afd2b518e40bb497a4c4dcbf33,
         type: 3}
     - target: {fileID: 7428876895447061029, guid: ea9e0f74ad3abb844a5459f2f3aa287d,
         type: 3}
       propertyPath: _sprites.Array.data[1]
       value: 
-      objectReference: {fileID: 1945237658, guid: 44a096689b6c0f84db83087abe99826a,
+      objectReference: {fileID: 963031969, guid: 460171afd2b518e40bb497a4c4dcbf33,
         type: 3}
-    - target: {fileID: 7912031737270490353, guid: ea9e0f74ad3abb844a5459f2f3aa287d,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7d053b9616697a54382186269e356def, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

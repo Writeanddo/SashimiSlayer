@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8242b48814583e4478d5d8708bdc7bcf, type: 3}
-  m_Name: SadFish
+  m_Name: TwoPartJelly
   m_EditorClassIdentifier: 
   <DamageDealtToPlayer>k__BackingField: 1
   <HitboxRadius>k__BackingField: 1
-  <Prefab>k__BackingField: {fileID: 8772479368319537360, guid: 020a1d119c7c0c245988609b092ef159,
+  <Prefab>k__BackingField: {fileID: 1441247704427616508, guid: baa91f95feba1e64785de86bcb58248f,
     type: 3}
