@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8242b48814583e4478d5d8708bdc7bcf, type: 3}
-  m_Name: KrakenHead
+  m_Name: TwoPartFish
   m_EditorClassIdentifier: 
   <DamageDealtToPlayer>k__BackingField: 1
-  <HitboxRadius>k__BackingField: 1.6
-  <Prefab>k__BackingField: {fileID: 8772479368319537360, guid: 720f93312ccb37846a94fd5c37e57291,
+  <HitboxRadius>k__BackingField: 1
+  <Prefab>k__BackingField: {fileID: 1441247704427616508, guid: 7c9d6ca231c5b7d42a85afc08d727d97,
     type: 3}

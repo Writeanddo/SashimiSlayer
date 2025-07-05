@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 6896799776656183649}
   - component: {fileID: 1844495805652922825}
   m_Layer: 0
-  m_Name: BaseJellyfishVisual
+  m_Name: StarFishVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

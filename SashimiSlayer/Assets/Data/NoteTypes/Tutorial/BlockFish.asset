@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8242b48814583e4478d5d8708bdc7bcf, type: 3}
-  m_Name: AngryFish
+  m_Name: BlockFish
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 5351909015360120121, guid: e291fa3d1e1ca7346b44ee396058dcd5,
     type: 3}

@@ -306,6 +306,98 @@ MonoBehaviour:
           Flags: 0
           Positions:
           - {x: 0.6209483, y: -0.17741346}
+--- !u!114 &-8015301746708856105
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91bec0c62f8641e4fb737dce59b1e0b4, type: 3}
+  m_Name: Beat Note Track (7)
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 105.6966511627907
+    m_ClipIn: 0
+    m_Asset: {fileID: 4867084847484009955}
+    m_Duration: 35.58139534883723
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -8015301746708856105}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: QueenJelly
+  m_Markers:
+    m_Objects: []
 --- !u!114 &-8014697963988136629
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2710,6 +2802,50 @@ MonoBehaviour:
           Positions:
           - {x: 5.4546857, y: 1.8280971}
           - {x: 0.21175396, y: 1.3602707}
+--- !u!114 &-6880226590536633376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4631aac3e8958e840855eeec9cd45ec5, type: 3}
+  m_Name: TweenClip(Clone)(Clone)(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  startLocation:
+    exposedName: 2f60e5afecb831c46b0c915036b27d4c
+    defaultValue: {fileID: 0}
+  endLocation:
+    exposedName: 5811ea01e092a59438d581a2ae1fb270
+    defaultValue: {fileID: 0}
+  shouldTweenPosition: 1
+  shouldTweenRotation: 1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &-6871663453224052958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2826,7 +2962,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 7.3412747, y: 1.1094579}
+          - {x: 7.2141767, y: 0.2742442}
 --- !u!114 &-6430330407143984895
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3506,7 +3642,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: -1.9885415, y: -0.3918925}
+          - {x: -2.2972074, y: -0.42820615}
 --- !u!114 &-3877539645632603150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4299,6 +4435,50 @@ MonoBehaviour:
           Positions:
           - {x: 5.4546857, y: 1.8280971}
           - {x: 0.21175396, y: 1.3602707}
+--- !u!114 &-1780375028232429724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4631aac3e8958e840855eeec9cd45ec5, type: 3}
+  m_Name: TweenClip(Clone)(Clone)
+  m_EditorClassIdentifier: 
+  startLocation:
+    exposedName: ad72568c5f1632641b8333a8e1fea1ed
+    defaultValue: {fileID: 0}
+  endLocation:
+    exposedName: f2235111cc960c84f9226998442dad1e
+    defaultValue: {fileID: 0}
+  shouldTweenPosition: 1
+  shouldTweenRotation: 1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &-1690829651577528410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6593,75 +6773,6 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: VulnerableJellyfish
-  - m_Version: 1
-    m_Start: 138.13851162790698
-    m_ClipIn: 0
-    m_Asset: {fileID: 2812531909677813922}
-    m_Duration: 2.0930232558139608
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -1017061909413786394}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: 0
-    m_BlendOutDuration: 0
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: VulnerableJellyfish
   m_Markers:
     m_Objects: []
 --- !u!114 &-1011440602357633351
@@ -7119,6 +7230,8 @@ MonoBehaviour:
   - {fileID: 1921346909180991624}
   - {fileID: 1888847569116912914}
   - {fileID: -3287965588966462303}
+  - {fileID: -8015301746708856105}
+  - {fileID: 2016438818000222022}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 120
@@ -7549,7 +7662,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 1.335876, y: 0.21579683}
+          - {x: 0.6640737, y: -0.20181006}
 --- !u!114 &1852406361774758454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8385,6 +8498,131 @@ MonoBehaviour:
     m_DisplayName: VulnerableJellyfish
   m_Markers:
     m_Objects: []
+--- !u!114 &2016438818000222022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09378b61d40beb649987d80408ad99b2, type: 3}
+  m_Name: Tween Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 103.60362790697674
+    m_ClipIn: 0
+    m_Asset: {fileID: -6880226590536633376}
+    m_Duration: 43.44637514478107
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 2016438818000222022}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: BGJellyGone
+  - m_Version: 1
+    m_Start: 101.5106046511628
+    m_ClipIn: 0
+    m_Asset: {fileID: -1780375028232429724}
+    m_Duration: 2.0930232558139465
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 2016438818000222022}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: BGQUeenLeaves
+  m_Markers:
+    m_Objects: []
 --- !u!114 &2031605701253509170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8642,35 +8880,6 @@ MonoBehaviour:
           Positions:
           - {x: 5.4546857, y: 1.8280971}
           - {x: 0.21175396, y: 1.3602707}
---- !u!114 &2812531909677813922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
-  m_Name: BeatNoteClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  Template:
-    NoteConfig: {fileID: 11400000, guid: cd8b28387250bc848b9a561fcb3a6f6f, type: 2}
-    NoteData:
-      StartPosition: {x: 6.95682, y: -6.098906}
-      EndPosition: {x: -3.5438967, y: -5.5383787}
-      NoteStartTime: 136.04651162790697
-      NoteEndTime: 138.13953488372093
-      NoteBeatCount: 6.00000000000002
-      Interactions:
-      - _beatOffset: 3
-        _offsetFromEnd: 1
-        InteractionData:
-          BlockPose: 0
-          InteractionType: 1
-          Flags: 0
-          Positions:
-          - {x: 4.3028293, y: 0.7162472}
 --- !u!114 &2854742017586115411
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12134,6 +12343,35 @@ MonoBehaviour:
           Flags: 0
           Positions:
           - {x: 0.6209483, y: -0.17741346}
+--- !u!114 &4867084847484009955
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2de9b37ea4a0b34eb4ac7be3e099645, type: 3}
+  m_Name: BeatNoteClip
+  m_EditorClassIdentifier: 
+  Template:
+    NoteConfig: {fileID: 11400000, guid: 9fb53c0f773462f4b8459d533bff5723, type: 2}
+    NoteData:
+      StartPosition: {x: 7.2537613, y: -8.70061}
+      EndPosition: {x: -0.024040699, y: -8.625088}
+      NoteStartTime: 103.6046511627907
+      NoteEndTime: 139.18604651162792
+      NoteBeatCount: 102.00000000000007
+      Interactions:
+      - _beatOffset: 6
+        _offsetFromEnd: 1
+        InteractionData:
+          BlockPose: 0
+          InteractionType: 1
+          Flags: 0
+          Positions:
+          - {x: 4.2841926, y: -0.061742306}
 --- !u!114 &5031856526807017569
 MonoBehaviour:
   m_ObjectHideFlags: 1

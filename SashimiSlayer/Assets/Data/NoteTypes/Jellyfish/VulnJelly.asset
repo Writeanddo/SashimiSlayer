@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8242b48814583e4478d5d8708bdc7bcf, type: 3}
-  m_Name: AngrySquidMissile
+  m_Name: VulnJelly
   m_EditorClassIdentifier: 
   <DamageDealtToPlayer>k__BackingField: 1
   <HitboxRadius>k__BackingField: 1
-  <Prefab>k__BackingField: {fileID: 5351909015360120121, guid: 42388eca2e86c4141a9c30fbfa32799a,
+  <Prefab>k__BackingField: {fileID: 8772479368319537360, guid: dd2c3e6847bb1a5488be48957e051356,
     type: 3}
