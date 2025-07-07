@@ -47,8 +47,8 @@ MonoBehaviour:
   _devDesc: 
   _visualContainer: {fileID: 7497753849002471331}
   _pipCountOffset: 0
-  _centerAngle: 62.87
-  _pipIntervalAngle: 18
+  _centerAngle: 67.6
+  _pipIntervalAngle: 15
   _pipRadius: 2.1
   _pipDirection: -1
   _centerOffset: {x: 0, y: 0}
