@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Base;
+using Beatmapping.Indicator.Positioners;
 using Beatmapping.Interactions;
 using Beatmapping.Notes;
 using Cysharp.Threading.Tasks;
@@ -23,22 +24,10 @@ namespace Beatmapping.Indicator
         [Header("Layout")]
 
         [SerializeField]
+        private PipPositioner _pipPositioner;
+
+        [SerializeField]
         private int _pipCountOffset;
-
-        [SerializeField]
-        private float _centerAngle;
-
-        [SerializeField]
-        private float _pipIntervalAngle;
-
-        [SerializeField]
-        private float _pipRadius;
-
-        [SerializeField]
-        private int _pipDirection;
-
-        [SerializeField]
-        private Vector2 _centerOffset;
 
         [Header("Indicator")]
 
@@ -72,8 +61,13 @@ namespace Beatmapping.Indicator
 
         private void OnDrawGizmosSelected()
         {
+            if (_pipPositioner == null)
+            {
+                return;
+            }
+
             List<Vector2> pipPositions =
-                CalculatePipLocalPositions(_centerAngle, _pipCountOffset + 4, _pipIntervalAngle, _pipDirection);
+                _pipPositioner.CalculatePipLocalPositions(4 + _pipCountOffset);
 
             Vector2 centerPosition = _visualContainer.position;
             for (var i = 0; i < pipPositions.Count; i++)
@@ -101,12 +95,9 @@ namespace Beatmapping.Indicator
         private void Initialize(BeatmapConfigSo beatmapConfigSo)
         {
             int beatsPerMeasure = beatmapConfigSo.BeatsPerMeasure;
-
             int totalPips = beatsPerMeasure + _pipCountOffset;
-            float startingAngle = _centerAngle + totalPips * _pipIntervalAngle / 2f * _pipDirection;
 
-            List<Vector2> pipPositions =
-                CalculatePipLocalPositions(_centerAngle, totalPips, _pipIntervalAngle, _pipDirection);
+            List<Vector2> pipPositions = _pipPositioner.CalculatePipLocalPositions(totalPips);
 
             for (var i = 0; i < totalPips; i++)
             {
@@ -121,33 +112,6 @@ namespace Beatmapping.Indicator
             }
 
             _shakeDuration = (float)(1 / beatmapConfigSo.Bpm * 60);
-        }
-
-        /// <summary>
-        /// </summary>
-        /// <param name="centerAngle">center angle in degrees</param>
-        /// <param name="totalPips"></param>
-        /// <param name="pipIntervalAngle">interval angle in degrees</param>
-        /// <param name="direction">positive or negative 1</param>
-        /// <returns></returns>
-        private List<Vector2> CalculatePipLocalPositions(float centerAngle, int totalPips, float pipIntervalAngle,
-            int direction)
-        {
-            float startingAngle = centerAngle - (totalPips - 1) * pipIntervalAngle / 2f * direction;
-
-            var positions = new List<Vector2>(totalPips);
-            for (var i = 0; i < totalPips; i++)
-            {
-                Vector2 dir = Quaternion.Euler(
-                                  0,
-                                  0,
-                                  startingAngle + i * pipIntervalAngle * direction) *
-                              Vector2.up;
-
-                positions.Add(dir * _pipRadius + _centerOffset);
-            }
-
-            return positions;
         }
 
         public void SetVisible(bool visible)
