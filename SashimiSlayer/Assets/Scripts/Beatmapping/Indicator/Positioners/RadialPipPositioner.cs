@@ -9,7 +9,7 @@ namespace Beatmapping.Indicator.Positioners
         [Header("Layout")]
 
         [SerializeField]
-        private float _centerAngle;
+        private float _finalPipAngle;
 
         [SerializeField]
         private float _pipIntervalAngle;
@@ -28,7 +28,7 @@ namespace Beatmapping.Indicator.Positioners
 
         public override List<(Vector2, float)> CalculatePipLocalPositions(int totalPips)
         {
-            float startingAngle = _centerAngle - (totalPips - 1) * _pipIntervalAngle / 2f * _pipDirection;
+            float startingAngle = _finalPipAngle;
 
             var positions = new List<(Vector2, float)>(totalPips);
             for (var i = 0; i < totalPips; i++)
