@@ -16,14 +16,8 @@ PrefabInstance:
     - target: {fileID: 249287012447320160, guid: 592056af166c722408c183934c3beab1,
         type: 3}
       propertyPath: m_Name
-      value: BlockPipMiddle
+      value: PipPurple
       objectReference: {fileID: 0}
-    - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1712797032, guid: 1db8affb5c84fb44c85250032995abff,
-        type: 3}
     - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
         type: 3}
       propertyPath: m_Color.b
@@ -32,12 +26,12 @@ PrefabInstance:
     - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.4481132
       objectReference: {fileID: 0}
     - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.5423377
       objectReference: {fileID: 0}
     - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
         type: 3}
@@ -99,12 +93,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5276071713733921850, guid: 592056af166c722408c183934c3beab1,
-        type: 3}
-      propertyPath: UVModule.sprites.Array.data[0].sprite
-      value: 
-      objectReference: {fileID: 1712797032, guid: 1db8affb5c84fb44c85250032995abff,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

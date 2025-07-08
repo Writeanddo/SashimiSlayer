@@ -496,6 +496,24 @@ PrefabInstance:
       propertyPath: _totalDistance
       value: 5.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6489534682184979312, guid: 145834922b2ce6e4391b2bed15e8c7c3,
+        type: 3}
+      propertyPath: _beatPip
+      value: 
+      objectReference: {fileID: 5723349784501870178, guid: c168d1c11ef33ad4ab40c6ab8cca05d4,
+        type: 3}
+    - target: {fileID: 6489534682184979312, guid: 145834922b2ce6e4391b2bed15e8c7c3,
+        type: 3}
+      propertyPath: _finalPip
+      value: 
+      objectReference: {fileID: 1213604575691114643, guid: 398bcf710c517674bb4443832cf61211,
+        type: 3}
+    - target: {fileID: 6489534682184979312, guid: 145834922b2ce6e4391b2bed15e8c7c3,
+        type: 3}
+      propertyPath: _pipPositioner
+      value: 
+      objectReference: {fileID: 11400000, guid: 904e7d2c28eced447a68a352df81e3ed,
+        type: 2}
     - target: {fileID: 7690596804962082351, guid: 145834922b2ce6e4391b2bed15e8c7c3,
         type: 3}
       propertyPath: Visuals.Array.size

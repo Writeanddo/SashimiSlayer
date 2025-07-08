@@ -16,28 +16,32 @@ PrefabInstance:
     - target: {fileID: 249287012447320160, guid: 592056af166c722408c183934c3beab1,
         type: 3}
       propertyPath: m_Name
-      value: BlockPipTop
+      value: SlicePip
       objectReference: {fileID: 0}
     - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 287091319, guid: 1db8affb5c84fb44c85250032995abff,
+      propertyPath: m_Size.x
+      value: 0.390625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
         type: 3}
+      propertyPath: m_Size.y
+      value: 0.390625
+      objectReference: {fileID: 0}
     - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
         type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.18431373
       objectReference: {fileID: 0}
     - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.90588236
       objectReference: {fileID: 0}
     - target: {fileID: 2146320319376572125, guid: 592056af166c722408c183934c3beab1,
         type: 3}
@@ -99,49 +103,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5592791821229469203, guid: 592056af166c722408c183934c3beab1,
+    - target: {fileID: 5276071713733921850, guid: 592056af166c722408c183934c3beab1,
         type: 3}
-      propertyPath: _onPipFlash.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5592791821229469203, guid: 592056af166c722408c183934c3beab1,
-        type: 3}
-      propertyPath: _onPipFlash.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5592791821229469203, guid: 592056af166c722408c183934c3beab1,
-        type: 3}
-      propertyPath: _onPipFlash.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: UVModule.sprites.Array.data[0].sprite
       value: 
-      objectReference: {fileID: 5460796571904228427}
-    - target: {fileID: 5592791821229469203, guid: 592056af166c722408c183934c3beab1,
+      objectReference: {fileID: 1712797032, guid: 1db8affb5c84fb44c85250032995abff,
         type: 3}
-      propertyPath: _onPipFlash.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5592791821229469203, guid: 592056af166c722408c183934c3beab1,
-        type: 3}
-      propertyPath: _onPipFlash.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Play
-      objectReference: {fileID: 0}
-    - target: {fileID: 5592791821229469203, guid: 592056af166c722408c183934c3beab1,
-        type: 3}
-      propertyPath: _onPipFlash.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.ParticleSystem, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5592791821229469203, guid: 592056af166c722408c183934c3beab1,
-        type: 3}
-      propertyPath: _onPipFlash.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 592056af166c722408c183934c3beab1, type: 3}
---- !u!198 &5460796571904228427 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5276071713733921850, guid: 592056af166c722408c183934c3beab1,
-    type: 3}
-  m_PrefabInstance: {fileID: 211944926393233521}
-  m_PrefabAsset: {fileID: 0}
