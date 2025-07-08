@@ -5,6 +5,6 @@ namespace Beatmapping.Indicator.Positioners
 {
     public abstract class PipPositioner : ScriptableObject
     {
-        public abstract List<Vector2> CalculatePipLocalPositions(int totalPips);
+        public abstract List<(Vector2, float)> CalculatePipLocalPositions(int totalPips);
     }
 }

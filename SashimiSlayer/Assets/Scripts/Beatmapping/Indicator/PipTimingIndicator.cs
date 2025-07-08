@@ -56,7 +56,6 @@ namespace Beatmapping.Indicator
 
         private int _prevBeatRemaining;
 
-        private bool _flashOnNext;
         private bool _didShake;
 
         private void OnDrawGizmosSelected()
@@ -66,7 +65,7 @@ namespace Beatmapping.Indicator
                 return;
             }
 
-            List<Vector2> pipPositions =
+            List<(Vector2, float)> pipPositions =
                 _pipPositioner.CalculatePipLocalPositions(4 + _pipCountOffset);
 
             Vector2 centerPosition = _visualContainer.position;
@@ -81,31 +80,40 @@ namespace Beatmapping.Indicator
                     Gizmos.color = Color.red;
                 }
 
-                Vector2 position = pipPositions[i];
+                Vector2 position = pipPositions[i].Item1;
                 Gizmos.DrawSphere(centerPosition + position, 0.1f);
             }
         }
 
-        public void SetupNewInteraction()
+        public void SetupNewInteraction(BeatmapConfigSo beatmapConfigSo)
         {
-            _flashOnNext = true;
             _didShake = false;
+
+            if (!_initialized)
+            {
+                Initialize(beatmapConfigSo);
+                _initialized = true;
+            }
         }
 
+        /// <summary>
+        ///     Initialize the pip indicator. Should only be called once during lifetime
+        /// </summary>
+        /// <param name="beatmapConfigSo"></param>
         private void Initialize(BeatmapConfigSo beatmapConfigSo)
         {
             int beatsPerMeasure = beatmapConfigSo.BeatsPerMeasure;
             int totalPips = beatsPerMeasure + _pipCountOffset;
 
-            List<Vector2> pipPositions = _pipPositioner.CalculatePipLocalPositions(totalPips);
+            List<(Vector2, float)> pipPositions = _pipPositioner.CalculatePipLocalPositions(totalPips);
 
             for (var i = 0; i < totalPips; i++)
             {
                 IndicatorPip prefab = i == 0 ? _finalPip : _beatPip;
                 IndicatorPip pip = Instantiate(prefab, _visualContainer);
-                pip.Setup();
 
-                pip.transform.localPosition = pipPositions[i];
+                pip.transform.localPosition = pipPositions[i].Item1;
+                pip.transform.localRotation = Quaternion.Euler(0, 0, pipPositions[i].Item2);
 
                 pip.SetOn(false);
                 _pips.Add(pip);
@@ -129,24 +137,18 @@ namespace Beatmapping.Indicator
                 return;
             }
 
-            _pips[0].Flash();
+            _pips[0].FlashTriggerBeat();
         }
 
         public async UniTaskVoid Tick(BeatNote.NoteTickInfo tickInfo)
         {
             await UniTask.Delay((int)_delay * 1000, cancellationToken: destroyCancellationToken);
-            if (!_initialized)
-            {
-                Initialize(tickInfo.BeatmapTickInfo.CurrentBeatmap);
-                _initialized = true;
-            }
 
             NoteInteraction interaction = tickInfo.NoteSegment.Interaction;
 
             int beatsRemaining = CalculateBeatRemaining(interaction, tickInfo);
-            float normalized = 1 - (float)beatsRemaining / (_pips.Count - 1);
+            bool beatChanged = _prevBeatRemaining != beatsRemaining;
 
-            bool changed = _prevBeatRemaining != beatsRemaining;
             _prevBeatRemaining = beatsRemaining;
 
             // Don't show anything at all if the target subdiv is before any of the pips
@@ -165,9 +167,7 @@ namespace Beatmapping.Indicator
                 }
 
                 bool isOn = i < beatsRemaining;
-                bool wasOn = _pips[i].IsOn;
                 _pips[i].SetOn(isOn);
-                _pips[i].SetAlpha(normalized);
 
                 if (i == 0 && beatsRemaining == 1 && !_didShake)
                 {
@@ -175,13 +175,7 @@ namespace Beatmapping.Indicator
                     _pips[i].transform.DOShakePosition(_shakeDuration, _shakeStrength, _shakeVibrato, fadeOut: false);
                 }
 
-                if (i == 0 && !isOn && _flashOnNext)
-                {
-                    _flashOnNext = false;
-                    _pips[i].Flash();
-                }
-
-                if (changed)
+                if (beatChanged)
                 {
                     _pips[i].DoSquish();
                 }
@@ -200,6 +194,17 @@ namespace Beatmapping.Indicator
             int beatsRemaining = (targetSubdiv - currentSubdivision + 1) / subdivsPerBeat;
 
             return beatsRemaining;
+        }
+
+        public void FlashEntry()
+        {
+            if (_pips.Count == 0)
+            {
+                return;
+            }
+
+            // Flash the first pip
+            _pips[0].FlashEntry();
         }
     }
 }

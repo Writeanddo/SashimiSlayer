@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a03ab95937e58e940a4771456eb22311, type: 3}
   m_Name: RadialPips
   m_EditorClassIdentifier: 
-  _centerAngle: 67.57
-  _pipIntervalAngle: 15
+  _centerAngle: 66
+  _pipIntervalAngle: 16
   _pipRadius: 2.1
   _pipDirection: -1
   _centerOffset: {x: 0, y: 0}
+  _rotateOffset: 180
