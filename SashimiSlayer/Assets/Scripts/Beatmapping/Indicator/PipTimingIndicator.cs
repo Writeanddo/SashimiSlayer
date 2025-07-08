@@ -57,6 +57,13 @@ namespace Beatmapping.Indicator
         private int _prevBeatRemaining;
 
         private bool _didShake;
+        private bool _didStartInteractionVisible;
+        private bool _isFirstInteraction;
+
+        /// <summary>
+        ///     On the next visible beat, flash the entry pip
+        /// </summary>
+        private bool _flashEntryQueued;
 
         private void OnDrawGizmosSelected()
         {
@@ -85,9 +92,11 @@ namespace Beatmapping.Indicator
             }
         }
 
-        public void SetupNewInteraction(BeatmapConfigSo beatmapConfigSo)
+        public void SetupNewInteraction(BeatmapConfigSo beatmapConfigSo, bool isFirstInteraction)
         {
             _didShake = false;
+            _didStartInteractionVisible = true;
+            _isFirstInteraction = isFirstInteraction;
 
             if (!_initialized)
             {
@@ -162,6 +171,8 @@ namespace Beatmapping.Indicator
 
                 if (!isVisible)
                 {
+                    _didStartInteractionVisible = false;
+
                     _pips[i].SetOn(false);
                     continue;
                 }
@@ -178,6 +189,13 @@ namespace Beatmapping.Indicator
                 if (beatChanged)
                 {
                     _pips[i].DoSquish();
+                }
+
+                bool validToShowEntryFlash = !_didStartInteractionVisible || _isFirstInteraction;
+                if (_flashEntryQueued && validToShowEntryFlash)
+                {
+                    _pips[i].FlashEntry();
+                    _flashEntryQueued = false;
                 }
             }
         }
@@ -196,15 +214,9 @@ namespace Beatmapping.Indicator
             return beatsRemaining;
         }
 
-        public void FlashEntry()
+        public void QueueFlashEntry()
         {
-            if (_pips.Count == 0)
-            {
-                return;
-            }
-
-            // Flash the first pip
-            _pips[0].FlashEntry();
+            _flashEntryQueued = true;
         }
     }
 }
