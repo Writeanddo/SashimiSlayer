@@ -41,13 +41,13 @@ namespace Beatmapping.Indicator
 
                 if (isNewInteraction)
                 {
-                    SwitchIndicators(interaction, tickInfo.BeatmapTickInfo.CurrentBeatmap);
-
                     // Flash the final beat of previous interaction
                     if (_lastInteraction != null)
                     {
                         _currentActiveIndicator.FlashFinalBeat();
                     }
+
+                    SwitchIndicators(interaction, tickInfo.BeatmapTickInfo.CurrentBeatmap);
 
                     if (isFirstInteraction)
                     {
