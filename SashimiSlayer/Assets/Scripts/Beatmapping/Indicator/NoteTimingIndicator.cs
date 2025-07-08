@@ -41,18 +41,15 @@ namespace Beatmapping.Indicator
 
                 if (isNewInteraction)
                 {
-                    SwitchIndicators(interaction, tickInfo.BeatmapTickInfo.CurrentBeatmap);
-
                     // Flash the final beat of previous interaction
                     if (_lastInteraction != null)
                     {
                         _currentActiveIndicator.FlashFinalBeat();
                     }
 
-                    if (isFirstInteraction)
-                    {
-                        _currentActiveIndicator.FlashEntry();
-                    }
+                    SwitchIndicators(interaction, tickInfo.BeatmapTickInfo.CurrentBeatmap, isFirstInteraction);
+
+                    _currentActiveIndicator.QueueFlashEntry();
 
                     _lastInteraction = interaction;
                 }
@@ -82,13 +79,14 @@ namespace Beatmapping.Indicator
         /// <summary>
         ///     Switch to the matching indicator and initialize it. This should be called on new interaction
         /// </summary>
-        private void SwitchIndicators(NoteInteraction interaction, BeatmapConfigSo currentBeatmap)
+        private void SwitchIndicators(NoteInteraction interaction, BeatmapConfigSo currentBeatmap,
+            bool firstInteraction)
         {
             if (interaction.Type == NoteInteraction.InteractionType.Block)
             {
                 // Select matching block indicator
                 var blockIndex = (int)interaction.BlockPose;
-                _blockTimingIndicators[blockIndex].SetupNewInteraction(currentBeatmap);
+                _blockTimingIndicators[blockIndex].SetupNewInteraction(currentBeatmap, firstInteraction);
                 for (var i = 0; i < _blockTimingIndicators.Count; i++)
                 {
                     _blockTimingIndicators[i].SetVisible(i == blockIndex);
@@ -101,7 +99,7 @@ namespace Beatmapping.Indicator
             else if (interaction.Type == NoteInteraction.InteractionType.Slice)
             {
                 _sliceTimingIndicators.SetVisible(true);
-                _sliceTimingIndicators.SetupNewInteraction(currentBeatmap);
+                _sliceTimingIndicators.SetupNewInteraction(currentBeatmap, firstInteraction);
                 _currentActiveIndicator = _sliceTimingIndicators;
 
                 // Hide all block indicators
