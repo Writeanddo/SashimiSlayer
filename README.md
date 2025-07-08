@@ -8,8 +8,9 @@ Designed to played with a custom Sword Controller.
 
 ## Builds
 
-Builds are downloadable from https://doublebrackets.itch.io/sashimi-slayer
+Release Builds are downloadable from https://doublebrackets.itch.io/sashimi-slayer
 
+Dev branch builds are downloadable from https://doublebrackets.itch.io/sashimi-slayer-dev (password: `dev`)
 
 ## Software Info
 
