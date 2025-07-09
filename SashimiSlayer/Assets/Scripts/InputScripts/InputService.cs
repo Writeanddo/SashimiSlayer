@@ -103,6 +103,7 @@ public class InputService : BaseUserInputProvider
 
     private void HandleMenuToggled(bool isMenuOpen)
     {
+        Debug.Log("Menu toggled: " + isMenuOpen);
         _overlayMenus += isMenuOpen ? 1 : -1;
     }
 

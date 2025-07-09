@@ -98,7 +98,6 @@ namespace Menus.PauseMenu
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab) || rmbQuickOpen)
             {
                 ToggleMenu(!_menuOpen);
-                _menuToggleEvent.Raise(_menuOpen);
             }
         }
 
@@ -116,6 +115,7 @@ namespace Menus.PauseMenu
         {
             _canvasGroup.SetEnabled(state);
             _menuOpen = state;
+            _menuToggleEvent.Raise(state);
 
             if (_menuOpen)
             {
