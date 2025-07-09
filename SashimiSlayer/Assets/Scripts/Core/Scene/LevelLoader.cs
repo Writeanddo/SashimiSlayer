@@ -68,8 +68,16 @@ namespace Core.Scene
         {
             if (_isLoading)
             {
-                Debug.Log("Level is already loading, adding to queue");
-                _levelLoadQueue.Enqueue(gameLevel);
+                if (_levelLoadQueue.Count < 1)
+                {
+                    Debug.Log("Level is already loading, adding to queue");
+                    _levelLoadQueue.Enqueue(gameLevel);
+                }
+                else
+                {
+                    Debug.LogWarning("Too many queued loads, ignoring load request");
+                }
+
                 return;
             }
 
@@ -132,6 +140,7 @@ namespace Core.Scene
             if (_previousBeatmapLevel == null)
             {
                 Debug.LogWarning("No previous beatmap level to load");
+                return;
             }
 
             LoadLevel(_previousBeatmapLevel).Forget();
