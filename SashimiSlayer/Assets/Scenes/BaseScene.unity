@@ -3532,6 +3532,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 380193905}
+        m_TargetAssemblyTypeName: Menus.PauseMenu.PauseMenuController, Assembly-CSharp
+        m_MethodName: ToggleMenu
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1319801187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6942,6 +6954,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 11400000, guid: 482035a1de3620549917b4a21b8e5e53,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: Core.Scene.GameLevelSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 380193905}
+        m_TargetAssemblyTypeName: Menus.PauseMenu.PauseMenuController, Assembly-CSharp
+        m_MethodName: ToggleMenu
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
