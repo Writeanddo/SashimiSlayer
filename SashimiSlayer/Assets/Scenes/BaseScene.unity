@@ -1690,7 +1690,7 @@ PrefabInstance:
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
       propertyPath: EventReference.Path
-      value: event:/PlayerSFX/PlayerSlice
+      value: event:/PlayerSFX/PlayerBlockAttempt
       objectReference: {fileID: 0}
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
@@ -1705,22 +1705,22 @@ PrefabInstance:
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
       propertyPath: EventReference.Guid.Data1
-      value: -557360941
+      value: 1837872071
       objectReference: {fileID: 0}
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
       propertyPath: EventReference.Guid.Data2
-      value: 1255033574
+      value: 1174992428
       objectReference: {fileID: 0}
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
       propertyPath: EventReference.Guid.Data3
-      value: -563031882
+      value: -1130607447
       objectReference: {fileID: 0}
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
       propertyPath: EventReference.Guid.Data4
-      value: -622675662
+      value: -798957357
       objectReference: {fileID: 0}
     - target: {fileID: 8910696648004670894, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
@@ -6200,7 +6200,7 @@ PrefabInstance:
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
       propertyPath: EventReference.Path
-      value: event:/PlayerSFX/PlayerSlice
+      value: event:/PlayerSFX/PlayerBlockAttempt
       objectReference: {fileID: 0}
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
@@ -6215,22 +6215,22 @@ PrefabInstance:
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
       propertyPath: EventReference.Guid.Data1
-      value: -557360941
+      value: 1837872071
       objectReference: {fileID: 0}
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
       propertyPath: EventReference.Guid.Data2
-      value: 1255033574
+      value: 1174992428
       objectReference: {fileID: 0}
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
       propertyPath: EventReference.Guid.Data3
-      value: -563031882
+      value: -1130607447
       objectReference: {fileID: 0}
     - target: {fileID: 8559514946484048667, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
       propertyPath: EventReference.Guid.Data4
-      value: -622675662
+      value: -798957357
       objectReference: {fileID: 0}
     - target: {fileID: 8910696648004670894, guid: 58574e9a5ac59b24e93319150961ed19,
         type: 3}
