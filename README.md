@@ -15,7 +15,7 @@ Dev branch builds are downloadable from https://doublebrackets.itch.io/sashimi-s
 ## Software Info
 
 Programs
-- Unity 2022.3.21f1
+- Unity 2022.3.48f1
 - FMOD 2.02
 
 Arduino Libraries
