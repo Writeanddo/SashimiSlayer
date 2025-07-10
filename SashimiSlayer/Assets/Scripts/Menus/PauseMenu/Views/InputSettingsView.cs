@@ -79,6 +79,7 @@ namespace Menus.PauseMenu.Views
         public override void ViewDestroy()
         {
             _swordAngleMultiplierSlider.onValueChanged.RemoveListener(HandleSwordAngleMultiplierChange);
+            _swordAngleOffsetSlider.onValueChanged.RemoveListener(HandleSwordAngleOffsetChange);
             _swordAngleFlipToggle.onValueChanged.RemoveListener(HandleSwordAngleFlipChange);
             _upAxisDropdown.onValueChanged.RemoveListener(HandleUpAxisChange);
         }

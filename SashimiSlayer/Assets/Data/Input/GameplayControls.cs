@@ -64,15 +64,6 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PoseButtonBot"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""bcb9a1d1-8533-4521-8175-d407ea4c2913"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""MousePos"",
                     ""type"": ""Value"",
                     ""id"": ""39baa6a0-606b-4f77-b5c6-76ba86413d6d"",
@@ -342,7 +333,6 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
         m_Gameplay_Unsheathe = m_Gameplay.FindAction("Unsheathe", throwIfNotFound: true);
         m_Gameplay_PoseButtonTop = m_Gameplay.FindAction("PoseButtonTop", throwIfNotFound: true);
         m_Gameplay_PoseButtonMid = m_Gameplay.FindAction("PoseButtonMid", throwIfNotFound: true);
-        m_Gameplay_PoseButtonBot = m_Gameplay.FindAction("PoseButtonBot", throwIfNotFound: true);
         m_Gameplay_MousePos = m_Gameplay.FindAction("MousePos", throwIfNotFound: true);
     }
 
@@ -414,7 +404,6 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Unsheathe;
     private readonly InputAction m_Gameplay_PoseButtonTop;
     private readonly InputAction m_Gameplay_PoseButtonMid;
-    private readonly InputAction m_Gameplay_PoseButtonBot;
     private readonly InputAction m_Gameplay_MousePos;
     public struct GameplayActions
     {
@@ -424,7 +413,6 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
         public InputAction @Unsheathe => m_Wrapper.m_Gameplay_Unsheathe;
         public InputAction @PoseButtonTop => m_Wrapper.m_Gameplay_PoseButtonTop;
         public InputAction @PoseButtonMid => m_Wrapper.m_Gameplay_PoseButtonMid;
-        public InputAction @PoseButtonBot => m_Wrapper.m_Gameplay_PoseButtonBot;
         public InputAction @MousePos => m_Wrapper.m_Gameplay_MousePos;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
@@ -447,9 +435,6 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
             @PoseButtonMid.started += instance.OnPoseButtonMid;
             @PoseButtonMid.performed += instance.OnPoseButtonMid;
             @PoseButtonMid.canceled += instance.OnPoseButtonMid;
-            @PoseButtonBot.started += instance.OnPoseButtonBot;
-            @PoseButtonBot.performed += instance.OnPoseButtonBot;
-            @PoseButtonBot.canceled += instance.OnPoseButtonBot;
             @MousePos.started += instance.OnMousePos;
             @MousePos.performed += instance.OnMousePos;
             @MousePos.canceled += instance.OnMousePos;
@@ -469,9 +454,6 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
             @PoseButtonMid.started -= instance.OnPoseButtonMid;
             @PoseButtonMid.performed -= instance.OnPoseButtonMid;
             @PoseButtonMid.canceled -= instance.OnPoseButtonMid;
-            @PoseButtonBot.started -= instance.OnPoseButtonBot;
-            @PoseButtonBot.performed -= instance.OnPoseButtonBot;
-            @PoseButtonBot.canceled -= instance.OnPoseButtonBot;
             @MousePos.started -= instance.OnMousePos;
             @MousePos.performed -= instance.OnMousePos;
             @MousePos.canceled -= instance.OnMousePos;
@@ -507,7 +489,6 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
         void OnUnsheathe(InputAction.CallbackContext context);
         void OnPoseButtonTop(InputAction.CallbackContext context);
         void OnPoseButtonMid(InputAction.CallbackContext context);
-        void OnPoseButtonBot(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
     }
 }

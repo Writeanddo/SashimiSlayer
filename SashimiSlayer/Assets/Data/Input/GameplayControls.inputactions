@@ -42,15 +42,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PoseButtonBot",
-                    "type": "PassThrough",
-                    "id": "bcb9a1d1-8533-4521-8175-d407ea4c2913",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "MousePos",
                     "type": "Value",
                     "id": "39baa6a0-606b-4f77-b5c6-76ba86413d6d",
