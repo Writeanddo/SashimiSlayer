@@ -17,7 +17,6 @@ namespace InputScripts
         {
             public bool TopButton;
             public bool MiddleButton;
-            public bool BottomButton;
             public bool LeftSheatheSwitch;
             public bool RightSheatheSwitch;
             public Quaternion SwordOrientation;
@@ -259,7 +258,6 @@ namespace InputScripts
             {
                 TopButton = (_packetBuffer[0] & 1) == 1,
                 MiddleButton = (_packetBuffer[0] & 2) == 2,
-                BottomButton = (_packetBuffer[0] & 4) == 4,
                 LeftSheatheSwitch = (_packetBuffer[0] & 8) == 8,
                 RightSheatheSwitch = (_packetBuffer[0] & 16) == 16,
                 SwordOrientation = orientation

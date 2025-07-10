@@ -236,9 +236,6 @@ namespace Core.Protag
                 case SharedTypes.BlockPoseStates.MidPose:
                     _blockSuccessMidEvent.Raise(_currentSwordState);
                     break;
-                case SharedTypes.BlockPoseStates.BotPose:
-                    _blockSuccessBotEvent.Raise(_currentSwordState);
-                    break;
             }
 
             _blockSuccessEvent.Raise(_currentSwordState);

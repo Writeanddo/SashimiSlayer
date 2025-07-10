@@ -9,7 +9,7 @@ namespace InputScripts
     /// </summary>
     public class SwordInputProvider : BaseUserInputProvider
     {
-        public enum UpAxis
+        private enum UpAxis
         {
             X,
             Y,
@@ -44,8 +44,12 @@ namespace InputScripts
         private UpAxis _upAxis = UpAxis.Y;
 
         private SharedTypes.SheathState _sheathState = SharedTypes.SheathState.Sheathed;
-        private SharedTypes.BlockPoseStates _currentBlockPose;
         private float _swordAngle = 90f;
+
+        private bool _wasTopButtonPressed;
+        private bool _wasMiddleButtonPressed;
+
+        private SharedTypes.BlockPoseStates _currentBlockPose;
 
         private float _angleMultiplier = 1f;
         private float _angleOffset;
@@ -97,31 +101,20 @@ namespace InputScripts
 
             SharedTypes.BlockPoseStates newPose = 0;
 
-            if (data.TopButton)
+            if (data.TopButton && !_wasTopButtonPressed)
             {
-                newPose = SharedTypes.BlockPoseStates.TopPose;
-            }
-            else if (data.MiddleButton)
-            {
-                newPose = SharedTypes.BlockPoseStates.MidPose;
-            }
-            else if (data.BottomButton)
-            {
-                newPose = SharedTypes.BlockPoseStates.BotPose;
-            }
-            else
-            {
-                newPose = (SharedTypes.BlockPoseStates)(-1);
+                _currentBlockPose = SharedTypes.BlockPoseStates.TopPose;
+                OnBlockPoseChanged?.Invoke(SharedTypes.BlockPoseStates.TopPose);
             }
 
-            if (newPose != _currentBlockPose)
+            if (data.MiddleButton && !_wasMiddleButtonPressed)
             {
-                _currentBlockPose = newPose;
-                if (newPose != (SharedTypes.BlockPoseStates)(-1))
-                {
-                    OnBlockPoseChanged?.Invoke(_currentBlockPose);
-                }
+                _currentBlockPose = SharedTypes.BlockPoseStates.MidPose;
+                OnBlockPoseChanged?.Invoke(SharedTypes.BlockPoseStates.MidPose);
             }
+
+            _wasTopButtonPressed = data.TopButton;
+            _wasMiddleButtonPressed = data.MiddleButton;
 
             _swordAngle = ProcessSwordOrientation(data.SwordOrientation) + _angleOffset;
             _quatDebugger.transform.rotation = data.SwordOrientation;

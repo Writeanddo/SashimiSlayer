@@ -69,15 +69,6 @@ public class GamepadInputProvider : BaseUserInputProvider, GameplayControls.IGam
         }
     }
 
-    public void OnPoseButtonBot(InputAction.CallbackContext context)
-    {
-        if (context.ReadValueAsButton())
-        {
-            OnBlockPoseChanged?.Invoke(SharedTypes.BlockPoseStates.BotPose);
-            _blockPoseStates = SharedTypes.BlockPoseStates.BotPose;
-        }
-    }
-
     public void OnMousePos(InputAction.CallbackContext context)
     {
         var newMousePos = context.ReadValue<Vector2>();
