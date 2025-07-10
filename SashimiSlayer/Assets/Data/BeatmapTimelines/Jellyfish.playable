@@ -4686,8 +4686,8 @@ MonoBehaviour:
   Template:
     NoteConfig: {fileID: 11400000, guid: cd8b28387250bc848b9a561fcb3a6f6f, type: 2}
     NoteData:
-      StartPosition: {x: 6.95682, y: -6.098906}
-      EndPosition: {x: -3.5438967, y: -5.5383787}
+      StartPosition: {x: 4.484207, y: -5.584603}
+      EndPosition: {x: -1.1108453, y: -5.5383787}
       NoteStartTime: 135
       NoteEndTime: 137.09302325581396
       NoteBeatCount: 6.00000000000002
@@ -4699,7 +4699,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 2.444015, y: 0.18005049}
+          - {x: 1.593436, y: -0.17600572}
 --- !u!114 &-1176228355259364873
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7491,8 +7491,8 @@ MonoBehaviour:
   Template:
     NoteConfig: {fileID: 11400000, guid: cd8b28387250bc848b9a561fcb3a6f6f, type: 2}
     NoteData:
-      StartPosition: {x: 6.95682, y: -6.098906}
-      EndPosition: {x: -3.5438967, y: -5.5383787}
+      StartPosition: {x: 9.449995, y: -6.098906}
+      EndPosition: {x: 3.1211882, y: -5.5383787}
       NoteStartTime: 133.95348837209303
       NoteEndTime: 136.04651162790697
       NoteBeatCount: 5.99999999999994
@@ -7504,7 +7504,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 3.0159578, y: 0.3945291}
+          - {x: 7.4092717, y: -0.43955088}
 --- !u!114 &1099660459232839376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7520,8 +7520,8 @@ MonoBehaviour:
   Template:
     NoteConfig: {fileID: 11400000, guid: cd8b28387250bc848b9a561fcb3a6f6f, type: 2}
     NoteData:
-      StartPosition: {x: 6.95682, y: -6.098906}
-      EndPosition: {x: -3.5438967, y: -5.5383787}
+      StartPosition: {x: 9.290966, y: -6.098906}
+      EndPosition: {x: 4.48715, y: -5.5383787}
       NoteStartTime: 135
       NoteEndTime: 137.09302325581396
       NoteBeatCount: 6.00000000000002
@@ -7533,7 +7533,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: 6.233136, y: 0.7877401}
+          - {x: 7.5584574, y: 0.2140938}
 --- !u!114 &1368155096576565596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12364,7 +12364,7 @@ MonoBehaviour:
       NoteEndTime: 139.18604651162792
       NoteBeatCount: 102.00000000000007
       Interactions:
-      - _beatOffset: 6
+      - _beatOffset: 15
         _offsetFromEnd: 1
         InteractionData:
           BlockPose: 0
@@ -12372,6 +12372,27 @@ MonoBehaviour:
           Flags: 0
           Positions:
           - {x: 4.2841926, y: -0.061742306}
+      - _beatOffset: 12
+        _offsetFromEnd: 1
+        InteractionData:
+          BlockPose: 0
+          InteractionType: 1
+          Flags: 0
+          Positions: []
+      - _beatOffset: 9
+        _offsetFromEnd: 1
+        InteractionData:
+          BlockPose: 0
+          InteractionType: 1
+          Flags: 0
+          Positions: []
+      - _beatOffset: 6
+        _offsetFromEnd: 1
+        InteractionData:
+          BlockPose: 0
+          InteractionType: 1
+          Flags: 0
+          Positions: []
 --- !u!114 &5031856526807017569
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13033,7 +13054,7 @@ MonoBehaviour:
           InteractionType: 1
           Flags: 0
           Positions:
-          - {x: -1.3451056, y: -0.53487825}
+          - {x: -1.8396282, y: -0.5150974}
 --- !u!114 &6709694722932851106
 MonoBehaviour:
   m_ObjectHideFlags: 1
