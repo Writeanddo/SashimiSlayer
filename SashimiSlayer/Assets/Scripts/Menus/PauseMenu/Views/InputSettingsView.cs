@@ -76,7 +76,7 @@ namespace Menus.PauseMenu.Views
             UpdateSwordAngleMultiplier();
         }
 
-        private void OnDestroy()
+        public override void ViewDestroy()
         {
             _swordAngleMultiplierSlider.onValueChanged.RemoveListener(HandleSwordAngleMultiplierChange);
             _swordAngleFlipToggle.onValueChanged.RemoveListener(HandleSwordAngleFlipChange);

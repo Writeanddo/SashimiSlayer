@@ -26,7 +26,7 @@ namespace Menus.PauseMenu.Views
 
         private BeatmapConfigSo _currentBeatmap;
 
-        private void OnDestroy()
+        public override void ViewDestroy()
         {
             _beatmapLoadedEvent.RemoveListener(OnBeatmapLoaded);
             _beatmapUnloadedEvent.RemoveListener(OnBeatmapUnloaded);

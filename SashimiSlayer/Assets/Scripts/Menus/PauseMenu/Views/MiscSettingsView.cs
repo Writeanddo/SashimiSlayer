@@ -15,7 +15,7 @@ namespace Menus.PauseMenu.Views
 
         private float _screenShakeScale;
 
-        private void OnDestroy()
+        public override void ViewDestroy()
         {
             _screenShakeSlider.onValueChanged.RemoveListener(UpdateScreenShake);
         }
