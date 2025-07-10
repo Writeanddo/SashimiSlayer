@@ -30,7 +30,7 @@ namespace Menus.PauseMenu.Views
         private float _musicVolume;
         private float _masterVolume;
 
-        private void OnDestroy()
+        public override void ViewDestroy()
         {
             _musicVolumeSlider.onValueChanged.RemoveListener(UpdateMusicVolume);
             _sfxVolumeSlider.onValueChanged.RemoveListener(UpdateSfxVolume);

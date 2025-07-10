@@ -42,7 +42,7 @@ namespace Menus.PauseMenu.Views
 
         private string _lastPortName;
 
-        private void OnDestroy()
+        public override void ViewDestroy()
         {
             _inputDeviceDropdown.onValueChanged.RemoveListener(HandleInputDeviceChanged);
             _connectButton.onClick.RemoveListener(HandleConnect);

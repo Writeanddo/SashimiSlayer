@@ -14,11 +14,24 @@ namespace Menus.PauseMenu
             gameObject.SetActive(false);
         }
 
+        /// <summary>
+        ///     Awake replacement since view gameobjects can be set inactive
+        /// </summary>
         public virtual void ViewAwake()
         {
         }
 
+        /// <summary>
+        ///     Start replacement since view gameobjects can be set inactive
+        /// </summary>
         public virtual void ViewStart()
+        {
+        }
+
+        /// <summary>
+        ///     Destroy replacement since view gameobjects can be set inactive
+        /// </summary>
+        public virtual void ViewDestroy()
         {
         }
     }

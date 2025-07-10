@@ -104,6 +104,11 @@ namespace Menus.PauseMenu
         private void OnDestroy()
         {
             _setUseHardwareController.RemoveListener(OnSetUseHardwareController);
+            foreach (ViewSelection view in _pauseMenuViews)
+            {
+                view.View.ViewDestroy();
+                view.SelectionButton.onClick.RemoveAllListeners();
+            }
         }
 
         private void OnSetUseHardwareController(bool state)
