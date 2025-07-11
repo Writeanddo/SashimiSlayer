@@ -18,8 +18,9 @@ Programs
 - Unity 2022.3.48f1
 - FMOD 2.02
 
-Arduino Libraries
+Arduino Libraries (Required to compile sketches)
 - https://github.com/adafruit/Adafruit_BNO055
+- https://github.com/MHeironimus/ArduinoJoystickLibrary
 
 Packages
 - [NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)

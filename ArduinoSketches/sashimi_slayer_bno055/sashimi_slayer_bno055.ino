@@ -2,31 +2,46 @@
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
+#include <Joystick.h>
+#include <math.h>
 #include <utility/imumaths.h>
 
 // Button state
 int btnTop = 0;
 int btnMid = 0;
-int btnBot = 0;
 
-int sheatheSwitchL = 0;
-int sheatheSwitchR = 0;
+int sliceBtn = 0;
 
 imu::Quaternion q;
+
+Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_JOYSTICK,
+  32, 0,                  // Button Count, Hat Switch Count
+  true, true, false,     // X and Y, but no Z Axis
+  false, false, false,   // No Rx, Ry, or Rz
+  false, false,          // No rudder or throttle
+  false, false, false);  // No accelerator, brake, or steering
 
 // Pin numbers
 #define HAPTIC_IN_PIN 5
 #define BTN_TOP_PIN 14
 #define BTN_MID_PIN 15
-#define BTN_BOT_PIN 16
 
 #define SHEATHE_L_PIN 7
 #define SHEATHE_R_PIN 8
 #define LED_PIN 17
 
+// Gamepad button mapping
+#define SLICE_GAMEPAD 1
+#define BLOCK_TOP_GAMEPAD 2
+#define BLOCK_MID_GAMEPAD 3
+#define AXIS_RANGE 1024
+
 char inputBuffer;
 
 Adafruit_BNO055 bno = Adafruit_BNO055(55);
+
+// The vector of the IMU that points "up" (towards the handle of the sword)
+const imu::Vector<3> upVector = imu::Vector<3>(1,0,0);
 
 void setup_gyro()
 {
@@ -50,77 +65,65 @@ void setup() {
 
   pinMode(BTN_TOP_PIN, INPUT_PULLUP);
   pinMode(BTN_MID_PIN, INPUT_PULLUP);
-  pinMode(BTN_BOT_PIN, INPUT_PULLUP);
   pinMode(SHEATHE_L_PIN, INPUT_PULLUP);
   pinMode(SHEATHE_R_PIN, INPUT_PULLUP);
   pinMode(LED_PIN, OUTPUT);
   pinMode(HAPTIC_IN_PIN, OUTPUT);
-}
 
-
-void writeFloat(float f){
-  byte * b = (byte *) &f;
-  Serial.write(b[0]);
-  Serial.write(b[1]);
-  Serial.write(b[2]);
-  Serial.write(b[3]);
-  return;
-}
-
-void sendState()
-{
-  char switches = 0;
-  switches |= btnTop;
-  switches |= btnMid << 1;
-  switches |= btnBot << 2;
-  switches |= sheatheSwitchL << 3;
-  switches |= sheatheSwitchR << 4;
-  Serial.print(switches);
-  writeFloat(q.x());
-  writeFloat(q.y());
-  writeFloat(q.z());
-  writeFloat(q.w());
+  Joystick.begin();
+  Joystick.setXAxisRange(-AXIS_RANGE, AXIS_RANGE);
+  Joystick.setYAxisRange(-AXIS_RANGE, AXIS_RANGE);
 }
 
 void loop() {
-  // Should be true when pressed, false when not pressed, to work properly with the game logic
-  // Might need inversion for pullup switches
-  btnTop = !digitalRead(BTN_TOP_PIN);
-  btnMid = !digitalRead(BTN_MID_PIN);
-  btnBot = !digitalRead(BTN_BOT_PIN);
+  // invert because of pullup
+  bool newBtnTop = !digitalRead(BTN_TOP_PIN);
+  bool newBtnMid = !digitalRead(BTN_MID_PIN);
 
-  // Should be false when sheathe is in, true when sheathe is out, to work properly with game logic
-  sheatheSwitchL = digitalRead(SHEATHE_L_PIN);
-  sheatheSwitchR = digitalRead(SHEATHE_R_PIN);
-
-  q = bno.getQuat();
-
-  // Wait for ack from game instance to send state to game instance
-  if(Serial.available())
+  if (newBtnTop != btnTop)
   {
-    Serial.readBytes(&inputBuffer, 1);
-    if(inputBuffer == (char)255)
-    {
-      sendState();
-    }
+    btnTop = newBtnTop;
+    Joystick.setButton(BLOCK_TOP_GAMEPAD, btnTop);
   }
 
-  //Serial.println(sheatheSwitchL);
+  if (newBtnMid != btnMid)
+  {
+    btnMid = newBtnMid;
+    Joystick.setButton(BLOCK_MID_GAMEPAD, btnMid);
+  }
+
+  // False when sheathe is in (switches are closed), true when sheathe is out (switches are open)
+  int newSliceBtn = digitalRead(SHEATHE_L_PIN) && digitalRead(SHEATHE_R_PIN);
+  
+  if(newSliceBtn != sliceBtn)
+  {
+    sliceBtn = newSliceBtn;
+    Joystick.setButton(SLICE_GAMEPAD, sliceBtn);
+  }
+
+
+  q = bno.getQuat();
+  imu::Vector<3> orientUp = q.rotateVector(upVector);
+
+  // Dot product wtih <0,1,0> to get the angle difference from "up"
+  double cosTheta = orientUp.z();
+  double sinTheta = sqrt(1 - cosTheta * cosTheta);
+
+  // Subtract 90 degrees. We want to map sword aiming down to 90 degrees and horizontal sword to 0 degrees
+  double temp = cosTheta;
+  cosTheta = sinTheta;
+  sinTheta = -temp;
+
+  Joystick.setXAxis(cosTheta * AXIS_RANGE);
+  Joystick.setYAxis(sinTheta * AXIS_RANGE);
 
   // Vibrate when sword is drawn
-  if(sheatheSwitchL && sheatheSwitchR)
+  if(sliceBtn)
   {
     digitalWrite(HAPTIC_IN_PIN, HIGH);
   }
   else
   {
     digitalWrite(HAPTIC_IN_PIN, LOW);
-  }
-
-  // LED for debugging btns
-  if (btnTop || btnMid || btnBot) {
-    digitalWrite(LED_PIN, HIGH);
-  } else {
-    digitalWrite(LED_PIN, LOW);
   }
 }
