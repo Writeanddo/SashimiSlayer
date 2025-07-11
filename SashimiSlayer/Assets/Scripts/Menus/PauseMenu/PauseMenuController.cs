@@ -60,21 +60,13 @@ namespace Menus.PauseMenu
         [SerializeField]
         private BoolEvent _menuToggleEvent;
 
-        [Header("Events (In)")]
-
-        [SerializeField]
-        private BoolEvent _setUseHardwareController;
-
         private bool _menuOpen;
-        private bool _usingHardwareController;
 
         private ViewSelection _currentView;
 
         private void Awake()
         {
             ToggleMenu(false);
-
-            _setUseHardwareController.AddListener(OnSetUseHardwareController);
 
             foreach (ViewSelection view in _pauseMenuViews)
             {
@@ -94,8 +86,7 @@ namespace Menus.PauseMenu
 
         private void Update()
         {
-            bool rmbQuickOpen = Input.GetMouseButtonDown(1) && _usingHardwareController;
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab) || rmbQuickOpen)
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
             {
                 ToggleMenu(!_menuOpen);
             }
@@ -103,17 +94,11 @@ namespace Menus.PauseMenu
 
         private void OnDestroy()
         {
-            _setUseHardwareController.RemoveListener(OnSetUseHardwareController);
             foreach (ViewSelection view in _pauseMenuViews)
             {
                 view.View.ViewDestroy();
                 view.SelectionButton.onClick.RemoveAllListeners();
             }
-        }
-
-        private void OnSetUseHardwareController(bool state)
-        {
-            _usingHardwareController = state;
         }
 
         public void ToggleMenu(bool state)

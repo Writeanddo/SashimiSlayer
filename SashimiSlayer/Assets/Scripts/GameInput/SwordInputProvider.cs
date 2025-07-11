@@ -2,7 +2,7 @@ using System;
 using Events;
 using UnityEngine;
 
-namespace InputScripts
+namespace GameInput
 {
     /// <summary>
     ///     Handles interpreting sword controller data into game inputs

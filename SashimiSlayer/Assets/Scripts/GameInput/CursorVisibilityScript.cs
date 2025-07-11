@@ -2,7 +2,7 @@ using EditorUtils.BoldHeader;
 using Events;
 using UnityEngine;
 
-namespace InputScripts
+namespace GameInput
 {
     /// <summary>
     ///     Handles hiding/showing cursor
@@ -19,7 +19,7 @@ namespace InputScripts
         private BoolEvent _optionsMenuToggled;
 
         private bool _isMenuOpen;
-        private bool _isUsingHardwareController;
+        private bool _cursorInput;
 
         private void Awake()
         {
@@ -29,7 +29,7 @@ namespace InputScripts
 
         private void Update()
         {
-            Cursor.visible = _isMenuOpen || !_isUsingHardwareController;
+            Cursor.visible = _isMenuOpen || _cursorInput;
         }
 
         private void OnDestroy()
@@ -40,8 +40,7 @@ namespace InputScripts
 
         private void HandleControlSchemeChanged(int controlScheme)
         {
-            _isUsingHardwareController =
-                controlScheme is (int)ControlSchemes.CustomSword or (int)ControlSchemes.Gamepad;
+            _cursorInput = controlScheme == (int)ControlSchemes.KeyboardMouse;
         }
 
         private void HandleOptionsMenuToggled(bool isMenuOpen)

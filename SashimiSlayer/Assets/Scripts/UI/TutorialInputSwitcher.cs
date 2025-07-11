@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Events;
+using GameInput;
 using UnityEngine;
 
 public class TutorialInputSwitcher : MonoBehaviour

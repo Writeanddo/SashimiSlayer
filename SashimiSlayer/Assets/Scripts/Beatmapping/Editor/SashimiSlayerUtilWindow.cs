@@ -3,7 +3,7 @@ using System.IO;
 using Beatmapping.Notes;
 using Beatmapping.Tooling;
 using Core.Scene;
-using InputScripts;
+using GameInput;
 using Menus.MainMenu;
 using UnityEditor;
 using UnityEditor.SceneManagement;

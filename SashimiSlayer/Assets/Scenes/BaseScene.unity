@@ -1165,8 +1165,6 @@ MonoBehaviour:
   - View: {fileID: 762562468}
     SelectionButton: {fileID: 1157466744}
   _menuToggleEvent: {fileID: 11400000, guid: dbe2d9d70d477fa49a2b203b87339de8, type: 2}
-  _setUseHardwareController: {fileID: 11400000, guid: ae2649dcf4fe32b4bb34667a4644dc28,
-    type: 2}
 --- !u!1 &418642378
 GameObject:
   m_ObjectHideFlags: 0
@@ -6734,6 +6732,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76af12a8e397d5e468fa9fb69b15c405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _angleMultiplierEvent: {fileID: 11400000, guid: 084fa5ca422192449a31ac7d1393fa37,
+    type: 2}
+  _swordAngleOffsetEvent: {fileID: 11400000, guid: 9074d0865eea37c479c2fedcdeae87d5,
+    type: 2}
+  _onMenuToggled: {fileID: 11400000, guid: dbe2d9d70d477fa49a2b203b87339de8, type: 2}
 --- !u!114 &1969117888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6748,12 +6751,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onControlSchemeChanged: {fileID: 11400000, guid: 1587be54aaec6e848b921a0c977ecaa4,
     type: 2}
-  _onMenuToggled: {fileID: 11400000, guid: dbe2d9d70d477fa49a2b203b87339de8, type: 2}
-  _setUseHardwareController: {fileID: 11400000, guid: ae2649dcf4fe32b4bb34667a4644dc28,
-    type: 2}
-  _gamepadInputProvider: {fileID: 1969117887}
-  _swordInputProvider: {fileID: 1969117890}
-  _useHardwareController: 0
+  _setUseSerialInput: {fileID: 11400000, guid: ae2649dcf4fe32b4bb34667a4644dc28, type: 2}
+  _hidInputProvider: {fileID: 1969117887}
+  _serialInputProvider: {fileID: 1969117890}
+  _useSerialController: 0
   _onDrawDebugGUI: {fileID: 11400000, guid: 8e51abf69e4694c41bf511b0e340f96d, type: 2}
 --- !u!114 &1969117889
 MonoBehaviour:
