@@ -71,6 +71,15 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwordControllerAngle"",
+                    ""type"": ""Value"",
+                    ""id"": ""f275c542-6ad1-464d-aa53-5f0d295cc698"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -164,6 +173,17 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e4b2298b-667c-4e6d-801f-527983685a04"",
+                    ""path"": ""<HID::Arduino LLC Arduino Leonardo>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Unsheathe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6b4bc36a-da1f-4fa4-bf75-513c8bc65123"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
@@ -177,17 +197,6 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""7a427325-233c-4d50-9742-7095554c5d87"",
                     ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PoseButtonTop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""976b9626-b55c-4f06-903d-8e36677aff94"",
-                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -219,6 +228,17 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""dbbbf330-b468-4c38-8e69-552de2b5863d"",
+                    ""path"": ""<HID::Arduino LLC Arduino Leonardo>/button3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PoseButtonTop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b023dbd5-7153-4450-a3da-c37d1394e4fb"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -232,28 +252,6 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""54fbbef0-de2a-4714-93b9-f890ce7d0815"",
                     ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PoseButtonMid"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""82732584-e272-43b9-8546-271728d6a558"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PoseButtonMid"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1e560fdb-3ffc-40b3-af16-5fc70852789a"",
-                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -307,12 +305,34 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""54b24085-4bc3-4ec8-b1f9-c027d96129b0"",
+                    ""path"": ""<HID::Arduino LLC Arduino Leonardo>/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PoseButtonMid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e5428307-9e26-4ca5-b31f-d56d7ba965a8"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""499313bc-3f1c-4f5a-9a8a-91af1081e6c0"",
+                    ""path"": ""<HID::Arduino LLC Arduino Leonardo>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwordControllerAngle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -334,6 +354,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
         m_Gameplay_PoseButtonTop = m_Gameplay.FindAction("PoseButtonTop", throwIfNotFound: true);
         m_Gameplay_PoseButtonMid = m_Gameplay.FindAction("PoseButtonMid", throwIfNotFound: true);
         m_Gameplay_MousePos = m_Gameplay.FindAction("MousePos", throwIfNotFound: true);
+        m_Gameplay_SwordControllerAngle = m_Gameplay.FindAction("SwordControllerAngle", throwIfNotFound: true);
     }
 
     ~@GameplayControls()
@@ -405,6 +426,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_PoseButtonTop;
     private readonly InputAction m_Gameplay_PoseButtonMid;
     private readonly InputAction m_Gameplay_MousePos;
+    private readonly InputAction m_Gameplay_SwordControllerAngle;
     public struct GameplayActions
     {
         private @GameplayControls m_Wrapper;
@@ -414,6 +436,7 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
         public InputAction @PoseButtonTop => m_Wrapper.m_Gameplay_PoseButtonTop;
         public InputAction @PoseButtonMid => m_Wrapper.m_Gameplay_PoseButtonMid;
         public InputAction @MousePos => m_Wrapper.m_Gameplay_MousePos;
+        public InputAction @SwordControllerAngle => m_Wrapper.m_Gameplay_SwordControllerAngle;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -438,6 +461,9 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
             @MousePos.started += instance.OnMousePos;
             @MousePos.performed += instance.OnMousePos;
             @MousePos.canceled += instance.OnMousePos;
+            @SwordControllerAngle.started += instance.OnSwordControllerAngle;
+            @SwordControllerAngle.performed += instance.OnSwordControllerAngle;
+            @SwordControllerAngle.canceled += instance.OnSwordControllerAngle;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -457,6 +483,9 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
             @MousePos.started -= instance.OnMousePos;
             @MousePos.performed -= instance.OnMousePos;
             @MousePos.canceled -= instance.OnMousePos;
+            @SwordControllerAngle.started -= instance.OnSwordControllerAngle;
+            @SwordControllerAngle.performed -= instance.OnSwordControllerAngle;
+            @SwordControllerAngle.canceled -= instance.OnSwordControllerAngle;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -490,5 +519,6 @@ public partial class @GameplayControls: IInputActionCollection2, IDisposable
         void OnPoseButtonTop(InputAction.CallbackContext context);
         void OnPoseButtonMid(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
+        void OnSwordControllerAngle(InputAction.CallbackContext context);
     }
 }

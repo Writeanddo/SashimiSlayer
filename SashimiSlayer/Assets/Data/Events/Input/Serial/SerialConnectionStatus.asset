@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 509f402d747b42059ba177f6fdb1f99e, type: 3}
-  m_Name: ConnectionStatus
+  m_Name: SerialConnectionStatus
   m_EditorClassIdentifier: 
-  _description: Updates when the arduino connection status changes
+  _description: Triggers when the serial connection status changes
+  _debug: 0

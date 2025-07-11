@@ -1,3 +1,14 @@
+/*
+This version uses custom serial comm to control the game. 
+Using the joystick version is recommended, and this version should only be used for debugging or as a backup.
+Both the joystick and serial version work on identical hardware.
+
+To connect with the game
+- Plug in the sword
+- Connect to the sword's serial port in the pause menu
+- Select "Sword Control Serial" input mode in the pause menu
+*/
+
 // Libraries
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
@@ -7,7 +18,6 @@
 // Button state
 int btnTop = 0;
 int btnMid = 0;
-int btnBot = 0;
 
 int sheatheSwitchL = 0;
 int sheatheSwitchR = 0;
@@ -18,7 +28,6 @@ imu::Quaternion q;
 #define HAPTIC_IN_PIN 5
 #define BTN_TOP_PIN 14
 #define BTN_MID_PIN 15
-#define BTN_BOT_PIN 16
 
 #define SHEATHE_L_PIN 7
 #define SHEATHE_R_PIN 8
@@ -50,7 +59,6 @@ void setup() {
 
   pinMode(BTN_TOP_PIN, INPUT_PULLUP);
   pinMode(BTN_MID_PIN, INPUT_PULLUP);
-  pinMode(BTN_BOT_PIN, INPUT_PULLUP);
   pinMode(SHEATHE_L_PIN, INPUT_PULLUP);
   pinMode(SHEATHE_R_PIN, INPUT_PULLUP);
   pinMode(LED_PIN, OUTPUT);
@@ -72,7 +80,6 @@ void sendState()
   char switches = 0;
   switches |= btnTop;
   switches |= btnMid << 1;
-  switches |= btnBot << 2;
   switches |= sheatheSwitchL << 3;
   switches |= sheatheSwitchR << 4;
   Serial.print(switches);
@@ -83,13 +90,11 @@ void sendState()
 }
 
 void loop() {
-  // Should be true when pressed, false when not pressed, to work properly with the game logic
-  // Might need inversion for pullup switches
+  // invert because of pullup
   btnTop = !digitalRead(BTN_TOP_PIN);
   btnMid = !digitalRead(BTN_MID_PIN);
-  btnBot = !digitalRead(BTN_BOT_PIN);
 
-  // Should be false when sheathe is in, true when sheathe is out, to work properly with game logic
+  // False when sheathe is in (switches are closed), true when sheathe is out (switches are open)
   sheatheSwitchL = digitalRead(SHEATHE_L_PIN);
   sheatheSwitchR = digitalRead(SHEATHE_R_PIN);
 
@@ -118,7 +123,7 @@ void loop() {
   }
 
   // LED for debugging btns
-  if (btnTop || btnMid || btnBot) {
+  if (btnTop || btnMid) {
     digitalWrite(LED_PIN, HIGH);
   } else {
     digitalWrite(LED_PIN, LOW);

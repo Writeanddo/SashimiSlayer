@@ -4,6 +4,7 @@ using Beatmapping.Tooling;
 using Events;
 using Events.Core;
 using Feel;
+using GameInput;
 using UnityEngine;
 
 namespace Core.Protag
