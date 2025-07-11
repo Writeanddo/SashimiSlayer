@@ -1,3 +1,10 @@
+/*
+This version allows the sword to act as a generic joystick. 
+This is preferred over the serial comm version.
+
+To connect with the game, just plug the sword in and it should work immediately.
+*/
+
 // Libraries
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
