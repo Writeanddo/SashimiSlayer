@@ -27,7 +27,7 @@ namespace Menus.PauseMenu
 
                 if (SelectionButton)
                 {
-                    SelectionButton.enabled = false;
+                    SelectionButton.interactable = false;
                 }
             }
 
@@ -40,7 +40,7 @@ namespace Menus.PauseMenu
 
                 if (SelectionButton)
                 {
-                    SelectionButton.enabled = true;
+                    SelectionButton.interactable = true;
                 }
             }
         }
