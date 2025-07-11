@@ -15,7 +15,7 @@ MonoBehaviour:
   <BeatmapID>k__BackingField: Jellyfish
   <Bpm>k__BackingField: 172
   <Subdivisions>k__BackingField: 2
-  <StartTime>k__BackingField: 2.092
+  <StartTime>k__BackingField: 2.08
   <BeatsPerMeasure>k__BackingField: 3
   <BeatmapTimeline>k__BackingField: {fileID: 11400000, guid: 46a4ea34e3d84cd448e4feca13c761e9,
     type: 2}
@@ -33,5 +33,5 @@ MonoBehaviour:
   <PlayerMaxHealth>k__BackingField: 6666
   <TimingWindowSO>k__BackingField: {fileID: 11400000, guid: 54462036f164d014095fd6aaaee307e5,
     type: 2}
-  <ResultsScreenCustomPrefab>k__BackingField: {fileID: 5820484520841906090, guid: 755591dfefab54948bc23495b9dab5ed,
+  <ResultsScreenCustomPrefab>k__BackingField: {fileID: 5820484520841906090, guid: e2b8200bb39163a4186b4ce1a030e77d,
     type: 3}
