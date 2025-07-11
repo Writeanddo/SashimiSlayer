@@ -63,9 +63,9 @@
 	<object class="MarkerTrack" id="{b6b24762-49f8-45f7-b78d-a655b203f896}" />
 	<object class="GroupTrack" id="{277f9159-5877-479e-b936-9cc77e712689}">
 		<relationship name="modules">
-			<destination>{137eaf25-c993-455c-8684-e9d1758d34fe}</destination>
 			<destination>{6e737b03-6280-4f98-9aa3-e59d197ed806}</destination>
 			<destination>{67ffe3ef-0beb-4209-9f55-58dd5e4e0bd7}</destination>
+			<destination>{d27f17d5-2932-41e7-89bd-acbb2c30f962}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{57476e96-25a5-41a4-a02e-6bfda1d0b9cb}</destination>
@@ -78,9 +78,9 @@
 	</object>
 	<object class="ParameterProxy" id="{bc9ce066-1c63-4d27-a8dd-77f7c0136225}">
 		<relationship name="modules">
-			<destination>{137eaf25-c993-455c-8684-e9d1758d34fe}</destination>
 			<destination>{6e737b03-6280-4f98-9aa3-e59d197ed806}</destination>
 			<destination>{67ffe3ef-0beb-4209-9f55-58dd5e4e0bd7}</destination>
+			<destination>{d27f17d5-2932-41e7-89bd-acbb2c30f962}</destination>
 		</relationship>
 		<relationship name="preset">
 			<destination>{6bc4dc3a-ed8a-410e-837d-4a2ed93fdadf}</destination>
@@ -103,11 +103,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{bc194335-9c49-4dcb-889e-653157c442f8}" />
-	<object class="EventSound" id="{137eaf25-c993-455c-8684-e9d1758d34fe}">
-		<relationship name="event">
-			<destination>{95341947-b58c-4ce2-9aaf-b5c371d4698e}</destination>
-		</relationship>
-	</object>
 	<object class="EventSound" id="{6e737b03-6280-4f98-9aa3-e59d197ed806}">
 		<property name="start">
 			<value>1</value>
@@ -122,6 +117,11 @@
 		</property>
 		<relationship name="event">
 			<destination>{64757c68-1e74-47b0-a131-4b7fbcca2ea5}</destination>
+		</relationship>
+	</object>
+	<object class="EventSound" id="{d27f17d5-2932-41e7-89bd-acbb2c30f962}">
+		<relationship name="event">
+			<destination>{95341947-b58c-4ce2-9aaf-b5c371d4698e}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{57476e96-25a5-41a4-a02e-6bfda1d0b9cb}">

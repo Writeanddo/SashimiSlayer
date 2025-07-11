@@ -403,6 +403,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{c22aedcd-6af0-4192-8d94-2db6dda014af}">
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<property name="name">
 			<value>Timing</value>
 		</property>
@@ -742,7 +745,7 @@
 			<value>4.0005655015064825</value>
 		</property>
 		<property name="value">
-			<value>2</value>
+			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{4b054645-7e6f-4872-bb7c-f0fe8dc6d267}">
@@ -750,7 +753,7 @@
 			<value>4.9949708682532954</value>
 		</property>
 		<property name="value">
-			<value>5</value>
+			<value>4</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{9b0ca9b5-272f-4a68-a985-1cb84b36974a}">
@@ -758,7 +761,7 @@
 			<value>2.0500000000000003</value>
 		</property>
 		<property name="value">
-			<value>-1</value>
+			<value>-2</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{2000a993-e5d7-4cdb-9efe-d9e45e96b796}">
@@ -766,7 +769,7 @@
 			<value>3</value>
 		</property>
 		<property name="value">
-			<value>-2</value>
+			<value>-3</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{8a38c575-9381-458e-9a42-022cab3bace7}">
@@ -774,7 +777,7 @@
 			<value>2.9500000000000002</value>
 		</property>
 		<property name="value">
-			<value>-1</value>
+			<value>-2</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{6be82ddd-4e6f-4b64-8c21-be62b76ccf15}">
@@ -782,7 +785,7 @@
 			<value>4.0200000000000005</value>
 		</property>
 		<property name="value">
-			<value>-0.5</value>
+			<value>-2</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{f0c57c5a-657f-4614-957f-36b4630f169b}">
@@ -790,7 +793,7 @@
 			<value>5.0095122681608739</value>
 		</property>
 		<property name="value">
-			<value>-0.5</value>
+			<value>-2</value>
 		</property>
 	</object>
 	<object class="AutomationCurve" id="{563413a5-84b8-4810-a772-b2e33a37f49f}">
