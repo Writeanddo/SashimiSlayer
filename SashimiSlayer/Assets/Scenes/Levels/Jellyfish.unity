@@ -642,7 +642,7 @@ MonoBehaviour:
   - transform: {fileID: 7964669956536286490}
     beatInterval: 3
     beatOffset: 0
-  _squishScale: 0.96
+  _squishScale: 0.95
   _squishDuration: 0.4
   _delay: 0.02
   _beatPassedEvent: {fileID: 11400000, guid: 0e41b350d0df0f14ebecef06152b6404, type: 2}
@@ -1617,7 +1617,7 @@ Transform:
   m_GameObject: {fileID: 3882646483380886552}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.99, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 4.76, y: 4.76, z: 0.45333338}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1737,7 +1737,7 @@ Transform:
   m_GameObject: {fileID: 3181301553770318173}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 0.2, z: 0}
+  m_LocalPosition: {x: 4, y: -3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
