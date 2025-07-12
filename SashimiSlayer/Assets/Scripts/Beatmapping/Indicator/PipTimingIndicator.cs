@@ -60,6 +60,15 @@ namespace Beatmapping.Indicator
         private bool _didStartInteractionVisible;
         private bool _isFirstInteraction;
 
+        [ShowNonSerializedField]
+        private bool _isVisible;
+
+        /// <summary>
+        ///     Hidden because too many beats before interaction time
+        /// </summary>
+        [ShowNonSerializedField]
+        private bool _prematurelyHidden;
+
         /// <summary>
         ///     On the next visible beat, flash the entry pip
         /// </summary>
@@ -97,6 +106,8 @@ namespace Beatmapping.Indicator
             _didShake = false;
             _didStartInteractionVisible = true;
             _isFirstInteraction = isFirstInteraction;
+            _isVisible = true;
+            _prematurelyHidden = false;
 
             if (!_initialized)
             {
@@ -133,9 +144,15 @@ namespace Beatmapping.Indicator
 
         public void SetVisible(bool visible)
         {
+            _isVisible = visible;
+            UpdateVisibility();
+        }
+
+        private void UpdateVisibility()
+        {
             foreach (IndicatorPip pip in _pips)
             {
-                pip.SetVisible(visible);
+                pip.SetVisible(_isVisible && !_prematurelyHidden);
             }
         }
 
@@ -161,19 +178,15 @@ namespace Beatmapping.Indicator
             _prevBeatRemaining = beatsRemaining;
 
             // Don't show anything at all if the target subdiv is before any of the pips
-            bool shouldShowPips = beatsRemaining <= _pips.Count;
+            _prematurelyHidden = beatsRemaining > _pips.Count;
+            UpdateVisibility();
 
             for (var i = 0; i < _pips.Count; i++)
             {
                 // Counting down; i.e pip index 0 is the final beat
-                bool isVisible = shouldShowPips;
-                _pips[i].SetVisible(isVisible);
-
-                if (!isVisible)
+                if (_prematurelyHidden || !_isVisible)
                 {
                     _didStartInteractionVisible = false;
-
-                    _pips[i].SetOn(false);
                     continue;
                 }
 
