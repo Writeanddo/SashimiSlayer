@@ -70,8 +70,8 @@
 	<object class="GroupTrack" id="{a95187f3-30cb-49a8-9005-0a2e7bd6809e}">
 		<relationship name="modules">
 			<destination>{2af2da4c-8801-40ea-b274-9f97d93ba016}</destination>
-			<destination>{bc7fff85-0012-40f6-938d-af1c893999ca}</destination>
 			<destination>{1663efda-461a-49f9-8eaf-1ea6ccb4c2a8}</destination>
+			<destination>{bc7fff85-0012-40f6-938d-af1c893999ca}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{d63d2311-eba5-43c2-8650-7d13b5c60643}</destination>
@@ -142,17 +142,6 @@
 			<destination>{5e156fe1-00de-4060-aa15-e2445690cc28}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{bc7fff85-0012-40f6-938d-af1c893999ca}">
-		<property name="volume">
-			<value>10</value>
-		</property>
-		<property name="pitch">
-			<value>2.79999995</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{ea9f4a1e-50df-4868-956e-a3fe0df2c05d}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{1663efda-461a-49f9-8eaf-1ea6ccb4c2a8}">
 		<property name="start">
 			<value>2</value>
@@ -162,6 +151,17 @@
 		</property>
 		<property name="pitch">
 			<value>-3.60000014</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{ea9f4a1e-50df-4868-956e-a3fe0df2c05d}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{bc7fff85-0012-40f6-938d-af1c893999ca}">
+		<property name="volume">
+			<value>10</value>
+		</property>
+		<property name="pitch">
+			<value>2.79999995</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{ea9f4a1e-50df-4868-956e-a3fe0df2c05d}</destination>
