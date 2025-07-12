@@ -24,7 +24,7 @@ namespace Beatmapping.Interactions
         [HideInInspector]
         public NoteInteraction.InteractionFlags Flags;
 
-        [Tooltip("Show Indicator")]
+        [Tooltip("Hide Timing Indicator")]
         public bool HideIndicator;
 
         [FormerlySerializedAs("InteractionPositions")]
