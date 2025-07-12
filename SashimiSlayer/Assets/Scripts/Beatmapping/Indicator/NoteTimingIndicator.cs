@@ -58,6 +58,11 @@ namespace Beatmapping.Indicator
             }
             else
             {
+                if (_lastInteraction == null)
+                {
+                    return;
+                }
+
                 // Not an interaction; hide all indicators
                 _sliceTimingIndicators.SetVisible(false);
                 foreach (PipTimingIndicator blockTimingIndicator in _blockTimingIndicators)
@@ -82,6 +87,8 @@ namespace Beatmapping.Indicator
         private void SwitchIndicators(NoteInteraction interaction, BeatmapConfigSo currentBeatmap,
             bool firstInteraction)
         {
+            bool hideIndicator = interaction.HideIndicator;
+
             if (interaction.Type == NoteInteraction.InteractionType.Block)
             {
                 // Select matching block indicator
@@ -89,7 +96,7 @@ namespace Beatmapping.Indicator
                 _blockTimingIndicators[blockIndex].SetupNewInteraction(currentBeatmap, firstInteraction);
                 for (var i = 0; i < _blockTimingIndicators.Count; i++)
                 {
-                    _blockTimingIndicators[i].SetVisible(i == blockIndex);
+                    _blockTimingIndicators[i].SetVisible(i == blockIndex && !hideIndicator);
                 }
 
                 _currentActiveIndicator = _blockTimingIndicators[blockIndex];
@@ -98,8 +105,8 @@ namespace Beatmapping.Indicator
             }
             else if (interaction.Type == NoteInteraction.InteractionType.Slice)
             {
-                _sliceTimingIndicators.SetVisible(true);
                 _sliceTimingIndicators.SetupNewInteraction(currentBeatmap, firstInteraction);
+                _sliceTimingIndicators.SetVisible(!hideIndicator);
                 _currentActiveIndicator = _sliceTimingIndicators;
 
                 // Hide all block indicators
