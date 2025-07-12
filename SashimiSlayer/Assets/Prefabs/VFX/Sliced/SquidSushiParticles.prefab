@@ -79,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 8870503704311298103, guid: a341094307ceb7b46bdf60a63a4084e2,
         type: 3}
       propertyPath: m_Name
-      value: SushiParticles Variant
+      value: SquidSushiParticles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
