@@ -19,8 +19,8 @@ Programs
 - FMOD 2.02
 
 Arduino Libraries (Required to compile sketches)
-- https://github.com/adafruit/Adafruit_BNO055
-- https://github.com/MHeironimus/ArduinoJoystickLibrary
+- https://docs.arduino.cc/libraries/adafruit-bno055/ (install through Arduino IDE Library Manager to get dependencies automatically)
+- https://github.com/MHeironimus/ArduinoJoystickLibrary (need to install through local .zip)
 
 Packages
 - [NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes)

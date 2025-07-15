@@ -1,6 +1,7 @@
 /*
-This version allows the sword to act as a generic joystick. 
-This is preferred over the serial comm version.
+v. 0.1.1
+This variation allows the sword to act as a generic joystick. 
+This is preferred over the serial comm variation.
 
 To connect with the game, just plug the sword in and it should work immediately.
 */
@@ -105,6 +106,7 @@ void loop() {
   if(newSliceBtn != sliceBtn)
   {
     sliceBtn = newSliceBtn;
+    digitalWrite(HAPTIC_IN_PIN, sliceBtn);
     Joystick.setButton(SLICE_GAMEPAD, sliceBtn);
   }
 
@@ -123,14 +125,4 @@ void loop() {
 
   Joystick.setXAxis(cosTheta * AXIS_RANGE);
   Joystick.setYAxis(sinTheta * AXIS_RANGE);
-
-  // Vibrate when sword is drawn
-  if(sliceBtn)
-  {
-    digitalWrite(HAPTIC_IN_PIN, HIGH);
-  }
-  else
-  {
-    digitalWrite(HAPTIC_IN_PIN, LOW);
-  }
 }
