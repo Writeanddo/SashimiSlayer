@@ -1,7 +1,8 @@
 /*
-This version uses custom serial comm to control the game. 
-Using the joystick version is recommended, and this version should only be used for debugging or as a backup.
-Both the joystick and serial version work on identical hardware.
+v. 0.1.0
+This variation uses custom serial comm to control the game. 
+Using the joystick variation is recommended, and this variation should only be used for debugging or as a backup.
+Both the joystick and serial variation should work on identical hardware.
 
 To connect with the game
 - Plug in the sword

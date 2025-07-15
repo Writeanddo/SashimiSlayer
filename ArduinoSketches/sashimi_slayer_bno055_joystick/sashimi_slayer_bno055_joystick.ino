@@ -1,4 +1,5 @@
 /*
+v. 0.1.0
 This version allows the sword to act as a generic joystick. 
 This is preferred over the serial comm version.
 
