@@ -57,5 +57,10 @@ namespace Menus.PauseMenu.Views
         {
             _levelLoader.LoadLastBeatmapLevel();
         }
+
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
     }
 }
